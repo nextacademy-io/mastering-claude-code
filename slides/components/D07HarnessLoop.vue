@@ -4,7 +4,9 @@
 // build prompt → call model → permission? → run tool → append result → call
 // model again, until the model answers with text (exit to You).
 // Prop `hooks`: clip PreToolUse / PostToolUse / Stop badges onto the ring.
-const props = withDefaults(defineProps<{ hooks?: boolean }>(), { hooks: false })
+// Prop `btw`: add a /btw square next to You with a direct line to Model,
+// bypassing the ring — a side question never enters the loop.
+const props = withDefaults(defineProps<{ hooks?: boolean; btw?: boolean }>(), { hooks: false, btw: false })
 
 const CX = 480, CY = 290, R = 195
 const pt = (deg: number, r = R) => ({ x: CX + r * Math.cos((deg * Math.PI) / 180), y: CY + r * Math.sin((deg * Math.PI) / 180) })
@@ -21,7 +23,7 @@ const arc = (a: number, b: number) => {
   const s = pt(a + 24), e = pt(b - 24)
   return `M ${s.x} ${s.y} A ${R} ${R} 0 0 1 ${e.x} ${e.y}`
 }
-const lit = (n: number) => (props.hooks ? false : n)
+const lit = (n: number) => (props.hooks || props.btw ? false : n)
 </script>
 
 <template>
@@ -32,6 +34,15 @@ const lit = (n: number) => (props.hooks ? false : n)
       </marker>
       <marker id="d7-arrow-accent" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
         <path d="M0,0 L0,6 L8,3 z" fill="var(--na-accent-500)" />
+      </marker>
+      <marker id="d7-arrow-accent-rev" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto-start-reverse">
+        <path d="M0,0 L0,6 L8,3 z" fill="var(--na-accent-500)" />
+      </marker>
+      <marker id="d7-arrow-secondary" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="var(--na-secondary-500)" />
+      </marker>
+      <marker id="d7-arrow-secondary-rev" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto-start-reverse">
+        <path d="M0,0 L0,6 L8,3 z" fill="var(--na-secondary-500)" />
       </marker>
     </defs>
 
@@ -78,7 +89,7 @@ const lit = (n: number) => (props.hooks ? false : n)
       <path d="M 590 262 Q 700 150 800 105" fill="none" stroke="var(--na-accent-500)" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#d7-arrow-accent)" />
       <rect x="800" y="62" width="120" height="46" rx="8" fill="var(--na-bg-raised)" stroke="var(--na-accent-500)" stroke-width="2" />
       <text x="860" y="91" text-anchor="middle" fill="var(--na-fg)" font-weight="700" style="font-size: 16px">You</text>
-      <text x="760" y="165" fill="var(--na-accent-500)" font-weight="600" style="font-size: 14px">text answer = turn ends</text>
+      <text x="775" y="142" fill="var(--na-accent-500)" font-weight="600" style="font-size: 14px">text answer = turn ends</text>
     </g>
 
     <!-- hooks: badges clipped onto the ring -->
@@ -99,6 +110,20 @@ const lit = (n: number) => (props.hooks ? false : n)
         <rect x="660" y="180" width="60" height="28" rx="14" fill="var(--na-error-500)" />
         <text x="690" y="199" text-anchor="middle" fill="var(--na-zinc-50)" font-weight="700" style="font-size: 13px">Stop</text>
         <text x="730" y="199" fill="var(--na-error-500)" font-weight="600" style="font-size: 14px">exit 2 → turn cannot end</text>
+      </g>
+    </template>
+
+    <!-- btw: a square above the exit You, with a direct line from Model
+         that clears the permission station over the top — a different
+         colour from the ring/exit, reading as bypassing the loop rather
+         than joining it -->
+    <template v-if="btw">
+      <g v-click="1">
+        <path d="M 585 260 C 660 220, 700 190, 750 190 C 780 190, 795 180, 800 175" fill="none" stroke="var(--na-secondary-500)" stroke-width="2.5" stroke-dasharray="7 5" marker-start="url(#d7-arrow-secondary-rev)" marker-end="url(#d7-arrow-secondary)" />
+        <rect x="800" y="150" width="120" height="46" rx="8" fill="var(--na-bg-raised)" stroke="var(--na-secondary-500)" stroke-width="2.5" stroke-dasharray="5 4" />
+        <text x="860" y="178" text-anchor="middle" fill="var(--na-secondary-500)" font-weight="700" style="font-size: 15px">/btw</text>
+        <text x="860" y="214" text-anchor="middle" fill="var(--na-secondary-500)" font-weight="600" style="font-size: 14px">answers from context</text>
+        <text x="860" y="232" text-anchor="middle" fill="var(--na-secondary-500)" font-weight="600" style="font-size: 14px">no tool, no new turn</text>
       </g>
     </template>
   </svg>
