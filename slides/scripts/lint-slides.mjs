@@ -3,9 +3,11 @@
 //  - a task slide whose qrSlug has no matching tasks/<slug>.md
 //  - a code-live slide without a "⟵ LIVE" marker
 //  - a concept slide with more than 40 words of body text (warning)
+//  - a docs link that breaks the convention: the `docs:` frontmatter field, an official
+//    English docs URL, never on a task slide, never an inline <DocLink> tag in a slide body
 import { readFile, readdir } from 'node:fs/promises'
 import { existsSync, readdirSync } from 'node:fs'
-import { join, dirname } from 'node:path'
+import { join, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
@@ -58,8 +60,10 @@ const files = [
 ].filter(existsSync)
 
 for (const file of files) {
-  const text = await readFile(file, 'utf8')
-  const rel = file.replace(root + '/', '')
+  // normalise line endings and path separators, or every per-slide check below is
+  // silently skipped on Windows (backslash paths never start with 'slides/sections/')
+  const text = (await readFile(file, 'utf8')).replace(/\r\n/g, '\n')
+  const rel = relative(root, file).split('\\').join('/')
   text.split('\n').forEach((line, i) => {
     const rules = rel.endsWith('00-welcome.md') ? forbidden : [...forbidden, ...forbiddenOutsideWelcome]
     for (const [re, label] of rules) {
@@ -112,6 +116,12 @@ for (const file of files) {
       if (/timebox:|qrSlug:|repoUrl:/.test(fm)) err(rel, `slide ${n}: task slide still has timebox/qrSlug/repoUrl`)
     }
     if (layout === 'code-live' && !/⟵ LIVE/.test(fences)) err(rel, `slide ${n}: code-live slide without a ⟵ LIVE marker`)
+    const docs = /^docs:\s*(.*?)\s*$/m.exec(fm)?.[1]
+    if (docs !== undefined) {
+      if (!/^https:\/\/code\.claude\.com\/docs\/en\/[a-z0-9-]+(#[a-z0-9%-]+)?$/.test(docs)) err(rel, `slide ${n}: docs link is not an official English docs URL: ${docs}`)
+      if (layout === 'task') err(rel, `slide ${n}: task slides carry no URL — remove the docs link`)
+    }
+    if (/<DocLink\b/.test(body)) err(rel, `slide ${n}: inline <DocLink> tag — use the docs: frontmatter field instead`)
     if (layout === 'concept') {
       const words = body
         .replace(/<[^>]+>/g, ' ')
