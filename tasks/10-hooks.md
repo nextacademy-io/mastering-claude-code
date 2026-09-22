@@ -86,6 +86,18 @@ are logged, not enforced. What Claude sees on a block is stderr.
     ```
     /hooks
     ```
+11. Hooks in a list all run — they do not override each other. A plain key does. See it for
+    yourself: set the same key two ways.
+    ```json
+    // .claude/settings.json — add this key
+    { "model": "claude-sonnet-5" }
+    ```
+    ```json
+    // .claude/settings.local.json — add this key
+    { "model": "claude-opus-4-8" }
+    ```
+    Start a new `claude` session. The startup header names the model and which file set it.
+    Project local sits above shared project, so yours starts on Opus. Remove both keys after.
 
 ## Now you
 
@@ -103,6 +115,7 @@ are logged, not enforced. What Claude sees on a block is stderr.
 - [ ] `/hooks` lists every hook you added, grouped by event.
 - [ ] You can say why `hard_deny` does not belong in this file. It is an auto-mode setting
       (`settings.autoMode.hard_deny`), not a hook decision. Hook decisions are `allow`, `deny`, `ask`.
+- [ ] A new session started on the model set in `.claude/settings.local.json`, not the one in `.claude/settings.json`.
 
 ## Stuck?
 
