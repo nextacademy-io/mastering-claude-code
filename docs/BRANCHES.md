@@ -3,9 +3,16 @@
 Every task has a branch named `NN-start`. It holds the state at the **start** of task NN,
 so `git checkout NN-start` lets you rejoin at that task without debugging your own build.
 
+One branch breaks that naming on purpose: `19-solution` holds the finished MCP server, so the
+second half of task 19 works even for someone whose own server does not.
+
 The branches are created by [`scripts/prepare-branches.sh`](../scripts/prepare-branches.sh)
 on a local clone. The script never pushes. Every branch with code passes
 `npx tsc --noEmit`, `npm run lint` and `npm run build` before the script prints its summary.
+`19-solution` gets one check more: the script migrates and seeds `dev.db` in the clone, then
+runs `npx tsx mcp/smoke.ts`. The MCP server has to answer there, not only compile. Seeding
+clears and rewrites that `dev.db`, so run the script on a scratch clone, never on the clone you
+demo from. `SKIP_GATE=1` skips the gates and this smoke run with them.
 
 ## What each branch holds
 
@@ -25,7 +32,21 @@ on a local clone. The script never pushes. Every branch with code passes
 | `12-start` | The finished `.claude/skills/tdd/SKILL.md` and a passing `lib/capacity.ts` and `lib/capacity.test.ts` (answer key of task 11). **Ownership checks re-seeded** for the audit — the same exact-string removal `08-start` used, run again against the restored code. | `workshop-artifacts/11-tdd-inner-loop/`; the ownership guards are removed by the same Node script `08-start` uses. |
 | `13-start` | The ownership checks are back again (the fix merged in task 12). | `app/actions/clashes.ts` and `app/actions/venues.ts` restored from `main`. |
 | `14-start` | The hook set: `.claude/settings.json`, `.claude/hooks/typecheck-actions.sh`, `.claude/hooks/build-gate.sh` (answer key of task 13). | `workshop-artifacts/13-hooks/`. |
-| `15-start`, `16-start`, `17-start` | Nothing. Worktrees, CI, the Agent SDK and the capstone add files outside the app or in your own worktree. | Identical to `14-start`. |
+| `15-start`, `16-start`, `17-start`, `18-start`, `19-start` | Nothing. Worktrees, CI, the Agent SDK, the capstone, output styles, loops and background sessions add files outside the app or in your own worktree. Task 19's server does get seeded, on `19-solution` in the row below. | Identical to `14-start`. |
+| `19-solution` | The finished CLASH MCP server: `mcp/server.ts`, `mcp/smoke.ts`, `.mcp.json`, and `permissions.allow` in `.claude/settings.json` for the two read tools. The two npm packages are in `package.json`. | `workshop-artifacts/19-build-mcp/`, branched from `19-start`. |
+
+## A second repository for task 19
+
+`clash-conference` (`https://github.com/agilino/clash-conference.git`) is a second, small app. It
+publishes its talks as clashes into CLASH through the MCP server task 19 builds. It is published
+once the app is finished; until then the repository holds no app and no `19-start` branch. Once
+out, it has two branches of its own: `main` is the finished app, `19-start` is the same app
+without `app/api/publish/route.ts`, the route task 19 writes. Clone it next to your CLASH clone
+(`docs/SETUP.md`). `scripts/prepare-branches.sh` does not touch it.
+
+The two repositories mirror each other: `main` there is the finished route, `19-solution` here is
+the finished server. Both halves have to exist before a talk can reach CLASH, so the publish steps
+work from either side's solution branch.
 
 ## Notes on the build stages (03 to 05)
 
@@ -73,7 +94,7 @@ Review, then push in a separate, explicit step:
 git -C /tmp/clash-branches push origin \
   01-start 02-start 03-start 04-start 05-start 06-start 07-start \
   08-start 09-start 10-start 11-start 12-start 13-start 14-start \
-  15-start 16-start 17-start
+  15-start 16-start 17-start 18-start 19-start 19-solution
 ```
 
 The existing `wk/*` branches on `pawsaw/clash` belong to another workshop and are not touched.
