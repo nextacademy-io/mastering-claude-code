@@ -14,7 +14,7 @@ Say:
 
 Say:
 - Four mechanisms, one task: style, loop, background session, routine
-- The routine step is a demo; follow on your own fork if you can
+- The routine step is a demo; follow on your own CLASH fork if you can
 
 <!-- @note: an-output-style-sets-the-voice -->
 > Do:
@@ -101,7 +101,7 @@ Say:
 Say:
 - Read the prompt aloud, pause at the last sentence: "do nothing" matters when nobody watches
 - One pull request per run bounds a wrong run, like maxTurns in task 16
-- A GitHub trigger needs the Claude GitHub App on the fork — that is Now you
+- A GitHub trigger needs the Claude GitHub App on your CLASH fork — that is Now you
 - Connectors are claude.ai integrations: not a local claude mcp add server, but a committed .mcp.json
 
 <!-- @note: automate -->

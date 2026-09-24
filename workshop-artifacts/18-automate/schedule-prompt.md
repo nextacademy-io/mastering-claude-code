@@ -1,13 +1,13 @@
 # The spec-drift guard — a routine (trainer demo)
 
-Participants watch. The trainer types this in Claude Code, inside the CLASH clone, as one message.
-A routine runs in the Anthropic cloud, so it needs a claude.ai subscription and GitHub access to the repo.
+Participants watch. The trainer types this in Claude Code, in their clone of their own CLASH fork, as one message.
+A routine runs in the Anthropic cloud, so it needs a claude.ai subscription and GitHub access to your CLASH fork.
 
 ```txt
 /schedule weekly spec-drift guard for CLASH. Compare the rules in docs/SPEC.md (the "Rules" and "Data" sections) with prisma/schema.prisma and with the exported Server Actions in app/actions/. When a rule and the code disagree, open a pull request that names the rule, the file and a proposed fix. One pull request per run. When nothing drifted, do nothing: no pull request, no issue, no commit.
 ```
 
-Claude Code turns the description into a routine: the prompt, the repo and the schedule. Confirm the summary it shows.
+Claude Code turns the description into a routine: the prompt, your CLASH fork and the schedule. Confirm the summary it shows.
 
 ## Afterwards
 
@@ -23,7 +23,7 @@ Open the same list in the browser:
 https://claude.ai/code/routines
 ```
 
-A run clones the repo fresh and pushes its branch with a `claude/` prefix. The pull request appears on GitHub, not on your machine.
+A run clones your CLASH fork fresh and pushes its branch with a `claude/` prefix. The pull request appears on GitHub, not on your machine.
 
 ## Before the demo
 

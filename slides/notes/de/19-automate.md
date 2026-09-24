@@ -14,7 +14,7 @@ Sagen:
 
 Sagen:
 - Vier Mechanismen, ein Task: Style, Loop, Background-Session, Routine
-- Der Routine-Schritt ist eine Demo; auf dem eigenen Fork mitmachen, wenn möglich
+- Der Routine-Schritt ist eine Demo; auf dem eigenen CLASH-Fork mitmachen, wenn möglich
 
 <!-- @note: an-output-style-sets-the-voice -->
 > Tun:
@@ -101,7 +101,7 @@ Sagen:
 Sagen:
 - Den Prompt laut vorlesen, beim letzten Satz innehalten: "do nothing" zählt, wenn niemand zuschaut
 - Ein Pull Request je Lauf begrenzt einen falschen Lauf, wie maxTurns in Task 16
-- Ein GitHub-Trigger braucht die Claude GitHub App auf dem Fork — das ist "Now you"
+- Ein GitHub-Trigger braucht die Claude GitHub App auf dem CLASH-Fork — das ist "Now you"
 - Connectors sind claude.ai-Integrationen: kein lokaler Server aus claude mcp add, aber ein committetes .mcp.json
 
 <!-- @note: automate -->
