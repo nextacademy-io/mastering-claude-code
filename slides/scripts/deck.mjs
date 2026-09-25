@@ -14,7 +14,6 @@ import { join, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { spawn } from 'node:child_process'
 import { parseArgs } from 'node:util'
-import { chromium } from 'playwright-chromium'
 import { slidesWithKeys, parseNotesFile } from './lib/slide-notes.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -144,7 +143,9 @@ if (cmd === 'dev') {
     console.log('[deck] --skip-export: leaving PDF export to a local `npm run export`')
   } else {
     await mkdir(join(root, 'dist'), { recursive: true })
-    await spawnSlidev(['export', entryRel, '--output', `dist/${pdfName}`, '--executable-path', chromium.executablePath()])
+    // No --executable-path: Slidev's own headless shell renders the whole deck in one
+    // tall viewport; the full chrome.exe returns blank pages for it.
+    await spawnSlidev(['export', entryRel, '--output', `dist/${pdfName}`])
   }
 } else {
   throw new Error(`unknown command "${cmd}" — use dev, build, or export`)
