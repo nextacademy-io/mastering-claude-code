@@ -25,15 +25,3 @@ mode: "you do"
 success: "Every box on the capstone checklist is ticked and the PR description was written by Claude and edited by you."
 branch: "17-start"
 ---
-
-
----
-layout: concept
-heading: "Security: three rules"
-routeAlias: theory-security-rules
-docs: https://code.claude.com/docs/en/security
-lines:
-  - "Anything a model reads can be an instruction."
-  - "Quarantine: readers of untrusted text cannot write."
-  - "Least privilege: the smallest tool list that works."
----
