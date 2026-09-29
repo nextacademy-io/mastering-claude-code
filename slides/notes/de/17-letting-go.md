@@ -7,7 +7,7 @@ Sagen:
 
 <!-- @note: task-15-letting-go -->
 > Tun:
-> - Branch: 15-start hat bereits CLAUDE.md, den Skill, den Fix und das Hook-Set
+> - Branch: 15-start hat bereits CLAUDE.md, die Skills, den Ownership-Fix und das Hook-Set
 
 Sagen:
 - Zwei Ideen: Worktrees verhindern Kollisionen zwischen parallelen Agents, Headless CI lässt denselben Audit laufen, ohne dass jemand zuschaut
@@ -28,8 +28,8 @@ Sagen:
 
 <!-- @note: batch-many-independent-pull-requests -->
 > Tun:
-> - Auf die Worktree-Folie davor zurückverweisen: /batch automatisiert dieses Muster, nachdem es den Scope untersucht und eine Aufteilung vorgeschlagen hat
-> - Nicht live auf CLASH ausführen — die Lektion ist zu erkennen, wann /batch passt und wann nicht
+> - Auf die Worktree-Folie davor zurückverweisen: /batch automatisiert dieses Muster
+> - Nicht live auf CLASH ausführen — die Lektion: wann /batch passt und wann nicht
 > - Docs-Link: öffnen, unter "All commands" auf die Zeile `/batch` zeigen, dann zurück zu den Folien
 
 Sagen:
@@ -99,7 +99,7 @@ Sagen:
 
 <!-- @note: task-16-the-agent-sdk -->
 > Tun:
-> - Branch: 16-start hat bereits CLAUDE.md, den Skill, den Fix und das Hook-Set
+> - Branch: 16-start hat bereits CLAUDE.md, die Skills, den Ownership-Fix und das Hook-Set
 
 Sagen:
 - Derselbe Agent-Loop, jetzt in einem kleinen Programm statt in einer Terminal-Sitzung
@@ -118,10 +118,8 @@ Sagen:
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): workshop-artifacts/16-agent-sdk/ask-clash.mts
 > - Starten mit `npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"` nach `npm install @anthropic-ai/claude-agent-sdk tsx`
-> - Auf die drei Controls zeigen
-> - Optional: auf die Tabelle "Options" zeigen — dieselben Felder allowedTools/disallowedTools/maxTurns/hooks
-> - Dann auf die Result-Message: die Antwort, num_turns, total_cost_usd
-> - Die Kosten laut sagen
+> - Auf die drei Controls zeigen, optional auch in der Tabelle "Options"
+> - Dann auf die Result-Message: die Antwort, num_turns, total_cost_usd — die Kosten laut sagen
 
 Sagen:
 - allowedTools (bewilligt automatisch, schränkt nicht ein) + disallowedTools (blockiert tatsächlich), hooks.PreToolUse, maxTurns

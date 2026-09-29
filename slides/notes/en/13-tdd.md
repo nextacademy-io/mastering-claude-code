@@ -1,6 +1,6 @@
 <!-- @note: orchestrate-and-let-go -->
 > Do:
-> - Part IV starts here — new belt, new JourneyMap row lit up
+> - Part IV starts here — new belt, new JourneyMap column lit up
 > - Say it once, clearly
 
 Say:
@@ -13,14 +13,14 @@ Say:
 > - Keep the beat short
 
 Say:
-- "The last brown-belt task built a spec. This one builds the code from it, one rule at a time."
+- "Task 09 built a spec. This one builds the code from it, one rule at a time."
 
 <!-- @note: task-11-the-tdd-inner-loop -->
 > Do:
 > - Branch: 11-start already has vitest installed, one trivial test passing, and a deliberately wrong capacity.ts stub
 
 Say:
-- Four things to learn, two things to end up with, and one moment you only watch
+- Three things to learn, two things to end up with, and one moment you only watch
 
 <!-- @note: a-skill-that-stops-itself -->
 > Do:
@@ -40,8 +40,8 @@ Say:
 
 <!-- @note: one-cycle-red-green-stop -->
 > Do:
-> - Live-build reference — the exact body is in tasks/11-tdd-inner-loop.md step 7
-> - Point at disable-model-invocation again — say why it's here: with it, the description line is not in Claude's context, so "let's do this with TDD" never loads the skill. Only /tdd does
+> - Live-build reference — exact body in tasks/11-tdd-inner-loop.md step 7
+> - Point at disable-model-invocation again, say why: no description in Claude's context, so "let's do this with TDD" never loads the skill. Only /tdd does
 
 Say:
 - RED must fail on an assertion — a compile error means the test is checking plumbing, not the rule

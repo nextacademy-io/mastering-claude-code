@@ -22,7 +22,7 @@ layout: concept
 heading: "Batch what does not touch"
 routeAlias: theory-batching
 lines:
-  - "Profile · search · dashboard · theme — four jobs, no shared files"
+  - "Profile · search · dashboard · theme — four jobs, few shared files"
   - "One brief, each job names its files"
   - "You review while it works"
 ---
@@ -73,14 +73,14 @@ Look for:
 List findings with file and line. Fix nothing yet.
 ```
 
-Next time, `/code-review` runs this same check as one command.
+Next time, `/code-review` runs a check like this as one command.
 
 ---
 layout: concept
 heading: "Ship, then look at the reference"
 lines:
   - "branch → commits → gh pr create — all through Claude"
-  - "git fetch origin 06-start · git diff --stat 06-start"
+  - "git fetch origin 06-start · git diff --stat origin/06-start"
   - "From here on, every task runs on the reference CLASH"
 ---
 
@@ -91,7 +91,7 @@ number: "05"
 heading: "Finish and ship"
 goal: "Batch the last four slices, run work in the background, review your pull request with Claude, and switch to the reference."
 mode: "you do"
-success: "Profile, search, dashboard and theme work, a pull request exists, and you are on 06-start with the app running."
+success: "Profile, search, dashboard and theme work, a PR or PR.md exists, and you are on 06-start with the app running."
 branch: "05-start"
 ---
 

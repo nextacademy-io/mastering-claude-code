@@ -68,9 +68,9 @@ Sagen:
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer), als eine Zeile in deinem CLASH-Clone auf einem sauberen Branch getippt:
 >   /goal npx tsc --noEmit exits 0 and npm run lint exits 0; or stop after 6 turns
-> - Die Demo darf nach einem Turn fertig sein; das ist in Ordnung
-> - Auf das Urteil im Transcript zeigen (Ctrl+O zeigt die Begründung), dann /goal ohne Argument ausführen: Bedingung, Turn-Zahl, Token-Verbrauch. Die Begründung zeigt /goal nur, solange ein Goal noch aktiv ist
-> - Optional: eine absichtlich längere Bedingung setzen, dann /goal clear: Er gibt Goal cleared: mit der Bedingung aus. Nach einem erfüllten Goal gibt /goal clear stattdessen No goal set aus, während /goal das erreichte Goal weiter zeigt
+> - Die Demo darf nach einem Turn fertig sein
+> - Auf das Urteil im Transcript zeigen (Ctrl+O zeigt die Begründung), dann /goal ohne Argument: Bedingung, Turn-Zahl, Token-Verbrauch; die Begründung nur, solange ein Goal aktiv ist
+> - Optional: eine längere Bedingung setzen, dann /goal clear: Er gibt Goal cleared: mit der Bedingung aus. Nach einem erfüllten Goal gibt er No goal set aus, aber /goal zeigt das erreichte Goal weiter
 
 Sagen:
 - Entscheidend ist der Vertrag, nicht eine künstlich lange Demo
@@ -122,15 +122,14 @@ Sagen:
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer), in deinem CLASH-Clone als eine Nachricht getippt:
 >   /schedule weekly spec-drift guard for CLASH. Compare the rules in docs/SPEC.md (the "Rules" and "Data" sections) with prisma/schema.prisma and with the exported Server Actions in app/actions/. When a rule and the code disagree, open a pull request that names the rule, the file and a proposed fix. One pull request per run. When nothing drifted, do nothing: no pull request, no issue, no commit.
-> - Vor der Demo: docs/SPEC.md muss auf dem CLASH-Fork-Branch liegen, den die Routine klont
-> - Nur der eigene CLASH-Fork, mit dem claude.ai-Login in der CLI, nicht mit einem API-Key
+> - Vor der Demo: nur der eigene CLASH-Fork; docs/SPEC.md auf dem Branch, den die Routine klont; claude.ai-Login in der CLI, kein API-Key
 > - Dann /schedule list und https://claude.ai/code/routines; eine Regel in docs/SPEC.md ändern, um einen Pull Request zu sehen
 
 Sagen:
 - Den Prompt laut vorlesen, beim letzten Satz innehalten: "do nothing" zählt, wenn niemand zuschaut
 - Ein Pull Request je Lauf begrenzt einen falschen Lauf, wie maxTurns in Task 16
 - Ein GitHub-Trigger braucht die Claude GitHub App auf dem CLASH-Fork — das ist "Now you"
-- Connectors sind claude.ai-Integrationen: kein lokaler Server aus claude mcp add, aber ein committetes .mcp.json
+- Connectors sind claude.ai-Integrationen, kein lokaler Server aus claude mcp add; ein committetes .mcp.json geht auch
 
 <!-- @note: automate -->
 > Tun:

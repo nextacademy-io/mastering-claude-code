@@ -115,7 +115,7 @@ success: "Editing prisma/migrations/*, running rm, or reading .env* is denied wi
 layout: code-live
 heading: "Gate the turn"
 filePath: ".claude/hooks/build-gate.sh"
-success: "The turn cannot end while npm run build fails. The agent sees the last lines and keeps working."
+success: "The turn stays open while npm run build fails, up to eight blocks in a row. The agent sees the last lines and keeps working."
 ---
 
 ```bash
@@ -139,7 +139,7 @@ layout: concept
 heading: "Settings override each other"
 docs: https://code.claude.com/docs/en/settings
 lines:
-  - "Five files, highest wins: managed, command line, project local, shared, user."
+  - "Five levels, highest wins: managed, command line, project local, shared, user."
   - "Same plain key in two files? The higher one wins. Lists and hooks add up."
 ---
 
@@ -150,14 +150,14 @@ layout: concept
 heading: "The sandbox limits what a command touches"
 docs: https://code.claude.com/docs/en/sandboxing
 lines:
-  - "A sandboxed command writes only inside your project, reaches only allowed hosts."
+  - "Sandboxed commands write only to the project and temp, reach only allowed hosts."
   - "macOS and Linux only. On Windows, run it inside WSL2."
 ---
 
 <div class="flex gap-6 w-full max-w-3xl">
   <div class="na-card p-5 flex-1">
     <div class="font-semibold mb-2" style="color: var(--na-accent-500)">Filesystem</div>
-    <div class="text-base" style="color: var(--na-fg-muted)">Write access: your project only. Read access: the machine, minus paths you deny.</div>
+    <div class="text-base" style="color: var(--na-fg-muted)">Write access: your project and a temp folder. Read access: the machine, minus paths you deny.</div>
   </div>
   <div class="na-card p-5 flex-1" v-click>
     <div class="font-semibold mb-2" style="color: var(--na-accent-500)">Network</div>

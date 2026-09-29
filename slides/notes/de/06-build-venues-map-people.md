@@ -16,10 +16,10 @@ Sagen:
 
 <!-- @note: your-first-slash-command -->
 > Tun:
-> - Kurz erwähnen: Commands sind in Skills aufgegangen — diese Datei funktioniert weiterhin, Task 07 zeigt den bevorzugten Weg, einen zu schreiben
+> - Kurz erwähnen: Commands sind in Skills aufgegangen — diese Datei funktioniert weiterhin, Task 07 zeigt den bevorzugten Weg
 > - Schritt 4 machen die Teilnehmenden selbst
-> - /new-page noch nicht im /-Menü? /reload-skills ausführen — liest die Skill- und Command-Ordner neu ein. Live erkannt werden laut Docs nur Skill-Ordner
-> - Optional: auf den Hinweis der Docs-Seite zeigen: "To add your own commands, see skills"
+> - /new-page nicht im /-Menü? /reload-skills ausführen: liest Skill- und Command-Ordner neu ein. Live erkannt werden laut Docs nur Skill-Ordner
+> - Optional: auf den Docs-Hinweis ganz oben zeigen: "Custom commands have been merged into skills"
 > VOLLSTÄNDIGE DATEI (wörtlich aus tasks/04-venues-map-people.md):
 >
 > Add a new page to this app for: $ARGUMENTS
@@ -38,7 +38,7 @@ Sagen:
 > Tun:
 > - Schritte 6 und 8 machen die Teilnehmenden selbst
 > - Die Leaflet-Karte geht fast immer einmal kaputt ("window is not defined" beim Server-Rendering) — gut so, nutzen
-> - Demo: die drei Wege, Claude die Evidenz zu geben — Terminal lesen lassen, Fehlertext einfügen, Screenshot mit Ctrl+V einfügen
+> - Die drei Wege vorführen: Claude das Terminal lesen lassen, Fehlertext einfügen, Screenshot mit Ctrl+V einfügen (Alt+V unter Windows und WSL)
 
 Sagen:
 - Je genauer die Evidenz, desto kleiner der Fix
@@ -57,7 +57,7 @@ Sagen:
 
 <!-- @note: one-big-ask-or-four-small-ones -->
 > Tun:
-> - Übergabe: FACILITATOR.md, Rhythm for every task. Big Ask ist Schritt 2 (haben sie gesehen) — Übergabe bei Schritt 1, kleine Schritte ab 3
+> - Übergabe bei Schritt 1 (FACILITATOR.md, Rhythm for every task). Beim Big Ask (Schritt 2) haben sie zugeschaut; kleine Schritte ab 3
 > - Links (unachtsam), ein Schritt pro Klick:
 >   - [click] Venues, Karte, Teilnahme, Benachrichtigungen — eine Message
 >   - [click] Claude fasst 40+ Dateien an, bevor du irgendetwas prüfen kannst
@@ -71,7 +71,7 @@ Sagen:
 > with a People panel on the clash detail page, and notifications with a bell
 > that shows unread requests in the top bar. Follow the existing patterns in
 > the app everywhere they apply.
-> - Rechts (gezielt), wenn sie zurück sind — ein Schritt pro Klick:
+> - Rechts (gezielt), wenn sie zurück sind:
 >   - [click] Venues — wie bei den Clashes
 >   - [click] die Karte — ein gezielter Auftrag, erst die Docs
 >   - [click] Teilnahme — beitreten, verlassen, annehmen, ablehnen
@@ -83,8 +83,8 @@ Sagen:
 
 <!-- @note: venues-map-people -->
 > Tun:
-> - Task-04-Rückblick — bleibt auf dem Bildschirm, während gearbeitet wird
-> - Übergabe an tasks/04-venues-map-people.md bei Schritt 1, alle 12 Schritte — Schritt 2 überspringen, haben sie gesehen — eine Folie übrig, wenn sie zurück sind
+> - Task-04-Rückblick — bleibt stehen, während gearbeitet wird; eine Folie übrig, wenn sie zurück sind
+> - Übergabe an tasks/04-venues-map-people.md bei Schritt 1, alle 12 Schritte — Schritt 2 überspringen, haben sie gesehen
 > - Beim Karten-Schritt bleiben die Leute hängen — daran erinnern
 > - Join-Flow braucht zwei Browser: einer als Anna, einer als Lukas
 

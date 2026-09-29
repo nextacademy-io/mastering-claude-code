@@ -120,7 +120,7 @@ const lit = (n: number) => (props.hooks || props.btw ? false : n)
       <g v-click="3">
         <rect x="820" y="168" width="60" height="28" rx="14" fill="var(--na-error-500)" />
         <text x="850" y="187.5" text-anchor="middle" fill="var(--na-zinc-50)" font-weight="700" style="font-size: 15px">Stop</text>
-        <text x="952" y="220" text-anchor="end" fill="var(--na-error-500)" font-weight="600" style="font-size: 15px">exit 2 → turn cannot end</text>
+        <text x="952" y="220" text-anchor="end" fill="var(--na-error-500)" font-weight="600" style="font-size: 15px">exit 2 → turn stays open</text>
       </g>
     </template>
 

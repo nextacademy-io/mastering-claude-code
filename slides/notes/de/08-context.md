@@ -42,8 +42,8 @@ Sagen:
 <!-- @note: context-is-an-instrument -->
 > Tun:
 > - Demo: `/context` live in einer frischen Session auf der Referenz-CLASH ausführen
-> - Die Zeilen laut vorlesen — nicht zusammenfassen, die Leute die echten Zahlen hören lassen
-> - Docs-Link: öffnen, oben die interaktive Timeline abspielen, bis "What the timeline shows" scrollen, dann zurück zu den Folien
+> - Die Zeilen laut vorlesen — echte Zahlen, keine Zusammenfassung
+> - Docs-Link: öffnen, oben die Timeline abspielen, bis "What the timeline shows" scrollen, dann zurück zu den Folien
 
 Sagen:
 - Ab jetzt nach jeder Task auf genau diesen Befehl zurückkommen
@@ -61,13 +61,13 @@ Sagen:
 - Die Übung: eine gute Context-Datei aus dem Nichts schreiben, verankert in echten Regeln
 - Das ist die schwierigere, nützlichere Fähigkeit
 - Die meisten Repos, die du anfasst, sehen so aus: nichts, oder fast nichts
-- Gut zu wissen: seit Claude Code v2.1.277 liest Claude AGENTS.md von selbst — aber nur, wenn das Repo keine CLAUDE.md hat. CLASH hat eine, also lädt weiterhin der @AGENTS.md-Import die AGENTS.md.
+- Gut zu wissen: seit Claude Code v2.1.277 liest Claude AGENTS.md von selbst — aber standardmäßig nur, wenn ein Repository keine CLAUDE.md hat. CLASH hat eine, also lädt weiterhin der @AGENTS.md-Import die AGENTS.md.
 
 <!-- @note: the-shape-underneath-the-rules -->
 > Tun:
 > - Die Struktur zeigen, bevor eine einzige Regel geschrieben wird
-> - Falls nicht alle schon Next.js kennen: "RSC page" heißt nur, dass die Page ihre Daten selbst auf dem Server holt, kein separater API-Call nötig
-> - Genau diese Struktur fehlt später in deleteClash und deleteVenue — das deckt das Audit in Task 08 auf. Jetzt richtig zeigen, damit sie dann auf den ersten Blick erkennbar ist, statt einer blinden Suche
+> - Falls nicht alle Next.js kennen: eine "RSC page" holt ihre Daten selbst auf dem Server, kein separater API-Call
+> - In Task 08 findet das Audit, dass diese Struktur in deleteClash und deleteVenue fehlt — jetzt richtig zeigen, damit die Leute sie auf den ersten Blick erkennen
 
 Sagen:
 - Dieselbe Fünf-Boxen-Struktur steckt hinter jedem Feature in CLASH — einmal verstehen, überall wiedererkennen
@@ -79,10 +79,8 @@ Sagen:
 <!-- @note: claude-md-from-real-rules -->
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer — nicht zeigen, bevor die Leute ihre eigene geschrieben haben): `workshop-artifacts/06-context-and-claude-md/CLAUDE.md` im Workshop-Repository
-> - Beim Aufbauen: auf die genaue Zeile in `app/actions/clashes.ts` mit dem Ownership-Check zeigen
-> - Auf dem Bildschirm zeigen: `if (clash.creatorId !== user.id)`
-> - Wenn ein Entwurf vor allem aus Prosa und Bauchgefühl besteht, dagegenhalten
-> - Das ist die Saat für Task 13
+> - Beim Aufbauen auf dem Bildschirm auf den Ownership-Check in `app/actions/clashes.ts` zeigen: `if (clash.creatorId !== user.id)`
+> - Wenn ein Entwurf vor allem aus Prosa und Bauchgefühl besteht, dagegenhalten — das ist die Saat für Task 13
 
 Sagen:
 - Die sechs Regeln:
@@ -96,17 +94,15 @@ Sagen:
 
 <!-- @note: plan-mode-review-first -->
 > Tun:
-> - Demo: live in den Plan Mode wechseln (Shift+Tab, bis plan dasteht)
-> - Das nächste Feature beschreiben
-> - Den Plan gemeinsam laut lesen
-> - Unter `docs/plans/realtime-notifications.md` speichern
+> - Demo live: Shift+Tab drücken, bis plan dasteht, dann das nächste Feature beschreiben
+> - Den Plan gemeinsam laut lesen, dann unter `docs/plans/realtime-notifications.md` speichern
 > - Docs-Link: öffnen, bis "Analyze before you edit with plan mode" scrollen, dann zurück zu den Folien
 
 Sagen:
 - Echtzeit-Benachrichtigungen — laden aktuell beim Rendern über `getNotifications` und `getUnreadCount` in `lib/data/notifications.ts`
 - "Don't write any code yet. Propose an approach and the files it touches."
 - Plan Mode ist unter den Permission Modes dokumentiert
-- Die Seite nennt sechs Modi: Manual, Accept Edits, Plan, Auto, dontAsk, Bypass. „Ask“ ist kein Modus, sondern eine Regelart neben allow und deny
+- Die Seite nennt sechs Modi: Manual, Accept Edits, Plan, Auto, dontAsk, Bypass Permissions. „Ask“ ist kein Modus, sondern eine Regelart neben allow und deny
 
 <!-- @note: a-reviewed-plan-is-not-a-guarantee -->
 > Tun:
@@ -125,12 +121,12 @@ Sagen:
 
 Sagen:
 - [click] ~/.claude/CLAUDE.md — deine persönlichen Instruktionen, jedes Projekt
-- [click] CLAUDE.md im Repo-Root — wird zuerst gelesen, am nächsten zum Start
+- [click] CLAUDE.md im Root deines CLASH-Clones — wird zuerst gelesen, lädt beim Start
 - [click] CLAUDE.local.md — deine persönlichen Vorlieben für deinen CLASH-Clone; CLAUDE.md wird über Git geteilt. Selbst in die .gitignore eintragen. Wird direkt nach CLAUDE.md auf derselben Ebene angehängt
 - [click] Das CLAUDE.md eines Unterordners lädt, wenn Claude dort eine Datei liest — zuletzt gelesen, am nächsten an der Arbeit
 - [click] .claude/rules/*.md — eine einfache Regel lädt beim Start, wie CLAUDE.md. Task 10 zeigt die Art, die auf eine passende Datei wartet
 - [click] Alles landet in einem Context — nichts wird verworfen, nichts wird ausgewählt
-- [click] Zwei Dateien widersprechen sich? Claude wählt eine. Das ist ein Bug, den du gebaut hast, kein Feature
+- [click] Zwei Dateien widersprechen sich? Claude wählt womöglich irgendeine davon. Das ist ein Bug, den du gebaut hast, kein Feature
 
 <!-- @note: personal-rules-follow-you -->
 > Tun:

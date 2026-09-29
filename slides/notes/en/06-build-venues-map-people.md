@@ -16,10 +16,10 @@ Say:
 
 <!-- @note: your-first-slash-command -->
 > Do:
-> - Flag in passing: commands merged into skills — this file still works, task 07 shows the preferred way to write one
+> - Flag in passing: commands merged into skills — this file still works, task 07 shows the preferred way
 > - Participants do this in step 4
-> - /new-page not in the / menu yet? Run /reload-skills — it re-reads the skill and command folders. The docs only promise live pickup for skill folders
-> - Optional: point at the docs page's own note: "To add your own commands, see skills"
+> - /new-page not in the / menu? Run /reload-skills: it re-reads skill and command folders. The docs only promise live pickup for skill folders
+> - Optional: point at the top docs note "Custom commands have been merged into skills"
 > FULL WORKING FILE (verbatim from tasks/04-venues-map-people.md):
 >
 > Add a new page to this app for: $ARGUMENTS
@@ -38,7 +38,7 @@ Say:
 > Do:
 > - Participants do this in steps 6 and 8
 > - Leaflet map almost always breaks once ("window is not defined" during server rendering) — good, use it
-> - Demo the three ways to hand Claude the evidence: let it read the terminal, paste the error text, paste a screenshot with Ctrl+V
+> - Demo the three ways: let Claude read the terminal, paste the error text, paste a screenshot with Ctrl+V (Alt+V on Windows and WSL)
 
 Say:
 - The more exact the evidence, the smaller the fix
@@ -57,7 +57,7 @@ Say:
 
 <!-- @note: one-big-ask-or-four-small-ones -->
 > Do:
-> - Handoff: FACILITATOR.md, Rhythm for every task. Big ask is step 2 (they watched it) — hand off at step 1, small steps start at 3
+> - Handoff at step 1 (FACILITATOR.md, Rhythm for every task). They watched step 2, the big ask; small steps start at 3
 > - Left (careless), one step per click:
 >   - [click] venues, map, participation, notifications — one message
 >   - [click] Claude touches 40+ files before you can check anything
@@ -71,7 +71,7 @@ Say:
 > with a People panel on the clash detail page, and notifications with a bell
 > that shows unread requests in the top bar. Follow the existing patterns in
 > the app everywhere they apply.
-> - Right (engineered), when they are back — one step per click:
+> - Right (engineered), when they are back:
 >   - [click] venues — do it like clashes
 >   - [click] the map — a focused brief, docs first
 >   - [click] participation — join, leave, accept, reject
@@ -83,8 +83,8 @@ Say:
 
 <!-- @note: venues-map-people -->
 > Do:
-> - Task 04 recap — stays on screen while they work
-> - Hand off to tasks/04-venues-map-people.md at step 1, full 12 steps — skip step 2, they watched it — one slide left when they are back
+> - Task 04 recap — stays up while they work; one slide left when they are back
+> - Hand off to tasks/04-venues-map-people.md at step 1, full 12 steps — skip step 2, they watched it
 > - Map step is where people get stuck — remind them
 > - Join flow needs two browsers: one as Anna, one as Lukas
 

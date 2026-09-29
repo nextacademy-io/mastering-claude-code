@@ -40,7 +40,7 @@ Sagen:
 > Tun:
 > - Zurückverweisen auf den /new-page-Command aus Task 04 — derselbe Mechanismus, das hier ist die Ordner-Version
 > - Ein verbreitetes Missverständnis korrigieren
-> - Optional: auf "All commands" zeigen — die eigene Referenzliste dieser Docs-Seite
+> - Optional: den Docs-Link öffnen, oben auf den Hinweis "Custom commands have been merged into skills" zeigen, dann zurück zu den Folien
 
 Sagen:
 - Dass Commands in Skills aufgehen, macht .claude/commands/*.md-Dateien nicht kaputt
@@ -51,9 +51,8 @@ Sagen:
 > Tun:
 > - Vollständige Lösung (nur für Trainer): workshop-artifacts/07-clash-feature-skill/SKILL.md
 > - Auf dem Bildschirm Schritt für Schritt aufbauen, nicht komplett einfügen
-> - Beim Server-Action-Schritt anhalten und erklären
-> - Wichtigster Satz im ganzen Skill — er kommt in Task 08 wieder
-> - Task-Schritt 5 gibt den Teilnehmenden den Grund und einen wörtlichen Edit-Prompt — sie fügen die Notiz ein, sie müssen den Grund nicht selbst herleiten (Task 08 bringt ihn richtig bei)
+> - Beim Server-Action-Schritt anhalten und erklären: der wichtigste Satz im Skill. Task 08 bringt das richtig bei
+> - Task-Schritt 5 gibt den Teilnehmenden den Grund und einen wörtlichen Edit-Prompt: sie fügen die Notiz ein, ohne den Grund selbst herleiten zu müssen
 
 Sagen:
 - Er besteht auf einem eigenen Ownership-Check, obwohl requireUser() im Layout läuft
@@ -85,7 +84,7 @@ Sagen:
 > - Docs-Link: öffnen, die aktive agent-browser-Skill-Seite zeigen, dann zurück zu den Folien
 
 Sagen:
-- Claude Code liest zwei Ordner und sonst nichts. .agents/skills/ gehört nicht dazu
+- Claude Code liest deine Skills aus zwei Ordnern. .agents/skills/ gehört nicht dazu
 - [click] npx skills add vercel-labs/agent-browser -g legt die echte Kopie in ~/.agents/skills/ ab
 - [click] Danach verlinkt es diesen Ordner nach ~/.claude/skills/ — genau dort darf ein Symlink stehen
 - [click] Ohne den Link ist der Skill schlicht nicht da. Kein Fehler, keine Warnung — /skills zeigt es dir
@@ -95,7 +94,7 @@ Sagen:
 > - Docs-Link: öffnen, bis "Plugin layout" scrollen, dann zurück zu den Folien
 
 Sagen:
-- Ein einzelner Skill oder Hook lebt in .claude/ und bleibt lokal für ein Projekt
+- Ein einzelner Skill oder Hook lebt in .claude/ und dient einem Projekt oder nur dir
 - Ein Plugin ist die verpackte, teilbare Version derselben Idee
 - [click] skills/ — ein SKILL.md pro Skill, genau wie .claude/skills/
 - [click] agents/ — Subagent-Dateien, gleiche Form wie .claude/agents/
@@ -111,7 +110,7 @@ Sagen:
 
 Sagen:
 - Ein Marketplace ist nur ein Katalog — einen hinzufügen, dann per Namen installieren
-- Die Install-Zusammenfassung sagt, ob ein Neustart oder /reload-plugins nötig ist
+- Die Install-Zusammenfassung sagt, ob das Plugin schon aktiv ist oder /reload-plugins braucht
 
 <!-- @note: the-clash-feature-skill -->
 > Tun:

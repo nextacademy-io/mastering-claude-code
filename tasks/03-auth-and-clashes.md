@@ -130,4 +130,4 @@ Ask Claude to write a small script that calls `deleteClash` directly, without th
 
 - Checkpoints and rewind — https://code.claude.com/docs/en/checkpointing
 - Managing context — https://code.claude.com/docs/en/costs
-- Server Actions — https://nextjs.org/docs/app/api-reference/functions/server-actions
+- Server Actions — https://nextjs.org/docs/app/guides/server-actions

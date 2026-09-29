@@ -37,7 +37,7 @@ lines:
 layout: code-live
 heading: "Your first slash command"
 routeAlias: theory-custom-command
-docs: https://code.claude.com/docs/en/commands
+docs: https://code.claude.com/docs/en/skills
 filePath: ".claude/commands/new-page.md"
 success: "/new-page <description> adds a page that follows the repo rules, without you repeating them."
 ---

@@ -145,8 +145,8 @@ for one build. That is the gate, not the loop.
     ```bash
     git worktree list
     ```
-    You see the new worktree listed, with the report inside it at `.claude/worktrees/<name>/docs/audit.md`. On `18-start` every action is guarded, so every line says PASS.
-    If your CLASH clone has a remote, Claude may also commit the report in that worktree and push a branch. It never pushes to `main`.
+    You see the new worktree listed, with the report inside it at `.claude/worktrees/<name>/docs/audit.md`. On `18-start` every action has the checks it needs, so every line says PASS.
+    Claude may also commit the report in that worktree, and push a branch when your CLASH clone has a remote. It never pushes to `main`.
     The worktree starts without `node_modules`, so the Stop gate's build may fail there until the session runs `npm install`. If the row looks stuck, attach and read what it is doing.
 17. Stop the session and read what it did. The id is in the `claude agents` list.
     ```bash
@@ -200,7 +200,7 @@ for one build. That is the gate, not the loop.
 
 ## Stuck?
 
-`git checkout 18-start` in your CLASH clone — identical to `14-start`: the reference CLASH with `CLAUDE.md`, the skill, the fix and the hook set.
+`git checkout 18-start` in your CLASH clone — identical to `14-start`: the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
 The finished style file, the loop file and the routine prompt are in `workshop-artifacts/18-automate/` in the workshop repository.
 Compare `host-notes.md` there with the file Claude wrote for you.
 
@@ -212,7 +212,7 @@ features, one CLASH clone, one of them with nobody watching. Merge both.
 ## Links
 
 - Output styles — https://code.claude.com/docs/en/output-styles
-- Goal mode — https://code.claude.com/docs/en/goal
+- `/goal` — https://code.claude.com/docs/en/goal
 - Scheduled tasks and `/loop` — https://code.claude.com/docs/en/scheduled-tasks
 - Agent view and background sessions — https://code.claude.com/docs/en/agent-view
 - Routines — https://code.claude.com/docs/en/routines

@@ -28,8 +28,8 @@ Sagen:
 
 Sagen:
 - [click] der System-Prompt, den Claude Code schreibt
-- [click] deine CLAUDE.md-Dateien — oft mehr als zwei: verwaltet (deine Firma), ~/.claude/CLAUDE.md, die CLAUDE.md des Projekts, CLAUDE.local.md; Dateien in Unterordnern kommen dazu, wenn Claude dort liest
 - [click] die Liste der Tools mit ihren Beschreibungen
+- [click] deine CLAUDE.md-Dateien — oft mehr als zwei: verwaltet (deine Firma), ~/.claude/CLAUDE.md, die CLAUDE.md des Projekts, CLAUDE.local.md; Dateien in Unterordnern kommen dazu, wenn Claude dort liest
 - [click] ein kurzer Index der Skills, eine Zeile pro Skill
 - [click] die gesamte Historie dieser Session — jede gelesene Datei, jeder Command-Output — schon beim vorherigen Call geschickt, der Provider liefert es also aus dem Cache: viel günstiger und schneller
 - [click] deine neueste Message und das neueste Tool-Ergebnis — nur dieser hintere Teil wird voll bezahlt
@@ -41,7 +41,7 @@ Sagen:
 - Das Kern-Tool-Set ist absichtlich klein und langweilig
 - Read, Edit, Write — für Dateien
 - Bash — für alles, was ein Terminal kann: Tests, Builds, Git
-- [click:2] Grep und Glob — zum Suchen
+- [click:2] Grep und Glob — zum Suchen. Unter macOS, Linux und WSL sind sie standardmäßig nicht dabei: Claude sucht dort mit find und grep über Bash
 - [click] Agent — startet eine weitere Loop mit eigenem Context (Subagents, später)
 - [click] WebFetch — holt eine Seite von einer URL. Es sucht nicht: Die Websuche ist ein zweites Tool, WebSearch
 - MCP — fügt Tools von außen hinzu: einen Browser, eine Datenbank, dein Ticket-System
@@ -57,7 +57,7 @@ Sagen:
 - Die Modi, einer pro Klick:
   - [click] Manual — fragt vor Edits und Commands
   - [click] Accept Edits — Datei-Edits gehen durch, plus gängige Filesystem-Commands (mkdir, rm, mv, cp...); andere Shell-Commands fragen weiter
-  - [click] Plan Mode — read-only: das Modell kann schauen, aber nicht anfassen; Edits bleiben blockiert, bis du den Plan freigibst — gut zum Nachdenken vor dem Bauen
+  - [click] Plan Mode — ändert deinen Quellcode nicht: das Modell kann schauen, aber nicht anfassen; Edits bleiben blockiert, bis du den Plan freigibst — gut zum Nachdenken vor dem Bauen
   - [click] Auto — ein zweites Modell, der Classifier, prüft Aktionen statt dir und blockiert die riskanten. Ein Block oder kein Urteil heißt: abgelehnt, nicht gefragt; Prompts kommen erst nach 3 Blocks in Folge oder 20 in einer Session zurück
   - [click] Bypass — überspringt fast jeden Prompt (nur in einer Sandbox benutzen); ein paar Dinge fragen trotzdem, etwa rm -rf auf deinem Home- oder Projektordner
 - Das Gate ist der Kern der Sache: nichts Gefährliches passiert ohne eine Entscheidung — sei es von einer Regel oder von dir
@@ -70,7 +70,7 @@ Sagen:
 - [click] PostToolUse — läuft nach dem Tool; das Tool ist schon gelaufen, Exit 2 kann das also nicht rückgängig machen — stattdessen geht stderr ans Modell, das dann seine eigene Arbeit repariert
   - Beispiel: nach jedem Edit unter app/actions lässt ein Hook den Type-Checker laufen; er schlägt fehl; das Modell sieht den Fehler und repariert den Code
 - [click] Stop — läuft, wenn das Modell den Turn beenden will; Exit-Code 2 verweigert, und das Modell arbeitet weiter
-- Jeder andere Exit-Code loggt nur — nur Exit-Code 2 blockiert einen Hook
+- Bei jedem anderen Exit-Code läuft die Aktion weiter — nur Exit-Code 2 blockiert einen Hook
 - Eine Regel in CLAUDE.md ist Ratschlag. Ein Hook ist Gesetz
 - Teil vier baut diese Hooks
 
@@ -100,7 +100,7 @@ Sagen:
 Sagen:
 - Kosten sind Tokens
 - Input-Tokens bei jedem Call, Output-Tokens bei jeder Antwort
-- Der gecachte vordere Teil ist viel günstiger als der Rest — lange Sessions mit stabilem vorderem Teil und kurzem hinterem Teil sind die günstigen
+- Der gecachte vordere Teil ist viel günstiger als der Rest — Sessions mit stabilem vorderem Teil und kurzem hinterem Teil sind die günstigen
 - [click:5] Kontrolle sind drei Fragen, die du dir immer wieder stellst:
   - Was ist gerade im Fenster?
   - Welche Tools kann das Modell aufrufen?
@@ -135,7 +135,7 @@ Sagen:
 <!-- @note: when-the-window-fills-compact-or-clear -->
 > Tun:
 > - Noch läuft keine Live-Session — die Commands nennen, nicht ausführen
-> - Klar sagen, dass die Live-Version später in Task 01 kommt, sobald es ein echtes Gespräch zum Kürzen oder Leeren gibt
+> - Klar sagen, dass die Live-Version später kommt: /clear in Task 01, /compact in Task 03
 
 Sagen:
 - Drei Tanks — der erste ist eine Session nahe am Limit: gelesene Dateien, Tool-Output, Chat
@@ -149,7 +149,6 @@ Sagen:
 <!-- @note: a-question-that-skips-the-loop -->
 > Tun:
 > - Noch läuft keine Live-Session — beschreiben, nicht ausführen
-> - Gleiches „das machen wir später in Task 01 live" wie bei der letzten Folie
 
 Sagen:
 - Derselbe Loop wie vorhin — daran ändert sich nichts
@@ -161,12 +160,10 @@ Sagen:
 
 <!-- @note: install-and-log-in -->
 > Tun:
-> - Den Install-Link oben auf der Folie in den Teams-Chat einfügen, damit alle ihn direkt anklicken können
-> - Alle haben das vor dem Workshop installiert (docs/SETUP.md) — klar sagen, das ist ein Rückblick, keine neue Installation
-> - Das eigene Terminal live in einem leeren Ordner öffnen und Claude Code starten — das war's.
->   Ein leerer Ordner zeigt bei /context, /btw oder /clear noch fast nichts; das kommt später,
->   am Ende von Task 01
-> - Mit "The model is the same for everyone" zwei Folien weiter schließen, nach "Claude Code is not the only harness"
+> - Den Install-Link von der Folie in den Teams-Chat einfügen, damit alle ihn anklicken können
+> - Klar sagen: Alle haben es vor dem Workshop installiert (docs/SETUP.md) — ein Rückblick, keine neue Installation
+> - Das eigene Terminal live in einem leeren Ordner öffnen und Claude Code starten — das war's. /context, /btw und /clear zeigen dort noch fast nichts; alle drei kommen am Ende von Task 01
+> - Mit "The model is the same for everyone" schließen, nach "Claude Code is not the only harness"
 
 Sagen:
 - Eine globale Installation, ein Befehl zum Starten

@@ -1,9 +1,8 @@
 <!-- @note: strategy-two-agent-teams -->
 > Do:
-> - Before this segment: confirm `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set on your machine
-> - Without the flag: demo silently spawns plain subagents — no team, no disagreement, no payoff, and no error telling you why
-> - Say "watch first" for this part
-> - Docs link: open it, scroll to "When to use agent teams", then back to the slides
+> - Before this segment: confirm `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set
+> - Without the flag: demo silently spawns plain subagents — no team, no disagreement, no error
+> - Say "watch first" for this part. Docs link: scroll to "When to use agent teams", then back
 
 Say:
 - Same problem, same re-seeded branch (12-start), different strategy
@@ -11,14 +10,14 @@ Say:
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Do:
-> - Branch: 12-start has the ownership bug re-seeded (same removal as task 08), freshly reset for this audit — it also carries task 11's finished tdd skill and passing capacity.ts
+> - 12-start: ownership bug re-seeded for this audit (same removal as task 08), plus task 11's finished tdd skill and passing capacity.ts
 
 Say:
 - Same audit as task 08, two more ways to run it — a team, then a dynamic workflow
 
 <!-- @note: describe-the-audit-team -->
 > Do:
-> - Prompt is the one from task 12, step 2, word for word — group sees the same text on the slide and in the task file
+> - Prompt: task 12, step 2, word for word — slide and task file show the same text
 > - Correct a common misconception
 
 Say:
@@ -52,8 +51,7 @@ Say:
 
 <!-- @note: generator-verifier-make-then-check -->
 > Do:
-> - Docs link opens the blog post https://claude.com/blog/multi-agent-coordination-patterns — scroll to "Pattern 1: Generator-verifier"
-> - Point at its Generator-Verifier diagram, then back — ours redraws the same boxes and arrows
+> - Docs link: the blog post https://claude.com/blog/multi-agent-coordination-patterns, scroll to "Pattern 1: Generator-verifier", point at its diagram, then back — ours redraws it
 > - Five patterns follow, in the blog's order
 > - Docs: https://code.claude.com/docs/en/goal — point at "How evaluation works"
 
@@ -186,7 +184,7 @@ Say:
 Say:
 - Own words start one: "use a workflow to …" — this task only, effort unchanged
 - Task 12's prompt already does that — no ultracode needed
-- `/effort ultracode`: very high effort, a workflow for every big task, all session
+- `/effort ultracode`: a workflow for every big task, all session, effort unchanged
 - On Pro: Dynamic workflow size small, fewer than 5 agents — advice, not a cap
 - Save usage: one folder first, tokens per agent in `/workflows`, `x` stops the run
 
@@ -229,7 +227,7 @@ Say:
 <!-- @note: read-the-generated-script -->
 > Do:
 > - Walk the generated script out loud, phase by phase
-> - Press `s` in /workflows before you say "commit", so the commit beat is literally true
+> - Press `s` in /workflows, pick `.claude/workflows/` in the save dialog (Tab switches) and press Enter before you say "commit", so the commit beat is literally true
 
 Say:
 - No single correct script — the skeleton shows the shape: meta first, one phase() call per group
@@ -250,7 +248,7 @@ Say:
 
 <!-- @note: reconcile-decide-merge -->
 > Do:
-> - [click] Go back to the toolkit map, fill in the middle rows from evidence instead of assertion — use the numbers actually observed, not the placeholders on the diagram
+> - [click] Back to the toolkit map: fill the middle rows from evidence, not assertion — the numbers you observed, not the diagram's placeholders
 > - Merge the fix: restore the creatorId check in deleteClash and deleteVenue
 > - Exact diff: workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md
 

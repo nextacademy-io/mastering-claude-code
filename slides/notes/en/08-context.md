@@ -42,8 +42,8 @@ Say:
 <!-- @note: context-is-an-instrument -->
 > Do:
 > - Demo: run `/context` live on a fresh session in the reference CLASH
-> - Read the lines aloud — don't summarize, let people hear the real numbers
-> - Docs link: open it, play the interactive timeline at the top, scroll to "What the timeline shows", then back to the slides
+> - Read the lines aloud — real numbers, no summary
+> - Docs link: open it, play the timeline at the top, scroll to "What the timeline shows", then back to the slides
 
 Say:
 - Come back to this same command after every task from now on
@@ -61,13 +61,13 @@ Say:
 - The exercise: write a good context file from nothing, grounded in real rules
 - That's the harder, more useful skill
 - Most repos you touch look like this: nothing, or nearly nothing
-- Worth knowing: since Claude Code v2.1.277, Claude reads AGENTS.md by itself — but only when the repo has no CLAUDE.md. CLASH has one, so the @AGENTS.md import is still what loads AGENTS.md.
+- Worth knowing: since Claude Code v2.1.277, Claude reads AGENTS.md by itself — but by default only when a repository has no CLAUDE.md. CLASH has one, so the @AGENTS.md import is still what loads AGENTS.md.
 
 <!-- @note: the-shape-underneath-the-rules -->
 > Do:
 > - Show the shape before writing a single rule
-> - If not everyone already knows Next.js: "RSC page" just means a page that fetches its own data on the server, no separate API call
-> - Task 08's audit finds this exact shape missing from deleteClash and deleteVenue — show it correct now so it's recognizable on sight later, not a blind hunt
+> - If not everyone knows Next.js: an "RSC page" fetches its own data on the server, no separate API call
+> - Task 08's audit finds this shape missing from deleteClash and deleteVenue — show it correct now so people spot it on sight
 
 Say:
 - Same five-box shape behind every feature in CLASH — learn it once, read it everywhere
@@ -79,10 +79,8 @@ Say:
 <!-- @note: claude-md-from-real-rules -->
 > Do:
 > - FULL WORKING SOLUTION (trainer only — do not show before people write their own): `workshop-artifacts/06-context-and-claude-md/CLAUDE.md` in the workshop repository
-> - While building it: point at the exact line in `app/actions/clashes.ts` with the ownership check
-> - Show on screen: `if (clash.creatorId !== user.id)`
-> - If a draft is mostly prose and vibes, push back
-> - That seeds task 13
+> - While building it, point at the ownership check in `app/actions/clashes.ts` on screen: `if (clash.creatorId !== user.id)`
+> - If a draft is mostly prose and vibes, push back — that seeds task 13
 
 Say:
 - The six rules:
@@ -96,17 +94,15 @@ Say:
 
 <!-- @note: plan-mode-review-first -->
 > Do:
-> - Demo: switch into plan mode live (Shift+Tab until it says plan)
-> - Describe the next feature
-> - Read the plan together, out loud
-> - Save it to `docs/plans/realtime-notifications.md`
+> - Demo live: Shift+Tab until it says plan, then describe the next feature
+> - Read the plan aloud together, then save it to `docs/plans/realtime-notifications.md`
 > - Docs link: open it, scroll to "Analyze before you edit with plan mode", then back to the slides
 
 Say:
 - Real-time notifications — currently loads on render via `getNotifications` and `getUnreadCount` in `lib/data/notifications.ts`
 - "Don't write any code yet. Propose an approach and the files it touches."
 - Plan mode is documented under permission modes
-- That page lists six modes: manual, accept edits, plan, auto, dontAsk, bypass. "Ask" is not a mode — it is a rule type, next to allow and deny
+- That page lists six modes: manual, accept edits, plan, auto, dontAsk, bypass permissions. "Ask" is not a mode — it is a rule type, next to allow and deny
 
 <!-- @note: a-reviewed-plan-is-not-a-guarantee -->
 > Do:
@@ -125,12 +121,12 @@ Say:
 
 Say:
 - [click] ~/.claude/CLAUDE.md — your personal instructions, every project
-- [click] CLAUDE.md at the repository root — read first, closest to launch
+- [click] CLAUDE.md at the root of your CLASH clone — read first, loaded at launch
 - [click] CLAUDE.local.md — your personal preferences for your CLASH clone; CLAUDE.md is shared through git. Add it to .gitignore yourself. Appended right after CLAUDE.md at the same level
 - [click] A subdirectory's CLAUDE.md loads when Claude reads a file there — read last, closest to the work
 - [click] .claude/rules/*.md — a plain rule loads at launch, like CLAUDE.md. Task 10 shows the kind that waits for a matching file
 - [click] All of it lands in one context — nothing is dropped, nothing is chosen
-- [click] Two files disagree? Claude picks one. That is a bug you created, not a feature
+- [click] Two files disagree? Claude may pick either one. That is a bug you created, not a feature
 
 <!-- @note: personal-rules-follow-you -->
 > Do:

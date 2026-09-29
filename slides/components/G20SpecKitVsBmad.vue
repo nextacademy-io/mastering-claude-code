@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // G20 — Spec Kit vs BMAD, positioned on ceremony (x) and org-role-fit (y).
-// Ground truth: Spec Kit — GitHub, MIT, ~134k stars, agent-agnostic,
+// Ground truth: Spec Kit — GitHub, MIT, ~139k stars, agent-agnostic,
 // `specify init` (Python/uv, not npm), low ceremony. BMAD v6 (v6.12.0) —
 // 5 named agent personas (Analyst/Mary, PM/John, Architect/Winston,
 // Developer/Amelia, UX/Sally) — NOT "12+ personas" (that's stale v4).
@@ -24,7 +24,7 @@
       <circle cx="220" cy="262" r="12" fill="var(--na-primary-400)" />
       <rect x="250" y="156" width="300" height="130" rx="10" fill="var(--na-bg-raised)" stroke="var(--na-primary-400)" stroke-width="1.5" />
       <text x="400" y="180" text-anchor="middle" fill="var(--na-fg)" font-weight="700" style="font-size:18px">Spec Kit</text>
-      <text x="400" y="204" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">GitHub · MIT · ~134k ★</text>
+      <text x="400" y="204" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">GitHub · MIT · ~139k ★</text>
       <text x="400" y="226" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">agent-agnostic · specify init</text>
       <text x="400" y="248" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">Python / uv, not npm</text>
       <text x="400" y="272" text-anchor="middle" fill="var(--na-accent-500)" font-weight="600" style="font-size:16px">low ceremony</text>

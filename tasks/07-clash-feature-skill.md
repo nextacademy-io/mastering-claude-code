@@ -22,13 +22,13 @@ A skill is for work you keep explaining again and again. Adding a feature to CLA
 always the same eleven steps in the same order. The easiest step to forget is the ownership
 check in the Server Action. A skill turns "remember the check" into "the recipe has a slot for it".
 
-A skill is advice. It loads only when its description matches what you ask. Custom slash
+A skill is advice. It loads only when its description matches what you ask, or when you type its `/name`. Custom slash
 commands in `.claude/commands/*.md` still work. Skills are the richer format for new work.
 
 ## Do this
 
 1. Look at what already ships: `.agents/skills/` and `skills-lock.json`. These are
-   third-party skills for Prisma, shadcn and React. You are not starting cold.
+   third-party skills, mostly for Prisma, shadcn and React. You are not starting cold.
 2. See what the skills you already have cost, before you add your own.
    ```
    /skill-doctor
@@ -77,7 +77,7 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    npx tsc --noEmit && npm run lint && npm run build
    ```
 8. Run `/context`. Compare with the number from task 06. Note how many files Claude read this time.
-9. Package the skill as a plugin, so it can be shared outside this repo.
+9. Package the skill as a plugin, so it can be shared outside your CLASH clone.
    ```bash
    mkdir -p clash-feature-plugin/.claude-plugin clash-feature-plugin/skills
    cp -r .claude/skills/clash-feature clash-feature-plugin/skills/clash-feature

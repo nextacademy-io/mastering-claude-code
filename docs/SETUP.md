@@ -9,7 +9,7 @@ workshop wifi. If something fails, see the table at the end.
 
 | Tool | How to check | How to install |
 |---|---|---|
-| Node.js 20 or newer | `node --version` | https://nodejs.org |
+| Node.js 20.19+, 22.12+ or 24 (not 21 or 23) | `node --version` | https://nodejs.org |
 | git | `git --version` | https://git-scm.com |
 | Claude Code | `claude --version` | See "Install Claude Code" below, then `claude` and log in |
 | agent-browser | `agent-browser --version` | `npm install -g agent-browser && agent-browser install`, then see "Add the agent-browser skill" below |
@@ -49,7 +49,7 @@ npx skills add vercel-labs/agent-browser -g
 ```
 
 This writes the skill to `~/.agents/skills/agent-browser/` and links it into
-`~/.claude/skills/agent-browser/`. Claude Code reads only `~/.claude/skills/`.
+`~/.claude/skills/agent-browser/`. Claude Code reads your personal skills from `~/.claude/skills/`, not from `~/.agents/skills/`.
 
 Start Claude Code and check:
 
@@ -129,7 +129,7 @@ Inside Claude Code:
 Find the **Dynamic workflows** row and turn it **on**. Task 12 depends on it.
 
 Also in `/config`, on Pro: set **Dynamic workflow size** to **small**. From v2.1.271 that is
-the default. Keep `/effort` at your usual level, not `ultracode`.
+the default. Keep `/effort` at your usual level, with ultracode off.
 
 ### 5b. Turn agent teams on
 
@@ -221,7 +221,7 @@ npm install
 
 ## Checklist
 
-- [ ] `node --version` is 20 or newer
+- [ ] `node --version` is 20.19+, 22.12+ or 24 (not 21 or 23)
 - [ ] `claude --version` is 2.1.252 or newer, and you are logged in
 - [ ] `agent-browser --version` prints a version
 - [ ] `/skills` lists `agent-browser`

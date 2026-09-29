@@ -60,7 +60,7 @@ your own work or from its solution branch.
   clash form uses the location picker. The map **page** arrives on `05-start`.
 - `package.json` is the same on every branch from `03-start` on. A participant who builds by hand adds
   dependencies over time; the checkpoints carry them all from the start.
-- The seed on `03-start` already creates 8 users, 8 venues and 8 clashes, so a participant who resets
+- The seed on `03-start` already creates 8 users, 8 venues and 9 clashes, so a participant who resets
   to any build stage has data to look at.
 - The vendored skills in CLASH's `.agents/skills/` and `skills-lock.json` are not on the build stages.
   They arrive with the reference on `06-start`, with 8 of the 9 copied into `.claude/skills/` at
@@ -70,7 +70,7 @@ your own work or from its solution branch.
 
 ## Seeded vulnerability, said plainly
 
-Upstream CLASH `main` has **no** missing ownership check. All exported Server Actions are guarded.
+Upstream CLASH `main` has **no** missing ownership check. All exported Server Actions have the checks they need.
 The guard on `deleteClash` and `deleteVenue` is removed and restored three times across the branch
 chain — restore, reseed, refix — and each move is deliberate:
 

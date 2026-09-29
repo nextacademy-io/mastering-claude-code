@@ -124,7 +124,7 @@ lines:
 ---
 layout: code-live
 heading: "Your first conversation"
-filePath: "prompt to Claude Code — inside your clone of clash on 01-start"
+filePath: "prompt to Claude Code — inside your CLASH clone on 01-start"
 success: "Claude answers from the spec file, not from guesses, and names the five kinds of records."
 ---
 
@@ -142,7 +142,7 @@ number: "01"
 heading: "Setup and first conversation"
 goal: "Install Claude Code, clone the empty CLASH repo, and have your first conversation about the spec."
 mode: "you do"
-success: "Claude Code runs in your clone, it answered your questions about docs/SPEC.md, and CLAUDE.md exists."
+success: "Claude Code runs in your CLASH clone, it answered your questions about docs/SPEC.md, and CLAUDE.md exists."
 branch: "01-start"
 ---
 
@@ -219,7 +219,7 @@ lines:
   </div>
   <div class="na-card p-5 flex-1" v-click>
     <div class="font-mono text-sm font-semibold mb-2" style="color: var(--na-accent-500)">claude --resume</div>
-    <div class="text-sm" style="color: var(--na-fg-muted)">Shows every session to choose from, including a finished background one.</div>
+    <div class="text-sm" style="color: var(--na-fg-muted)">Shows sessions to choose from, including a finished background one.</div>
   </div>
 </div>
 

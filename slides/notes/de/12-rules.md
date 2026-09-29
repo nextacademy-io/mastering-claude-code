@@ -16,7 +16,7 @@ Sagen:
 <!-- @note: rules-scoped-to-a-path -->
 > Tun:
 > - Zurück auf ~/.claude/rules/tone.md aus Task 06 verweisen — die hatte kein paths:-Feld
-> - Docs-Link: öffnen, zu den pfadspezifischen Regeln scrollen, dann zurück zu den Folien
+> - Docs-Link: öffnen, bis "Path-specific rules" scrollen, dann zurück zu den Folien
 
 Sagen:
 - paths ist das einzige Feld, das Claude Code aus einer Rule-Datei liest — alles andere im Frontmatter wird stillschweigend ignoriert
@@ -38,7 +38,7 @@ Sagen:
 
 <!-- @note: the-ownership-rule -->
 > Tun:
-> - Recap: diese Regel ist die dauerhafte Version dessen, was der Subagent aus Task 08 einmal gefunden hat
+> - Recap: diese Regel mit dem Befund des Subagents aus Task 08 verbinden
 
 Sagen:
 - "Derselbe Befund, jetzt jedes Mal sichtbar, nicht nur das eine Mal, als jemand daran gedacht hat zu auditieren — weiterhin Hinweis, keine Durchsetzung"

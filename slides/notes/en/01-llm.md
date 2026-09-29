@@ -42,7 +42,9 @@ Say:
 <!-- @note: four-sizes-four-jobs -->
 > Do:
 > - If there is a tokenizer or /model picker handy, show it live
-> - Access depends on the plan: on Pro and standard Team seats Fable is not part of the plan's limits — every Fable request runs on paid usage credits. On Max and premium seats it is included, up to half of the plan's usage limit, and it uses that limit up faster. Where it costs extra, the /model picker shows "Requires usage credits" on the Fable row
+> - Pro and standard Team seats: every Fable request runs on paid usage credits, not the plan's limits
+> - Max and premium seats: included up to half the plan's weekly usage limit, and it uses that limit up faster
+> - Where it costs extra, the /model picker shows "Requires usage credits" on the Fable row
 
 Say:
 - Same architecture, different scale — bigger is not always better, it is slower and costs more

@@ -1,9 +1,8 @@
 <!-- @note: strategy-two-agent-teams -->
 > Tun:
-> - Vor diesem Segment: sicherstellen, dass `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` auf deiner Maschine gesetzt ist
-> - Ohne das Flag: Demo startet lautlos normale Subagents — kein Team, keine Meinungsverschiedenheit, kein Payoff, und kein Fehler, der dir sagt, warum
-> - Für diesen Teil "watch first" sagen
-> - Docs-Link: öffnen, bis "When to use agent teams" scrollen, dann zurück zu den Folien
+> - Vor diesem Segment: sicherstellen, dass `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` gesetzt ist
+> - Ohne das Flag: Demo startet lautlos normale Subagents — kein Team, keine Meinungsverschiedenheit, kein Fehler
+> - Für diesen Teil "watch first" sagen. Docs-Link: bis "When to use agent teams" scrollen, dann zurück
 
 Sagen:
 - Gleiches Problem, gleicher neu präparierter Branch (12-start), andere Strategie
@@ -11,14 +10,14 @@ Sagen:
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Tun:
-> - Branch: 12-start hat den Ownership-Bug neu eingebaut (gleiche Entfernung wie Task 08), frisch zurückgesetzt für dieses Audit — außerdem den fertigen tdd-Skill und das bestandene capacity.ts aus Task 11
+> - 12-start: Ownership-Bug für dieses Audit neu eingebaut (gleiche Entfernung wie Task 08), dazu der fertige tdd-Skill und das bestandene capacity.ts aus Task 11
 
 Sagen:
 - Gleiches Audit wie Task 08, zwei weitere Wege — ein Team, dann ein dynamischer Workflow
 
 <!-- @note: describe-the-audit-team -->
 > Tun:
-> - Prompt ist der aus Task 12, Schritt 2, wortwörtlich — Gruppe sieht auf der Folie und in der Task-Datei denselben Text
+> - Prompt: Task 12, Schritt 2, wortwörtlich — Folie und Task-Datei zeigen denselben Text
 > - Ein verbreitetes Missverständnis korrigieren
 
 Sagen:
@@ -52,8 +51,7 @@ Sagen:
 
 <!-- @note: generator-verifier-make-then-check -->
 > Tun:
-> - Der Docs-Link öffnet den Blogpost https://claude.com/blog/multi-agent-coordination-patterns — bis "Pattern 1: Generator-verifier" scrollen
-> - Auf sein Diagramm zu Generator-verifier zeigen, dann zurück — unseres zeichnet dieselben Kästen und Pfeile nach
+> - Docs-Link: der Blogpost https://claude.com/blog/multi-agent-coordination-patterns, bis "Pattern 1: Generator-verifier" scrollen, auf sein Diagramm zeigen, dann zurück — unseres zeichnet es nach
 > - Fünf Patterns folgen, in der Reihenfolge des Blogs
 > - Docs: https://code.claude.com/docs/en/goal — auf "How evaluation works" zeigen
 
@@ -186,7 +184,7 @@ Sagen:
 Sagen:
 - Eigene Worte starten einen: "use a workflow to …" — nur diese Aufgabe, Effort bleibt gleich
 - Der Prompt aus Task 12 macht genau das — kein ultracode nötig
-- `/effort ultracode`: sehr hoher Effort, ein Workflow für jede größere Aufgabe, die ganze Session
+- `/effort ultracode`: ein Workflow für jede größere Aufgabe, die ganze Session, Effort bleibt gleich
 - Auf Pro: Dynamic workflow size auf small, weniger als 5 Agents — ein Rat, keine Grenze
 - Nutzung sparen: erst ein Ordner, Tokens pro Agent in `/workflows`, `x` stoppt den Run
 
@@ -229,7 +227,7 @@ Sagen:
 <!-- @note: read-the-generated-script -->
 > Tun:
 > - Das generierte Skript laut durchgehen, Phase für Phase
-> - `s` in /workflows drücken, bevor du "commit" sagst — dann stimmt der Commit-Moment wortwörtlich
+> - `s` in /workflows drücken, im Speicherdialog `.claude/workflows/` wählen (Tab wechselt) und Enter drücken, bevor du "commit" sagst — dann stimmt der Commit-Moment wortwörtlich
 
 Sagen:
 - Es gibt nicht das eine richtige Skript — das Skelett zeigt die Form: zuerst meta, ein phase()-Aufruf pro Gruppe
@@ -250,7 +248,7 @@ Sagen:
 
 <!-- @note: reconcile-decide-merge -->
 > Tun:
-> - [click] Zurück zur Toolkit-Karte gehen und die mittleren Zeilen aus Belegen statt aus Behauptungen füllen — die tatsächlich beobachteten Zahlen verwenden, nicht die Platzhalter im Diagramm
+> - [click] Zurück zur Toolkit-Karte: die mittleren Zeilen aus Belegen füllen, nicht aus Behauptungen — die beobachteten Zahlen, nicht die Platzhalter im Diagramm
 > - Den Fix mergen: den creatorId-Check in deleteClash und deleteVenue wiederherstellen
 > - Genauer Diff: workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md
 

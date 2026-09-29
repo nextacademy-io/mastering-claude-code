@@ -176,7 +176,7 @@ lines:
 layout: code-live
 heading: "ask-clash.mts"
 docs: https://code.claude.com/docs/en/agent-sdk/typescript
-filePath: "ask-clash.mts (in the CLASH clone)"
+filePath: "ask-clash.mts (in your CLASH clone)"
 success: "The program answers with a clash, a place and a time, and the tool log shows only Read, Grep and Glob."
 ---
 

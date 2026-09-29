@@ -6,10 +6,10 @@ Sagen:
 
 <!-- @note: task-19-build-your-own-mcp -->
 > Tun:
-> - Branch: das 19-start von CLASH in deinem CLASH-Clone — 14-start plus der Starter mcp/server.ts (ein fertiges Tool, drei markierte Stellen), mcp/smoke.ts und die zwei MCP-Pakete
-> - Kein Install-Schritt für die Pakete: das 19-start von CLASH pinnt @modelcontextprotocol/server und @modelcontextprotocol/client schon auf 2.1.0. Das Setup lädt beide trotzdem vor (docs/SETUP.md), also braucht `npm install` in Schritt 1 kein Netz; zod ist schon eine CLASH-Dependency
+> - Branch: das 19-start von CLASH in deinem CLASH-Clone — 14-start plus der Starter mcp/server.ts (ein fertiges Tool, drei markierte Stellen), mcp/smoke.ts, @modelcontextprotocol/server und @modelcontextprotocol/client, beide auf 2.1.0 gepinnt
+> - Kein Install-Schritt für die Pakete. Das Setup lädt beide vor (docs/SETUP.md), also braucht `npm install` in Schritt 1 kein Netz; zod ist schon eine CLASH-Dependency
 > - Falle: das Paket ist @modelcontextprotocol/server, nie das ältere @modelcontextprotocol/sdk
-> - clash-conference ist ein zweiter Clone neben deinem CLASH-Clone, mit eigenem 19-start — jetzt sagen, dass er am Ende kommt
+> - Jetzt sagen, dass clash-conference am Ende kommt: ein zweiter Clone neben deinem CLASH-Clone, mit eigenem 19-start
 
 Sagen:
 - Vier Dinge: von einem laufenden Server aus starten, drei Tools entwerfen, selektiv vertrauen, aus clash-conference aufrufen
@@ -37,7 +37,7 @@ Sagen:
 - Das 19-start von CLASH bringt die Verkabelung mit: stdio, dev.db, log(), reply(), refuse(). Was du hinzufügst, ist Design
 - venueId mit der Beschreibung "id from find_venue": Claude ruft zuerst find_venue auf und rät nie eine id
 - Eine Ablehnung ist Text mit isError, den später ein Mensch in clash-conference liest. "No venue matches" ist eine normale Antwort: nichts ist schiefgegangen
-- Prüfungen vor beiden Schreib-Tools: create_clash prüft Host, Venue, Datum, Duplikat; cancel_clash prüft Host, Clash, Besitzer. Gelöscht wird nur der eigene Clash des Hosts. Lesen läuft frei, beide Schreib-Tools fragen
+- Prüfungen vor beiden Schreib-Tools: create_clash prüft Host, Venue, Datum, Duplikat; cancel_clash prüft Host, Clash, Besitzer. Gelöscht wird nur der eigene Clash des Hosts. Lesen läuft frei, beide Schreib-Tools fragen im Manual-Modus
 
 <!-- @note: mcp-server-ts -->
 > Tun:
@@ -59,16 +59,15 @@ Sagen:
 > Tun:
 > - Docs-Link: die Scope-Tabelle (local, project, user) und das `.mcp.json`-Beispiel
 > - Live, wie in Schritt 1: `claude mcp add --scope project --transport stdio clash -- npx tsx mcp/server.ts` in deinem CLASH-Clone schreibt `.mcp.json`; `claude` neu starten, Ja sagen
-> - Dann `/mcp` in der Session und `claude mcp list` aus der Shell
-> - Aus Versehen Nein gesagt? `claude mcp reset-project-choices`
-> - Demo zu Schritt 6: mit den zwei erlaubten Lese-Tools fragt "Cancel the clash …" trotzdem, bevor cancel_clash läuft. Einmal freigeben, die Karte von CLASH auf localhost:3000/map neu laden: der Clash ist weg
+> - Dann `/mcp` in der Session, `claude mcp list` in der Shell. Aus Versehen Nein gesagt? `claude mcp reset-project-choices`
+> - Demo zu Schritt 6 im Manual-Modus: mit beiden erlaubten Lese-Tools fragt "Cancel the clash …" trotzdem, bevor cancel_clash läuft. Einmal freigeben, die Karte von CLASH auf localhost:3000/map neu laden: der Clash ist weg
 
 Sagen:
 - local und user liegen in ~/.claude.json; project ist `.mcp.json` im Root deines CLASH-Clones, eingecheckt
 - [click] Ein Projekt-Server fragt einmal, bevor er in deinem CLASH-Clone starten darf. Bis dahin: ⏸ Pending approval
 - `.mcp.json` bearbeitet? Beenden und neu starten. ✘ Failed to connect, während npx lädt? Nochmal
 - [click] Voller Name, keine Klammern: mcp__clash__find_venue. mcp__clash allein erlaubt jedes Tool
-- acceptEdits deckt MCP-Tools nicht ab; nur bypassPermissions überspringt die Nachfrage, und alle anderen mit
+- acceptEdits deckt MCP-Tools nicht ab. Im Auto-Modus entscheidet der Classifier statt dir; bypassPermissions überspringt die Nachfrage, und fast alle anderen mit
 
 <!-- @note: every-tool-or-two-named-tools -->
 > Tun:
@@ -80,7 +79,7 @@ Sagen:
 Sagen:
 - Die Publish-Route in clash-conference, skizziert, bevor sie jemand schreibt
 - allowedTools bewilligt vorab, es schränkt nicht ein. Mit bypassPermissions sind Bash, Write, Edit mitbewilligt
-- Das abgeriegelte Muster: allowedTools plus permissionMode dontAsk — Gelistetes läuft, alles andere wird abgelehnt
+- Das abgeriegelte Muster: allowedTools plus permissionMode dontAsk — Gelistetes läuft, alles, was fragen würde, wird abgelehnt
 - dontAsk lässt trotzdem laufen, was geladene Settings erlauben und was keine Freigabe braucht, etwa Dateien lesen. Also auch isolieren: tools: [], settingSources: [], strictMcpConfig: true
 - system/init trägt mcp_servers mit einem Status. failed oder needs-auth ist die Prüfung; pending ist okay
 - Least Privilege, wie beim Hook und beim Subagent-Brief: die Regel gilt so oder so
@@ -100,7 +99,7 @@ Sagen:
 <!-- @note: route-ts -->
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): die query()-Optionen sind mcpServers clash, tools: [], settingSources: [], strictMcpConfig: true, die zwei allowedTools, permissionMode: "dontAsk", maxTurns: 8
-> - Auf seinem main hält clash-conference den query()-Aufruf in lib/clash-agent.ts, und app/api/publish/route.ts ruft ihn auf; das 19-start von clash-conference hat keine der beiden Dateien
+> - Das main von clash-conference hält den query()-Aufruf in lib/clash-agent.ts; app/api/publish/route.ts ruft ihn auf. Das 19-start von clash-conference hat keine der beiden Dateien
 > - Solange clash-conference nicht neben deinem CLASH-Clone liegt, nur die Form zeigen: die drei Isolations-Optionen, maxTurns, eine system/init-Prüfung, das gespeicherte Ergebnis
 
 Sagen:
@@ -110,8 +109,8 @@ Sagen:
 > Tun:
 > - Startpunkt: das 19-start von CLASH in deinem CLASH-Clone, dann `npm run db:seed` — der Smoke-Test und die Prompts mit Holzmarkt 25 brauchen die Seed-Daten
 > - Übergabe an tasks/19-build-your-own-mcp.md: Schritte 1 bis 6 der Server in deinem CLASH-Clone, 7 bis 10 clash-conference auf localhost:3001
-> - Achten auf: ein console.log im Server, ein refuse(), wenn find_venue nichts findet, ein Schreibvorgang vor seinen Prüfungen, ein Löschen ohne Besitzer-Prüfung, ein fehlender Neustart nach einem neuen Tool
-> - Karten-Demo: die Karte von CLASH auf localhost:3000/map, nach jeder Änderung neu laden. Create → der Clash erscheint; derselbe Create nochmal → Duplicate, weiter nur einer; Cancel oder Unpublish → er verschwindet
+> - Achten auf: console.log im Server, refuse(), wenn find_venue nichts findet, ein Schreibvorgang vor seinen Prüfungen, ein Löschen ohne Besitzer-Prüfung, kein Neustart nach einem neuen Tool
+> - Karten-Demo: die Karte von CLASH auf localhost:3000/map, nach jeder Änderung neu laden. Create → der Clash erscheint; derselbe Create nochmal → Duplicate, weiter nur einer; Cancel oder Unpublish → weg
 
 Sagen:
 - "Now you": ein fünftes Tool list_venues, ask-clash.mts aus Task 16 auf diesen Server gerichtet, eine Ablehnung, mit der Claude allein weiterkommt

@@ -233,7 +233,7 @@ commit_all 08-start "workshop: clash-feature skill (end of task 07); seed missin
 
 deleteClash and deleteVenue no longer verify creatorId before deleting.
 This is intentional workshop content, not a CLASH bug. The audit tasks
-find it; task 09 restores the guard."
+find it; 10-start restores the guard."
 note 08-start "+ clash-feature skill; deleteClash/deleteVenue missing ownership check (seeded)"
 gate 08-start
 
@@ -328,7 +328,7 @@ lib/capacity.ts and lib/capacity.test.ts are task 11's own answer key,
 carried forward the same way every other branch carries its previous
 task's result. deleteClash and deleteVenue lose their creatorId check
 again, same as 08-start. This is workshop content, not a CLASH bug —
-task 12 finds it, task 13 restores the guard."
+task 12 finds it and restores the guard."
 note 12-start "+ finished tdd skill and capacity.ts; ownership checks re-seeded"
 gate 12-start
 
@@ -402,7 +402,7 @@ commit_all 19-solution "workshop: the CLASH MCP server — four tools over the d
 
 mcp/server.ts offers list_upcoming_clashes, find_venue, create_clash and cancel_clash
 over stdio. .mcp.json registers it at project scope; .claude/settings.json allows
-the two read tools, so both writes still ask. mcp/smoke.ts calls every tool and
+the two read tools, so both writes still ask in Manual mode. mcp/smoke.ts calls every tool and
 every refusal. clash-conference's publish route starts this server to write into CLASH."
 note 19-solution "+ the finished mcp/server.ts, .mcp.json, the two read tools allowed"
 gate 19-solution

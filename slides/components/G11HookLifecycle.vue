@@ -90,7 +90,7 @@ const errorId = `g11-arrow-error-${uid}`
         <g v-click="4">
           <line x1="781" y1="92" x2="781" y2="152" stroke="var(--na-error-500)" stroke-width="2" :marker-end="`url(#${errorId})`" />
           <rect x="669" y="156" width="224" height="62" rx="8" fill="var(--na-bg)" stroke="var(--na-accent-500)" stroke-width="2" />
-          <text x="781" y="181" text-anchor="middle" fill="var(--na-accent-500)" font-weight="700" style="font-size:16px">exit 2 → turn cannot end</text>
+          <text x="781" y="181" text-anchor="middle" fill="var(--na-accent-500)" font-weight="700" style="font-size:16px">exit 2 → turn stays open</text>
           <text x="781" y="204" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">the agent keeps working</text>
         </g>
       </g>

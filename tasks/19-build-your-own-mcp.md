@@ -17,7 +17,7 @@ Your own MCP server, `mcp/server.ts` in your CLASH clone, with four tools over t
 database: `list_upcoming_clashes`, `find_venue`, `create_clash` and `cancel_clash`. CLASH's
 `19-start` gives you the server with the first tool already working. You design the other
 three. At the end, `npx tsx mcp/smoke.ts` in your CLASH clone says `All checks passed.` The
-two read tools run without asking. The two write tools ask every time.
+two read tools run without asking. In Manual mode, the two write tools ask every time.
 
 Then a second app, clash-conference, uses the same server through the Agent SDK. One click
 turns a talk into a clash on CLASH's map, the next click takes it off again.
@@ -44,7 +44,7 @@ The plumbing is done for you on CLASH's `19-start`. The server talks over stdio,
    it writes. `cancel_clash` checks host, clash and owner before it deletes.
 5. **No more power than needed.** The one tool that deletes, `cancel_clash`, deletes only a
    clash its own host created. No tool creates venues or users. Reads are allowed, both
-   writes ask.
+   writes ask in Manual mode.
 
 A server in `.mcp.json` is a program that runs on your machine. So Claude Code asks once
 before it starts one. Until you say yes, `claude mcp list` shows it as
@@ -144,8 +144,9 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    ```bash
    npm run dev                                  # in your CLASH clone, in a second terminal
    ```
-   You see CLASH start on `localhost:3000`. Exit Claude Code and start `claude` again in your
-   CLASH clone, so the server starts with all four tools. Then send this prompt.
+   You see CLASH start on `localhost:3000`. Exit Claude Code and start
+   `claude --permission-mode manual` again in your CLASH clone, so the server starts with all
+   four tools and each write asks first. Then send this prompt.
    ```
    Create a clash "MCP Hacknight" at Holzmarkt 25, hosted by anna.schmidt@example.com. Pick any date and time in the future.
    ```
@@ -166,7 +167,7 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    ```
    You see `.claude/settings.json` in your CLASH clone with two keys, `hooks` and
    `permissions`, and the two full tool names under `allow`. Exit Claude Code and start
-   `claude` again in your CLASH clone. Then ask a read question.
+   `claude --permission-mode manual` again in your CLASH clone. Then ask a read question.
    ```
    Use the clash server: what is coming up at Holzmarkt 25?
    ```
@@ -221,7 +222,7 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    `${process.env.CLASH_DIR}/mcp/server.ts`; tools: [], so no built-in tool exists;
    settingSources: [], so no settings, skills or CLAUDE.md load; strictMcpConfig: true, so
    clash is the only MCP server; allowedTools: exactly mcp__clash__find_venue and
-   mcp__clash__create_clash; permissionMode: dontAsk, so every other call is denied;
+   mcp__clash__create_clash; permissionMode: dontAsk, so every call that would ask is denied;
    maxTurns: 8. The prompt asks the agent to find that venue
    by name and create the clash there, and to answer with the new clash id or with the
    reason it could not. Read the run's first message, the system/init: when the clash

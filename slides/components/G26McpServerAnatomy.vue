@@ -75,7 +75,7 @@ const mono = "'JetBrains Mono', monospace"
           <rect :x="serverX + 25" :y="pillY(i)" width="270" height="32" rx="8" fill="var(--na-primary-900)" stroke="var(--na-accent-500)" stroke-width="1.5" />
           <text :x="serverMidX" :y="pillY(i) + 21" fill="var(--na-fg)" text-anchor="middle" :font-family="mono" style="font-size:15px">{{ tool }}</text>
         </g>
-        <text :x="serverMidX" y="308" fill="var(--na-fg-muted)" text-anchor="middle" style="font-size:13px">registerTool(name, schema, handler)</text>
+        <text :x="serverMidX" y="308" fill="var(--na-fg-muted)" text-anchor="middle" style="font-size:13px">registerTool(name, config, handler)</text>
       </g>
 
       <!-- Prisma and the database file -->

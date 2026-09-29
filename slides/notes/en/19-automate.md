@@ -68,9 +68,9 @@ Say:
 > Do:
 > - FULL WORKING SOLUTION (trainer only), typed as one line in your CLASH clone on a clean branch:
 >   /goal npx tsc --noEmit exits 0 and npm run lint exits 0; or stop after 6 turns
-> - It may finish after one turn; that is fine
-> - Point at the verdict in the transcript (Ctrl+O shows its reason), then run /goal with no argument: condition, turn count, token spend. /goal shows the reason only while a goal is still active
-> - Optional: set a deliberately longer condition, then /goal clear: it prints Goal cleared: with the condition. After a met goal, /goal clear prints No goal set instead, while /goal still shows the achieved goal
+> - Finishing after one turn is fine
+> - Point at the verdict in the transcript (Ctrl+O shows its reason), then /goal with no argument: condition, turn count, token spend; the reason only while a goal is active
+> - Optional: set a longer condition, then /goal clear: it prints Goal cleared: with the condition. After a met goal it prints No goal set, but /goal still shows the achieved goal
 
 Say:
 - The point is the contract, not making the demo artificially long
@@ -122,15 +122,14 @@ Say:
 > Do:
 > - FULL WORKING SOLUTION (trainer only), typed in your CLASH clone as one message:
 >   /schedule weekly spec-drift guard for CLASH. Compare the rules in docs/SPEC.md (the "Rules" and "Data" sections) with prisma/schema.prisma and with the exported Server Actions in app/actions/. When a rule and the code disagree, open a pull request that names the rule, the file and a proposed fix. One pull request per run. When nothing drifted, do nothing: no pull request, no issue, no commit.
-> - Before the demo: docs/SPEC.md must sit on the CLASH fork branch the routine clones
-> - Own CLASH fork only, with the claude.ai login in the CLI, not an API key
+> - Before the demo: own CLASH fork only; docs/SPEC.md on the branch the routine clones; claude.ai login in the CLI, not an API key
 > - Then /schedule list and https://claude.ai/code/routines; change a rule in docs/SPEC.md to see a pull request
 
 Say:
 - Read the prompt aloud, pause at the last sentence: "do nothing" matters when nobody watches
 - One pull request per run bounds a wrong run, like maxTurns in task 16
 - A GitHub trigger needs the Claude GitHub App on your CLASH fork — that is Now you
-- Connectors are claude.ai integrations: not a local claude mcp add server, but a committed .mcp.json
+- Connectors are claude.ai integrations, not a local claude mcp add server; a committed .mcp.json works too
 
 <!-- @note: automate -->
 > Do:

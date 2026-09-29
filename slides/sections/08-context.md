@@ -11,7 +11,7 @@ heading: "Control the context"
 layout: concept
 heading: "Eight tools, one constraint"
 lines:
-  - "We build every row of this table, in this order, on one codebase."
+  - "We build every row of this table on one codebase."
 ---
 
 <ToolkitMap reveal-rows />
@@ -60,7 +60,7 @@ layout: concept
 heading: "Budget, or dumping ground?"
 lines:
   - "CLAUDE.md is 11 bytes: @AGENTS.md"
-  - "AGENTS.md is a generic Next.js warning. Nothing about this app."
+  - "AGENTS.md is a generic Next.js warning. Nothing about CLASH."
   - "There is nothing to trim. We write from nothing."
 ---
 
@@ -126,7 +126,7 @@ heading: "CLAUDE.md files add up"
 docs: https://code.claude.com/docs/en/memory
 lines:
   - "Every CLAUDE.md above your working directory loads — none of them wins."
-  - "A contradiction? Claude picks one arbitrarily. Keep your rules consistent."
+  - "A contradiction? Claude may pick one arbitrarily. Keep your rules consistent."
 ---
 
 <G22MemoryConcatenation />

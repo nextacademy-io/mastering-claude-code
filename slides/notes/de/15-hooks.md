@@ -9,7 +9,7 @@ Sagen:
 
 <!-- @note: task-13-hooks -->
 > Tun:
-> - Branch: 13-start hat schon die Referenz-App, den Skill und CLAUDE.md — noch keine Hooks
+> - Branch: 13-start hat schon die Referenz-CLASH, die Skills und CLAUDE.md — noch keine Hooks
 
 Sagen:
 - Vier Hooks zu lernen, vier Hooks zu bauen — der erste wird absichtlich falsch geschrieben
@@ -29,7 +29,7 @@ Sagen:
 
 <!-- @note: one-hook-slowly -->
 > Tun:
-> - Das ist der ABSICHTLICHE Fehler — genau so schreiben, wie gezeigt
+> - Den ABSICHTLICHEN Fehler genau so schreiben, wie gezeigt
 > - Über Claude Code eine Datei unter `app/actions/` bearbeiten — nichts feuert. So stehen lassen. Nach dem Warum fragen.
 > - Live fixen mit dem Geschwister-Feld "if":
 >   "matcher": "Edit|Write",
@@ -38,8 +38,8 @@ Sagen:
 >     "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/typecheck-actions.sh",
 >     "timeout": 60 }]
 > - Dann `.claude/hooks/typecheck-actions.sh` schreiben (Referenz: `workshop-artifacts/13-hooks/`)
-> - Absichtlich, über Claude Code, einen Typfehler in `app/actions/venues.ts` einbauen, damit der Hook feuert
-> - Zuschauen, wie `tsc` scheitert, wie Claude den Fehler über stderr bekommt, wie es seinen eigenen Code repariert — der Moment, den sich alle merken
+> - Über Claude Code einen Typfehler in `app/actions/venues.ts` einbauen, damit der Hook feuert
+> - Zuschauen, wie `tsc` scheitert, Claude den Fehler über stderr bekommt und seinen eigenen Code repariert — der Moment, den sich alle merken
 
 Sagen:
 - Antwort: der Matcher matcht den TOOL-NAMEN (Edit, Write, Bash), nicht einen Pfad — ein Pfad-Glob wird dort als unverankerter Regex gegen den Tool-Namen geparst und matcht nie
@@ -62,25 +62,24 @@ Sagen:
 
 Sagen:
 - Drei getrennte Matcher-Blöcke, einer pro Tool: Edit/Write für Migrations, Bash für `rm`, Read für `.env`
-- Decision-Werte für `hookSpecificOutput.permissionDecision`: allow/deny/ask — die einfache Exit-2-Form funktioniert genauso
+- Decision-Werte für `hookSpecificOutput.permissionDecision`: allow/deny/ask, dazu defer im -p-Modus — die einfache Exit-2-Form funktioniert genauso wie deny
 
 <!-- @note: gate-the-turn -->
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): `workshop-artifacts/13-hooks/build-gate.sh`
-> - Den Build absichtlich kaputt machen, versuchen den Turn zu beenden, zuschauen wie Stop verweigert und dem Agent das Ende des Fehler-Logs übergibt
-> - Fixen, Turn beenden, zuschauen, wie es klappt
-> - Diesen Unterschied benennen
+> - Den Build kaputt machen, versuchen den Turn zu beenden, zuschauen, wie Stop verweigert und dem Agent das Ende des Fehler-Logs übergibt
+> - Fixen, Turn beenden, zuschauen, wie es klappt — dann diesen Unterschied benennen
 
 Sagen:
 - Verdrahtet unter "Stop", ohne Matcher — Stop hat kein Tool, gegen das es matchen könnte
 - Stop gatet das Ende eines TURNS, nicht einen Tool-Call
-- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl außerhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
+- Das Gate hat eine Grenze: nach acht Blockierungen in Folge beendet Claude Code den Turn trotzdem (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` hebt sie an)
+- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl außerhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit dem Code des fehlgeschlagenen Befehls, meist 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
 
 <!-- @note: advice-vs-law -->
 > Tun:
 > - Das Vorausdeuten aus dem Skills-Teil zahlt sich jetzt aus
-> - `hard_deny` kurz erwähnen
-> - Nur benennen, nicht konfigurieren
+> - `hard_deny` nur kurz benennen, nicht konfigurieren
 
 Sagen:
 - Skills sind Ratschlag, Hooks sind Gesetz
@@ -103,17 +102,20 @@ Sagen:
 
 <!-- @note: the-sandbox-limits-what-a-command-touches -->
 > Tun:
-> - Bei Zeit live `/sandbox` ausführen — die Tabs Mode und Config zeigen
-> - Mode-Tab: auto-allow führt Befehle in der Sandbox ohne Nachfrage aus; regular permissions schickt jeden Befehl durch deine normalen Permission-Regeln, nicht erlaubte fragen also weiter. Beide halten dieselben Grenzen. Erlaubte Hosts sind kein Modus: sie stehen in der Netzwerk-Allowlist
+> - Optional: `/sandbox` live ausführen, die Tabs Mode und Config zeigen
+> - Mode-Tab: auto-allow führt Befehle in der Sandbox ohne Nachfrage aus; regular permissions fragt bei nicht erlaubten weiterhin nach. Beide halten dieselben Grenzen. Erlaubte Hosts sind kein Modus: sie stehen in der Netzwerk-Allowlist
 > - Docs-Link: öffnen, bis "How sandboxing works" scrollen, dann zurück zu den Folien
 
 Sagen:
 - Ein sandboxed Bash-Befehl läuft trotzdem — das Betriebssystem erzwingt die Grenze, kein Prompt
-- [click] Dateisystem: Schreibzugriff bleibt im Projekt. Lesezugriff ist weit, minus was du verbietest
+- [click] Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
 - Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
 - Windows hat keine native Sandbox — Claude Code in WSL2 laufen lassen, um eine zu bekommen
 
 <!-- @note: your-org-can-lock-settings-down -->
+> Tun:
+> - Docs-Link: öffnen, bis "Read the source in /status" scrollen, dann zurück zu den Folien
+
 Sagen:
 - `managed-settings.json`, MDM, oder die claude.ai-Konsole — ein Admin stellt es bereit, nicht du
 - Es steht über jeder anderen Datei. Nichts, was du setzt, überschreibt es
@@ -121,9 +123,9 @@ Sagen:
 
 <!-- @note: hooks -->
 > Tun:
-> - Bestätigen, dass die Leute die kaputte Matcher-Version nachgebaut haben, bevor es weitergeht
+> - Bestätigen, dass die Leute den kaputten Matcher nachgebaut haben, bevor es weitergeht
 > - Der "warum hat's nicht gefeuert"-Moment funktioniert nur, wenn sie die Stille selbst erlebt haben
-> - Mit `/hooks` live abschließen — ein Read-only-Browser, gruppiert nach Event: ein Event auswählen, um die gerade geschriebenen Hooks darunter zu sehen
+> - Mit `/hooks` live abschließen: ein Read-only-Browser, gruppiert nach Event — eins auswählen, um die gerade geschriebenen Hooks zu sehen
 
 
 <!-- @note: ignored-by-git-is-not-hidden -->
@@ -151,7 +153,7 @@ Sagen:
 
 <!-- @note: security-three-rules -->
 > Tun:
-> - Optional: auf "Protect against prompt injection" zeigen — die eingebauten Schutzmechanismen von Claude Code; die drei Regeln auf der Folie kommen von dir obendrauf
+> - Optional: auf "Protect against prompt injection" zeigen — die eingebauten Schutzmechanismen von Claude Code; die drei Regeln der Folie kommen von dir obendrauf
 
 Sagen:
 - Prompt Injection in einem Satz: ein Modell kann Daten und Anweisungen nicht durch Hinsehen unterscheiden

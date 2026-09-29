@@ -7,10 +7,10 @@
 // (about 852 × 300), so the smallest text renders at 14 px.
 const modes = [
   { key: 'manual', label: 'manual', meaning: 'asks before edits and commands' },
-  { key: 'accept', label: 'accept edits', meaning: 'file edits pass, commands still ask' },
-  { key: 'plan', label: 'plan', meaning: 'read only: look, never touch' },
+  { key: 'accept', label: 'accept edits', meaning: 'file edits pass, most commands ask' },
+  { key: 'plan', label: 'plan', meaning: 'looks, plans, edits no code' },
   { key: 'auto', label: 'auto', meaning: 'a classifier blocks the risky actions instead of asking' },
-  { key: 'bypass', label: 'bypass', meaning: 'nothing asks — sandbox only' },
+  { key: 'bypass', label: 'bypass', meaning: 'rarely asks — sandbox only' },
 ]
 </script>
 

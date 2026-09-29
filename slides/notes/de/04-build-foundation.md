@@ -19,10 +19,9 @@ Sagen:
 > Tun:
 > - Schritt 1-2 machen die Teilnehmenden selbst
 > - Im Manual-Modus starten, die Gruppe die ersten zwei, drei Permission-Prompts sehen lassen
-> - Das Repo ist absichtlich nicht leer. Darauf hinweisen, dass das Briefing die Workshop-Dateien vor create-next-app schützen lässt
-> - Dann zu Auto wechseln — ein Next.js-Scaffold aufzusetzen ist Standard, geringes Risiko
-> - Die drei Teile am echten Scaffold-Briefing aus Task 02 zeigen
-> - Kontrastieren mit dem kalten Prompt "set up a Next.js app"
+> - Dein CLASH-Clone ist absichtlich nicht leer: auf die Regel im Briefing hinweisen, die Workshop-Dateien vor create-next-app zu schützen
+> - Dann zu Auto wechseln — ein Next.js-Scaffold ist Standard, geringes Risiko
+> - Die drei Teile am echten Scaffold-Briefing aus Task 02 zeigen; mit dem kalten Prompt "set up a Next.js app" kontrastieren
 
 Sagen:
 - Ein Prompt ist ein Wunsch; ein Briefing ist ein Vertrag
@@ -32,9 +31,9 @@ Sagen:
 <!-- @note: read-the-diff-not-the-summary -->
 > Tun:
 > - Schritt 3-4 machen die Teilnehmenden selbst
-> - Nach `git status` fragen, dann `/diff` nach dem Scaffold live zeigen — nur Scaffold-Änderungen sollten da sein, bevor Plan Mode irgendwas anderes anfasst
-> - Das Panel meldet manchmal, dass Dateien "not shown" sind, und brandneue Dateien aus einem Shell-Befehl können dazugehören — `git status` ist die vollständige Liste, deshalb kommt es zuerst
-> - Claude bitten zu committen, die Commit-Message lesen, die Claude geschrieben hat
+> - Nach `git status` fragen, dann `/diff` nach dem Scaffold live zeigen: nur Scaffold-Änderungen, bevor Plan Mode etwas anfasst
+> - Das Panel meldet manchmal Dateien als "not shown", sogar neue aus einem Shell-Befehl: `git status`, die vollständige Liste, kommt zuerst
+> - Claude bitten zu committen, seine Commit-Message lesen
 
 Sagen:
 - Gewohnheit früh aufbauen: nach jedem Schritt `/diff` lesen — im Fullscreen bleibt das Panel offen und aktualisiert sich selbst, und `/diff` noch einmal schließt es
@@ -43,10 +42,10 @@ Sagen:
 
 <!-- @note: plan-mode-read-think-propose -->
 > Tun:
-> - Schritt 5, 7-8 machen die Teilnehmenden selbst — Schritt 6 (der eigentliche Prompt) kommt als Nächstes, auf seiner eigenen Live-Coding-Folie
+> - Schritt 5, 7-8 machen die Teilnehmenden selbst — Schritt 6 (der Prompt) kommt als Nächstes, auf einer Live-Coding-Folie
+> - Docs-Link: öffnen, bis "Analyze before you edit with plan mode" scrollen, dann zurück zu den Folien
 > - Live demonstrieren: Shift+Tab, bis die Statusleiste "plan mode on" zeigt (zweimal ab Manual-Modus, dreimal ab Auto — ab v2.1.283 starten interaktive Sessions im Auto-Modus)
-> - Den Plan erscheinen lassen, sobald der Prompt von der nächsten Folie geschickt ist
-> - Einen Teil davon laut vorlesen, der Gruppe eine Frage stellen ("warum lib/generated/prisma?")
+> - Sobald der Prompt der nächsten Folie geschickt ist, den Plan erscheinen lassen, einen Teil laut vorlesen, die Gruppe fragen ("warum lib/generated/prisma?")
 > - Zurückschalten und "do it" sagen
 
 Sagen:
@@ -57,7 +56,7 @@ Sagen:
 <!-- @note: plan-the-data-model -->
 > Tun:
 > - Schritt 6 machen die Teilnehmenden selbst
-> - Den Prompt mit den Regeln als Bullet Points einfügen — mit "\" am Zeilenende weiter in einer neuen Zeile, ohne abzuschicken
+> - Den Prompt mit den Regeln als Bullet Points einfügen; "\" am Zeilenende beginnt eine neue Zeile, ohne abzuschicken
 
 Sagen:
 - SQLite hat keine Enums
@@ -69,7 +68,7 @@ Sagen:
 <!-- @note: when-a-plan-earns-its-cost -->
 > Tun:
 > - Der Plan fürs Datenmodell hat seinen Preis gerade verdient: ein Schema ist später schwer zu ändern
-> - Die Gruppe nach einer Änderung fragen, die keinen Plan braucht. Danach entscheiden, wie unsicher der Ansatz ist, wie viel er kaputt machen kann und wie leicht er sich rückgängig machen lässt
+> - Die Gruppe nach einer Änderung fragen, die keinen Plan braucht. Beurteilen: wie unsicher der Ansatz ist, wie viel kaputtgehen kann, wie leicht rückgängig zu machen
 
 Sagen:
 - Ein Plan kostet Tokens und Review-Zeit: er liest Code und schreibt ein weiteres Dokument zum Prüfen
@@ -108,9 +107,7 @@ Sagen:
 
 <!-- @note: foundation -->
 > Tun:
-> - Task-02-Rückblick
-> - Übergabe an tasks/02-foundation.md, alle 11 Schritte — keine Folien mehr bis Task 03
-> - Den Chat beobachten, während gearbeitet wird
+> - Task-02-Rückblick: an tasks/02-foundation.md übergeben, alle 11 Schritte, und den Chat beobachten — keine Folien mehr bis Task 03
 > - Häufigster Stolperstein: create-next-app und lokale Package-Manager-Präferenzen. Das Briefing erzwingt npm, kein src/-Verzeichnis, nicht-interaktive Antworten und schützt die Workshop-Dateien
 
 Sagen:

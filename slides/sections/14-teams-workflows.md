@@ -219,7 +219,7 @@ routeAlias: theory-start-a-workflow
 docs: https://code.claude.com/docs/en/workflows#have-claude-write-a-workflow
 lines:
   - "Own words (“use a workflow to …”) or the word ultracode. This task only."
-  - "/effort ultracode: very high effort, a workflow per big task, all session."
+  - "/effort ultracode: a workflow per big task, all session, effort unchanged."
   - "On Pro: workflow size small, try one folder first, stop a run in /workflows."
 ---
 

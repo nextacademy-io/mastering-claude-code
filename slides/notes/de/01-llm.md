@@ -42,7 +42,9 @@ Sagen:
 <!-- @note: four-sizes-four-jobs -->
 > Tun:
 > - Falls ein Tokenizer oder /model-Picker zur Hand ist, live zeigen
-> - Der Zugang hängt vom Plan ab: Auf Pro und Standard-Seats im Team-Plan ist Fable nicht im Plan-Limit enthalten — jede Fable-Anfrage läuft über kostenpflichtige Usage Credits. Auf Max und Premium-Seats ist es enthalten, bis zur Hälfte des Plan-Limits, und es verbraucht das Limit schneller. Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
+> - Pro und Standard-Seats im Team-Plan: jede Fable-Anfrage läuft über kostenpflichtige Usage Credits, nicht über das Plan-Limit
+> - Max und Premium-Seats: enthalten bis zur Hälfte des wöchentlichen Plan-Limits, und es verbraucht das Limit schneller
+> - Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
 
 Sagen:
 - Gleiche Architektur, andere Größe — größer ist nicht immer besser, sondern langsamer und teurer

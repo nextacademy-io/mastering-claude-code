@@ -25,7 +25,7 @@ Sagen:
 <!-- @note: progressive-disclosure-in-a-skill -->
 > Tun:
 > - Zurück auf den clash-feature-Skill aus Task 07 verweisen — der hat alles inline gehabt
-> - Docs-Link: öffnen, zur Skills-Referenz scrollen, dann zurück zu den Folien
+> - Docs-Link: öffnen, bis "Add supporting files" scrollen, dann zurück zu den Folien
 
 Sagen:
 - Der Skill-Body bleibt absichtlich kurz
@@ -34,13 +34,13 @@ Sagen:
 
 <!-- @note: anatomy-of-discover -->
 > Tun:
-> - Live-Bau-Referenz — die genauen Dateien stehen in tasks/09-example-mapping.md, Schritte 2-4: der Body, die Referenz, das Template
-> - Auf $ARGUMENTS zeigen, dann auf die Referenzdatei, die geöffnet werden soll, dann auf das Template, mit dem gespeichert wird
-> - Die nummerierten Schritte laut durchgehen: die Reihenfolge ist das Design — erst das Interview, die Spec wird gezeigt, bevor sie gespeichert wird
+> - Live-Bau: die genauen Dateien stehen in tasks/09-example-mapping.md, Schritte 2-4 — Body, Referenz, Template
+> - Auf $ARGUMENTS zeigen, auf die Referenz, die geöffnet werden soll, dann auf das Template, mit dem gespeichert wird
+> - Die nummerierten Schritte laut durchgehen: die Reihenfolge ist das Design — erst das Interview, die Spec wird vor dem Speichern gezeigt
 
 Sagen:
 - argument-hint sagt, was nach /discover eingegeben wird
-- allowed-tools enthält AskUserQuestion — der Skill kann fragen, nicht nur antworten
+- AskUserQuestion lässt den Skill fragen, nicht nur antworten. allowed-tools bewilligt Tools nur vorab, und dieses braucht ohnehin keine Freigabe
 - Ein Skill, kein Subagent: er läuft in deinem eigenen Gespräch, das Interview ist also ein Hin und Her mit dir
 
 <!-- @note: the-discover-skill -->

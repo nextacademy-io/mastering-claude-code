@@ -3,11 +3,11 @@
 // re-shown at every section divider (layout: section) with the current
 // primitive's row highlighted.
 //
-// Prop `current` — the row to highlight on a divider re-show (all seven rows
+// Prop `current` — the row to highlight on a divider re-show (all eight rows
 // stay visible; only the highlight moves).
 // Prop `revealRows` — true only on the intro slide, where the table
 // hasn't been seen yet and builds up one row per click. Divider re-shows
-// leave this false so a short beat doesn't cost seven clicks. Keep it short.
+// leave this false so a short beat doesn't cost eight clicks. Keep it short.
 const props = withDefaults(
   defineProps<{
     current?:

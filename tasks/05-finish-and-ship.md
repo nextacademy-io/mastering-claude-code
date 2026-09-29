@@ -30,7 +30,7 @@ branch, commit, optional pull request, review.
    git checkout -b finish
    claude
    ```
-2. One brief, four independent jobs. Read it: each job names its files, so they do not collide.
+2. One brief, four independent jobs. Read it: each job names its files, so they barely collide.
    ```
    Four independent jobs from @docs/SPEC.md. Do them one after the other and run the quality gates at the end.
 
@@ -86,7 +86,7 @@ branch, commit, optional pull request, review.
 10. Compare with the reference build.
     ```bash
     git fetch origin 06-start
-    git diff --stat 06-start
+    git diff --stat origin/06-start
     ```
     Ask Claude:
     ```
@@ -102,6 +102,7 @@ branch, commit, optional pull request, review.
     git checkout 06-start
     npm install
     npm run db:reset
+    npm run db:seed
     ```
 13. Close the terminal, then come back to this same conversation.
     ```bash
@@ -120,7 +121,7 @@ branch, commit, optional pull request, review.
 
 ## Check
 
-- [ ] Profile with avatar crop works and the avatar shows in the top bar
+- [ ] Profile with avatar crop works and the avatar shows in the sidebar
 - [ ] ⌘K opens search and the results page groups the hits
 - [ ] The dashboard shows four counts
 - [ ] Light and dark theme switch

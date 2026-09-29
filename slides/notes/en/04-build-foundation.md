@@ -19,10 +19,9 @@ Say:
 > Do:
 > - Participants do this in steps 1-2
 > - Start in manual mode, let the group watch the first two or three permission prompts
-> - The repo is intentionally non-empty. Point out that the brief tells Claude to preserve the workshop files before create-next-app runs
-> - Then switch to auto — scaffolding a Next.js app is standard, low-risk work
-> - Show the three parts with the real scaffold brief from Task 02
-> - Contrast with the cold prompt "set up a Next.js app"
+> - Your CLASH clone is intentionally non-empty: point out the brief's rule to preserve the workshop files before create-next-app runs
+> - Then switch to auto — a Next.js scaffold is standard, low-risk work
+> - Show the three parts on the real Task 02 scaffold brief; contrast with the cold prompt "set up a Next.js app"
 
 Say:
 - A prompt is a wish; a brief is a contract
@@ -32,9 +31,9 @@ Say:
 <!-- @note: read-the-diff-not-the-summary -->
 > Do:
 > - Participants do this in steps 3-4
-> - Ask for `git status`, then run `/diff` live after the scaffold — only scaffold changes should be there, before plan mode touches anything else
-> - The panel may say some files are "not shown", and brand-new files made by a shell command can be among them — `git status` is the complete list, which is why it comes first
-> - Ask Claude to commit, read the commit message it wrote
+> - Ask for `git status`, then run `/diff` live after the scaffold: only scaffold changes, before plan mode touches anything
+> - The panel may say some files are "not shown", even new ones from a shell command: `git status`, the complete list, comes first
+> - Ask Claude to commit, read the message it wrote
 
 Say:
 - Habit to build early: after every step, read `/diff` — in fullscreen the panel stays open and refreshes itself, and running `/diff` again closes it
@@ -43,10 +42,10 @@ Say:
 
 <!-- @note: plan-mode-read-think-propose -->
 > Do:
-> - Participants do this in steps 5, 7-8 — step 6 (the actual prompt) is next, on its own live-coding slide
+> - Participants do this in steps 5, 7-8 — step 6 (the prompt) is next, on a live-coding slide
+> - Docs link: open it, scroll to "Analyze before you edit with plan mode", then back to the slides
 > - Demo live: Shift+Tab until the status bar shows "plan mode on" (two presses from Manual mode, three from auto — from v2.1.283 interactive sessions start in auto)
-> - Let the plan appear, once you've sent the prompt from the next slide
-> - Read one part of it out loud, ask the group a question ("why lib/generated/prisma?")
+> - Once the next slide's prompt is sent, let the plan appear, read one part out loud, ask the group ("why lib/generated/prisma?")
 > - Switch back and say "do it"
 
 Say:
@@ -57,7 +56,7 @@ Say:
 <!-- @note: plan-the-data-model -->
 > Do:
 > - Participants do this in step 6
-> - Paste the prompt with the rules as bullet points — use "\" at the end of a line to continue on a new line without sending
+> - Paste the prompt with the rules as bullet points; "\" at a line's end starts a new line without sending
 
 Say:
 - SQLite has no enums
@@ -69,7 +68,7 @@ Say:
 <!-- @note: when-a-plan-earns-its-cost -->
 > Do:
 > - The data-model plan just earned its cost: a schema is hard to change later
-> - Ask the group for one change that does not need a plan. Judge by how unsure you are, how much it can break and how easy it is to undo
+> - Ask the group for one change that needs no plan. Judge: how unsure you are, how much can break, how easy to undo
 
 Say:
 - A plan costs tokens and review time: it reads code and writes one more document to check
@@ -108,9 +107,7 @@ Say:
 
 <!-- @note: foundation -->
 > Do:
-> - Task 02 recap
-> - Hand off to tasks/02-foundation.md, full 11 steps — no more slides until Task 03
-> - Watch the chat while they work
+> - Task 02 recap: hand off to tasks/02-foundation.md, full 11 steps, and watch the chat — no more slides until Task 03
 > - Most common stall: create-next-app and local package-manager preferences. The brief forces npm, no src/ directory, non-interactive answers and preservation of the workshop files
 
 Say:

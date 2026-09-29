@@ -7,7 +7,7 @@ Say:
 
 <!-- @note: task-15-letting-go -->
 > Do:
-> - Branch: 15-start already has CLAUDE.md, the skill, the fix and the hook set
+> - Branch: 15-start already has CLAUDE.md, the skills, the ownership fix and the hook set
 
 Say:
 - Two ideas: worktrees keep parallel agents from colliding, headless CI runs the same audit with nobody watching
@@ -28,8 +28,8 @@ Say:
 
 <!-- @note: batch-many-independent-pull-requests -->
 > Do:
-> - Point back to the worktree slide: /batch automates that shape after it researches and proposes the split
-> - Do not run it live on CLASH — the lesson is knowing when /batch fits and when it does not
+> - Point back to the worktree slide: /batch automates that shape
+> - Do not run it live on CLASH — the lesson: when /batch fits and when not
 > - Docs link: open it, point at the `/batch` row under "All commands", then back to the slides
 
 Say:
@@ -99,7 +99,7 @@ Say:
 
 <!-- @note: task-16-the-agent-sdk -->
 > Do:
-> - Branch: 16-start already has CLAUDE.md, the skill, the fix and the hook set
+> - Branch: 16-start already has CLAUDE.md, the skills, the ownership fix and the hook set
 
 Say:
 - The same agent loop, now hosted inside a small program instead of a terminal session
@@ -118,10 +118,8 @@ Say:
 > Do:
 > - FULL WORKING SOLUTION (trainer only): workshop-artifacts/16-agent-sdk/ask-clash.mts
 > - Run with `npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"` after `npm install @anthropic-ai/claude-agent-sdk tsx`
-> - Point at the three controls
-> - Optional: point at the "Options" table — same allowedTools/disallowedTools/maxTurns/hooks fields
-> - Then the result message: the answer, num_turns, total_cost_usd
-> - Say the cost out loud
+> - Point at the three controls, optionally also in the "Options" table
+> - Then the result message: the answer, num_turns, total_cost_usd — say the cost out loud
 
 Say:
 - allowedTools (auto-approves, does not restrict) + disallowedTools (actually blocks), hooks.PreToolUse, maxTurns

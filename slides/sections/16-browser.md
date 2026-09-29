@@ -73,7 +73,7 @@ heading: "Measure, fix, measure again"
 routeAlias: theory-measure-fix
 lines:
   - "User.avatar is a base64 string, up to 1.5 MB."
-  - "getCurrentUser() selects it on every page. The layout never shows it."
+  - "getCurrentUser() selects it on every page. The layout shows it as a small icon."
 ---
 
 <div class="grid grid-cols-3 gap-6 w-full max-w-4xl">
@@ -103,9 +103,9 @@ lines:
 
 ---
 layout: concept
-heading: "MCP has three primitives, not one"
+heading: "A server offers three primitives, not one"
 lines:
-  - "Tools are only one primitive. Resources and prompts are the other two."
+  - "Tools are only one server primitive. Resources and prompts are the other two."
   - "The server tells Claude Code what it has — nothing is hardcoded."
 ---
 

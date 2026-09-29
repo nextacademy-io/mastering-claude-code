@@ -1,6 +1,6 @@
 <!-- @note: task-17-capstone -->
 > Tun:
-> - Branch: 17-start hat bereits CLAUDE.md, den Skill, den Fix und das Hook-Set
+> - Branch: 17-start hat bereits CLAUDE.md, die Skills, den Ownership-Fix und das Hook-Set
 
 Sagen:
 - Ein frei gewähltes Briefing, Ende-zu-Ende ausgeliefert mit jedem Werkzeug aus dem Workshop
@@ -8,7 +8,7 @@ Sagen:
 <!-- @note: spec-kit-six-steps-one-constitution -->
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer, bei Demo installieren):
->   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+>   uv tool install specify-cli
 >   specify init my-project
 > - Implement -> converge wiederholen, bis convergence "Converged" meldet
 
@@ -19,12 +19,12 @@ Sagen:
 - [click] /speckit-plan — ein technischer Plan aus der Spec
 - [click] /speckit-tasks — der Plan aufgeteilt in eine Checkliste
 - [click] /speckit-implement — gegen die Task-Liste bauen
-- [click] /speckit-converge — prüft den Build gegen die Spec, springt zurück zu implement, bis Converged gemeldet wird
+- [click] /speckit-converge — prüft den Build gegen die Spec und hängt fehlende Arbeit als neue Tasks an; implement erneut laufen lassen, bis Converged gemeldet wird
 - [click] Die Constitution läuft einmal — Prinzipien, die jeder spätere Schritt liest
 
 <!-- @note: bmad-five-agents-one-party-mode -->
 > Tun:
-> - Docs-Link: das BMAD-Repo-README auf GitHub — auf die Delivery-Loop-Grafik und die Install-Zeile unter "Start Building" zeigen, dann zurück zu den Folien
+> - Docs-Link: BMADs GitHub-README — auf die Delivery-Loop-Grafik und die Install-Zeile unter "Start Building" zeigen, dann zurück
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer, bei Demo installieren):
 >   npx skills add bmad-code-org/BMAD-METHOD
 
@@ -35,7 +35,7 @@ Sagen:
 - [click] Developer — die Umsetzung
 - [click] UX — die Oberfläche und das Erlebnis
 - [click] Party Mode: jeder installierte Agent in einem Gespräch, in character
-- [click] bmad-build: der Skill, der aus einer Story Code macht — er klärt die Absicht, plant, schreibt eine Spec, implementiert, dann reviewt er; der Link öffnet "Build a Change" bei "Run bmad-build"
+- [click] bmad-build: der Skill, der aus einer Story Code macht — er klärt die Absicht, plant, implementiert, dann reviewt er; der Link öffnet "Build a Change" bei "Run bmad-build"
 
 <!-- @note: spec-kit-vs-bmad -->
 > Tun:
@@ -44,9 +44,9 @@ Sagen:
 Sagen:
 - [click:2] Spec Kit — GitHub, MIT, agent-agnostisch, `specify init`, wenig Zeremonie
 - Specs als versionierte Markdown-Dateien, die jeder Agent lesen kann
-- Python/uv-Tool, kein npm: `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git`
+- Python/uv-Tool, kein npm: `uv tool install specify-cli`
 - [click] BMAD v6 liefert fünf benannte Agents (Analyst, PM, Architect, Developer, UX Designer) — nicht "12+ Personas" (das ist eine v4-Zahl)
-- Schwergewichtig: berichtete Praxiskosten von einigen Hundert bis zu ein paar Tausend Dollar pro Entwickler und Monat bei Frontier-Modellen
+- Schwergewichtig: standardmäßig mehrere Reviewer pro Änderung — die Token-Kosten summieren sich
 - Repo: bmad-code-org/BMAD-METHOD
 - Faustregel: Spec Kit, wenn du Spec-Disziplin willst, ohne Prozess-Overhead; BMAD, wenn die Organisation diese Rollen schon hat
 - BMAD zaubert dir keinen Prozess herbei, den du nicht hast

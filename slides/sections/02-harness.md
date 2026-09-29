@@ -93,7 +93,7 @@ lines:
 layout: concept
 heading: "Skills and MCP"
 lines:
-  - "Skill: instructions loaded only when they match what you ask"
+  - "Skill: instructions loaded when they match what you ask, or via /skill-name"
   - "MCP: tools from outside the repo, spoken through one protocol"
 ---
 

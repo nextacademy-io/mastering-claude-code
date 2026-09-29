@@ -66,7 +66,7 @@ routeAlias: theory-plan-mode
 docs: https://code.claude.com/docs/en/permission-modes
 lines:
   - "Shift+Tab until the status bar shows \"plan mode on\""
-  - "Claude can read files. It cannot write them."
+  - "Claude can read files. It does not edit your source."
   - "You review the plan. Then you switch back and say: do it."
 ---
 

@@ -48,7 +48,7 @@ same rows. Here is what starts what in this task:
 
 This branch has a real bug on purpose. The ownership check was removed from `deleteClash`
 in `app/actions/clashes.ts` and from `deleteVenue` in `app/actions/venues.ts`. Every other
-action is guarded. The bug does not exist in the public CLASH code. It is here for this task.
+action has the checks it needs. The bug does not exist in the public CLASH code. It is here for this task.
 
 Why it matters: `requireUser()` in `app/(app)/layout.tsx` protects the page. A Server
 Action is a public POST endpoint with a generated id. Anyone with a session cookie can
@@ -113,8 +113,8 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
     It inherited your conversation, so it can see the report from step 6, and every tool `main`
     has, `Edit` and `Write` included. The read-only `tools:` line of `security-auditor` does not
     apply to it. The brief names the tools, but that is only an instruction: the fork can still
-    call `Edit` and `Write`, and nothing stops it. For a hard limit, use a fresh subagent with a
-    `tools:` line. Compare the `/context` numbers against step 6's run.
+    call `Edit` and `Write`, and only a permission prompt can stop it. For a hard limit, use a
+    fresh subagent with a `tools:` line. Compare the `/context` numbers against step 6's run.
 11. Someone has already built a wider auditor, and you met plugins in task 07. Add OWASP's
     marketplace. Read what a plugin ships before you install it: it runs on your machine and
     can carry hooks.
@@ -167,8 +167,9 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
 
 ## Go further
 
-`npm run lint` on this branch shows an unused `user` variable in `deleteVenue`. The check
-that used it is gone. A sharp auditor could find the bug from that warning alone.
+`npm run lint` on this branch shows an unused `user` variable in `deleteClash` and in
+`deleteVenue`. The checks that used them are gone. A sharp auditor could find the bug from
+those warnings alone.
 Ask your subagent to explain how.
 
 ## Links

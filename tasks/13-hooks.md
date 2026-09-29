@@ -123,12 +123,12 @@ are logged, not enforced. What Claude sees on a block is stderr.
 - [ ] A green build shows one line. A red build keeps the turn open.
 - [ ] `/hooks` lists every hook you added, grouped by event.
 - [ ] You can say why `hard_deny` does not belong in this file. It is an auto-mode setting
-      (`settings.autoMode.hard_deny`), not a hook decision. Hook decisions are `allow`, `deny`, `ask`.
+      (`settings.autoMode.hard_deny`), not a hook decision. Hook decisions are `allow`, `deny`, `ask`, and `defer` in `-p` mode.
 - [ ] A new session started on the model set in `.claude/settings.local.json`, not the one in `.claude/settings.json`.
 
 ## Stuck?
 
-`git checkout 13-start` — the reference CLASH with the fix merged (task 12), the skill and
+`git checkout 13-start` — the reference CLASH with the fix merged (task 12), the skills and
 `CLAUDE.md`. No hooks yet.
 
 ## Go further

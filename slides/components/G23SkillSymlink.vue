@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// G23 — where Claude Code actually finds a skill. It reads exactly two
-// folders: ~/.claude/skills/<name>/ and .claude/skills/<name>/. The
+// G23 — where Claude Code actually finds a skill. It reads your skills from
+// two folders: ~/.claude/skills/<name>/ and .claude/skills/<name>/. The
 // community installer (npx skills add) writes its canonical copy to
 // .agents/skills/ and links it into .claude/skills/ — a skill entry is
 // allowed to be a symlink to a directory elsewhere on disk. Miss that link
@@ -9,7 +9,7 @@
 
 <template>
   <svg viewBox="0 0 900 320" class="w-full max-w-3xl h-auto max-h-full" font-family="Inter, sans-serif"
-       role="img" aria-label="npx skills add writes the real copy to .agents/skills, then links it into .claude/skills, the only place Claude Code reads">
+       role="img" aria-label="npx skills add writes the real copy to .agents/skills, then links it into .claude/skills, where Claude Code reads it">
     <g v-click>
       <rect x="150" y="10" width="600" height="44" rx="22" fill="var(--na-zinc-900)" stroke="var(--na-zinc-700)" stroke-width="1.5" />
       <text x="450" y="38" text-anchor="middle" fill="var(--na-accent-500)" font-family="var(--font-mono, monospace)" style="font-size:16px; font-variant-ligatures:none">npx skills add vercel-labs/agent-browser -g</text>
@@ -29,7 +29,7 @@
       <rect x="510" y="110" width="360" height="100" rx="10" fill="var(--na-primary-900)" stroke="var(--na-accent-500)" stroke-width="2.5" />
       <text x="530" y="142" fill="var(--na-fg)" font-weight="700" font-family="var(--font-mono, monospace)" style="font-size:16px">~/.claude/skills/</text>
       <text x="530" y="164" fill="var(--na-fg)" font-weight="700" font-family="var(--font-mono, monospace)" style="font-size:16px">agent-browser</text>
-      <text x="530" y="190" fill="var(--na-accent-500)" style="font-size:16px">the only place Claude reads</text>
+      <text x="530" y="190" fill="var(--na-accent-500)" style="font-size:16px">where Claude reads it</text>
     </g>
 
     <g v-click>

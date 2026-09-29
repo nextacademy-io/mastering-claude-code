@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // G5 — Skill loading. Progressive disclosure: description scanned every
-// session -> body pulled in only on match.
+// session -> body loads on match or /name.
 // Sized for its slide's graphic slot under a heading and three lines (about
 // 852 × 268): the 1018 × 300 viewBox is bound by width there (0.84 px per
 // unit), so the 16 px text renders at about 13.4 px. Every line is svg text.
@@ -17,7 +17,7 @@ const body = { x: 2, y: 130, w: 1014, h: 132 }
 </script>
 
 <template>
-  <svg viewBox="0 0 1018 300" class="w-full h-auto max-h-full" font-family="Inter, sans-serif" role="img" aria-label="Skill descriptions are always in context; a skill's body loads only when it matches">
+  <svg viewBox="0 0 1018 300" class="w-full h-auto max-h-full" font-family="Inter, sans-serif" role="img" aria-label="Skill descriptions are always in context; bodies load on a match or via /skill-name">
     <defs>
       <marker id="arrowG5" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
         <path d="M0,0 L8,4 L0,8 Z" fill="var(--na-accent-500)" />

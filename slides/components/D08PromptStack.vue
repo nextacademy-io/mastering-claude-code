@@ -6,8 +6,8 @@
 // slide's graphic slot (about 852 × 300), so all text renders at about 15 px or more.
 const blocks = [
   { label: 'system prompt', h: 38, click: 1, note: 'written by Claude Code' },
-  { label: 'CLAUDE.md', h: 30, click: 2, note: 'your rules, project + personal' },
-  { label: 'tool list', h: 34, click: 3, note: 'name + description of every tool' },
+  { label: 'tool list', h: 34, click: 2, note: 'name + description of every tool' },
+  { label: 'CLAUDE.md', h: 30, click: 3, note: 'your rules, project + personal' },
   { label: 'skills index', h: 28, click: 4, note: 'one line per skill' },
   { label: 'history + tool results', h: 92, click: 5, note: 'every file read, every output' },
 ]

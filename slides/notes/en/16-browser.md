@@ -6,7 +6,7 @@ Say:
 
 <!-- @note: task-14-the-browser-closes-the-loop -->
 > Do:
-> - Branch: 14-start already has the skill, CLAUDE.md and the hook set from Task 13
+> - Branch: 14-start already has the skills, CLAUDE.md and the hook set from Task 13
 
 Say:
 - Four things to learn, three to end up with — a test suite, a smaller payload, a first remote server
@@ -41,22 +41,18 @@ Say:
 > "Now write that flow as a Playwright test file: request to join, host accepts, joining user is
 > notified. Add a second test for the host rejecting instead. Use the seeded accounts and passwords
 > from docs/SETUP.md."
-> - Only makes sense AFTER the manual walkthrough: "Using the Playwright MCP tools, log in as anna.schmidt@example.com / test, open a clash she doesn't host, and request to join it…"
-> - Drive it by hand and narrate first, confirm the flow works, THEN ask for the test file
+> - Drive it by hand and narrate first: "Using the Playwright MCP tools, log in at localhost:3000 as anna.schmidt@example.com / test, open a clash she doesn't host, and request to join it…" Confirm the flow works, THEN ask for the test file
 
 Say:
 - Writing test code before confirming the flow is exactly the blind generation this loop avoids
 
 <!-- @note: measure-fix-measure-again -->
 > Do:
-> - Bug is real, read it before measuring: prisma/schema.prisma (User.avatar String?)
-> - app/actions/profile.ts (MAX_AVATAR_LENGTH = 1_500_000)
-> - lib/auth.ts (getCurrentUser selects avatar: true, wrapped in cache())
-> - app/(app)/layout.tsx (requireUser on every page)
+> - Read the real bug before measuring: prisma/schema.prisma (User.avatar String?); app/actions/profile.ts (MAX_AVATAR_LENGTH = 1_500_000); lib/auth.ts (getCurrentUser selects avatar: true, wrapped in cache()); app/(app)/layout.tsx (requireUser on every page)
 > - [click] Prompts in tasks/14-browser-loop.md steps 7-9: measure with Chrome DevTools MCP, fix, measure again
 
 Say:
-- Up to 1.5 MB rides in the payload on every page load, for a value the layout never renders
+- Up to 1.5 MB rides in the payload on every page load, for a small icon in the sidebar
 - Measure before touching code
 
 <!-- @note: the-loop-that-matters -->
@@ -66,7 +62,7 @@ Say:
 - [click] Fix from evidence — loop closes without a human re-checking every step
 - [click:5] This is what "MCP reaches outside the repo" buys you
 
-<!-- @note: mcp-has-three-primitives-not-one -->
+<!-- @note: a-server-offers-three-primitives-not-one -->
 Say:
 - Every MCP server we've used so far only exposed tools
 - [click] Resources are how a server hands over data without a tool call
@@ -87,19 +83,17 @@ Say:
 
 <!-- @note: the-browser-closes-the-loop-2 -->
 > Do:
-> - Starting point: 14-start, with npm run dev running and the eight seeded logins
-> - Anna hosts, another seeded user joins
+> - Starting point: 14-start, npm run dev running, eight seeded logins — Anna joins, another one hosts
 > - Two halves: tests, then performance
 > - Hand off to tasks/14-browser-loop.md — one slide left when they are back
 
 <!-- @note: four-browser-tools-one-comparison -->
 > Do:
-> - Debrief, after the recap — they have used two of these four hands-on by now
-> - State its advantage qualitatively
-> - Do not quote a percentage — the often-cited "90% fewer tokens" is not an official claim, third-party estimates disagree
+> - Debrief, after the recap — they have used three of the four hands-on
+> - State its advantage qualitatively, without quoting a percentage — the often-cited "90% fewer tokens" is not an official claim, third-party estimates disagree
 > - Measure it if there is time
 
 Say:
 - Four tools, different jobs
 - [click:4] agent-browser (Vercel, Rust CLI, accessibility-tree snapshots) — the one participants installed during setup and used while building
-- Compact snapshots vs an MCP server's tool schemas plus DOM — tool search defers full schema loading by default
+- Compact snapshots vs an MCP server's tool schemas plus full accessibility trees — tool search defers full schema loading by default

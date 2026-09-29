@@ -9,7 +9,7 @@ Say:
 
 <!-- @note: task-13-hooks -->
 > Do:
-> - Branch: 13-start already has the reference app, the skill and CLAUDE.md — no hooks yet
+> - Branch: 13-start already has the reference CLASH, the skills and CLAUDE.md — no hooks yet
 
 Say:
 - Four hooks to learn, four hooks to build — the first one gets written wrong, on purpose
@@ -29,7 +29,7 @@ Say:
 
 <!-- @note: one-hook-slowly -->
 > Do:
-> - This is the DELIBERATE mistake — write it exactly as shown
+> - Write the DELIBERATE mistake exactly as shown
 > - Edit a file under `app/actions/` through Claude Code — nothing fires. Let it sit. Ask why.
 > - Fix live with the sibling "if" field:
 >   "matcher": "Edit|Write",
@@ -38,8 +38,8 @@ Say:
 >     "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/typecheck-actions.sh",
 >     "timeout": 60 }]
 > - Then write `.claude/hooks/typecheck-actions.sh` (reference: `workshop-artifacts/13-hooks/`)
-> - Introduce a type error into `app/actions/venues.ts` on purpose, through Claude Code, so the hook fires
-> - Watch `tsc` fail, watch Claude get the failure on stderr, watch it fix its own code — the moment people remember
+> - Through Claude Code, add a type error to `app/actions/venues.ts` so the hook fires
+> - Watch `tsc` fail, Claude get the failure on stderr and fix its own code — the moment people remember
 
 Say:
 - Answer: matcher matches the TOOL NAME (Edit, Write, Bash), not a path — a path glob there is parsed as an unanchored regex against the tool name and never matches
@@ -62,25 +62,24 @@ Say:
 
 Say:
 - Three separate matcher blocks, one per tool: Edit/Write for migrations, Bash for `rm`, Read for `.env`
-- `hookSpecificOutput.permissionDecision` values: allow/deny/ask — the plain exit-2 form works the same
+- `hookSpecificOutput.permissionDecision` values: allow/deny/ask, plus defer in -p mode — the plain exit-2 form works the same as deny
 
 <!-- @note: gate-the-turn -->
 > Do:
 > - FULL WORKING SOLUTION (trainer only): `workshop-artifacts/13-hooks/build-gate.sh`
-> - Break the build on purpose, try to end the turn, watch Stop refuse and hand the failure tail to the agent
-> - Fix, end the turn, watch it succeed
-> - Name that distinction
+> - Break the build, try to end the turn, watch Stop refuse and hand the agent the failure tail
+> - Fix, end the turn, watch it succeed — then name that distinction
 
 Say:
 - Wired under "Stop" with no matcher — Stop has no tool to match on
 - Stop gates the end of a TURN, not a tool call
-- `set -euo pipefail`: -e stops at the first failing command outside an if, -u at an unset variable, pipefail fails a pipeline like a | b when any part fails. An -e stop exits 1, not 2, so it does not block: that is why the build runs inside an if
+- The gate has a cap: after eight blocks in a row, Claude Code ends the turn anyway (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` raises it)
+- `set -euo pipefail`: -e stops at the first failing command outside an if, -u at an unset variable, pipefail fails a pipeline like a | b when any part fails. An -e stop exits with the failed command's own code, usually 1, not 2, so it does not block: that is why the build runs inside an if
 
 <!-- @note: advice-vs-law -->
 > Do:
 > - Foreshadow from the skills part pays off
-> - Mention `hard_deny` in passing
-> - Name it, don't configure it
+> - Name `hard_deny` in passing, don't configure it
 
 Say:
 - Skills are advice, hooks are law
@@ -103,17 +102,20 @@ Say:
 
 <!-- @note: the-sandbox-limits-what-a-command-touches -->
 > Do:
-> - Run `/sandbox` live if there is time — show the Mode and Config tabs
-> - Mode tab: auto-allow runs sandboxed commands without a prompt; regular permissions sends every command through your normal permission rules, so unapproved ones still ask. Both keep the same limits. Allowed hosts are not a mode: they sit in the network allowlist
+> - Optional: run `/sandbox` live, show the Mode and Config tabs
+> - Mode tab: auto-allow runs sandboxed commands without a prompt; regular permissions still asks for unapproved ones. Both keep the same limits. Allowed hosts are not a mode: they sit in the network allowlist
 > - Docs link: open it, scroll to "How sandboxing works", then back to the slides
 
 Say:
 - A sandboxed Bash command still runs — the operating system enforces the limit, not a prompt
-- [click] Filesystem: write access stays inside the project. Read access is wide, minus what you deny
+- [click] Filesystem: write access stays inside the project and a per-user temp folder. Read access is wide, minus what you deny
 - Network: nothing is reachable until you approve a host, once, then it is remembered
 - Windows has no native sandbox — run Claude Code inside WSL2 to get one
 
 <!-- @note: your-org-can-lock-settings-down -->
+> Do:
+> - Docs link: open it, scroll to "Read the source in /status", then back to the slides
+
 Say:
 - `managed-settings.json`, MDM, or the claude.ai console — an administrator deploys it, not you
 - It sits above every other file. Nothing you set overrides it
@@ -121,9 +123,9 @@ Say:
 
 <!-- @note: hooks -->
 > Do:
-> - Confirm people reproduced the broken matcher version before moving on
+> - Confirm people reproduced the broken matcher before moving on
 > - The "why didn't it fire" beat only lands if they saw the silence themselves
-> - Close with `/hooks` live — a read-only browser, grouped by event: pick an event to see the hooks they just wrote under it
+> - Close with `/hooks` live: a read-only browser grouped by event — pick one to see the hooks they just wrote
 
 
 <!-- @note: ignored-by-git-is-not-hidden -->
@@ -151,7 +153,7 @@ Say:
 
 <!-- @note: security-three-rules -->
 > Do:
-> - Optional: point at "Protect against prompt injection" — the safeguards Claude Code already runs; the three rules on the slide are what you add on top
+> - Optional: point at "Protect against prompt injection" — Claude Code's built-in safeguards; the slide's three rules are what you add on top
 
 Say:
 - Prompt injection in one sentence: a model cannot tell data from instructions by looking

@@ -98,23 +98,23 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
 - Walk the cycle diagram station by station: build prompt, call model, permission, run tool,
   append result. The harness ring runs the tools; the model in the centre only chooses. Point
   at where the tool result goes: back into the prompt. That is why tool output costs context.
-- What is in the prompt every turn: system prompt, CLAUDE.md, the tool list, the skills
+- What is in the prompt every turn: system prompt, the tool list, CLAUDE.md, the skills
   index, the history, your message. The part that repeats is cached. Cache is why the
   second turn is cheaper than the first.
 - Permissions: the tool call waits at the gate until a rule or you say yes. Six modes: manual,
-  accept edits, plan, auto, bypass, and dontAsk. The slide shows the five you switch between;
+  accept edits, plan, auto, bypass permissions, and dontAsk. The slide shows the five you switch between;
   dontAsk never appears in the Shift+Tab cycle and denies anything that would otherwise ask
-  (scripts, CI, task 19). "Ask" is a rule type next to allow and deny, not a mode. Plan mode is
-  "no writes".
+  (scripts, CI, task 19). "Ask" is a rule type next to allow and deny, not a mode. Plan mode
+  does not edit your source, but it can still run shell commands to explore.
 - Hooks: a shell command runs before or after a tool; PreToolUse runs before the permission
   check. Only exit code 2 matters: before a tool it blocks the call, after a tool it hands the
   error to the model. Say "we build these in Part IV".
 - Subagents: a second loop with its own window. Only a summary comes back.
 - Compaction: the full tank becomes a small summary block with room above it. Starting fresh
   empties it. Name the commands, don't run them yet — no live session is open. The real, live
-  version comes later in Task 01.
+  version comes later: `/clear` in Task 01, `/compact` in Task 03.
 - A question that skips the loop (`/btw`): same loop, no tool call, answered from what's
-  already in the window. Name it, don't run it yet, same reason as compaction.
+  already in the window. Name it, don't run it yet: you show it live in Task 01.
 - Install and log in: this is where the group first sees a terminal with Claude Code running.
   Everyone installed before the workshop (`docs/SETUP.md`) — say so, this is a recap, not a
   fresh install. An empty folder has nothing for `/context`, `/btw` or `/clear` to show yet,
@@ -124,7 +124,7 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
 
 ### First steps — Task 01
 
-Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/clear`, `/context`.
+Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/btw`, `/clear`, `/context`.
 Watch for: people who never press Enter on the permission prompt; people who type in the
 terminal while Claude is working (Esc stops it).
 
@@ -234,7 +234,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   Action is a public POST endpoint with a generated id. Zod validates shape, not permission.
 - Say out loud: upstream `main` has no missing checks. The two are seeded on `08-start`
   (`deleteClash`, `deleteVenue`). `npm run lint` shows an unused `user` warning in
-  `deleteVenue` as a tell.
+  `deleteClash` and `deleteVenue` as a tell.
 - One `security-auditor` with Read/Grep/Glob and a falsifiable brief. `/context` barely
   moves. Say "agent, subagent, fork" once, slowly, and point at the row that appears under
   `main` below the prompt. Fork mode is on by default in interactive sessions, but a named
@@ -306,7 +306,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   disagree about the same file and the lead reconciles.
 - Dynamic workflow: describe the job, Claude writes the script, the runtime runs it in the
   background. Read the generated script on screen. It lands under
-  `~/.claude/projects/<session>/`; `s` in `/workflows` saves it to `.claude/workflows/`.
+  `~/.claude/projects/<session>/`; `s` in `/workflows` saves it to `.claude/workflows/` once you
+  pick that folder in the save dialog (Tab switches) and press Enter.
   `Date.now()`, `Math.random()` and no-arg `new Date()` throw inside it.
 - Four ways to start one, as on the slide: ask in your own words ("use a workflow to …"), put
   the keyword `ultracode` in one prompt, set `/effort ultracode` for the whole session, or run
@@ -353,7 +354,12 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - MCP is a protocol boundary. Playwright MCP drives a browser; DevTools MCP speaks the
   DevTools protocol.
 - Drive the join flow by hand first, then ask for the test file. Never generate tests blind.
+- Before step 7, have everyone log in to CLASH as Anna and upload an avatar on `/profile`: the
+  seed leaves every avatar empty, so there is nothing to measure.
 - Avatars: `getCurrentUser()` selects `avatar` on every request. Measure, fix, re-measure.
+- Steer the step 8 fix toward an image with its own URL: CLASH's sidebar is a client component
+  that gets the avatar as a prop on every page, so a second query in the layout that still passes
+  the data URL leaves the number unchanged.
 - Four browser tools, one comparison. Do not quote a token-savings percentage for
   agent-browser; it is not an official number.
 
@@ -391,7 +397,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Output style first: `/output-style concise`, one question, then the same question on the
   default style. The difference is the lesson. Then the custom `host-notes` style: restart Claude
-  Code after creating the file, or it is not listed. Say that styles do not reach subagents.
+  Code after creating the file, or it is not listed. Say that styles do not reach a fresh
+  subagent; a fork keeps the style.
 - Then `/goal`, step 8, typed as one line: one measurable end state, the check that proves it and
   a turn ceiling; add constraints for real feature work. On CLASH's `18-start` both checks already
   pass, so it can be met after the first turn: point at the verdict in the transcript, then `/goal`
@@ -433,6 +440,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - `npx tsx mcp/smoke.ts` is the finish line of step 4: 19 checks. A `FAIL` line names the broken
   check: participants paste that line back into Claude Code. The most common one is a refusal
   text that is not exactly the text in the prompt.
+- Steps 5 and 6 start `claude --permission-mode manual` on purpose: in auto mode, the starting
+  mode from v2.1.283, a write that no rule matches goes to the classifier, not to a permission
+  prompt.
 - In step 5 Claude calls `find_venue` before `create_clash` without being told: point at
   `venueId`'s description. Keep CLASH's map on `localhost:3000/map` on screen: the clash appears
   there. The second, identical prompt is refused as a duplicate.
@@ -441,7 +451,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Say it once, slowly: one `console.log` in the server breaks the stdio channel. Logs go to
   `stderr` only. The starter already does it right; do not let a prompt undo it.
 - Least privilege: allow the two read tools in CLASH's `.claude/settings.json`; `create_clash` and
-  `cancel_clash` keep prompting. The stop slide's careless side is `mcp__clash__*` plus
+  `cancel_clash` keep prompting in Manual mode. The stop slide's careless side is `mcp__clash__*` plus
   `bypassPermissions`.
 - `clash-conference` is a second repository (`agilino/clash-conference`), cloned next to your
   CLASH clone during setup, with a `19-start` branch of its own: clash-conference without

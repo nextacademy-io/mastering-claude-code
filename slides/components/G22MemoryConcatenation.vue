@@ -31,6 +31,6 @@ const sources = [
       <text x="740" y="222" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size: 14px">all concatenated —</text>
       <text x="740" y="240" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size: 14px">nothing "wins"</text>
     </g>
-    <text v-click="7" x="860" y="310" text-anchor="end" fill="var(--na-error-500)" font-weight="600" style="font-size: 14px">contradiction? Claude picks either — keep them consistent</text>
+    <text v-click="7" x="860" y="310" text-anchor="end" fill="var(--na-error-500)" font-weight="600" style="font-size: 14px">contradiction? Claude may pick one — keep them consistent</text>
   </svg>
 </template>
