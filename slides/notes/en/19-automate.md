@@ -70,7 +70,7 @@ Say:
 >   /goal npx tsc --noEmit exits 0 and npm run lint exits 0; or stop after 6 turns
 > - It may finish after one turn; that is fine
 > - Point at the verdict in the transcript (Ctrl+O shows its reason), then run /goal with no argument: condition, turn count, token spend. /goal shows the reason only while a goal is still active
-> - Optional: set a deliberately longer condition, then /goal clear: it prints Goal cleared: with the condition. After a met goal it prints No goal set instead
+> - Optional: set a deliberately longer condition, then /goal clear: it prints Goal cleared: with the condition. After a met goal, /goal clear prints No goal set instead, while /goal still shows the achieved goal
 
 Say:
 - The point is the contract, not making the demo artificially long

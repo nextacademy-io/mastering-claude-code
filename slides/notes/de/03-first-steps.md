@@ -135,7 +135,7 @@ Sagen:
 
 <!-- @note: same-task-different-effort -->
 > Tun:
-> - In einem neuen, leeren Ordner außerhalb des Workshop-Repositorys und deines CLASH-Clones ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält: kein Lösungsschlüssel, keine CLAUDE.md, keine Projekt-Hooks
+> - In einem neuen, leeren Ordner ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält. Diesen Ordner außerhalb des Workshop-Repositorys und außerhalb deines CLASH-Clones anlegen: kein Lösungsschlüssel, keine CLAUDE.md, keine Claude-Code-Hooks auf Projektebene
 > - Prüfen, dass CLAUDE_CODE_EFFORT_LEVEL nicht gesetzt ist und keine maxEffortLevel-Obergrenze unter high liegt: beides kann beide Läufe auf dasselbe Level setzen
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
 >   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
@@ -158,5 +158,5 @@ Sagen:
 
 <!-- @note: pick-up-where-you-left-off -->
 Sagen:
-- An den meisten Tagen willst du --continue: gleicher Ordner, direkt weitermachen
+- Meistens willst du --continue: gleicher Ordner, direkt weitermachen
 - [click] --resume ist zum Auswählen da: eine andere Session, oder eine, die im Hintergrund weiterlief

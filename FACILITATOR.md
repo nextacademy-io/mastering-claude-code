@@ -15,7 +15,7 @@ primitive dividers in Parts III and IV. Under both maps, repeat four engineering
 - **Evidence** — what proves the result instead of merely sounding correct?
 - **Autonomy** — have verification, isolation and limits earned the right to step away?
 
-The core close states those questions explicitly. Material after the **Further paths** divider is reserve: teach it only when useful.
+The core close states those questions explicitly.
 
 **Before the first session:** push CLASH's branches (`docs/BRANCHES.md`), confirm your own
 machine passes `docs/SETUP.md` including `/skills` listing `agent-browser`, confirm
@@ -382,8 +382,10 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Three briefs. Each participant picks one and ships it in a worktree with the skill, a
   subagent review, the hook set, a browser check and a PR.
-- This is the integration task. The security rules come in the task 13 debrief, before MCP;
-  Spec Kit and BMAD wait in the reserve after the final close.
+- This is the integration task. The security rules come in the task 13 debrief, before MCP.
+- Spec Kit and BMAD sit between the task intro and the recap. They are further reading: two
+  ready-made processes that turn a brief into a spec, a plan and code. Not a step of the task;
+  install one only if you demo it.
 
 ### Task 18 — Automate
 
@@ -470,9 +472,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ---
 
-## Final close and reserve
+## Final close
 
-After task 19, close the required workshop before any reserve material:
+After task 19, close the workshop:
 
 1. Context decides what the agent knows.
 2. Reasoning decides how hard it thinks.
@@ -480,9 +482,9 @@ After task 19, close the required workshop before any reserve material:
 4. Autonomy is earned by verification: more freedom needs stronger evidence, isolation and limits.
 5. Finish on: *Context is king. You push it, you own it.*
 
-The **Further paths** divider opens the optional reserve: Spec Kit and BMAD, for questions or
-spare capacity. Its note also names Channels and Computer Use, which the workshop does not cover.
-Do not let any of it dilute the core close.
+If anyone asks what the workshop leaves out: Channels push events into a running session, and
+Computer Use lets Claude click native apps. The note on the last slide carries that line. Do not
+let it dilute the close.
 
 ---
 

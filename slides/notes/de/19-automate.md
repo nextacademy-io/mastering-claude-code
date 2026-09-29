@@ -70,7 +70,7 @@ Sagen:
 >   /goal npx tsc --noEmit exits 0 and npm run lint exits 0; or stop after 6 turns
 > - Die Demo darf nach einem Turn fertig sein; das ist in Ordnung
 > - Auf das Urteil im Transcript zeigen (Ctrl+O zeigt die Begründung), dann /goal ohne Argument ausführen: Bedingung, Turn-Zahl, Token-Verbrauch. Die Begründung zeigt /goal nur, solange ein Goal noch aktiv ist
-> - Optional: eine absichtlich längere Bedingung setzen, dann /goal clear: Er gibt Goal cleared: mit der Bedingung aus. Nach einem erfüllten Goal gibt er stattdessen No goal set aus
+> - Optional: eine absichtlich längere Bedingung setzen, dann /goal clear: Er gibt Goal cleared: mit der Bedingung aus. Nach einem erfüllten Goal gibt /goal clear stattdessen No goal set aus, während /goal das erreichte Goal weiter zeigt
 
 Sagen:
 - Entscheidend ist der Vertrag, nicht eine künstlich lange Demo

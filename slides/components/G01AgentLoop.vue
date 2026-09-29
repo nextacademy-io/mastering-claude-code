@@ -2,6 +2,12 @@
 // G1 — The agent loop. prompt → model → tool call → result → back into
 // context, and where context accumulates on every pass. First diagram in
 // the deck.
+import { useId } from 'vue'
+
+// Marker ids are unique per instance: G19 draws arrows too, and a url(#…)
+// that resolves into a hidden slide paints no marker.
+const markerId = `g01-arrow-${useId()}`
+
 const nodes = [
   { key: 'prompt', label: 'Prompt', x: 480, y: 90 },
   { key: 'model', label: 'Model', x: 800, y: 270 },
@@ -14,14 +20,14 @@ const nodes = [
   <div class="w-full flex flex-col items-center gap-6">
     <svg viewBox="0 0 960 540" width="960" height="540" class="w-full max-w-3xl h-auto max-h-full" role="img" aria-label="The agent loop">
       <!-- racetrack connectors -->
-      <g fill="none" stroke="var(--na-zinc-700)" stroke-width="2.5">
-        <path d="M 560 110 A 340 190 0 0 1 780 230" marker-end="url(#arrow)" />
-        <path d="M 790 320 A 340 190 0 0 1 570 440" marker-end="url(#arrow)" />
-        <path d="M 400 450 A 340 190 0 0 1 175 330" marker-end="url(#arrow)" />
-        <path d="M 165 220 A 340 190 0 0 1 400 100" marker-end="url(#arrow)" />
+      <g fill="none" stroke="var(--na-zinc-700)" stroke-width="2.5" :marker-end="`url(#${markerId})`">
+        <path d="M 560 110 A 340 190 0 0 1 780 230" />
+        <path d="M 790 320 A 340 190 0 0 1 570 440" />
+        <path d="M 400 450 A 340 190 0 0 1 175 330" />
+        <path d="M 165 220 A 340 190 0 0 1 400 100" />
       </g>
       <defs>
-        <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <marker :id="markerId" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
           <path d="M0,0 L0,6 L8,3 z" fill="var(--na-zinc-700)" />
         </marker>
       </defs>

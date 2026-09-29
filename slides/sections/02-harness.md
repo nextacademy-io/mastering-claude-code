@@ -116,9 +116,7 @@ lines:
   - "Control: what enters the window, which tools exist, what hooks enforce"
 ---
 
-<div class="flex flex-col items-center gap-6 w-full">
-  <G02ContextBudget />
-</div>
+<G02ContextBudget />
 
 
 

@@ -74,7 +74,7 @@ Say:
 - [click] Reads: browser → page → helper in lib/data → Prisma → SQLite
 - [click] Writes: client → a Server Action — looks like a normal function call, but it's really a public server endpoint
 - [click] requireUser() plus an ownership check, then back through the same Prisma Client — highlighted because Task 08 finds this exact node missing in two places later
-- [click] The dashed line isn't a function call like the others — revalidatePath just marks the page stale, the RSC page on the read side refetches on its own
+- [click] The dashed line is the action's last step: after the write it calls revalidatePath. Next.js renders the page again with the new data and sends it back in the same response
 
 <!-- @note: claude-md-from-real-rules -->
 > Do:

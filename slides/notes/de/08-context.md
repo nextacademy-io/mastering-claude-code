@@ -74,7 +74,7 @@ Sagen:
 - [click] Reads: Browser → Page → Helper in lib/data → Prisma → SQLite
 - [click] Writes: Client → eine Server Action — sieht aus wie ein normaler Funktionsaufruf, ist aber ein öffentlicher Server-Endpoint
 - [click] requireUser() plus ein Ownership-Check, dann zurück durch denselben Prisma Client — hervorgehoben, weil genau dieser Knoten in Task 08 an zwei Stellen fehlt
-- [click] Die gestrichelte Linie ist kein Funktionsaufruf wie die anderen — revalidatePath markiert die Page nur als veraltet, die RSC-Page auf der Read-Seite holt sich von selbst neue Daten
+- [click] Die gestrichelte Linie ist der letzte Schritt der Action: Nach dem Schreiben ruft sie revalidatePath auf. Next.js rendert die Page mit den neuen Daten neu und schickt sie in derselben Antwort zurück
 
 <!-- @note: claude-md-from-real-rules -->
 > Tun:

@@ -135,7 +135,7 @@ Say:
 
 <!-- @note: same-task-different-effort -->
 > Do:
-> - Run it in a new empty folder outside the workshop repository and your CLASH clone, holding only a copy of workshop-artifacts/reasoning-lab/review.ts: no answer key, no CLAUDE.md, no project hooks
+> - Run it in a new, empty folder that holds only a copy of workshop-artifacts/reasoning-lab/review.ts. Create that folder outside the workshop repository and outside your CLASH clone: no answer key, no CLAUDE.md, no project-level Claude Code hooks
 > - Check that CLAUDE_CODE_EFFORT_LEVEL is not set and no maxEffortLevel cap sits below high: either one can make both runs use the same level
 > - FULL WORKING SOLUTION (trainer only): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
 >   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
@@ -158,5 +158,5 @@ Say:
 
 <!-- @note: pick-up-where-you-left-off -->
 Say:
-- Most days you want --continue: same folder, pick straight back up
+- Usually you want --continue: same folder, pick straight back up
 - [click] --resume is for choosing: a different session, or one you left running in the background

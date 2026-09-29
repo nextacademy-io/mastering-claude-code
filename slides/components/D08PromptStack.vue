@@ -3,7 +3,7 @@
 // five blocks were already sent in the previous call and come from the
 // cache; only the newest message is new and paid in full.
 // The viewBox is cropped to the drawing and matches the height of a concept
-// slide's graphic slot (about 852 × 300), so the text renders at 15 px or more.
+// slide's graphic slot (about 852 × 300), so all text renders at about 15 px or more.
 const blocks = [
   { label: 'system prompt', h: 38, click: 1, note: 'written by Claude Code' },
   { label: 'CLAUDE.md', h: 30, click: 2, note: 'your rules, project + personal' },

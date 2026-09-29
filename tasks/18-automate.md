@@ -104,7 +104,7 @@ for one build. That is the gate, not the loop.
    ```
    /goal
    ```
-   You see Claude start at once and run both checks. On `18-start` both already pass, so the goal can be met after the first turn; the transcript then records it as achieved. `/goal` shows the condition, the turn count and the token spend.
+   You see Claude start at once and run both checks. On CLASH's `18-start` both already pass, so the goal can be met after the first turn; the transcript then records it as achieved. `/goal` still shows the achieved goal: its condition, turn count and token spend.
 
 **A loop**
 
