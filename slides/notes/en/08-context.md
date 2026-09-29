@@ -37,7 +37,7 @@ Say:
 > - Branch: 06-start is the reference CLASH, seeded, CLAUDE.md still just `@AGENTS.md`
 
 Say:
-- Five things to learn, four things to end up with — starting from a CLAUDE.md that is 11 bytes
+- Four things to learn, four things to end up with — starting from a CLAUDE.md that is 11 bytes
 
 <!-- @note: context-is-an-instrument -->
 > Do:
@@ -47,7 +47,7 @@ Say:
 
 Say:
 - Come back to this same command after every task from now on
-- [click] The diagram is the same picture the command draws in text
+- [click:5] The diagram is the same picture the command draws in text
 
 <!-- @note: budget-or-dumping-ground -->
 > Do:
@@ -106,6 +106,7 @@ Say:
 - Real-time notifications — currently loads on render via `getNotifications` and `getUnreadCount` in `lib/data/notifications.ts`
 - "Don't write any code yet. Propose an approach and the files it touches."
 - Plan mode is documented under permission modes
+- That page lists six modes: manual, accept edits, plan, auto, dontAsk, bypass. "Ask" is not a mode — it is a rule type, next to allow and deny
 
 <!-- @note: a-reviewed-plan-is-not-a-guarantee -->
 > Do:
@@ -118,28 +119,28 @@ Say:
 - Nonsense, obviously — but it was sitting right there in the plan
 - Luckily he read the whole thing and caught it before it shipped
 
-<!-- @note: claude-md-files-add-up-they-don-t-compete -->
+<!-- @note: claude-md-files-add-up -->
 > Do:
 > - Docs link: open it, scroll to "How CLAUDE.md files load", then back to the slides
 
 Say:
 - [click] ~/.claude/CLAUDE.md — your personal instructions, every project
 - [click] CLAUDE.md at the repository root — read first, closest to launch
-- [click] CLAUDE.local.md — gitignored, appended right after CLAUDE.md at the same level
+- [click] CLAUDE.local.md — your personal preferences for your CLASH clone; CLAUDE.md is shared through git. Add it to .gitignore yourself. Appended right after CLAUDE.md at the same level
 - [click] A subdirectory's CLAUDE.md loads when Claude reads a file there — read last, closest to the work
-- [click] .claude/rules/*.md loads the same way, on demand
+- [click] .claude/rules/*.md — a plain rule loads at launch, like CLAUDE.md. Task 10 shows the kind that waits for a matching file
 - [click] All of it lands in one context — nothing is dropped, nothing is chosen
 - [click] Two files disagree? Claude picks one. That is a bug you created, not a feature
 
 <!-- @note: personal-rules-follow-you -->
 > Do:
-> - Contrast the personal tone rule from task 06 with the project rule that task 10 will build later.
-> - Do not teach paths frontmatter here; save that mechanism for task 10.
+> - Name step 9: participants add ~/.claude/rules/tone.md there
+> - Do not teach paths frontmatter here: that is task 10
 
 Say:
-- Personal defaults belong under ~/.claude/rules when they are about you, not the repository.
-- Repository-wide invariants belong in CLAUDE.md.
-- A project rule that only appears for matching files is a different mechanism. Task 10 gets a clean block for that instead of previewing it here.
+- ~/.claude/rules/ holds what is about you, in every project
+- [click] CLAUDE.md holds what is about CLASH itself, shared through git
+- Personal, but only for CLASH? That is CLAUDE.local.md, not CLAUDE.md
 
 <!-- @note: references-beat-grep-and-guess -->
 > Do:

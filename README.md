@@ -112,7 +112,7 @@ reference CLASH. clash-conference has one reset branch of its own, `19-start`.
 - A browser test suite and a measured performance fix.
 - The audit running headless in CI, a worktree flow, and a small Agent SDK program.
 - One feature of your choice, shipped with everything above.
-- Claude Code working with nobody at the keyboard: an output style, a loop, a background session, a routine in the cloud.
+- Claude Code working with nobody at the keyboard: an output style, a goal, a loop, a background session, a routine in the cloud.
 - Your own MCP server on CLASH, and a second app, `clash-conference`, that publishes its talks as clashes through it.
 
 ## Slides

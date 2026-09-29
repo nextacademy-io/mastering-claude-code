@@ -52,6 +52,7 @@ Sagen:
 Sagen:
 - [click:2] Output-Replacement: PostToolUse unterstützt `hookSpecificOutput.updatedToolOutput` für ALLE Tools, nicht nur MCP
 - Damit das laute Log von `npm run build` auf eine Pass/Fail-Zeile eindampfen, bevor es den Context erreicht
+- Der Ersatz braucht die Form des Tools. Bei Bash ist das ein Objekt mit stdout, stderr, interrupted und isImage; ein einfacher String wird ignoriert, und das volle Log kommt trotzdem an
 - Dasselbe "Context ist ein Budget"-Argument, jetzt auf einen Hook angewendet statt auf eine CLAUDE.md-Regel
 
 <!-- @note: pretooluse-deny-rules -->
@@ -73,6 +74,7 @@ Sagen:
 Sagen:
 - Verdrahtet unter "Stop", ohne Matcher — Stop hat kein Tool, gegen das es matchen könnte
 - Stop gatet das Ende eines TURNS, nicht einen Tool-Call
+- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl außerhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
 
 <!-- @note: advice-vs-law -->
 > Tun:
@@ -85,13 +87,14 @@ Sagen:
 - [click] Ein Skill ist, was du einem neuen Kollegen sagst; ein Hook ist, was die CI ablehnt
 - Wenn eine Regel in CLAUDE.md immer wieder wiederholt wird und der Agent trotzdem daran vorbeidriftet, wollte diese Regel ein Hook sein
 - Das Subsystem ist `settings.autoMode.hard_deny`, Teil vom Auto-Modus, wo ein Classifier Aktionen prüft statt du selbst — keine PreToolUse-Entscheidung
+- Außerhalb des Auto-Modus bewirkt hard_deny nichts. Was in jedem Modus blockiert, auch in bypassPermissions, ist eine permissions.deny-Regel oder ein PreToolUse-Hook
 
 <!-- @note: settings-override-each-other -->
 > Tun:
 > - Docs-Link: öffnen, bis "Settings precedence" scrollen, dann zurück zu den Folien
 
 Sagen:
-- Fünf Orte halten Einstellungen. Für einen Schlüssel gewinnt nur einer davon
+- Fünf Orte halten Einstellungen. Bei einem einfachen Schlüssel gewinnt der höchste. Listen wie permissions.allow und alle Hooks werden zusammengeführt: jede Datei fügt ihre Einträge hinzu
 - [click] Managed — deine Organisation stellt es bereit, nichts überschreibt es
 - [click] Command line — `claude --settings`, nur für eine Session
 - [click] Project local — `.claude/settings.local.json`, deine eigene, nie committet
@@ -101,6 +104,7 @@ Sagen:
 <!-- @note: the-sandbox-limits-what-a-command-touches -->
 > Tun:
 > - Bei Zeit live `/sandbox` ausführen — die Tabs Mode und Config zeigen
+> - Mode-Tab: auto-allow führt Befehle in der Sandbox ohne Nachfrage aus; regular permissions schickt jeden Befehl durch deine normalen Permission-Regeln, nicht erlaubte fragen also weiter. Beide halten dieselben Grenzen. Erlaubte Hosts sind kein Modus: sie stehen in der Netzwerk-Allowlist
 > - Docs-Link: öffnen, bis "How sandboxing works" scrollen, dann zurück zu den Folien
 
 Sagen:
@@ -123,29 +127,31 @@ Sagen:
 
 
 <!-- @note: ignored-by-git-is-not-hidden -->
-> Do:
-> - Verweise auf Task 02: Dass .env nicht in git status erschien, war nützlich, aber keine Security-Grenze.
-> - Öffne bei Bedarf die Env-Var-Doku: Glob berücksichtigt .gitignore standardmässig nicht als Sichtbarkeitsgrenze.
+> Tun:
+> - Auf Task 02 zurückverweisen: dass .env in git status fehlte, war nützlich, aber nie eine Security-Grenze
+> - Docs-Link: öffnen, auf `CLAUDE_CODE_GLOB_NO_IGNORE` und `CLAUDE_CODE_GLOB_HIDDEN` zeigen (beide nehmen die Dateien standardmäßig mit), dann zurück zu den Folien
+> - Achten auf: unter macOS, Linux und WSL sucht Claude mit find über Bash, nicht mit Glob — die beiden Variablen ändern nur Glob
 
-Say:
-- Git ignore beantwortet eine Frage: Soll Git diesen Pfad tracken? Sichtbarkeit für Claude-Tools ist eine andere Frage.
-- Dotfiles und gitignored Dateien können von Glob standardmässig weiterhin gefunden werden.
-- Secrets brauchen Permissions oder Hooks, die den Read verweigern, nicht Vertrauen in .gitignore.
+Sagen:
+- .gitignore beantwortet eine Frage: Soll Git diesen Pfad tracken?
+- [click] Was Claudes Tools sehen, ist eine andere Frage: Glob findet Dateien aus .gitignore und Dotfiles standardmäßig trotzdem
+- [click] Unser .env-Hook beobachtet nur das Read-Tool. Eine Permission-Deny-Regel auf Read stoppt auch cat, head und tail; nur die Sandbox (macOS, Linux, WSL2) stoppt grep -r und Skripte
 
 <!-- @note: tool-output-becomes-local-history -->
-> Do:
-> - Demonstriere kein echtes Credential. Zeige nur den Weg.
-> - Verweise auf die eben gebaute .env-Deny-Regel.
+> Tun:
+> - Kein echtes Credential vorführen. Nur den Weg zeigen
+> - Auf den .env-Hook zeigen, den sie gerade gebaut haben: er blockt das Read-Tool, aber kein cat in Bash
+> - Docs-Link: öffnen, bis "Plaintext storage" scrollen, dann zurück zu den Folien
 
-Say:
-- Tool-Eingaben und Resultate werden in lokalen Session-Transcripts im Klartext gespeichert.
-- Gibt ein Command ein Token aus oder Read öffnet ein Secret, kann der Wert im Transcript stehen, obwohl die Datei gitignored ist.
-- Halte Credential-Reads aus der Tool-Oberfläche heraus und wähle die Transcript-Retention bewusst.
+Sagen:
+- Tool-Eingaben und -Ergebnisse landen im Klartext in lokalen Session-Transcripts
+- Gibt ein Befehl ein Token aus oder öffnet Read ein Secret, kann der Wert im Transcript stehen, auch wenn die Datei selbst gitignored ist
+- Credential-Reads verbieten und kürzer halten, wie lange Transcripts bleiben: das regelt cleanupPeriodDays
 
 
 <!-- @note: security-three-rules -->
 > Tun:
-> - Optional: auf "Protect against prompt injection" zeigen — dieselben drei Regeln, als eigene Liste der Docs
+> - Optional: auf "Protect against prompt injection" zeigen — die eingebauten Schutzmechanismen von Claude Code; die drei Regeln auf der Folie kommen von dir obendrauf
 
 Sagen:
 - Prompt Injection in einem Satz: ein Modell kann Daten und Anweisungen nicht durch Hinsehen unterscheiden

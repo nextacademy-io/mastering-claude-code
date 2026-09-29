@@ -122,7 +122,7 @@ lines:
 
 ---
 layout: concept
-heading: "CLAUDE.md files add up, they don't compete"
+heading: "CLAUDE.md files add up"
 docs: https://code.claude.com/docs/en/memory
 lines:
   - "Every CLAUDE.md above your working directory loads — none of them wins."
@@ -136,12 +136,12 @@ layout: concept
 heading: "Personal rules follow you"
 lines:
   - "~/.claude/rules/ is for defaults that follow you across projects."
-  - "Project invariants stay in CLAUDE.md. Path rules come in task 10."
+  - "Project invariants stay in CLAUDE.md. Path-scoped rules come in task 10."
 ---
 
 <div class="grid grid-cols-2 gap-6 w-full max-w-3xl">
   <div class="na-card p-5"><div class="font-mono font-semibold mb-2">~/.claude/rules/</div><div class="text-sm" style="color: var(--na-fg-muted)">your defaults · every project</div></div>
-  <div class="na-card p-5" v-click><div class="font-mono font-semibold mb-2">CLAUDE.md</div><div class="text-sm" style="color: var(--na-fg-muted)">this project's invariants</div></div>
+  <div class="na-card p-5" v-click><div class="font-mono font-semibold mb-2">CLAUDE.md</div><div class="text-sm" style="color: var(--na-fg-muted)">CLASH's invariants</div></div>
 </div>
 
 ---

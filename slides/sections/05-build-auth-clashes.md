@@ -68,11 +68,11 @@ lines:
 <div class="grid grid-cols-2 gap-6 w-full max-w-4xl">
   <div class="na-card p-5">
     <div class="font-semibold mb-3">before /compact</div>
-    <div class="font-mono text-sm" style="color: var(--na-fg-muted)">system&nbsp;&nbsp;&nbsp; ███<br/>tools&nbsp;&nbsp;&nbsp;&nbsp; █████████████<br/>history&nbsp;&nbsp; ████████</div>
+    <div class="grid gap-2 items-center text-sm" style="grid-template-columns: 7rem 1fr; color: var(--na-fg-muted)"><span>system</span><div class="h-3 rounded" style="width: 20%; background: var(--na-zinc-500)"></div><span>tool results</span><div class="h-3 rounded" style="width: 90%; background: var(--na-primary-500)"></div><span>history</span><div class="h-3 rounded" style="width: 55%; background: var(--na-primary-400)"></div></div>
   </div>
   <div class="na-card p-5" v-click style="border-color: var(--na-accent-500)">
     <div class="font-semibold mb-3">after /compact</div>
-    <div class="font-mono text-sm" style="color: var(--na-fg-muted)">system&nbsp;&nbsp;&nbsp; ███<br/>summary&nbsp;&nbsp; ███<br/>new room&nbsp; █████████████</div>
+    <div class="grid gap-2 items-center text-sm" style="grid-template-columns: 7rem 1fr; color: var(--na-fg-muted)"><span>system</span><div class="h-3 rounded" style="width: 20%; background: var(--na-zinc-500)"></div><span>summary</span><div class="h-3 rounded" style="width: 20%; background: var(--na-accent-500)"></div><span>new room</span><div class="h-3 rounded" style="width: 90%; border: 1px dashed var(--na-zinc-500)"></div></div>
   </div>
 </div>
 

@@ -61,7 +61,7 @@ page itself. And you add quality gates so Claude checks its own work.
    - shadcn components, existing layout, existing card style
    - run npx tsc --noEmit at the end
    ```
-   Now `/new-page` is a slash command. Try it:
+   Now `/new-page` is a slash command. Not in the `/` menu yet? Run `/reload-skills`: it re-reads the skill and command folders without a restart. Then try it:
    ```
    /new-page a page /participations that lists my join requests grouped into Going, Awaiting approval, Declined
    ```

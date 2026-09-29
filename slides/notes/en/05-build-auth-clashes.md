@@ -29,14 +29,15 @@ Say:
 
 <!-- @note: compact-is-a-lossy-reset -->
 > Do:
-> - Run /context live after the auth and shell steps. Read the actual bands.
-> - Run /compact, then /context again. Compare before and after instead of only watching a tank fill.
-> - Optional: point at the docs section on /clear versus /compact.
+> - Participants do this in steps 8-9
+> - Run /context live after the auth and shell steps and read the real bands
+> - [click] Run /compact, then /context again: compare before and after
+> - In /context, tool results count as Messages; the tool bands are tool definitions and stay after /compact
+> - Optional: docs link, scroll to "Manage context proactively" for /clear vs /compact
 
 Say:
-- Compaction buys room by replacing detail with a summary. That summary is lossy.
-- Use /compact when the current thread is still valuable; use /clear when the old direction is no longer useful.
-- Part III turns this from a rescue command into a context discipline.
+- The summary is lossy: detail it drops is no longer in the window
+- Part III turns this rescue command into a context discipline
 
 <!-- @note: the-safety-moment -->
 > Do:

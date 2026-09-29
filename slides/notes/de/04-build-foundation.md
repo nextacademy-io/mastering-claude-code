@@ -21,7 +21,7 @@ Sagen:
 > - Im Manual-Modus starten, die Gruppe die ersten zwei, drei Permission-Prompts sehen lassen
 > - Das Repo ist absichtlich nicht leer. Darauf hinweisen, dass das Briefing die Workshop-Dateien vor create-next-app schützen lässt
 > - Dann zu Auto wechseln — ein Next.js-Scaffold aufzusetzen ist Standard, geringes Risiko
-> - [click] Die drei Teile am echten Scaffold-Briefing aus Task 02 zeigen
+> - Die drei Teile am echten Scaffold-Briefing aus Task 02 zeigen
 > - Kontrastieren mit dem kalten Prompt "set up a Next.js app"
 
 Sagen:
@@ -44,7 +44,7 @@ Sagen:
 <!-- @note: plan-mode-read-think-propose -->
 > Tun:
 > - Schritt 5, 7-8 machen die Teilnehmenden selbst — Schritt 6 (der eigentliche Prompt) kommt als Nächstes, auf seiner eigenen Live-Coding-Folie
-> - Live demonstrieren: Shift+Tab, bis die Statusleiste "plan mode on" zeigt (zweimal ab Manual-Modus, dreimal ab Auto — Pro/Max/Team-Sessions starten im Auto-Modus)
+> - Live demonstrieren: Shift+Tab, bis die Statusleiste "plan mode on" zeigt (zweimal ab Manual-Modus, dreimal ab Auto — ab v2.1.283 starten interaktive Sessions im Auto-Modus)
 > - Den Plan erscheinen lassen, sobald der Prompt von der nächsten Folie geschickt ist
 > - Einen Teil davon laut vorlesen, der Gruppe eine Frage stellen ("warum lib/generated/prisma?")
 > - Zurückschalten und "do it" sagen
@@ -53,45 +53,6 @@ Sagen:
 - [click] Punkt: das Datenmodell ist später schwer zu ändern — das ist der Moment, hinzuschauen, bevor Claude schreibt
 
 
-
-<!-- @note: when-a-plan-earns-its-cost -->
-> Do:
-> - Frage nach einem Beispiel, das einen Plan verdient, und einem, das keinen braucht.
-> - Halte die Grenze praktisch: Unsicherheit, Auswirkungsradius, Umkehrbarkeit.
-
-Say:
-- Planung ist nicht gratis. Sie liest Code, erzeugt Text und schafft ein weiteres Artefakt für den Review.
-- Bezahle diesen Aufwand, wenn eine falsche Richtung teuer ist oder der Ansatz wirklich unklar ist.
-- Wenn du den Diff in einem Satz beschreiben und günstig verifizieren kannst, ist direkte Umsetzung oft der bessere erste Schritt.
-
-<!-- @note: a-good-plan-has-an-exit -->
-> Do:
-> - Gehe die acht Felder von links nach rechts durch.
-> - Stoppe bei Verifikation und Done. Sie machen aus einem Plan ein ausführbares Arbeitspaket.
-
-Say:
-- Ein guter Plan ist keine Repository-Führung. Er nennt die Entscheidungsgrenze und wie riskante Schritte geprüft werden.
-- Evidence bedeutet echte Dateien, Contracts und beobachtetes Verhalten. Risks nennen, was den Ansatz ungültig machen würde.
-- Done ist beobachtbar. Ein Plan ohne Exit-Kriterium wächst oft noch während der Umsetzung.
-
-<!-- @note: plan-or-roadmap -->
-> Do:
-> - Frage: Könnten zwei mittlere Teile unabhängig reviewed, gemerged oder zurückgerollt werden? Dann sind es Work Packages.
-
-Say:
-- Ein Plan beschreibt eine zusammenhängende Änderung mit einer Acceptance-Grenze.
-- Sobald mehrere Ergebnisse unabhängig wertvoll, mergebar oder revertierbar sind, hilft eine Roadmap mit kleineren Plänen darunter.
-- Kleinere Grenzen machen Review, Delegation, Rollback und Verifikation günstiger.
-
-<!-- @note: upgrade-the-planner-not-the-run -->
-> Do:
-> - Zeige opusplan in der Model-Doku: Opus beim Planen, Sonnet bei der Ausführung.
-> - Erkläre das Reviewer-Muster, ohne einen zweiten Anbieter oder ein zweites Tool vorzuschreiben.
-
-Say:
-- Nutze das teure Modell für die Entscheidung, wenn die Entscheidung der schwierige Teil ist; Routine-Ausführung braucht es nicht automatisch.
-- Ein frischer Reviewer greift Annahmen, fehlende Constraints und Verifikationslücken an.
-- Schicke nicht den kompletten Plan endlos zwischen Reviewern hin und her. Kläre die Differenzen, friere das Work Package ein, setze um und verifiziere.
 
 <!-- @note: plan-the-data-model -->
 > Tun:
@@ -104,6 +65,46 @@ Sagen:
 - tsx macht den TypeScript-Seed über die im Workshop unterstützten Node-Versionen reproduzierbar
 - Prisma 7.10+ kann prisma7.config.ts erzeugen; ältere 7.x-Projekte können weiterhin prisma.config.ts verwenden
 - der Seed ist das, womit sich jede spätere Task einloggt
+
+<!-- @note: when-a-plan-earns-its-cost -->
+> Tun:
+> - Der Plan fürs Datenmodell hat seinen Preis gerade verdient: ein Schema ist später schwer zu ändern
+> - Die Gruppe nach einer Änderung fragen, die keinen Plan braucht. Danach entscheiden, wie unsicher der Ansatz ist, wie viel er kaputt machen kann und wie leicht er sich rückgängig machen lässt
+
+Sagen:
+- Ein Plan kostet Tokens und Review-Zeit: er liest Code und schreibt ein weiteres Dokument zum Prüfen
+- [click] Lässt sich der Diff in einem Satz beschreiben und günstig prüfen, den Plan weglassen
+
+<!-- @note: a-good-plan-has-an-exit -->
+> Tun:
+> - Auf den Datenmodell-Plan zurückkommen: welche der acht Felder hat er?
+> - Docs-Link: öffnen, bis "Explore first, then plan, then code" scrollen, dann zurück zu den Folien
+
+Sagen:
+- Evidence heißt echte Dateien, Contracts und beobachtetes Verhalten, kein Rundgang durch deinen CLASH-Clone
+- [click:2] Risks: was den Ansatz kippen würde
+- [click] Verification: wie jeder riskante Schritt geprüft wird
+- [click] Done ist beobachtbar. Ohne Done wächst ein Plan während der Umsetzung weiter
+
+<!-- @note: plan-or-roadmap -->
+> Tun:
+> - Fragen: Ließen sich zwei mittlere Teile einzeln reviewen, mergen oder rückgängig machen? Wenn ja, sind es Work Packages
+
+Sagen:
+- Ein Plan umfasst eine Änderung, die sich als Ganzes prüfen lässt
+- Lassen sich die Teile einzeln ausliefern oder rückgängig machen, braucht es eine Roadmap mit einem kleinen Plan pro Teil
+- Kleinere Teile lassen sich günstiger reviewen, übergeben, rückgängig machen und prüfen
+
+<!-- @note: upgrade-the-planner-not-the-run -->
+> Tun:
+> - Docs-Link: öffnen, bis "opusplan model setting" scrollen, dann zurück zu den Folien
+> - Läuft eine Session schon auf Opus, ändert opusplan nur die Ausführung: sie wandert zu Sonnet
+
+Sagen:
+- Das teure Modell für die Entscheidung einsetzen; Routine-Ausführung braucht es selten
+- [click] Der frische Reviewer kann ein Subagent sein, kein zweiter Anbieter, kein zweites Tool: er greift Annahmen, fehlende Constraints und Lücken in der Verifikation an
+- [click] Die Lücken einmal schließen: ein Reviewer, der Lücken finden soll, meldet meistens welche
+- [click] Das Work Package einfrieren, umsetzen, verifizieren
 
 <!-- @note: foundation -->
 > Tun:

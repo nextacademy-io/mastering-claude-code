@@ -24,7 +24,7 @@ Sagen:
 
 <!-- @note: a-skill-that-stops-itself -->
 > Tun:
-> - Docs-Link: öffnen, zur SKILL.md-Frontmatter-Referenz scrollen, auf disable-model-invocation zeigen, dann zurück zu den Slides
+> - Docs-Link: öffnen, zur SKILL.md-Frontmatter-Referenz scrollen, auf disable-model-invocation zeigen, dann zurück zu den Folien
 
 Sagen:
 - disable-model-invocation blockiert, dass Claude von sich aus nach diesem Skill greift
@@ -41,7 +41,7 @@ Sagen:
 <!-- @note: one-cycle-red-green-stop -->
 > Tun:
 > - Live-Bau-Referenz — der genaue Body steht in tasks/11-tdd-inner-loop.md, Schritt 7
-> - Wieder auf disable-model-invocation zeigen — sagen, warum es hier steht, nicht nur, was es tut
+> - Wieder auf disable-model-invocation zeigen — sagen, warum es hier steht: Damit liegt die description-Zeile nicht in Claudes Context, „machen wir das mit TDD“ lädt den Skill also nie. Nur /tdd tut das
 
 Sagen:
 - RED muss an einer Assertion scheitern — ein Compile-Fehler heißt, der Test prüft die Verkabelung, nicht die Regel

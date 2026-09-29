@@ -10,7 +10,8 @@ const segs = [
   { label: 'CLAUDE.md', h: 30, color: 'var(--na-zinc-500)' },
   { label: 'files read', h: 110, color: 'var(--na-primary-600)' },
   { label: 'tool output', h: 90, color: 'var(--na-primary-500)' },
-  { label: 'chat', h: 70, color: 'var(--na-primary-400)' },
+  // the chat label sits low in its block, clear of the drift-zone tag above it
+  { label: 'chat', h: 70, color: 'var(--na-primary-400)', labelDy: 14 },
 ]
 const W = 180, H = 420, PAD = 10, BOTTOM = H - PAD
 const limitY = 60, driftY = 110
@@ -28,13 +29,15 @@ const tanks = [
     <svg :viewBox="`0 0 ${W + 40} ${H}`" style="height: 100%; max-height: 24rem; width: auto" role="img" aria-label="context window filling">
       <rect :x="20" :y="PAD" :width="W" :height="H - 2 * PAD" rx="14" fill="var(--na-bg-raised)" stroke="var(--na-zinc-600)" stroke-width="3" />
       <rect :x="22" :y="limitY" :width="W - 4" :height="driftY - limitY" fill="var(--na-error-500)" opacity="0.18" />
-      <text :x="20 + W / 2" :y="limitY + 30" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size: 14px">drift zone</text>
       <line :x1="14" :x2="W + 26" :y1="limitY" :y2="limitY" stroke="var(--na-error-500)" stroke-width="3" stroke-dasharray="8 6" />
-      <text :x="20 + W / 2" :y="limitY - 14" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size: 14px">window limit</text>
+      <text :x="20 + W / 2" :y="limitY - 14" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size: 19px">window limit</text>
       <g v-for="(s, i) in segs" :key="s.label" v-click="i === 0 ? false : i">
         <rect :x="24" :y="yOf(i)" :width="W - 8" :height="s.h - 3" rx="6" :fill="s.color" />
-        <text :x="20 + W / 2" :y="yOf(i) + s.h / 2 + 4" text-anchor="middle" fill="var(--na-fg)" font-weight="600" style="font-size: 14px">{{ s.label }}</text>
+        <text :x="20 + W / 2" :y="yOf(i) + s.h / 2 + 6 + (s.labelDy ?? 0)" text-anchor="middle" fill="var(--na-fg)" font-weight="600" style="font-size: 19px">{{ s.label }}</text>
       </g>
+      <!-- drawn after the segments, on its own dark tag, so it reads over the chat block -->
+      <rect :x="20 + W / 2 - 56" :y="limitY + 7" width="112" height="26" rx="13" fill="var(--na-bg-raised)" stroke="var(--na-error-500)" stroke-width="1.5" />
+      <text :x="20 + W / 2" :y="limitY + 26" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size: 19px">drift zone</text>
     </svg>
     <div class="flex flex-col gap-3 max-w-xs">
       <div class="na-card p-4">

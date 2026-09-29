@@ -140,7 +140,7 @@ heading: "Settings override each other"
 docs: https://code.claude.com/docs/en/settings
 lines:
   - "Five files, highest wins: managed, command line, project local, shared, user."
-  - "Same key in two files? The higher one applies. Always."
+  - "Same plain key in two files? The higher one wins. Lists and hooks add up."
 ---
 
 <G21SettingsPrecedence />
@@ -196,14 +196,14 @@ layout: concept
 heading: "Ignored by Git is not hidden"
 docs: https://code.claude.com/docs/en/env-vars
 lines:
-  - ".gitignore stops Git. Claude's Glob still includes ignored files by default."
-  - "Dotfiles are included too. A deny rule is the security boundary."
+  - ".gitignore stops Git, not Claude. Glob still lists ignored files and dotfiles."
+  - "A permission deny covers file tools and cat. The sandbox covers scripts too."
 ---
 
 <div class="grid grid-cols-3 gap-5 w-full max-w-4xl text-center">
   <div class="na-card p-5"><div class="font-mono font-semibold">.gitignore</div><div class="text-sm mt-2" style="color: var(--na-fg-muted)">not committed</div></div>
   <div class="na-card p-5" v-click><div class="font-mono font-semibold">Glob</div><div class="text-sm mt-2" style="color: var(--na-error-500)">still discoverable by default</div></div>
-  <div class="na-card p-5" v-click><div class="font-semibold">permission deny</div><div class="text-sm mt-2" style="color: var(--na-success-500)">actual boundary</div></div>
+  <div class="na-card p-5" v-click><div class="font-semibold">permission deny + sandbox</div><div class="text-sm mt-2" style="color: var(--na-success-500)">the real boundary</div></div>
 </div>
 
 ---
@@ -213,11 +213,11 @@ docs: https://code.claude.com/docs/en/claude-directory
 lines:
   - "File contents, command output and pasted text enter plaintext transcripts."
   - "If a tool reads a secret, assume the transcript now contains it."
-  - "Deny credential reads; choose retention deliberately."
+  - "Deny credential reads. Shorten how long transcripts are kept."
 ---
 
 <div class="flex items-center gap-4 w-full max-w-4xl justify-center text-sm">
-  <div class="na-card px-4 py-3">Read .env</div><span>→</span><div class="na-card px-4 py-3">tool result</div><span>→</span><div class="na-card px-4 py-3" style="border-color: var(--na-error-500)">session.jsonl</div>
+  <div class="na-card px-4 py-3">Read .env</div><span>→</span><div class="na-card px-4 py-3">tool result</div><span>→</span><div class="na-card px-4 py-3" style="border-color: var(--na-error-500)">~/.claude/projects/&lt;project&gt;/&lt;session&gt;.jsonl</div>
 </div>
 
 

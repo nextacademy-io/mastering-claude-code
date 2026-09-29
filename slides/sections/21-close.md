@@ -40,6 +40,10 @@ layout: section
 heading: "Further paths"
 ---
 
+<template #map>
+  <JourneyMap />
+</template>
+
 ---
 layout: concept
 heading: "Spec Kit: six steps, one constitution"
@@ -48,6 +52,7 @@ lines:
   - "Six steps: constitution, specify, plan, tasks, implement, converge."
 ---
 
+<div class="flex flex-col items-center gap-4 w-full">
 <div class="flex flex-wrap gap-3 w-full max-w-4xl justify-center">
   <div class="na-card px-4 py-3 text-sm font-mono">/speckit-constitution</div>
   <div class="na-card px-4 py-3 text-sm font-mono" v-click>/speckit-specify</div>
@@ -56,8 +61,9 @@ lines:
   <div class="na-card px-4 py-3 text-sm font-mono" v-click>/speckit-implement</div>
   <div class="na-card px-4 py-3 text-sm font-mono" v-click style="border-color: var(--na-accent-500)">/speckit-converge</div>
 </div>
-<div class="text-base mt-6 max-w-2xl text-center" style="color: var(--na-fg-muted)" v-click>
+<div class="text-base max-w-2xl text-center" style="color: var(--na-fg-muted)" v-click>
   The constitution runs once: principles for code quality, testing and maintainability that every later step reads.
+</div>
 </div>
 
 ---
@@ -69,6 +75,7 @@ lines:
   - "Party Mode puts them all in one conversation, arguing in character."
 ---
 
+<div class="flex flex-col items-center gap-4 w-full">
 <div class="grid grid-cols-5 gap-2 w-full max-w-4xl">
   <div class="na-card p-3 text-center"><div class="font-semibold text-sm">Analyst</div><div class="text-xs" style="color: var(--na-fg-muted)">Mary</div></div>
   <div class="na-card p-3 text-center" v-click><div class="font-semibold text-sm">PM</div><div class="text-xs" style="color: var(--na-fg-muted)">John</div></div>
@@ -76,11 +83,12 @@ lines:
   <div class="na-card p-3 text-center" v-click><div class="font-semibold text-sm">Developer</div><div class="text-xs" style="color: var(--na-fg-muted)">Amelia</div></div>
   <div class="na-card p-3 text-center" v-click><div class="font-semibold text-sm">UX</div><div class="text-xs" style="color: var(--na-fg-muted)">Sally</div></div>
 </div>
-<div class="text-base mt-6 max-w-2xl text-center" style="color: var(--na-fg-muted)" v-click>
+<div class="text-base max-w-2xl text-center" style="color: var(--na-fg-muted)" v-click>
   <span class="font-mono" style="color: var(--na-accent-500)">/bmad-party-mode</span> — for a decision with a real tradeoff, not a routine step.
 </div>
-<div class="text-base mt-3 max-w-2xl text-center" style="color: var(--na-fg-muted)" v-click>
+<div class="text-base max-w-2xl text-center" style="color: var(--na-fg-muted)" v-click>
   <span class="font-mono" style="color: var(--na-accent-500)">bmad-build</span> — intent, plan, spec, code, review: <a href="https://docs.bmad-method.org/build/build-a-change/#run-bmad-build" target="_blank" rel="noopener" style="color: var(--na-accent-500)">run bmad-build</a>
+</div>
 </div>
 
 ---
@@ -89,15 +97,6 @@ heading: "Spec Kit vs BMAD"
 lines:
   - "Spec Kit: low ceremony, agent-agnostic, a Python/uv tool."
   - "BMAD v6: five named agents, heavyweight, maps onto roles you already have."
-  - "Both shine on greenfield, but not only there. CLASH is both."
 ---
 
 <G20SpecKitVsBmad />
-
----
-layout: concept
-heading: "What we did not cover"
-lines:
-  - "Channels: events pushed into a running session"
-  - "Computer use: Claude clicks native apps"
----

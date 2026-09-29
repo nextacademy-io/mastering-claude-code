@@ -6,19 +6,19 @@ Sagen:
 - Vier Dinge zu lernen, vier Dinge zu bauen — Venues folgen genau dem Muster, das du schon kennst
 
 <!-- @note: reuse-information-by-reference -->
-> Do:
-> - Zeige die drei Stufen. Die Teilnehmer sind jetzt in der Mitte; Task 07 erreicht die dritte Stufe.
-> - In Task 04 Schritt 3 benutzen sie das @reference-Muster.
+> Tun:
+> - Schritt 3 machen die Teilnehmenden selbst: Venues folgen @app/actions/clashes.ts
 
-Say:
-- Die erste Umsetzung braucht einen vollständigen Brief, weil das Muster noch nicht existiert.
-- Sobald das Repository das Muster enthält, verweise darauf, statt es aus dem Gedächtnis neu zu erklären. Das ist günstiger und konsistenter.
-- Überlebt dieselbe Instruktion eine dritte Verwendung, bezahle nicht weiter Prompt-Steuer: packe sie in Command, Skill oder Rule.
+Sagen:
+- Clashes brauchten das vollständige Briefing: das Muster gab es noch nicht
+- [click] Jetzt hat dein CLASH-Clone das Muster. Darauf zeigen, statt es neu zu erklären: günstiger und konsistenter
+- [click] Beim dritten Mal verpacken: Schritt 4 auf der nächsten Folie macht einen Command, Task 07 einen Skill, Task 10 eine Rule
 
 <!-- @note: your-first-slash-command -->
 > Tun:
 > - Kurz erwähnen: Commands sind in Skills aufgegangen — diese Datei funktioniert weiterhin, Task 07 zeigt den bevorzugten Weg, einen zu schreiben
 > - Schritt 4 machen die Teilnehmenden selbst
+> - /new-page noch nicht im /-Menü? /reload-skills ausführen — liest die Skill- und Command-Ordner neu ein. Live erkannt werden laut Docs nur Skill-Ordner
 > - Optional: auf den Hinweis der Docs-Seite zeigen: "To add your own commands, see skills"
 > VOLLSTÄNDIGE DATEI (wörtlich aus tasks/04-venues-map-people.md):
 >
@@ -93,12 +93,10 @@ Sagen:
 - Claude den Fehler geben, nicht von Hand fixen
 
 <!-- @note: verify-cheap-first-full-gate-last -->
-> Do:
-> - Frage, was in der Aufgabe kaputtging und welcher Check es am frühesten gefunden hätte.
-> - Zeige die drei Ebenen. Die bestehenden Full Gates bleiben: npx tsc --noEmit, npm run lint, npm run build.
+> Tun:
+> - Fragen, was in der Task kaputtging und welcher Check es zuerst gefunden hätte
 
-Say:
-- Auch Verifikation kostet. Das schnellste brauchbare Feedback gehört so nah wie möglich an die Änderung.
-- Eine Ein-Datei-Änderung sollte nicht erst den teuersten Gesamt-Build abwarten, um zu erfahren, dass sie falsch ist.
-- Vor Done laufen die vollständigen Delivery Gates. Part IV macht einige davon später erzwingbar.
-- Wenn immer dieselbe Gate-Kette nötig ist, packe sie in ein Repository-Script, damit Mensch, Claude und CI dasselbe ausführen.
+Sagen:
+- Auch Checks kosten Zeit: der günstigste Check, der scheitern kann, kommt direkt nach der Änderung
+- [click] npx tsc --noEmit und npm run lint schließen ein Work Package ab
+- [click] npm run build vor "fertig": der Abschnitt "Quality gates" aus Schritt 11. Teil IV erzwingt ihn mit einem Hook

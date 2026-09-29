@@ -14,6 +14,7 @@ Sagen:
 Sagen:
 - Vier Dinge: von einem laufenden Server aus starten, drei Tools entwerfen, selektiv vertrauen, aus clash-conference aufrufen
 - Die Schreib-Tools sind die interessanten: der Server lehnt schlechte Eingaben ab, das Modell improvisiert nicht
+- Nur stdio ist ein MCP-Begriff. dev.db, reply() und refuse() sind CLASH-Startercode in mcp/server.ts auf dem 19-start von CLASH
 
 <!-- @note: a-server-is-four-registered-tools -->
 > Tun:

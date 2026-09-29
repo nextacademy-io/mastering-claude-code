@@ -1,20 +1,24 @@
 <!-- @note: three-levers-one-responsibility -->
 > Do:
-> - Pause on each word. Ask for one course example: context, reasoning, evidence.
+> - Pause on each word; ask for one course example each
 
 Say:
-- These are three different engineering problems. Do not solve one by turning another knob.
-- Missing facts are a context problem. A difficult trade-off can be a reasoning problem. Trust is an evidence problem.
-- You own the boundary between all three.
+- Three different engineering problems: never fix one by turning another knob
+- Missing facts: a context problem
+- [click] A hard trade-off: a reasoning problem
+- [click] Trust: an evidence problem
+- You own the boundary between all three
 
 <!-- @note: autonomy-is-earned-by-verification -->
 > Do:
-> - Walk the staircase from left to right. The height is autonomy, not model intelligence.
+> - Walk the staircase left to right: height is autonomy, not model intelligence
 
 Say:
-- Every step away from the keyboard removes an immediate human correction loop.
-- Replace that lost supervision with stronger evidence, isolation, limits and recovery.
-- Autonomy is not the goal by itself. Reliable completion is the goal.
+- You watch: every mistake meets a human correction at once
+- [click] Goal + gates: each step away from the keyboard removes that correction loop
+- [click] Isolated agents: replace the lost supervision with evidence and isolation
+- [click] Background and batch: add limits and recovery
+- [click] CI and routine: reliable completion is the goal, not autonomy
 
 <!-- @note: context-is-king-you-push-it-you-own-it -->
 > Do:
@@ -29,11 +33,13 @@ Say:
 
 <!-- @note: further-paths -->
 > Do:
-> - This is the stop point for optional reserve material. The workshop already closed on the previous slide.
-> - Continue only when the group has room or asks about process frameworks.
+> - This divider opens the optional reserve. The workshop already closed on the previous slide
+> - Continue only when the group has spare capacity or asks about process frameworks
+> - Name the two things the workshop does not cover, so nobody wonders why they were missing
 
 Say:
-- Everything after this divider is reserve material, not another required part of the learning path.
+- Everything after this divider is reserve material, not another required part of the learning path
+- Not covered: Channels push events into a running session. Computer use lets Claude click native apps
 
 <!-- @note: spec-kit-six-steps-one-constitution -->
 > Do:
@@ -54,13 +60,13 @@ Say:
 
 <!-- @note: bmad-five-agents-one-party-mode -->
 > Do:
-> - Docs link: the BMAD repo README on GitHub — point at the five agents and the install line, then back to the slides
+> - Docs link: the BMAD repo README on GitHub — point at the delivery loop graphic and the install line under "Start Building", then back to the slides
 > - FULL WORKING SOLUTION (trainer only, install if demoing):
 >   npx skills add bmad-code-org/BMAD-METHOD
 
 Say:
 - The delivery loop: clarify, plan, build and verify, learn and adjust — loops back to plan
-- [click] PM — product priorities and scope
+- [click] PM = Product Manager, John: writes the PRD (the product requirements document), sets priorities and scope. Not a project manager
 - [click] Architect — the technical shape of the solution
 - [click] Developer — implementation
 - [click] UX — the interface and the experience
@@ -81,11 +87,3 @@ Say:
 - Rule of thumb: Spec Kit when you want spec discipline without process overhead; BMAD when the organisation already has those roles
 - BMAD will not conjure a process you do not have
 - [click] Honest note: both shine on greenfield, but work on existing code too. CLASH is both — greenfield in Part II, brownfield ever since — and clash-conference was a greenfield BMAD build
-
-<!-- @note: what-we-did-not-cover -->
-> Do:
-> - Keep it short. /goal and /batch are no longer on this list because the course now teaches them.
-
-Say:
-- Channels push events into an open session. Computer use lets Claude interact with native apps.
-- Both are adjacent capabilities, not prerequisites for the engineering model you learned here.

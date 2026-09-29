@@ -63,6 +63,7 @@ Say:
 - [click] The loop ends when the verifier accepts or the round limit is reached
 - Vague criteria mean the verifier waves everything through — write the checks down
 - Claude Code has one built in: /goal — a small model checks each turn, sends a reason back
+- The five names come from this blog post, not from the Claude Code docs. No Claude Code feature is tied to them, unlike the keyword ultracode — the ways slides give plain-word prompts for each flow
 
 <!-- @note: generator-verifier-make-then-check-2 -->
 > Do:
@@ -141,6 +142,8 @@ Say:
 Say:
 - Row 1: no broadcast — to reach two teammates, send two messages
 - Row 2: cross-session messaging: Claude messages another of your sessions by name
+- Built in, no shared file: Claude lists your running sessions with ListAgents and sends with SendMessage. See them yourself with /list-agents. Needs Claude Code v2.1.224, on native Windows v2.1.234
+- @web is a session name, not a path: type @ and the first letters of the name, then pick the session from the list that pops up (v2.1.232 or later). Set the name with --name or /rename
 - Row 3: one notice when that session goes idle — not a lasting subscription
 - No topics, no router: that's why the footnote says "closest ways"
 
@@ -219,6 +222,7 @@ Say:
 - [click] Left, the script: `phase('Review')` groups the agents after it; `meta.phases` repeats the titles
 - [click] Right, `/workflows`: one row per phase with agent count and token total; Enter drills in
 - [click] One phase() call, one row — Review is a pipeline() over files, Verify a parallel()
+- The agent count per phase comes from the script, not a setting: one agent() call is one agent, pipeline() starts one per file. To change it, say so in the prompt. Dynamic workflow size in /config only sets a total, as advice
 - Real example, this workshop's build workflow: seven phases — Facts, Build, Author, Translate, Proof, Fix, Critic
 - Facts and Build share a parallel(); Author → Translate is a pipeline(); Fix loops three rounds max
 
@@ -253,18 +257,8 @@ Say:
 Say:
 - Three results side by side: findings, time, tokens, main-thread context burn
 - `/cost` says the token number out loud for you — alias for `/usage`
+- Parallelism row: the documented defaults — up to 20 subagents at once, 3–5 teammates to start, up to 16 workflow agents at once. A team is for peers that must talk, not for more parallel work
 - Task ends with shipped code — that's what 13-start carries
-
-
-
-<!-- @note: pick-the-parallelism-primitive -->
-> Do:
-> - Ask for one example per row. Keep the answer about communication and isolation, not fashion.
-
-Say:
-- Parallelism is not one feature. Pick the smallest coordination mechanism that matches the dependency between workers.
-- A subagent protects your main context. A team exists because peers need to talk. A workflow makes the fan-out repeatable. Worktrees isolate edits. /batch is for many separable pull requests.
-- More agents are not automatically faster: every worker has its own context and token spend.
 
 <!-- @note: team-and-workflow-audit -->
 > Do:

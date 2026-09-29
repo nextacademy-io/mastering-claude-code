@@ -51,11 +51,11 @@ Say:
 > - Name it, don't pick it
 
 Say:
-- In auto mode no prompt appears
+- In auto mode the classifier decides instead of you; a prompt still appears for ask rules, the first read outside the working folder, or after repeated blocks
 - Option two writes a rule into settings — allows this class of command from now on
 - Option three lets you type a correction
 - Bash prompts can show one more choice, "Yes, and switch to auto mode"
-- Shift+Tab cycles the modes: auto → manual → accept edits → plan → back to auto. Pro, Max and Team sessions start in auto; API-key and Enterprise sessions start in manual — and so can the first session right after installing
+- Shift+Tab cycles the modes: auto → manual → accept edits → plan → back to auto. With no mode set and auto mode available, every interactive session starts in auto (since v2.1.283; before, only Pro, Max and Team); claude -p starts in manual — and so can the first session right after installing
 - Accept-edits stops asking for file edits; plan mode is read-only
 - Plan mode gets used a lot from the next part on
 
@@ -75,7 +75,7 @@ Say:
 > - Mention only, don't demo at length
 
 Say:
-- [click] IDE extensions run the same Claude Code
+- [click] IDE extensions run the same Claude Code, but the VS Code panel has only some of the commands and skills, no ! shortcut and no Tab completion. For the rest, run claude in VS Code's integrated terminal — the JetBrains plugin always works that way
 - Edits show as inline diffs; current file and selection passed as context
 - Everyone can pick their own surface
 - Workshop uses the terminal — same everywhere
@@ -121,7 +121,7 @@ Say:
 - Two different kinds of flag: what a session can do, and which session opens
 - [click] --settings stacks above your own files, below managed — good for a one-off experiment
 - [click] -p answers and exits. No conversation left running
-- [click] --resume and --continue are the next two slides
+- [click] --resume and --continue get their own slide, after print mode and the effort lab
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Do:
@@ -132,6 +132,29 @@ Say:
 - This is what a script or another program calls — no terminal UI, no back-and-forth
 - --output-format json gives you something you can pipe into another tool
 - The "never claude -p in CI" rule from the GitHub Actions module is about that one YAML step, not this
+
+<!-- @note: same-task-different-effort -->
+> Do:
+> - Run it in a new empty folder outside the workshop repository and your CLASH clone, holding only a copy of workshop-artifacts/reasoning-lab/review.ts: no answer key, no CLAUDE.md, no project hooks
+> - Check that CLAUDE_CODE_EFFORT_LEVEL is not set and no maxEffortLevel cap sits below high: either one can make both runs use the same level
+> - FULL WORKING SOLUTION (trainer only): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+>   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+> - Docs link: open it, scroll to "Set the effort level", then back to the slides
+
+Say:
+- One variable changes: effort. Score the findings and usage.output_tokens, not tone or length — thinking is billed as output
+- Skip total_cost_usd: the second run reads the prompt prefix the first run cached, so its input looks cheaper
+- The four findings, only after both runs: cancelled returns true; null capacity means unlimited but becomes 0; the full check uses > instead of >=; sort mutates participantIds
+
+<!-- @note: measure-the-extra-reasoning -->
+> Do:
+> - Fill the table from the two live results
+> - If both runs find all four, say that clearly: this task did not earn higher effort. That is a useful result
+
+Say:
+- Reasoning has value only through better decisions or less rework
+- The useful comparison is total engineering effort: reasoning plus implementation plus rework plus verification
+- Repeat this experiment on one real task before changing a team's default effort
 
 <!-- @note: pick-up-where-you-left-off -->
 Say:

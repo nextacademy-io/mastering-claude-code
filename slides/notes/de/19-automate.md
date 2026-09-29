@@ -4,8 +4,8 @@
 
 Sagen:
 - Bisher saßt du an der Tastatur: du hast getippt, Claude hat gearbeitet, du hast zugeschaut
-- Vier Wege, sich zu entfernen, jeder klein und echt
-- Die ersten drei machst du selbst; der vierte braucht ein claude.ai-Abo und GitHub-Zugriff
+- Fünf Wege, sich zu entfernen, jeder klein und echt
+- Die ersten vier machst du selbst; der fünfte braucht ein claude.ai-Abo und GitHub-Zugriff
 
 <!-- @note: task-18-automate -->
 > Tun:
@@ -13,7 +13,7 @@ Sagen:
 > - Jetzt warnen: jeder Turn endet mit npm run build (Stop-Hook aus Task 13), der Loop wirkt langsam
 
 Sagen:
-- Vier Mechanismen, ein Task: Style, Loop, Background-Session, Routine
+- Fünf Mechanismen, ein Task: Style, Goal, Loop, Background-Session, Routine
 - Der Routine-Schritt ist eine Demo; auf dem eigenen CLASH-Fork mitmachen, wenn möglich
 
 <!-- @note: an-output-style-sets-the-voice -->
@@ -52,26 +52,30 @@ Sagen:
 
 
 <!-- @note: goal-evidence-decides-when-to-stop -->
-> Do:
-> - Erkläre die Bedingung vor dem Lauf: Endzustand, Beleg, Turn-Limit.
-> - Sage ausdrücklich, dass /goal den Permission Mode nicht ändert. Auto Mode ist die separate Entscheidung für unbeaufsichtigte Arbeit.
+> Tun:
+> - Docs-Link: "Write an effective condition" — die drei Punkte, dann der Satz zur Turn-Klausel darunter
+> - Vor jedem Lauf die vier Teile nennen: Endzustand, Beleg, Constraints, Turn-Limit
 
-Say:
-- /goal ist nicht einfach ein weiterer Loop-Befehl. Er setzt für diese Session eine Completion Condition.
-- Nach einem Turn bewertet ein kleines Modell den Transcript: erfüllt, noch nicht erfüllt oder unmöglich.
-- Ein begrenztes Goal ist sicherer als "versuch weiter": definiere einen Beleg und ein Limit wie "or stop after 20 turns".
-- Läuft noch ein Subagent oder Background-Shell, wartet die Auswertung. Lange Wartezeiten können Check-in-Turns erzeugen und kosten damit weiter.
+Sagen:
+- /goal ist kein weiterer Loop-Befehl: Er setzt eine Bedingung, wann die Arbeit in dieser Session fertig ist
+- [click] Nach jedem Turn liest ein kleines Modell das Transcript: erfüllt, noch nicht erfüllt oder unmöglich
+- [click] Noch nicht erfüllt: noch ein Turn. Erfüllt oder unmöglich: Das Goal endet. Das Turn-Limit begrenzt den Rest
+- Die Permissions bleiben, wie sie sind; unbeaufsichtigte Turns brauchen den Auto-Modus, eine eigene Entscheidung
+- Ein laufender Subagent oder eine laufende Background-Shell verzögert das Urteil; lange Wartezeiten bringen Check-in-Turns, und auch diese kosten Usage
+- /goal braucht einen vertrauenswürdigen Ordner mit erlaubten Hooks; mit disableAllHooks sagt der Befehl, warum er nicht verfügbar ist
 
 <!-- @note: bound-the-work -->
-> Do:
-> - Führe die Demo auf einem sauberen CLASH-Branch aus. Sie darf nach einem Turn fertig sein.
-> - Starte danach /goal und zeige Status, Turn-Zahl, Token-Verbrauch und Evaluator-Begründung.
-> - Optional: Zeige /goal clear nach einer absichtlich längeren Bedingung, ohne das Repo kaputtzumachen.
+> Tun:
+> - VOLLSTÄNDIGE LÖSUNG (nur für Trainer), als eine Zeile in deinem CLASH-Clone auf einem sauberen Branch getippt:
+>   /goal npx tsc --noEmit exits 0 and npm run lint exits 0; or stop after 6 turns
+> - Die Demo darf nach einem Turn fertig sein; das ist in Ordnung
+> - Auf das Urteil im Transcript zeigen (Ctrl+O zeigt die Begründung), dann /goal ohne Argument ausführen: Bedingung, Turn-Zahl, Token-Verbrauch. Die Begründung zeigt /goal nur, solange ein Goal noch aktiv ist
+> - Optional: eine absichtlich längere Bedingung setzen, dann /goal clear: Er gibt Goal cleared: mit der Bedingung aus. Nach einem erfüllten Goal gibt er stattdessen No goal set aus
 
-Say:
-- Entscheidend ist der Vertrag, nicht eine künstlich lange Demo.
-- Bei echter Feature-Arbeit kommen Constraints wie "keine Testdatei geändert" oder ein Browser-Ergebnis sowie ein Turn-Limit dazu.
-- Ein Goal kann bei Usage-Limits oder Hook-Fehlern pausieren und später weiterlaufen; begrenzt bleibt es durch deine Bedingung.
+Sagen:
+- Entscheidend ist der Vertrag, nicht eine künstlich lange Demo
+- Bei echter Feature-Arbeit kommen Constraints wie "keine Testdatei geändert" oder ein Browser-Ergebnis dazu, plus ein Turn-Limit
+- Ein Usage-Limit oder ein Claude-Code-Hook, der den Turn beendet, pausiert ein Goal; es bleibt gesetzt, läuft später weiter und bleibt durch deine Bedingung begrenzt
 
 <!-- @note: loop-the-prompt-comes-back -->
 > Tun:
@@ -92,7 +96,7 @@ Sagen:
 <!-- @note: background-the-session-keeps-working -->
 > Tun:
 > - Docs-Link: "How file edits are isolated". Einmal vorher trocken durchspielen: der Stop-Hook feuert im Worktree
-> - Live, aus einem Terminal im Root deines CLASH-Clones, nicht in einer Session: der Befehl `claude --bg --name audit …` aus tasks/18-automate.md Schritt 12
+> - Live, aus einem Terminal im Root deines CLASH-Clones, nicht in einer Session: der Befehl `claude --bg --name audit …` aus tasks/18-automate.md Schritt 13
 > - Kehrt sofort zurück: kurze id, dann claude agents, claude attach <id>, claude logs <id>, claude stop <id>
 > - Dann claude agents: Zeile audit wählen, Space zeigt die Vorschau, Enter hängt an, ← auf leerem Prompt trennt die Session
 
@@ -134,5 +138,5 @@ Sagen:
 > - Answer Key: workshop-artifacts/18-automate/ mit host-notes.md, loop.md, schedule-prompt.md und den Smoke-Tests im README
 
 Sagen:
-- Fragen: welcher der vier braucht eine offene Session, welcher läuft bei ausgeschaltetem Rechner?
+- Fragen: welcher der fünf braucht eine offene Session, welcher läuft bei ausgeschaltetem Rechner?
 - Go further: Capstone-Brief B mit claude --bg starten, Brief A im Vordergrund bauen

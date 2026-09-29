@@ -7,18 +7,18 @@ Say:
 
 <!-- @note: reuse-information-by-reference -->
 > Do:
-> - Point at the three stages. Participants are at the middle stage now; task 07 reaches the third.
-> - Participants use the @reference pattern in task 04 step 3.
+> - Participants do this in step 3: venues follow @app/actions/clashes.ts
 
 Say:
-- The first implementation needs a full brief because the pattern does not exist yet.
-- Once the repository contains the pattern, point at it instead of retelling it from memory. That is cheaper and more consistent.
-- When the same instruction survives a third use, stop paying prompt tax and package it as a command, skill or rule.
+- Clashes needed the full brief: the pattern did not exist yet
+- [click] Now your CLASH clone has it. Point at it instead of retelling it: cheaper and more consistent
+- [click] Third use: package it. Step 4, on the next slide, makes a command; task 07 a skill, task 10 a rule
 
 <!-- @note: your-first-slash-command -->
 > Do:
 > - Flag in passing: commands merged into skills — this file still works, task 07 shows the preferred way to write one
 > - Participants do this in step 4
+> - /new-page not in the / menu yet? Run /reload-skills — it re-reads the skill and command folders. The docs only promise live pickup for skill folders
 > - Optional: point at the docs page's own note: "To add your own commands, see skills"
 > FULL WORKING FILE (verbatim from tasks/04-venues-map-people.md):
 >
@@ -94,11 +94,9 @@ Say:
 
 <!-- @note: verify-cheap-first-full-gate-last -->
 > Do:
-> - Ask what failed during the task and which check would have caught it earliest.
-> - Show the three layers. Keep the exact full gates from the existing task: npx tsc --noEmit, npm run lint, npm run build.
+> - Ask what failed during the task and which check would have caught it first
 
 Say:
-- Verification has a cost too. The fastest useful feedback belongs closest to the edit.
-- A one-file change should not wait for the most expensive whole-app gate before learning it is wrong.
-- Run the full delivery gates before you call the work done. Part IV turns some of these checks into enforcement.
-- If the same gate is always needed, wrap it in one repository script so humans, Claude and CI run the same thing.
+- Checks cost time too: the cheapest check that can fail goes right after the edit
+- [click] npx tsc --noEmit and npm run lint close a work package
+- [click] npm run build before "done": the Quality gates section from step 11. Part IV enforces it with a hook

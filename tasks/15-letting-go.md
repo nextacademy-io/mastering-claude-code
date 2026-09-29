@@ -49,8 +49,10 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
    for the current user. Do not change app code.
    ```
 4. Check that neither session sees the other's uncommitted files. Different branch, different folder.
-5. Two related things to know: `isolation: worktree` in a subagent's header runs that subagent in its
+5. Three related things to know: `isolation: worktree` in a subagent's header runs that subagent in its
    own worktree. The `EnterWorktree` and `ExitWorktree` tools let an agent do this itself mid-session.
+   And `/batch` splits many separate changes into 5 to 30 units, each in its own worktree with its own
+   pull request, after you approve the split. We do not run it on CLASH.
 
 **Headless in CI**
 
@@ -109,5 +111,7 @@ else. Try it on CLASH, then find it again with `claude agents`.
 ## Links
 
 - Worktrees — https://code.claude.com/docs/en/worktrees
+- Commands (`/batch`) — https://code.claude.com/docs/en/commands
 - Headless mode — https://code.claude.com/docs/en/headless
 - GitHub Actions — https://code.claude.com/docs/en/github-actions
+- Remote Control — https://code.claude.com/docs/en/remote-control

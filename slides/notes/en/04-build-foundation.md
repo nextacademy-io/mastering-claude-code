@@ -21,7 +21,7 @@ Say:
 > - Start in manual mode, let the group watch the first two or three permission prompts
 > - The repo is intentionally non-empty. Point out that the brief tells Claude to preserve the workshop files before create-next-app runs
 > - Then switch to auto — scaffolding a Next.js app is standard, low-risk work
-> - [click] Show the three parts with the real scaffold brief from Task 02
+> - Show the three parts with the real scaffold brief from Task 02
 > - Contrast with the cold prompt "set up a Next.js app"
 
 Say:
@@ -44,7 +44,7 @@ Say:
 <!-- @note: plan-mode-read-think-propose -->
 > Do:
 > - Participants do this in steps 5, 7-8 — step 6 (the actual prompt) is next, on its own live-coding slide
-> - Demo live: Shift+Tab until the status bar shows "plan mode on" (two presses from Manual mode, three from auto — Pro/Max/Team sessions start in auto)
+> - Demo live: Shift+Tab until the status bar shows "plan mode on" (two presses from Manual mode, three from auto — from v2.1.283 interactive sessions start in auto)
 > - Let the plan appear, once you've sent the prompt from the next slide
 > - Read one part of it out loud, ask the group a question ("why lib/generated/prisma?")
 > - Switch back and say "do it"
@@ -53,45 +53,6 @@ Say:
 - [click] Point: the data model is hard to change later — this is the moment to look before Claude writes
 
 
-
-<!-- @note: when-a-plan-earns-its-cost -->
-> Do:
-> - Ask for one example that deserves a plan and one that does not.
-> - Keep the boundary practical: uncertainty, blast radius, reversibility.
-
-Say:
-- Planning is not free. It reads code, writes prose, and creates another artifact to review.
-- Pay that cost when a wrong direction is expensive or the approach is genuinely unclear.
-- If you could describe the diff in one sentence and verify it cheaply, implementation is often the better first move.
-
-<!-- @note: a-good-plan-has-an-exit -->
-> Do:
-> - Point left to right through the eight fields.
-> - Stop on verification and done. Those are what turn a plan into an executable work package.
-
-Say:
-- A good plan is not a tour of the repository. It states the decision boundary and how each risky step will be checked.
-- Evidence means real files, contracts and observed behavior. Risks name what would invalidate the approach.
-- Done is observable. A plan with no exit condition tends to grow while it is being implemented.
-
-<!-- @note: plan-or-roadmap -->
-> Do:
-> - Ask: could two middle pieces be reviewed, merged or reverted independently? If yes, call them work packages.
-
-Say:
-- A plan should describe one coherent change with one acceptance boundary.
-- Once several outcomes are independently valuable, mergeable or revertible, the useful artifact is a roadmap with smaller plans underneath it.
-- Smaller boundaries make review, delegation, rollback and verification cheaper.
-
-<!-- @note: upgrade-the-planner-not-the-run -->
-> Do:
-> - Point out opusplan in the model docs: Opus while planning, Sonnet for execution.
-> - Explain the reviewer pattern without turning it into a required second vendor or tool.
-
-Say:
-- Spend the expensive model on the decision when the decision is the hard part; routine execution does not automatically need it.
-- A fresh reviewer should attack assumptions, missing constraints and verification gaps.
-- Do not bounce the whole plan through reviewers indefinitely. Resolve the disagreements, freeze the work package, execute, then verify.
 
 <!-- @note: plan-the-data-model -->
 > Do:
@@ -104,6 +65,46 @@ Say:
 - tsx makes the TypeScript seed command portable across the workshop's supported Node versions
 - Prisma 7.10+ may generate prisma7.config.ts; older 7.x projects can still use prisma.config.ts
 - the seed is what every later task logs in with
+
+<!-- @note: when-a-plan-earns-its-cost -->
+> Do:
+> - The data-model plan just earned its cost: a schema is hard to change later
+> - Ask the group for one change that does not need a plan. Judge by how unsure you are, how much it can break and how easy it is to undo
+
+Say:
+- A plan costs tokens and review time: it reads code and writes one more document to check
+- [click] If you can describe the diff in one sentence and check it cheaply, skip the plan
+
+<!-- @note: a-good-plan-has-an-exit -->
+> Do:
+> - Go back to the data-model plan: which of the eight fields does it have?
+> - Docs link: open it, scroll to "Explore first, then plan, then code", then back to the slides
+
+Say:
+- Evidence means real files, contracts and observed behavior, not a tour of your CLASH clone
+- [click:2] Risks: what would make the approach wrong
+- [click] Verification: how each risky step gets checked
+- [click] Done is observable. Without it, a plan keeps growing during the build
+
+<!-- @note: plan-or-roadmap -->
+> Do:
+> - Ask: could two middle pieces be reviewed, merged or undone on their own? If yes, they are work packages
+
+Say:
+- A plan covers one change you can check as a whole
+- If the pieces can ship or be undone one by one, write a roadmap with a small plan per piece
+- Smaller pieces are cheaper to review, hand off, undo and check
+
+<!-- @note: upgrade-the-planner-not-the-run -->
+> Do:
+> - Docs link: open it, scroll to "opusplan model setting", then back to the slides
+> - If a session already runs Opus, opusplan changes only the run: execution moves to Sonnet
+
+Say:
+- Spend the expensive model on the decision; routine execution rarely needs it
+- [click] The fresh reviewer can be a subagent, no second vendor or tool: it attacks assumptions, missing constraints and verification gaps
+- [click] Fix the gaps once: a reviewer asked to find gaps usually reports some
+- [click] Freeze the work package, execute, verify
 
 <!-- @note: foundation -->
 > Do:

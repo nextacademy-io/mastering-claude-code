@@ -14,6 +14,7 @@ Say:
 Say:
 - Four things: start from a running server, design three tools, trust it selectively, call it from clash-conference
 - The write tools are the interesting ones: the server refuses bad input, the model cannot improvise
+- Only stdio is an MCP term. dev.db, reply() and refuse() are CLASH starter code in mcp/server.ts on CLASH's 19-start
 
 <!-- @note: a-server-is-four-registered-tools -->
 > Do:

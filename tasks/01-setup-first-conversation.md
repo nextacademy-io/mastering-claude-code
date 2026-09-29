@@ -128,6 +128,8 @@ Ask Claude to find a gap or a contradiction in the spec. Decide if it is right.
 
 - Quickstart — https://code.claude.com/docs/en/quickstart
 - How Claude Code works — https://code.claude.com/docs/en/how-claude-code-works
+- Model configuration and effort — https://code.claude.com/docs/en/model-config
+- Costs and token usage — https://code.claude.com/docs/en/costs
 - Setup — https://code.claude.com/docs/en/setup
 - Memory and CLAUDE.md — https://code.claude.com/docs/en/memory
 - Commands — https://code.claude.com/docs/en/commands

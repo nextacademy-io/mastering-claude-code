@@ -41,7 +41,7 @@ Say:
 <!-- @note: one-cycle-red-green-stop -->
 > Do:
 > - Live-build reference — the exact body is in tasks/11-tdd-inner-loop.md step 7
-> - Point at disable-model-invocation again — say why it's here, not just what it does
+> - Point at disable-model-invocation again — say why it's here: with it, the description line is not in Claude's context, so "let's do this with TDD" never loads the skill. Only /tdd does
 
 Say:
 - RED must fail on an assertion — a compile error means the test is checking plumbing, not the rule

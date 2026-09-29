@@ -63,6 +63,7 @@ Sagen:
 - [click] Die Schleife endet, wenn der Verifier akzeptiert oder das Rundenlimit erreicht ist
 - Vage Kriterien heißen: der Verifier winkt alles durch — die Prüfungen aufschreiben
 - Claude Code hat das eingebaut: /goal — ein kleines Modell prüft jeden Turn, schickt einen Grund zurück
+- Die fünf Namen stammen aus diesem Blogpost, nicht aus der Claude-Code-Doku. Kein Claude-Code-Feature hängt an ihnen, anders als am Schlüsselwort ultracode — die Ways-Folien geben für jeden Flow Prompts in eigenen Worten
 
 <!-- @note: generator-verifier-make-then-check-2 -->
 > Tun:
@@ -141,6 +142,8 @@ Sagen:
 Sagen:
 - Zeile 1: kein Broadcast — um zwei Teammates zu erreichen, zwei Messages schicken
 - Zeile 2: Cross-Session-Messaging: Claude schreibt einer anderen deiner Sessions per Name
+- Eingebaut, ohne gemeinsame Datei: Claude listet deine laufenden Sessions mit ListAgents und schickt mit SendMessage. Selbst ansehen mit /list-agents. Braucht Claude Code v2.1.224, unter nativem Windows v2.1.234
+- @web ist ein Session-Name, kein Pfad: @ und die ersten Buchstaben des Namens tippen, dann die Session aus der aufklappenden Liste wählen (ab v2.1.232). Den Namen setzt man mit --name oder /rename
 - Zeile 3: eine Nachricht, wenn diese Session idle wird — kein dauerhaftes Abo
 - Keine Topics, kein Router: darum sagt die Fußnote "closest ways"
 
@@ -219,6 +222,7 @@ Sagen:
 - [click] Links das Skript: `phase('Review')` gruppiert die Agents danach; `meta.phases` wiederholt die Titel
 - [click] Rechts `/workflows`: eine Zeile pro Phase mit Agent-Anzahl und Token-Summe; Enter öffnet die Agents
 - [click] Ein phase()-Aufruf, eine Zeile — Review ist eine pipeline() über die Dateien, Verify eine parallel()
+- Die Agent-Anzahl pro Phase kommt aus dem Skript, nicht aus einer Einstellung: ein agent()-Aufruf ist ein Agent, pipeline() startet einen pro Datei. Wer das ändern will, sagt es im Prompt. Dynamic workflow size in /config setzt nur eine Gesamtzahl, als Rat
 - Echtes Beispiel, der Build-Workflow dieses Workshops: sieben Phasen — Facts, Build, Author, Translate, Proof, Fix, Critic
 - Facts und Build teilen eine parallel(); Author → Translate ist eine pipeline(); Fix läuft max. drei Runden
 
@@ -253,18 +257,8 @@ Sagen:
 Sagen:
 - Drei Ergebnisse nebeneinander: Findings, Zeit, Tokens, Context-Verbrauch im Main-Thread
 - `/cost` sagt die Token-Zahl laut an — Alias für `/usage`
+- Zeile Parallelism: die Defaults aus den Docs — bis zu 20 Subagents gleichzeitig, 3–5 Teammates zum Start, bis zu 16 Workflow-Agents gleichzeitig. Ein Team ist für Peers, die miteinander reden müssen, nicht für mehr parallele Arbeit
 - Task endet mit geshipptem Code — das trägt 13-start
-
-
-
-<!-- @note: pick-the-parallelism-primitive -->
-> Do:
-> - Frage nach einem Beispiel pro Zeile. Die Antwort soll von Kommunikation und Isolation handeln, nicht von Mode.
-
-Say:
-- Parallelisierung ist nicht ein einzelnes Feature. Nimm den kleinsten Koordinationsmechanismus, der zu den Abhängigkeiten zwischen Workern passt.
-- Ein Subagent schützt den Hauptkontext. Ein Team existiert, weil Peers miteinander reden müssen. Ein Workflow macht Fan-out wiederholbar. Worktrees isolieren Edits. /batch ist für viele trennbare Pull Requests.
-- Mehr Agents sind nicht automatisch schneller: jeder Worker hat eigenen Kontext und eigenen Token-Verbrauch.
 
 <!-- @note: team-and-workflow-audit -->
 > Tun:

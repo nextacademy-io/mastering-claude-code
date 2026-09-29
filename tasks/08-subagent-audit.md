@@ -175,5 +175,5 @@ Ask your subagent to explain how.
 
 - Subagents — https://code.claude.com/docs/en/sub-agents
 - Tools reference — https://code.claude.com/docs/en/tools-reference
-- Discover and install plugins — https://code.claude.com/docs/en/discover-plugins
+- Install and manage plugins — https://code.claude.com/docs/en/plugins/install
 - OWASP secure-agent-playbook (the `code-security-skills` plugin) — https://github.com/OWASP/secure-agent-playbook

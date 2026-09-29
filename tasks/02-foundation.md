@@ -137,6 +137,8 @@ Ask Claude to explain every line of `prisma/schema.prisma` to you, one model at 
 ## Links
 
 - Plan mode — https://code.claude.com/docs/en/permission-modes
+- Best practices: explore, plan, code — https://code.claude.com/docs/en/best-practices
+- Model configuration: opusplan — https://code.claude.com/docs/en/model-config
 - Common workflows — https://code.claude.com/docs/en/common-workflows
 - Keyboard shortcuts — https://code.claude.com/docs/en/interactive-mode
 - create-next-app CLI — https://nextjs.org/docs/pages/api-reference/cli/create-next-app

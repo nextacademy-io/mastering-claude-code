@@ -1,20 +1,24 @@
 <!-- @note: three-levers-one-responsibility -->
-> Do:
-> - Pausiere bei jedem Begriff. Frage nach je einem Kursbeispiel für Kontext, Reasoning und Evidence.
+> Tun:
+> - Bei jedem Begriff kurz innehalten; je ein Kursbeispiel erfragen
 
-Say:
-- Das sind drei verschiedene Engineering-Probleme. Löse nicht eines davon, indem du einfach einen anderen Regler hochdrehst.
-- Fehlende Fakten sind ein Kontextproblem. Ein schwieriger Trade-off kann ein Reasoning-Problem sein. Vertrauen ist ein Evidence-Problem.
-- Du verantwortest die Grenze zwischen allen drei.
+Sagen:
+- Drei verschiedene Engineering-Probleme: Löse nie eines, indem du an einem anderen Regler drehst
+- Fehlende Fakten: ein Context-Problem
+- [click] Ein schwieriger Trade-off: ein Reasoning-Problem
+- [click] Vertrauen: ein Evidence-Problem
+- Du verantwortest die Grenze zwischen allen drei
 
 <!-- @note: autonomy-is-earned-by-verification -->
-> Do:
-> - Gehe die Treppe von links nach rechts. Die Höhe steht für Autonomie, nicht Modell-Intelligenz.
+> Tun:
+> - Die Treppe von links nach rechts durchgehen: Die Höhe steht für Autonomie, nicht für Modellintelligenz
 
-Say:
-- Jeder Schritt weg von der Tastatur entfernt eine unmittelbare menschliche Korrekturschleife.
-- Ersetze diese verlorene Aufsicht durch stärkere Belege, Isolation, Limits und Recovery.
-- Autonomie ist nicht das Ziel an sich. Zuverlässige Fertigstellung ist das Ziel.
+Sagen:
+- Du schaust zu: Jeder Fehler trifft sofort auf eine menschliche Korrektur
+- [click] Goal + Gates: Jeder Schritt weg von der Tastatur nimmt diese Korrekturschleife weg
+- [click] Isolierte Agents: Ersetze die verlorene Aufsicht durch Belege und Isolation
+- [click] Background und Batch: Limits und Recovery kommen dazu
+- [click] CI und Routine: Das Ziel ist zuverlässige Fertigstellung, nicht Autonomie
 
 <!-- @note: context-is-king-you-push-it-you-own-it -->
 > Tun:
@@ -28,12 +32,14 @@ Sagen:
 
 
 <!-- @note: further-paths -->
-> Do:
-> - Das ist der Einstieg in optionales Reserve-Material. Der Kurs ist auf der vorherigen Folie bereits geschlossen.
-> - Fahre nur weiter, wenn die Gruppe Platz hat oder nach Prozess-Frameworks fragt.
+> Tun:
+> - Dieser Trenner öffnet das optionale Reserve-Material. Der Workshop endete schon mit der vorherigen Folie
+> - Nur weitermachen, wenn die Gruppe noch Luft hat oder nach Prozess-Frameworks fragt
+> - Die zwei Dinge nennen, die der Workshop nicht behandelt, damit niemand sie vermisst
 
-Say:
-- Alles nach diesem Trenner ist Reserve-Material und kein weiterer Pflichtteil des Lernpfads.
+Sagen:
+- Alles nach diesem Trenner ist Reserve-Material und kein weiterer Pflichtteil des Lernpfads
+- Nicht behandelt: Channels schieben Events in eine laufende Session. Computer Use lässt Claude native Apps bedienen
 
 <!-- @note: spec-kit-six-steps-one-constitution -->
 > Tun:
@@ -54,13 +60,13 @@ Sagen:
 
 <!-- @note: bmad-five-agents-one-party-mode -->
 > Tun:
-> - Docs-Link: das BMAD-Repo-README auf GitHub — auf die fünf Agenten und die Install-Zeile zeigen, dann zurück zu den Slides
+> - Docs-Link: das BMAD-Repo-README auf GitHub — auf die Delivery-Loop-Grafik und die Install-Zeile unter "Start Building" zeigen, dann zurück zu den Folien
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer, bei Demo installieren):
 >   npx skills add bmad-code-org/BMAD-METHOD
 
 Sagen:
 - Die Delivery-Loop: clarify, plan, build and verify, learn and adjust — zurück zu plan
-- [click] PM — Produktprioritäten und Scope
+- [click] PM = Product Manager, John: schreibt das PRD (das Produkt-Anforderungsdokument), setzt Prioritäten und Scope. Kein Projektmanager
 - [click] Architect — die technische Form der Lösung
 - [click] Developer — die Umsetzung
 - [click] UX — die Oberfläche und das Erlebnis
@@ -81,11 +87,3 @@ Sagen:
 - Faustregel: Spec Kit, wenn du Spec-Disziplin willst, ohne Prozess-Overhead; BMAD, wenn die Organisation diese Rollen schon hat
 - BMAD zaubert dir keinen Prozess herbei, den du nicht hast
 - [click] Ehrliche Einordnung: beide glänzen auf der grünen Wiese, taugen aber auch für bestehenden Code. CLASH ist beides — Greenfield in Teil II, seitdem Brownfield — und clash-conference war ein Greenfield-Bau mit BMAD
-
-<!-- @note: what-we-did-not-cover -->
-> Do:
-> - Halte es kurz. /goal und /batch stehen nicht mehr hier, weil der Kurs sie jetzt behandelt.
-
-Say:
-- Channels pushen Events in eine offene Session. Computer Use lässt Claude native Apps bedienen.
-- Beides sind angrenzende Fähigkeiten, aber keine Voraussetzung für das Engineering-Modell aus diesem Kurs.

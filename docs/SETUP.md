@@ -253,3 +253,7 @@ npm install
 Agent teams and dynamic workflows use many tokens. If you are on a Pro plan you may hit a
 limit during task 12. That is not a setup problem. Stop the fan-out, watch the trainer's
 screen, and rejoin at the next branch. Nothing later depends on your own run finishing.
+
+Pro has two limits: a session limit that refills on its own, and a weekly limit across all
+models that refills only at the weekly reset. When the weekly one is used up, waiting for the
+session reset does not help. `/usage` shows where you stand.

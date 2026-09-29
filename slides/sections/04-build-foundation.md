@@ -101,6 +101,24 @@ lines:
 
 
 ---
+layout: code-live
+heading: "Plan the data model"
+filePath: "prompt to Claude Code — in plan mode"
+success: "The plan names five models, string status fields, the generated client path and the seed, before a single file is written."
+---
+
+```txt
+Read @docs/SPEC.md, section "Data". Plan a Prisma 7 schema for SQLite
+using the better-sqlite3 adapter.
+
+⟵ LIVE: add the five rules: five models, strings not enums,
+        client in lib/generated/prisma, seed with 8 users / password test,
+        run prisma/seed.ts with tsx
+
+Show the plan, do not write files.
+```
+
+---
 layout: concept
 heading: "When a plan earns its cost"
 lines:
@@ -132,8 +150,8 @@ lines:
 layout: concept
 heading: "Plan or roadmap?"
 lines:
-  - "One acceptance boundary: plan. Independent outcomes: roadmap."
-  - "Roadmap → work package → plan → change → proof."
+  - "One change you can accept or reject as a whole: a plan."
+  - "Pieces that can ship on their own: a roadmap. Each piece is a work package."
 ---
 
 <div class="flex items-center gap-3 w-full max-w-4xl justify-center text-sm">
@@ -147,36 +165,18 @@ docs: https://code.claude.com/docs/en/model-config
 lines:
   - "opusplan: Opus in plan mode, Sonnet for execution."
   - "For important plans, use a fresh reviewer for mismatches and risks."
-  - "Fix the deltas; do not regenerate the whole plan."
+  - "Fix the gaps; do not regenerate the whole plan."
 ---
 
 <div class="flex items-center gap-4 w-full max-w-4xl justify-center">
   <div class="na-card p-4 text-center"><div class="font-semibold">planner</div><div class="text-sm" style="color: var(--na-fg-muted)">draft from evidence</div></div>
-  <span>→</span>
-  <div class="na-card p-4 text-center" v-click><div class="font-semibold">fresh reviewer</div><div class="text-sm" style="color: var(--na-fg-muted)">find mismatches · risks</div></div>
-  <span v-click>→</span>
-  <div class="na-card p-4 text-center" v-click><div class="font-semibold">resolve deltas</div><div class="text-sm" style="color: var(--na-fg-muted)">not another full rewrite</div></div>
-  <span v-click>→</span>
-  <div class="na-card p-4 text-center" v-click><div class="font-semibold">execute + verify</div></div>
+  <span v-click="1">→</span>
+  <div class="na-card p-4 text-center" v-click="1"><div class="font-semibold">fresh reviewer</div><div class="text-sm" style="color: var(--na-fg-muted)">find mismatches · risks</div></div>
+  <span v-click="2">→</span>
+  <div class="na-card p-4 text-center" v-click="2"><div class="font-semibold">fix the gaps</div><div class="text-sm" style="color: var(--na-fg-muted)">not another full rewrite</div></div>
+  <span v-click="3">→</span>
+  <div class="na-card p-4 text-center" v-click="3"><div class="font-semibold">execute + verify</div></div>
 </div>
-
----
-layout: code-live
-heading: "Plan the data model"
-filePath: "prompt to Claude Code — in plan mode"
-success: "The plan names five models, string status fields, the generated client path and the seed, before a single file is written."
----
-
-```txt
-Read @docs/SPEC.md, section "Data". Plan a Prisma 7 schema for SQLite
-using the better-sqlite3 adapter.
-
-⟵ LIVE: add the five rules: five models, strings not enums,
-        client in lib/generated/prisma, seed with 8 users / password test,
-        run prisma/seed.ts with tsx
-
-Show the plan, do not write files.
-```
 
 ---
 layout: task

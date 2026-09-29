@@ -16,7 +16,7 @@ Sagen:
 <!-- @note: story-rule-example-question -->
 > Tun:
 > - Die vier Karten der Reihe nach durchgehen: Story, Rule, Example, Question
-> - Die Capacity-Story als durchgehendes Beispiel für beide Slides hier verwenden
+> - Die Capacity-Story als durchgehendes Beispiel für beide Folien hier verwenden
 
 Sagen:
 - Eine Story verbirgt echte Entscheidungen — fragen, was genau an der Kapazitätsgrenze passiert
@@ -25,7 +25,7 @@ Sagen:
 <!-- @note: progressive-disclosure-in-a-skill -->
 > Tun:
 > - Zurück auf den clash-feature-Skill aus Task 07 verweisen — der hat alles inline gehabt
-> - Docs-Link: öffnen, zur Skills-Referenz scrollen, dann zurück zu den Slides
+> - Docs-Link: öffnen, zur Skills-Referenz scrollen, dann zurück zu den Folien
 
 Sagen:
 - Der Skill-Body bleibt absichtlich kurz

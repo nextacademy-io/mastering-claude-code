@@ -94,7 +94,7 @@ branch, commit, optional pull request, review.
     lib/data and app/actions? Three differences, no judgement.
     ```
 11. Retrospective. Answer these in your own words, to yourself or your neighbour:
-    - Which prompt worked best today, and why?
+    - Which prompt worked best in this part, and why?
     - When did the context get too full, and how did you notice?
     - Which rule in `CLAUDE.md` saved you time?
 12. Switch to the reference. From here on, every task runs on the reference CLASH.

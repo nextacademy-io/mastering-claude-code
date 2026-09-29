@@ -4,7 +4,7 @@
 const cols = ['Subagent', 'Agent team', 'Workflow'] as const
 const rows = [
   { axis: 'Who decides next', values: ['Claude, turn by turn', 'The lead', 'The script'] },
-  { axis: 'Parallelism', values: ['One or a few', 'Several peers at once', 'Up to 16 at once'] },
+  { axis: 'Parallelism', values: ['Up to 20 at once', '3–5 peers advised', 'Up to 16 at once'] },
   { axis: 'Token cost', values: ['Low', 'Moderate to high', 'Highest'] },
   { axis: 'Main-thread context', values: ['Summary only', 'Own session', 'Runs in background'] },
 ] as const

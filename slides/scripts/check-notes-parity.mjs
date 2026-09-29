@@ -8,6 +8,7 @@
 //    is not identical to the English note
 //  - a prose step label ("Click 1:", "Klick 2:") is left where a [click] marker belongs
 //  - tool-call residue ("</content>", "</invoke>") inside a note
+//  - an English "Do:"/"Say:" label in a German note (German uses "Tun:"/"Sagen:")
 //  - a command or path differs between locales: slash commands, paths, file names,
 //    env vars, reset branches. A translation must carry these over unchanged.
 // Warnings:
@@ -129,6 +130,7 @@ for (const file of sectionFiles) {
       if (label) err(where, `prose step label left in place of a [click] marker: "${label[0].trim()}"`)
       const residue = /<\/?(?:content|invoke|parameter|antml)[^>]*>/.exec(notes[l][k])
       if (residue) err(where, `tool-call residue in the note: "${residue[0]}"`)
+      if (l === 'de' && /^(?:> )?(?:Do|Say):\s*$/m.test(notes[l][k])) err(where, 'English "Do:"/"Say:" label in a German note — use "Tun:"/"Sagen:"')
     }
   }
   if (!notes.en || !notes.de) continue

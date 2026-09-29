@@ -27,14 +27,27 @@ Sagen:
 
 
 <!-- @note: batch-many-independent-pull-requests -->
-> Do:
-> - Verweise auf die manuelle Worktree-Folie. /batch automatisiert dieses Muster, nachdem es den Scope untersucht und eine Aufteilung vorschlägt.
-> - Führe es nicht live auf CLASH aus; die Entscheidungsgrenze ist die Lektion.
+> Tun:
+> - Auf die Worktree-Folie davor zurückverweisen: /batch automatisiert dieses Muster, nachdem es den Scope untersucht und eine Aufteilung vorgeschlagen hat
+> - Nicht live auf CLASH ausführen — die Lektion ist zu erkennen, wann /batch passt und wann nicht
+> - Docs-Link: öffnen, unter "All commands" auf die Zeile `/batch` zeigen, dann zurück zu den Folien
 
-Say:
-- /batch ist für viele trennbare Änderungen. Es schlägt 5 bis 30 unabhängige Units vor und wartet vor dem Start auf Freigabe.
-- Jede Unit erhält einen eigenen Background-Agent und Worktree, führt Tests aus und öffnet einen eigenen Pull Request.
-- Teilen die Units eine zentrale Architekturentscheidung oder ändern ständig dieselben Dateien, zwinge die Arbeit nicht in /batch. Entscheide zuerst, splitte danach die mechanische Arbeit.
+Sagen:
+- /batch ist für viele getrennte Änderungen. Es schlägt 5 bis 30 unabhängige Units vor und wartet vor dem Start auf deine Freigabe
+- Jede Unit bekommt einen eigenen Background-Subagent und Worktree, führt Tests aus und öffnet einen eigenen Pull Request
+- Hängen die Units an einer Designentscheidung oder ändern sie ständig dieselben Dateien, gehört die Arbeit nicht in /batch. Erst entscheiden, dann die mechanische Arbeit aufteilen
+
+<!-- @note: pick-the-parallelism-primitive -->
+> Tun:
+> - Pro Zeile nach einem Beispiel aus dem Kurs fragen: Kommunikation und Isolation, nicht was gerade beliebt ist
+
+Sagen:
+- Den kleinsten Mechanismus wählen, der dazu passt, wie die Worker voneinander abhängen
+- Ein Subagent schützt den Context der Main-Session; ein Team gibt es, weil Peers miteinander reden müssen
+- [click] Workflow: der Fan-out wird wiederholbar
+- [click] Worktrees: Edits bleiben isoliert
+- [click] /batch: viele getrennte Pull Requests
+- Mehr Agents sind nicht automatisch schneller: jeder Worker hat seinen eigenen Context und eigenen Token-Verbrauch
 
 <!-- @note: headless-in-ci -->
 > Tun:

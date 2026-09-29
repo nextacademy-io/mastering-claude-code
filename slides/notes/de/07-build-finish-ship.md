@@ -3,7 +3,7 @@
 > - Branch: 05-start hat schon Auth, Shell, Clashes, Venues, die Karte und Benachrichtigungen
 
 Sagen:
-- Fünf Dinge zu lernen, fünf Dinge zu bauen — die letzte Etappe, bevor die Referenz-Build übernimmt
+- Fünf Dinge zu lernen, fünf Dinge zu bauen — die letzte Etappe, bevor der Referenz-Build übernimmt
 
 <!-- @note: batch-what-does-not-touch -->
 > Tun:
@@ -36,7 +36,8 @@ Sagen:
 Sagen:
 - Das alte #-Kürzel gibt es nicht mehr (entfernt in v2.0.70) — um gezielt zu speichern, in Worten bitten: "Remember …". Von selbst speichert Claude Korrekturen auch, aber nicht jedes Mal
 - CLAUDE.md ist das, was du aufschreibst; Auto Memory ist das, was Claude selbst bemerkt und speichert
-- Beides wird zu Beginn jedes Gesprächs gelesen
+- Das Memory gehört zum Git-Repository, nicht zum Ordner: alle Unterordner und Worktrees deines CLASH-Clones teilen sich einen Ordner ~/.claude/projects/<project>/memory/
+- Beides lädt zu Beginn jedes Gesprächs — beim Auto Memory der Index MEMORY.md; die Notizen darin öffnet Claude bei Bedarf
 
 <!-- @note: review-like-a-stranger -->
 > Tun:
@@ -52,7 +53,7 @@ Sagen:
 
 Sagen:
 - Review und Fix sind absichtlich zwei Messages — du bleibst die Person, die entscheidet
-- Diesen Prompt heute einmal selbst zu schreiben ist der Punkt — `/code-review` ist die Bundled-Skill-Abkürzung fürs nächste Mal
+- Diesen Prompt einmal selbst zu schreiben ist der Punkt — `/code-review` ist die Bundled-Skill-Abkürzung fürs nächste Mal
 
 <!-- @note: ship-then-look-at-the-reference -->
 > Tun:

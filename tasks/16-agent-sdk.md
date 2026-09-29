@@ -27,7 +27,7 @@ Only the host changes.
    ```bash
    npm install @anthropic-ai/claude-agent-sdk tsx
    ```
-2. Create `ask-clash.mts` at the repo root. Start with the loop and nothing else.
+2. Create `ask-clash.mts` at the root of your CLASH clone. Start with the loop and nothing else.
    ```ts
    import { query } from "@anthropic-ai/claude-agent-sdk";
 

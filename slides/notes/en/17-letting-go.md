@@ -28,13 +28,26 @@ Say:
 
 <!-- @note: batch-many-independent-pull-requests -->
 > Do:
-> - Point back to the manual worktree slide. /batch automates that shape after it researches and proposes the split.
-> - Do not run it on CLASH live; naming the decision boundary is the lesson.
+> - Point back to the worktree slide: /batch automates that shape after it researches and proposes the split
+> - Do not run it live on CLASH — the lesson is knowing when /batch fits and when it does not
+> - Docs link: open it, point at the `/batch` row under "All commands", then back to the slides
 
 Say:
-- /batch is for a large set of separable changes. It proposes 5 to 30 independent units and waits for approval before spawning them.
-- Each unit gets its own background agent and worktree, runs tests, and opens its own pull request.
-- If the units share one architectural decision or constantly touch the same files, do not force the job through /batch. Make the decision first, then split the mechanical work.
+- /batch is for many separate changes. It proposes 5 to 30 independent units and waits for your approval before it starts
+- Each unit gets its own background subagent and worktree, runs tests, and opens its own pull request
+- If the units hang on one design decision or keep touching the same files, the job does not belong in /batch. Decide first, then split the mechanical work
+
+<!-- @note: pick-the-parallelism-primitive -->
+> Do:
+> - Ask for one example per row from the course: communication and isolation, not what is popular
+
+Say:
+- Pick the smallest mechanism that fits how the workers depend on each other
+- A subagent protects your main context; a team exists because peers need to talk
+- [click] Workflow: the fan-out becomes repeatable
+- [click] Worktrees: edits stay isolated
+- [click] /batch: many separate pull requests
+- More agents are not automatically faster: every worker has its own context and token spend
 
 <!-- @note: headless-in-ci -->
 > Do:

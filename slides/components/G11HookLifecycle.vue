@@ -47,37 +47,37 @@
 
         <!-- exit-0 continues labels, stage 1 -->
         <g v-click="1">
-          <text x="295" y="70" text-anchor="middle" fill="var(--na-primary-400)" style="font-size:14px">exit 0 → continues</text>
-          <text x="740" y="70" text-anchor="middle" fill="var(--na-primary-400)" style="font-size:14px">exit 0 → continues</text>
-          <text x="295" y="172" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">stdout: debug log only</text>
-          <text x="740" y="172" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">stdout: debug log only</text>
+          <text x="295" y="70" text-anchor="middle" fill="var(--na-primary-400)" style="font-size:16px">exit 0 → continues</text>
+          <text x="740" y="70" text-anchor="middle" fill="var(--na-primary-400)" style="font-size:16px">exit 0 → continues</text>
+          <text x="295" y="172" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">stdout: debug log only</text>
+          <text x="740" y="172" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">stdout: debug log only</text>
         </g>
 
         <!-- PreToolUse block branch, stage 2 -->
         <g v-click="2">
           <line x1="295" y1="185" x2="295" y2="240" stroke="var(--na-error-500)" stroke-width="2" marker-end="url(#arrow-error)" />
           <rect x="170" y="245" width="250" height="60" rx="8" fill="var(--na-bg)" stroke="var(--na-error-500)" stroke-width="2" />
-          <text x="295" y="270" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size:15px">exit 2 → BLOCKS the call</text>
-          <text x="295" y="292" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">stderr goes to the agent</text>
+          <text x="295" y="270" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size:16px">exit 2 → BLOCKS the call</text>
+          <text x="295" y="292" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">stderr goes to the agent</text>
           <path d="M 170,275 C 110,275 75,230 75,155" fill="none" stroke="var(--na-error-500)" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow-error)" />
         </g>
 
         <!-- PostToolUse branch, stage 3: not blocking, tool already ran -->
         <g v-click="3">
           <line x1="740" y1="185" x2="740" y2="325" stroke="var(--na-error-500)" stroke-width="2" marker-end="url(#arrow-error)" />
-          <rect x="600" y="330" width="280" height="80" rx="8" fill="var(--na-bg)" stroke="var(--na-error-500)" stroke-width="2" />
-          <text x="740" y="355" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size:15px">exit 2 → does NOT block</text>
-          <text x="740" y="377" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">the tool already ran</text>
-          <text x="740" y="396" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">stderr goes to the agent as a warning</text>
-          <path d="M 600,370 C 420,410 40,410 40,155" fill="none" stroke="var(--na-error-500)" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow-error)" />
+          <rect x="580" y="330" width="320" height="80" rx="8" fill="var(--na-bg)" stroke="var(--na-error-500)" stroke-width="2" />
+          <text x="740" y="355" text-anchor="middle" fill="var(--na-error-500)" font-weight="700" style="font-size:16px">exit 2 → does NOT block</text>
+          <text x="740" y="377" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">the tool already ran</text>
+          <text x="740" y="396" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">stderr goes to the agent as a warning</text>
+          <path d="M 580,370 C 420,410 40,410 40,155" fill="none" stroke="var(--na-error-500)" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow-error)" />
         </g>
 
         <!-- Stop's own gate, stage 4 -->
         <g v-click="4">
           <line x1="925" y1="150" x2="925" y2="205" stroke="var(--na-error-500)" stroke-width="2" marker-end="url(#arrow-error)" />
           <rect x="760" y="210" width="230" height="60" rx="8" fill="var(--na-bg)" stroke="var(--na-accent-500)" stroke-width="2" />
-          <text x="875" y="235" text-anchor="middle" fill="var(--na-accent-500)" font-weight="700" style="font-size:15px">exit 2 → turn cannot end</text>
-          <text x="875" y="257" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">the agent keeps working</text>
+          <text x="875" y="235" text-anchor="middle" fill="var(--na-accent-500)" font-weight="700" style="font-size:16px">exit 2 → turn cannot end</text>
+          <text x="875" y="257" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">the agent keeps working</text>
         </g>
       </g>
     </svg>

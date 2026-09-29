@@ -52,6 +52,7 @@ Say:
 Say:
 - [click:2] Output replacement: PostToolUse supports `hookSpecificOutput.updatedToolOutput` for ALL tools, not only MCP
 - Use it to collapse a noisy `npm run build` log into one pass/fail line before it reaches context
+- The replacement needs the tool's own shape. For Bash that is an object with stdout, stderr, interrupted and isImage; a plain string is ignored and the full log still arrives
 - Same "context is a budget" argument, now applied to a hook instead of a CLAUDE.md rule
 
 <!-- @note: pretooluse-deny-rules -->
@@ -73,6 +74,7 @@ Say:
 Say:
 - Wired under "Stop" with no matcher — Stop has no tool to match on
 - Stop gates the end of a TURN, not a tool call
+- `set -euo pipefail`: -e stops at the first failing command outside an if, -u at an unset variable, pipefail fails a pipeline like a | b when any part fails. An -e stop exits 1, not 2, so it does not block: that is why the build runs inside an if
 
 <!-- @note: advice-vs-law -->
 > Do:
@@ -85,13 +87,14 @@ Say:
 - [click] A skill is what you tell a new colleague; a hook is what CI rejects
 - If a CLAUDE.md rule keeps getting repeated and the agent keeps drifting past it, that rule wanted to be a hook
 - `hard_deny` is `settings.autoMode.hard_deny`, part of auto mode where a classifier reviews actions instead of you — not a PreToolUse decision
+- Outside auto mode hard_deny does nothing. What blocks in every mode, bypassPermissions included, is a permissions.deny rule or a PreToolUse hook
 
 <!-- @note: settings-override-each-other -->
 > Do:
 > - Docs link: open it, scroll to "Settings precedence", then back to the slides
 
 Say:
-- Five places hold settings. For any one key, only one of them wins
+- Five places hold settings. For a plain key, the highest one wins. Lists like permissions.allow, and all hooks, merge: every file adds its entries
 - [click] Managed — your organization deploys it, nothing overrides it
 - [click] Command line — `claude --settings`, one session only
 - [click] Project local — `.claude/settings.local.json`, yours, never committed
@@ -101,6 +104,7 @@ Say:
 <!-- @note: the-sandbox-limits-what-a-command-touches -->
 > Do:
 > - Run `/sandbox` live if there is time — show the Mode and Config tabs
+> - Mode tab: auto-allow runs sandboxed commands without a prompt; regular permissions sends every command through your normal permission rules, so unapproved ones still ask. Both keep the same limits. Allowed hosts are not a mode: they sit in the network allowlist
 > - Docs link: open it, scroll to "How sandboxing works", then back to the slides
 
 Say:
@@ -124,28 +128,30 @@ Say:
 
 <!-- @note: ignored-by-git-is-not-hidden -->
 > Do:
-> - Point back to task 02, where .env being absent from git status was useful but not a security boundary.
-> - Open the env-var docs if anyone doubts the default: Glob includes gitignored paths unless configured otherwise.
+> - Point back to task 02: .env missing from git status was useful, but never a security boundary
+> - Docs link: open it, point at `CLAUDE_CODE_GLOB_NO_IGNORE` and `CLAUDE_CODE_GLOB_HIDDEN` (both include the files by default), then back to the slides
+> - Watch for: on macOS, Linux and WSL Claude searches with find through Bash, not Glob — those two variables change Glob only
 
 Say:
-- Git ignore answers one question: should Git track this path? Claude tool visibility is a different question.
-- Dotfiles and gitignored files can still be discovered by Glob by default.
-- Secrets need permissions or hooks that deny the read, not confidence in .gitignore.
+- .gitignore answers one question: should Git track this path?
+- [click] What Claude's tools can see is a different question: Glob still finds gitignored files and dotfiles by default
+- [click] Our .env hook watches only the Read tool. A permission deny rule on Read also stops cat, head and tail; only the sandbox (macOS, Linux, WSL2) stops grep -r and scripts
 
 <!-- @note: tool-output-becomes-local-history -->
 > Do:
-> - Do not demo a real credential. Draw the path only.
-> - Point at the .env deny rule they just built.
+> - Do not demo a real credential. Draw the path only
+> - Point at the .env hook they just built: it blocks the Read tool, not a cat in Bash
+> - Docs link: open it, scroll to "Plaintext storage", then back to the slides
 
 Say:
-- Tool inputs and results are written to local session transcripts in plaintext.
-- If a command prints a token or Read opens a secret, that value can be in the transcript even when the file itself is gitignored.
-- Keep credential reads out of the tool surface and choose transcript retention deliberately.
+- Tool inputs and results are written to local session transcripts in plaintext
+- If a command prints a token or Read opens a secret, that value can be in the transcript even when the file itself is gitignored
+- Deny credential reads, and shorten how long transcripts are kept: cleanupPeriodDays sets it
 
 
 <!-- @note: security-three-rules -->
 > Do:
-> - Optional: point at "Protect against prompt injection" — the same three rules, as the docs' own core protections list
+> - Optional: point at "Protect against prompt injection" — the safeguards Claude Code already runs; the three rules on the slide are what you add on top
 
 Say:
 - Prompt injection in one sentence: a model cannot tell data from instructions by looking

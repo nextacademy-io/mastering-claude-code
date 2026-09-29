@@ -51,11 +51,11 @@ Sagen:
 > - Benennen, nicht auswählen
 
 Sagen:
-- Im Auto-Modus erscheint kein Prompt
+- Im Auto-Modus entscheidet der Classifier statt dir; ein Prompt erscheint trotzdem bei Ask-Regeln, beim ersten Lesen außerhalb des Arbeitsordners oder nach wiederholten Blocks
 - Option zwei schreibt eine Regel in die Settings — erlaubt diese Art von Befehl ab jetzt
 - Option drei lässt dich eine Korrektur eintippen
 - Bash-Prompts können eine weitere Option zeigen, "Yes, and switch to auto mode"
-- Shift+Tab durchläuft die Modi: Auto → Manual → Accept-Edits → Plan → zurück zu Auto. Pro-, Max- und Team-Sessions starten im Auto-Modus; API-Key- und Enterprise-Sessions im Manual-Modus — das kann auch die erste Session direkt nach der Installation
+- Shift+Tab durchläuft die Modi: Auto → Manual → Accept-Edits → Plan → zurück zu Auto. Ohne gesetzten Modus und mit verfügbarem Auto-Modus startet jede interaktive Session im Auto-Modus (seit v2.1.283, davor nur Pro, Max und Team); claude -p startet im Manual-Modus — das kann auch die erste Session direkt nach der Installation
 - Accept-Edits fragt bei Datei-Edits nicht mehr; Plan Mode ist read-only
 - Plan Mode wird ab dem nächsten Teil viel genutzt
 
@@ -75,7 +75,7 @@ Sagen:
 > - Nur erwähnen, nicht ausführlich vorführen
 
 Sagen:
-- [click] Die IDE-Erweiterungen laufen mit demselben Claude Code
+- [click] Die IDE-Erweiterungen laufen mit demselben Claude Code, aber das VS-Code-Panel hat nur einen Teil der Commands und Skills, kein !-Kürzel und keine Tab-Vervollständigung. Für den Rest claude im integrierten Terminal von VS Code starten — das JetBrains-Plugin arbeitet immer so
 - Edits erscheinen als Inline-Diffs; aktuelle Datei und Auswahl gehen als Context mit
 - Jeder kann seine eigene Oberfläche wählen
 - Workshop nutzt das Terminal — überall gleich
@@ -121,7 +121,7 @@ Sagen:
 - Zwei verschiedene Arten von Flag: was eine Session darf, und welche Session sich öffnet
 - [click] --settings stapelt sich über deinen eigenen Dateien, unter managed — gut für ein einmaliges Experiment
 - [click] -p antwortet und beendet sich. Keine Conversation bleibt laufen
-- [click] --resume und --continue sind die nächsten zwei Folien
+- [click] --resume und --continue bekommen eine eigene Folie, nach dem Print Mode und dem Effort-Lab
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Tun:
@@ -132,6 +132,29 @@ Sagen:
 - Das ist es, was ein Script oder ein anderes Programm aufruft — keine Terminal-UI, kein Hin und Her
 - --output-format json gibt dir etwas, das du in ein anderes Tool pipen kannst
 - Die Regel "nie claude -p in CI" aus dem GitHub-Actions-Modul betrifft genau den einen YAML-Schritt, nicht das hier
+
+<!-- @note: same-task-different-effort -->
+> Tun:
+> - In einem neuen, leeren Ordner außerhalb des Workshop-Repositorys und deines CLASH-Clones ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält: kein Lösungsschlüssel, keine CLAUDE.md, keine Projekt-Hooks
+> - Prüfen, dass CLAUDE_CODE_EFFORT_LEVEL nicht gesetzt ist und keine maxEffortLevel-Obergrenze unter high liegt: beides kann beide Läufe auf dasselbe Level setzen
+> - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+>   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+> - Docs-Link: öffnen, bis "Set the effort level" scrollen, dann zurück zu den Folien
+
+Sagen:
+- Nur eine Variable ändert sich: Effort. Gezählt werden die Findings und usage.output_tokens, nicht Ton oder Länge — Thinking wird als Output abgerechnet
+- total_cost_usd weglassen: Der zweite Lauf liest den Prompt-Präfix, den der erste gecacht hat, sein Input wirkt also günstiger
+- Die vier Findings, erst nach beiden Läufen: cancelled liefert true; `null` als Kapazität heißt unbegrenzt, wird aber zu 0; die Voll-Prüfung nutzt > statt >=; sort verändert participantIds
+
+<!-- @note: measure-the-extra-reasoning -->
+> Tun:
+> - Die Tabelle mit den Ergebnissen der zwei Live-Läufe füllen
+> - Finden beide Läufe alle vier Fehler, das klar sagen: Diese Aufgabe hat den höheren Effort nicht verdient. Auch das ist ein nützliches Ergebnis
+
+Sagen:
+- Reasoning hat nur Wert, wenn es bessere Entscheidungen oder weniger Nacharbeit bringt
+- Der nützliche Vergleich ist der gesamte Engineering-Aufwand: Reasoning plus Umsetzung plus Nacharbeit plus Verifikation
+- Den Vergleich an einer echten Aufgabe wiederholen, bevor du den Default-Effort eines Teams änderst
 
 <!-- @note: pick-up-where-you-left-off -->
 Sagen:

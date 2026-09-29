@@ -36,7 +36,8 @@ Say:
 Say:
 - The old # shortcut is gone (removed in v2.0.70) — to save on purpose, ask in words: "Remember …". Left alone, Claude also saves corrections by itself, but not every time
 - CLAUDE.md is what you write down; auto memory is what Claude notices and saves itself
-- Both are read at the start of every conversation
+- The memory belongs to the git repository, not the folder: every subfolder and worktree of your CLASH clone shares one ~/.claude/projects/<project>/memory/
+- Both load at the start of every conversation — for auto memory, the MEMORY.md index; Claude opens the notes it lists when it needs them
 
 <!-- @note: review-like-a-stranger -->
 > Do:
@@ -52,7 +53,7 @@ Say:
 
 Say:
 - Review and fix are two messages on purpose — you stay the one who decides
-- Writing this prompt by hand, once, is the point today — `/code-review` is the bundled-skill shortcut for next time
+- Writing this prompt by hand, once, is the point — `/code-review` is the bundled-skill shortcut for next time
 
 <!-- @note: ship-then-look-at-the-reference -->
 > Do:

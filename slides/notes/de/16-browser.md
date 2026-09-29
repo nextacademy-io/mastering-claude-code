@@ -80,6 +80,7 @@ Sagen:
 > - Docs-Link: öffnen, bis "Authenticate with remote MCP servers" scrollen, dann zurück zu den Folien
 
 Sagen:
+- stdio: Claude Code startet den Server als Kindprozess und spricht mit ihm über stdin und stdout. Der Browser ist Sache des Servers: jeder Browser-Server startet und steuert seinen eigenen Browser
 - [click] http ist die Standardwahl für einen Server, den du nicht selbst betreibst
 - [click] sse funktioniert noch, ist aber auf dem Weg raus
 - Claude Code speichert den Token — du loggst dich nur einmal pro Server ein

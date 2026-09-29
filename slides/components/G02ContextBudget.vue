@@ -21,17 +21,17 @@ const freeH = bottomY - filled - freeTop
 
 <template>
   <div class="w-full flex flex-col items-center">
-    <svg viewBox="0 0 960 500" width="960" height="500" class="w-full max-w-2xl h-auto max-h-full" role="img" aria-label="Context window as a budget">
+    <svg viewBox="0 30 960 460" width="960" height="460" class="w-full max-w-3xl h-auto max-h-full" role="img" aria-label="Context window as a budget">
       <!-- outer container -->
       <rect :x="barX" :y="topY" :width="barWidth" :height="bottomY - topY" fill="none" stroke="var(--na-zinc-700)" stroke-width="2" rx="6" />
 
       <!-- free room, labelled -->
-      <text :x="barX + barWidth / 2" :y="freeTop + freeH / 2 + 5" text-anchor="middle" fill="var(--na-zinc-500)" style="font-size:14px">free</text>
+      <text :x="barX + barWidth / 2" :y="freeTop + freeH / 2 + 5" text-anchor="middle" fill="var(--na-zinc-500)" style="font-size:17px">free</text>
 
       <!-- drift zone at the very top -->
       <g v-click="5">
         <rect :x="barX" :y="topY" :width="barWidth" :height="driftH" fill="var(--na-error-500)" opacity="0.85" rx="4" />
-        <text :x="barX + barWidth / 2" :y="topY + 29" text-anchor="middle" font-weight="700" fill="white" style="font-size:15px">drift zone</text>
+        <text :x="barX + barWidth / 2" :y="topY + 29" text-anchor="middle" font-weight="700" fill="white" style="font-size:17px">drift zone</text>
       </g>
 
       <!-- bands, bottom to top -->
@@ -48,16 +48,16 @@ const freeH = bottomY - filled - freeTop
           :y="bottomY - bands.slice(0, i).reduce((s, b) => s + b.h, 0) - band.h / 2 + 5"
           text-anchor="end"
           fill="var(--na-fg)"
-          style="font-size:15px"
+          style="font-size:17px"
         >{{ band.label }}</text>
       </g>
 
       <!-- variable-size callout on the two growth bands -->
       <g v-click="5">
-        <text :x="barX + barWidth + 24" y="300" fill="var(--na-fg-muted)" style="font-size:15px">tool results and conversation grow.</text>
-        <text :x="barX + barWidth + 24" y="322" fill="var(--na-fg-muted)" style="font-size:15px">Everything else is fixed.</text>
-        <text :x="barX + barWidth + 24" y="360" fill="var(--na-error-500)" font-weight="700" style="font-size:15px">Uncontrolled, they push you</text>
-        <text :x="barX + barWidth + 24" y="382" fill="var(--na-error-500)" font-weight="700" style="font-size:15px">into the drift zone.</text>
+        <text :x="barX + barWidth + 24" y="300" fill="var(--na-fg-muted)" style="font-size:17px">tool results and conversation grow.</text>
+        <text :x="barX + barWidth + 24" y="324" fill="var(--na-fg-muted)" style="font-size:17px">Everything else is fixed.</text>
+        <text :x="barX + barWidth + 24" y="362" fill="var(--na-error-500)" font-weight="700" style="font-size:17px">Uncontrolled, they push you</text>
+        <text :x="barX + barWidth + 24" y="386" fill="var(--na-error-500)" font-weight="700" style="font-size:17px">into the drift zone.</text>
       </g>
     </svg>
   </div>

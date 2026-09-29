@@ -28,15 +28,16 @@ Sagen:
 - Früh benutzen, bevor du versuchst, eine falsche Richtung zu flicken
 
 <!-- @note: compact-is-a-lossy-reset -->
-> Do:
-> - Führe /context nach Auth und Shell live aus und lies die echten Bereiche.
-> - Führe /compact und danach erneut /context aus. Vergleiche vorher und nachher, statt nur wieder einen Tank zu füllen.
-> - Optional: Zeige in der Doku /clear versus /compact.
+> Tun:
+> - Schritte 8-9 machen die Teilnehmenden selbst
+> - Nach den Auth- und Shell-Schritten live /context ausführen und die echten Bänder lesen
+> - [click] /compact ausführen, dann noch einmal /context: vorher und nachher vergleichen
+> - In /context zählen Tool-Ergebnisse zu Messages; die Tool-Bänder sind Tool-Definitionen und bleiben nach /compact
+> - Optional: Docs-Link, bis "Manage context proactively" scrollen, für /clear vs. /compact
 
-Say:
-- Compaction schafft Platz, indem Details durch eine Zusammenfassung ersetzt werden. Diese Zusammenfassung ist verlustbehaftet.
-- Nutze /compact, wenn der aktuelle Thread noch wertvoll ist; /clear, wenn die alte Richtung nicht mehr nützt.
-- Part III macht daraus statt eines Rettungsbefehls eine Context-Disziplin.
+Sagen:
+- Die Zusammenfassung ist verlustbehaftet: Details, die sie weglässt, sind nicht mehr im Fenster
+- Teil III macht aus dem Rettungsbefehl eine Context-Disziplin
 
 <!-- @note: the-safety-moment -->
 > Tun:

@@ -16,7 +16,7 @@ Sagen:
 <!-- @note: rules-scoped-to-a-path -->
 > Tun:
 > - Zurück auf ~/.claude/rules/tone.md aus Task 06 verweisen — die hatte kein paths:-Feld
-> - Docs-Link: öffnen, zu den pfadspezifischen Regeln scrollen, dann zurück zu den Slides
+> - Docs-Link: öffnen, zu den pfadspezifischen Regeln scrollen, dann zurück zu den Folien
 
 Sagen:
 - paths ist das einzige Feld, das Claude Code aus einer Rule-Datei liest — alles andere im Frontmatter wird stillschweigend ignoriert

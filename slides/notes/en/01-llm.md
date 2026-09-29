@@ -42,11 +42,11 @@ Say:
 <!-- @note: four-sizes-four-jobs -->
 > Do:
 > - If there is a tokenizer or /model picker handy, show it live
-> - Everyone in this workshop already has access to all four — this is about choosing, not about who gets what
+> - Access depends on the plan: on Pro and standard Team seats Fable is not part of the plan's limits — every Fable request runs on paid usage credits. On Max and premium seats it is included, up to half of the plan's usage limit, and it uses that limit up faster. Where it costs extra, the /model picker shows "Requires usage credits" on the Fable row
 
 Say:
 - Same architecture, different scale — bigger is not always better, it is slower and costs more
-- [click] Sonnet is the default for a reason: fast enough, capable enough, for most of a working day
+- [click] Sonnet: fast enough, capable enough, and cheaper than Opus. The default on Anthropic plans is Opus; /model shows which one you run
 - [click] Reach for Opus when the reasoning is the hard part, not the typing
 - [click] Fable is built for sessions you would normally break into pieces — hand it the outcome, not the steps
 
@@ -54,44 +54,23 @@ Say:
 
 <!-- @note: model-and-effort-are-separate -->
 > Do:
-> - Point at the four knobs. Ask which one fixes a missing file: context, not effort.
-> - Ask which one proves a refactor works: verification, not effort.
+> - Ask which knob fixes a missing file (context) and which proves a refactor works (verification). Neither is effort
+> - Docs link: open it, scroll to "Adjust effort level", then back to the slides
 
 Say:
-- Model and effort are different purchases. Model is capability; effort is reasoning spend on this task.
-- Plan mode is a permission and workflow boundary. It can make the work easier to review, but it does not magically raise model capability.
-- Never buy more reasoning to compensate for missing context or missing evidence.
-
-<!-- @note: same-task-different-effort -->
-> Do:
-> - Run both commands from a fresh workshop-repository shell. Keep the model identical.
-> - The file has four deliberate contract violations. Do not reveal them before both runs finish.
-> - Read the JSON usage fields and the actual findings. Tone and length do not score.
-
-Say:
-- Same task, same context, same model. One variable changes: effort.
-- The four expected findings are: cancelled returns true; null capacity is treated as zero; the full check uses > instead of >=; sort mutates the participantIds array.
-- A run can sound more careful and still score worse. Count what it found and what it invented.
-
-<!-- @note: measure-the-extra-reasoning -->
-> Do:
-> - Fill the table from the two live results.
-> - If both runs find all four, say that clearly: this task did not earn higher effort today. That is a useful result.
-
-Say:
-- Reasoning has value only through better decisions or less rework.
-- The useful comparison is total engineering effort: reasoning plus implementation plus rework plus verification.
-- Repeat this experiment on one real task before changing a team's default effort.
+- Context: what it knows, the facts you put in the window
+- [click] Model: capability
+- [click] Effort: reasoning spent on this task, never a fix for missing context or evidence
+- [click] Verification: how you will know it worked
 
 <!-- @note: spend-effort-where-it-matters -->
 > Do:
-> - Keep the scale approximate. Effort is model-calibrated, not a fixed token multiplier.
-> - Point out max's diminishing returns warning in the docs.
+> - Read the scale as a rough guide: effort is calibrated per model, not a fixed token multiplier
+> - Name the default: medium on Opus 5.5 and Sonnet 5.5. max can show diminishing returns, so test before adopting it
 
 Say:
-- Low is for scoped, mechanical work. High is a sensible default when the task has real reasoning in it.
-- xhigh and max belong where a wrong decision is expensive: root cause, architecture, security boundaries, difficult plan review.
-- ultrathink is a one-turn instruction for deeper reasoning; it does not change the session's API effort level.
+- xhigh and max also fit security boundaries and a hard plan review: anywhere a wrong decision is expensive
+- ultrathink in a prompt asks for one deeper turn; the session's effort level stays as it is
 
 <!-- @note: where-the-knowledge-comes-from -->
 Say:
@@ -133,7 +112,7 @@ Say:
 Say:
 - A chat is just tokens with labels
 - System message comes first and sets the rules — in Claude Code it's written by the tool; your CLAUDE.md loads after it, as a user message
-- [click] Then user and assistant messages alternate
+- [click:2] Then user and assistant messages alternate
 - Model was trained to follow the system message strongly, the user message next, its own earlier words after that
 - Why a rule in CLAUDE.md beats a rule buried in a long chat — it's reloaded fresh every session, and it survives /compact
 

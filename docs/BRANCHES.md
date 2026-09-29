@@ -65,8 +65,8 @@ your own work or from its solution branch.
 - The vendored skills in CLASH's `.agents/skills/` and `skills-lock.json` are not on the build stages.
   They arrive with the reference on `06-start`, with 8 of the 9 copied into `.claude/skills/` at
   the project level — `agent-browser` is skipped since task 01 already installs it as a personal
-  skill, and a project copy of the same name would just be shadowed. Real data for task 06's
-  `/skill-doctor` step from the first checkout.
+  skill, and a project copy of the same name would just be shadowed. Real data for task 07's
+  `/skill-doctor` step, on `06-start` and every branch after it.
 
 ## Seeded vulnerability, said plainly
 

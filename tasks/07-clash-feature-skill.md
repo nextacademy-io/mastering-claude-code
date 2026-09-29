@@ -9,7 +9,7 @@
 - [/skill-doctor: what it costs](https://mastering-claude-code.vercel.app/theory-skill-doctor)
 - [A skill is advice](https://mastering-claude-code.vercel.app/theory-skill-advice)
 
-> **Reminder:** Audit the skill surface before adding more; skills load on demand and remain advice, not enforcement.
+> **Reminder:** Check what your skills cost before you add one; a skill loads on demand and is advice, not enforcement.
 
 ## You will end up with
 
@@ -29,13 +29,15 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
 
 1. Look at what already ships: `.agents/skills/` and `skills-lock.json`. These are
    third-party skills for Prisma, shadcn and React. You are not starting cold.
-2. Measure that surface before you add another skill.
+2. See what the skills you already have cost, before you add your own.
    ```
    /skill-doctor
    ```
-   Confirm that `react-best-practices` and `vercel-react-best-practices` are large near-duplicates.
-   The lesson is not to delete them during the workshop; it is to see that every skill description joins the
-   session index, while the large body loads only when the skill is used.
+   You should see each skill with what it costs in context on every turn, and how often it was used.
+   No `/skill-doctor`? Read the Skills row in `/context` instead.
+   Two of these skills, `react-best-practices` and `vercel-react-best-practices`, are near-duplicates:
+   each holds an `AGENTS.md` of about 100 KB with nearly the same rules. Leave them in place.
+   Using a skill loads only its short `SKILL.md`. A big file like `AGENTS.md` loads only when Claude opens it.
 3. Create the skill file and write the header first.
    ```yaml
    ---
@@ -99,7 +101,7 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
 
 ## Check
 
-- [ ] `/skill-doctor` ran and you can name the two near-duplicate vendored skills.
+- [ ] `/skill-doctor` (or the Skills row in `/context`) showed what your skills cost, and you can name the two near-duplicate vendored skills.
 - [ ] `.claude/skills/clash-feature/SKILL.md` exists with `name`, `description` and `allowed-tools`.
 - [ ] The Server Action step names an ownership check, not only `requireUser()`, and says why.
 - [ ] Venue favourites work end to end.
@@ -116,11 +118,12 @@ personal-only). Your own `.claude/skills/clash-feature/` is not — that is what
 ## Go further
 
 Compare your skill with `workshop-artifacts/07-clash-feature-skill/SKILL.md` in the workshop repository.
-Then run `/skill-doctor` again and check that your description is specific enough to match.
+Then test your description: in a fresh session, ask for a small feature without typing `/clash-feature`, and see whether Claude loads the skill by itself.
 
 ## Links
 
 - Skills — https://code.claude.com/docs/en/skills
 - Commands — https://code.claude.com/docs/en/commands
+- Create a plugin — https://code.claude.com/docs/en/plugins/create
 - Tools reference — https://code.claude.com/docs/en/tools-reference
 - agent-browser skill — https://www.skills.sh/vercel-labs/agent-browser/agent-browser
