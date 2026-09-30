@@ -1,9 +1,8 @@
 <!-- @note: strategy-two-agent-teams -->
 > Tun:
-> - Vor diesem Segment: sicherstellen, dass `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` auf deiner Maschine gesetzt ist
-> - Ohne das Flag: Demo startet lautlos normale Subagents — kein Team, keine Meinungsverschiedenheit, kein Payoff, und kein Fehler, der dir sagt, warum
-> - Für diesen Teil "watch first" sagen
-> - Docs-Link: öffnen, bis "When to use agent teams" scrollen, dann zurück zu den Folien
+> - Vor diesem Segment: sicherstellen, dass `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` gesetzt ist
+> - Ohne das Flag: Demo startet lautlos normale Subagents — kein Team, keine Meinungsverschiedenheit, kein Fehler
+> - Für diesen Teil "watch first" sagen. Docs-Link: bis "When to use agent teams" scrollen, dann zurück
 
 Sagen:
 - Gleiches Problem, gleicher neu präparierter Branch (12-start), andere Strategie
@@ -11,14 +10,14 @@ Sagen:
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Tun:
-> - Branch: 12-start hat den Ownership-Bug neu eingebaut (gleiche Entfernung wie Task 08), frisch zurückgesetzt für dieses Audit — außerdem den fertigen tdd-Skill und das bestandene capacity.ts aus Task 11
+> - 12-start: Ownership-Bug für dieses Audit neu eingebaut (gleiche Entfernung wie Task 08), dazu der fertige tdd-Skill und das bestandene capacity.ts aus Task 11
 
 Sagen:
 - Gleiches Audit wie Task 08, zwei weitere Wege — ein Team, dann ein dynamischer Workflow
 
 <!-- @note: describe-the-audit-team -->
 > Tun:
-> - Prompt ist der aus Task 12, Schritt 2, wortwörtlich — Gruppe sieht auf der Folie und in der Task-Datei denselben Text
+> - Prompt: Task 12, Schritt 2, wortwörtlich — Folie und Task-Datei zeigen denselben Text
 > - Ein verbreitetes Missverständnis korrigieren
 
 Sagen:
@@ -52,8 +51,7 @@ Sagen:
 
 <!-- @note: generator-verifier-make-then-check -->
 > Tun:
-> - Der Docs-Link öffnet den Blogpost https://claude.com/blog/multi-agent-coordination-patterns — bis "Pattern 1: Generator-verifier" scrollen
-> - Auf sein Diagramm zu Generator-verifier zeigen, dann zurück — unseres zeichnet dieselben Kästen und Pfeile nach
+> - Docs-Link: der Blogpost https://claude.com/blog/multi-agent-coordination-patterns, bis "Pattern 1: Generator-verifier" scrollen, auf sein Diagramm zeigen, dann zurück — unseres zeichnet es nach
 > - Fünf Patterns folgen, in der Reihenfolge des Blogs
 > - Docs: https://code.claude.com/docs/en/goal — auf "How evaluation works" zeigen
 
@@ -63,6 +61,7 @@ Sagen:
 - [click] Die Schleife endet, wenn der Verifier akzeptiert oder das Rundenlimit erreicht ist
 - Vage Kriterien heißen: der Verifier winkt alles durch — die Prüfungen aufschreiben
 - Claude Code hat das eingebaut: /goal — ein kleines Modell prüft jeden Turn, schickt einen Grund zurück
+- Die fünf Namen stammen aus diesem Blogpost, nicht aus der Claude-Code-Doku. Kein Claude-Code-Feature hängt an ihnen, anders als am Schlüsselwort ultracode — die Ways-Folien geben für jeden Flow Prompts in eigenen Worten
 
 <!-- @note: generator-verifier-make-then-check-2 -->
 > Tun:
@@ -141,6 +140,8 @@ Sagen:
 Sagen:
 - Zeile 1: kein Broadcast — um zwei Teammates zu erreichen, zwei Messages schicken
 - Zeile 2: Cross-Session-Messaging: Claude schreibt einer anderen deiner Sessions per Name
+- Eingebaut, ohne gemeinsame Datei: Claude listet deine laufenden Sessions mit ListAgents und schickt mit SendMessage. Selbst ansehen mit /list-agents. Braucht Claude Code v2.1.224, unter nativem Windows v2.1.234
+- @web ist ein Session-Name, kein Pfad: @ und die ersten Buchstaben des Namens tippen, dann die Session aus der aufklappenden Liste wählen (ab v2.1.232). Den Namen setzt man mit --name oder /rename
 - Zeile 3: eine Nachricht, wenn diese Session idle wird — kein dauerhaftes Abo
 - Keine Topics, kein Router: darum sagt die Fußnote "closest ways"
 
@@ -183,7 +184,7 @@ Sagen:
 Sagen:
 - Eigene Worte starten einen: "use a workflow to …" — nur diese Aufgabe, Effort bleibt gleich
 - Der Prompt aus Task 12 macht genau das — kein ultracode nötig
-- `/effort ultracode`: sehr hoher Effort, ein Workflow für jede größere Aufgabe, die ganze Session
+- `/effort ultracode`: ein Workflow für jede größere Aufgabe, die ganze Session, Effort bleibt gleich
 - Auf Pro: Dynamic workflow size auf small, weniger als 5 Agents — ein Rat, keine Grenze
 - Nutzung sparen: erst ein Ordner, Tokens pro Agent in `/workflows`, `x` stoppt den Run
 
@@ -219,13 +220,14 @@ Sagen:
 - [click] Links das Skript: `phase('Review')` gruppiert die Agents danach; `meta.phases` wiederholt die Titel
 - [click] Rechts `/workflows`: eine Zeile pro Phase mit Agent-Anzahl und Token-Summe; Enter öffnet die Agents
 - [click] Ein phase()-Aufruf, eine Zeile — Review ist eine pipeline() über die Dateien, Verify eine parallel()
+- Die Agent-Anzahl pro Phase kommt aus dem Skript, nicht aus einer Einstellung: ein agent()-Aufruf ist ein Agent, pipeline() startet einen pro Datei. Wer das ändern will, sagt es im Prompt. Dynamic workflow size in /config setzt nur eine Gesamtzahl, als Rat
 - Echtes Beispiel, der Build-Workflow dieses Workshops: sieben Phasen — Facts, Build, Author, Translate, Proof, Fix, Critic
 - Facts und Build teilen eine parallel(); Author → Translate ist eine pipeline(); Fix läuft max. drei Runden
 
 <!-- @note: read-the-generated-script -->
 > Tun:
 > - Das generierte Skript laut durchgehen, Phase für Phase
-> - `s` in /workflows drücken, bevor du "commit" sagst — dann stimmt der Commit-Moment wortwörtlich
+> - `s` in /workflows drücken, im Speicherdialog `.claude/workflows/` wählen (Tab wechselt) und Enter drücken, bevor du "commit" sagst — dann stimmt der Commit-Moment wortwörtlich
 
 Sagen:
 - Es gibt nicht das eine richtige Skript — das Skelett zeigt die Form: zuerst meta, ein phase()-Aufruf pro Gruppe
@@ -246,25 +248,15 @@ Sagen:
 
 <!-- @note: reconcile-decide-merge -->
 > Tun:
-> - [click] Zurück zur Toolkit-Karte gehen und die mittleren Zeilen aus Belegen statt aus Behauptungen füllen — die tatsächlich beobachteten Zahlen verwenden, nicht die Platzhalter im Diagramm
+> - [click] Zurück zur Toolkit-Karte: die mittleren Zeilen aus Belegen füllen, nicht aus Behauptungen — die beobachteten Zahlen, nicht die Platzhalter im Diagramm
 > - Den Fix mergen: den creatorId-Check in deleteClash und deleteVenue wiederherstellen
 > - Genauer Diff: workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md
 
 Sagen:
 - Drei Ergebnisse nebeneinander: Findings, Zeit, Tokens, Context-Verbrauch im Main-Thread
 - `/cost` sagt die Token-Zahl laut an — Alias für `/usage`
+- Zeile Parallelism: die Defaults aus den Docs — bis zu 20 Subagents gleichzeitig, 3–5 Teammates zum Start, bis zu 16 Workflow-Agents gleichzeitig. Ein Team ist für Peers, die miteinander reden müssen, nicht für mehr parallele Arbeit
 - Task endet mit geshipptem Code — das trägt 13-start
-
-
-
-<!-- @note: pick-the-parallelism-primitive -->
-> Do:
-> - Frage nach einem Beispiel pro Zeile. Die Antwort soll von Kommunikation und Isolation handeln, nicht von Mode.
-
-Say:
-- Parallelisierung ist nicht ein einzelnes Feature. Nimm den kleinsten Koordinationsmechanismus, der zu den Abhängigkeiten zwischen Workern passt.
-- Ein Subagent schützt den Hauptkontext. Ein Team existiert, weil Peers miteinander reden müssen. Ein Workflow macht Fan-out wiederholbar. Worktrees isolieren Edits. /batch ist für viele trennbare Pull Requests.
-- Mehr Agents sind nicht automatisch schneller: jeder Worker hat eigenen Kontext und eigenen Token-Verbrauch.
 
 <!-- @note: team-and-workflow-audit -->
 > Tun:

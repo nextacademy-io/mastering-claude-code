@@ -27,17 +27,17 @@ lines:
 
 <div class="flex items-center gap-4 w-full max-w-4xl justify-center text-sm">
   <div class="na-card px-5 py-4"><div class="font-semibold">describe</div><div style="color: var(--na-fg-muted)">full brief once</div></div>
-  <span>→</span>
-  <div class="na-card px-5 py-4" v-click><div class="font-semibold">@reference</div><div style="color: var(--na-fg-muted)">reuse existing pattern</div></div>
-  <span v-click>→</span>
-  <div class="na-card px-5 py-4" v-click><div class="font-semibold">skill / rule</div><div style="color: var(--na-fg-muted)">reuse the recipe</div></div>
+  <span v-click="1">→</span>
+  <div class="na-card px-5 py-4" v-click="1"><div class="font-semibold">@reference</div><div style="color: var(--na-fg-muted)">reuse existing pattern</div></div>
+  <span v-click="2">→</span>
+  <div class="na-card px-5 py-4" v-click="2"><div class="font-semibold">command / skill</div><div style="color: var(--na-fg-muted)">reuse the recipe</div></div>
 </div>
 
 ---
 layout: code-live
 heading: "Your first slash command"
 routeAlias: theory-custom-command
-docs: https://code.claude.com/docs/en/commands
+docs: https://code.claude.com/docs/en/skills
 filePath: ".claude/commands/new-page.md"
 success: "/new-page <description> adds a page that follows the repo rules, without you repeating them."
 ---
@@ -100,9 +100,13 @@ branch: "04-start"
 
 ---
 layout: concept
-heading: "Quality gates, said once"
+heading: "Verify cheap first, full gate last"
 lines:
-  - "npx tsc --noEmit · npm run lint · npm run build"
-  - "\"Before you say done, run all three and fix what fails\""
-  - "Claude runs them without being asked — most of the time, not a guarantee"
+  - "Run the smallest check that can fail. Save the full gates for the end."
 ---
+
+<div class="grid grid-cols-3 gap-5 w-full max-w-4xl">
+  <div class="na-card p-5"><div class="font-semibold mb-2">while you edit</div><div class="text-sm" style="color: var(--na-fg-muted)">one test · error · screenshot · focused check</div></div>
+  <div class="na-card p-5" v-click><div class="font-semibold mb-2">work package</div><div class="text-sm font-mono" style="color: var(--na-fg-muted)">npx tsc --noEmit<br/>npm run lint</div></div>
+  <div class="na-card p-5" v-click><div class="font-semibold mb-2">delivery</div><div class="text-sm font-mono" style="color: var(--na-fg-muted)">npm run build<br/>browser check</div></div>
+</div>

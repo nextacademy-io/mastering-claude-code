@@ -2,7 +2,8 @@
 # PostToolUse hook for `npm run build`: replaces the long build log with a short
 # summary before it reaches the model's context window.
 # Input: the hook JSON on stdin (tool_response.stdout / stderr / exit_code).
-# Output: JSON with hookSpecificOutput.updatedToolOutput, exit 0.
+# Output: JSON with hookSpecificOutput.updatedToolOutput in the Bash tool's own shape
+# (stdout, stderr, interrupted, isImage) — a plain string is ignored. Exit 0.
 set -euo pipefail
 input="$(cat)"
 stdout="$(jq -r '.tool_response.stdout // ""' <<<"$input")"
@@ -18,4 +19,4 @@ errors="$(printf '%s\n%s' "$stdout" "$stderr" | grep -ciE 'error' || true)"
 tail5="$(printf '%s\n%s' "$stdout" "$stderr" | grep -v '^\s*$' | tail -n 5 || true)"
 summary="$(printf '%s · %s error line(s)\n%s' "$status" "$errors" "$tail5")"
 
-jq -cn --arg s "$summary" '{hookSpecificOutput: {hookEventName: "PostToolUse", updatedToolOutput: $s}}'
+jq -cn --arg s "$summary" '{hookSpecificOutput: {hookEventName: "PostToolUse", updatedToolOutput: {stdout: $s, stderr: "", interrupted: false, isImage: false}}}'

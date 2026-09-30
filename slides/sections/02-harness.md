@@ -93,7 +93,7 @@ lines:
 layout: concept
 heading: "Skills and MCP"
 lines:
-  - "Skill: instructions loaded only when they match what you ask"
+  - "Skill: instructions loaded when they match what you ask, or via /skill-name"
   - "MCP: tools from outside the repo, spoken through one protocol"
 ---
 
@@ -116,8 +116,37 @@ lines:
   - "Control: what enters the window, which tools exist, what hooks enforce"
 ---
 
-<div class="flex flex-col items-center gap-6 w-full">
-  <G02ContextBudget />
+<G02ContextBudget />
+
+
+
+---
+layout: concept
+heading: "Cost multiplies quietly"
+docs: https://code.claude.com/docs/en/costs
+lines:
+  - "Bigger context makes every later turn heavier."
+  - "Higher effort, more turns and parallel workers multiply the spend."
+  - "Reduce context and tool output before you reduce correctness."
+---
+
+<div class="flex flex-col items-center gap-4 w-full">
+  <div class="flex items-center gap-3 w-full max-w-4xl justify-center text-sm">
+    <div class="na-card px-4 py-3">context</div><span>×</span><div class="na-card px-4 py-3">turns</div><span>×</span><div class="na-card px-4 py-3">parallel workers</div><span>×</span><div class="na-card px-4 py-3">effort</div>
+  </div>
+  <div class="text-center text-xs" style="color: var(--na-fg-muted)">A review lens, not a pricing formula.</div>
+</div>
+
+---
+layout: concept
+heading: "Keep deterministic work deterministic"
+lines:
+  - "Deterministic: same input, same result, always. A script is. The model is not."
+---
+
+<div class="grid grid-cols-2 gap-6 w-full max-w-3xl">
+  <div class="na-card p-5"><div class="font-semibold mb-2">script</div><div class="text-sm" style="color: var(--na-fg-muted)">format · style check · grep · one test · trim logs</div></div>
+  <div class="na-card p-5" v-click><div class="font-semibold mb-2">model</div><div class="text-sm" style="color: var(--na-fg-muted)">diagnose · decide · design · resolve ambiguity</div></div>
 </div>
 
 ---
@@ -164,7 +193,7 @@ claude
 
 ---
 layout: concept
-heading: "Claude Code is a harness, not the only one"
+heading: "Claude Code is not the only harness"
 lines:
   - "Cursor, Copilot, Codex, Aider — other harnesses, same basic loop."
   - "What differs: the tools, the autonomy, how transparent the loop is."
@@ -181,5 +210,3 @@ lines:
 layout: concept
 heading: "The model is the same for everyone. The harness is where you win."
 ---
-
-

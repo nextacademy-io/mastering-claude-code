@@ -4,14 +4,14 @@
 
 Say (hints what to say):
 - Arrive a beginner, leave running Claude Code like a senior engineer runs a team
-- Everything happens on one real app, CLASH — build it yourself first, then push it to its limits
+- Everything centres on one real app, CLASH — build it yourself first, then push it to its limits
 - Not a slideshow to watch — every part ends with you at your own keyboard
 
 <!-- @note: organisation -->
 > Do:
 > - Say this once, briefly, right at the start
-> - Remind yourself to actually take the short breaks — set a timer if it helps
-> - Ask the group if the lunch window you propose works for them, or if they would rather shift it
+> - Don't skip the short breaks — set a timer if it helps
+> - Propose a lunch window — ask the group if it works or should shift
 
 Say:
 - Lunch is built into the day, plus a few short breaks along the way — say if anyone needs one
@@ -63,14 +63,14 @@ Say:
 - Map is the heart of the app
 - Every clash and venue is a pin
 - Clicking an empty spot on the map starts a new clash there
-- Later: work on the finished reference app, push Claude Code much harder
+- Later: work on the finished reference CLASH, push Claude Code much harder
 - Hold this picture — it's what "done" looks like at the end of the build
 
 <!-- @note: how-this-works -->
 > Do:
-> - If you don't know an answer live, say so — either ask Claude on screen ("Schauen wir doch
->   mal was Claude dazu sagt.") or take it away ("Gute Frage, hmm, das weiß ich nicht. Kennt
->   jemand von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
+> - Don't know an answer live? Say so — ask Claude on screen ("Schauen wir doch mal was
+>   Claude dazu sagt.") or take it away ("Gute Frage, hmm, das weiß ich nicht. Kennt jemand
+>   von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
 
 Say:
 - [click] Every task: short explanation, live demo, then work the task file yourself

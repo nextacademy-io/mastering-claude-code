@@ -3,7 +3,7 @@
 > - Branch: 03-start already has the scaffold, schema and seed data — task 02's result
 
 Say:
-- Five things to learn, four things to build — the longest task in the part, so small steps matter most here
+- Four things to learn, four things to build — the longest task in the part, so small steps matter most here
 
 <!-- @note: small-steps-beat-big-asks -->
 > Do:
@@ -18,10 +18,9 @@ Say:
 <!-- @note: undo-a-step-rewind -->
 > Do:
 > - Participants do this in steps 6-7
-> - Demo: after the shell step, run /rewind, show the list of checkpoints
-> - Pick the checkpoint before the last step, show the files are back
-> - Press Esc to cancel if you did not really want it
-> - Optional: point at the docs page's Limitations section — checkpoints track Claude's own file edits, not changes a Bash command makes
+> - Demo after the shell step: /rewind, show the checkpoints, pick the one before the last step, show the files are back
+> - Esc cancels if you did not want it
+> - Optional: point at "Limitations" — checkpoints track Claude's own file edits, not Bash command changes
 
 Say:
 - This is undo for the conversation — it does not replace git
@@ -29,14 +28,15 @@ Say:
 
 <!-- @note: compact-is-a-lossy-reset -->
 > Do:
-> - Run /context live after the auth and shell steps. Read the actual bands.
-> - Run /compact, then /context again. Compare before and after instead of only watching a tank fill.
-> - Optional: point at the docs section on /clear versus /compact.
+> - Participants do this in steps 8-9
+> - Run /context live after the auth and shell steps, read the real bands
+> - [click] Run /compact, then /context again: compare
+> - In /context, tool results count as Messages; the tool bands are tool definitions and stay after /compact
+> - Optional: docs link, scroll to "Manage context proactively" for /clear vs /compact
 
 Say:
-- Compaction buys room by replacing detail with a summary. That summary is lossy.
-- Use /compact when the current thread is still valuable; use /clear when the old direction is no longer useful.
-- Part III turns this from a rescue command into a context discipline.
+- The summary is lossy: detail it drops is no longer in the window
+- Part III turns this rescue command into a context discipline
 
 <!-- @note: the-safety-moment -->
 > Do:
@@ -51,8 +51,7 @@ Say:
 >    Then add this rule to CLAUDE.md under "Rules":
 >    - Every Server Action calls requireUser() and checks ownership before it changes an existing row.
 >
-> - Say the sentence the group must keep
-> - Part III and IV spend a long time on exactly this rule — plant it here
+> - Say the sentence the group must keep — Part III and IV spend a long time on exactly this rule
 
 Say:
 - A Server Action is a public endpoint with a generated id
@@ -81,10 +80,9 @@ Say:
 
 <!-- @note: auth-and-clashes -->
 > Do:
-> - Task 03 recap
-> - Hand off to tasks/03-auth-and-clashes.md, full 13 steps — no more slides until Task 04
+> - Task 03 recap: hand off to tasks/03-auth-and-clashes.md, full 13 steps — no more slides until Task 04
 > - Watch the chat while they work
-> - Watch for people who send the whole task as one prompt — message them and help split it live
+> - Watch for anyone sending the whole task as one prompt — message them, help split it live
 
 Say:
 - Reset: 03-start is the scaffold plus data; 04-start is auth, shell and clashes finished

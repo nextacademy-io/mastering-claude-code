@@ -11,7 +11,7 @@ heading: "Control the context"
 layout: concept
 heading: "Eight tools, one constraint"
 lines:
-  - "We build every row of this table, in this order, on one codebase."
+  - "We build every row of this table on one codebase."
 ---
 
 <ToolkitMap reveal-rows />
@@ -60,7 +60,7 @@ layout: concept
 heading: "Budget, or dumping ground?"
 lines:
   - "CLAUDE.md is 11 bytes: @AGENTS.md"
-  - "AGENTS.md is a generic Next.js warning. Nothing about this app."
+  - "AGENTS.md is a generic Next.js warning. Nothing about CLASH."
   - "There is nothing to trim. We write from nothing."
 ---
 
@@ -122,11 +122,11 @@ lines:
 
 ---
 layout: concept
-heading: "CLAUDE.md files add up, they don't compete"
+heading: "CLAUDE.md files add up"
 docs: https://code.claude.com/docs/en/memory
 lines:
   - "Every CLAUDE.md above your working directory loads — none of them wins."
-  - "A contradiction? Claude picks one arbitrarily. Keep your rules consistent."
+  - "A contradiction? Claude may pick one arbitrarily. Keep your rules consistent."
 ---
 
 <G22MemoryConcatenation />
@@ -136,12 +136,12 @@ layout: concept
 heading: "Personal rules follow you"
 lines:
   - "~/.claude/rules/ is for defaults that follow you across projects."
-  - "Project invariants stay in CLAUDE.md. Path rules come in task 10."
+  - "Project invariants stay in CLAUDE.md. Path-scoped rules come in task 10."
 ---
 
 <div class="grid grid-cols-2 gap-6 w-full max-w-3xl">
   <div class="na-card p-5"><div class="font-mono font-semibold mb-2">~/.claude/rules/</div><div class="text-sm" style="color: var(--na-fg-muted)">your defaults · every project</div></div>
-  <div class="na-card p-5" v-click><div class="font-mono font-semibold mb-2">CLAUDE.md</div><div class="text-sm" style="color: var(--na-fg-muted)">this project's invariants</div></div>
+  <div class="na-card p-5" v-click><div class="font-mono font-semibold mb-2">CLAUDE.md</div><div class="text-sm" style="color: var(--na-fg-muted)">CLASH's invariants</div></div>
 </div>
 
 ---

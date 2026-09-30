@@ -7,7 +7,7 @@ Sagen:
 
 <!-- @note: task-15-letting-go -->
 > Tun:
-> - Branch: 15-start hat bereits CLAUDE.md, den Skill, den Fix und das Hook-Set
+> - Branch: 15-start hat bereits CLAUDE.md, die Skills, den Ownership-Fix und das Hook-Set
 
 Sagen:
 - Zwei Ideen: Worktrees verhindern Kollisionen zwischen parallelen Agents, Headless CI lässt denselben Audit laufen, ohne dass jemand zuschaut
@@ -27,14 +27,27 @@ Sagen:
 
 
 <!-- @note: batch-many-independent-pull-requests -->
-> Do:
-> - Verweise auf die manuelle Worktree-Folie. /batch automatisiert dieses Muster, nachdem es den Scope untersucht und eine Aufteilung vorschlägt.
-> - Führe es nicht live auf CLASH aus; die Entscheidungsgrenze ist die Lektion.
+> Tun:
+> - Auf die Worktree-Folie davor zurückverweisen: /batch automatisiert dieses Muster
+> - Nicht live auf CLASH ausführen — die Lektion: wann /batch passt und wann nicht
+> - Docs-Link: öffnen, unter "All commands" auf die Zeile `/batch` zeigen, dann zurück zu den Folien
 
-Say:
-- /batch ist für viele trennbare Änderungen. Es schlägt 5 bis 30 unabhängige Units vor und wartet vor dem Start auf Freigabe.
-- Jede Unit erhält einen eigenen Background-Agent und Worktree, führt Tests aus und öffnet einen eigenen Pull Request.
-- Teilen die Units eine zentrale Architekturentscheidung oder ändern ständig dieselben Dateien, zwinge die Arbeit nicht in /batch. Entscheide zuerst, splitte danach die mechanische Arbeit.
+Sagen:
+- /batch ist für viele getrennte Änderungen. Es schlägt 5 bis 30 unabhängige Units vor und wartet vor dem Start auf deine Freigabe
+- Jede Unit bekommt einen eigenen Background-Subagent und Worktree, führt Tests aus und öffnet einen eigenen Pull Request
+- Hängen die Units an einer Designentscheidung oder ändern sie ständig dieselben Dateien, gehört die Arbeit nicht in /batch. Erst entscheiden, dann die mechanische Arbeit aufteilen
+
+<!-- @note: pick-the-parallelism-primitive -->
+> Tun:
+> - Pro Zeile nach einem Beispiel aus dem Kurs fragen: Kommunikation und Isolation, nicht was gerade beliebt ist
+
+Sagen:
+- Den kleinsten Mechanismus wählen, der dazu passt, wie die Worker voneinander abhängen
+- Ein Subagent schützt den Context der Main-Session; ein Team gibt es, weil Peers miteinander reden müssen
+- [click] Workflow: der Fan-out wird wiederholbar
+- [click] Worktrees: Edits bleiben isoliert
+- [click] /batch: viele getrennte Pull Requests
+- Mehr Agents sind nicht automatisch schneller: jeder Worker hat seinen eigenen Context und eigenen Token-Verbrauch
 
 <!-- @note: headless-in-ci -->
 > Tun:
@@ -86,7 +99,7 @@ Sagen:
 
 <!-- @note: task-16-the-agent-sdk -->
 > Tun:
-> - Branch: 16-start hat bereits CLAUDE.md, den Skill, den Fix und das Hook-Set
+> - Branch: 16-start hat bereits CLAUDE.md, die Skills, den Ownership-Fix und das Hook-Set
 
 Sagen:
 - Derselbe Agent-Loop, jetzt in einem kleinen Programm statt in einer Terminal-Sitzung
@@ -105,10 +118,8 @@ Sagen:
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): workshop-artifacts/16-agent-sdk/ask-clash.mts
 > - Starten mit `npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"` nach `npm install @anthropic-ai/claude-agent-sdk tsx`
-> - Auf die drei Controls zeigen
-> - Optional: auf die Tabelle "Options" zeigen — dieselben Felder allowedTools/disallowedTools/maxTurns/hooks
-> - Dann auf die Result-Message: die Antwort, num_turns, total_cost_usd
-> - Die Kosten laut sagen
+> - Auf die drei Controls zeigen, optional auch in der Tabelle "Options"
+> - Dann auf die Result-Message: die Antwort, num_turns, total_cost_usd — die Kosten laut sagen
 
 Sagen:
 - allowedTools (bewilligt automatisch, schränkt nicht ein) + disallowedTools (blockiert tatsächlich), hooks.PreToolUse, maxTurns

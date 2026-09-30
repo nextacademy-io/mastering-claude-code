@@ -16,7 +16,7 @@ branch: "19-start (in your CLASH clone)"
 learn:
   - "Start from a running server: stdio, dev.db, reply() and refuse() are done"
   - "Design three tools: small, well described, checks before every write"
-  - "Register it in .mcp.json; reads run freely, both writes still ask"
+  - "Register it in .mcp.json; reads run freely, both writes ask in Manual mode"
   - "Call the same server from clash-conference through the Agent SDK"
 outcome:
   - "mcp/server.ts in CLASH: find_venue, create_clash, cancel_clash added"
@@ -81,7 +81,7 @@ docs: https://code.claude.com/docs/en/mcp
 lines:
   - ".mcp.json at the root of your CLASH clone: checked in, approved once."
   - "claude mcp list → clash: npx tsx mcp/server.ts - ✔ Connected"
-  - "Allow both read tools in CLASH's .claude/settings.json; both writes ask."
+  - "Allow both read tools in CLASH's .claude/settings.json; Manual mode: writes ask."
 ---
 
 <div class="flex flex-col gap-3 w-full max-w-2xl">
@@ -131,7 +131,7 @@ export async function POST(req: Request) {
     options: {
       mcpServers: { clash: { command: "npx", args: ["tsx", server] } },
       allowedTools: ["mcp__clash__find_venue", "mcp__clash__create_clash"],
-      permissionMode: "dontAsk", // every other tool is denied
+      permissionMode: "dontAsk", // deny instead of prompting
       // ⟵ LIVE: tools, settingSources, strictMcpConfig; maxTurns; check system/init
     },
   });

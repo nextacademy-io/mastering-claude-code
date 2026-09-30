@@ -37,17 +37,17 @@ Sagen:
 > - Branch: 06-start ist die Referenz-CLASH, geseedet, CLAUDE.md ist noch immer nur `@AGENTS.md`
 
 Sagen:
-- Fünf Dinge zu lernen, vier Ergebnisse — ausgehend von einer CLAUDE.md mit 11 Byte
+- Vier Dinge zu lernen, vier Ergebnisse — ausgehend von einer CLAUDE.md mit 11 Byte
 
 <!-- @note: context-is-an-instrument -->
 > Tun:
 > - Demo: `/context` live in einer frischen Session auf der Referenz-CLASH ausführen
-> - Die Zeilen laut vorlesen — nicht zusammenfassen, die Leute die echten Zahlen hören lassen
-> - Docs-Link: öffnen, oben die interaktive Timeline abspielen, bis "What the timeline shows" scrollen, dann zurück zu den Folien
+> - Die Zeilen laut vorlesen — echte Zahlen, keine Zusammenfassung
+> - Docs-Link: öffnen, oben die Timeline abspielen, bis "What the timeline shows" scrollen, dann zurück zu den Folien
 
 Sagen:
 - Ab jetzt nach jeder Task auf genau diesen Befehl zurückkommen
-- [click] Das Diagramm ist dasselbe Bild, das der Befehl als Text zeichnet
+- [click:5] Das Diagramm ist dasselbe Bild, das der Befehl als Text zeichnet
 
 <!-- @note: budget-or-dumping-ground -->
 > Tun:
@@ -61,28 +61,26 @@ Sagen:
 - Die Übung: eine gute Context-Datei aus dem Nichts schreiben, verankert in echten Regeln
 - Das ist die schwierigere, nützlichere Fähigkeit
 - Die meisten Repos, die du anfasst, sehen so aus: nichts, oder fast nichts
-- Gut zu wissen: seit Claude Code v2.1.277 liest Claude AGENTS.md von selbst — aber nur, wenn das Repo keine CLAUDE.md hat. CLASH hat eine, also lädt weiterhin der @AGENTS.md-Import die AGENTS.md.
+- Gut zu wissen: seit Claude Code v2.1.277 liest Claude AGENTS.md von selbst — aber standardmäßig nur, wenn ein Repository keine CLAUDE.md hat. CLASH hat eine, also lädt weiterhin der @AGENTS.md-Import die AGENTS.md.
 
 <!-- @note: the-shape-underneath-the-rules -->
 > Tun:
 > - Die Struktur zeigen, bevor eine einzige Regel geschrieben wird
-> - Falls nicht alle schon Next.js kennen: "RSC page" heißt nur, dass die Page ihre Daten selbst auf dem Server holt, kein separater API-Call nötig
-> - Genau diese Struktur fehlt später in deleteClash und deleteVenue — das deckt das Audit in Task 08 auf. Jetzt richtig zeigen, damit sie dann auf den ersten Blick erkennbar ist, statt einer blinden Suche
+> - Falls nicht alle Next.js kennen: eine "RSC page" holt ihre Daten selbst auf dem Server, kein separater API-Call
+> - In Task 08 findet das Audit, dass diese Struktur in deleteClash und deleteVenue fehlt — jetzt richtig zeigen, damit die Leute sie auf den ersten Blick erkennen
 
 Sagen:
 - Dieselbe Fünf-Boxen-Struktur steckt hinter jedem Feature in CLASH — einmal verstehen, überall wiedererkennen
 - [click] Reads: Browser → Page → Helper in lib/data → Prisma → SQLite
 - [click] Writes: Client → eine Server Action — sieht aus wie ein normaler Funktionsaufruf, ist aber ein öffentlicher Server-Endpoint
 - [click] requireUser() plus ein Ownership-Check, dann zurück durch denselben Prisma Client — hervorgehoben, weil genau dieser Knoten in Task 08 an zwei Stellen fehlt
-- [click] Die gestrichelte Linie ist kein Funktionsaufruf wie die anderen — revalidatePath markiert die Page nur als veraltet, die RSC-Page auf der Read-Seite holt sich von selbst neue Daten
+- [click] Die gestrichelte Linie ist der letzte Schritt der Action: Nach dem Schreiben ruft sie revalidatePath auf. Next.js rendert die Page mit den neuen Daten neu und schickt sie in derselben Antwort zurück
 
 <!-- @note: claude-md-from-real-rules -->
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer — nicht zeigen, bevor die Leute ihre eigene geschrieben haben): `workshop-artifacts/06-context-and-claude-md/CLAUDE.md` im Workshop-Repository
-> - Beim Aufbauen: auf die genaue Zeile in `app/actions/clashes.ts` mit dem Ownership-Check zeigen
-> - Auf dem Bildschirm zeigen: `if (clash.creatorId !== user.id)`
-> - Wenn ein Entwurf vor allem aus Prosa und Bauchgefühl besteht, dagegenhalten
-> - Das ist die Saat für Task 13
+> - Beim Aufbauen auf dem Bildschirm auf den Ownership-Check in `app/actions/clashes.ts` zeigen: `if (clash.creatorId !== user.id)`
+> - Wenn ein Entwurf vor allem aus Prosa und Bauchgefühl besteht, dagegenhalten — das ist die Saat für Task 13
 
 Sagen:
 - Die sechs Regeln:
@@ -96,16 +94,15 @@ Sagen:
 
 <!-- @note: plan-mode-review-first -->
 > Tun:
-> - Demo: live in den Plan Mode wechseln (Shift+Tab, bis plan dasteht)
-> - Das nächste Feature beschreiben
-> - Den Plan gemeinsam laut lesen
-> - Unter `docs/plans/realtime-notifications.md` speichern
+> - Demo live: Shift+Tab drücken, bis plan dasteht, dann das nächste Feature beschreiben
+> - Den Plan gemeinsam laut lesen, dann unter `docs/plans/realtime-notifications.md` speichern
 > - Docs-Link: öffnen, bis "Analyze before you edit with plan mode" scrollen, dann zurück zu den Folien
 
 Sagen:
 - Echtzeit-Benachrichtigungen — laden aktuell beim Rendern über `getNotifications` und `getUnreadCount` in `lib/data/notifications.ts`
 - "Don't write any code yet. Propose an approach and the files it touches."
 - Plan Mode ist unter den Permission Modes dokumentiert
+- Die Seite nennt sechs Modi: Manual, Accept Edits, Plan, Auto, dontAsk, Bypass Permissions. „Ask“ ist kein Modus, sondern eine Regelart neben allow und deny
 
 <!-- @note: a-reviewed-plan-is-not-a-guarantee -->
 > Tun:
@@ -118,28 +115,28 @@ Sagen:
 - Offensichtlich Unsinn — aber genau so stand es im Plan
 - Zum Glück hat er den Plan ganz gelesen und es vor dem Ausrollen abgefangen
 
-<!-- @note: claude-md-files-add-up-they-don-t-compete -->
+<!-- @note: claude-md-files-add-up -->
 > Tun:
 > - Docs-Link: öffnen, bis "How CLAUDE.md files load" scrollen, dann zurück zu den Folien
 
 Sagen:
 - [click] ~/.claude/CLAUDE.md — deine persönlichen Instruktionen, jedes Projekt
-- [click] CLAUDE.md im Repo-Root — wird zuerst gelesen, am nächsten zum Start
-- [click] CLAUDE.local.md — gitignored, direkt nach CLAUDE.md auf derselben Ebene angehängt
+- [click] CLAUDE.md im Root deines CLASH-Clones — wird zuerst gelesen, lädt beim Start
+- [click] CLAUDE.local.md — deine persönlichen Vorlieben für deinen CLASH-Clone; CLAUDE.md wird über Git geteilt. Selbst in die .gitignore eintragen. Wird direkt nach CLAUDE.md auf derselben Ebene angehängt
 - [click] Das CLAUDE.md eines Unterordners lädt, wenn Claude dort eine Datei liest — zuletzt gelesen, am nächsten an der Arbeit
-- [click] .claude/rules/*.md lädt genauso, on demand
+- [click] .claude/rules/*.md — eine einfache Regel lädt beim Start, wie CLAUDE.md. Task 10 zeigt die Art, die auf eine passende Datei wartet
 - [click] Alles landet in einem Context — nichts wird verworfen, nichts wird ausgewählt
-- [click] Zwei Dateien widersprechen sich? Claude wählt eine. Das ist ein Bug, den du gebaut hast, kein Feature
+- [click] Zwei Dateien widersprechen sich? Claude wählt womöglich irgendeine davon. Das ist ein Bug, den du gebaut hast, kein Feature
 
 <!-- @note: personal-rules-follow-you -->
-> Do:
-> - Stelle die persönliche Tone-Rule aus Task 06 der Project Rule gegenüber, die Task 10 später baut.
-> - Erkläre paths-Frontmatter hier noch nicht; dieser Mechanismus gehört vollständig in Task 10.
+> Tun:
+> - Schritt 9 nennen: dort legen die Teilnehmenden ~/.claude/rules/tone.md an
+> - paths-Frontmatter hier nicht erklären: das ist Task 10
 
-Say:
-- Persönliche Defaults gehören unter ~/.claude/rules, wenn sie dich betreffen und nicht das Repository.
-- Repository-weite Invarianten gehören in CLAUDE.md.
-- Eine Project Rule, die nur für passende Dateien auftaucht, ist ein anderer Mechanismus. Task 10 bekommt dafür einen klaren eigenen Block.
+Sagen:
+- ~/.claude/rules/ enthält, was dich betrifft, in jedem Projekt
+- [click] CLAUDE.md enthält, was CLASH selbst betrifft, geteilt über Git
+- Persönlich, aber nur für CLASH? Dann CLAUDE.local.md, nicht CLAUDE.md
 
 <!-- @note: references-beat-grep-and-guess -->
 > Tun:

@@ -7,13 +7,14 @@
 
 - [A brief has three parts](https://mastering-claude-code.vercel.app/theory-briefs)
 - [Plan mode: read, think, propose](https://mastering-claude-code.vercel.app/theory-plan-mode)
+- [A good plan has an exit](https://mastering-claude-code.vercel.app/theory-plan-quality)
 
 > **Reminder:** State the goal, rules and done criteria; use plan mode before changes that are expensive to undo.
 
 ## You will end up with
 
 A running Next.js 16 app with Tailwind, shadcn/ui, a Prisma 7 database with the five
-records from the spec, a seed with eight users, and your first commit made through Claude.
+kinds of records from the spec, a seed with eight users, and your first commit made through Claude.
 
 ## Why
 
@@ -31,8 +32,8 @@ The data model is the right place for that, because it is hard to change later.
    ```
    `02-start` brings its own `CLAUDE.md`, so this replaces the one you just made. To look at
    yours again later: `git stash show -p --include-untracked`.
-   Manual mode shows every command before it runs. Press `Shift+Tab` until the status bar
-   shows `manual mode` — this is a new session, so don't assume you're still in whatever
+   Manual mode shows most commands before they run. Press `Shift+Tab` until the status bar
+   shows `manual mode on` — this is a new session, so don't assume you're still in whatever
    mode task 01 left you in.
 2. Give the scaffold brief. Read it once before you send it. Notice the three parts: goal, rules, done.
    ```
@@ -52,8 +53,8 @@ The data model is the right place for that, because it is hard to change later.
 
    Done when: npm run dev starts and http://localhost:3000 shows a page with the text "CLASH".
    ```
-   Claude asks permission before each command. Read the first two or three, then switch to
-   auto mode (`Shift+Tab` until the status bar shows `auto mode`) and let the rest of the
+   Claude asks permission before most commands. Read the first two or three, then switch to
+   auto mode (`Shift+Tab` until the status bar shows `auto mode on`) and let the rest of the
    scaffold run without asking — initializing a Next.js app is a standard, low-risk task.
 3. Watch what Claude does. You see `Bash`, `Write`, and `Edit` lines. Each is one tool call. When it stops, open the browser at `http://localhost:3000`.
 4. Look at the changes before you trust them. First ask which files are new or changed.
@@ -67,10 +68,11 @@ The data model is the right place for that, because it is hard to change later.
    ```
    Claude's own summary is not the same as the actual change. `/diff` shows the edits inside
    your files, including ones Claude just made — read it, don't just take the summary. On
-   Claude Code 2.1.260 or later, with a terminal at least 110 columns wide, this opens a panel
-   that may say some files are "not shown"; on an older version you get a plain diff viewer
-   instead. Press `Esc` to close it — or, if you got the panel, run `/diff` again.
-5. Switch to plan mode. Press `Shift+Tab` until the status bar shows `plan mode on`. Now Claude can read but not write.
+   Claude Code 2.1.260 or later, in fullscreen rendering (`/tui fullscreen`) and with a terminal
+   at least 110 columns wide, this opens a panel that may say some files are "not shown";
+   otherwise you get a plain diff viewer instead. Press `Esc` to close it — or, if you got the
+   panel, run `/diff` again.
+5. Switch to plan mode. Press `Shift+Tab` until the status bar shows `plan mode on`. Now Claude can read and plan, but does not edit your source.
 6. Ask for the data model plan.
    ```
    Read @docs/SPEC.md, section "Data". Plan a Prisma 7 schema:
@@ -89,7 +91,7 @@ The data model is the right place for that, because it is hard to change later.
    ```
    Prisma 7.10+ creates `prisma7.config.ts`; earlier Prisma 7 projects may have `prisma.config.ts`.
    The Prisma 7 CLI accepts either. Follow the installed Prisma 7 version instead of forcing one filename.
-8. Accept the plan. Press `Shift+Tab` until the prompt shows the normal mode, then:
+8. Accept the plan. Press `Shift+Tab` until the status bar shows `manual mode on`, then:
    ```
    Do it. Then run npm run db:migrate and npm run db:seed and show me the output.
    ```
@@ -136,6 +138,8 @@ Ask Claude to explain every line of `prisma/schema.prisma` to you, one model at 
 ## Links
 
 - Plan mode — https://code.claude.com/docs/en/permission-modes
+- Best practices: explore, plan, code — https://code.claude.com/docs/en/best-practices
+- Model configuration: opusplan — https://code.claude.com/docs/en/model-config
 - Common workflows — https://code.claude.com/docs/en/common-workflows
 - Keyboard shortcuts — https://code.claude.com/docs/en/interactive-mode
 - create-next-app CLI — https://nextjs.org/docs/pages/api-reference/cli/create-next-app

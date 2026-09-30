@@ -51,7 +51,6 @@ nobody telling you which prompt to type. This is what your normal day looks like
 
 ## Now you
 
-- Ship the optional part of your brief.
 - Set up `/loop` or a scheduled routine that checks the pull request for new comments and answers them.
 
 ## Check
@@ -60,7 +59,7 @@ Use the checklist at the end of `workshop-artifacts/17-capstone/README.md`. Ever
 
 ## Stuck?
 
-`git checkout 17-start` — the reference CLASH with `CLAUDE.md`, the skill, the fix and the hook set.
+`git checkout 17-start` — the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
 
 ## Go further
 

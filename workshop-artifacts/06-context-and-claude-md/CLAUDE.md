@@ -59,7 +59,7 @@ why the Leaflet map is wrapped the way it is — don't "simplify" it.
 npm run dev          # dev server on :3000
 npm run db:migrate   # prisma migrate dev
 npm run db:seed      # destructive reseed; 8 users, password "test"
-npm run db:reset     # full reset
+npm run db:reset     # full reset, no seed: run db:seed after
 ```
 
 ## Quality gates — all three must pass before you call work done

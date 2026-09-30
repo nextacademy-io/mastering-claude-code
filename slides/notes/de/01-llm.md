@@ -42,56 +42,37 @@ Sagen:
 <!-- @note: four-sizes-four-jobs -->
 > Tun:
 > - Falls ein Tokenizer oder /model-Picker zur Hand ist, live zeigen
-> - Alle in diesem Workshop haben schon Zugriff auf alle vier — es geht ums Auswählen, nicht darum, wer was bekommt
+> - Pro und Standard-Seats im Team-Plan: jede Fable-Anfrage läuft über kostenpflichtige Usage Credits, nicht über das Plan-Limit
+> - Max und Premium-Seats: enthalten bis zur Hälfte des wöchentlichen Plan-Limits, und es verbraucht das Limit schneller
+> - Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
 
 Sagen:
 - Gleiche Architektur, andere Größe — größer ist nicht immer besser, sondern langsamer und teurer
-- [click] Sonnet ist aus gutem Grund der Standard: schnell genug, fähig genug, für die meiste Arbeit
+- [click] Sonnet: schnell genug, fähig genug und günstiger als Opus. Standard auf Anthropic-Plänen ist Opus; /model zeigt, welches du nutzt
 - [click] Opus greifen, wenn das Denken der schwere Teil ist, nicht das Tippen
 - [click] Fable ist für Sessions gebaut, die du sonst in Stücke teilen würdest — das Ergebnis übergeben, nicht die Schritte
 
 
 
 <!-- @note: model-and-effort-are-separate -->
-> Do:
-> - Zeige auf die vier Regler. Frage: Welcher Regler hilft bei einer fehlenden Datei? Kontext, nicht Effort.
-> - Frage: Welcher Regler beweist, dass ein Refactoring funktioniert? Verifikation, nicht Effort.
+> Tun:
+> - Fragen, welcher Regler eine fehlende Datei behebt (Context) und welcher beweist, dass ein Refactoring funktioniert (Verifikation). Keiner davon ist Effort
+> - Docs-Link: öffnen, bis "Adjust effort level" scrollen, dann zurück zu den Folien
 
-Say:
-- Modell und Effort sind zwei verschiedene Entscheidungen. Das Modell bestimmt die Fähigkeit, Effort den Reasoning-Aufwand für diese Aufgabe.
-- Plan Mode ist eine Berechtigungs- und Workflow-Grenze. Er macht die Arbeit prüfbarer, aber das Modell nicht automatisch fähiger.
-- Kaufe kein zusätzliches Reasoning, um fehlenden Kontext oder fehlende Belege zu kompensieren.
-
-<!-- @note: same-task-different-effort -->
-> Do:
-> - Führe beide Befehle aus einer frischen Shell des Workshop-Repositories aus. Das Modell bleibt identisch.
-> - Die Datei enthält vier absichtliche Vertragsverletzungen. Verrate sie erst nach beiden Läufen.
-> - Lies die Usage-Felder aus dem JSON und die Findings. Ton und Länge zählen nicht.
-
-Say:
-- Gleiche Aufgabe, gleicher Kontext, gleiches Modell. Nur Effort ändert sich.
-- Die vier erwarteten Findings: cancelled liefert true; null-Kapazität wird als null Plätze behandelt; die Vollprüfung verwendet > statt >=; sort verändert participantIds.
-- Ein Lauf kann sorgfältiger klingen und trotzdem schlechter abschneiden. Zähle Treffer und Erfindungen.
-
-<!-- @note: measure-the-extra-reasoning -->
-> Do:
-> - Fülle die Tabelle mit den Resultaten der zwei Live-Läufe.
-> - Finden beide alle vier Fehler, sag das ausdrücklich: Diese Aufgabe hat den höheren Effort heute nicht verdient.
-
-Say:
-- Reasoning hat nur Wert, wenn es Entscheidungen verbessert oder Nacharbeit verhindert.
-- Die nützliche Betrachtung ist der gesamte Engineering-Aufwand: Reasoning plus Umsetzung plus Nacharbeit plus Verifikation.
-- Wiederhole den Vergleich an einer echten Aufgabe, bevor du einen höheren Team-Default setzt.
+Sagen:
+- Context: was es weiß, die Fakten, die du ins Fenster legst
+- [click] Modell: Fähigkeit
+- [click] Effort: Reasoning für diese Aufgabe, nie ein Ersatz für fehlenden Context oder fehlende Belege
+- [click] Verifikation: woran du erkennst, dass es funktioniert hat
 
 <!-- @note: spend-effort-where-it-matters -->
-> Do:
-> - Behandle die Stufen als Heuristik. Effort ist pro Modell kalibriert, kein fixer Token-Multiplikator.
-> - Zeige in der Doku den Hinweis zu abnehmendem Nutzen bei max.
+> Tun:
+> - Die Skala als grobe Orientierung lesen: Effort ist pro Modell kalibriert, kein fester Token-Multiplikator
+> - Den Default nennen: medium auf Opus 5.5 und Sonnet 5.5. max kann abnehmenden Nutzen zeigen, also vor breitem Einsatz testen
 
-Say:
-- Low passt zu klarer, mechanischer Arbeit. High ist sinnvoll, wenn wirklich Schlussfolgerungen nötig sind.
-- xhigh und max lohnen sich dort, wo eine falsche Entscheidung teuer ist: Root Cause, Architektur, Security-Grenzen, schwieriger Plan-Review.
-- ultrathink ist eine Instruktion für einen tieferen einzelnen Turn; der Session-Effort wird dadurch nicht umgestellt.
+Sagen:
+- xhigh und max passen auch zu Security-Grenzen und einem schwierigen Plan-Review: überall, wo eine falsche Entscheidung teuer ist
+- ultrathink im Prompt bittet um einen einzelnen, tieferen Turn; das Effort-Level der Session bleibt, wie es ist
 
 <!-- @note: where-the-knowledge-comes-from -->
 Sagen:
@@ -133,7 +114,7 @@ Sagen:
 Sagen:
 - Ein Chat ist nur Tokens mit Labels
 - Die System-Message kommt zuerst und setzt die Regeln — in Claude Code wird sie vom Tool geschrieben; deine CLAUDE.md wird danach geladen, als User-Message
-- [click] Dann wechseln sich User- und Assistant-Messages ab
+- [click:2] Dann wechseln sich User- und Assistant-Messages ab
 - Das Modell wurde trainiert, der System-Message stark zu folgen, danach der User-Message, danach seinen eigenen früheren Worten
 - Warum eine Regel in CLAUDE.md eine Regel schlägt, die in einem langen Chat vergraben ist — sie wird jede Session frisch geladen und übersteht /compact
 

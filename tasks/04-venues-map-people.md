@@ -61,7 +61,7 @@ page itself. And you add quality gates so Claude checks its own work.
    - shadcn components, existing layout, existing card style
    - run npx tsc --noEmit at the end
    ```
-   Now `/new-page` is a slash command. Try it:
+   Now `/new-page` is a slash command. Not in the `/` menu yet? Run `/reload-skills`: it re-reads the skill and command folders without a restart. Then try it:
    ```
    /new-page a page /participations that lists my join requests grouped into Going, Awaiting approval, Declined
    ```
@@ -71,7 +71,7 @@ page itself. And you add quality gates so Claude checks its own work.
    ```
 5. The map. Let Claude read the docs first.
    ```
-   Fetch https://react-leaflet.js.org/docs/start-installation/ and read how to use react-leaflet in Next.js.
+   Fetch https://react-leaflet.js.org/docs/start-introduction/ and read how to use react-leaflet in Next.js.
    Then extend the map starter that is already on 04-start:
    - keep components/map/leaflet-map.tsx and components/map/map.tsx; reuse or extend them, do not rebuild them
    - components/map/explore-map.tsx already has the interactive map shell; use it for a full-screen
@@ -89,7 +89,7 @@ page itself. And you add quality gates so Claude checks its own work.
    with password test, take a screenshot, and tell me if the pins are visible.
    ```
    Claude runs `agent-browser open`, `snapshot -i`, `screenshot`. It reads the page like a user.
-8. If something looks wrong to you, take a screenshot yourself and paste it into the prompt (`Ctrl+V` on most terminals). Describe what is wrong in one sentence.
+8. If something looks wrong to you, take a screenshot yourself and paste it into the prompt (`Ctrl+V`, or `Alt+V` on Windows and WSL). Describe what is wrong in one sentence.
 9. Participation.
    ```
    Add participation from @docs/SPEC.md:
@@ -149,6 +149,7 @@ Ask Claude to look at the map page with agent-browser on a phone-sized window an
 ## Links
 
 - Commands — https://code.claude.com/docs/en/commands
+- Skills and command files — https://code.claude.com/docs/en/skills
 - Images and screenshots in prompts — https://code.claude.com/docs/en/common-workflows
 - react-leaflet — https://react-leaflet.js.org/
 - agent-browser — https://github.com/vercel-labs/agent-browser

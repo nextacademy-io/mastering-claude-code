@@ -8,7 +8,7 @@ lines:
 
 <D01TokenChips />
 
-<a v-click="7" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" rel="noopener noreferrer" title="Karpathy — Let's build the GPT Tokenizer (2h13m)" style="position: absolute; right: 4rem; bottom: 2.25rem; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; font-weight: 500; color: var(--na-fg-muted); text-decoration: none; opacity: 0.8;">🎥 video</a>
+<a v-click="7" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" rel="noopener noreferrer" title="Karpathy — Let's build the GPT Tokenizer" style="position: absolute; right: 4rem; bottom: 2.25rem; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; font-weight: 500; color: var(--na-fg-muted); text-decoration: none; opacity: 0.8;">🎥 video</a>
 
 ---
 layout: concept
@@ -59,7 +59,7 @@ lines:
 
 <div class="grid grid-cols-4 gap-3 w-full max-w-4xl">
   <div class="na-card p-4"><div class="font-semibold mb-1">Haiku</div><div class="text-sm" style="color: var(--na-fg-muted)">fast, simple tasks</div></div>
-  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Sonnet</div><div class="text-sm" style="color: var(--na-fg-muted)">daily coding, the default</div></div>
+  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Sonnet</div><div class="text-sm" style="color: var(--na-fg-muted)">daily coding, cheaper than Opus</div></div>
   <div class="na-card p-4" v-click><div class="font-semibold mb-1">Opus</div><div class="text-sm" style="color: var(--na-fg-muted)">complex reasoning</div></div>
   <div class="na-card p-4" v-click style="border-color: var(--na-accent-500)"><div class="font-semibold mb-1">Fable</div><div class="text-sm" style="color: var(--na-fg-muted)">long, autonomous sessions</div></div>
 </div>
@@ -72,7 +72,6 @@ heading: "Model and effort are separate"
 docs: https://code.claude.com/docs/en/model-config
 lines:
   - "Model sets capability. Effort sets how much reasoning the model spends."
-  - "Context supplies facts. Verification tells you whether the result is good."
 ---
 
 <div class="grid grid-cols-4 gap-3 w-full max-w-4xl">
@@ -81,49 +80,12 @@ lines:
   <div class="na-card p-4" v-click><div class="font-semibold mb-1">Effort</div><div class="text-sm" style="color: var(--na-fg-muted)">How hard should it think?</div></div>
   <div class="na-card p-4" v-click><div class="font-semibold mb-1">Verification</div><div class="text-sm" style="color: var(--na-fg-muted)">How will we know?</div></div>
 </div>
-<div v-click class="mt-5 text-sm text-center" style="color: var(--na-fg-muted)">Plan mode changes when Claude may write. It is not a smarter model.</div>
-
----
-layout: code-live
-heading: "Same task, different effort"
-routeAlias: theory-effort-lab
-docs: https://code.claude.com/docs/en/model-config
-filePath: "workshop-artifacts/reasoning-lab/review.ts"
-success: "Both runs reviewed the same file and prompt; the group can compare findings, false positives and usage instead of judging tone."
----
-
-```bash
-claude -p --effort low --output-format json \
-  "Read @workshop-artifacts/reasoning-lab/review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
-
-claude -p --effort high --output-format json \
-  "Read @workshop-artifacts/reasoning-lab/review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
-
-# ⟵ LIVE: same model, same file, same prompt. Compare the result and usage.
-```
-
----
-layout: concept
-heading: "Measure the extra reasoning"
-lines:
-  - "Score correct findings and false positives. Record tokens and fix turns."
-  - "Higher effort pays only when it prevents enough rework to cover its cost."
----
-
-<div class="grid grid-cols-5 gap-2 w-full max-w-4xl text-sm">
-  <div></div><div class="font-semibold text-center">correct</div><div class="font-semibold text-center">false +</div><div class="font-semibold text-center">tokens</div><div class="font-semibold text-center">fix turns</div>
-  <div class="na-card p-3 font-mono">low</div><div class="na-card p-3 text-center">__/4</div><div class="na-card p-3 text-center">__</div><div class="na-card p-3 text-center">__</div><div class="na-card p-3 text-center">__</div>
-  <div class="na-card p-3 font-mono">high</div><div class="na-card p-3 text-center">__/4</div><div class="na-card p-3 text-center">__</div><div class="na-card p-3 text-center">__</div><div class="na-card p-3 text-center">__</div>
-</div>
 
 ---
 layout: concept
 heading: "Spend effort where it matters"
-docs: https://code.claude.com/docs/en/model-config
 lines:
-  - "low: scoped and mechanical · medium/high: normal coding and harder debugging"
-  - "xhigh: architecture and root cause · max: hardest decisions; measure first"
-  - "ultrathink asks for one deeper turn without changing the session effort setting"
+  - "Raise effort only where a wrong decision is expensive."
 ---
 
 <div class="flex gap-3 w-full max-w-4xl text-sm">

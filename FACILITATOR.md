@@ -15,7 +15,7 @@ primitive dividers in Parts III and IV. Under both maps, repeat four engineering
 - **Evidence** — what proves the result instead of merely sounding correct?
 - **Autonomy** — have verification, isolation and limits earned the right to step away?
 
-The core close states those questions explicitly. Material after the **Further paths** divider is reserve: teach it only when useful.
+The core close states those questions explicitly.
 
 **Before the first session:** push CLASH's branches (`docs/BRANCHES.md`), confirm your own
 machine passes `docs/SETUP.md` including `/skills` listing `agent-browser`, confirm
@@ -75,21 +75,22 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
   top candidate comes out, that token joins the prompt, the bars change, repeat. Nothing is planned ahead. Say it twice.
 - **Probabilities.** Same prompt, different answer. That is not a bug. Temperature is the
   spread. Claude Code runs with a fixed setting; you do not tune it.
+- **Model and effort.** Land the distinction: context supplies facts, model supplies capability,
+  effort supplies reasoning budget, verification supplies trust. No command on screen yet: the
+  lab that measures effort comes after print mode in Task 01.
 - **Knowledge.** Trained once, on a snapshot. It does not read the internet now. If it needs
-  a fact from today, something has to put that fact into the prompt.
+  a current fact, something has to put that fact into the prompt.
 - **No memory.** Every turn sends the whole conversation again. That is what "context" means.
   This is the single most important idea of the workshop. Everything in Parts III and IV is
   about managing what goes into that window.
-- **The window is a budget.** Show the tank filling towards the red limit line. Past it, old
-  things fall out or the run stops.
+- **The window is a budget.** Show the tank filling towards the red limit line. Before it is full,
+  Claude Code compacts on its own: it clears old tool outputs first, then summarises the
+  conversation. Nothing is cut off at random, but early instructions can get lost — lasting rules
+  go in CLAUDE.md.
 - **Bad at.** Counting, arithmetic, hidden state, current facts, checking its own work.
   The fix for all five is the same: give it a tool.
 - **Tool call.** The model writes a small structured request and stops. Something else
   runs it. That "something else" is the next section.
-- **Reasoning lab.** Keep model, file and prompt identical; change only effort. Score correct
-  findings, false positives, usage and correction turns. A tie is a valid result: the small task
-  did not earn the extra reasoning spend. Land the distinction: context supplies facts, model
-  supplies capability, effort supplies reasoning budget, verification supplies trust.
 
 ### The harness
 
@@ -97,20 +98,23 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
 - Walk the cycle diagram station by station: build prompt, call model, permission, run tool,
   append result. The harness ring runs the tools; the model in the centre only chooses. Point
   at where the tool result goes: back into the prompt. That is why tool output costs context.
-- What is in the prompt every turn: system prompt, CLAUDE.md, the tool list, the skills
+- What is in the prompt every turn: system prompt, the tool list, CLAUDE.md, the skills
   index, the history, your message. The part that repeats is cached. Cache is why the
   second turn is cheaper than the first.
-- Permissions: the tool call waits at the gate until a rule or you say yes. Five modes: manual,
-  accept edits, plan, auto, bypass. Plan mode is "no writes".
-- Hooks: a shell command runs before or after a tool. Only exit code 2 matters: before a tool
-  it blocks the call, after a tool it hands the error to the model. Say "we build
-  these in Part IV".
+- Permissions: the tool call waits at the gate until a rule or you say yes. Six modes: manual,
+  accept edits, plan, auto, bypass permissions, and dontAsk. The slide shows the five you switch between;
+  dontAsk never appears in the Shift+Tab cycle and denies anything that would otherwise ask
+  (scripts, CI, task 19). "Ask" is a rule type next to allow and deny, not a mode. Plan mode
+  does not edit your source, but it can still run shell commands to explore.
+- Hooks: a shell command runs before or after a tool; PreToolUse runs before the permission
+  check. Only exit code 2 matters: before a tool it blocks the call, after a tool it hands the
+  error to the model. Say "we build these in Part IV".
 - Subagents: a second loop with its own window. Only a summary comes back.
 - Compaction: the full tank becomes a small summary block with room above it. Starting fresh
   empties it. Name the commands, don't run them yet — no live session is open. The real, live
-  version comes later in Task 01.
+  version comes later: `/clear` in Task 01, `/compact` in Task 03.
 - A question that skips the loop (`/btw`): same loop, no tool call, answered from what's
-  already in the window. Name it, don't run it yet, same reason as compaction.
+  already in the window. Name it, don't run it yet: you show it live in Task 01.
 - Install and log in: this is where the group first sees a terminal with Claude Code running.
   Everyone installed before the workshop (`docs/SETUP.md`) — say so, this is a recap, not a
   fresh install. An empty folder has nothing for `/context`, `/btw` or `/clear` to show yet,
@@ -120,9 +124,18 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
 
 ### First steps — Task 01
 
-Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/clear`, `/context`.
+Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/btw`, `/clear`, `/context`.
 Watch for: people who never press Enter on the permission prompt; people who type in the
 terminal while Claude is working (Esc stops it).
+
+Debrief after the recap: flags and print mode, then the reasoning lab ("Same task, different
+effort" and its score table), then resuming a session. For the lab, copy
+`workshop-artifacts/reasoning-lab/review.ts` into an empty folder outside the workshop repository
+and your CLASH clone, so neither run sees an answer key, a CLAUDE.md or their Claude Code hooks.
+Unset `CLAUDE_CODE_EFFORT_LEVEL` (it overrides `--effort`), then run the same prompt on the same
+`--model` at `--effort low` and `--effort high`. Score correct findings, false positives and output
+tokens, not `total_cost_usd`: the second run reads the prompt prefix the first run cached. A tie
+is a valid result: the small task did not earn the extra reasoning spend.
 
 ---
 
@@ -138,14 +151,15 @@ reference build at each stage.
 - Start in manual mode. Read the first two or three permission prompts aloud, then switch to
   auto — scaffolding a Next.js app is standard, low-risk work. Let the group watch the tool
   calls scroll by and name them: Bash, Write, Read. Read the diff, not the summary.
-- Plan mode for the data model. Show a plan being changed before it is accepted. Then name the
-  boundary: plan when the approach is unclear, crosses contracts or is expensive to undo; skip it
-  for an obvious local diff that is cheap to verify. A good plan names goal, scope, evidence,
-  interfaces, steps, risks, verification and done.
-- Plan vs. roadmap: one acceptance boundary is a plan; independently reviewable or revertible
-  outcomes are work packages under a roadmap. For a difficult decision, `opusplan` spends Opus on
-  planning and Sonnet on execution. A fresh reviewer should challenge assumptions once; resolve
-  deltas instead of bouncing the complete plan between models indefinitely.
+- Plan mode for the data model. Show a plan being changed before it is accepted. Then say when a
+  plan pays off: the approach is unclear, the change touches something other code relies on (the
+  schema, auth), or it is hard to undo. Skip it for a small, obvious fix you can check in one step.
+  A good plan has the eight fields on the slide: goal, scope, evidence, interfaces, steps, risks,
+  verification, done.
+- Plan or roadmap: one change you can accept or reject as a whole is one plan. If parts can ship
+  or be undone on their own, each part is a work package on a roadmap, with its own small plan.
+  `opusplan` uses Opus while planning and Sonnet while building. For an important plan, let a
+  fresh reviewer read it once, then fix the gaps it finds instead of rewriting the whole plan.
 - First commit through Claude. Say: it writes the message, you approve.
 - CLAUDE.md gets its first real invariants: Prisma client path, string statuses, async params.
 
@@ -169,10 +183,11 @@ reference build at each stage.
 - Stop slide: the one-big-ask prompt is task file step 2 — send it live, stop on the red bar,
   then hand over at step 1 (they check out and start their own session; skip step 2, they just
   watched it) and continue from step 3, the small-steps version of the same four things.
-- Verification debrief after the recap: cheap signal first, full gate last. Inner-loop work uses
-  the smallest check that can fail for the edit; a work-package boundary uses typecheck and lint;
-  delivery uses build plus browser/E2E where the feature needs it. If the same gate set repeats,
-  prefer one repository validation script so humans, Claude and CI run the same contract.
+- Verification debrief after the recap: cheap check first, full gate last. While editing, run the
+  smallest check that can fail for that edit. At the end of a work package, run `npx tsc --noEmit`
+  and `npm run lint`. Before calling it done, run `npm run build`, plus a browser check where the
+  feature needs one. The three commands are the Quality gates section from step 11. Part IV
+  enforces the build with a hook.
 
 ### Task 05 — Finish and ship
 
@@ -203,8 +218,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 ### Task 07 — The clash-feature skill
 
 - Progressive disclosure: name and description always loaded, body on match. Before adding the
-  course skill, run `/skill-doctor` on the existing vendored set and name the two large
-  near-duplicates. This lesson belongs with skills, not in the general context task.
+  course skill, run `/skill-doctor`: it shows what each skill costs in context and how often it
+  ran, and flags skills never invoked. It does not compare bodies, so open `react-best-practices`
+  and `vercel-react-best-practices` side by side to show the two large near-duplicates.
+  `/skill-doctor` needs v2.1.252 or later and feature-flag fetching; without it, read the Skills
+  row in `/context`.
 - Commands did not break: `.claude/commands/*.md` still works. Skills are the richer format.
 - Build the skill step by step on screen. Stop at the Server Action step and say why it
   insists on its own ownership check. Then ship venue favourites with it and compare `/context`.
@@ -216,7 +234,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   Action is a public POST endpoint with a generated id. Zod validates shape, not permission.
 - Say out loud: upstream `main` has no missing checks. The two are seeded on `08-start`
   (`deleteClash`, `deleteVenue`). `npm run lint` shows an unused `user` warning in
-  `deleteVenue` as a tell.
+  `deleteClash` and `deleteVenue` as a tell.
 - One `security-auditor` with Read/Grep/Glob and a falsifiable brief. `/context` barely
   moves. Say "agent, subagent, fork" once, slowly, and point at the row that appears under
   `main` below the prompt. Fork mode is on by default in interactive sessions, but a named
@@ -288,7 +306,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   disagree about the same file and the lead reconciles.
 - Dynamic workflow: describe the job, Claude writes the script, the runtime runs it in the
   background. Read the generated script on screen. It lands under
-  `~/.claude/projects/<session>/`; `s` in `/workflows` saves it to `.claude/workflows/`.
+  `~/.claude/projects/<session>/`; `s` in `/workflows` saves it to `.claude/workflows/` once you
+  pick that folder in the save dialog (Tab switches) and press Enter.
   `Date.now()`, `Math.random()` and no-arg `new Date()` throw inside it.
 - Four ways to start one, as on the slide: ask in your own words ("use a workflow to …"), put
   the keyword `ultracode` in one prompt, set `/effort ultracode` for the whole session, or run
@@ -305,9 +324,6 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   graphic, then a table of ways and prompts that make the flow happen in Claude Code.
 - Reconcile three results, fill the toolkit map from evidence, then restore the two
   `creatorId` checks. `workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md` has the diff.
-- Close the block with the parallelism decision: subagent for noisy isolated investigation, team
-  when peers must communicate, workflow for repeatable fan-out/fan-in, worktrees for isolated edits,
-  `/batch` for many separable units that should end as independent pull requests.
 - Keep a finished run in a second terminal in case the live one is slow.
 - No stop slide: this whole block is the live demo already, mode `watch first`. The real
   contrast here is three-way (subagent vs. team vs. workflow), not careless-vs-engineered — that
@@ -329,24 +345,35 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Security debrief immediately after the task, before browser/MCP: `.gitignore` is not a Claude
   visibility boundary; Glob includes ignored files and dotfiles by default. Tool results are written
   to plaintext local session transcripts, so a secret read can persist there. Use deny rules for
-  credential paths. Then land the three rules: untrusted text can instruct a model, quarantine readers
-  from writes, least privilege.
+  credential paths: they cover Claude's file tools and the shell readers Claude Code recognises,
+  such as `cat`, but not every process; only the sandbox covers every process. Then land the three
+  rules: untrusted text can instruct a model, quarantine readers from writes, least privilege.
 
 ### Task 14 — The browser closes the loop
 
 - MCP is a protocol boundary. Playwright MCP drives a browser; DevTools MCP speaks the
   DevTools protocol.
 - Drive the join flow by hand first, then ask for the test file. Never generate tests blind.
+- Before step 7, have everyone log in to CLASH as Anna and upload an avatar on `/profile`: the
+  seed leaves every avatar empty, so there is nothing to measure.
 - Avatars: `getCurrentUser()` selects `avatar` on every request. Measure, fix, re-measure.
+- Steer the step 8 fix toward an image with its own URL: CLASH's sidebar is a client component
+  that gets the avatar as a prop on every page, so a second query in the layout that still passes
+  the data URL leaves the number unchanged.
 - Four browser tools, one comparison. Do not quote a token-savings percentage for
   agent-browser; it is not an official number.
 
 ### Task 15 — Letting go
 
 - Worktrees: `claude --worktree <name>`. The one thing they take home.
-- `/batch` is the reserve bridge from manual worktrees to many independent pull requests: it
-  researches, proposes 5–30 units, waits for approval, then gives each unit a background agent and
-  worktree. Do not use it to split one coupled architecture decision.
+- `/batch` is the bridge from manual worktrees to many independent pull requests. Show its slide
+  right after the worktree slide; do not run it on CLASH live. It researches, proposes 5–30 units,
+  waits for approval, then gives each unit a background subagent and a worktree. Do not use it to
+  split one design decision.
+- Then the parallelism decision ("Pick the parallelism primitive"): subagent for noisy isolated
+  investigation, team when peers must communicate, workflow for repeatable fan-out/fan-in,
+  worktrees for isolated edits, `/batch` for many separate units that should end as independent
+  pull requests.
 - CI: `anthropics/claude-code-action@v1` with `prompt` and `claude_args`. Not `@beta`,
   not a bare `claude -p` in the YAML. Token via a repository secret.
 
@@ -361,17 +388,23 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Three briefs. Each participant picks one and ships it in a worktree with the skill, a
   subagent review, the hook set, a browser check and a PR.
-- This is the integration task, not the course close anymore. Security moved earlier, before MCP;
-  third-party process frameworks moved to reserve material after the final close.
+- This is the integration task. The security rules come in the task 13 debrief, before MCP.
+- Spec Kit and BMAD sit between the task intro and the recap. They are further reading: two
+  ready-made processes that turn a brief into a spec, a plan and code. Not a step of the task;
+  install one only if you demo it.
 
 ### Task 18 — Automate
 
-- `/goal` is the bounded-autonomy bridge: one measurable end state, the proof, constraints and a
-  turn ceiling. It does not change permission mode. Background work defers the evaluator until the
-  background work finishes; long waits can create check-in turns, so this is also a cost lesson.
 - Output style first: `/output-style concise`, one question, then the same question on the
   default style. The difference is the lesson. Then the custom `host-notes` style: restart Claude
-  Code after creating the file, or it is not listed. Say that styles do not reach subagents.
+  Code after creating the file, or it is not listed. Say that styles do not reach a fresh
+  subagent; a fork keeps the style.
+- Then `/goal`, step 8, typed as one line: one measurable end state, the check that proves it and
+  a turn ceiling; add constraints for real feature work. On CLASH's `18-start` both checks already
+  pass, so it can be met after the first turn: point at the verdict in the transcript, then `/goal`
+  shows the condition, turns and token spend. It does not change the permission mode. While a
+  subagent or a background shell runs, the evaluation waits; long waits can start check-in turns,
+  so this is also a cost lesson.
 - `/loop` without an interval: Claude picks its own pause and prints why. Let it fire more than
   once, then `Esc`. Say plainly that a loop only fires while the session is open and idle.
 - The background session (`claude --bg --name audit ...`) moves into a worktree under CLASH's
@@ -407,6 +440,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - `npx tsx mcp/smoke.ts` is the finish line of step 4: 19 checks. A `FAIL` line names the broken
   check: participants paste that line back into Claude Code. The most common one is a refusal
   text that is not exactly the text in the prompt.
+- Steps 5 and 6 start `claude --permission-mode manual` on purpose: in auto mode, the starting
+  mode from v2.1.283, a write that no rule matches goes to the classifier, not to a permission
+  prompt.
 - In step 5 Claude calls `find_venue` before `create_clash` without being told: point at
   `venueId`'s description. Keep CLASH's map on `localhost:3000/map` on screen: the clash appears
   there. The second, identical prompt is refused as a duplicate.
@@ -415,7 +451,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Say it once, slowly: one `console.log` in the server breaks the stdio channel. Logs go to
   `stderr` only. The starter already does it right; do not let a prompt undo it.
 - Least privilege: allow the two read tools in CLASH's `.claude/settings.json`; `create_clash` and
-  `cancel_clash` keep prompting. The stop slide's careless side is `mcp__clash__*` plus
+  `cancel_clash` keep prompting in Manual mode. The stop slide's careless side is `mcp__clash__*` plus
   `bypassPermissions`.
 - `clash-conference` is a second repository (`agilino/clash-conference`), cloned next to your
   CLASH clone during setup, with a `19-start` branch of its own: clash-conference without
@@ -446,9 +482,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ---
 
-## Final close and reserve
+## Final close
 
-After task 19, close the required workshop before any reserve material:
+After task 19, close the workshop:
 
 1. Context decides what the agent knows.
 2. Reasoning decides how hard it thinks.
@@ -456,8 +492,9 @@ After task 19, close the required workshop before any reserve material:
 4. Autonomy is earned by verification: more freedom needs stronger evidence, isolation and limits.
 5. Finish on: *Context is king. You push it, you own it.*
 
-The **Further paths** divider is optional reserve. Spec Kit, BMAD, Channels and Computer Use are
-there for questions or spare capacity; do not let them dilute the core close.
+If anyone asks what the workshop leaves out: Channels push events into a running session, and
+Computer Use lets Claude click native apps. The note on the last slide carries that line. Do not
+let it dilute the close.
 
 ---
 
@@ -468,11 +505,12 @@ there for questions or spare capacity; do not let them dilute the core close.
 | Beginners lost in the model section | Slow down. Every slide has one diagram and one sentence. Ask a question per slide. |
 | Participants' builds diverge from the reference | Expected. Reset branches are the reference build. Say so at the start of Part II. |
 | Scaffold fails on a machine | `git checkout 03-start` and continue. Do not debug installs in the session. |
+| A participant's own task 02 build gets a different Prisma | A plain install can pull a newer Prisma CLI than the client (npm's `latest` tag for `prisma` can be a Prisma 8 pre-release). CLASH's reset branches pin `prisma`, `@prisma/client` and `@prisma/adapter-better-sqlite3` to exactly 7.9.0 for Prisma Studio. If `npx prisma --version` shows anything else, or Prisma Studio does not open, have them ask Claude to pin all three to 7.9.0 and run `npm install`. |
 | Dynamic workflows off on Pro | Everyone enables them in `/config` during setup. |
 | Agent teams demo does nothing | Confirm the env flag on your machine before you start. It fails silently. |
 | Typecheck hook does not fire | It is the scripted mistake. Make sure they saw the silence before the fix. |
 | Slow workflow run | Second terminal with a finished run. The script read-through is the filler. |
-| Token limits on Pro during Part IV | Warn early. Watch the trainer screen for that segment. Rejoin at the next branch. No `/effort ultracode`; set Dynamic workflow size to small. If usage is tight, run the workflow on one folder first. A run that hits the usage limit can pause and continue after the reset (v2.1.271 or later); if it cannot, those agents fail. |
+| Token limits on Pro during Part IV | Warn early. Watch the trainer screen for that segment. Rejoin at the next branch. No `/effort ultracode`; set Dynamic workflow size to small. If usage is tight, run the workflow on one folder first. A run that hits the usage limit can pause and continue after the reset (v2.1.271 or later); if it cannot, those agents fail. Say which limit it is: the session limit refills on its own; the weekly limit across all models refills only at the weekly reset, so once that one is used up, waiting for the next session reset does not help. |
 | Someone hand-edits `prisma/migrations` | The deny hook from Task 13 catches it from `14-start` on. |
 | `/tdd` fires on its own mid-conversation | Shouldn't happen — `disable-model-invocation: true` blocks it. If it does, the skill file is wrong; fix it live as a teaching moment. |
 | Routines need a claude.ai subscription and GitHub access | Trainer demo only, mode `watch first`. Confirm your own `/schedule list` works before you start. Participants without a subscription watch; nothing later depends on their own routine. |

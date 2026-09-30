@@ -16,7 +16,7 @@ Say:
 <!-- @note: rules-scoped-to-a-path -->
 > Do:
 > - Point back at task 06's ~/.claude/rules/tone.md — that one had no paths: field
-> - Docs link: open it, scroll to path-specific rules, then back to the slides
+> - Docs link: open it, scroll to "Path-specific rules", then back to the slides
 
 Say:
 - paths is the only field Claude Code reads from a rule file — everything else in the frontmatter is silently ignored
@@ -36,7 +36,7 @@ Say:
 
 <!-- @note: the-ownership-rule -->
 > Do:
-> - Recap: this rule is the durable version of what task 08's subagent found once
+> - Recap: tie this rule to task 08's subagent finding
 
 Say:
 - "Same finding, surfaced every time now, not just the one time someone thought to audit — still guidance, not enforcement"

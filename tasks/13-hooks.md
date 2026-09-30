@@ -123,21 +123,28 @@ are logged, not enforced. What Claude sees on a block is stderr.
 - [ ] A green build shows one line. A red build keeps the turn open.
 - [ ] `/hooks` lists every hook you added, grouped by event.
 - [ ] You can say why `hard_deny` does not belong in this file. It is an auto-mode setting
-      (`settings.autoMode.hard_deny`), not a hook decision. Hook decisions are `allow`, `deny`, `ask`.
+      (`settings.autoMode.hard_deny`), not a hook decision. Hook decisions are `allow`, `deny`, `ask`, and `defer` in `-p` mode.
 - [ ] A new session started on the model set in `.claude/settings.local.json`, not the one in `.claude/settings.json`.
 
 ## Stuck?
 
-`git checkout 13-start` — the reference CLASH with the fix merged (task 12), the skill and
+`git checkout 13-start` — the reference CLASH with the fix merged (task 12), the skills and
 `CLAUDE.md`. No hooks yet.
 
 ## Go further
 
-Compare with `workshop-artifacts/13-hooks/` in the workshop repository. Then look up auto mode
-and `hard_deny` in the permission modes docs.
+Compare with `workshop-artifacts/13-hooks/` in the workshop repository. Then look up `hard_deny`
+in the auto mode configuration docs, and why it does nothing outside auto mode.
 
 ## Links
 
 - Hooks guide — https://code.claude.com/docs/en/hooks-guide
 - Hooks reference — https://code.claude.com/docs/en/hooks
+- Settings — https://code.claude.com/docs/en/settings
+- Sandboxing — https://code.claude.com/docs/en/sandboxing
+- Managed settings — https://code.claude.com/docs/en/managed-settings
 - Permission modes — https://code.claude.com/docs/en/permission-modes
+- Configure auto mode — https://code.claude.com/docs/en/auto-mode-config
+- Environment variables — https://code.claude.com/docs/en/env-vars
+- The .claude directory — https://code.claude.com/docs/en/claude-directory
+- Security — https://code.claude.com/docs/en/security

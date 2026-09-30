@@ -77,6 +77,8 @@ const elbow = (c: (typeof corners)[number]) => {
 }
 
 // ── still mode: upright layouts, 440 units wide ──
+// The flow-ways column is about 325 px of the 980 px slide, so one unit draws
+// at about 0.74 px: keep every label at 18 or more (13 px on the slide).
 const stillHeights: Record<Pattern, number> = {
   'generator-verifier': 350,
   'orchestrator-subagent': 290,
@@ -134,10 +136,10 @@ const stillCorners = [
       <line x1="340" y1="118" x2="340" y2="88" stroke="var(--na-zinc-500)" stroke-width="2" :marker-end="`url(#${stillArrow})`" />
       <circle cx="340" cy="140" r="20" fill="var(--na-primary-900)" stroke="var(--na-primary-400)" stroke-width="2" />
       <path d="M331,140 L338,148 L350,132" fill="none" stroke="var(--na-primary-400)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-      <text x="368" y="146" fill="var(--na-fg-muted)" style="font-size:16px">Output</text>
+      <text x="368" y="146" fill="var(--na-fg-muted)" style="font-size:18px">Output</text>
       <circle cx="340" cy="288" r="20" fill="var(--na-primary-900)" stroke="var(--na-accent-500)" stroke-width="2" />
       <path d="M332,280 L348,296 M348,280 L332,296" stroke="var(--na-accent-500)" stroke-width="2.5" stroke-linecap="round" />
-      <text x="340" y="336" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:16px">Feedback (if failed)</text>
+      <text x="340" y="336" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:18px">Feedback (if failed)</text>
       <path d="M318,288 H24 V58 H46" fill="none" stroke="var(--na-accent-500)" stroke-width="2.5" :marker-end="`url(#${stillArrowAccent})`" />
     </template>
 
@@ -168,8 +170,8 @@ const stillCorners = [
       <g v-for="(x, i) in cols" :key="x">
         <line :x1="x" y1="250" :x2="x" y2="292" stroke="var(--na-zinc-500)" stroke-width="2" :marker-end="`url(#${stillArrow})`" />
         <rect :x="x - 65" y="294" width="130" height="68" rx="10" fill="var(--na-zinc-900)" stroke="var(--na-zinc-700)" stroke-width="2" />
-        <text :x="x" y="324" text-anchor="middle" fill="var(--na-fg)" font-weight="600" style="font-size:18px">Worker {{ i + 1 }}</text>
-        <text :x="x" y="347" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:15px">(persistent)</text>
+        <text :x="x" y="321" text-anchor="middle" fill="var(--na-fg)" font-weight="600" style="font-size:18px">Worker {{ i + 1 }}</text>
+        <text :x="x" y="344" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:18px">(persistent)</text>
       </g>
     </template>
 
@@ -192,16 +194,16 @@ const stillCorners = [
         <text v-for="(l, j) in a.lines" :key="l" :x="a.x" :y="281 + j * 22" text-anchor="middle" fill="var(--na-fg)" font-weight="600" style="font-size:18px">{{ l }}</text>
       </g>
       <line x1="70" y1="346" x2="110" y2="346" stroke="var(--na-zinc-500)" stroke-width="2" :marker-end="`url(#${stillArrow})`" />
-      <text x="120" y="352" fill="var(--na-fg-muted)" style="font-size:16px">Publish</text>
+      <text x="120" y="352" fill="var(--na-fg-muted)" style="font-size:18px">Publish</text>
       <line x1="240" y1="346" x2="280" y2="346" stroke="var(--na-accent-500)" stroke-width="2" :marker-end="`url(#${stillArrowAccent})`" />
-      <text x="290" y="352" fill="var(--na-accent-500)" style="font-size:16px">Subscribe</text>
+      <text x="290" y="352" fill="var(--na-accent-500)" style="font-size:18px">Subscribe</text>
     </template>
 
     <!-- the store in the middle, two agents above, two below; no agent-to-agent edge -->
     <template v-else-if="pattern === 'shared-state'">
-      <rect x="80" y="148" width="280" height="120" rx="10" fill="var(--na-bg-raised)" stroke="var(--na-zinc-700)" stroke-width="2" />
+      <rect x="40" y="148" width="360" height="120" rx="10" fill="var(--na-bg-raised)" stroke="var(--na-zinc-700)" stroke-width="2" />
       <text x="220" y="180" text-anchor="middle" fill="var(--na-fg)" font-weight="700" style="font-size:20px">Shared state store</text>
-      <text x="220" y="204" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:15px">(database, file system, document)</text>
+      <text x="220" y="204" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:18px">(database, file system, document)</text>
       <rect x="224" y="216" width="24" height="32" rx="3" fill="var(--na-accent-500)" stroke="var(--na-bg-raised)" stroke-width="1.5" />
       <rect x="218" y="220" width="24" height="32" rx="3" fill="var(--na-accent-500)" stroke="var(--na-bg-raised)" stroke-width="1.5" />
       <rect x="212" y="224" width="24" height="32" rx="3" fill="var(--na-accent-500)" stroke="var(--na-bg-raised)" stroke-width="1.5" />

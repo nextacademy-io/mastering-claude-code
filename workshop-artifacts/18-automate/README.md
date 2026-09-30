@@ -59,7 +59,7 @@ turn, and every loop round, to take as long as one build.
 2. Run `claude agents`. One row is named `audit`. `Space` peeks at it, `Enter` attaches, `←` detaches.
 3. Find the report. A background session moves into a worktree under `.claude/worktrees/` before its
    first edit, so `docs/audit.md` is in `.claude/worktrees/<name>/docs/audit.md`, not in the main checkout
-   of your CLASH clone. On `18-start` every action is guarded, so every line says PASS.
+   of your CLASH clone. On `18-start` every action has the checks it needs, so every line says PASS.
 4. `claude logs <id>` prints what the session did. `claude stop <id>` ends it. The id is in the `claude agents` list.
 5. Watch the `Stop` hook. The worktree starts without `node_modules`, so `npm run build` there fails until
    the session runs `npm install`. If the session seems stuck at the end of its turn, attach and look.

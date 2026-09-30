@@ -14,34 +14,33 @@ Say:
 
 <!-- @note: loaded-only-when-needed -->
 > Do:
-> - Point back at /skill-doctor
+> - Point ahead: the next slide runs /skill-doctor live
 > - Docs link: open it, scroll to "Skill content lifecycle", then back to the slides
 
 Say:
 - Makes skills cheap at scale
 - [click] A skill's description sits in context every turn, used or not — unless disable-model-invocation is set
 - [click] A loaded body normally stays for the session — after a compaction, older skill bodies can be dropped
-- [click] That is what it measures — how many descriptions you pay for versus how many bodies ever get pulled in
+- [click] That is what /skill-doctor, on the next slide, measures — how many descriptions you pay for versus how many bodies ever get pulled in
 
 
 
 <!-- @note: skill-doctor-what-it-costs -->
 > Do:
-> - Already copied on this branch — .claude/skills/ holds eight of the nine .agents/skills/ folders; agent-browser stays personal (task 01)
-> - Demo: run `/skill-doctor` live
-> - Show the two folders side by side — the overlap is obvious on sight
+> - Participants do this in task 07, step 2
+> - Demo: run `/skill-doctor` live, then open `.claude/skills/react-best-practices/AGENTS.md` and `.claude/skills/vercel-react-best-practices/AGENTS.md` side by side
+> - No `/skill-doctor` (it needs Claude Code v2.1.252 or later)? Read the Skills row in `/context` instead
 
 Say:
-- Claude Code reads .claude/skills/ at the project level — this reference build copies eight of the nine .agents/skills/ folders in for you; agent-browser is already a personal skill from task 01
-- Unused skills cost you every session — but only their short description loads, not the ~100 KB body. The body loads when the skill is used
-- Not in a bloated CLAUDE.md (there is none) — it's in `.agents/skills/react-best-practices` and `.agents/skills/vercel-react-best-practices`
-- Two real, near-duplicate rule sets, each about 100 KB
+- The report shows each skill's context cost and how often it ran. It does not show size, overlap or load errors: open the folders for size, run /skills to see what loaded
+- Using a skill loads its short SKILL.md. The ~100 KB AGENTS.md loads only when Claude opens it
+- Nobody deletes them in the workshop: seeing the cost is the lesson
 
 <!-- @note: commands-became-skills-nothing-broke -->
 > Do:
-> - Point back at the /new-page command from Task 04 — same mechanism, this is the folder version
+> - Point back at Task 04's /new-page command: same mechanism, this is the folder version
 > - Correct a common misconception
-> - Optional: point at "All commands" — this page's own reference listing
+> - Optional: open the docs link, point at the top note "Custom commands have been merged into skills", then back to the slides
 
 Say:
 - Commands merging into skills does not break .claude/commands/*.md files
@@ -52,9 +51,8 @@ Say:
 > Do:
 > - Full working solution (trainer only): workshop-artifacts/07-clash-feature-skill/SKILL.md
 > - Build it on screen step by step, not pasted whole
-> - At the Server Action step, stop and explain
-> - Most important sentence in the whole skill — it lands again in task 08
-> - Task step 4 hands participants the reason and one verbatim edit prompt — they add the note, they do not have to work the reason out (task 08 teaches it properly)
+> - At the Server Action step, stop and explain: the skill's most important sentence. Task 08 teaches it properly
+> - Task step 5 hands participants the reason and one verbatim edit prompt: they add the note without having to work out why
 
 Say:
 - It insists on its own ownership check even though requireUser() runs in the layout
@@ -86,17 +84,17 @@ Say:
 > - Docs link: open it, show the live agent-browser skill page, then back to the slides
 
 Say:
-- Claude Code reads two folders and nothing else. .agents/skills/ is not one of them
+- Claude Code reads your skills from two folders. .agents/skills/ is not one of them
 - [click] npx skills add vercel-labs/agent-browser -g puts the real copy in ~/.agents/skills/
 - [click] Then it links that folder into ~/.claude/skills/ — a skill entry is allowed to be a symlink
 - [click] Without the link the skill is simply absent. No error, no warning — /skills is how you check
 
 <!-- @note: a-plugin-bundles-your-setup -->
 > Do:
-> - Docs link: open it, scroll to "Plugin structure overview", then back to the slides
+> - Docs link: open it, scroll to "Plugin layout", then back to the slides
 
 Say:
-- A skill or a hook alone lives in .claude/ and stays local to one project
+- A skill or a hook alone lives in .claude/ and serves one project or only you
 - A plugin is the packaged, shareable version of the same idea
 - [click] skills/ — one SKILL.md per skill, same as .claude/skills/
 - [click] agents/ — subagent files, same shape as .claude/agents/
@@ -112,12 +110,12 @@ Say:
 
 Say:
 - A marketplace is just a catalog — add one, then install by name
-- The install summary says whether a restart or /reload-plugins is needed
+- The install summary says whether the plugin is active now or needs /reload-plugins
 
 <!-- @note: the-clash-feature-skill -->
 > Do:
 > - Task 07 recap
-> - Hand off to tasks/07-clash-feature-skill.md, full 8 steps — no more slides until Task 08
+> - Hand off to tasks/07-clash-feature-skill.md, full 9 steps — no more slides until Task 08
 > - Watch the chat while they work
 
 Say:

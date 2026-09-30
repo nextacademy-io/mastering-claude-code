@@ -54,12 +54,11 @@ lines:
 layout: concept
 heading: "Commands became skills. Nothing broke."
 routeAlias: theory-commands-and-skills
-docs: https://code.claude.com/docs/en/commands
+docs: https://code.claude.com/docs/en/skills
 lines:
   - ".claude/commands/deploy.md → /deploy"
   - ".claude/skills/deploy/SKILL.md → /deploy"
-  - "Old command files keep working."
-  - "Same frontmatter fields work in both: allowed-tools, context: fork."
+  - "Old command files keep working. Same fields: allowed-tools, context: fork."
 ---
 
 
@@ -112,10 +111,9 @@ heading: "Where Claude Code looks for skills"
 routeAlias: theory-skill-install
 docs: https://www.skills.sh/vercel-labs/agent-browser/agent-browser
 lines:
-  - "Two folders only: ~/.claude/skills/ and .claude/skills/."
+  - "Two folders for your skills: ~/.claude/skills/ and .claude/skills/."
   - "npx skills add writes to .agents/skills/, then symlinks it in."
-  - "No link, no skill — and no error."
-  - "/skills lists what's actually loaded, broken links included."
+  - "No link, no skill — and no error. /skills shows what loaded."
 ---
 
 <G23SkillSymlink />
@@ -123,7 +121,7 @@ lines:
 ---
 layout: concept
 heading: "A plugin bundles your setup"
-docs: https://code.claude.com/docs/en/plugins
+docs: https://code.claude.com/docs/en/plugins/create
 lines:
   - "One folder: skills, agents, hooks, an MCP server — one shared name."
   - "commands/ became skills/. Old command files still work."

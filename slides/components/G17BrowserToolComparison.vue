@@ -2,10 +2,10 @@
 // G17 — Browser tool comparison, positioned by purpose and QUALITATIVE cost only.
 // Do NOT put a numeric token-savings figure on Agent Browser — not an official claim.
 const tools = [
-  { name: 'Playwright MCP', x: 240, y: 90, purpose: 'E2E test authoring', cost: 'heavier: full DOM + schemas' },
+  { name: 'Playwright MCP', x: 240, y: 90, purpose: 'E2E test authoring', cost: 'heavy: a11y trees + schemas' },
   { name: 'Chrome DevTools MCP', x: 720, y: 90, purpose: 'perf and network debugging', cost: 'moderate' },
   { name: 'Claude in Chrome', x: 720, y: 270, purpose: 'authenticated visual checks', cost: 'moderate to heavy' },
-  { name: 'Agent Browser', x: 240, y: 270, purpose: 'general automation', cost: 'leaner snapshots, not DOM dumps' },
+  { name: 'Agent Browser', x: 240, y: 270, purpose: 'general automation', cost: 'leaner snapshots, no schemas' },
 ]
 </script>
 

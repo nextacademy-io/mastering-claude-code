@@ -49,8 +49,10 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
    for the current user. Do not change app code.
    ```
 4. Check that neither session sees the other's uncommitted files. Different branch, different folder.
-5. Two related things to know: `isolation: worktree` in a subagent's header runs that subagent in its
+5. Three related things to know: `isolation: worktree` in a subagent's header runs that subagent in its
    own worktree. The `EnterWorktree` and `ExitWorktree` tools let an agent do this itself mid-session.
+   And `/batch` splits many separate changes into 5 to 30 units, each in its own worktree with its own
+   pull request, after you approve the split. We do not run it on CLASH.
 
 **Headless in CI**
 
@@ -66,15 +68,17 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
    needs, including id-token: write.
    ```
 8. Read the file. The `prompt` input is the same brief as task 08. `claude_args` carries model
-   and turn limits. The secret is named, never pasted. v1 dropped the `mode` input. `@beta` is the old version.
-9. Create the token for the secret: `claude setup-token`. Add it to the repository as
-   `CLAUDE_CODE_OAUTH_TOKEN`. You do not need it to check that the YAML is valid.
+   and turn limits, and the allowed tools. Without `Bash(gh pr comment:*)` there, the findings
+   stay in the run log. The secret is named, never pasted. v1 dropped the `mode` input. `@beta` is the old version.
+9. Create the token for the secret: `claude setup-token`. Add it to your CLASH repository on
+   GitHub as `CLAUDE_CODE_OAUTH_TOKEN`. You do not need it to check that the YAML is valid.
 10. Install the GitHub App properly, instead of only holding a token.
     ```
     /install-github-app
     ```
-    It installs the app and can set up the secret for you. When it asks about workflow
-    files, choose **Skip for now** — you already wrote `security-audit.yml` by hand.
+    It installs the GitHub App and can set up the secret and workflows for you. When it asks
+    whether to continue with GitHub Actions setup, choose **Skip for now** — you already added
+    the secret and wrote `security-audit.yml` by hand.
 11. Push the workflow for real and open a pull request against it.
     ```
     Commit the workflow file on a new branch, push it, and open a pull request with gh.
@@ -94,12 +98,12 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 - [ ] `.github/workflows/security-audit.yml` exists and runs on `pull_request`.
 - [ ] It uses `anthropics/claude-code-action@v1`, not `@beta`, and no raw `claude -p` step.
 - [ ] The secret is referenced by name. `id-token: write` is in `permissions`.
-- [ ] The GitHub App is installed on the repository.
+- [ ] The GitHub App is installed on your CLASH repository on GitHub.
 - [ ] A real run finished on the pull request, and its findings are a comment on it.
 
 ## Stuck?
 
-`git checkout 15-start` — the reference CLASH with fix, skill, `CLAUDE.md` and hooks.
+`git checkout 15-start` — the reference CLASH with the ownership fix, skills, `CLAUDE.md` and hooks.
 
 ## Go further
 
@@ -109,5 +113,7 @@ else. Try it on CLASH, then find it again with `claude agents`.
 ## Links
 
 - Worktrees — https://code.claude.com/docs/en/worktrees
+- Commands (`/batch`) — https://code.claude.com/docs/en/commands
 - Headless mode — https://code.claude.com/docs/en/headless
 - GitHub Actions — https://code.claude.com/docs/en/github-actions
+- Remote Control — https://code.claude.com/docs/en/remote-control

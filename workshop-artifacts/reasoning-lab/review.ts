@@ -8,7 +8,7 @@ type Clash = {
  * Contract:
  * - cancelled clashes cannot be joined
  * - null capacity means unlimited
- * - a clash is full when participants.length >= capacity
+ * - a clash is full when participantIds.length >= capacity
  * - this check must not mutate its input
  * - a user already in participantIds cannot join again
  */

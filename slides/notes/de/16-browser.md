@@ -6,7 +6,7 @@ Sagen:
 
 <!-- @note: task-14-the-browser-closes-the-loop -->
 > Tun:
-> - Branch: 14-start hat schon den Skill, CLAUDE.md und das Hook-Set aus Task 13
+> - Branch: 14-start hat schon die Skills, CLAUDE.md und das Hook-Set aus Task 13
 
 Sagen:
 - Vier Dinge zu lernen, drei zum Abschluss — eine Testsuite, ein kleinerer Payload, ein erster Remote-Server
@@ -41,22 +41,18 @@ Sagen:
 > "Now write that flow as a Playwright test file: request to join, host accepts, joining user is
 > notified. Add a second test for the host rejecting instead. Use the seeded accounts and passwords
 > from docs/SETUP.md."
-> - Ergibt erst NACH dem manuellen Durchklicken Sinn: "Using the Playwright MCP tools, log in as anna.schmidt@example.com / test, open a clash she doesn't host, and request to join it…"
-> - Erst von Hand durchklicken und dabei laut kommentieren, den Flow bestätigen, DANN nach der Testdatei fragen
+> - Erst von Hand durchklicken und dabei laut kommentieren: "Using the Playwright MCP tools, log in at localhost:3000 as anna.schmidt@example.com / test, open a clash she doesn't host, and request to join it…" Den Flow bestätigen, DANN nach der Testdatei fragen
 
 Sagen:
 - Testcode zu schreiben, bevor der Flow bestätigt ist, ist genau das blinde Generieren, das diese Schleife vermeidet
 
 <!-- @note: measure-fix-measure-again -->
 > Tun:
-> - Der Bug ist echt, ihn vor dem Messen lesen: prisma/schema.prisma (User.avatar String?)
-> - app/actions/profile.ts (MAX_AVATAR_LENGTH = 1_500_000)
-> - lib/auth.ts (getCurrentUser selektiert avatar: true, eingepackt in cache())
-> - app/(app)/layout.tsx (requireUser auf jeder Seite)
+> - Den echten Bug vor dem Messen lesen: prisma/schema.prisma (User.avatar String?); app/actions/profile.ts (MAX_AVATAR_LENGTH = 1_500_000); lib/auth.ts (getCurrentUser selektiert avatar: true, eingepackt in cache()); app/(app)/layout.tsx (requireUser auf jeder Seite)
 > - [click] Die Prompts stehen in tasks/14-browser-loop.md, Schritte 7 bis 9: mit Chrome DevTools MCP messen, fixen, noch einmal messen
 
 Sagen:
-- Bis zu 1,5 MB reisen bei jedem Seitenaufruf im Payload mit, für einen Wert, den das Layout nie rendert
+- Bis zu 1,5 MB reisen bei jedem Seitenaufruf im Payload mit, für ein kleines Icon in der Sidebar
 - Erst messen, dann Code anfassen
 
 <!-- @note: the-loop-that-matters -->
@@ -66,7 +62,7 @@ Sagen:
 - [click] Anhand der Evidenz fixen — die Schleife schließt sich, ohne dass ein Mensch jeden Schritt erneut prüft
 - [click:5] Genau das bringt "MCP reicht über das Repo hinaus"
 
-<!-- @note: mcp-has-three-primitives-not-one -->
+<!-- @note: a-server-offers-three-primitives-not-one -->
 Sagen:
 - Jeder MCP-Server, den wir bisher benutzt haben, hat nur Tools angeboten
 - [click] Resources sind, wie ein Server Daten übergibt, ohne einen Tool-Call
@@ -80,25 +76,24 @@ Sagen:
 > - Docs-Link: öffnen, bis "Authenticate with remote MCP servers" scrollen, dann zurück zu den Folien
 
 Sagen:
+- stdio: Claude Code startet den Server als Kindprozess und spricht mit ihm über stdin und stdout. Der Browser ist Sache des Servers: jeder Browser-Server startet und steuert seinen eigenen Browser
 - [click] http ist die Standardwahl für einen Server, den du nicht selbst betreibst
 - [click] sse funktioniert noch, ist aber auf dem Weg raus
 - Claude Code speichert den Token — du loggst dich nur einmal pro Server ein
 
 <!-- @note: the-browser-closes-the-loop-2 -->
 > Tun:
-> - Startpunkt: 14-start, npm run dev läuft, die acht geseedeten Logins stehen bereit
-> - Anna hostet, eine weitere geseedete Person tritt bei
+> - Startpunkt: 14-start, npm run dev läuft, acht geseedete Logins — Anna tritt bei, eine weitere Person hostet
 > - Zwei Hälften: erst Tests, dann Performance
 > - Übergabe an tasks/14-browser-loop.md — eine Folie übrig, wenn sie zurück sind
 
 <!-- @note: four-browser-tools-one-comparison -->
 > Tun:
-> - Debrief, nach dem Rückblick — bis jetzt haben sie zwei von diesen vieren selbst benutzt
-> - Den Vorteil qualitativ benennen
-> - Keine Prozentzahl nennen — die oft zitierten "90 % weniger Tokens" sind keine offizielle Angabe, Schätzungen Dritter widersprechen sich
+> - Debrief, nach dem Rückblick — sie haben drei der vier selbst benutzt
+> - Den Vorteil qualitativ benennen, ohne eine Prozentzahl zu nennen — die oft zitierten "90 % weniger Tokens" sind keine offizielle Angabe, Schätzungen Dritter widersprechen sich
 > - Bei Zeit selbst messen
 
 Sagen:
 - Vier Tools, unterschiedliche Aufgaben
 - [click:4] agent-browser (Vercel, Rust-CLI, Accessibility-Tree-Snapshots) — das, was die Gruppe beim Setup installiert und beim Bauen benutzt hat
-- Kompakte Snapshots gegenüber den Tool-Schemas eines MCP-Servers plus DOM — Tool Search verzögert das volle Laden der Schemas standardmäßig
+- Kompakte Snapshots gegenüber den Tool-Schemas eines MCP-Servers plus vollständigen Accessibility-Trees — Tool Search verzögert das volle Laden der Schemas standardmäßig

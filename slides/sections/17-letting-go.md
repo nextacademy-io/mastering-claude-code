@@ -47,11 +47,27 @@ docs: https://code.claude.com/docs/en/commands
 lines:
   - "Claude researches, proposes 5–30 independent units, then waits for approval."
   - "Each unit gets a background subagent, worktree, tests and its own pull request."
-  - "Use it for separable migrations, not one coupled architecture decision."
+  - "Use it for many separate changes, not one design decision."
 ---
 
 <div class="flex items-center gap-3 w-full max-w-4xl justify-center text-sm">
   <div class="na-card px-4 py-3">research</div><span>→</span><div class="na-card px-4 py-3">5–30 units</div><span>→</span><div class="na-card px-4 py-3">approve</div><span>→</span><div class="na-card px-4 py-3">worktrees</div><span>→</span><div class="na-card px-4 py-3">PRs</div>
+</div>
+
+---
+layout: concept
+heading: "Pick the parallelism primitive"
+lines:
+  - "Noisy read → subagent · talking peers → team · repeatable fan-out → workflow"
+  - "Independent edits → worktrees · many separate changes → /batch"
+---
+
+<div class="grid grid-cols-2 gap-3 w-full max-w-4xl text-sm">
+  <div class="na-card p-3"><span class="font-semibold">subagent</span><span style="color: var(--na-fg-muted)"> — isolate noisy investigation</span></div>
+  <div class="na-card p-3"><span class="font-semibold">team</span><span style="color: var(--na-fg-muted)"> — long-lived peers must communicate</span></div>
+  <div class="na-card p-3" v-click><span class="font-semibold">workflow</span><span style="color: var(--na-fg-muted)"> — repeatable fan-out / verify / converge</span></div>
+  <div class="na-card p-3" v-click><span class="font-semibold">worktree</span><span style="color: var(--na-fg-muted)"> — independent code changes without collisions</span></div>
+  <div class="na-card p-3 col-span-2" v-click><span class="font-semibold">/batch</span><span style="color: var(--na-fg-muted)"> — many separate units, each ending as a tested pull request</span></div>
 </div>
 
 ---
@@ -160,7 +176,7 @@ lines:
 layout: code-live
 heading: "ask-clash.mts"
 docs: https://code.claude.com/docs/en/agent-sdk/typescript
-filePath: "ask-clash.mts (in the CLASH clone)"
+filePath: "ask-clash.mts (in your CLASH clone)"
 success: "The program answers with a clash, a place and a time, and the tool log shows only Read, Grep and Glob."
 ---
 

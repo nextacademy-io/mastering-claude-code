@@ -7,9 +7,8 @@ Sagen:
 
 <!-- @note: the-prompt-is-a-chat-in-your-terminal -->
 > Tun:
-> - Einen echten Turn in Claude im Clash Repo zeigen
-> - Auf die Tool-Zeilen zeigen, während sie erscheinen — das ist die Loop aus dem letzten Abschnitt, live
-> - Die Tool-Wahl variiert von Durchlauf zu Durchlauf — dieselbe Wahrscheinlichkeiten-Lektion wie zwei Folien vorher. Wählt es Bash, ist der Permission-Prompt live das Gate aus diesem Abschnitt
+> - Einen echten Claude-Turn in deinem CLASH-Clone vorführen; auf die Tool-Zeilen zeigen, während sie erscheinen
+> - Die Tool-Wahl variiert von Durchlauf zu Durchlauf, wie bei "It picks from probabilities". Wählt es Bash, ist der Permission-Prompt live das Gate aus dem Harness-Abschnitt
 > - Esc drücken, während es arbeitet — stoppt den Turn, das Gespräch bleibt erhalten
 > - Esc zweimal bei leerem Prompt öffnet stattdessen das Rewind-Menü — nach dem Stoppen eines Turns nicht doppelt drücken
 > - Ctrl+C zweimal an einem leeren Prompt beendet es — während etwas läuft, unterbricht der erste Druck stattdessen, wie Esc
@@ -39,24 +38,22 @@ Sagen:
 - /help listet sie auf
 - /init liest das Projekt und schreibt eine Start-CLAUDE.md
 - /clear leert die Session
-- [click] /context zeichnet die Balken aus dem Harness-Abschnitt mit echten Zahlen
+- [click] /context zeigt die Blöcke aus dem Harness-Abschnitt mit echten Zahlen
 - [click] /usage zeigt, was diese Session gekostet hat
 - [click] /rewind bringt Dateien und Gespräch zu einem früheren Punkt zurück — Claude Code setzt vor jeder Änderung einen Checkpoint
 
 <!-- @note: the-permission-prompt -->
 > Tun:
-> - Live einen auslösen, indem du es bittest, ein Paket zu installieren
-> - Vorher einmal Shift+Tab drücken, um in den Manual-Modus zu kommen
-> - Die drei Optionen lesen
-> - Benennen, nicht auswählen
+> - Einmal Shift+Tab drücken, um in den Manual-Modus zu kommen, dann live einen auslösen — es bitten, ein Paket zu installieren
+> - Die drei Optionen lesen — benennen, nicht auswählen
 
 Sagen:
-- Im Auto-Modus erscheint kein Prompt
+- Im Auto-Modus entscheidet der Classifier statt dir; ein Prompt erscheint trotzdem bei Ask-Regeln, beim ersten Lesen außerhalb des Arbeitsordners oder nach wiederholten Blocks
 - Option zwei schreibt eine Regel in die Settings — erlaubt diese Art von Befehl ab jetzt
 - Option drei lässt dich eine Korrektur eintippen
 - Bash-Prompts können eine weitere Option zeigen, "Yes, and switch to auto mode"
-- Shift+Tab durchläuft die Modi: Auto → Manual → Accept-Edits → Plan → zurück zu Auto. Pro-, Max- und Team-Sessions starten im Auto-Modus; API-Key- und Enterprise-Sessions im Manual-Modus — das kann auch die erste Session direkt nach der Installation
-- Accept-Edits fragt bei Datei-Edits nicht mehr; Plan Mode ist read-only
+- Shift+Tab durchläuft die Modi: Auto → Manual → Accept-Edits → Plan → zurück zu Auto. Ohne gesetzten Modus und mit verfügbarem Auto-Modus startet jede interaktive Session im Auto-Modus (seit v2.1.283, davor nur Pro, Max und Team); claude -p startet im Manual-Modus — das kann auch die erste Session direkt nach der Installation
+- Accept-Edits fragt bei Datei-Edits nicht mehr; Plan Mode ändert deinen Quellcode nicht
 - Plan Mode wird ab dem nächsten Teil viel genutzt
 
 <!-- @note: claude-md-is-your-standing-instruction -->
@@ -75,7 +72,7 @@ Sagen:
 > - Nur erwähnen, nicht ausführlich vorführen
 
 Sagen:
-- [click] Die IDE-Erweiterungen laufen mit demselben Claude Code
+- [click] Die IDE-Erweiterungen laufen mit demselben Claude Code, aber das VS-Code-Panel hat nur einen Teil der Commands und Skills, kein !-Kürzel und keine Tab-Vervollständigung. Für den Rest claude im integrierten Terminal von VS Code starten — das JetBrains-Plugin arbeitet immer so
 - Edits erscheinen als Inline-Diffs; aktuelle Datei und Auswahl gehen als Context mit
 - Jeder kann seine eigene Oberfläche wählen
 - Workshop nutzt das Terminal — überall gleich
@@ -105,23 +102,24 @@ Sagen:
 
 <!-- @note: setup-and-first-conversation -->
 > Tun:
-> - Alle installieren, klonen pawsaw/clash und checken 01-start aus — ein Repo mit nur der Spec drin
-> - Dann das erste Gespräch und /init
-> - Den Chat beobachten, während gearbeitet wird
-> - Auf Leute achten, die nie Enter beim Permission-Prompt drücken, oder die im Terminal tippen, während Claude arbeitet
-> - Übliche Blocker: Node-Version (CLASH braucht 20+), Login, `claude` direkt nach der nativen Installation nicht gefunden (neues Terminal öffnen). Eine EBADENGINE-Warnung, wenn jemand Claude Code mit npm installiert, ist harmlos — es läuft trotzdem
-> - Niemand geht weiter, bevor Claude Code im eigenen Klon läuft und CLAUDE.md existiert
+> - Alle installieren, klonen pawsaw/clash und checken 01-start aus (nur die Spec drin), dann das erste Gespräch und /init
+> - Den Chat beobachten und auf Leute achten, die nie Enter beim Permission-Prompt drücken, oder die im Terminal tippen, während Claude arbeitet
+> - Übliche Blocker: Node-Version (CLASH braucht 20.19+, 22.12+ oder 24, nicht 21 oder 23), Login, `claude` direkt nach der nativen Installation nicht gefunden (neues Terminal öffnen). Eine EBADENGINE-Warnung, wenn jemand Claude Code mit npm installiert, ist harmlos — es läuft trotzdem
+> - Niemand geht weiter, bevor Claude Code im eigenen CLASH-Clone läuft und CLAUDE.md existiert
 
 Sagen:
 - Installieren, klonen, erste Fragen zur Spec, dann /init
-- Fertig, wenn: Claude Code in deinem Klon läuft, es deine Fragen beantwortet hat und CLAUDE.md existiert
+- Fertig, wenn: Claude Code in deinem CLASH-Clone läuft, es deine Fragen beantwortet hat und CLAUDE.md existiert
 
 <!-- @note: flags-change-how-a-session-starts -->
+> Tun:
+> - Docs-Link: öffnen, bis "CLI flags" scrollen, dann zurück zu den Folien
+
 Sagen:
 - Zwei verschiedene Arten von Flag: was eine Session darf, und welche Session sich öffnet
 - [click] --settings stapelt sich über deinen eigenen Dateien, unter managed — gut für ein einmaliges Experiment
 - [click] -p antwortet und beendet sich. Keine Conversation bleibt laufen
-- [click] --resume und --continue sind die nächsten zwei Folien
+- [click] --resume und --continue bekommen eine eigene Folie, nach dem Print Mode und dem Effort-Lab
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Tun:
@@ -133,7 +131,30 @@ Sagen:
 - --output-format json gibt dir etwas, das du in ein anderes Tool pipen kannst
 - Die Regel "nie claude -p in CI" aus dem GitHub-Actions-Modul betrifft genau den einen YAML-Schritt, nicht das hier
 
+<!-- @note: same-task-different-effort -->
+> Tun:
+> - In einem neuen Ordner ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält, außerhalb des Workshop-Repositorys und deines CLASH-Clones: kein Lösungsschlüssel, keine CLAUDE.md, keine Claude-Code-Hooks auf Projektebene
+> - Prüfen, dass CLAUDE_CODE_EFFORT_LEVEL nicht gesetzt ist und keine maxEffortLevel-Obergrenze unter high liegt: beides kann beide Läufe auf dasselbe Level setzen
+> - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+>   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+> - Docs-Link: öffnen, bis "Set the effort level" scrollen, dann zurück zu den Folien
+
+Sagen:
+- Nur eine Variable ändert sich: Effort. Gezählt werden die Findings und usage.output_tokens, nicht Ton oder Länge — Thinking wird als Output abgerechnet
+- total_cost_usd weglassen: Der zweite Lauf liest den Prompt-Präfix, den der erste gecacht hat, sein Input wirkt also günstiger
+- Die vier Findings, erst nach beiden Läufen: cancelled liefert true; `null` als Kapazität heißt unbegrenzt, wird aber zu 0; die Voll-Prüfung nutzt > statt >=; sort verändert participantIds
+
+<!-- @note: measure-the-extra-reasoning -->
+> Tun:
+> - Die Tabelle mit den Ergebnissen der zwei Live-Läufe füllen
+> - Finden beide Läufe alle vier Fehler, das klar sagen: Diese Aufgabe hat den höheren Effort nicht verdient. Auch das ist ein nützliches Ergebnis
+
+Sagen:
+- Reasoning hat nur Wert, wenn es bessere Entscheidungen oder weniger Nacharbeit bringt
+- Der nützliche Vergleich ist der gesamte Engineering-Aufwand: Reasoning plus Umsetzung plus Nacharbeit plus Verifikation
+- Den Vergleich an einer echten Aufgabe wiederholen, bevor du den Default-Effort eines Teams änderst
+
 <!-- @note: pick-up-where-you-left-off -->
 Sagen:
-- An den meisten Tagen willst du --continue: gleicher Ordner, direkt weitermachen
+- Meistens willst du --continue: gleicher Ordner, direkt weitermachen
 - [click] --resume ist zum Auswählen da: eine andere Session, oder eine, die im Hintergrund weiterlief

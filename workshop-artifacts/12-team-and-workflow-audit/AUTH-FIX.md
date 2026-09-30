@@ -54,9 +54,9 @@ never loads a page.
 
 ## A tell, if an agent looks closely
 
-On `08-start`, `deleteVenue`'s `user` binding becomes unused once its only
-consumer (the ownership check) is removed — `npm run lint` reports it as a
+On `08-start`, the `user` bindings in `deleteClash` and in `deleteVenue` become unused once
+the ownership checks that used them are removed — `npm run lint` reports each as a
 warning, not an error, so the quality gates still pass. A sharp auditor (or
-a subagent told to look for exactly this) can notice the warning and work
+a subagent told to look for exactly this) can notice the warnings and work
 backwards to the missing check without reading the diff first. Point it out if
 nobody spots it.

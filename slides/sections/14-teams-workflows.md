@@ -88,7 +88,7 @@ layout: flow-ways
 heading: "Generator-verifier: make, then check"
 ways:
   - way: "/goal checks each turn"
-    prompt: "/goal npx tsc --noEmit and npm run lint both exit 0, or stop after 10 turns"
+    prompt: "/goal npx tsc --noEmit and npm run lint both exit 0, or stop after 6 turns"
   - way: "A workflow refutes findings"
     prompt: "Use a workflow to audit app/actions/ and try to refute each finding."
   - way: "An agent Stop hook"
@@ -219,7 +219,7 @@ routeAlias: theory-start-a-workflow
 docs: https://code.claude.com/docs/en/workflows#have-claude-write-a-workflow
 lines:
   - "Own words (“use a workflow to …”) or the word ultracode. This task only."
-  - "/effort ultracode: very high effort, a workflow per big task, all session."
+  - "/effort ultracode: a workflow per big task, all session, effort unchanged."
   - "On Pro: workflow size small, try one folder first, stop a run in /workflows."
 ---
 
@@ -314,24 +314,6 @@ routeAlias: theory-reconcile
 ---
 
 <G10OrchestrationLadder />
-
-
-
----
-layout: concept
-heading: "Pick the parallelism primitive"
-lines:
-  - "Noisy read → subagent · talking peers → team · repeatable fan-out → workflow"
-  - "Independent edits → worktrees · many separable changes → /batch"
----
-
-<div class="grid grid-cols-2 gap-3 w-full max-w-4xl text-sm">
-  <div class="na-card p-3"><span class="font-semibold">subagent</span><span style="color: var(--na-fg-muted)"> — isolate noisy investigation</span></div>
-  <div class="na-card p-3"><span class="font-semibold">team</span><span style="color: var(--na-fg-muted)"> — long-lived peers must communicate</span></div>
-  <div class="na-card p-3" v-click><span class="font-semibold">workflow</span><span style="color: var(--na-fg-muted)"> — repeatable fan-out / verify / converge</span></div>
-  <div class="na-card p-3" v-click><span class="font-semibold">worktree</span><span style="color: var(--na-fg-muted)"> — independent code changes without collisions</span></div>
-  <div class="na-card p-3 col-span-2" v-click><span class="font-semibold">/batch</span><span style="color: var(--na-fg-muted)"> — many separable units, each ending as a tested pull request</span></div>
-</div>
 
 ---
 layout: task

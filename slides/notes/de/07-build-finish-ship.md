@@ -3,7 +3,7 @@
 > - Branch: 05-start hat schon Auth, Shell, Clashes, Venues, die Karte und Benachrichtigungen
 
 Sagen:
-- Fünf Dinge zu lernen, fünf Dinge zu bauen — die letzte Etappe, bevor die Referenz-Build übernimmt
+- Vier Dinge zu lernen, vier Dinge zu bauen — die letzte Etappe, bevor der Referenz-Build übernimmt
 
 <!-- @note: batch-what-does-not-touch -->
 > Tun:
@@ -12,7 +12,7 @@ Sagen:
 > - Abschicken, dann zur nächsten Folie weiter, während es läuft
 
 Sagen:
-- Die letzten Scheiben teilen sich keine Dateien, ein Briefing kann also alle vier tragen
+- Die letzten Scheiben teilen sich kaum Dateien, ein Briefing kann also alle vier tragen
 - Jeder Job hat seine eigenen Pfade
 - [click:4] Die Pfade sind es, die die Jobs auseinanderhalten
 
@@ -31,12 +31,13 @@ Sagen:
 > - Schritt 6 machen die Teilnehmenden selbst
 > - Demo: sagen "Remember for next time: always use UserAvatar, never a raw img tag" — warten, bis Claude das Speichern bestätigt
 > - /memory zeigen — den Auto-Memory-Ordner auswählen
-> - Optional: auf den Abschnitt "Auto memory" in den Docs zeigen — die vier Notiz-Typen, und wo die Dateien liegen
+> - Optional: Docs-Abschnitt "Auto memory" — auf die vier Notiz-Typen zeigen und darauf, wo die Dateien liegen
 
 Sagen:
 - Das alte #-Kürzel gibt es nicht mehr (entfernt in v2.0.70) — um gezielt zu speichern, in Worten bitten: "Remember …". Von selbst speichert Claude Korrekturen auch, aber nicht jedes Mal
 - CLAUDE.md ist das, was du aufschreibst; Auto Memory ist das, was Claude selbst bemerkt und speichert
-- Beides wird zu Beginn jedes Gesprächs gelesen
+- Das Memory gehört zum Git-Repository, nicht zum Ordner: alle Unterordner und Worktrees deines CLASH-Clones teilen sich einen Ordner ~/.claude/projects/<project>/memory/
+- Beides lädt zu Beginn jedes Gesprächs — beim Auto Memory der Index MEMORY.md; die Notizen darin öffnet Claude bei Bedarf
 
 <!-- @note: review-like-a-stranger -->
 > Tun:
@@ -52,16 +53,15 @@ Sagen:
 
 Sagen:
 - Review und Fix sind absichtlich zwei Messages — du bleibst die Person, die entscheidet
-- Diesen Prompt heute einmal selbst zu schreiben ist der Punkt — `/code-review` ist die Bundled-Skill-Abkürzung fürs nächste Mal
+- Diesen Prompt einmal selbst zu schreiben ist der Punkt — `/code-review` ist die Bundled-Skill-Abkürzung fürs nächste Mal
 
 <!-- @note: ship-then-look-at-the-reference -->
 > Tun:
 > - Schritte 7 und 10-12 machen die Teilnehmenden selbst
 > - Live den PR öffnen (oder PR.md schreiben, falls gh nicht eingerichtet ist)
-> - 06-start fetchen und diffen
-> - Claude nach drei Unterschieden in lib/data und app/actions fragen, ohne Bewertung
-> - Retro-Fragen aus Task 05 — der Gruppe einen Moment geben, sie einer Nachbarin oder einem Nachbarn zu beantworten
-> - Dann: git checkout 06-start, npm install, npm run db:reset
+> - 06-start fetchen und diffen, Claude nach drei Unterschieden in lib/data und app/actions fragen, ohne Bewertung
+> - Retro-Fragen aus Task 05 — der Gruppe einen Moment geben, sie jemandem nebenan zu beantworten
+> - Dann: git checkout 06-start, npm install, npm run db:reset, npm run db:seed
 
 Sagen:
 - Dein Build bleibt auf deinem Branch; die nächsten Teile brauchen eine gemeinsame Codebase, also wechseln alle zur Referenz

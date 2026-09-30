@@ -19,7 +19,7 @@ No feature code yet.
 ## Why
 
 From here on you work on the reference CLASH. Its `CLAUDE.md` is 11 bytes: `@AGENTS.md`.
-`AGENTS.md` is a generic Next.js warning. Nothing in either file is about this app.
+`AGENTS.md` is a generic Next.js warning. Nothing in either file is about CLASH.
 There is nothing to trim. The real job is to write a good context file from nothing,
 grounded in rules you can point to in the code.
 
@@ -28,7 +28,7 @@ out, Claude has to guess or search for.
 
 ## Do this
 
-1. Switch to the reference app and start fresh.
+1. Switch to the reference CLASH and start fresh.
    ```bash
    git checkout 06-start
    npm install && npm run db:migrate && npm run db:seed
@@ -77,7 +77,7 @@ out, Claude has to guess or search for.
     Write one line to `~/.claude/rules/tone.md`: `Explain every fix in one sentence before making it.`
     Run `/context` and look under **Memory files**. Your project `CLAUDE.md` and this new
     rule both loaded. Neither replaced the other — a CLAUDE.md file only adds to what Claude
-    reads, it never overrides another one. If two files ever disagree, Claude just picks one.
+    reads, it never overrides another one. If two files ever disagree, Claude may just pick one.
 
 ## Now you
 

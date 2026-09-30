@@ -7,19 +7,19 @@ Say:
 
 <!-- @note: reuse-information-by-reference -->
 > Do:
-> - Point at the three stages. Participants are at the middle stage now; task 07 reaches the third.
-> - Participants use the @reference pattern in task 04 step 3.
+> - Participants do this in step 3: venues follow @app/actions/clashes.ts
 
 Say:
-- The first implementation needs a full brief because the pattern does not exist yet.
-- Once the repository contains the pattern, point at it instead of retelling it from memory. That is cheaper and more consistent.
-- When the same instruction survives a third use, stop paying prompt tax and package it as a command, skill or rule.
+- Clashes needed the full brief: the pattern did not exist yet
+- [click] Now your CLASH clone has it. Point at it instead of retelling it: cheaper and more consistent
+- [click] Third use: package it. Step 4, on the next slide, makes a command; task 07 a skill, task 10 a rule
 
 <!-- @note: your-first-slash-command -->
 > Do:
-> - Flag in passing: commands merged into skills — this file still works, task 07 shows the preferred way to write one
+> - Flag in passing: commands merged into skills — this file still works, task 07 shows the preferred way
 > - Participants do this in step 4
-> - Optional: point at the docs page's own note: "To add your own commands, see skills"
+> - /new-page not in the / menu? Run /reload-skills: it re-reads skill and command folders. The docs only promise live pickup for skill folders
+> - Optional: point at the top docs note "Custom commands have been merged into skills"
 > FULL WORKING FILE (verbatim from tasks/04-venues-map-people.md):
 >
 > Add a new page to this app for: $ARGUMENTS
@@ -38,7 +38,7 @@ Say:
 > Do:
 > - Participants do this in steps 6 and 8
 > - Leaflet map almost always breaks once ("window is not defined" during server rendering) — good, use it
-> - Demo the three ways to hand Claude the evidence: let it read the terminal, paste the error text, paste a screenshot with Ctrl+V
+> - Demo the three ways: let Claude read the terminal, paste the error text, paste a screenshot with Ctrl+V (Alt+V on Windows and WSL)
 
 Say:
 - The more exact the evidence, the smaller the fix
@@ -57,7 +57,7 @@ Say:
 
 <!-- @note: one-big-ask-or-four-small-ones -->
 > Do:
-> - Handoff: FACILITATOR.md, Rhythm for every task. Big ask is step 2 (they watched it) — hand off at step 1, small steps start at 3
+> - Handoff at step 1 (FACILITATOR.md, Rhythm for every task). They watched step 2, the big ask; small steps start at 3
 > - Left (careless), one step per click:
 >   - [click] venues, map, participation, notifications — one message
 >   - [click] Claude touches 40+ files before you can check anything
@@ -71,7 +71,7 @@ Say:
 > with a People panel on the clash detail page, and notifications with a bell
 > that shows unread requests in the top bar. Follow the existing patterns in
 > the app everywhere they apply.
-> - Right (engineered), when they are back — one step per click:
+> - Right (engineered), when they are back:
 >   - [click] venues — do it like clashes
 >   - [click] the map — a focused brief, docs first
 >   - [click] participation — join, leave, accept, reject
@@ -83,8 +83,8 @@ Say:
 
 <!-- @note: venues-map-people -->
 > Do:
-> - Task 04 recap — stays on screen while they work
-> - Hand off to tasks/04-venues-map-people.md at step 1, full 12 steps — skip step 2, they watched it — one slide left when they are back
+> - Task 04 recap — stays up while they work; one slide left when they are back
+> - Hand off to tasks/04-venues-map-people.md at step 1, full 12 steps — skip step 2, they watched it
 > - Map step is where people get stuck — remind them
 > - Join flow needs two browsers: one as Anna, one as Lukas
 
@@ -92,14 +92,11 @@ Say:
 - Reset branches: 04-start = auth, shell, clashes; 05-start adds venues, map, participation, notifications
 - Hand Claude the error, don't fix it by hand
 
-<!-- @note: quality-gates-said-once -->
+<!-- @note: verify-cheap-first-full-gate-last -->
 > Do:
-> - Now that they have felt the payoff: ask what broke, or what they had to re-check by hand
-> - Add the "Quality gates" section to CLAUDE.md live, run the three commands
-> - Watch for: a CLAUDE.md edit made mid-session is not reloaded until /clear, /compact or a restart
+> - Ask what failed during the task and which check would have caught it first
 
 Say:
-- You just shipped four features with nothing checking your work until now — that gap is what this closes
-- From now on Claude runs them at the end of every task — here because you just said it, in every new session because CLAUDE.md loads at the start
-- This is a rule in a file — Claude follows it most of the time
-- Part IV shows how to make it a rule Claude cannot skip
+- Checks cost time too: the cheapest check that can fail goes right after the edit
+- [click] npx tsc --noEmit and npm run lint close a work package
+- [click] npm run build before "done": the Quality gates section from step 11. Part IV enforces it with a hook

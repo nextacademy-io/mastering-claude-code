@@ -17,13 +17,13 @@ questions about the product spec, and a first `CLAUDE.md` exists.
 
 ## Why
 
-Everything in this workshop happens in one terminal, in one repository, with one tool.
+Almost everything in this workshop happens in one terminal, in your CLASH clone, with one tool.
 Before you build anything, you get comfortable talking to Claude Code about code that
 does not exist yet. That is the safest place to learn how it thinks.
 
 ## Do this
 
-1. Check Node and git. You need Node 20 or newer.
+1. Check Node and git. You need Node 20 (20.19 or newer), Node 22 (22.12 or newer) or Node 24. Not 21 or 23.
    ```bash
    node --version
    git --version
@@ -62,7 +62,7 @@ does not exist yet. That is the safest place to learn how it thinks.
    ls
    ```
    You should see only `README.md`, `docs/`, and `.gitignore`. Nothing else. That is correct.
-5. Start Claude Code inside the repository.
+5. Start Claude Code inside your CLASH clone.
    ```bash
    claude
    ```
@@ -112,7 +112,7 @@ does not exist yet. That is the safest place to learn how it thinks.
 - [ ] `claude --version` prints a version
 - [ ] `git branch` shows `01-start` in your `clash` folder
 - [ ] Claude answered a question about `docs/SPEC.md` and you saw it read the file first
-- [ ] `CLAUDE.md` exists in the repository root
+- [ ] `CLAUDE.md` exists in the root of your CLASH clone
 - [ ] `/skills` lists `agent-browser`
 - [ ] You ran `/clear` and `/help`
 
@@ -128,9 +128,12 @@ Ask Claude to find a gap or a contradiction in the spec. Decide if it is right.
 
 - Quickstart — https://code.claude.com/docs/en/quickstart
 - How Claude Code works — https://code.claude.com/docs/en/how-claude-code-works
+- Model configuration and effort — https://code.claude.com/docs/en/model-config
+- Costs and token usage — https://code.claude.com/docs/en/costs
 - Setup — https://code.claude.com/docs/en/setup
 - Memory and CLAUDE.md — https://code.claude.com/docs/en/memory
 - Commands — https://code.claude.com/docs/en/commands
 - Keyboard shortcuts — https://code.claude.com/docs/en/interactive-mode
+- CLI reference — https://code.claude.com/docs/en/cli-reference
 - agent-browser — https://github.com/vercel-labs/agent-browser
 - agent-browser skill — https://www.skills.sh/vercel-labs/agent-browser/agent-browser
