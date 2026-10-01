@@ -56,16 +56,25 @@ lines:
 
 ---
 layout: concept
-heading: "Watch the window fill"
+heading: "Compact is a lossy reset"
 routeAlias: theory-context-window
 docs: https://code.claude.com/docs/en/costs
 lines:
-  - "/context — what is in the window right now"
-  - "Every file Claude read is still there"
-  - "/compact keeps a summary and drops the rest"
+  - "/context before: tool results and history keep growing."
+  - "/compact after: one summary replaces details. /clear starts clean."
+  - "Compact to continue; clear when the old thread is no longer useful."
 ---
 
-<G02ContextBudget />
+<div class="grid grid-cols-2 gap-6 w-full max-w-4xl">
+  <div class="na-card p-5">
+    <div class="font-semibold mb-3">before /compact</div>
+    <div class="grid gap-2 items-center text-sm" style="grid-template-columns: 7rem 1fr; color: var(--na-fg-muted)"><span>system</span><div class="h-3 rounded" style="width: 20%; background: var(--na-zinc-500)"></div><span>tool results</span><div class="h-3 rounded" style="width: 90%; background: var(--na-primary-500)"></div><span>history</span><div class="h-3 rounded" style="width: 55%; background: var(--na-primary-400)"></div></div>
+  </div>
+  <div class="na-card p-5" v-click style="border-color: var(--na-accent-500)">
+    <div class="font-semibold mb-3">after /compact</div>
+    <div class="grid gap-2 items-center text-sm" style="grid-template-columns: 7rem 1fr; color: var(--na-fg-muted)"><span>system</span><div class="h-3 rounded" style="width: 20%; background: var(--na-zinc-500)"></div><span>summary</span><div class="h-3 rounded" style="width: 20%; background: var(--na-accent-500)"></div><span>new room</span><div class="h-3 rounded" style="width: 90%; border: 1px dashed var(--na-zinc-500)"></div></div>
+  </div>
+</div>
 
 ---
 layout: code-live
@@ -100,5 +109,3 @@ mode: "you do"
 success: "Login, logout and clash CRUD work, deleteClash refuses a stranger, and you used /rewind, /context and /compact."
 branch: "03-start"
 ---
-
-

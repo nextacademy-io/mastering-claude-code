@@ -82,7 +82,7 @@ example, scoped to `lib/validation.ts` (Zod schemas) or `components/**` (shadcn 
 
 ## Stuck?
 
-`git checkout 10-start` — the reference CLASH with tasks 06–09's files, including the `discover`
+`git checkout 10-start` — the reference CLASH with the task 06, 07 and 09 files, including the `discover`
 skill, its resolved spec, and the ownership-check fix restored, no project rules yet.
 
 ## Go further

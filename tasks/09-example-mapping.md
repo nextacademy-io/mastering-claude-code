@@ -94,9 +94,9 @@ when it needs them.
 
    Plain business language. No screens, endpoints or class names.
    ```
-   `$ARGUMENTS` is what you type after `/discover`. `allowed-tools` includes `AskUserQuestion`:
-   that is how a skill asks you a multiple-choice question and waits. The eight steps are the
-   interview. Read them once, they are the point.
+   `$ARGUMENTS` is what you type after `/discover`. `AskUserQuestion` is how a skill asks you a
+   multiple-choice question and waits. `allowed-tools` only pre-approves tools, and this one needs
+   no permission anyway. The eight steps are the interview. Read them once, they are the point.
 3. Create `.claude/skills/discover/references/example-mapping.md`. The skill says to read it
    before step 1, so it only enters context when the skill opens it.
    ```markdown
@@ -242,8 +242,8 @@ when it needs them.
 
 ## Stuck?
 
-`git checkout 09-start` — the reference CLASH with tasks 06–08's files (`CLAUDE.md`, the
-`clash-feature` skill), no `discover` skill yet.
+`git checkout 09-start` — the reference CLASH with the seeded bug and the task 06 and 07 files
+(`CLAUDE.md`, the `clash-feature` skill), no `discover` skill yet.
 
 ## Go further
 

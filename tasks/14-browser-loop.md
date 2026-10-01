@@ -67,7 +67,7 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
    - `app/actions/profile.ts`: `MAX_AVATAR_LENGTH = 1_500_000`.
    - `lib/auth.ts`: `getCurrentUser()` selects `avatar: true` on every call.
    - `app/(app)/layout.tsx`: calls `requireUser()` on every page.
-   Together: up to 1.5 MB rides along on every page load, for a value the layout never shows.
+   Together: up to 1.5 MB rides along on every page load, for a small icon in the sidebar.
 7. Measure.
    ```
    Using the Chrome DevTools MCP tools, log in at localhost:3000 and load the
@@ -79,9 +79,9 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
    ```
    getCurrentUser() in lib/auth.ts selects avatar on every call, and it's called
    by requireUser() on every authenticated page via app/(app)/layout.tsx, even
-   though most pages never render the user's own avatar as an image. Fix this:
-   stop selecting avatar in the identity/session check, and load it separately
-   only where it's actually displayed.
+   though most pages render the user's own avatar only as a small sidebar icon.
+   Fix this: stop selecting avatar in the identity/session check, and load it
+   separately only where it's actually displayed.
    ```
 9. Measure again.
    ```
@@ -105,7 +105,8 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
 ## Now you
 
 - Add a third test: a host tries to join their own clash. CLASH already refuses this in
-  `joinClash` with "You host this clash — you're already in." Check that the page shows it.
+  `joinClash` with "You host this clash — you're already in." The page itself shows the
+  host no "Request to join" button. Check that.
 - Use agent-browser instead of Playwright MCP for the same walkthrough. Compare the size
   of what lands in your context.
 
@@ -122,7 +123,7 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
 
 ## Stuck?
 
-`git checkout 14-start` — the reference CLASH with the fix, the skill, `CLAUDE.md` and the hook set.
+`git checkout 14-start` — the reference CLASH with the ownership fix, the skills, `CLAUDE.md` and the hook set.
 
 ## Go further
 

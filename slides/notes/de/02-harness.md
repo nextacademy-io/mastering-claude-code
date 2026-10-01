@@ -28,8 +28,8 @@ Sagen:
 
 Sagen:
 - [click] der System-Prompt, den Claude Code schreibt
-- [click] deine CLAUDE.md-Dateien — Projekt und persönlich
 - [click] die Liste der Tools mit ihren Beschreibungen
+- [click] deine CLAUDE.md-Dateien — oft mehr als zwei: verwaltet (deine Firma), ~/.claude/CLAUDE.md, die CLAUDE.md des Projekts, CLAUDE.local.md; Dateien in Unterordnern kommen dazu, wenn Claude dort liest
 - [click] ein kurzer Index der Skills, eine Zeile pro Skill
 - [click] die gesamte Historie dieser Session — jede gelesene Datei, jeder Command-Output — schon beim vorherigen Call geschickt, der Provider liefert es also aus dem Cache: viel günstiger und schneller
 - [click] deine neueste Message und das neueste Tool-Ergebnis — nur dieser hintere Teil wird voll bezahlt
@@ -41,9 +41,9 @@ Sagen:
 - Das Kern-Tool-Set ist absichtlich klein und langweilig
 - Read, Edit, Write — für Dateien
 - Bash — für alles, was ein Terminal kann: Tests, Builds, Git
-- [click] Grep und Glob — zum Suchen
-- [click:3] Agent — startet eine weitere Loop mit eigenem Context (Subagents, später)
-- [click] WebFetch — holt eine Seite rein
+- [click:2] Grep und Glob — zum Suchen. Unter macOS, Linux und WSL sind sie standardmäßig nicht dabei: Claude sucht dort mit find und grep über Bash
+- [click] Agent — startet eine weitere Loop mit eigenem Context (Subagents, später)
+- [click] WebFetch — holt eine Seite von einer URL. Es sucht nicht: Die Websuche ist ein zweites Tool, WebSearch
 - MCP — fügt Tools von außen hinzu: einen Browser, eine Datenbank, dein Ticket-System
 - Das Modell sieht Name, Beschreibung und Input-Schema jedes Tools; es wählt anhand der Beschreibung und füllt Argumente aus dem Schema
 - Deshalb werden Tool-Beschreibungen und Skill-Beschreibungen so sorgfältig geschrieben
@@ -57,8 +57,8 @@ Sagen:
 - Die Modi, einer pro Klick:
   - [click] Manual — fragt vor Edits und Commands
   - [click] Accept Edits — Datei-Edits gehen durch, plus gängige Filesystem-Commands (mkdir, rm, mv, cp...); andere Shell-Commands fragen weiter
-  - [click] Plan Mode — read-only: das Modell kann schauen, aber nicht anfassen; Edits bleiben blockiert, bis du den Plan freigibst — gut zum Nachdenken vor dem Bauen
-  - [click] Auto — ein Classifier prüft jede Aktion und blockiert die riskanten, statt dich zu fragen
+  - [click] Plan Mode — ändert deinen Quellcode nicht: das Modell kann schauen, aber nicht anfassen; Edits bleiben blockiert, bis du den Plan freigibst — gut zum Nachdenken vor dem Bauen
+  - [click] Auto — ein zweites Modell, der Classifier, prüft Aktionen statt dir und blockiert die riskanten. Ein Block oder kein Urteil heißt: abgelehnt, nicht gefragt; Prompts kommen erst nach 3 Blocks in Folge oder 20 in einer Session zurück
   - [click] Bypass — überspringt fast jeden Prompt (nur in einer Sandbox benutzen); ein paar Dinge fragen trotzdem, etwa rm -rf auf deinem Home- oder Projektordner
 - Das Gate ist der Kern der Sache: nichts Gefährliches passiert ohne eine Entscheidung — sei es von einer Regel oder von dir
 
@@ -66,10 +66,11 @@ Sagen:
 Sagen:
 - Derselbe Ring, jetzt mit drei Stellen, an denen dich der Harness reinlässt
 - [click] PreToolUse — führt deinen Shell-Command vor dem Tool aus; Exit-Code 2 blockiert den Call, und was du nach stderr schreibst, bekommt das Modell als Begründung
+  - Er läuft vor der Permission-Prüfung, in jedem Modus: sein Exit 2 blockiert auch, wenn eine Allow-Regel passt oder im Bypass-Modus, und sein Allow überspringt nie eine Deny- oder Ask-Regel
 - [click] PostToolUse — läuft nach dem Tool; das Tool ist schon gelaufen, Exit 2 kann das also nicht rückgängig machen — stattdessen geht stderr ans Modell, das dann seine eigene Arbeit repariert
   - Beispiel: nach jedem Edit unter app/actions lässt ein Hook den Type-Checker laufen; er schlägt fehl; das Modell sieht den Fehler und repariert den Code
 - [click] Stop — läuft, wenn das Modell den Turn beenden will; Exit-Code 2 verweigert, und das Modell arbeitet weiter
-- Jeder andere Exit-Code loggt nur — nur Exit-Code 2 blockiert einen Hook
+- Bei jedem anderen Exit-Code läuft die Aktion weiter — nur Exit-Code 2 blockiert einen Hook
 - Eine Regel in CLAUDE.md ist Ratschlag. Ein Hook ist Gesetz
 - Teil vier baut diese Hooks
 
@@ -99,17 +100,42 @@ Sagen:
 Sagen:
 - Kosten sind Tokens
 - Input-Tokens bei jedem Call, Output-Tokens bei jeder Antwort
-- Der gecachte vordere Teil ist viel günstiger als der Rest — lange Sessions mit stabilem vorderem Teil und kurzem hinterem Teil sind die günstigen
-- Kontrolle sind drei Fragen, die du dir immer wieder stellst:
+- Der gecachte vordere Teil ist viel günstiger als der Rest — Sessions mit stabilem vorderem Teil und kurzem hinterem Teil sind die günstigen
+- [click:5] Kontrolle sind drei Fragen, die du dir immer wieder stellst:
   - Was ist gerade im Fenster?
   - Welche Tools kann das Modell aufrufen?
   - Welche Regeln werden von einem Hook erzwungen statt in einem Prompt erhofft?
-- Eine dieser Fragen, gleich jetzt: was passiert, wenn das Fenster voll wird
+- Das rote Band oben ist die Drift-Zone: Nahe am Limit verwirft Claude Code zuerst alte Tool-Outputs und fasst dann das Gespräch zusammen. Nichts wird zufällig abgeschnitten, aber frühe Anweisungen können verloren gehen — dauerhafte Regeln gehören in die CLAUDE.md
+- Die nächsten zwei Folien: was den Tank teuer macht. Danach: was passiert, wenn er voll wird
+
+
+
+<!-- @note: cost-multiplies-quietly -->
+> Tun:
+> - Die Multiplikation eine Review-Heuristik nennen, keine Abrechnungsformel
+> - Jeden Faktor mit etwas verbinden, das die Gruppe schon gesehen hat: Context, Turns, Subagents, Effort
+> - Docs-Link: öffnen, bis "Why usage climbs in a long session" scrollen, dann zurück zu den Folien
+
+Sagen:
+- Thinking-Tokens werden als Output abgerechnet. Parallele Worker haben je ihren eigenen Context. Lange Sessions machen spätere Turns schwerer
+- Die Falle ist selten ein einzelner teurer Befehl — teuer wird die Multiplikation über mehrere Dimensionen
+- Zuerst die Form der Arbeit optimieren: kleinerer Context, weniger unnötige Turns, weniger Worker, passender Effort
+
+<!-- @note: keep-deterministic-work-deterministic -->
+> Tun:
+> - Fragen, wer die Fehler in einem Log zählen soll. Antwort: ein Script
+> - [click] Fragen, wer entscheiden soll, ob sich zwei Architektur-Regeln widersprechen. Antwort: das Modell
+
+Sagen:
+- Keine Reasoning-Tokens für Arbeit, die ein Befehl fehlerfrei erledigt: ein riesiges Log kürzen, bevor es ins Fenster kommt
+- Claude Code kürzt es nicht für dich: Bis etwa 30.000 Zeichen der Ausgabe eines Befehls landen unverändert im Fenster. Darüber speichert es die Ausgabe in einer Datei und zeigt die ersten 2.000; ein fehlgeschlagener Befehl liefert einen Auszug aus Anfang und Ende von etwa 10.000
+- Gates, die jede Aufgabe wiederholt, in ein Script packen, damit Menschen, Agents und CI dasselbe prüfen
+- Zurück zur ersten Kontrollfrage, was im Fenster ist: was passiert, wenn es voll wird
 
 <!-- @note: when-the-window-fills-compact-or-clear -->
 > Tun:
 > - Noch läuft keine Live-Session — die Commands nennen, nicht ausführen
-> - Klar sagen, dass die Live-Version später in Task 01 kommt, sobald es ein echtes Gespräch zum Kürzen oder Leeren gibt
+> - Klar sagen, dass die Live-Version später kommt: /clear in Task 01, /compact in Task 03
 
 Sagen:
 - Drei Tanks — der erste ist eine Session nahe am Limit: gelesene Dateien, Tool-Output, Chat
@@ -123,7 +149,6 @@ Sagen:
 <!-- @note: a-question-that-skips-the-loop -->
 > Tun:
 > - Noch läuft keine Live-Session — beschreiben, nicht ausführen
-> - Gleiches „das machen wir später in Task 01 live" wie bei der letzten Folie
 
 Sagen:
 - Derselbe Loop wie vorhin — daran ändert sich nichts
@@ -135,12 +160,10 @@ Sagen:
 
 <!-- @note: install-and-log-in -->
 > Tun:
-> - Den Install-Link oben auf der Folie in den Teams-Chat einfügen, damit alle ihn direkt anklicken können
-> - Alle haben das vor dem Workshop installiert (docs/SETUP.md) — klar sagen, das ist ein Rückblick, keine neue Installation
-> - Das eigene Terminal live in einem leeren Ordner öffnen und Claude Code starten — das war's.
->   Ein leerer Ordner zeigt bei /context, /btw oder /clear noch fast nichts; das kommt später,
->   am Ende von Task 01
-> - Mit dem Satz auf der nächsten Folie schließen
+> - Den Install-Link von der Folie in den Teams-Chat einfügen, damit alle ihn anklicken können
+> - Klar sagen: Alle haben es vor dem Workshop installiert (docs/SETUP.md) — ein Rückblick, keine neue Installation
+> - Das eigene Terminal live in einem leeren Ordner öffnen und Claude Code starten — das war's. /context, /btw und /clear zeigen dort noch fast nichts; alle drei kommen am Ende von Task 01
+> - Mit "The model is the same for everyone" schließen, nach "Claude Code is not the only harness"
 
 Sagen:
 - Eine globale Installation, ein Befehl zum Starten
@@ -150,12 +173,13 @@ Sagen:
 - Dieser Ordner ist seine Welt — dort liest und bearbeitet es
 - CLAUDE.md-Dateien in diesem Ordner werden automatisch erkannt
 
-<!-- @note: claude-code-is-a-harness-not-the-only-one -->
+<!-- @note: claude-code-is-not-the-only-harness -->
 Sagen:
 - Gleiche Idee, andere Namen: IDE-eingebettete Assistenten, Terminal-Agenten, autonome Coding-Services
 - Vier Fragen gelten für jeden von ihnen, nicht nur für Claude Code
 - [click] Autonomie: interaktiv, headless in CI, oder komplett unbeaufsichtigt — dieser Workshop deckt alle drei ab
 - [click] Transparenz: kannst du den Plan lesen, bevor er läuft, und den Diff danach?
+- In Claude Code: Ctrl+O öffnet den Transcript-Viewer mit jedem Tool-Aufruf. Laufende Subagents stehen in einem Panel unter dem Prompt, und /tasks öffnet das eigene Transcript jedes Subagents
 - [click] Erweiterbarkeit: Hooks, Skills, MCP, Subagents — hier zahlt sich Claude Codes Toolkit aus
 
 <!-- @note: the-model-is-the-same-for-everyone-the-harness-is-where-you-win -->

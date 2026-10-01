@@ -7,7 +7,7 @@ Say:
 
 <!-- @note: task-15-letting-go -->
 > Do:
-> - Branch: 15-start already has CLAUDE.md, the skill, the fix and the hook set
+> - Branch: 15-start already has CLAUDE.md, the skills, the ownership fix and the hook set
 
 Say:
 - Two ideas: worktrees keep parallel agents from colliding, headless CI runs the same audit with nobody watching
@@ -23,6 +23,31 @@ Say:
 - [click] Worktrees: run several agents on separate branches of the same repo in parallel — no risk of one agent's half-finished edit breaking another's
 - `isolation: worktree` in a subagent's frontmatter, and the EnterWorktree/ExitWorktree tools
 - At home: `claude --worktree "#<pr-number>"` starts from a PR
+
+
+
+<!-- @note: batch-many-independent-pull-requests -->
+> Do:
+> - Point back to the worktree slide: /batch automates that shape
+> - Do not run it live on CLASH — the lesson: when /batch fits and when not
+> - Docs link: open it, point at the `/batch` row under "All commands", then back to the slides
+
+Say:
+- /batch is for many separate changes. It proposes 5 to 30 independent units and waits for your approval before it starts
+- Each unit gets its own background subagent and worktree, runs tests, and opens its own pull request
+- If the units hang on one design decision or keep touching the same files, the job does not belong in /batch. Decide first, then split the mechanical work
+
+<!-- @note: pick-the-parallelism-primitive -->
+> Do:
+> - Ask for one example per row from the course: communication and isolation, not what is popular
+
+Say:
+- Pick the smallest mechanism that fits how the workers depend on each other
+- A subagent protects your main context; a team exists because peers need to talk
+- [click] Workflow: the fan-out becomes repeatable
+- [click] Worktrees: edits stay isolated
+- [click] /batch: many separate pull requests
+- More agents are not automatically faster: every worker has its own context and token spend
 
 <!-- @note: headless-in-ci -->
 > Do:
@@ -74,7 +99,7 @@ Say:
 
 <!-- @note: task-16-the-agent-sdk -->
 > Do:
-> - Branch: 16-start already has CLAUDE.md, the skill, the fix and the hook set
+> - Branch: 16-start already has CLAUDE.md, the skills, the ownership fix and the hook set
 
 Say:
 - The same agent loop, now hosted inside a small program instead of a terminal session
@@ -93,10 +118,8 @@ Say:
 > Do:
 > - FULL WORKING SOLUTION (trainer only): workshop-artifacts/16-agent-sdk/ask-clash.mts
 > - Run with `npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"` after `npm install @anthropic-ai/claude-agent-sdk tsx`
-> - Point at the three controls
-> - Optional: point at the "Options" table — same allowedTools/disallowedTools/maxTurns/hooks fields
-> - Then the result message: the answer, num_turns, total_cost_usd
-> - Say the cost out loud
+> - Point at the three controls, optionally also in the "Options" table
+> - Then the result message: the answer, num_turns, total_cost_usd — say the cost out loud
 
 Say:
 - allowedTools (auto-approves, does not restrict) + disallowedTools (actually blocks), hooks.PreToolUse, maxTurns

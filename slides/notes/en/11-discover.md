@@ -25,7 +25,7 @@ Say:
 <!-- @note: progressive-disclosure-in-a-skill -->
 > Do:
 > - Point back at task 07's clash-feature skill — that one inlined everything
-> - Docs link: open it, scroll to the Skills reference, then back to the slides
+> - Docs link: open it, scroll to "Add supporting files", then back to the slides
 
 Say:
 - The skill body stays short on purpose
@@ -34,13 +34,13 @@ Say:
 
 <!-- @note: anatomy-of-discover -->
 > Do:
-> - Live-build reference — the exact files are in tasks/09-example-mapping.md steps 2-4: the body, the reference, the template
-> - Point at $ARGUMENTS, then at the reference file it's told to open, then at the template it saves with
-> - Walk the numbered steps out loud: the order is the design — interview first, spec shown before it is saved
+> - Live build: exact files in tasks/09-example-mapping.md steps 2-4 — body, reference, template
+> - Point at $ARGUMENTS, the reference it's told to open, then the template it saves with
+> - Walk the numbered steps aloud: the order is the design — interview first, spec shown before saving
 
 Say:
 - argument-hint tells people what to type after /discover
-- allowed-tools includes AskUserQuestion — the skill can ask, not just answer
+- AskUserQuestion lets the skill ask, not just answer. allowed-tools only pre-approves tools, and this one needs no permission anyway
 - A skill, not a subagent: it runs in your own conversation, so the interview is a live back-and-forth with you
 
 <!-- @note: the-discover-skill -->

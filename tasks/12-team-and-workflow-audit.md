@@ -92,7 +92,8 @@ for is to run all three on the same problem and compare.
     ```
     /workflows
     ```
-    Press `s` on the run. Now a copy is in `.claude/workflows/`. Commit it.
+    Press `s` on the run. In the save dialog, pick `.claude/workflows/` (Tab switches) and press
+    Enter. Now a copy is in `.claude/workflows/`. Commit it.
 11. Compare the three runs: findings, time, tokens, your own `/context`. `/cost` (an alias for
     `/usage`) says the cost out loud for you. The workflow is the most expensive. That is the
     price of bounded roles and a review gate.
@@ -125,8 +126,8 @@ for is to run all three on the same problem and compare.
 
 ## Stuck?
 
-`git checkout 12-start` — the ownership bug is re-seeded here, fresh, for this audit: tasks 09–11
-restored it, this branch removes it again the same way task 08 first did. If a workflow errors,
+`git checkout 12-start` — the ownership bug is re-seeded here, fresh, for this audit: `10-start`
+restored the check, this branch removes it again the same way task 08 first did. If a workflow errors,
 check for `Date.now()`, `Math.random()` or a no-arg `new Date()` in the script. They throw inside
 a workflow on purpose, so a run can be replayed. An `import()` fails the run before it starts: a
 script cannot load modules.

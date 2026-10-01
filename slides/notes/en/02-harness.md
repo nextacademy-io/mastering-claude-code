@@ -28,8 +28,8 @@ Say:
 
 Say:
 - [click] the system prompt Claude Code writes
-- [click] your CLAUDE.md files — project and personal
 - [click] the list of tools, with their descriptions
+- [click] your CLAUDE.md files — often more than two: managed (your org), ~/.claude/CLAUDE.md, the project CLAUDE.md, CLAUDE.local.md; files in subfolders join when Claude reads there
 - [click] a short index of skills, one line each
 - [click] the whole history of this session — every file it read, every command output — already sent in the previous call, so the provider serves it from cache: much cheaper and faster
 - [click] your newest message and the newest tool result — that tail is the only part paid in full
@@ -41,9 +41,9 @@ Say:
 - Core tool set is small and boring on purpose
 - Read, Edit, Write — files
 - Bash — anything a terminal can do: tests, builds, git
-- [click] Grep and Glob — searching
-- [click:3] Agent — starts another loop with its own context (subagents, covered later)
-- [click] WebFetch — pulls a page in
+- [click:2] Grep and Glob — searching. On macOS, Linux and WSL they are not in the default set: Claude searches with find and grep through Bash instead
+- [click] Agent — starts another loop with its own context (subagents, covered later)
+- [click] WebFetch — fetches one page from a URL. It does not search: web search is a second tool, WebSearch
 - MCP — adds tools from outside: a browser, a database, your ticket system
 - Model sees each tool's name, description, and input schema; it picks from the description and fills arguments from the schema
 - That's why tool descriptions and skill descriptions are written so carefully
@@ -57,8 +57,8 @@ Say:
 - The modes, one per click:
   - [click] Manual — asks before edits and commands
   - [click] Accept edits — file edits go through, plus common filesystem commands (mkdir, rm, mv, cp...); other shell commands still ask
-  - [click] Plan mode — read only: the model can look but not touch; edits stay blocked until you approve the plan — good for thinking before building
-  - [click] Auto — a classifier reviews each action and blocks the risky ones instead of asking you
+  - [click] Plan mode — does not edit your source: the model can look but not touch; edits stay blocked until you approve the plan — good for thinking before building
+  - [click] Auto — a second model, the classifier, reviews actions instead of you and blocks the risky ones. A block, or no verdict, means denied, not asked; prompts come back only after 3 blocks in a row or 20 in a session
   - [click] Bypass — skips almost every prompt (use only in a sandbox); a few things still ask, like rm -rf on your home or project folder
 - The gate is the whole point: nothing dangerous happens without a decision — a rule's or yours
 
@@ -66,10 +66,11 @@ Say:
 Say:
 - Same ring, now three places where the harness lets you in
 - [click] PreToolUse — runs your shell command before the tool; exit code 2 blocks the call, and what you print to stderr is handed to the model as the reason
+  - It runs before the permission check, in every mode: its exit 2 blocks even when an allow rule matches or in bypass mode, and its allow never skips a deny or ask rule
 - [click] PostToolUse — runs after the tool; the tool already ran, so exit 2 can't undo it — instead the stderr goes to the model, which then fixes its own work
   - Example: after every edit under app/actions, a hook runs the type checker; it fails; the model sees the error and repairs the code
 - [click] Stop — runs when the model wants to end the turn; exit code 2 refuses, and the model keeps working
-- Any other exit code only logs — only exit code 2 blocks a hook
+- Any other exit code lets the action go on — only exit code 2 blocks a hook
 - A rule in CLAUDE.md is advice. A hook is law
 - Part four builds these
 
@@ -99,17 +100,42 @@ Say:
 Say:
 - Cost is tokens
 - Input tokens every call, output tokens every answer
-- The cached front part is much cheaper than the rest — long sessions with a stable front and a short tail are the cheap ones
-- Control is three questions you keep coming back to:
+- The cached front part is much cheaper than the rest — sessions with a stable front and a short tail are the cheap ones
+- [click:5] Control is three questions you keep coming back to:
   - What is in the window right now?
   - Which tools can the model call?
   - Which rules are enforced by a hook rather than hoped for in a prompt?
-- One of those questions, right now: what happens when the window fills up
+- The red band on top is the drift zone: near the limit Claude Code first clears old tool outputs, then summarises the conversation. Nothing is cut off at random, but early instructions can get lost — lasting rules belong in CLAUDE.md
+- Next two slides: what makes the tank expensive. After that: what happens when it fills up
+
+
+
+<!-- @note: cost-multiplies-quietly -->
+> Do:
+> - Call the multiplication a review lens, not a billing formula
+> - Tie each factor to something already seen: context, turns, subagents, effort
+> - Docs link: open it, scroll to "Why usage climbs in a long session", then back to the slides
+
+Say:
+- Thinking tokens are billed as output. Parallel workers each have their own context. Long sessions make later turns heavier
+- The trap is rarely one expensive command; it is multiplication across dimensions
+- Shape the work first: smaller context, fewer unneeded turns, fewer workers, the right effort
+
+<!-- @note: keep-deterministic-work-deterministic -->
+> Do:
+> - Ask who should count the errors in a log. Answer: a script
+> - [click] Ask who should decide whether two architecture rules conflict. Answer: the model
+
+Say:
+- No reasoning tokens for work a command does perfectly: trim a giant log before it enters the window
+- Claude Code does not trim it for you: up to about 30,000 characters of a command's output enter the window as they are. Above that it saves the output to a file and shows the first 2,000; a failing command gets a start-and-end excerpt of about 10,000
+- Put gates that every task repeats into one script, so people, agents and CI run the same check
+- Back to the first control question, what is in the window: what happens when it fills up
 
 <!-- @note: when-the-window-fills-compact-or-clear -->
 > Do:
 > - Nobody has a live session open yet — name the commands, don't run them
-> - Say plainly that the live version comes later in Task 01, once there is a real conversation to compact or clear
+> - Say plainly that the live version comes later: /clear in Task 01, /compact in Task 03
 
 Say:
 - Three tanks — first: a session near the limit — files read, tool output, chat
@@ -123,7 +149,6 @@ Say:
 <!-- @note: a-question-that-skips-the-loop -->
 > Do:
 > - Nobody has a live session open yet — describe it, don't run it
-> - Same "we'll do this for real later in Task 01" framing as the last slide
 
 Say:
 - Same loop as before — nothing about it changes
@@ -135,12 +160,10 @@ Say:
 
 <!-- @note: install-and-log-in -->
 > Do:
-> - Paste the install link from the top of the slide into the Teams chat, so people can click it directly
-> - Everyone installed this before the workshop (docs/SETUP.md) — say so plainly, this is a recap, not asking for a fresh install
-> - Open your own terminal live in an empty folder and start Claude Code — that's all. An
->   empty folder has nothing meaningful for /context, /btw or /clear to show yet; that comes
->   later, at the end of Task 01
-> - Close with the line on the next slide
+> - Paste the install link from the slide into the Teams chat, so people can click it
+> - Say plainly: everyone installed it before the workshop (docs/SETUP.md) — a recap, not a fresh install
+> - Open your own terminal live in an empty folder and start Claude Code — that's all. /context, /btw and /clear show nothing meaningful there yet; all three come at the end of Task 01
+> - Close with "The model is the same for everyone", after "Claude Code is not the only harness"
 
 Say:
 - One global install, one command to start
@@ -150,12 +173,13 @@ Say:
 - That folder is its world — it reads and edits there
 - CLAUDE.md files in that folder are picked up automatically
 
-<!-- @note: claude-code-is-a-harness-not-the-only-one -->
+<!-- @note: claude-code-is-not-the-only-harness -->
 Say:
 - Same idea, different names: IDE-embedded assistants, terminal agents, autonomous coding services
 - Four questions apply to any of them, not just Claude Code
 - [click] Autonomy: interactive, headless in CI, or fully unattended — this workshop covers all three
 - [click] Transparency: can you read the plan before it runs, and the diff after?
+- In Claude Code: Ctrl+O opens the transcript viewer with every tool call. Running subagents sit in a panel under the prompt, and /tasks opens each one's own transcript
 - [click] Extensibility: hooks, skills, MCP, subagents — this is where Claude Code's toolkit earns its keep
 
 <!-- @note: the-model-is-the-same-for-everyone-the-harness-is-where-you-win -->

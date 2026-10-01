@@ -102,7 +102,7 @@ layout: concept
 heading: "In your editor"
 lines:
   - "VS Code and JetBrains extensions show diffs inline"
-  - "Same Claude Code, a second window onto it"
+  - "Same engine. The VS Code panel lacks a few terminal features."
 ---
 
 <div class="flex gap-4 w-full max-w-2xl justify-center">
@@ -124,7 +124,7 @@ lines:
 ---
 layout: code-live
 heading: "Your first conversation"
-filePath: "prompt to Claude Code — inside your clone of clash on 01-start"
+filePath: "prompt to Claude Code — inside your CLASH clone on 01-start"
 success: "Claude answers from the spec file, not from guesses, and names the five kinds of records."
 ---
 
@@ -142,7 +142,7 @@ number: "01"
 heading: "Setup and first conversation"
 goal: "Install Claude Code, clone the empty CLASH repo, and have your first conversation about the spec."
 mode: "you do"
-success: "Claude Code runs in your clone, it answered your questions about docs/SPEC.md, and CLAUDE.md exists."
+success: "Claude Code runs in your CLASH clone, it answered your questions about docs/SPEC.md, and CLAUDE.md exists."
 branch: "01-start"
 ---
 
@@ -176,6 +176,35 @@ claude -p "___" --output-format json
 ```
 
 ---
+layout: code-live
+heading: "Same task, different effort"
+routeAlias: theory-effort-lab
+docs: https://code.claude.com/docs/en/model-config
+filePath: "terminal — an empty folder holding only a copy of review.ts"
+success: "Both runs reviewed the same file with the same prompt and model; the group compares findings, false positives and output tokens, not tone."
+---
+
+```bash
+# ⟵ LIVE: same file, same prompt, same model. Only the effort changes.
+claude -p --model sonnet --effort low --output-format json "___"
+claude -p --model sonnet --effort high --output-format json "___"
+```
+
+---
+layout: concept
+heading: "Measure the extra reasoning"
+lines:
+  - "Score correct findings and false positives. Record the output tokens."
+  - "Higher effort pays only when it prevents enough rework to cover its cost."
+---
+
+<div class="grid grid-cols-4 gap-2 w-full max-w-3xl text-sm">
+  <div></div><div class="font-semibold text-center">correct</div><div class="font-semibold text-center">false +</div><div class="font-semibold text-center">output tokens</div>
+  <div class="na-card p-3 font-mono">low</div><div class="na-card p-3 text-center">__/4</div><div class="na-card p-3 text-center">__</div><div class="na-card p-3 text-center">__</div>
+  <div class="na-card p-3 font-mono">high</div><div class="na-card p-3 text-center">__/4</div><div class="na-card p-3 text-center">__</div><div class="na-card p-3 text-center">__</div>
+</div>
+
+---
 layout: concept
 heading: "Pick up where you left off"
 lines:
@@ -190,7 +219,7 @@ lines:
   </div>
   <div class="na-card p-5 flex-1" v-click>
     <div class="font-mono text-sm font-semibold mb-2" style="color: var(--na-accent-500)">claude --resume</div>
-    <div class="text-sm" style="color: var(--na-fg-muted)">Shows every session to choose from, including a finished background one.</div>
+    <div class="text-sm" style="color: var(--na-fg-muted)">Shows sessions to choose from, including a finished background one.</div>
   </div>
 </div>
 

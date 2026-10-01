@@ -6,15 +6,15 @@
 ## Theory
 
 - [Loaded only when needed](https://mastering-claude-code.vercel.app/theory-skills)
-- [Commands became skills. Nothing broke.](https://mastering-claude-code.vercel.app/theory-commands-and-skills)
+- [/skill-doctor: what it costs](https://mastering-claude-code.vercel.app/theory-skill-doctor)
 - [A skill is advice](https://mastering-claude-code.vercel.app/theory-skill-advice)
 
-> **Reminder:** Skills package repeatable guidance, load on demand, and do not enforce behavior like hooks do.
+> **Reminder:** Check what your skills cost before you add one; a skill loads on demand and is advice, not enforcement.
 
 ## You will end up with
 
-A skill at `.claude/skills/clash-feature/SKILL.md` that holds the recipe for adding a
-feature to CLASH, and one small feature shipped with it: venue favourites.
+A `/skill-doctor` reading of the vendored skills, then a skill at `.claude/skills/clash-feature/SKILL.md`
+that holds the recipe for adding a feature to CLASH, and one small feature shipped with it: venue favourites.
 
 ## Why
 
@@ -22,14 +22,23 @@ A skill is for work you keep explaining again and again. Adding a feature to CLA
 always the same eleven steps in the same order. The easiest step to forget is the ownership
 check in the Server Action. A skill turns "remember the check" into "the recipe has a slot for it".
 
-A skill is advice. It loads only when its description matches what you ask. Custom slash
+A skill is advice. It loads only when its description matches what you ask, or when you type its `/name`. Custom slash
 commands in `.claude/commands/*.md` still work. Skills are the richer format for new work.
 
 ## Do this
 
 1. Look at what already ships: `.agents/skills/` and `skills-lock.json`. These are
-   third-party skills for Prisma, shadcn and React. You are not starting cold.
-2. Create the skill file and write the header first.
+   third-party skills, mostly for Prisma, shadcn and React. You are not starting cold.
+2. See what the skills you already have cost, before you add your own.
+   ```
+   /skill-doctor
+   ```
+   You should see each skill with what it costs in context on every turn, and how often it was used.
+   No `/skill-doctor`? Read the Skills row in `/context` instead.
+   Two of these skills, `react-best-practices` and `vercel-react-best-practices`, are near-duplicates:
+   each holds an `AGENTS.md` of about 100 KB with nearly the same rules. Leave them in place.
+   Using a skill loads only its short `SKILL.md`. A big file like `AGENTS.md` loads only when Claude opens it.
+3. Create the skill file and write the header first.
    ```yaml
    ---
    name: clash-feature
@@ -39,11 +48,11 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *) Bash(npx prisma *) Bash(npx tsc *)
    ---
    ```
-3. Write the body as eleven steps, the last one verifies. Keep each step short.
+4. Write the body as eleven steps, the last one verifies. Keep each step short.
    Prisma model → migration → constants → Zod schema in `lib/validation.ts` → read helper
    in `lib/data/` → Server Action in `app/actions/` **with its own ownership check** →
    page → shadcn component → `revalidatePath` → notification via `lib/notify.ts`.
-4. Give the Server Action step its reason, not only its rule. The reason: `requireUser()` in
+5. Give the Server Action step its reason, not only its rule. The reason: `requireUser()` in
    the layout guards the *page*. A Server Action is a public endpoint anyone with a session
    cookie can call directly, so the action has to check ownership itself.
 
@@ -58,17 +67,17 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    owns the row."
    ```
    Open the file and check the note sits under the Server Action step.
-5. Use the skill to ship a feature.
+6. Use the skill to ship a feature.
    ```
    /clash-feature Add venue favourites: a user can favourite a venue from its
    detail page and see a list of their favourites on their profile.
    ```
-6. Run the gates.
+7. Run the gates.
    ```bash
    npx tsc --noEmit && npm run lint && npm run build
    ```
-7. Run `/context`. Compare with the number from task 06. Note how many files Claude read this time.
-8. Package the skill as a plugin, so it can be shared outside this repo.
+8. Run `/context`. Compare with the number from task 06. Note how many files Claude read this time.
+9. Package the skill as a plugin, so it can be shared outside your CLASH clone.
    ```bash
    mkdir -p clash-feature-plugin/.claude-plugin clash-feature-plugin/skills
    cp -r .claude/skills/clash-feature clash-feature-plugin/skills/clash-feature
@@ -92,6 +101,7 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
 
 ## Check
 
+- [ ] `/skill-doctor` (or the Skills row in `/context`) showed what your skills cost, and you can name the two near-duplicate vendored skills.
 - [ ] `.claude/skills/clash-feature/SKILL.md` exists with `name`, `description` and `allowed-tools`.
 - [ ] The Server Action step names an ownership check, not only `requireUser()`, and says why.
 - [ ] Venue favourites work end to end.
@@ -108,11 +118,12 @@ personal-only). Your own `.claude/skills/clash-feature/` is not — that is what
 ## Go further
 
 Compare your skill with `workshop-artifacts/07-clash-feature-skill/SKILL.md` in the workshop repository.
-Then run `/skill-doctor` again and check that your description is specific enough to match.
+Then test your description: in a fresh session, ask for a small feature without typing `/clash-feature`, and see whether Claude loads the skill by itself.
 
 ## Links
 
 - Skills — https://code.claude.com/docs/en/skills
 - Commands — https://code.claude.com/docs/en/commands
+- Create a plugin — https://code.claude.com/docs/en/plugins/create
 - Tools reference — https://code.claude.com/docs/en/tools-reference
 - agent-browser skill — https://www.skills.sh/vercel-labs/agent-browser/agent-browser

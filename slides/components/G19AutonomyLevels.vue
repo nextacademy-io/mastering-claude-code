@@ -1,6 +1,12 @@
 <script setup lang="ts">
 // G19 — Interactive → headless → embedded. Same agent, three levels of
 // autonomy, same control primitives carried across unchanged.
+import { useId } from 'vue'
+
+// Marker ids are unique per instance: G01 draws arrows too, and a url(#…)
+// that resolves into a hidden slide paints no marker.
+const markerId = `g19-arrow-${useId()}`
+
 const stages = [
   { x: 30, title: 'Interactive', sub: 'you, in the loop', detail: 'a human drives every turn' },
   { x: 320, title: 'Headless', sub: 'no human present', detail: 'claude-code-action@v1 in CI' },
@@ -11,7 +17,7 @@ const stages = [
 <template>
   <svg viewBox="0 0 900 480" width="900" height="480" class="w-full max-w-4xl h-auto max-h-full" font-family="Inter, sans-serif">
     <g v-for="(s, i) in stages" :key="s.title" v-click>
-      <path v-if="i > 0" :d="`M ${s.x - 30} 105 L ${s.x} 105`" stroke="var(--na-zinc-600)" stroke-width="2.5" marker-end="url(#arrow)" />
+      <path v-if="i > 0" :d="`M ${s.x - 30} 105 L ${s.x} 105`" stroke="var(--na-zinc-600)" stroke-width="2.5" :marker-end="`url(#${markerId})`" />
       <rect :x="s.x" y="30" width="260" height="150" rx="12" fill="var(--na-bg-raised)" stroke="var(--na-primary-400)" stroke-width="2" />
       <text :x="s.x + 130" y="72" text-anchor="middle" fill="var(--na-fg)" font-weight="700" style="font-size:20px">{{ s.title }}</text>
       <text :x="s.x + 130" y="98" text-anchor="middle" fill="var(--na-accent-500)" style="font-size:13px">{{ s.sub }}</text>
@@ -38,7 +44,7 @@ const stages = [
     </g>
 
     <defs>
-      <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <marker :id="markerId" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
         <path d="M0,0 L8,4 L0,8 Z" fill="var(--na-zinc-600)" />
       </marker>
     </defs>

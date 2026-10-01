@@ -66,7 +66,7 @@ routeAlias: theory-plan-mode
 docs: https://code.claude.com/docs/en/permission-modes
 lines:
   - "Shift+Tab until the status bar shows \"plan mode on\""
-  - "Claude can read files. It cannot write them."
+  - "Claude can read files. It does not edit your source."
   - "You review the plan. Then you switch back and say: do it."
 ---
 
@@ -98,6 +98,8 @@ lines:
   </g>
 </svg>
 
+
+
 ---
 layout: code-live
 heading: "Plan the data model"
@@ -117,6 +119,66 @@ Show the plan, do not write files.
 ```
 
 ---
+layout: concept
+heading: "When a plan earns its cost"
+lines:
+  - "Plan when the change crosses contracts, is hard to undo, or unclear."
+  - "Skip it when the diff is obvious, local and cheap to verify."
+---
+
+<div class="grid grid-cols-2 gap-6 w-full max-w-3xl">
+  <div class="na-card p-5"><div class="font-semibold mb-2" style="color: var(--na-success-500)">Plan</div><div class="text-sm" style="color: var(--na-fg-muted)">schema · auth boundary · migration · architecture · unfamiliar system</div></div>
+  <div class="na-card p-5" v-click><div class="font-semibold mb-2" style="color: var(--na-accent-500)">Just do it</div><div class="text-sm" style="color: var(--na-fg-muted)">rename · tiny UI copy · obvious local fix · easy revert</div></div>
+</div>
+
+---
+layout: concept
+heading: "A good plan has an exit"
+routeAlias: theory-plan-quality
+docs: https://code.claude.com/docs/en/best-practices
+lines:
+  - "Goal · scope · evidence · interfaces · steps · risks · verification · done."
+  - "If a step cannot be checked, it is not ready to execute."
+---
+
+<div class="flex flex-wrap gap-2 w-full max-w-4xl justify-center text-sm">
+  <span class="na-card px-4 py-2">goal</span><span class="na-card px-4 py-2">scope</span><span class="na-card px-4 py-2">evidence</span><span class="na-card px-4 py-2">interfaces</span>
+  <span class="na-card px-4 py-2" v-click>steps</span><span class="na-card px-4 py-2" v-click>risks</span><span class="na-card px-4 py-2" v-click>verification</span><span class="na-card px-4 py-2" v-click>done</span>
+</div>
+
+---
+layout: concept
+heading: "Plan or roadmap?"
+lines:
+  - "One change you can accept or reject as a whole: a plan."
+  - "Pieces that can ship on their own: a roadmap. Each piece is a work package."
+---
+
+<div class="flex items-center gap-3 w-full max-w-4xl justify-center text-sm">
+  <div class="na-card px-4 py-3">roadmap</div><span>→</span><div class="na-card px-4 py-3">work package</div><span>→</span><div class="na-card px-4 py-3">plan</div><span>→</span><div class="na-card px-4 py-3">change</div><span>→</span><div class="na-card px-4 py-3">proof</div>
+</div>
+
+---
+layout: concept
+heading: "Upgrade the planner, not the run"
+docs: https://code.claude.com/docs/en/model-config
+lines:
+  - "opusplan: Opus in plan mode, Sonnet for execution."
+  - "For important plans, use a fresh reviewer for mismatches and risks."
+  - "Fix the gaps; do not regenerate the whole plan."
+---
+
+<div class="flex items-center gap-4 w-full max-w-4xl justify-center">
+  <div class="na-card p-4 text-center"><div class="font-semibold">planner</div><div class="text-sm" style="color: var(--na-fg-muted)">draft from evidence</div></div>
+  <span v-click="1">→</span>
+  <div class="na-card p-4 text-center" v-click="1"><div class="font-semibold">fresh reviewer</div><div class="text-sm" style="color: var(--na-fg-muted)">find mismatches · risks</div></div>
+  <span v-click="2">→</span>
+  <div class="na-card p-4 text-center" v-click="2"><div class="font-semibold">fix the gaps</div><div class="text-sm" style="color: var(--na-fg-muted)">not another full rewrite</div></div>
+  <span v-click="3">→</span>
+  <div class="na-card p-4 text-center" v-click="3"><div class="font-semibold">execute + verify</div></div>
+</div>
+
+---
 layout: task
 number: "02"
 heading: "Foundation"
@@ -125,5 +187,3 @@ mode: "you do"
 success: "npm run dev shows a page, prisma/schema.prisma has five models, the seed created 8 users, and CLAUDE.md has a Rules section."
 branch: "02-start"
 ---
-
-

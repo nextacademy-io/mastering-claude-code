@@ -3,7 +3,7 @@
 > - Branch: 03-start hat schon das Scaffold, das Schema und die Seed-Daten — das Ergebnis von Task 02
 
 Sagen:
-- Fünf Dinge zu lernen, vier Dinge zu bauen — die längste Task in diesem Teil, hier zählen kleine Schritte am meisten
+- Vier Dinge zu lernen, vier Dinge zu bauen — die längste Task in diesem Teil, hier zählen kleine Schritte am meisten
 
 <!-- @note: small-steps-beat-big-asks -->
 > Tun:
@@ -18,27 +18,25 @@ Sagen:
 <!-- @note: undo-a-step-rewind -->
 > Tun:
 > - Schritte 6-7 machen die Teilnehmenden selbst
-> - Demo: nach dem Shell-Schritt /rewind ausführen, die Liste der Checkpoints zeigen
-> - Den Checkpoint vor dem letzten Schritt auswählen, zeigen, dass die Dateien zurück sind
-> - Esc drücken, um abzubrechen, falls es doch nicht gewollt war
-> - Optional: auf den Abschnitt "Limitations" in den Docs zeigen — Checkpoints erfassen nur Claudes eigene Dateiänderungen, keine Änderungen durch einen Bash-Befehl
+> - Demo nach dem Shell-Schritt: /rewind, die Checkpoints zeigen, den vor dem letzten Schritt auswählen, zeigen, dass die Dateien zurück sind
+> - Esc bricht ab, falls es doch nicht gewollt war
+> - Optional: auf "Limitations" zeigen — Checkpoints erfassen nur Claudes eigene Dateiänderungen, keine Änderungen durch einen Bash-Befehl
 
 Sagen:
 - Das ist Undo fürs Gespräch — es ersetzt Git nicht
 - Früh benutzen, bevor du versuchst, eine falsche Richtung zu flicken
 
-<!-- @note: watch-the-window-fill -->
+<!-- @note: compact-is-a-lossy-reset -->
 > Tun:
 > - Schritte 8-9 machen die Teilnehmenden selbst
-> - Nach den Auth- und Shell-Schritten live /context ausführen
-> - [click] Die Bänder lesen: System-Prompt, CLAUDE.md, Tool-Ergebnisse, Gespräch
-> - Dann /compact ausführen, dann noch mal /context
-> - Optional: auf den Abschnitt "Manage context proactively" in den Docs zeigen — /clear vs. /compact
+> - Nach den Auth- und Shell-Schritten live /context ausführen, die echten Bänder lesen
+> - [click] /compact ausführen, dann noch einmal /context: vergleichen
+> - In /context zählen Tool-Ergebnisse zu Messages; die Tool-Bänder sind Tool-Definitionen und bleiben nach /compact
+> - Optional: Docs-Link, bis "Manage context proactively" scrollen, für /clear vs. /compact
 
 Sagen:
-- [click:4] Das Tool-Ergebnisse-Band sind die Dateien, die Claude gelesen hat — es wächst immer weiter. Ist das Fenster fast voll, räumt Claude Code zuerst ältere Tool-Ausgaben weg, dann komprimiert es
-- Das erste Mal, dass die Gruppe das Context Window als etwas sieht, das sie managen kann
-- Teil III macht daraus eine Disziplin
+- Die Zusammenfassung ist verlustbehaftet: Details, die sie weglässt, sind nicht mehr im Fenster
+- Teil III macht aus dem Rettungsbefehl eine Context-Disziplin
 
 <!-- @note: the-safety-moment -->
 > Tun:
@@ -53,8 +51,7 @@ Sagen:
 >    Then add this rule to CLAUDE.md under "Rules":
 >    - Every Server Action calls requireUser() and checks ownership before it changes an existing row.
 >
-> - Den Satz sagen, den die Gruppe behalten muss
-> - Teil III und IV verbringen viel Zeit mit genau dieser Regel — sie hier pflanzen
+> - Den Satz sagen, den die Gruppe behalten muss — Teil III und IV verbringen viel Zeit mit genau dieser Regel
 
 Sagen:
 - Eine Server Action ist ein öffentlicher Endpoint mit einer generierten id
@@ -83,10 +80,9 @@ Sagen:
 
 <!-- @note: auth-and-clashes -->
 > Tun:
-> - Task-03-Rückblick
-> - Übergabe an tasks/03-auth-and-clashes.md, alle 13 Schritte — keine Folien mehr bis Task 04
+> - Task-03-Rückblick: Übergabe an tasks/03-auth-and-clashes.md, alle 13 Schritte — keine Folien mehr bis Task 04
 > - Den Chat beobachten, während gearbeitet wird
-> - Auf Leute achten, die die ganze Task als einen Prompt schicken — ihnen schreiben und live gemeinsam aufteilen
+> - Auf Leute achten, die die ganze Task als einen Prompt schicken — ihnen schreiben, live gemeinsam aufteilen
 
 Sagen:
 - Reset: 03-start ist das Scaffold plus Daten; 04-start ist Auth, Shell und Clashes fertig

@@ -88,7 +88,7 @@ layout: flow-ways
 heading: "Generator-verifier: make, then check"
 ways:
   - way: "/goal checks each turn"
-    prompt: "/goal npx tsc --noEmit and npm run lint both exit 0, or stop after 10 turns"
+    prompt: "/goal npx tsc --noEmit and npm run lint both exit 0, or stop after 6 turns"
   - way: "A workflow refutes findings"
     prompt: "Use a workflow to audit app/actions/ and try to refute each finding."
   - way: "An agent Stop hook"
@@ -219,7 +219,7 @@ routeAlias: theory-start-a-workflow
 docs: https://code.claude.com/docs/en/workflows#have-claude-write-a-workflow
 lines:
   - "Own words (“use a workflow to …”) or the word ultracode. This task only."
-  - "/effort ultracode: very high effort, a workflow per big task, all session."
+  - "/effort ultracode: a workflow per big task, all session, effort unchanged."
   - "On Pro: workflow size small, try one folder first, stop a run in /workflows."
 ---
 
@@ -324,5 +324,3 @@ mode: "watch first"
 success: "The workflow confirms exactly deleteClash and deleteVenue, you read the generated script, and the fix is merged with green gates."
 branch: "12-start"
 ---
-
-

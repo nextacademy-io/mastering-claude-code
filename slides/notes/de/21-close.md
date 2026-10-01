@@ -1,17 +1,29 @@
-<!-- @note: what-we-did-not-cover -->
+<!-- @note: three-levers-one-responsibility -->
 > Tun:
-> - Kurz halten — nennen nimmt das "Warum hast du X nicht gezeigt" vorweg
-> - Channels und Computer use sind Research Previews; /goal braucht einen vertrauenswürdigen Ordner mit aktiven Hooks
-> - "Nicht behandelt" sagen — nicht versprechen, dass sie auf jedem Rechner laufen
+> - Bei jedem Begriff kurz innehalten; je ein Kursbeispiel erfragen
 
 Sagen:
-- Channels: ein MCP-Server schiebt Events in deine offene Session; mit `--channels` einschalten — https://code.claude.com/docs/en/channels
-- /goal: Claude arbeitet weiter, bis ein kleines Modell die Bedingung als erfüllt oder unerfüllbar einstuft — https://code.claude.com/docs/en/goal
-- Computer use: eingebauter MCP-Server, in /mcp einschalten; nur macOS, Pro- oder Max-Plan — https://code.claude.com/docs/en/computer-use
+- Drei verschiedene Engineering-Probleme: Löse nie eines, indem du an einem anderen Regler drehst
+- Fehlende Fakten: ein Context-Problem
+- [click] Ein schwieriger Trade-off: ein Reasoning-Problem
+- [click] Vertrauen: ein Evidence-Problem
+- Du verantwortest die Grenze zwischen allen drei
+
+<!-- @note: autonomy-is-earned-by-verification -->
+> Tun:
+> - Die Treppe von links nach rechts durchgehen: Die Höhe steht für Autonomie, nicht für Modellintelligenz
+
+Sagen:
+- Du schaust zu: Jeder Fehler trifft sofort auf eine menschliche Korrektur
+- [click] Goal + Gates: Jeder Schritt weg von der Tastatur nimmt diese Korrekturschleife weg
+- [click] Isolierte Agents: Ersetze die verlorene Aufsicht durch Belege und Isolation
+- [click] Background und Batch: Limits und Recovery kommen dazu
+- [click] CI und Routine: Das Ziel ist zuverlässige Fertigstellung, nicht Autonomie
 
 <!-- @note: context-is-king-you-push-it-you-own-it -->
 > Tun:
 > - Der Schluss — zwei Zeilen, kein Diagramm
+> - Falls jemand fragt, was der Workshop auslässt: Channels schieben Events in eine laufende Session, und Computer Use lässt Claude native Apps bedienen
 
 Sagen:
 - Ein roter Faden: sorglos behandelter Context füllt das Fenster mit Rauschen, der Agent driftet ab

@@ -22,7 +22,7 @@ Inside Claude Code the tools are named `mcp__clash__list_upcoming_clashes`, `mcp
 | `server.ts` | `mcp/server.ts` | CLASH's `19-solution` |
 | `smoke.ts` | `mcp/smoke.ts` | both |
 | `.mcp.json` | `.mcp.json` (at the root of your CLASH clone) | CLASH's `19-solution`; on CLASH's `19-start` task 19 step 1 creates it with `claude mcp add` |
-| `settings.allow.json` | merge the `permissions.allow` list into `.claude/settings.json` | CLASH's `19-solution`; on CLASH's `19-start` task 19 step 5 adds it |
+| `settings.allow.json` | merge the `permissions.allow` list into `.claude/settings.json` | CLASH's `19-solution`; on CLASH's `19-start` task 19 step 6 adds it |
 
 `scripts/prepare-branches.sh` in the workshop repository builds both branches from these files.
 
@@ -73,7 +73,7 @@ Before you approve the server the same line ends with `⏸ Pending approval (run
 
 ## Least privilege
 
-`settings.allow.json` allows only the two read tools. `create_clash` stays behind a permission prompt.
+`settings.allow.json` allows only the two read tools. In Manual mode, `create_clash` stays behind a permission prompt.
 Merge the list into `.claude/settings.json` in your CLASH clone. On CLASH's `19-start` that file already holds `hooks`, so it ends up with two keys, `hooks` and `permissions` — merge, never paste over the file:
 
 ```json
@@ -92,7 +92,7 @@ The five design decisions task 19 teaches, and where each one shows:
 2. **Descriptions are the interface.** The tool descriptions and `.describe("id from find_venue")` steer Claude before any code runs.
 3. **Refusals are product text.** `refuse()` returns text with `isError: true`; clash-conference shows that text to the organiser as the reason a publish failed. `No venue matches "…"` goes through `reply()`: no match is an answer, not an error.
 4. **Check before you write.** `create_clash`: host, venue, ISO date in the future, duplicate — in that order, all before the one `prisma.clash.create`. `cancel_clash`: host, clash, owner — all before the one `prisma.clash.delete`.
-5. **No more power than needed.** The one tool that deletes, `cancel_clash`, deletes only a clash its own host created, like CLASH's own `deleteClash`. No create-venue or create-user tool. `settings.allow.json` allows the two reads; both writes keep asking.
+5. **No more power than needed.** The one tool that deletes, `cancel_clash`, deletes only a clash its own host created, like CLASH's own `deleteClash`. No create-venue or create-user tool. `settings.allow.json` allows the two reads; in Manual mode, both writes keep asking.
 
 A known gap, on purpose: CLASH's own `createClash` in `app/actions/clashes.ts` notifies the venue's creator when someone schedules a clash at their venue (`docs/SPEC.md`). `create_clash` writes straight to the database and skips that side effect. Task 19 keeps the prompts short and turns this into a "Now you" exercise: add the notification, and make the smoke test remove it again.
 

@@ -5,15 +5,15 @@
 // texts of CLASH's finished server (workshop-artifacts/19-build-mcp/server.ts). No clicks.
 //
 // Geometry: every example sits in a pill of the same width, so no text width is
-// estimated. The longest example line (55 monospace characters at 15px, 0.6em each)
-// needs 495 units; the pill has 526 inside its padding. Card 4 holds two lines, one per
+// estimated. The longest example line (53 monospace characters at 15px, 0.6em each)
+// needs 477 units; the pill has 526 inside its padding. Card 4 holds two lines, one per
 // write tool, so its row is taller; every other row is one line.
 const decisions = [
   { title: 'Small tools', example: ['find_venue → id → create_clash'] },
   { title: 'Descriptions are the interface', example: ['venueId: "id from find_venue"'] },
   { title: 'Refusals are product text', example: ['refuse("Duplicate: …") · reply("No venue matches …")'] },
   { title: 'Check before you write', example: ['create: host → venue → date → duplicate', 'cancel: host → clash → owner'] },
-  { title: 'No more power than needed', example: ['cancel_clash: own clash only · reads free · writes ask'] },
+  { title: 'No more power than needed', example: ['cancel_clash: own clash only · allow list: reads only'] },
 ]
 const lineGap = 21
 const rowH = (d: (typeof decisions)[number]) => 48 + (d.example.length - 1) * 24

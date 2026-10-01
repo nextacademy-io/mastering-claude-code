@@ -19,9 +19,10 @@
 ## What this is
 
 A guided workshop on Claude Code. You start with no experience. You end with the skills of an
-expert: context engineering, skills, subagents, agent teams, dynamic workflows, hooks, MCP,
-worktrees, headless runs in CI, the Agent SDK, output styles, loops, background sessions,
-routines, your own MCP server.
+expert: context engineering, reasoning and effort, planning boundaries, measurable verification,
+skills, subagents, agent teams, dynamic workflows, hooks, MCP, bounded `/goal` runs, worktrees,
+`/batch`, headless runs in CI, the Agent SDK, output styles, loops, background sessions, routines,
+and your own MCP server.
 
 The trainer explains and shows. Then you do it on your own machine. Every task has a reset
 branch, so nobody gets stuck.
@@ -36,7 +37,7 @@ In the second half you work on the **finished reference CLASH** and learn to con
 orchestrate Claude Code on it.
 
 - Spec: [`docs/SPEC.md`](docs/SPEC.md)
-- Reference app: [github.com/pawsaw/clash](https://github.com/pawsaw/clash)
+- Reference CLASH: [github.com/pawsaw/clash](https://github.com/pawsaw/clash)
 
 ## Who this is for
 
@@ -111,7 +112,7 @@ reference CLASH. clash-conference has one reset branch of its own, `19-start`.
 - A browser test suite and a measured performance fix.
 - The audit running headless in CI, a worktree flow, and a small Agent SDK program.
 - One feature of your choice, shipped with everything above.
-- Claude Code working with nobody at the keyboard: an output style, a loop, a background session, a routine in the cloud.
+- Claude Code working with nobody at the keyboard: an output style, a goal, a loop, a background session, a routine in the cloud.
 - Your own MCP server on CLASH, and a second app, `clash-conference`, that publishes its talks as clashes through it.
 
 ## Slides
@@ -168,7 +169,7 @@ npm run check:notes          # both languages still match: note keys, [click] ma
 
 - [Claude Code docs](https://code.claude.com/docs/en/) · [Skills](https://code.claude.com/docs/en/skills) · [Subagents](https://code.claude.com/docs/en/sub-agents) · [Agent teams](https://code.claude.com/docs/en/agent-teams) · [Dynamic workflows](https://code.claude.com/docs/en/workflows)
 - [Hooks guide](https://code.claude.com/docs/en/hooks-guide) · [Hooks reference](https://code.claude.com/docs/en/hooks) · [Permission modes](https://code.claude.com/docs/en/permission-modes) · [Settings](https://code.claude.com/docs/en/settings-reference)
-- [MCP](https://code.claude.com/docs/en/mcp) · [Headless mode](https://code.claude.com/docs/en/headless) · [Worktrees](https://code.claude.com/docs/en/worktrees) · [GitHub Actions](https://code.claude.com/docs/en/github-actions) · [Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview)
+- [MCP](https://code.claude.com/docs/en/mcp) · [Headless mode](https://code.claude.com/docs/en/headless) · [Worktrees](https://code.claude.com/docs/en/worktrees) · [GitHub Actions](https://code.claude.com/docs/en/github-actions) · [Agent SDK](https://code.claude.com/docs/en/agent-sdk/overview)
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp) · [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) · [Agent Browser](https://github.com/vercel-labs/agent-browser)
 
 ## License

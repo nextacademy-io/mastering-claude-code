@@ -16,12 +16,12 @@ branch: "07-start"
 learn:
   - "Package a repeatable recipe as a skill"
   - "Skills load on demand, by description or /skill-name"
-  - "Commands and skills both produce /name"
+  - "Inspect loaded skill cost with /skill-doctor"
   - "A skill is advice — easy to skip"
 outcome:
   - "clash-feature skill: Prisma to page, one recipe"
   - "Venue favourites, shipped end to end through it"
-  - "tsc, lint and build all green"
+  - "One duplicate vendored skill pair identified"
   - "The skill packaged as a plugin"
 ---
 
@@ -38,16 +38,27 @@ lines:
 
 <G05SkillLoading />
 
+
+
+---
+layout: concept
+heading: "/skill-doctor: what it costs"
+routeAlias: theory-skill-doctor
+lines:
+  - "CLASH ships nine vendored skills in .agents/skills/."
+  - "Eight copied into .claude/skills/ — agent-browser stays personal."
+  - "Two ~100 KB near-duplicates — only their descriptions scan every session."
+---
+
 ---
 layout: concept
 heading: "Commands became skills. Nothing broke."
 routeAlias: theory-commands-and-skills
-docs: https://code.claude.com/docs/en/commands
+docs: https://code.claude.com/docs/en/skills
 lines:
   - ".claude/commands/deploy.md → /deploy"
   - ".claude/skills/deploy/SKILL.md → /deploy"
-  - "Old command files keep working."
-  - "Same frontmatter fields work in both: allowed-tools, context: fork."
+  - "Old command files keep working. Same fields: allowed-tools, context: fork."
 ---
 
 
@@ -100,10 +111,9 @@ heading: "Where Claude Code looks for skills"
 routeAlias: theory-skill-install
 docs: https://www.skills.sh/vercel-labs/agent-browser/agent-browser
 lines:
-  - "Two folders only: ~/.claude/skills/ and .claude/skills/."
+  - "Two folders for your skills: ~/.claude/skills/ and .claude/skills/."
   - "npx skills add writes to .agents/skills/, then symlinks it in."
-  - "No link, no skill — and no error."
-  - "/skills lists what's actually loaded, broken links included."
+  - "No link, no skill — and no error. /skills shows what loaded."
 ---
 
 <G23SkillSymlink />
@@ -111,7 +121,7 @@ lines:
 ---
 layout: concept
 heading: "A plugin bundles your setup"
-docs: https://code.claude.com/docs/en/plugins
+docs: https://code.claude.com/docs/en/plugins/create
 lines:
   - "One folder: skills, agents, hooks, an MCP server — one shared name."
   - "commands/ became skills/. Old command files still work."
@@ -148,5 +158,3 @@ mode: "you do"
 success: "One feature ships end to end through the skill, and tsc, lint and build pass."
 branch: "07-start"
 ---
-
-

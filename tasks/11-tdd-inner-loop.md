@@ -31,6 +31,7 @@ This branch already has vitest installed, one trivial passing test, and a delibe
 
 1. Confirm the harness already works.
    ```bash
+   npm install      # CLASH's 11-start adds vitest to package.json
    npm run test
    ```
    One green test. Nothing to configure.
@@ -135,7 +136,7 @@ Drive the remaining rule from the spec through `/tdd` on your own.
 
 ## Stuck?
 
-`git checkout 11-start` — the reference CLASH with tasks 06–10's files, vitest configured, one
+`git checkout 11-start` — the reference CLASH with the task 06, 07, 09 and 10 files, vitest configured, one
 trivial test passing, the capacity stub and the spec answer key in place, no rule
 implementations yet.
 

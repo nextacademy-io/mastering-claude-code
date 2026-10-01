@@ -1,6 +1,6 @@
 <!-- @note: orchestrate-and-let-go -->
 > Tun:
-> - Teil IV beginnt hier — neuer Gürtel, neue JourneyMap-Zeile aktiv
+> - Teil IV beginnt hier — neuer Gürtel, neue JourneyMap-Spalte aktiv
 > - Einmal klar sagen
 
 Sagen:
@@ -13,18 +13,18 @@ Sagen:
 > - Den Moment kurz halten
 
 Sagen:
-- "Der letzte Brown-Belt-Task hat eine Spec gebaut. Dieser baut daraus den Code, eine Regel nach der anderen."
+- "Task 09 hat eine Spec gebaut. Dieser baut daraus den Code, eine Regel nach der anderen."
 
 <!-- @note: task-11-the-tdd-inner-loop -->
 > Tun:
 > - Branch: 11-start hat vitest schon installiert, einen trivialen Test, der läuft, und einen absichtlich falschen capacity.ts-Stub
 
 Sagen:
-- Vier Dinge zu lernen, zwei Dinge, mit denen man rauskommt, und ein Moment, den man nur beobachtet
+- Drei Dinge zu lernen, zwei Dinge, mit denen man rauskommt, und ein Moment, den man nur beobachtet
 
 <!-- @note: a-skill-that-stops-itself -->
 > Tun:
-> - Docs-Link: öffnen, zur SKILL.md-Frontmatter-Referenz scrollen, auf disable-model-invocation zeigen, dann zurück zu den Slides
+> - Docs-Link: öffnen, zur SKILL.md-Frontmatter-Referenz scrollen, auf disable-model-invocation zeigen, dann zurück zu den Folien
 
 Sagen:
 - disable-model-invocation blockiert, dass Claude von sich aus nach diesem Skill greift
@@ -40,8 +40,8 @@ Sagen:
 
 <!-- @note: one-cycle-red-green-stop -->
 > Tun:
-> - Live-Bau-Referenz — der genaue Body steht in tasks/11-tdd-inner-loop.md, Schritt 7
-> - Wieder auf disable-model-invocation zeigen — sagen, warum es hier steht, nicht nur, was es tut
+> - Live-Bau-Referenz — genauer Body in tasks/11-tdd-inner-loop.md, Schritt 7
+> - Wieder auf disable-model-invocation zeigen und sagen, warum: keine description in Claudes Context, „machen wir das mit TDD“ lädt den Skill also nie. Nur /tdd tut das
 
 Sagen:
 - RED muss an einer Assertion scheitern — ein Compile-Fehler heißt, der Test prüft die Verkabelung, nicht die Regel

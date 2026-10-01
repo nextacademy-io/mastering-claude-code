@@ -7,9 +7,8 @@ Say:
 
 <!-- @note: the-prompt-is-a-chat-in-your-terminal -->
 > Do:
-> - Show a real turn in Claude, in the Clash repo
-> - Point at the tool lines as they appear — the loop from the last section, live
-> - Tool choice varies run to run — same probabilities lesson as two slides ago. If it picks Bash, the permission prompt is the gate from that section, live too
+> - Show a real Claude turn in your CLASH clone; point at the tool lines as they appear
+> - Tool choice varies run to run, as in "It picks from probabilities". If it picks Bash, the permission prompt is the gate from the harness section, live
 > - Press Esc while it works — stops the turn, keeps the conversation
 > - Esc twice on an idle prompt opens the rewind menu instead — don't double-tap it right after stopping a turn
 > - Ctrl+C twice from an idle prompt exits — mid-turn, the first press interrupts instead, like Esc
@@ -39,24 +38,22 @@ Say:
 - /help lists them
 - /init reads the project, writes a starter CLAUDE.md
 - /clear empties the session
-- [click] /context draws the bars from the harness section with real numbers
+- [click] /context shows the blocks from the harness section with real numbers
 - [click] /usage shows what this session spent
 - [click] /rewind takes files and conversation back to an earlier point — Claude Code checkpoints before every change
 
 <!-- @note: the-permission-prompt -->
 > Do:
-> - Trigger one live — ask it to install a package
-> - Press Shift+Tab once to reach manual first
-> - Read the three options
-> - Name it, don't pick it
+> - Shift+Tab once to reach manual, then trigger one live — ask it to install a package
+> - Read the three options — name it, don't pick it
 
 Say:
-- In auto mode no prompt appears
+- In auto mode the classifier decides instead of you; a prompt still appears for ask rules, the first read outside the working folder, or after repeated blocks
 - Option two writes a rule into settings — allows this class of command from now on
 - Option three lets you type a correction
 - Bash prompts can show one more choice, "Yes, and switch to auto mode"
-- Shift+Tab cycles the modes: auto → manual → accept edits → plan → back to auto. Pro, Max and Team sessions start in auto; API-key and Enterprise sessions start in manual — and so can the first session right after installing
-- Accept-edits stops asking for file edits; plan mode is read-only
+- Shift+Tab cycles the modes: auto → manual → accept edits → plan → back to auto. With no mode set and auto mode available, every interactive session starts in auto (since v2.1.283; before, only Pro, Max and Team); claude -p starts in manual — and so can the first session right after installing
+- Accept-edits stops asking for file edits; plan mode does not edit your source
 - Plan mode gets used a lot from the next part on
 
 <!-- @note: claude-md-is-your-standing-instruction -->
@@ -75,7 +72,7 @@ Say:
 > - Mention only, don't demo at length
 
 Say:
-- [click] IDE extensions run the same Claude Code
+- [click] IDE extensions run the same Claude Code, but the VS Code panel has only some of the commands and skills, no ! shortcut and no Tab completion. For the rest, run claude in VS Code's integrated terminal — the JetBrains plugin always works that way
 - Edits show as inline diffs; current file and selection passed as context
 - Everyone can pick their own surface
 - Workshop uses the terminal — same everywhere
@@ -105,23 +102,24 @@ Say:
 
 <!-- @note: setup-and-first-conversation -->
 > Do:
-> - Everyone installs, clones pawsaw/clash, checks out 01-start — repo with only the spec in it
-> - Then the first conversation and /init
-> - Watch the chat while people work
-> - Watch for people who never press Enter on the permission prompt, or who type in the terminal while Claude works
-> - Usual blockers: Node version (CLASH needs 20+), login, `claude` not found right after the native install (open a new terminal). An EBADENGINE warning when someone installs Claude Code with npm is harmless — it still runs
-> - Nobody moves on until Claude Code runs in their clone and CLAUDE.md exists
+> - Everyone installs, clones pawsaw/clash, checks out 01-start (only the spec in it), then the first conversation and /init
+> - Watch the chat, and watch for people who never press Enter on the permission prompt, or who type in the terminal while Claude works
+> - Usual blockers: Node version (CLASH needs 20.19+, 22.12+ or 24, not 21 or 23), login, `claude` not found right after the native install (open a new terminal). An EBADENGINE warning when someone installs Claude Code with npm is harmless — it still runs
+> - Nobody moves on until Claude Code runs in their CLASH clone and CLAUDE.md exists
 
 Say:
 - Install, clone, first questions about the spec, then /init
-- Done when: Claude Code runs in your clone, it answered your questions, and CLAUDE.md exists
+- Done when: Claude Code runs in your CLASH clone, it answered your questions, and CLAUDE.md exists
 
 <!-- @note: flags-change-how-a-session-starts -->
+> Do:
+> - Docs link: open it, scroll to "CLI flags", then back to the slides
+
 Say:
 - Two different kinds of flag: what a session can do, and which session opens
 - [click] --settings stacks above your own files, below managed — good for a one-off experiment
 - [click] -p answers and exits. No conversation left running
-- [click] --resume and --continue are the next two slides
+- [click] --resume and --continue get their own slide, after print mode and the effort lab
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Do:
@@ -133,7 +131,30 @@ Say:
 - --output-format json gives you something you can pipe into another tool
 - The "never claude -p in CI" rule from the GitHub Actions module is about that one YAML step, not this
 
+<!-- @note: same-task-different-effort -->
+> Do:
+> - Run it in a new folder that holds only a copy of workshop-artifacts/reasoning-lab/review.ts, outside the workshop repository and your CLASH clone: no answer key, no CLAUDE.md, no project-level Claude Code hooks
+> - Check that CLAUDE_CODE_EFFORT_LEVEL is not set and no maxEffortLevel cap sits below high: either one can make both runs use the same level
+> - FULL WORKING SOLUTION (trainer only): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+>   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
+> - Docs link: open it, scroll to "Set the effort level", then back to the slides
+
+Say:
+- One variable changes: effort. Score the findings and usage.output_tokens, not tone or length — thinking is billed as output
+- Skip total_cost_usd: the second run reads the prompt prefix the first run cached, so its input looks cheaper
+- The four findings, only after both runs: cancelled returns true; null capacity means unlimited but becomes 0; the full check uses > instead of >=; sort mutates participantIds
+
+<!-- @note: measure-the-extra-reasoning -->
+> Do:
+> - Fill the table from the two live results
+> - If both runs find all four, say that clearly: this task did not earn higher effort. That is a useful result
+
+Say:
+- Reasoning has value only through better decisions or less rework
+- The useful comparison is total engineering effort: reasoning plus implementation plus rework plus verification
+- Repeat this experiment on one real task before changing a team's default effort
+
 <!-- @note: pick-up-where-you-left-off -->
 Say:
-- Most days you want --continue: same folder, pick straight back up
+- Usually you want --continue: same folder, pick straight back up
 - [click] --resume is for choosing: a different session, or one you left running in the background

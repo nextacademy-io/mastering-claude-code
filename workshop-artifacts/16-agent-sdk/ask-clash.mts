@@ -1,6 +1,6 @@
 // Task 16 answer key — the same agent loop, hosted inside your own program.
 //
-// Run from the CLASH clone:
+// Run from your CLASH clone:
 //   npm install @anthropic-ai/claude-agent-sdk tsx
 //   npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"
 //

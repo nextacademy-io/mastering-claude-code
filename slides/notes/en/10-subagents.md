@@ -17,12 +17,12 @@ Say:
 
 <!-- @note: page-guard-action-guard -->
 > Do:
-> - Do not skip this: many strong React developers don't know it — if it doesn't land, the rest of the part is people watching agents audit a danger they don't understand.
+> - Don't skip: many strong React developers don't know it. If it doesn't land, the rest of the part is agents auditing a danger people don't understand.
 > - Open the real file: show requireUser() guarding the page.
 > - Open app/actions/clashes.ts. Ask directly
 
 Say:
-- Does the action itself check auth? It does not.
+- Does the layout's guard protect the action too? It does not.
 - A Server Action compiles to a public POST endpoint with a generated id — anyone with a session cookie can call any action directly, with any arguments, without loading the page.
 - Authorization must be re-established inside every action.
 - Zod checks shape, not permission.
@@ -38,13 +38,12 @@ Say:
 
 <!-- @note: find-it -->
 > Do:
-> - Say the Say-section correction out loud before anyone starts auditing — otherwise people assume they're about to find a real bug in public CLASH
-> - The flaw only exists on 08-start, seeded on purpose: ownership check removed from deleteClash (app/actions/clashes.ts) and deleteVenue (app/actions/venues.ts). Workshop content, not a CLASH bug.
-> - Answer key: workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md.
-> - Don't reveal this now: npm run lint on 08-start reports an unused `user` variable in deleteVenue — the guard that used it is gone. That's the task's own "Go further" — it's there so you know the claim is true, not to say here
+> - Say the Say-section correction out loud before anyone audits, or people expect to find a real bug in public CLASH
+> - The flaw only exists on workshop branches like 08-start, seeded on purpose: ownership check removed from deleteClash (app/actions/clashes.ts) and deleteVenue (app/actions/venues.ts). Answer key: workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md.
+> - Don't reveal yet (the task's "Go further"): npm run lint on 08-start reports an unused `user` variable in deleteClash and deleteVenue — proof the guards that used them are gone
 
 Say:
-- The public CLASH main branch has NO missing checks — all 18 exported actions are guarded.
+- The public CLASH main branch has NO missing checks — all 18 exported actions have the checks they need.
 - Green gates do not mean safe code.
 
 <!-- @note: the-auditor-subagent -->
@@ -60,9 +59,8 @@ Say:
 <!-- @note: agent-subagent-fork-which-is-which -->
 > Do:
 > - Say the three words once, slowly — the rest of the part depends on them
-> - Demo in task step 6: run the security-auditor, then point at the panel under the prompt — a row appears, indented under main
-> - Demo again with /subtask in task step 9: a second row, this one a fork
-> - Say plainly that the coloured labels on the slide are ours (schematic) — the real panel shows the rows, not our labels
+> - Demo in task step 6: run the security-auditor, point at the panel under the prompt — a row appears, indented under main. Again with /subtask in step 9: a second row, this one a fork
+> - Say plainly: the coloured labels on the slide are ours (schematic); the real panel doesn't show them
 
 Say:
 - An agent is one running loop. Your own session is one too: it is the top row, main.
@@ -82,7 +80,7 @@ Say:
 - [click:3] Right: fork vs fresh.
 - Fork branches off the parent, inherits the whole conversation and the parent's prompt cache — cheap when shared context is really needed.
 - [click] Fresh subagent starts cold: no history, only the tools its definition allows, no shared cache — first call costs more.
-- Fork mode is on by default in interactive sessions, off under -p and the Agent SDK. On means Claude may choose a fork when it names no agent. A named agent from a definition file, like security-auditor, stays a fresh subagent.
+- Fork mode is on by default in interactive sessions, off under -p and the Agent SDK. On means Claude may start a fork itself: it asks the Agent tool for the fork type. A named agent from a definition file, like security-auditor, stays a fresh subagent.
 - You start a fork yourself with /subtask followed by the task.
 - Neither is better — know which one you invoked and why.
 - `/tasks` lists this session's background work: running subagents and forks. A finished one stays listed, marked done, only briefly — open it while it runs, or right after it returns.
@@ -90,11 +88,11 @@ Say:
 <!-- @note: six-agents-ship-with-claude-code -->
 > Do:
 > - The subagent audit task (08) wrote a custom one — these are the ones already on your machine
-> - Docs link: open it, scroll to "Built-in subagents", then back to the slides
+> - Docs link on the slide before: open it again, scroll to "Built-in subagents", then back to the slides
 
 Say:
 - These run without any file in .claude/agents/ — nothing to write, nothing to check in
-- [click] Plan is what runs, invisibly, every time you use plan mode
+- [click] Plan is what plan mode hands its research to
 - [click] general-purpose is the default a task delegates to when nothing more specific fits
 - [click] claude is the fallback of the fallback — every tool, no restriction
 - [click] statusline-setup only fires from /statusline
@@ -102,7 +100,7 @@ Say:
 
 <!-- @note: or-install-one-that-exists -->
 > Do:
-> - Docs link: open the OWASP repo README, the install section, then back to the slides
+> - Docs link: open the OWASP repo README, the "Quick Start" section, then back to the slides
 > - Task steps 11 to 17: add the marketplace, install it, /clear, run the reviewer, compare with your own auditor
 
 Say:
@@ -114,7 +112,7 @@ Say:
 
 <!-- @note: one-subagent-or-read-it-yourself -->
 > Do:
-> - Handoff: FACILITATOR.md, Rhythm for every task. Manual read-through is step 4 (they watched it) — hand off at step 1, the subagent starts at step 5
+> - Hand off at step 1 (FACILITATOR.md, Rhythm for every task). They watched step 4, the manual read-through; the subagent starts at step 5
 > - Left (careless), one step per click:
 >   - [click] one prompt: read every file in app/actions/ yourself
 >   - [click] every action file lands in the main thread
@@ -126,7 +124,7 @@ Say:
 > Read every file in app/actions/ yourself, in this conversation, and report
 > which exported actions are missing an ownership check before mutating an
 > existing row.
-> - Right (engineered), when they are back — one step per click:
+> - Right (engineered), when they are back:
 >   - [click] a security-auditor subagent: Read, Grep, Glob
 >   - [click] one falsifiable brief: PASS or FAIL, cited line
 >   - [click] the reads happen in its window, not yours
@@ -138,12 +136,10 @@ Say:
 
 <!-- @note: subagent-audit -->
 > Do:
-> - Note the /context reading before launching.
-> - Launch one subagent with the narrow brief; let it read every file in app/actions/.
-> - Read /context again
+> - Note the /context reading, launch one subagent with the narrow brief to read every file in app/actions/, then read /context again.
 > - Steps 9 and 10: the same audit as a fork with /subtask
 > - Steps 11 to 17: the OWASP plugin, /clear, then compare its report with your own auditor's
-> - Part ends on a cliffhanger: two findings, not fixed yet.
+> - The task ends on a cliffhanger: two findings, not fixed yet.
 
 Say:
 - It moved only slightly — that IS the point.

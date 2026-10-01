@@ -8,7 +8,7 @@ lines:
 
 <D01TokenChips />
 
-<a v-click="7" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" rel="noopener noreferrer" title="Karpathy — Let's build the GPT Tokenizer (2h13m)" style="position: absolute; right: 4rem; bottom: 2.25rem; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; font-weight: 500; color: var(--na-fg-muted); text-decoration: none; opacity: 0.8;">🎥 video</a>
+<a v-click="7" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" rel="noopener noreferrer" title="Karpathy — Let's build the GPT Tokenizer" style="position: absolute; right: 4rem; bottom: 2.25rem; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; font-weight: 500; color: var(--na-fg-muted); text-decoration: none; opacity: 0.8;">🎥 video</a>
 
 ---
 layout: concept
@@ -59,9 +59,40 @@ lines:
 
 <div class="grid grid-cols-4 gap-3 w-full max-w-4xl">
   <div class="na-card p-4"><div class="font-semibold mb-1">Haiku</div><div class="text-sm" style="color: var(--na-fg-muted)">fast, simple tasks</div></div>
-  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Sonnet</div><div class="text-sm" style="color: var(--na-fg-muted)">daily coding, the default</div></div>
+  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Sonnet</div><div class="text-sm" style="color: var(--na-fg-muted)">daily coding, cheaper than Opus</div></div>
   <div class="na-card p-4" v-click><div class="font-semibold mb-1">Opus</div><div class="text-sm" style="color: var(--na-fg-muted)">complex reasoning</div></div>
   <div class="na-card p-4" v-click style="border-color: var(--na-accent-500)"><div class="font-semibold mb-1">Fable</div><div class="text-sm" style="color: var(--na-fg-muted)">long, autonomous sessions</div></div>
+</div>
+
+
+
+---
+layout: concept
+heading: "Model and effort are separate"
+docs: https://code.claude.com/docs/en/model-config
+lines:
+  - "Model sets capability. Effort sets how much reasoning the model spends."
+---
+
+<div class="grid grid-cols-4 gap-3 w-full max-w-4xl">
+  <div class="na-card p-4"><div class="font-semibold mb-1">Context</div><div class="text-sm" style="color: var(--na-fg-muted)">What does it know?</div></div>
+  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Model</div><div class="text-sm" style="color: var(--na-fg-muted)">What can it solve?</div></div>
+  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Effort</div><div class="text-sm" style="color: var(--na-fg-muted)">How hard should it think?</div></div>
+  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Verification</div><div class="text-sm" style="color: var(--na-fg-muted)">How will we know?</div></div>
+</div>
+
+---
+layout: concept
+heading: "Spend effort where it matters"
+lines:
+  - "Raise effort only where a wrong decision is expensive."
+---
+
+<div class="flex gap-3 w-full max-w-4xl text-sm">
+  <div class="na-card p-4 flex-1"><div class="font-semibold">low</div><div style="color: var(--na-fg-muted)">rename · lookup · obvious edit</div></div>
+  <div class="na-card p-4 flex-1"><div class="font-semibold">medium / high</div><div style="color: var(--na-fg-muted)">feature · review · debug</div></div>
+  <div class="na-card p-4 flex-1"><div class="font-semibold">xhigh</div><div style="color: var(--na-fg-muted)">root cause · architecture</div></div>
+  <div class="na-card p-4 flex-1"><div class="font-semibold">max</div><div style="color: var(--na-fg-muted)">hardest decision · measure first</div></div>
 </div>
 
 ---

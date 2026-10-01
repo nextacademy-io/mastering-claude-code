@@ -4,14 +4,14 @@
 
 Sagen (Hinweise, was gesagt wird):
 - Du kommst als Anfänger, du gehst und führst Claude Code, wie ein Senior-Engineer ein Team führt
-- Alles passiert an einer echten App, CLASH — die baust du zuerst selbst, danach bringst du sie an ihre Grenzen
+- Alles dreht sich um eine echte App, CLASH — die baust du zuerst selbst, danach bringst du sie an ihre Grenzen
 - Keine Diashow zum Zuschauen — jeder Teil endet mit dir an deiner eigenen Tastatur
 
 <!-- @note: organisation -->
 > Tun:
 > - Das einmal kurz sagen, gleich zu Beginn
-> - Dich selbst daran erinnern, die kurzen Pausen auch wirklich zu machen — notfalls einen Timer stellen
-> - Die Gruppe fragen, ob das vorgeschlagene Mittagspause-Fenster passt, oder ob sie es lieber verschieben möchte
+> - Die kurzen Pausen nicht auslassen — notfalls einen Timer stellen
+> - Ein Mittagspause-Fenster vorschlagen — die Gruppe fragen, ob es passt oder verschoben werden soll
 
 Sagen:
 - Mittagspause ist fest eingeplant, dazu ein paar kurze Pausen zwischendurch — sagt Bescheid, wenn die Gruppe eine braucht
@@ -63,14 +63,14 @@ Sagen:
 - Die Karte ist das Herzstück der App
 - Jeder Clash und jedes Venue ist ein Pin
 - Ein Klick auf eine leere Stelle der Karte startet dort einen neuen Clash
-- Später: Arbeit an der fertigen Referenz-App, Claude Code deutlich stärker fordern
+- Später: Arbeit an der fertigen Referenz-CLASH, Claude Code deutlich stärker fordern
 - Das Bild im Kopf behalten — so sieht "fertig" am Ende des Builds aus
 
 <!-- @note: how-this-works -->
 > Tun:
-> - Wenn du eine Antwort live nicht weißt, sag es — entweder Claude auf dem Bildschirm fragen
->   ("Schauen wir doch mal was Claude dazu sagt.") oder mitnehmen ("Gute Frage, hmm, das weiß
->   ich nicht. Kennt jemand von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
+> - Weißt du eine Antwort live nicht? Sag es — Claude auf dem Bildschirm fragen ("Schauen wir
+>   doch mal was Claude dazu sagt.") oder mitnehmen ("Gute Frage, hmm, das weiß ich nicht.
+>   Kennt jemand von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
 
 Sagen:
 - [click] Jede Task: kurze Erklärung, Live-Demo, dann arbeitest du die Task-Datei selbst durch

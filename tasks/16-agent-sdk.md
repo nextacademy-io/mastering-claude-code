@@ -17,7 +17,7 @@ seed data. It may read files. It may not change anything.
 
 ## Why
 
-You ran the agent next to your app all workshop. The Agent SDK is the same loop one level
+You ran the agent next to CLASH all workshop. The Agent SDK is the same loop one level
 down: the agent lives inside your program. Same context budget, same tool limits, same hooks.
 Only the host changes.
 
@@ -27,7 +27,7 @@ Only the host changes.
    ```bash
    npm install @anthropic-ai/claude-agent-sdk tsx
    ```
-2. Create `ask-clash.mts` at the repo root. Start with the loop and nothing else.
+2. Create `ask-clash.mts` at the root of your CLASH clone. Start with the loop and nothing else.
    ```ts
    import { query } from "@anthropic-ai/claude-agent-sdk";
 
@@ -77,7 +77,7 @@ Only the host changes.
 
 ## Stuck?
 
-`git checkout 16-start` — the reference CLASH with `CLAUDE.md`, the skill, the fix and the hook set.
+`git checkout 16-start` — the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
 The finished program is in `workshop-artifacts/16-agent-sdk/` in the workshop repository.
 
 ## Go further

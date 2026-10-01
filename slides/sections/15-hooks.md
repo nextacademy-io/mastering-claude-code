@@ -115,7 +115,7 @@ success: "Editing prisma/migrations/*, running rm, or reading .env* is denied wi
 layout: code-live
 heading: "Gate the turn"
 filePath: ".claude/hooks/build-gate.sh"
-success: "The turn cannot end while npm run build fails. The agent sees the last lines and keeps working."
+success: "The turn stays open while npm run build fails, up to eight blocks in a row. The agent sees the last lines and keeps working."
 ---
 
 ```bash
@@ -139,8 +139,8 @@ layout: concept
 heading: "Settings override each other"
 docs: https://code.claude.com/docs/en/settings
 lines:
-  - "Five files, highest wins: managed, command line, project local, shared, user."
-  - "Same key in two files? The higher one applies. Always."
+  - "Five levels, highest wins: managed, command line, project local, shared, user."
+  - "Same plain key in two files? The higher one wins. Lists and hooks add up."
 ---
 
 <G21SettingsPrecedence />
@@ -150,14 +150,14 @@ layout: concept
 heading: "The sandbox limits what a command touches"
 docs: https://code.claude.com/docs/en/sandboxing
 lines:
-  - "A sandboxed command writes only inside your project, reaches only allowed hosts."
+  - "Sandboxed commands write only to the project and temp, reach only allowed hosts."
   - "macOS and Linux only. On Windows, run it inside WSL2."
 ---
 
 <div class="flex gap-6 w-full max-w-3xl">
   <div class="na-card p-5 flex-1">
     <div class="font-semibold mb-2" style="color: var(--na-accent-500)">Filesystem</div>
-    <div class="text-base" style="color: var(--na-fg-muted)">Write access: your project only. Read access: the machine, minus paths you deny.</div>
+    <div class="text-base" style="color: var(--na-fg-muted)">Write access: your project and a temp folder. Read access: the machine, minus paths you deny.</div>
   </div>
   <div class="na-card p-5 flex-1" v-click>
     <div class="font-semibold mb-2" style="color: var(--na-accent-500)">Network</div>
@@ -189,3 +189,45 @@ branch: "13-start"
 ---
 
 
+
+
+---
+layout: concept
+heading: "Ignored by Git is not hidden"
+docs: https://code.claude.com/docs/en/env-vars
+lines:
+  - ".gitignore stops Git, not Claude. Glob still lists ignored files and dotfiles."
+  - "A permission deny covers file tools and cat. The sandbox covers scripts too."
+---
+
+<div class="grid grid-cols-3 gap-5 w-full max-w-4xl text-center">
+  <div class="na-card p-5"><div class="font-mono font-semibold">.gitignore</div><div class="text-sm mt-2" style="color: var(--na-fg-muted)">not committed</div></div>
+  <div class="na-card p-5" v-click><div class="font-mono font-semibold">Glob</div><div class="text-sm mt-2" style="color: var(--na-error-500)">still discoverable by default</div></div>
+  <div class="na-card p-5" v-click><div class="font-semibold">permission deny + sandbox</div><div class="text-sm mt-2" style="color: var(--na-success-500)">the real boundary</div></div>
+</div>
+
+---
+layout: concept
+heading: "Tool output becomes local history"
+docs: https://code.claude.com/docs/en/claude-directory
+lines:
+  - "File contents, command output and pasted text enter plaintext transcripts."
+  - "If a tool reads a secret, assume the transcript now contains it."
+  - "Deny credential reads. Shorten how long transcripts are kept."
+---
+
+<div class="flex items-center gap-4 w-full max-w-4xl justify-center text-sm">
+  <div class="na-card px-4 py-3">Read .env</div><span>→</span><div class="na-card px-4 py-3">tool result</div><span>→</span><div class="na-card px-4 py-3" style="border-color: var(--na-error-500)">~/.claude/projects/&lt;project&gt;/&lt;session&gt;.jsonl</div>
+</div>
+
+
+---
+layout: concept
+heading: "Security: three rules"
+routeAlias: theory-security-rules
+docs: https://code.claude.com/docs/en/security
+lines:
+  - "Anything a model reads can be an instruction."
+  - "Quarantine: readers of untrusted text cannot write."
+  - "Least privilege: the smallest tool list that works."
+---

@@ -6,7 +6,7 @@
 ## Theory
 
 - [Undo a step: /rewind](https://mastering-claude-code.vercel.app/theory-rewind)
-- [Watch the window fill](https://mastering-claude-code.vercel.app/theory-context-window)
+- [Compact is a lossy reset](https://mastering-claude-code.vercel.app/theory-context-window)
 - [The safety moment](https://mastering-claude-code.vercel.app/theory-server-action-safety)
 
 > **Reminder:** Work in small steps, watch context, and treat every Server Action as its own public endpoint.
@@ -130,4 +130,4 @@ Ask Claude to write a small script that calls `deleteClash` directly, without th
 
 - Checkpoints and rewind — https://code.claude.com/docs/en/checkpointing
 - Managing context — https://code.claude.com/docs/en/costs
-- Server Actions — https://nextjs.org/docs/app/api-reference/functions/server-actions
+- Server Actions — https://nextjs.org/docs/app/guides/server-actions

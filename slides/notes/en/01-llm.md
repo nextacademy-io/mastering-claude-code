@@ -42,13 +42,37 @@ Say:
 <!-- @note: four-sizes-four-jobs -->
 > Do:
 > - If there is a tokenizer or /model picker handy, show it live
-> - Everyone in this workshop already has access to all four — this is about choosing, not about who gets what
+> - Pro and standard Team seats: every Fable request runs on paid usage credits, not the plan's limits
+> - Max and premium seats: included up to half the plan's weekly usage limit, and it uses that limit up faster
+> - Where it costs extra, the /model picker shows "Requires usage credits" on the Fable row
 
 Say:
 - Same architecture, different scale — bigger is not always better, it is slower and costs more
-- [click] Sonnet is the default for a reason: fast enough, capable enough, for most of a working day
+- [click] Sonnet: fast enough, capable enough, and cheaper than Opus. The default on Anthropic plans is Opus; /model shows which one you run
 - [click] Reach for Opus when the reasoning is the hard part, not the typing
 - [click] Fable is built for sessions you would normally break into pieces — hand it the outcome, not the steps
+
+
+
+<!-- @note: model-and-effort-are-separate -->
+> Do:
+> - Ask which knob fixes a missing file (context) and which proves a refactor works (verification). Neither is effort
+> - Docs link: open it, scroll to "Adjust effort level", then back to the slides
+
+Say:
+- Context: what it knows, the facts you put in the window
+- [click] Model: capability
+- [click] Effort: reasoning spent on this task, never a fix for missing context or evidence
+- [click] Verification: how you will know it worked
+
+<!-- @note: spend-effort-where-it-matters -->
+> Do:
+> - Read the scale as a rough guide: effort is calibrated per model, not a fixed token multiplier
+> - Name the default: medium on Opus 5.5 and Sonnet 5.5. max can show diminishing returns, so test before adopting it
+
+Say:
+- xhigh and max also fit security boundaries and a hard plan review: anywhere a wrong decision is expensive
+- ultrathink in a prompt asks for one deeper turn; the session's effort level stays as it is
 
 <!-- @note: where-the-knowledge-comes-from -->
 Say:
@@ -90,7 +114,7 @@ Say:
 Say:
 - A chat is just tokens with labels
 - System message comes first and sets the rules — in Claude Code it's written by the tool; your CLAUDE.md loads after it, as a user message
-- [click] Then user and assistant messages alternate
+- [click:2] Then user and assistant messages alternate
 - Model was trained to follow the system message strongly, the user message next, its own earlier words after that
 - Why a rule in CLAUDE.md beats a rule buried in a long chat — it's reloaded fresh every session, and it survives /compact
 

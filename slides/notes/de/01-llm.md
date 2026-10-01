@@ -42,13 +42,37 @@ Sagen:
 <!-- @note: four-sizes-four-jobs -->
 > Tun:
 > - Falls ein Tokenizer oder /model-Picker zur Hand ist, live zeigen
-> - Alle in diesem Workshop haben schon Zugriff auf alle vier — es geht ums Auswählen, nicht darum, wer was bekommt
+> - Pro und Standard-Seats im Team-Plan: jede Fable-Anfrage läuft über kostenpflichtige Usage Credits, nicht über das Plan-Limit
+> - Max und Premium-Seats: enthalten bis zur Hälfte des wöchentlichen Plan-Limits, und es verbraucht das Limit schneller
+> - Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
 
 Sagen:
 - Gleiche Architektur, andere Größe — größer ist nicht immer besser, sondern langsamer und teurer
-- [click] Sonnet ist aus gutem Grund der Standard: schnell genug, fähig genug, für die meiste Arbeit
+- [click] Sonnet: schnell genug, fähig genug und günstiger als Opus. Standard auf Anthropic-Plänen ist Opus; /model zeigt, welches du nutzt
 - [click] Opus greifen, wenn das Denken der schwere Teil ist, nicht das Tippen
 - [click] Fable ist für Sessions gebaut, die du sonst in Stücke teilen würdest — das Ergebnis übergeben, nicht die Schritte
+
+
+
+<!-- @note: model-and-effort-are-separate -->
+> Tun:
+> - Fragen, welcher Regler eine fehlende Datei behebt (Context) und welcher beweist, dass ein Refactoring funktioniert (Verifikation). Keiner davon ist Effort
+> - Docs-Link: öffnen, bis "Adjust effort level" scrollen, dann zurück zu den Folien
+
+Sagen:
+- Context: was es weiß, die Fakten, die du ins Fenster legst
+- [click] Modell: Fähigkeit
+- [click] Effort: Reasoning für diese Aufgabe, nie ein Ersatz für fehlenden Context oder fehlende Belege
+- [click] Verifikation: woran du erkennst, dass es funktioniert hat
+
+<!-- @note: spend-effort-where-it-matters -->
+> Tun:
+> - Die Skala als grobe Orientierung lesen: Effort ist pro Modell kalibriert, kein fester Token-Multiplikator
+> - Den Default nennen: medium auf Opus 5.5 und Sonnet 5.5. max kann abnehmenden Nutzen zeigen, also vor breitem Einsatz testen
+
+Sagen:
+- xhigh und max passen auch zu Security-Grenzen und einem schwierigen Plan-Review: überall, wo eine falsche Entscheidung teuer ist
+- ultrathink im Prompt bittet um einen einzelnen, tieferen Turn; das Effort-Level der Session bleibt, wie es ist
 
 <!-- @note: where-the-knowledge-comes-from -->
 Sagen:
@@ -90,7 +114,7 @@ Sagen:
 Sagen:
 - Ein Chat ist nur Tokens mit Labels
 - Die System-Message kommt zuerst und setzt die Regeln — in Claude Code wird sie vom Tool geschrieben; deine CLAUDE.md wird danach geladen, als User-Message
-- [click] Dann wechseln sich User- und Assistant-Messages ab
+- [click:2] Dann wechseln sich User- und Assistant-Messages ab
 - Das Modell wurde trainiert, der System-Message stark zu folgen, danach der User-Message, danach seinen eigenen früheren Worten
 - Warum eine Regel in CLAUDE.md eine Regel schlägt, die in einem langen Chat vergraben ist — sie wird jede Session frisch geladen und übersteht /compact
 
