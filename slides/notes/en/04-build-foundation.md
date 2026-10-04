@@ -26,6 +26,7 @@ Say:
 Say:
 - A prompt is a wish; a brief is a contract
 - [click:3] Key point: the "done when" line is the one people forget — it's what stops Claude from wandering
+- "Build me a million-dollar app." Done when? "When a live stream of my driveway shows three new family cars."
 - It works too, but nobody — not you, not Claude — knows when it's finished
 
 <!-- @note: read-the-diff-not-the-summary -->

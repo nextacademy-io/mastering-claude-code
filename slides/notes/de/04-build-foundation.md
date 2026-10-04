@@ -26,6 +26,7 @@ Sagen:
 Sagen:
 - Ein Prompt ist ein Wunsch; ein Briefing ist ein Vertrag
 - [click:3] Kernpunkt: die "done when"-Zeile ist die, die Leute vergessen — genau sie hält Claude davon ab, abzuschweifen
+- "Bau mir eine Millionen-Dollar-App." Done when? "Wenn ein Livestream meiner Einfahrt drei neue Familienautos zeigt."
 - Funktioniert auch, aber niemand — weder du noch Claude — weiß, wann es fertig ist
 
 <!-- @note: read-the-diff-not-the-summary -->
