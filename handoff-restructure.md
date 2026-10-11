@@ -51,24 +51,87 @@ applies that section to the roles in the table — nothing else.
 
 ## Navigation mechanism
 
-*(Filled in by step 1 from `decision-navigation-spike.md`. Until then: empty.)*
+Written by step 1. The decision document's verdict: **"A2 with a per-slide layer —
+`slide-top.vue`, not `slide-bottom.vue`."** — optional blocks sit in an appendix at the end of
+the deck and are reached by chips rendered from frontmatter, never from tags in a slide body.
+
+**Files (in the repo since step 1).** `slides/components/DeepLink.vue` (the chip) and
+`slides/slide-top.vue` (Slidev's per-slide layer above the layout; reads each slide's own
+frontmatter and draws the chip). No layout file changes.
+
+**Branch slide → entry.** A main-line slide carries `deepDive: <entry alias>`. It shows a chip
+top-right that jumps to the block's first slide. Several branch slides may point to the same
+block (automate has two).
+
+**Last slide → resume.** The block's last slide carries `backTo: <resume alias>`. Its chip lands
+on the resume slide **fully revealed** (`DeepLink` adds `?clicks=99`, Slidev clamps it), so the
+next → goes on with the main line. The resume slide is itself a branch slide: it carries
+`deepDive:` to the same block. Browser back is not the return path — it goes to wherever the jump
+started.
+
+**Aliases.** The block's file name gives the slug: `3N-deep-<slug>.md` or
+`3N-excursion-<slug>.md`. The entry slide carries `routeAlias: deep-<slug>` or
+`excursion-<slug>`; the resume slide carries `routeAlias: quick-<slug>`. Values are bare aliases
+(no `?`, no `/`). One slide holds one alias, so two exceptions keep the alias a slide already has:
+- a **deep dive's** entry slide may keep its `theory-*` alias (effort lab: `theory-effort-lab`) —
+  never an excursion's, because the chip label comes from the prefix;
+- a resume slide may keep its `theory-*` or `task-NN` alias (Next.js: `theory-server-action-safety`;
+  Spec Kit/BMAD: `task-17`).
+
+**Chip wording** (English on the slides, also in German notes, which say *Exkurs* in prose):
+`Deep dive →` for any target outside `excursion-*`, `Excursion →` for `excursion-*`,
+`← Back to the main line` for both kinds. In the PDF Slidev keeps no link, so the chip prints as
+a signpost with the target's slide number: `Deep dive → 229`, `← Back to 225`.
+
+**Layouts.** `deepDive:` on `concept`, `code-live`, `task` and `task-intro`; `backTo:` on
+`concept`, `code-live`, `task` and `flow-ways`. `task-intro` was checked in step 1 on the dev
+server (task 17 intro, test chip): the chip sits in the empty top-right corner above the heading,
+the `TASK 17` row stays clear, and the jump works. So the Spec Kit/BMAD branch and resume stay on
+"Task 17 — Capstone". `section` stays unchecked — no role in the table needs a chip there (a
+divider can be an *entry* slide, which carries only the alias).
+
+**Lint (`slides/scripts/lint-slides.mjs`, `checkBranches`).** On the composed deck in
+`slides/slides.md` order:
+1. every `deepDive:`/`backTo:` value is a bare alias that exists exactly once;
+2. a block file's first slide carries its entry alias (or a deep dive's `theory-*`), its last
+   slide `backTo:`; no other slide in a block carries `deepDive:` or `backTo:`;
+3. the slide `backTo:` names is in the main line, carries `deepDive:` to that block, and carries
+   `quick-<slug>` (or its `theory-*`/`task-NN`);
+4. block files (`NN-deep-*`, `NN-excursion-*`, NN 30+) only after `29-appendix.md`, nothing else
+   after it, and section file numbers rise in deck order; `deep-*`/`excursion-*` aliases only on
+   entry slides, `quick-*` only on resume slides; `backTo:` never in the main line;
+5. never `deepDive:` and `backTo:` on one slide;
+6. the layouts above;
+7. no `<Link` and no `<DeepLink` in a slide body;
+8. the existing `task-NN` and `theory-*` checks are unchanged.
+
+A check that clicks or counts chips selects `[data-slidev-no="N"] .na-deeplink`, never the chip
+text — Slidev keeps visited slides mounted, so the same text is in the page several times.
+
+**Testing a block (steps 3–10).** On the dev server: open the branch slide, click the chip, land
+on the entry slide; go → to the last slide, click the back chip, land on the resume slide with
+every click revealed; one more → goes to the next main-line slide.
 
 ## Navigation roles per block
 
-| Appendix file (step 2) | Kind | Branch slide(s) in the main flow | Entry slide | Resume slide |
+| Appendix file (step 2) | Kind | Branch slide(s) in the main flow | Entry slide · alias | Resume slide · alias |
 |---|---|---|---|---|
-| `30-deep-effort-lab.md` | deep dive | "Flags change how a session starts" | "Same task, different effort" (already carries `theory-effort-lab` — it cannot take a second alias) | "Flags change how a session starts" |
-| `31-excursion-nextjs.md` | excursion | "The safety moment" | first slide of the new excursion | "The safety moment" (it keeps `theory-server-action-safety`) |
-| `32-excursion-example-mapping.md` | excursion | new pointer slide after the task 07 recap | "Example Mapping" (divider) | the new pointer slide |
-| `33-excursion-coordination-patterns.md` | excursion | "Which pattern did we just run?" | "Message bus: publish and subscribe" (concept) | "Which pattern did we just run?" |
-| `34-deep-sandbox.md` | deep dive | the new sandbox core slide (step 9) | first slide of the new deep dive | the new sandbox core slide |
-| `35-excursion-tdd.md` | excursion | "The loop that matters" | "TDD" (divider) | "The loop that matters" |
-| `36-excursion-mcp-server.md` | excursion | new pointer slide at the end of `16-browser.md` | "Build your own MCP" (divider) | the new pointer slide |
-| `37-excursion-spec-kit-bmad.md` | excursion | "Task 17 — Capstone" (it keeps `task-17`) | "Spec Kit: six steps, one constitution" | "Task 17 — Capstone" |
-| `38-deep-automate.md` | deep dive | both new quick-dive slides at the top of `21-close.md` | "Nobody at the keyboard" | the second new quick-dive slide (the end of the quick dive) |
+| `30-deep-effort-lab.md` | deep dive | "Flags change how a session starts" | "Same task, different effort" · `theory-effort-lab` (kept — it cannot take a second alias) | "Flags change how a session starts" · `quick-effort-lab` |
+| `31-excursion-nextjs.md` | excursion | "The safety moment" | first slide of the new excursion · `excursion-nextjs` | "The safety moment" · `theory-server-action-safety` (kept) |
+| `32-excursion-example-mapping.md` | excursion | new pointer slide after the task 07 recap | "Example Mapping" (divider) · `excursion-example-mapping` | the new pointer slide · `quick-example-mapping` |
+| `33-excursion-coordination-patterns.md` | excursion | "Which pattern did we just run?" | "Message bus: publish and subscribe" (concept) · `excursion-coordination-patterns` | "Which pattern did we just run?" · `quick-coordination-patterns` |
+| `34-deep-sandbox.md` | deep dive | the new sandbox core slide (step 9) | first slide of the new deep dive · `deep-sandbox` | the new sandbox core slide · `quick-sandbox` |
+| `35-excursion-tdd.md` | excursion | "The loop that matters" | "TDD" (divider) · `excursion-tdd` | "The loop that matters" · `quick-tdd` |
+| `36-excursion-mcp-server.md` | excursion | new pointer slide at the end of `16-browser.md` | "Build your own MCP" (divider) · `excursion-mcp-server` | the new pointer slide · `quick-mcp-server` |
+| `37-excursion-spec-kit-bmad.md` | excursion | "Task 17 — Capstone" (`task-intro`, checked in step 1) | "Spec Kit: six steps, one constitution" · `excursion-spec-kit-bmad` | "Task 17 — Capstone" · `task-17` (kept) |
+| `38-deep-automate.md` | deep dive | both new quick-dive slides at the top of `21-close.md` | "Nobody at the keyboard" · `deep-automate` | the second new quick-dive slide (the end of the quick dive) · `quick-automate` |
 
 A block's **last slide** offers the return — for most blocks that is a `task` recap or, for the
-coordination patterns, a `flow-ways` slide. The mechanism from step 1 must work there.
+coordination patterns, a `flow-ways` slide; for the effort lab and Spec Kit/BMAD a `concept`
+slide. All three layouts carry `backTo:` (see "Navigation mechanism").
+
+Step 1 changed no role. It fixed the aliases (columns above) and kept the Spec Kit/BMAD branch and
+resume on the `task-intro` "Task 17 — Capstone", because the chip covers nothing there.
 
 ## Ground rules
 
@@ -106,7 +169,7 @@ also test each new block's jump and return with the method from "Navigation mech
 
 ## Progress
 
-- [ ] 1. Navigation mechanism and lint extension
+- [x] 1. Navigation mechanism and lint extension
 - [ ] 2. Appendix frame: divider, file numbering, manifest order
 - [ ] 3. Automate: quick dive + deep dive (incl. cloud sessions)
 - [ ] 4. MCP server excursion + the MCP scope-and-trust slide
