@@ -171,7 +171,7 @@ also test each new block's jump and return with the method from "Navigation mech
 
 - [x] 1. Navigation mechanism and lint extension
 - [x] 2. Appendix frame: divider, file numbering, manifest order
-- [ ] 3. Automate: quick dive + deep dive (incl. cloud sessions)
+- [x] 3. Automate: quick dive + deep dive (incl. cloud sessions)
 - [ ] 4. MCP server excursion + the MCP scope-and-trust slide
 - [ ] 5. Example Mapping excursion + rescued mechanics
 - [ ] 6. TDD excursion + rescued mechanics

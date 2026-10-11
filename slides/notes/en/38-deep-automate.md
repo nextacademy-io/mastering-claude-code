@@ -1,6 +1,7 @@
 <!-- @note: nobody-at-the-keyboard -->
 > Do:
 > - Opener for the block. No demo yet
+> - Deep dive in the appendix: you got here from the chip on "Automate with a stop rule" or "Deep dive: automate"
 
 Say:
 - So far you sat at the keyboard: you typed, Claude worked, you watched
@@ -118,6 +119,20 @@ Say:
 - A routine belongs to one claude.ai account; what it does on GitHub appears as you
 - No permission prompts in a run: the prompt itself must say what not to do
 
+<!-- @note: cloud-sessions-what-a-routine-runs-in -->
+> Do:
+> - Docs link: "Access levels", then the table under "What carries over from your setup"
+> - No live setup: GitHub is connected to claude.ai before the spec-drift demo
+> - Getting started from the browser is the "Get started with Claude Code in the cloud" page (web-quickstart)
+
+Say:
+- A cloud session is Claude Code on an Anthropic-managed VM, not on your laptop
+- Connect GitHub once: in the browser at claude.ai/code, or /web-setup in the CLI with your gh login
+- [click] Every session runs in an environment: network level, env vars, setup script. Default is Trusted: package registries, GitHub, cloud SDKs
+- [click] It pushes a branch; you read the diff and open the pull request. Closing the tab does not stop it
+- Your ~/.claude and your user-scoped MCP servers stay at home — commit what the cloud should see
+- The spec-drift routine runs in exactly this environment
+
 <!-- @note: the-spec-drift-routine -->
 > Do:
 > - FULL WORKING SOLUTION (trainer only), typed in your CLASH clone as one message:
@@ -134,6 +149,7 @@ Say:
 <!-- @note: automate -->
 > Do:
 > - Hand off to tasks/18-automate.md; the routine step is the trainer demo
+> - Afterwards the back chip returns to "Deep dive: automate"; the next slide is "Three levers, one responsibility"
 > - Answer key: workshop-artifacts/18-automate/ with host-notes.md, loop.md, schedule-prompt.md and the README smoke tests
 
 Say:

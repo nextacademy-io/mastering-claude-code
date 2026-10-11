@@ -1,6 +1,7 @@
 ---
 layout: concept
 heading: "Nobody at the keyboard"
+routeAlias: deep-automate
 lines:
   - "A style: every answer in the session, one voice."
   - "A goal, a loop and a background session: work goes on while you look away."
@@ -167,6 +168,32 @@ lines:
 <G25ScheduleOptions />
 
 ---
+layout: concept
+heading: "Cloud sessions: what a routine runs in"
+docs: https://code.claude.com/docs/en/cloud-environments
+lines:
+  - "claude.ai/code or claude --cloud: a fresh VM clones your repo from GitHub."
+  - "Only what you commit comes along: CLAUDE.md, .claude/, .mcp.json."
+  - "Its environment sets network access, env vars and a setup script."
+---
+
+<div class="flex gap-6 w-full max-w-4xl">
+  <div class="na-card p-5 flex-1">
+    <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">1 · Connect</div>
+    <div class="text-lg">GitHub, once</div>
+    <div class="font-mono text-sm mt-1 whitespace-nowrap" style="color: var(--na-fg-muted)">claude.ai/code · /web-setup</div>
+  </div>
+  <div v-click class="na-card p-5 flex-1">
+    <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">2 · Environment</div>
+    <div class="text-lg">None · Trusted · Full · Custom</div>
+  </div>
+  <div v-click class="na-card p-5 flex-1">
+    <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">3 · Session</div>
+    <div class="text-lg">A branch, a diff, your pull request</div>
+  </div>
+</div>
+
+---
 layout: code-live
 heading: "The spec-drift routine"
 filePath: "/schedule (trainer demo)"
@@ -191,4 +218,5 @@ goal: "Set an output style, bound a check with /goal, run a loop, send an audit 
 mode: "you do"
 success: "Every answer ends with a host line, the loop ran and stopped, docs/audit.md sits in a worktree, and the routine is listed."
 branch: "18-start (in your CLASH clone)"
+backTo: quick-automate
 ---

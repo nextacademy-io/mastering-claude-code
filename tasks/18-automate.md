@@ -216,3 +216,4 @@ features, one CLASH clone, one of them with nobody watching. Merge both.
 - Scheduled tasks and `/loop` — https://code.claude.com/docs/en/scheduled-tasks
 - Agent view and background sessions — https://code.claude.com/docs/en/agent-view
 - Routines — https://code.claude.com/docs/en/routines
+- Cloud environments — https://code.claude.com/docs/en/cloud-environments
