@@ -1,4 +1,7 @@
 <!-- @note: build-your-own-mcp -->
+> Tun:
+> - Exkurs im Anhang: Du kommst über den Chip auf "Excursion: build your own MCP server" hierher
+
 Sagen:
 - Task 14: Wir haben nur fremde Server benutzt — Playwright, Chrome DevTools, einen Remote-Server
 - Jetzt ist CLASH das System, das ein anderer Agent erreicht. Den Server entwerfen wir selbst
@@ -111,6 +114,7 @@ Sagen:
 > - Übergabe an tasks/19-build-your-own-mcp.md: Schritte 1 bis 6 der Server in deinem CLASH-Clone, 7 bis 10 clash-conference auf localhost:3001
 > - Achten auf: console.log im Server, refuse(), wenn find_venue nichts findet, ein Schreibvorgang vor seinen Prüfungen, ein Löschen ohne Besitzer-Prüfung, kein Neustart nach einem neuen Tool
 > - Karten-Demo: die Karte von CLASH auf localhost:3000/map, nach jeder Änderung neu laden. Create → der Clash erscheint; derselbe Create nochmal → Duplicate, weiter nur einer; Cancel oder Unpublish → weg
+> - Danach führt der Zurück-Chip zu "Excursion: build your own MCP server"; die nächste Folie ist "Letting go of the wheel"
 
 Sagen:
 - "Now you": ein fünftes Tool list_venues, ask-clash.mts aus Task 16 auf diesen Server gerichtet, eine Ablehnung, mit der Claude allein weiterkommt

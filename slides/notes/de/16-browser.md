@@ -81,6 +81,18 @@ Sagen:
 - [click] sse funktioniert noch, ist aber auf dem Weg raus
 - Claude Code speichert den Token — du loggst dich nur einmal pro Server ein
 
+<!-- @note: share-the-server-trust-tools-selectively -->
+> Tun:
+> - Docs-Link: bis "MCP installation scopes" scrollen, dann "Project scope"
+> - Keine Live-Demo nötig; Task 19 im Anhang macht es mit einem eigenen Server von Anfang bis Ende
+
+Sagen:
+- Local- und User-Scope liegen in ~/.claude.json auf deinem Rechner; Project-Scope ist .mcp.json im Projekt-Root, mit dem Code eingecheckt
+- [click] Ein Server, den jemand anders eingecheckt hat, könnte alles ausführen: Claude Code fragt einmal, bevor er startet. Bis dahin zeigt claude mcp list ⏸ Pending approval
+- Aus Versehen Nein gesagt? claude mcp reset-project-choices
+- [click] Ein Tool mit vollem Namen erlauben: mcp__server__tool. mcp__playwright allein würde jedes Tool dieses Servers erlauben
+- Lesende Tools laufen frei; ein Tool, das schreibt, fragt weiter
+
 <!-- @note: the-browser-closes-the-loop-2 -->
 > Tun:
 > - Startpunkt: 14-start, npm run dev läuft, acht geseedete Logins — Anna tritt bei, eine weitere Person hostet
@@ -97,3 +109,14 @@ Sagen:
 - Vier Tools, unterschiedliche Aufgaben
 - [click:4] agent-browser (Vercel, Rust-CLI, Accessibility-Tree-Snapshots) — das, was die Gruppe beim Setup installiert und beim Bauen benutzt hat
 - Kompakte Snapshots gegenüber den Tool-Schemas eines MCP-Servers plus vollständigen Accessibility-Trees — Tool Search verzögert das volle Laden der Schemas standardmäßig
+
+<!-- @note: excursion-build-your-own-mcp-server -->
+> Tun:
+> - Exkurs, optional: Der Chip springt zu "Build your own MCP"; der Zurück-Chip auf dem Recap von Task 19 landet wieder hier
+> - Docs-Link: der TypeScript-Server aus dem MCP-Tutorial, auf dem Task 19 aufbaut
+> - Überspringen und mit "Letting go of the wheel" weitermachen
+
+Sagen:
+- Bisher haben wir Server benutzt, die andere geschrieben haben
+- Task 19 baut einen für CLASH, in deinem CLASH-Clone, und ruft ihn aus clash-conference auf
+- Das ist MCP-Entwicklung, nicht Claude Code — was Claude Code von dir braucht, hast du schon gesehen: hinzufügen, teilen, einzelne Tools erlauben

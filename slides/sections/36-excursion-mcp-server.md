@@ -1,6 +1,7 @@
 ---
 layout: section
 heading: "Build your own MCP"
+routeAlias: excursion-mcp-server
 ---
 
 <template #map>
@@ -146,5 +147,6 @@ goal: "Design three tools into the starter server in your CLASH clone, then call
 mode: "you do"
 success: "mcp/smoke.ts in your CLASH clone ends with All checks passed. Publish puts a talk on CLASH's map; unpublish takes it off."
 branch: "19-start (in your CLASH clone)"
+backTo: quick-mcp-server
 ---
 

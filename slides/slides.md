@@ -93,15 +93,15 @@ src: ./sections/18-capstone-close.md
 ---
 
 ---
-src: ./sections/20-build-mcp.md
----
-
----
 src: ./sections/21-close.md
 ---
 
 ---
 src: ./sections/29-appendix.md
+---
+
+---
+src: ./sections/36-excursion-mcp-server.md
 ---
 
 ---
