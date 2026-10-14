@@ -22,6 +22,7 @@ Say:
 - [click] A skill's description sits in context every turn, used or not — unless disable-model-invocation is set
 - [click] A loaded body normally stays for the session — after a compaction, older skill bodies can be dropped
 - [click] That is what /skill-doctor, on the next slide, measures — how many descriptions you pay for versus how many bodies ever get pulled in
+- One level deeper: a skill folder can hold references/ for the method and templates/ for the output format. Claude opens them only at the step that needs them
 
 
 
@@ -58,6 +59,7 @@ Say:
 - It insists on its own ownership check even though requireUser() runs in the layout
 - Why: a Server Action is a public POST endpoint with a generated id — the layout guard never sees a direct call
 - Why write the reason into the skill: a bare rule gets skipped when a case looks different. A rule with its reason lets Claude decide the new case correctly
+- A skill can also interview you first: with AskUserQuestion in allowed-tools, Claude asks multiple-choice questions before it builds. The discover skill in the Example Mapping excursion does exactly that
 
 <!-- @note: a-skill-is-advice -->
 > Do:
@@ -65,6 +67,8 @@ Say:
 
 Say:
 - [click] "a skill is what you would tell a new colleague. It is advice, not law."
+- One switch you do control: disable-model-invocation: true. Claude never starts the skill on a match; only you, with /name. Whether every step then runs is still advice
+- Hold that thought. Task 13 comes back to it
 
 <!-- @note: ship-something-small-end-to-end -->
 > Do:
@@ -115,9 +119,19 @@ Say:
 <!-- @note: the-clash-feature-skill -->
 > Do:
 > - Task 07 recap
-> - Hand off to tasks/07-clash-feature-skill.md, full 9 steps — no more slides until Task 08
+> - Hand off to tasks/07-clash-feature-skill.md, full 9 steps — only the Example Mapping pointer is left before Task 08
 > - Watch the chat while they work
 
 Say:
 - Reset branch 07-start already has the task 06 CLAUDE.md — nobody restarts from zero
 - Done when: one feature ships end to end through the skill, and tsc, lint and build pass
+
+<!-- @note: excursion-example-mapping -->
+> Do:
+> - Excursion, optional: the chip jumps to the "Example Mapping" divider; the back chip on the task 09 recap lands here again
+> - Skip it and go on with "Subagents"
+
+Say:
+- Example Mapping is a requirements method, not a Claude Code feature: story, rules, examples, questions
+- Task 09 packs it into a skill that interviews you with AskUserQuestion, then saves a spec
+- What carries over to every skill: references/ and templates/ load only when opened

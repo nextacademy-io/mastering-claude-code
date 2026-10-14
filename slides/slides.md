@@ -61,10 +61,6 @@ src: ./sections/10-subagents.md
 ---
 
 ---
-src: ./sections/11-discover.md
----
-
----
 src: ./sections/12-rules.md
 ---
 
@@ -98,6 +94,10 @@ src: ./sections/21-close.md
 
 ---
 src: ./sections/29-appendix.md
+---
+
+---
+src: ./sections/32-excursion-example-mapping.md
 ---
 
 ---

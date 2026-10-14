@@ -1,6 +1,7 @@
 ---
 layout: section
 heading: "Example Mapping"
+routeAlias: excursion-example-mapping
 ---
 
 <template #map>
@@ -73,4 +74,5 @@ goal: "Build the discover skill, run it on the capacity story, resolve every que
 mode: "you do"
 success: "docs/specs/clash-capacity.md has every rule, examples, and no open questions left in it."
 branch: "09-start"
+backTo: quick-example-mapping
 ---

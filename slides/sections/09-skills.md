@@ -33,7 +33,7 @@ docs: https://code.claude.com/docs/en/skills
 lines:
   - "Every skill's name and description is scanned every session. Cheap."
   - "The body loads when the description matches — or right away via /skill-name."
-  - "Set disable-model-invocation: true to block that and require explicit /name."
+  - "references/ for the method, templates/ for the format: opened only when needed."
 ---
 
 <G05SkillLoading />
@@ -91,7 +91,7 @@ heading: "A skill is advice"
 routeAlias: theory-skill-advice
 lines:
   - "Nothing stops an agent from skipping a step in a skill."
-  - "Hold that thought. Task 13 comes back to it."
+  - "disable-model-invocation: true — only an explicit /name can start it."
 ---
 
 <G12SkillsVsHooks />
@@ -157,4 +157,14 @@ goal: "Write a skill that holds CLASH's end-to-end feature recipe, then use it t
 mode: "you do"
 success: "One feature ships end to end through the skill, and tsc, lint and build pass."
 branch: "07-start"
+---
+
+---
+layout: concept
+heading: "Excursion: Example Mapping"
+routeAlias: quick-example-mapping
+deepDive: excursion-example-mapping
+lines:
+  - "Optional: task 09 turns a story into rules and examples."
+  - "The discover skill interviews you with AskUserQuestion."
 ---

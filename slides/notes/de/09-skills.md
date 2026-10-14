@@ -22,6 +22,7 @@ Sagen:
 - [click] Die Beschreibung eines Skills liegt in jedem Turn im Context, benutzt oder nicht — es sei denn, disable-model-invocation ist gesetzt
 - [click] Ein geladener Body bleibt normalerweise für die Session — nach einer Compaction können ältere Skill-Bodies wegfallen
 - [click] Genau das misst /skill-doctor auf der nächsten Folie — wie viele Beschreibungen du bezahlst gegenüber wie viele Bodies überhaupt geladen werden
+- Eine Ebene tiefer: Ein Skill-Ordner kann references/ für die Methode und templates/ für das Ausgabeformat enthalten. Claude öffnet sie erst bei dem Schritt, der sie braucht
 
 
 
@@ -58,6 +59,7 @@ Sagen:
 - Er besteht auf einem eigenen Ownership-Check, obwohl requireUser() im Layout läuft
 - Warum: eine Server Action ist ein öffentlicher POST-Endpoint mit einer generierten id — der Layout-Guard sieht einen direkten Aufruf nie
 - Warum den Grund in den Skill schreiben: eine nackte Regel wird übersprungen, wenn ein Fall anders aussieht. Eine Regel mit ihrem Grund lässt Claude den neuen Fall richtig entscheiden
+- Ein Skill kann dich auch zuerst befragen: Mit AskUserQuestion in allowed-tools stellt Claude Multiple-Choice-Fragen, bevor es baut. Der discover-Skill im Exkurs Example Mapping macht genau das
 
 <!-- @note: a-skill-is-advice -->
 > Tun:
@@ -65,6 +67,8 @@ Sagen:
 
 Sagen:
 - [click] "Ein Skill ist das, was du einem neuen Kollegen erzählen würdest. Es ist ein Ratschlag, kein Gesetz."
+- Einen Schalter hast du in der Hand: disable-model-invocation: true. Claude startet den Skill nie bei einem Treffer, nur du mit /name. Ob dann jeder Schritt läuft, bleibt ein Ratschlag
+- Merkt euch das. Task 13 kommt darauf zurück
 
 <!-- @note: ship-something-small-end-to-end -->
 > Tun:
@@ -115,9 +119,19 @@ Sagen:
 <!-- @note: the-clash-feature-skill -->
 > Tun:
 > - Task-07-Rückblick
-> - Übergabe an tasks/07-clash-feature-skill.md, alle 9 Schritte — keine Folien mehr bis Task 08
+> - Übergabe an tasks/07-clash-feature-skill.md, alle 9 Schritte — vor Task 08 kommt nur noch der Pointer auf Example Mapping
 > - Den Chat beobachten, während gearbeitet wird
 
 Sagen:
 - Reset-Branch 07-start hat schon die CLAUDE.md aus Task 06 — niemand fängt bei null an
 - Fertig, wenn: ein Feature komplett über den Skill ausgeliefert ist und tsc, lint und build grün sind
+
+<!-- @note: excursion-example-mapping -->
+> Tun:
+> - Exkurs, optional: Der Chip springt zum Divider "Example Mapping"; der Zurück-Chip auf dem Recap von Task 09 landet wieder hier
+> - Überspringen und mit "Subagents" weitermachen
+
+Sagen:
+- Example Mapping ist eine Methode für Anforderungen, keine Claude-Code-Funktion: Story, Regeln, Beispiele, Fragen
+- Task 09 packt sie in einen Skill, der dich mit AskUserQuestion befragt und dann eine Spec speichert
+- Was für jeden Skill gilt: references/ und templates/ laden erst, wenn sie geöffnet werden

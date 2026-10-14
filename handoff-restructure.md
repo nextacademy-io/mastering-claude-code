@@ -173,7 +173,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 2. Appendix frame: divider, file numbering, manifest order
 - [x] 3. Automate: quick dive + deep dive (incl. cloud sessions)
 - [x] 4. MCP server excursion + the MCP scope-and-trust slide
-- [ ] 5. Example Mapping excursion + rescued mechanics
+- [x] 5. Example Mapping excursion + rescued mechanics
 - [ ] 6. TDD excursion + rescued mechanics
 - [ ] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
 - [ ] 8. Path-scoped rules: expand the core block
@@ -261,7 +261,9 @@ task 07 recap. Apply the navigation mechanism. Aliases `theory-example-mapping` 
 ### 6. TDD — proposal 6
 
 Rescue first: one bullet `disable-model-invocation: true` on "A skill is advice" (a skill only
-`/name` can start); one bullet plus pointer on "The loop that matters": told to make a test pass,
+`/name` can start) — **done in step 5**: "Loaded only when needed" had no free fourth line (the
+`concept` layout shows three), so its `disable-model-invocation` line moved to "A skill is advice"
+and made room for the `references/`/`templates/` line; one bullet plus pointer on "The loop that matters": told to make a test pass,
 a model edits whichever file is easier — keep the spec the goalpost. Then move `13-tdd.md` slides
 #2–8 into new `35-excursion-tdd.md` (notes keys move in both locales, same order); `13-tdd.md`
 keeps only "Orchestrate and let go". Apply the navigation mechanism.
