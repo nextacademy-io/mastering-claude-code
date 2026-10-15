@@ -174,4 +174,4 @@ npm run check:notes          # both languages still match: note keys, [click] ma
 
 ## License
 
-Slides and text: [LICENSE](LICENSE). Code: [LICENSE-CODE](LICENSE-CODE).
+© nextacademy.io, a project of SunsetPicnic UG (haftungsbeschränkt). All rights reserved. See [LICENSE](LICENSE).
