@@ -16,6 +16,10 @@ layout: concept
   </div>
 </div>
 
+<div class="absolute inset-x-0 bottom-3 text-center text-sm" style="color: var(--na-fg-muted)">
+  © nextacademy.io, a project of SunsetPicnic UG (haftungsbeschränkt). All rights reserved.
+</div>
+
 ---
 layout: concept
 heading: "Organisation"
