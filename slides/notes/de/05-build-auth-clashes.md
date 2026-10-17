@@ -52,11 +52,14 @@ Sagen:
 >    - Every Server Action calls requireUser() and checks ownership before it changes an existing row.
 >
 > - Den Satz sagen, den die Gruppe behalten muss — Teil III und IV verbringen viel Zeit mit genau dieser Regel
+> - Exkurs, optional: Der Chip springt zu "A Server Action is a public endpoint" — das Next.js-Detail hinter dieser Folie, dazu shadcn, Prisma 7 und die Avatar-Payload. Der Zurück-Chip auf seiner letzten Folie landet wieder hier
+> - Überspringen und mit "Point, don't let it guess" weitermachen
 
 Sagen:
-- Eine Server Action ist ein öffentlicher Endpoint mit einer generierten id
-- Das Layout schützt die Seite, nicht die Action
+- Jeder Einstiegspunkt braucht seine eigene Prüfung. Eine geschützte Seite schützt nicht, was die Seite aufruft
+- Hier: Das Layout schützt die Seite, nicht die Action
 - Zod prüft die Form, nicht die Berechtigung
+- Dieselbe Regel gilt in jedem Stack — eine API-Route, ein Controller, ein Job-Handler
 
 <!-- @note: point-don-t-let-it-guess -->
 > Tun:

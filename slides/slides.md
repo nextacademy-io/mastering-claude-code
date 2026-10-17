@@ -101,6 +101,10 @@ src: ./sections/30-deep-effort-lab.md
 ---
 
 ---
+src: ./sections/31-excursion-nextjs.md
+---
+
+---
 src: ./sections/32-excursion-example-mapping.md
 ---
 

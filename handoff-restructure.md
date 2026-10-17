@@ -178,7 +178,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
 - [x] 8. Path-scoped rules: expand the core block
 - [x] 9. New core slides from the gaps + sandbox deep dive
-- [ ] 10. Next.js excursion + softer task framing
+- [x] 10. Next.js excursion + softer task framing
 - [ ] 11. One-line gaps, maps and documentation
 - [ ] 12. Full check, PR, merge
 

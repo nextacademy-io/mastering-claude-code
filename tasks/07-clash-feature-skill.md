@@ -48,7 +48,9 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *) Bash(npx prisma *) Bash(npx tsc *)
    ---
    ```
-4. Write the body as eleven steps, the last one verifies. Keep each step short.
+4. Write the body as eleven steps, the last one verifies. Keep each step short. This is the
+   recipe an experienced Next.js developer would write. You do not need every term — ask
+   Claude about any of them.
    Prisma model → migration → constants → Zod schema in `lib/validation.ts` → read helper
    in `lib/data/` → Server Action in `app/actions/` **with its own ownership check** →
    page → shadcn component → `revalidatePath` → notification via `lib/notify.ts`.
