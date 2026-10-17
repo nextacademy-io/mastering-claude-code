@@ -174,7 +174,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 3. Automate: quick dive + deep dive (incl. cloud sessions)
 - [x] 4. MCP server excursion + the MCP scope-and-trust slide
 - [x] 5. Example Mapping excursion + rescued mechanics
-- [ ] 6. TDD excursion + rescued mechanics
+- [x] 6. TDD excursion + rescued mechanics
 - [ ] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
 - [ ] 8. Path-scoped rules: expand the core block
 - [ ] 9. New core slides from the gaps + sandbox deep dive

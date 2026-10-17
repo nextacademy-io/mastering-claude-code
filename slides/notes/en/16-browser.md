@@ -56,11 +56,17 @@ Say:
 - Measure before touching code
 
 <!-- @note: the-loop-that-matters -->
+> Do:
+> - Excursion, optional: the chip jumps to the "TDD" divider; the back chip on the task 11 recap lands here again
+> - Skip it and go on with "A server offers three primitives, not one"
+
 Say:
 - [click] Change the code, verify in a REAL browser
 - [click] Observe what happened: screenshot, payload, console
 - [click] Fix from evidence — loop closes without a human re-checking every step
 - [click:5] This is what "MCP reaches outside the repo" buys you
+- The same loop with tests has one trap: told to make a test pass, a model edits whichever file is easier — sometimes the test. Keep the spec the goalpost
+- Task 11 in the TDD excursion drives the full red-green-stop loop
 
 <!-- @note: a-server-offers-three-primitives-not-one -->
 Say:

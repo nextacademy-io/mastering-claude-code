@@ -56,11 +56,17 @@ Sagen:
 - Erst messen, dann Code anfassen
 
 <!-- @note: the-loop-that-matters -->
+> Tun:
+> - Exkurs, optional: Der Chip springt zum Divider "TDD"; der Zurück-Chip auf dem Recap von Task 11 landet wieder hier
+> - Überspringen und mit "A server offers three primitives, not one" weitermachen
+
 Sagen:
 - [click] Code ändern, in einem ECHTEN Browser verifizieren
 - [click] Beobachten, was passiert ist: Screenshot, Payload, Konsole
 - [click] Anhand der Evidenz fixen — die Schleife schließt sich, ohne dass ein Mensch jeden Schritt erneut prüft
 - [click:5] Genau das bringt "MCP reicht über das Repo hinaus"
+- Dieselbe Schleife mit Tests hat eine Falle: Aufgefordert, einen Test grün zu machen, ändert ein Modell die Datei, die einfacher zu ändern ist — manchmal den Test. Die Spec bleibt der Massstab
+- Task 11 im Exkurs TDD fährt den ganzen Zyklus aus red, green, stop
 
 <!-- @note: a-server-offers-three-primitives-not-one -->
 Sagen:

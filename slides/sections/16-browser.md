@@ -94,9 +94,12 @@ lines:
 ---
 layout: concept
 heading: "The loop that matters"
+routeAlias: quick-tdd
+deepDive: excursion-tdd
 lines:
   - "Change → browser → observe → fix"
   - "No human in the loop."
+  - "Told to pass a test, a model edits the easier file — the spec is the goalpost."
 ---
 
 <G16VerificationLoop />

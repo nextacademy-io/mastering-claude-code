@@ -10,7 +10,7 @@ Say:
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Do:
-> - 12-start: ownership bug re-seeded for this audit (same removal as task 08), plus task 11's finished tdd skill and passing capacity.ts
+> - 12-start: ownership bug re-seeded for this audit (same removal as task 08), plus task 11's finished tdd skill and passing capacity.ts — whether or not the group took that excursion
 
 Say:
 - Same audit as task 08, two more ways to run it — a team, then a dynamic workflow

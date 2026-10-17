@@ -101,6 +101,10 @@ src: ./sections/32-excursion-example-mapping.md
 ---
 
 ---
+src: ./sections/35-excursion-tdd.md
+---
+
+---
 src: ./sections/36-excursion-mcp-server.md
 ---
 

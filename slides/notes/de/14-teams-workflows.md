@@ -10,7 +10,7 @@ Sagen:
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Tun:
-> - 12-start: Ownership-Bug für dieses Audit neu eingebaut (gleiche Entfernung wie Task 08), dazu der fertige tdd-Skill und das bestandene capacity.ts aus Task 11
+> - 12-start: Ownership-Bug für dieses Audit neu eingebaut (gleiche Entfernung wie Task 08), dazu der fertige tdd-Skill und das bestandene capacity.ts aus Task 11 — egal, ob die Gruppe diesen Exkurs gemacht hat
 
 Sagen:
 - Gleiches Audit wie Task 08, zwei weitere Wege — ein Team, dann ein dynamischer Workflow
