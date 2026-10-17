@@ -123,7 +123,7 @@ Sagen:
 Sagen:
 - Ein sandboxed Bash-Befehl läuft trotzdem — das Betriebssystem erzwingt die Grenze, kein Prompt
 - Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
-- [click] Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
+- [click] Netzwerk: nichts ist standardmässig erreichbar. Im Manual Mode fragt ein neuer Host nach. Im Auto Mode nennt Claude die Hosts, die ein Befehl braucht, am Befehl selbst, der Classifier prüft die Liste, und sie gilt nur für diesen einen Befehl
 - Windows hat keine native Sandbox — Claude Code in WSL2 laufen lassen, um eine zu bekommen
 
 <!-- @note: choose-the-sandbox-by-what-you-risk -->

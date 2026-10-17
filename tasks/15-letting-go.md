@@ -17,7 +17,7 @@ that runs the security audit on every pull request without anyone watching.
 
 ## Why
 
-So far every agent shared one working tree. Worktrees give each agent its own copy on its
+So far every agent shared one working tree. Worktrees give each agent its own checkout on its
 own branch, so two agents cannot break each other's half-done work. This is the thing you
 will use most.
 
@@ -33,7 +33,10 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
    claude --worktree avatar-followup
    ```
    This creates `.claude/worktrees/avatar-followup/` on a new branch `worktree-avatar-followup`
-   and starts Claude Code inside it. `-w` is the short flag.
+   and starts Claude Code inside it. `-w` is the short flag. The new branch starts from your CLASH
+   clone's default branch, `main`, not from `15-start`. To start from your current checkout instead,
+   add `"worktree": { "baseRef": "head" }` to `.claude/settings.json` in your CLASH clone before you
+   run the command. Gitignored files such as CLASH's `.env` are not copied into the worktree.
 2. In a second terminal, start another one.
    ```bash
    claude --worktree digest-sketch

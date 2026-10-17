@@ -33,7 +33,7 @@ Sagen:
 > - Kein `/skill-doctor` (braucht Claude Code v2.1.252 oder neuer)? Stattdessen die Skills-Zeile in `/context` lesen
 
 Sagen:
-- Der Bericht zeigt die Context-Kosten jedes Skills und wie oft er lief. Grösse, Überschneidung oder Ladefehler zeigt er nicht: für die Grösse die Ordner öffnen, mit /skills sehen, was geladen ist
+- Der Bericht öffnet sich im Stats-Tab von /plugin. Er zeigt die Context-Kosten jedes Skills und wie oft er lief, markiert nie aufgerufene Skills und listet länger nicht benutzte Plugins. Für die Grösse die Ordner öffnen, mit /skills sehen, was geladen ist
 - Wird ein Skill benutzt, lädt sein kurzes SKILL.md. Die ~100 KB grosse AGENTS.md lädt nur, wenn Claude sie öffnet
 - Im Workshop wird nichts gelöscht: die Kosten zu sehen ist die Lektion
 
@@ -59,7 +59,7 @@ Sagen:
 - Er besteht auf einem eigenen Ownership-Check, obwohl requireUser() im Layout läuft
 - Warum: eine Server Action ist ein öffentlicher POST-Endpoint mit einer generierten id — der Layout-Guard sieht einen direkten Aufruf nie
 - Warum den Grund in den Skill schreiben: eine nackte Regel wird übersprungen, wenn ein Fall anders aussieht. Eine Regel mit ihrem Grund lässt Claude den neuen Fall richtig entscheiden
-- Ein Skill kann dich auch zuerst befragen: Mit AskUserQuestion in allowed-tools stellt Claude Multiple-Choice-Fragen, bevor es baut. Der discover-Skill im Exkurs Example Mapping macht genau das
+- Ein Skill kann dich auch zuerst befragen: Wenn seine Schritte Claude sagen, AskUserQuestion zu benutzen, stellt Claude Multiple-Choice-Fragen, bevor es baut. Der discover-Skill im Exkurs Example Mapping macht genau das
 
 <!-- @note: a-skill-is-advice -->
 > Tun:
@@ -88,7 +88,7 @@ Sagen:
 > - Docs-Link: öffnen, die aktive agent-browser-Skill-Seite zeigen, dann zurück zu den Folien
 
 Sagen:
-- Claude Code liest deine Skills aus zwei Ordnern. .agents/skills/ gehört nicht dazu
+- Deine eigenen Skills liegen in zwei Ordnern: ~/.claude/skills/ persönlich, .claude/skills/ im Projekt. .agents/skills/ ist kein Skill-Ort
 - [click] npx skills add vercel-labs/agent-browser -g legt die echte Kopie in ~/.agents/skills/ ab
 - [click] Danach verlinkt es diesen Ordner nach ~/.claude/skills/ — genau dort darf ein Symlink stehen
 - [click] Ohne den Link ist der Skill schlicht nicht da. Kein Fehler, keine Warnung — /skills zeigt es dir

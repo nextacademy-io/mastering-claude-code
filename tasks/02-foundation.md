@@ -74,9 +74,11 @@ mechanics stay the same.
    ```
    Claude's own summary is not the same as the actual change. `/diff` shows the edits inside
    your files, including ones Claude just made — read it, don't just take the summary. On
-   Claude Code 2.1.260 or later, in fullscreen rendering (`/tui fullscreen`) and with a terminal
-   at least 110 columns wide, this opens a panel that may say some files are "not shown";
-   otherwise you get a plain diff viewer instead. Press `Esc` to close it — or, if you got the
+   Claude Code 2.1.287 or later, in fullscreen rendering (`/tui fullscreen`), inside a git
+   repository and with a terminal at least 110 columns wide, this opens a panel beside the
+   conversation. The panel skips test files and generated files and folds changes from before
+   this session into one line at the bottom; click that line to expand it. Otherwise you get a
+   diff dialog above the prompt instead. Press `Esc` to close the dialog — or, if you got the
    panel, run `/diff` again.
 5. Switch to plan mode. Press `Shift+Tab` until the status bar shows `plan mode on`. Now Claude can read and plan, but does not edit your source.
 6. Ask for the data model plan. This is what an experienced Prisma developer would ask for. You

@@ -105,7 +105,7 @@ Say:
 
 Say:
 - What it is: a plugin, an installable bundle. This one ships 5 subagents and 11 skills. Task 07's marketplace slide again: add the catalog, then install one plugin by name.
-- [click] The second command installs it. code-security-skills is the plugin, agent-security-playbook is the marketplace: plugin@marketplace.
+- [click] The second command opens the plugin's details in /plugin; after you pick a scope, it installs. code-security-skills is the plugin, agent-security-playbook is the marketplace: plugin@marketplace.
 - Only sca-audit and dependency-auditor are about CVEs. The reviewers read code.
 - Compare, don't crown a winner: ours is narrow and falsifiable, PASS or FAIL with a cited line. Theirs is broad. Different jobs.
 - A plugin can carry hooks and MCP servers, and it runs on your machine. Read what you install. This one is OWASP's, but the habit is the point.

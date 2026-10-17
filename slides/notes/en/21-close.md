@@ -6,7 +6,7 @@
 Say:
 - Automating means nobody corrects a mistake while it happens
 - Voice: an output style gives every answer the same shape
-- [click] Stop: /goal names a check; a small model judges after each turn whether it holds, a turn ceiling caps the run
+- [click] Stop: /goal names a check; a small model judges after each turn whether it holds. To bound the run, put a turn clause into the condition, like "or stop after 20 turns" — the same model judges that too
 - [click] Runner: a background session or a routine does the work while you look away
 - Reach for it when the work repeats and a command can prove it done
 

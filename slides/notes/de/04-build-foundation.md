@@ -33,7 +33,7 @@ Sagen:
 > Tun:
 > - Schritt 3-4 machen die Teilnehmenden selbst
 > - Nach `git status` fragen, dann `/diff` nach dem Scaffold live zeigen: nur Scaffold-Änderungen, bevor Plan Mode etwas anfasst
-> - Das Panel meldet manchmal Dateien als "not shown", sogar neue aus einem Shell-Befehl: `git status`, die vollständige Liste, kommt zuerst
+> - Das Panel lässt Testdateien und generierte Dateien weg und fasst Änderungen von vor dieser Session in einer Zeile ganz unten zusammen; ein Klick auf eine Zähl-Zeile klappt sie auf. `git status`, die vollständige Liste, kommt zuerst
 > - Claude bitten zu committen, seine Commit-Message lesen
 
 Sagen:
@@ -98,7 +98,7 @@ Sagen:
 <!-- @note: upgrade-the-planner-not-the-run -->
 > Tun:
 > - Docs-Link: öffnen, bis "opusplan model setting" scrollen, dann zurück zu den Folien
-> - Läuft eine Session schon auf Opus, ändert opusplan nur die Ausführung: sie wandert zu Sonnet
+> - opusplan: Opus im Plan Mode, Sonnet für die Ausführung. Jeder Wechsel in den oder aus dem Plan Mode ist ein Modellwechsel und startet einen frischen Cache
 
 Sagen:
 - Das teure Modell für die Entscheidung einsetzen; Routine-Ausführung braucht es selten

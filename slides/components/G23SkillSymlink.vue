@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// G23 — where Claude Code actually finds a skill. It reads your skills from
+// G23 — where Claude Code actually finds a skill. Your own skills live in
 // two folders: ~/.claude/skills/<name>/ and .claude/skills/<name>/. The
 // community installer (npx skills add) writes its canonical copy to
 // .agents/skills/ and links it into .claude/skills/ — a skill entry is

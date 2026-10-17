@@ -31,7 +31,9 @@ for is to run all three on the same problem and compare.
    ```json
    { "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" } }
    ```
-   Without it, the next prompt silently spawns plain subagents. There is no error.
+   Without it, no team is set up and Claude does not spawn or propose teammates. Subagents
+   appear in the same panel below the prompt as teammates, so the panel alone does not confirm
+   a team formed.
 2. Describe the team. There is no config file. You describe an org chart in words.
    ```
    Set up an agent team to audit app/actions/ for missing ownership checks.
@@ -73,7 +75,7 @@ for is to run all three on the same problem and compare.
    statement, a plain object. The `phases` list in `meta`. For each entry, one `phase()` call with
    exactly that title. `phase()` groups the agents after it under that title in the progress view.
    The discovery phase. The fan-out with `parallel()` or `pipeline()`. The refuter step.
-   The `agent()` calls and their tool limits. Any `schema` on an `agent()` call: that agent
+   The `agent()` calls and their options, such as `label` or `stallMs`. Any `schema` on an `agent()` call: that agent
    returns JSON in that shape, not prose.
 9. When both runs are done, name the coordination pattern each one used. A coordination
    pattern is a common way to split work between agents.

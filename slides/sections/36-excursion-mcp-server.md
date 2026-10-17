@@ -81,7 +81,7 @@ routeAlias: theory-mcp-json
 docs: https://code.claude.com/docs/en/mcp
 lines:
   - ".mcp.json at the root of your CLASH clone: checked in, approved once."
-  - "claude mcp list → clash: npx tsx mcp/server.ts - ✔ Connected"
+  - "claude mcp list → clash, npx tsx mcp/server.ts, ✔ Connected"
   - "Allow both read tools in CLASH's .claude/settings.json; Manual mode: writes ask."
 ---
 

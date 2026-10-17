@@ -45,7 +45,7 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    description: Add a complete feature to CLASH, from Prisma model through an
      authorized Server Action to a rendered page. Use when adding or extending
      a user-facing feature in this codebase.
-   allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *) Bash(npx prisma *) Bash(npx tsc *)
+   allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *), Bash(npx prisma *), Bash(npx tsc *)
    ---
    ```
 4. Write the body as eleven steps, the last one verifies. Keep each step short. This is the

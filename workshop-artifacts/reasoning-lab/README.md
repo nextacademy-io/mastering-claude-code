@@ -16,6 +16,6 @@ The trainer ground truth is in the presenter note of "Same task, different effor
 folder.
 
 Score correct findings, false positives and output tokens (`usage.output_tokens` in the JSON;
-thinking is billed as output). Do not compare `total_cost_usd`: the second run reads the prompt
-prefix the first run cached. The exercise is not designed to make high effort win every run. A
+thinking is billed as output). Do not compare `total_cost_usd`: cached input bills at a lower rate,
+and whether the second run reads the cache the first run wrote depends on the model and the provider. The exercise is not designed to make high effort win every run. A
 tie is evidence that the small task did not justify the extra spend.

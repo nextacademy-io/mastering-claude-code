@@ -144,7 +144,7 @@ lines:
 ---
 
 <div class="grid grid-cols-3 gap-4 w-full max-w-4xl">
-  <div class="na-card p-4"><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">PostToolUse · Edit|Write</div><div class="text-sm" style="color: var(--na-fg-muted)">pattern match, no model call</div></div>
+  <div class="na-card p-4"><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">PostToolUse · Edit|Write|NotebookEdit</div><div class="text-sm" style="color: var(--na-fg-muted)">pattern match, no model call</div></div>
   <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">Stop</div><div class="text-sm" style="color: var(--na-fg-muted)">a separate review of the turn's diff</div></div>
   <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">PostToolUse · Bash commit</div><div class="text-sm" style="color: var(--na-fg-muted)">a deeper review that reads callers</div></div>
 </div>
@@ -176,7 +176,7 @@ lines:
   </div>
   <div class="na-card p-5 flex-1" v-click>
     <div class="font-semibold mb-2" style="color: var(--na-accent-500)">Network</div>
-    <div class="text-base" style="color: var(--na-fg-muted)">Nothing is allowed by default. A new host asks once, then is remembered.</div>
+    <div class="text-base" style="color: var(--na-fg-muted)">Nothing is allowed by default. Manual mode prompts per new host. Auto mode: Claude names the hosts, the classifier reviews them.</div>
   </div>
 </div>
 

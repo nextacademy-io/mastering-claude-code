@@ -6,7 +6,7 @@
 Sagen:
 - Automatisieren heisst: Niemand korrigiert einen Fehler, während er passiert
 - Voice: Ein Output Style gibt jeder Antwort dieselbe Form
-- [click] Stop: /goal nennt einen Check; ein kleines Modell prüft nach jedem Turn, ob er hält, eine Turn-Obergrenze deckelt den Lauf
+- [click] Stop: /goal nennt einen Check; ein kleines Modell prüft nach jedem Turn, ob er hält. Um den Lauf zu begrenzen, eine Turn-Klausel in die Bedingung schreiben, etwa "or stop after 20 turns" — dasselbe Modell prüft auch die
 - [click] Runner: Eine Background-Session oder eine Routine erledigt die Arbeit, während du wegschaust
 - Greif dazu, wenn sich die Arbeit wiederholt und ein Befehl beweisen kann, dass sie fertig ist
 

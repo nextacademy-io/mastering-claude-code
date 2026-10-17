@@ -9,7 +9,7 @@
 
 Sagen:
 - Nur eine Variable ändert sich: Effort. Gezählt werden die Findings und usage.output_tokens, nicht Ton oder Länge — Thinking wird als Output abgerechnet
-- total_cost_usd weglassen: Der zweite Lauf liest den Prompt-Präfix, den der erste gecacht hat, sein Input wirkt also günstiger
+- total_cost_usd weglassen: Gecachter Input wird günstiger abgerechnet, und ob der zweite Lauf den Cache des ersten liest, hängt vom Modell und vom Provider ab, die zwei Zahlen sind also nicht vergleichbar
 - Die vier Findings, erst nach beiden Läufen: cancelled liefert true; `null` als Kapazität heisst unbegrenzt, wird aber zu 0; die Voll-Prüfung nutzt > statt >=; sort verändert participantIds
 
 <!-- @note: measure-the-extra-reasoning -->

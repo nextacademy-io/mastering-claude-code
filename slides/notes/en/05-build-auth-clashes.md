@@ -31,7 +31,7 @@ Say:
 > - Participants do this in steps 8-9
 > - Run /context live after the auth and shell steps, read the real bands
 > - [click] Run /compact, then /context again: compare
-> - In /context, tool results count as Messages; the tool bands are tool definitions and stay after /compact
+> - After /compact the conversation, tool outputs included, becomes one summary. System prompt, CLAUDE.md, memory and MCP tools reload; up to five recently changed files are re-read
 > - Optional: docs link, scroll to "Manage context proactively" for /clear vs /compact
 
 Say:

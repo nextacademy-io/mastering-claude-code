@@ -14,7 +14,7 @@ lines:
   </div>
   <div v-click class="na-card p-5 flex-1">
     <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">Stop</div>
-    <div class="text-lg">/goal: a check and a turn ceiling</div>
+    <div class="text-lg">/goal: a check, plus a turn clause to bound it</div>
   </div>
   <div v-click class="na-card p-5 flex-1">
     <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">Runner</div>

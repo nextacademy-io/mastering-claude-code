@@ -105,7 +105,7 @@ are logged, not enforced. What Claude sees on a block is stderr.
     ```json
     { "model": "claude-opus-4-8" }
     ```
-    Start a new `claude` session. The startup header names the model and which file set it.
+    Start a new `claude` session. The startup header names the model.
     Project local sits above shared project, so yours starts on Opus. Remove both keys after.
 
 ## Now you

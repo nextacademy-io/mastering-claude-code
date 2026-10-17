@@ -1,7 +1,7 @@
 <!-- @note: strategy-two-agent-teams -->
 > Do:
 > - Before this segment: confirm `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set
-> - Without the flag: demo silently spawns plain subagents — no team, no disagreement, no error
+> - Without the flag: no team is set up, Claude does not spawn or propose teammates. Subagents appear in the same panel, so the panel alone does not confirm a team formed
 > - Say "watch first" for this part. Docs link: scroll to "When to use agent teams", then back
 
 Say:
@@ -42,7 +42,7 @@ Say:
 <!-- @note: lead-peers-and-a-disagreement-2 -->
 > Do:
 > - Live: row 3, while the task 12 team is running
-> - Watch for: without `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` you get plain subagents, no team
+> - Watch for: without `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` no team is set up; subagents in the same panel do not prove a team formed
 
 Say:
 - Row 1: pick the names yourself, so your later prompts can use them
@@ -165,13 +165,13 @@ Say:
 
 <!-- @note: phases-the-plan-you-can-watch -->
 > Do:
-> - Docs link: scroll to "Watch the run", point at the per-phase agent counts and token totals
+> - Docs link: scroll to "Watch the run", point at the per-phase agent counts and each agent's token usage
 > - Show this workshop's own build run in /workflows if one is live
 > - The numbers on the right are placeholders — the live run shows the real ones
 
 Say:
 - [click] Left, the script: `phase('Review')` groups the agents after it; `meta.phases` repeats the titles
-- [click] Right, `/workflows`: one row per phase with agent count and token total; Enter drills in
+- [click] Right, `/workflows`: one row per phase with its agent count; Enter drills in to each agent and its tokens
 - [click] One phase() call, one row — Review is a pipeline() over files, Verify a parallel()
 - The agent count per phase comes from the script, not a setting: one agent() call is one agent, pipeline() starts one per file. To change it, say so in the prompt. Dynamic workflow size in /config only sets a total, as advice
 - Real example, this workshop's build workflow: seven phases — Facts, Build, Author, Translate, Proof, Fix, Critic

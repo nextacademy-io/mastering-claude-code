@@ -151,7 +151,8 @@ If you run it, copy
 and your CLASH clone, so neither run sees an answer key, a CLAUDE.md or their Claude Code hooks.
 Unset `CLAUDE_CODE_EFFORT_LEVEL` (it overrides `--effort`), then run the same prompt on the same
 `--model` at `--effort low` and `--effort high`. Score correct findings, false positives and output
-tokens, not `total_cost_usd`: the second run reads the prompt prefix the first run cached. A tie
+tokens, not `total_cost_usd`: cached input bills at a lower rate, and whether the second run reads
+the cache the first run wrote depends on the model and the provider. A tie
 is a valid result: the small task did not earn the extra reasoning spend.
 
 ---
@@ -236,7 +237,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Progressive disclosure: name and description always loaded, body on match. Before adding the
   course skill, run `/skill-doctor`: it shows what each skill costs in context and how often it
-  ran, and flags skills never invoked. It does not compare bodies, so open `react-best-practices`
+  ran, and flags skills never invoked. Then open `react-best-practices`
   and `vercel-react-best-practices` side by side to show the two large near-duplicates.
   `/skill-doctor` needs v2.1.252 or later and feature-flag fetching; without it, read the Skills
   row in `/context`.
@@ -256,7 +257,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   moves. Say "agent, subagent, fork" once, slowly, and point at the row that appears under
   `main` below the prompt. Fork mode is on by default in interactive sessions, but a named
   agent from a definition file stays a fresh subagent. Only `/subtask` (or Claude choosing the
-  fork type) starts a fork, and a fork ignores a `tools:` line.
+  fork type) starts a fork, and a fork ignores a `tools:` line. `/subtask` exists only while agent
+  view is on; on a machine with `disableAgentView` set, `/fork` starts the fork instead.
 - Steps 9 and 10 run the same audit as a fork with `/subtask`. Steps 11 to 17 install OWASP's `code-security-skills` plugin (needs GitHub reachable, and it
   spends more tokens than the auditor). Compare the two reports, do not crown a winner. Say it
   is a plugin bundling subagents and skills, and that a plugin can ship hooks: read what you install.
@@ -326,8 +328,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 12 — Team and workflow audit
 
-- Agent team: needs `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` or it silently spawns plain
-  subagents. Teammates message by name via SendMessage. No `@`-mentions. `claude agents` is
+- Agent team: needs `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`, or no team is set up and Claude
+  does not spawn or propose teammates; subagents in the same panel do not prove a team. Teammates message by name via SendMessage. No `@`-mentions. `claude agents` is
   the background-sessions view, not a team dashboard. The moment to wait for: two peers
   disagree about the same file and the lead reconciles.
 - Dynamic workflow: describe the job, Claude writes the script, the runtime runs it in the

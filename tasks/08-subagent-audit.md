@@ -125,8 +125,13 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
     ```
     /plugin install code-security-skills@agent-security-playbook
     ```
-13. Run `/plugin` and check that `code-security-skills` is listed as installed. If the install
-    summary asks for it, run `/reload-plugins`.
+    Nothing installs yet. The `/plugin` panel opens on the plugin's details. Read the **Will
+    install** list, then pick a scope: **Install for you**. Claude Code installs it and prints an
+    install summary.
+13. Run `/plugin` and press **Tab** to reach the **Installed** tab. Check that
+    `code-security-skills` is listed with its scope. No reload by hand: when the summary says
+    `Run /reload-plugins to apply.`, Claude Code runs it for you. If it warned about the prompt
+    cache and left the plugin pending, run `/reload-plugins --force`.
 14. Copy your auditor's report from step 6 into a note outside the chat. The next step removes it.
 15. Start with a clean context, so the reviewer cannot lean on that report.
     ```

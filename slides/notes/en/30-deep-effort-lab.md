@@ -9,7 +9,7 @@
 
 Say:
 - One variable changes: effort. Score the findings and usage.output_tokens, not tone or length — thinking is billed as output
-- Skip total_cost_usd: the second run reads the prompt prefix the first run cached, so its input looks cheaper
+- Skip total_cost_usd: cached input bills at a lower rate, and whether the second run reads the cache the first run wrote depends on the model and the provider, so the two figures do not compare
 - The four findings, only after both runs: cancelled returns true; null capacity means unlimited but becomes 0; the full check uses > instead of >=; sort mutates participantIds
 
 <!-- @note: measure-the-extra-reasoning -->

@@ -31,7 +31,7 @@ heading: "Loaded only when needed"
 routeAlias: theory-skills
 docs: https://code.claude.com/docs/en/skills
 lines:
-  - "Every skill's name and description is scanned every session. Cheap."
+  - "Skill names and descriptions load into context every session. Cheap."
   - "The body loads when the description matches — or right away via /skill-name."
   - "references/ for the method, templates/ for the format: opened only when needed."
 ---
@@ -74,7 +74,7 @@ success: "Every step of the skill points at a real CLASH file. No invented paths
 name: clash-feature
 description: ⟵ LIVE: one sentence, specific enough that Claude's matching
   has something real to key off — /skill-doctor shows if it ever fires
-allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *) Bash(npx prisma *) Bash(npx tsc *)
+allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *), Bash(npx prisma *), Bash(npx tsc *)
 ---
 
 ## Steps
@@ -111,7 +111,7 @@ heading: "Where Claude Code looks for skills"
 routeAlias: theory-skill-install
 docs: https://www.skills.sh/vercel-labs/agent-browser/agent-browser
 lines:
-  - "Two folders for your skills: ~/.claude/skills/ and .claude/skills/."
+  - "Your own skills: ~/.claude/skills/ (personal) and .claude/skills/ (project)."
   - "npx skills add writes to .agents/skills/, then symlinks it in."
   - "No link, no skill — and no error. /skills shows what loaded."
 ---

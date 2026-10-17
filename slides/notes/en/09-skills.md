@@ -33,7 +33,7 @@ Say:
 > - No `/skill-doctor` (it needs Claude Code v2.1.252 or later)? Read the Skills row in `/context` instead
 
 Say:
-- The report shows each skill's context cost and how often it ran. It does not show size, overlap or load errors: open the folders for size, run /skills to see what loaded
+- The report opens in the /plugin Stats tab. It shows what each skill costs in context and how often it ran, flags skills never invoked, and lists plugins not used recently. For the body sizes, open the two folders; for what loaded, run /skills
 - Using a skill loads its short SKILL.md. The ~100 KB AGENTS.md loads only when Claude opens it
 - Nobody deletes them in the workshop: seeing the cost is the lesson
 
@@ -59,7 +59,7 @@ Say:
 - It insists on its own ownership check even though requireUser() runs in the layout
 - Why: a Server Action is a public POST endpoint with a generated id — the layout guard never sees a direct call
 - Why write the reason into the skill: a bare rule gets skipped when a case looks different. A rule with its reason lets Claude decide the new case correctly
-- A skill can also interview you first: with AskUserQuestion in allowed-tools, Claude asks multiple-choice questions before it builds. The discover skill in the Example Mapping excursion does exactly that
+- A skill can also interview you first: when its steps tell Claude to use AskUserQuestion, Claude asks multiple-choice questions before it builds. The discover skill in the Example Mapping excursion does exactly that
 
 <!-- @note: a-skill-is-advice -->
 > Do:
@@ -88,7 +88,7 @@ Say:
 > - Docs link: open it, show the live agent-browser skill page, then back to the slides
 
 Say:
-- Claude Code reads your skills from two folders. .agents/skills/ is not one of them
+- Your own skills live in two folders: ~/.claude/skills/ for personal, .claude/skills/ for project. .agents/skills/ is not a skill location
 - [click] npx skills add vercel-labs/agent-browser -g puts the real copy in ~/.agents/skills/
 - [click] Then it links that folder into ~/.claude/skills/ — a skill entry is allowed to be a symlink
 - [click] Without the link the skill is simply absent. No error, no warning — /skills is how you check
