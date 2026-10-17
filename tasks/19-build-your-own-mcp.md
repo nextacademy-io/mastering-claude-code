@@ -299,7 +299,7 @@ and without `lib/clash-agent.ts`, the file that holds the `query()` call on its 
 Unpublishing is already there on clash-conference's `19-start`.
 `git checkout 19-solution` in clash-conference gives clash-conference with the finished
 route. The starter, the finished server, `.mcp.json`, `settings.allow.json` and the smoke
-test are in `workshop-artifacts/19-build-mcp/` in the workshop repository. Its `README.md`
+test are in [`workshop-artifacts/19-build-mcp/`](../workshop-artifacts/19-build-mcp/) in the workshop repository. Its `README.md`
 says where each file goes.
 
 ## Go further

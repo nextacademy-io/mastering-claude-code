@@ -133,7 +133,7 @@ are logged, not enforced. What Claude sees on a block is stderr.
 
 ## Go further
 
-Compare with `workshop-artifacts/13-hooks/` in the workshop repository. Then look up `hard_deny`
+Compare with [`workshop-artifacts/13-hooks/`](../workshop-artifacts/13-hooks/) in the workshop repository. Then look up `hard_deny`
 in the auto mode configuration docs, and why it does nothing outside auto mode.
 
 ## Links

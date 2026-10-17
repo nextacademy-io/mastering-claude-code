@@ -108,7 +108,7 @@ for is to run all three on the same problem and compare.
     and deleteVenue (app/actions/venues.ts), matching the pattern updateClash and
     updateVenue already use. Then run npx tsc --noEmit, npm run lint and npm run build.
     ```
-13. Compare with `workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md`. Commit.
+13. Compare with [`workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md`](../workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md). Commit.
 
 ## Now you
 

@@ -247,7 +247,7 @@ when it needs them.
 
 ## Go further
 
-Compare your skill with `workshop-artifacts/09-example-mapping/` in the workshop repository.
+Compare your skill with [`workshop-artifacts/09-example-mapping/`](../workshop-artifacts/09-example-mapping/) in the workshop repository.
 
 ## Links
 

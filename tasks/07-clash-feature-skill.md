@@ -119,7 +119,7 @@ personal-only). Your own `.claude/skills/clash-feature/` is not — that is what
 
 ## Go further
 
-Compare your skill with `workshop-artifacts/07-clash-feature-skill/SKILL.md` in the workshop repository.
+Compare your skill with [`workshop-artifacts/07-clash-feature-skill/SKILL.md`](../workshop-artifacts/07-clash-feature-skill/SKILL.md) in the workshop repository.
 Then test your description: in a fresh session, ask for a small feature without typing `/clash-feature`, and see whether Claude loads the skill by itself.
 To share the plugin with your team, list it in a `.claude-plugin/marketplace.json` so they install it by name, and test it with `claude plugin eval`.
 

@@ -142,7 +142,7 @@ implementations yet.
 
 ## Go further
 
-Compare with `workshop-artifacts/11-tdd-inner-loop/` in the workshop repository. Then sketch a
+Compare with [`workshop-artifacts/11-tdd-inner-loop/`](../workshop-artifacts/11-tdd-inner-loop/) in the workshop repository. Then sketch a
 `spec-coverage` subagent (tools: Read, Grep, Glob) that checks every rule in `docs/specs/*.md`
 has a passing test — read-only, same shape as task 08's `security-auditor`.
 

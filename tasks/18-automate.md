@@ -181,7 +181,7 @@ for one build. That is the gate, not the loop.
 ## Now you
 
 - Set a second bounded `/goal` in your CLASH clone: a new proof, one thing that must not change on the way there, and a turn ceiling. Then read `/goal`.
-- Write `.claude/loop.md` in your CLASH clone: your own default prompt for a bare `/loop`. Goal: check the background build and `npx tsc --noEmit`, report in one line, answer `quiet` when nothing changed. Compare with `workshop-artifacts/18-automate/loop.md`.
+- Write `.claude/loop.md` in your CLASH clone: your own default prompt for a bare `/loop`. Goal: check the background build and `npx tsc --noEmit`, report in one line, answer `quiet` when nothing changed. Compare with [`workshop-artifacts/18-automate/loop.md`](../workshop-artifacts/18-automate/loop.md).
 - Write a second style in your CLASH clone that answers in German. Goal: same code, same care, German prose.
 - With a subscription: create your own routine on your fork of CLASH with the trainer's prompt, then give it a GitHub trigger, so a pull request starts it. A routine belongs to one claude.ai account, so you cannot edit the trainer's. The Claude GitHub App must be installed on that fork.
 
@@ -201,7 +201,7 @@ for one build. That is the gate, not the loop.
 ## Stuck?
 
 `git checkout 18-start` in your CLASH clone — identical to `14-start`: the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
-The finished style file, the loop file and the routine prompt are in `workshop-artifacts/18-automate/` in the workshop repository.
+The finished style file, the loop file and the routine prompt are in [`workshop-artifacts/18-automate/`](../workshop-artifacts/18-automate/) in the workshop repository.
 Compare `host-notes.md` there with the file Claude wrote for you.
 
 ## Go further
