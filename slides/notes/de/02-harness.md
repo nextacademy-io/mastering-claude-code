@@ -41,10 +41,10 @@ Sagen:
 - Das Kern-Tool-Set ist absichtlich klein und langweilig
 - Read, Edit, Write — für Dateien
 - Bash — für alles, was ein Terminal kann: Tests, Builds, Git
-- [click:2] Grep und Glob — zum Suchen. Unter macOS, Linux und WSL sind sie standardmäßig nicht dabei: Claude sucht dort mit find und grep über Bash
+- [click:2] Grep und Glob — zum Suchen. Unter macOS, Linux und WSL sind sie standardmässig nicht dabei: Claude sucht dort mit find und grep über Bash
 - [click] Agent — startet eine weitere Loop mit eigenem Context (Subagents, später)
 - [click] WebFetch — holt eine Seite von einer URL. Es sucht nicht: Die Websuche ist ein zweites Tool, WebSearch
-- MCP — fügt Tools von außen hinzu: einen Browser, eine Datenbank, dein Ticket-System
+- MCP — fügt Tools von aussen hinzu: einen Browser, eine Datenbank, dein Ticket-System
 - Das Modell sieht Name, Beschreibung und Input-Schema jedes Tools; es wählt anhand der Beschreibung und füllt Argumente aus dem Schema
 - Deshalb werden Tool-Beschreibungen und Skill-Beschreibungen so sorgfältig geschrieben
 
@@ -58,7 +58,7 @@ Sagen:
   - [click] Manual — fragt vor Edits und Commands
   - [click] Accept Edits — Datei-Edits gehen durch, plus gängige Filesystem-Commands (mkdir, rm, mv, cp...); andere Shell-Commands fragen weiter
   - [click] Plan Mode — ändert deinen Quellcode nicht: das Modell kann schauen, aber nicht anfassen; Edits bleiben blockiert, bis du den Plan freigibst — gut zum Nachdenken vor dem Bauen
-  - [click] Auto — ein zweites Modell, der Classifier, prüft Aktionen statt dir und blockiert die riskanten. Ein Block oder kein Urteil heißt: abgelehnt, nicht gefragt; Prompts kommen erst nach 3 Blocks in Folge oder 20 in einer Session zurück
+  - [click] Auto — ein zweites Modell, der Classifier, prüft Aktionen statt dir und blockiert die riskanten. Ein Block oder kein Urteil heisst: abgelehnt, nicht gefragt; Prompts kommen erst nach 3 Blocks in Folge oder 20 in einer Session zurück
   - [click] Bypass — überspringt fast jeden Prompt (nur in einer Sandbox benutzen); ein paar Dinge fragen trotzdem, etwa rm -rf auf deinem Home- oder Projektordner
 - Das Gate ist der Kern der Sache: nichts Gefährliches passiert ohne eine Entscheidung — sei es von einer Regel oder von dir
 
@@ -81,7 +81,7 @@ Sagen:
 - [click] er liest und greppt dort drin — dieses Fenster füllt sich, deins bewegt sich kaum
 - [click] nur sein Abschlussbericht kommt zurück — eine Message
 - Du kannst einem Subagent weniger Tools geben, ein anderes Modell, eigene Instruktionen
-- [click] ein Fork ist dieselbe Idee, startet aber mit einer Kopie deines bisherigen Gesprächs — günstiger, wenn er braucht, was du schon weißt
+- [click] ein Fork ist dieselbe Idee, startet aber mit einer Kopie deines bisherigen Gesprächs — günstiger, wenn er braucht, was du schon weisst
 - Teil drei nutzt einen Subagent, um CLASH zu auditieren
 
 <!-- @note: skills-and-mcp -->
@@ -89,7 +89,7 @@ Sagen:
 - Zwei weitere Teile des Harness, beide werden in späteren Teilen gebaut
 - Ein Skill ist ein Rezept, das du einmal schreibst: "wie wir in diesem Repo ein Feature hinzufügen"
 - Nur Name und Beschreibung stecken in jedem Prompt; der volle Text lädt, wenn die Beschreibung zu deiner Anfrage passt — hält das Fenster günstig
-- [click] MCP ist ein Standard für Tool-Server — Claude Code listet ihre Tool-Namen wie eigene, hält volle Schemas aber standardmäßig zurück, bis sie gebraucht werden
+- [click] MCP ist ein Standard für Tool-Server — Claude Code listet ihre Tool-Namen wie eigene, hält volle Schemas aber standardmässig zurück, bis sie gebraucht werden
 - Einen Browser-MCP-Server installieren, und das Modell kann sich durch deine App klicken
 - Einen Datenbank-MCP-Server installieren, und es kann Produktion abfragen — genau deshalb zählen Permissions und Hooks
 
@@ -141,7 +141,7 @@ Sagen:
 - Drei Tanks — der erste ist eine Session nahe am Limit: gelesene Dateien, Tool-Output, Chat
 - [click] /compact — bittet das Modell, das Gespräch zusammenzufassen, und ersetzt dann die Historie durch diese Zusammenfassung
   - Claude Code macht das von selbst nahe am Limit: erst verwirft es alte Tool-Outputs, dann fasst es zusammen
-  - Es funktioniert, und es verliert Details; Compacting selbst ist ein großer Request, weil das Modell alles liest, was es zusammenfasst
+  - Es funktioniert, und es verliert Details; Compacting selbst ist ein grosser Request, weil das Modell alles liest, was es zusammenfasst
 - [click] /clear — leert das Fenster und startet eine neue Session mit derselben CLAUDE.md; das alte Gespräch bleibt auf der Platte, /resume öffnet es wieder
 - Für einen neuen Job ist /clear meistens besser: nichts vom alten Job sickert rein
 - Gewohnheit aufbauen: ein Job pro Session
@@ -156,14 +156,14 @@ Sagen:
 - Eine Zwischenfrage wird nur aus dem beantwortet, was schon im Gespräch steht: deine Nachrichten, Claudes Antworten, bereits gesammelte Tool-Ergebnisse
 - Keine Tools, kein Permission-Gate, kein neuer Turn — sie kann keine neue Datei lesen oder einen Befehl ausführen
 - Läuft gerade ein Turn, läuft er darunter einfach weiter — eine Zwischenfrage unterbricht ihn nicht
-- Gut für: "wie hieß noch mal diese Config-Datei?" — ohne den Faden zu verlieren
+- Gut für: "wie hiess noch mal diese Config-Datei?" — ohne den Faden zu verlieren
 
 <!-- @note: install-and-log-in -->
 > Tun:
 > - Den Install-Link von der Folie in den Teams-Chat einfügen, damit alle ihn anklicken können
 > - Klar sagen: Alle haben es vor dem Workshop installiert (docs/SETUP.md) — ein Rückblick, keine neue Installation
 > - Das eigene Terminal live in einem leeren Ordner öffnen und Claude Code starten — das war's. /context, /btw und /clear zeigen dort noch fast nichts; alle drei kommen am Ende von Task 01
-> - Mit "The model is the same for everyone" schließen, nach "Claude Code is not the only harness"
+> - Mit "The model is the same for everyone" schliessen, nach "Claude Code is not the only harness"
 
 Sagen:
 - Eine globale Installation, ein Befehl zum Starten

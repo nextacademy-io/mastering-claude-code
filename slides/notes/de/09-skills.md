@@ -18,7 +18,7 @@ Sagen:
 > - Docs-Link: öffnen, bis "Skill content lifecycle" scrollen, dann zurück zu den Folien
 
 Sagen:
-- Macht Skills im großen Maßstab günstig
+- Macht Skills im grossen Massstab günstig
 - [click] Die Beschreibung eines Skills liegt in jedem Turn im Context, benutzt oder nicht — es sei denn, disable-model-invocation ist gesetzt
 - [click] Ein geladener Body bleibt normalerweise für die Session — nach einer Compaction können ältere Skill-Bodies wegfallen
 - [click] Genau das misst /skill-doctor auf der nächsten Folie — wie viele Beschreibungen du bezahlst gegenüber wie viele Bodies überhaupt geladen werden
@@ -33,8 +33,8 @@ Sagen:
 > - Kein `/skill-doctor` (braucht Claude Code v2.1.252 oder neuer)? Stattdessen die Skills-Zeile in `/context` lesen
 
 Sagen:
-- Der Bericht zeigt die Context-Kosten jedes Skills und wie oft er lief. Größe, Überschneidung oder Ladefehler zeigt er nicht: für die Größe die Ordner öffnen, mit /skills sehen, was geladen ist
-- Wird ein Skill benutzt, lädt sein kurzes SKILL.md. Die ~100 KB große AGENTS.md lädt nur, wenn Claude sie öffnet
+- Der Bericht zeigt die Context-Kosten jedes Skills und wie oft er lief. Grösse, Überschneidung oder Ladefehler zeigt er nicht: für die Grösse die Ordner öffnen, mit /skills sehen, was geladen ist
+- Wird ein Skill benutzt, lädt sein kurzes SKILL.md. Die ~100 KB grosse AGENTS.md lädt nur, wenn Claude sie öffnet
 - Im Workshop wird nichts gelöscht: die Kosten zu sehen ist die Lektion
 
 <!-- @note: commands-became-skills-nothing-broke -->
@@ -46,7 +46,7 @@ Sagen:
 Sagen:
 - Dass Commands in Skills aufgehen, macht .claude/commands/*.md-Dateien nicht kaputt
 - Sie erzeugen weiterhin denselben /command
-- Für neue Arbeit Skills bevorzugen: ein Skill ist ein Ordner, kann also Zusatzdateien mitbringen. Command-Dateien nehmen dasselbe Frontmatter — allowed-tools, context: fork — außer name und paths
+- Für neue Arbeit Skills bevorzugen: ein Skill ist ein Ordner, kann also Zusatzdateien mitbringen. Command-Dateien nehmen dasselbe Frontmatter — allowed-tools, context: fork — ausser name und paths
 
 <!-- @note: write-the-clash-feature-skill -->
 > Tun:

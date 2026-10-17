@@ -63,7 +63,7 @@ Sagen:
 Sagen:
 - [click] Code ändern, in einem ECHTEN Browser verifizieren
 - [click] Beobachten, was passiert ist: Screenshot, Payload, Konsole
-- [click] Anhand der Evidenz fixen — die Schleife schließt sich, ohne dass ein Mensch jeden Schritt erneut prüft
+- [click] Anhand der Evidenz fixen — die Schleife schliesst sich, ohne dass ein Mensch jeden Schritt erneut prüft
 - [click:5] Genau das bringt "MCP reicht über das Repo hinaus"
 - Dieselbe Schleife mit Tests hat eine Falle: Aufgefordert, einen Test grün zu machen, ändert ein Modell die Datei, die einfacher zu ändern ist — manchmal den Test. Die Spec bleibt der Massstab
 - Task 11 im Exkurs TDD fährt den ganzen Zyklus aus red, green, stop
@@ -114,7 +114,7 @@ Sagen:
 Sagen:
 - Vier Tools, unterschiedliche Aufgaben
 - [click:4] agent-browser (Vercel, Rust-CLI, Accessibility-Tree-Snapshots) — das, was die Gruppe beim Setup installiert und beim Bauen benutzt hat
-- Kompakte Snapshots gegenüber den Tool-Schemas eines MCP-Servers plus vollständigen Accessibility-Trees — Tool Search verzögert das volle Laden der Schemas standardmäßig
+- Kompakte Snapshots gegenüber den Tool-Schemas eines MCP-Servers plus vollständigen Accessibility-Trees — Tool Search verzögert das volle Laden der Schemas standardmässig
 
 <!-- @note: excursion-build-your-own-mcp-server -->
 > Tun:

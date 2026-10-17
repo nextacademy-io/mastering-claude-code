@@ -1,7 +1,7 @@
 <!-- @note: same-task-different-effort -->
 > Tun:
 > - Deep Dive im Anhang: Du kommst über den Chip auf "Flags change how a session starts" hierher
-> - In einem neuen Ordner ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält, außerhalb des Workshop-Repositorys und deines CLASH-Clones: kein Lösungsschlüssel, keine CLAUDE.md, keine Claude-Code-Hooks auf Projektebene
+> - In einem neuen Ordner ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält, ausserhalb des Workshop-Repositorys und deines CLASH-Clones: kein Lösungsschlüssel, keine CLAUDE.md, keine Claude-Code-Hooks auf Projektebene
 > - Prüfen, dass CLAUDE_CODE_EFFORT_LEVEL nicht gesetzt ist und keine maxEffortLevel-Obergrenze unter high liegt: beides kann beide Läufe auf dasselbe Level setzen
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
 >   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
@@ -10,7 +10,7 @@
 Sagen:
 - Nur eine Variable ändert sich: Effort. Gezählt werden die Findings und usage.output_tokens, nicht Ton oder Länge — Thinking wird als Output abgerechnet
 - total_cost_usd weglassen: Der zweite Lauf liest den Prompt-Präfix, den der erste gecacht hat, sein Input wirkt also günstiger
-- Die vier Findings, erst nach beiden Läufen: cancelled liefert true; `null` als Kapazität heißt unbegrenzt, wird aber zu 0; die Voll-Prüfung nutzt > statt >=; sort verändert participantIds
+- Die vier Findings, erst nach beiden Läufen: cancelled liefert true; `null` als Kapazität heisst unbegrenzt, wird aber zu 0; die Voll-Prüfung nutzt > statt >=; sort verändert participantIds
 
 <!-- @note: measure-the-extra-reasoning -->
 > Tun:

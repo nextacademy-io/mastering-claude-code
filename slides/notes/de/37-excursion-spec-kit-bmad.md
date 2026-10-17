@@ -41,7 +41,7 @@ Sagen:
 - Specs als versionierte Markdown-Dateien, die jeder Agent lesen kann
 - Python/uv-Tool, kein npm: `uv tool install specify-cli`
 - [click] BMAD v6 liefert fünf benannte Agents (Analyst, PM, Architect, Developer, UX Designer) — nicht "12+ Personas" (das ist eine v4-Zahl)
-- Schwergewichtig: standardmäßig mehrere Reviewer pro Änderung — die Token-Kosten summieren sich
+- Schwergewichtig: standardmässig mehrere Reviewer pro Änderung — die Token-Kosten summieren sich
 - Repo: bmad-code-org/BMAD-METHOD
 - Faustregel: Spec Kit, wenn du Spec-Disziplin willst, ohne Prozess-Overhead; BMAD, wenn die Organisation diese Rollen schon hat
 - BMAD zaubert dir keinen Prozess herbei, den du nicht hast

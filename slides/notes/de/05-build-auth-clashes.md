@@ -8,12 +8,12 @@ Sagen:
 <!-- @note: small-steps-beat-big-asks -->
 > Tun:
 > - Schritte 2-4 machen die Teilnehmenden selbst
-> - [click] Zeigen, wie die große Anfrage in einer Zeile scheitert oder abdriftet, dann dieselbe Arbeit in drei Schritten
+> - [click] Zeigen, wie die grosse Anfrage in einer Zeile scheitert oder abdriftet, dann dieselbe Arbeit in drei Schritten
 
 Sagen:
 - Task 03 ist der längste Build — die Lektion ist Pacing
 - [click] Jeder der drei endet mit etwas, das sich im Browser ausprobieren lässt
-- Wenn du es nicht prüfen kannst, ist der Schritt zu groß
+- Wenn du es nicht prüfen kannst, ist der Schritt zu gross
 
 <!-- @note: undo-a-step-rewind -->
 > Tun:

@@ -48,7 +48,7 @@ Sagen:
 > - Die drei Optionen lesen — benennen, nicht auswählen
 
 Sagen:
-- Im Auto-Modus entscheidet der Classifier statt dir; ein Prompt erscheint trotzdem bei Ask-Regeln, beim ersten Lesen außerhalb des Arbeitsordners oder nach wiederholten Blocks
+- Im Auto-Modus entscheidet der Classifier statt dir; ein Prompt erscheint trotzdem bei Ask-Regeln, beim ersten Lesen ausserhalb des Arbeitsordners oder nach wiederholten Blocks
 - Option zwei schreibt eine Regel in die Settings — erlaubt diese Art von Befehl ab jetzt
 - Option drei lässt dich eine Korrektur eintippen
 - Bash-Prompts können eine weitere Option zeigen, "Yes, and switch to auto mode"

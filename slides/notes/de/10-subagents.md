@@ -44,7 +44,7 @@ Sagen:
 
 Sagen:
 - Der öffentliche CLASH-main-Branch hat KEINE fehlenden Checks — alle 18 exportierten Actions haben die Checks, die sie brauchen.
-- Grüne Gates heißen nicht, dass der Code sicher ist.
+- Grüne Gates heissen nicht, dass der Code sicher ist.
 
 <!-- @note: the-auditor-subagent -->
 > Tun:
@@ -65,7 +65,7 @@ Sagen:
 Sagen:
 - Ein Agent ist eine laufende Schleife. Deine eigene Session ist auch einer: die oberste Zeile, main.
 - Ein Subagent ist eine Schleife, die main mit dem Agent-Tool startet. Er bekommt ein eigenes Context-Fenster.
-- Ein Fork ist ein Subagent, der als Kopie deines Gesprächs startet und deshalb schon alles weiß, was du gesagt hast.
+- Ein Fork ist ein Subagent, der als Kopie deines Gesprächs startet und deshalb schon alles weiss, was du gesagt hast.
 - [click] Ein Subagent aus einer Definitionsdatei: frischer Context, und nur die Tools, die seine tools:-Zeile erlaubt. Unser security-auditor, Explore und jeder Agent, den ein Plugin mitbringt, funktionieren so.
 - [click] Ein Fork: derselbe System-Prompt, dieselben Tools, dieselbe Historie. Eine tools:-Zeile gilt für ihn nicht.
 - [click] Ein Skill bekommt normalerweise keine Zeile. Er ist Anleitung, die in das Gespräch geladen wird, das ihn ausführt. Die Ausnahme ist ein Skill, der context: fork setzt: der läuft als Subagent, mit eigener Zeile. Der discover-Skill aus Task 09 setzt dieses Feld nicht, bleibt also in main und kann mit dir reden.
@@ -80,7 +80,7 @@ Sagen:
 - [click:3] Rechts: Fork vs. Fresh.
 - Ein Fork zweigt vom Parent ab, erbt das ganze Gespräch und den Prompt-Cache des Parents — günstig, wenn der geteilte Context wirklich gebraucht wird.
 - [click] Ein frischer Subagent startet kalt: keine Historie, nur die Tools, die seine Definition erlaubt, kein geteilter Cache — der erste Call kostet mehr.
-- Der Fork-Modus ist in interaktiven Sessions standardmäßig an, unter -p und im Agent SDK aus. An heißt: Claude darf selbst einen Fork starten: es fordert beim Agent-Tool den Typ fork an. Ein benannter Agent aus einer Definitionsdatei, wie security-auditor, bleibt ein frischer Subagent.
+- Der Fork-Modus ist in interaktiven Sessions standardmässig an, unter -p und im Agent SDK aus. An heisst: Claude darf selbst einen Fork starten: es fordert beim Agent-Tool den Typ fork an. Ein benannter Agent aus einer Definitionsdatei, wie security-auditor, bleibt ein frischer Subagent.
 - Einen Fork startest du selbst mit /subtask und der Aufgabe dahinter.
 - Keins von beiden ist besser — wissen, welches du aufgerufen hast und warum.
 - `/tasks` listet die Hintergrundarbeit dieser Session: laufende Subagents und Forks. Ein fertiger bleibt nur kurz in der Liste, als erledigt markiert — also reinschauen, solange er läuft oder direkt nachdem er zurückkommt.

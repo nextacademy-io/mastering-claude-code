@@ -36,8 +36,8 @@ Sagen:
 > - Wieder auf disable-model-invocation zeigen und sagen, warum: keine description in Claudes Context, „machen wir das mit TDD“ lädt den Skill also nie. Nur /tdd tut das
 
 Sagen:
-- RED muss an einer Assertion scheitern — ein Compile-Fehler heißt, der Test prüft die Verkabelung, nicht die Regel
-- STOP heißt berichten und warten, nicht durch jede verbleibende Regel durchrauschen
+- RED muss an einer Assertion scheitern — ein Compile-Fehler heisst, der Test prüft die Verkabelung, nicht die Regel
+- STOP heisst berichten und warten, nicht durch jede verbleibende Regel durchrauschen
 
 <!-- @note: update-the-test-or-fix-the-code -->
 > Tun:

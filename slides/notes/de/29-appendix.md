@@ -7,5 +7,5 @@ Sagen:
 - Der Kurs endet mit der Folie davor
 - Alles danach ist optional, in zwei Arten
 - Ein Deep Dive geht tiefer in eine Claude-Code-Mechanik
-- Ein Exkurs behandelt eine Methode außerhalb von Claude Code
+- Ein Exkurs behandelt eine Methode ausserhalb von Claude Code
 - Jeder Block öffnet über einen Chip auf einer Folie der Hauptlinie und kehrt dorthin zurück

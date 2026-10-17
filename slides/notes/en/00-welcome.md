@@ -69,7 +69,7 @@ Say:
 <!-- @note: how-this-works -->
 > Do:
 > - Don't know an answer live? Say so — ask Claude on screen ("Schauen wir doch mal was
->   Claude dazu sagt.") or take it away ("Gute Frage, hmm, das weiß ich nicht. Kennt jemand
+>   Claude dazu sagt.") or take it away ("Gute Frage, hmm, das weiss ich nicht. Kennt jemand
 >   von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
 
 Say:

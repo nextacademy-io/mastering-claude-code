@@ -65,7 +65,7 @@ Sagen:
 >   (jetzt gelistet)
 
 Sagen:
-- Zuerst außerhalb von app/actions/ — die Regel bleibt abwesend, sie ist noch nicht geladen.
+- Zuerst ausserhalb von app/actions/ — die Regel bleibt abwesend, sie ist noch nicht geladen.
   Ist sie einmal geladen, macht ein späterer themenfremder Read sie nicht wieder rückgängig —
   dieser Check beweist also nur etwas, wenn er zuerst kommt
 - Dann der passende Read — die Regel erscheint: der Ownership-Check aus dem Audit von Task 08,

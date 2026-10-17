@@ -4,7 +4,7 @@
 > - Deep Dive im Anhang: Du kommst über den Chip auf "Automate with a stop rule" oder "Deep dive: automate" hierher
 
 Sagen:
-- Bisher saßt du an der Tastatur: du hast getippt, Claude hat gearbeitet, du hast zugeschaut
+- Bisher sasst du an der Tastatur: du hast getippt, Claude hat gearbeitet, du hast zugeschaut
 - Fünf Wege, sich zu entfernen, jeder klein und echt
 - Die ersten vier machst du selbst; der fünfte braucht ein claude.ai-Abo und GitHub-Zugriff
 
@@ -26,7 +26,7 @@ Sagen:
 Sagen:
 - Concise lässt Einleitung und Schluss weg; die Arbeit darunter bleibt so gründlich wie zuvor
 - Mitten in der Session umschalten: der neue Style gilt ab deiner nächsten Nachricht
-- Die Wahl landet in .claude/settings.local.json als outputStyle; der Befehl ignoriert Groß- und Kleinschreibung, der Wert nicht
+- Die Wahl landet in .claude/settings.local.json als outputStyle; der Befehl ignoriert Gross- und Kleinschreibung, der Wert nicht
 - Ein Style ist eine Anweisung, keine Garantie; was immer passieren muss, ist ein Hook
 - Ein frischer Subagent läuft mit eigenem System-Prompt, ihn erreicht kein Style
 
@@ -130,7 +130,7 @@ Sagen:
 - Eine Cloud-Session ist Claude Code auf einer von Anthropic verwalteten VM, nicht auf deinem Laptop
 - GitHub einmal verbinden: im Browser auf claude.ai/code oder mit /web-setup in der CLI über deinen gh-Login
 - [click] Jede Session läuft in einer Umgebung: Netzwerkstufe, Env-Variablen, Setup-Skript. Standard ist Trusted: Paket-Registries, GitHub, Cloud-SDKs
-- [click] Sie pusht einen Branch; du liest den Diff und öffnest den Pull Request. Den Tab zu schließen stoppt sie nicht
+- [click] Sie pusht einen Branch; du liest den Diff und öffnest den Pull Request. Den Tab zu schliessen stoppt sie nicht
 - Dein ~/.claude und deine MCP-Server im User-Scope bleiben zu Hause — committe, was die Cloud sehen soll
 - Die Spec-Drift-Routine läuft genau in dieser Umgebung
 

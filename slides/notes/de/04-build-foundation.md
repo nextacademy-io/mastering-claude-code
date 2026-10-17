@@ -27,7 +27,7 @@ Sagen:
 - Ein Prompt ist ein Wunsch; ein Briefing ist ein Vertrag
 - [click:3] Kernpunkt: die "done when"-Zeile ist die, die Leute vergessen — genau sie hält Claude davon ab, abzuschweifen
 - "Bau mir eine Millionen-Dollar-App." Done when? "Wenn ein Livestream meiner Einfahrt drei neue Familienautos zeigt."
-- Funktioniert auch, aber niemand — weder du noch Claude — weiß, wann es fertig ist
+- Funktioniert auch, aber niemand — weder du noch Claude — weiss, wann es fertig ist
 
 <!-- @note: read-the-diff-not-the-summary -->
 > Tun:
@@ -37,7 +37,7 @@ Sagen:
 > - Claude bitten zu committen, seine Commit-Message lesen
 
 Sagen:
-- Gewohnheit früh aufbauen: nach jedem Schritt `/diff` lesen — im Fullscreen bleibt das Panel offen und aktualisiert sich selbst, und `/diff` noch einmal schließt es
+- Gewohnheit früh aufbauen: nach jedem Schritt `/diff` lesen — im Fullscreen bleibt das Panel offen und aktualisiert sich selbst, und `/diff` noch einmal schliesst es
 - Claudes Zusammenfassung liegt meistens richtig — der Diff liegt immer richtig
 - Das ist eine gute erste Stelle, um Claude eine Routineaufgabe übernehmen zu lassen
 
@@ -81,14 +81,14 @@ Sagen:
 > - Docs-Link: öffnen, bis "Explore first, then plan, then code" scrollen, dann zurück zu den Folien
 
 Sagen:
-- Evidence heißt echte Dateien, Contracts und beobachtetes Verhalten, kein Rundgang durch deinen CLASH-Clone
+- Evidence heisst echte Dateien, Contracts und beobachtetes Verhalten, kein Rundgang durch deinen CLASH-Clone
 - [click:2] Risks: was den Ansatz kippen würde
 - [click] Verification: wie jeder riskante Schritt geprüft wird
 - [click] Done ist beobachtbar. Ohne Done wächst ein Plan während der Umsetzung weiter
 
 <!-- @note: plan-or-roadmap -->
 > Tun:
-> - Fragen: Ließen sich zwei mittlere Teile einzeln reviewen, mergen oder rückgängig machen? Wenn ja, sind es Work Packages
+> - Fragen: Liessen sich zwei mittlere Teile einzeln reviewen, mergen oder rückgängig machen? Wenn ja, sind es Work Packages
 
 Sagen:
 - Ein Plan umfasst eine Änderung, die sich als Ganzes prüfen lässt
@@ -103,7 +103,7 @@ Sagen:
 Sagen:
 - Das teure Modell für die Entscheidung einsetzen; Routine-Ausführung braucht es selten
 - [click] Der frische Reviewer kann ein Subagent sein, kein zweiter Anbieter, kein zweites Tool: er greift Annahmen, fehlende Constraints und Lücken in der Verifikation an
-- [click] Die Lücken einmal schließen: ein Reviewer, der Lücken finden soll, meldet meistens welche
+- [click] Die Lücken einmal schliessen: ein Reviewer, der Lücken finden soll, meldet meistens welche
 - [click] Das Work Package einfrieren, umsetzen, verifizieren
 - Eine verwandte, experimentelle Option: /advisor lässt Claude an wichtigen Stellen ein stärkeres Modell fragen — vor der Wahl eines Ansatzes, wenn es feststeckt, bevor es "fertig" sagt. Jeder Aufruf kostet Tokens zum Preis des Advisor-Modells
 

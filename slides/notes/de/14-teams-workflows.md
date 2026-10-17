@@ -6,7 +6,7 @@
 
 Sagen:
 - Gleiches Problem, gleicher neu präparierter Branch (12-start), andere Strategie
-- Agent-Teams sind experimentell und standardmäßig aus
+- Agent-Teams sind experimentell und standardmässig aus
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Tun:
@@ -59,7 +59,7 @@ Sagen:
 - [click] Zwei Agents: ein Generator erzeugt das Ergebnis, ein Verifier prüft es
 - [click] Wenn bestanden, weiter zu Accepted; wenn nicht, geht Feedback zurück an den Generator
 - [click] Die Schleife endet, wenn der Verifier akzeptiert oder das Rundenlimit erreicht ist
-- Vage Kriterien heißen: der Verifier winkt alles durch — die Prüfungen aufschreiben
+- Vage Kriterien heissen: der Verifier winkt alles durch — die Prüfungen aufschreiben
 - Claude Code hat das eingebaut: /goal — ein kleines Modell prüft jeden Turn, schickt einen Grund zurück
 - Die fünf Namen stammen aus diesem Blogpost, nicht aus der Claude-Code-Doku. Kein Claude-Code-Feature hängt an ihnen, anders als am Schlüsselwort ultracode — die Ways-Folien geben für jeden Flow Prompts in eigenen Worten
 
@@ -137,7 +137,7 @@ Sagen:
 Sagen:
 - Eigene Worte starten einen: "use a workflow to …" — nur diese Aufgabe, Effort bleibt gleich
 - Der Prompt aus Task 12 macht genau das — kein ultracode nötig
-- `/effort ultracode`: ein Workflow für jede größere Aufgabe, die ganze Session, Effort bleibt gleich
+- `/effort ultracode`: ein Workflow für jede grössere Aufgabe, die ganze Session, Effort bleibt gleich
 - Auf Pro: Dynamic workflow size auf small, weniger als 5 Agents — ein Rat, keine Grenze
 - Nutzung sparen: erst ein Ordner, Tokens pro Agent in `/workflows`, `x` stoppt den Run
 

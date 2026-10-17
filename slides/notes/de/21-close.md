@@ -4,7 +4,7 @@
 > - Der Chip oben rechts springt in den Automate-Deep-Dive; überspringen und weitermachen, wenn die Gruppe durch ist
 
 Sagen:
-- Automatisieren heißt: Niemand korrigiert einen Fehler, während er passiert
+- Automatisieren heisst: Niemand korrigiert einen Fehler, während er passiert
 - Voice: Ein Output Style gibt jeder Antwort dieselbe Form
 - [click] Stop: /goal nennt einen Check; ein kleines Modell prüft nach jedem Turn, ob er hält, eine Turn-Obergrenze deckelt den Lauf
 - [click] Runner: Eine Background-Session oder eine Routine erledigt die Arbeit, während du wegschaust
@@ -50,6 +50,6 @@ Sagen:
 
 Sagen:
 - Ein roter Faden: sorglos behandelter Context füllt das Fenster mit Rauschen, der Agent driftet ab
-- Context als Ressource gestaltet ist der größte Hebel, den du hast
+- Context als Ressource gestaltet ist der grösste Hebel, den du hast
 - Skills, Subagents, Hooks, MCP, Workflows: jede Zeile der Karte hat diese eine Randbedingung gemanagt
 - Du schiebst dem Agenten den Context zu. Was daraus wird, verantwortest du.

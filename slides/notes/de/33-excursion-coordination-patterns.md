@@ -22,7 +22,7 @@ Sagen:
 - Eingebaut, ohne gemeinsame Datei: Claude listet deine laufenden Sessions mit ListAgents und schickt mit SendMessage. Selbst ansehen mit /list-agents. Braucht Claude Code v2.1.224, unter nativem Windows v2.1.234
 - @web ist ein Session-Name, kein Pfad: @ und die ersten Buchstaben des Namens tippen, dann die Session aus der aufklappenden Liste wählen (ab v2.1.232). Den Namen setzt man mit --name oder /rename
 - Zeile 3: eine Nachricht, wenn diese Session idle wird — kein dauerhaftes Abo
-- Keine Topics, kein Router: darum sagt die Fußnote "closest ways"
+- Keine Topics, kein Router: darum sagt die Fussnote "closest ways"
 
 <!-- @note: shared-state-one-store-no-coordinator -->
 > Tun:

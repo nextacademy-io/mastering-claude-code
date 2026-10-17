@@ -74,7 +74,7 @@ Sagen:
 - Verdrahtet unter "Stop", ohne Matcher — Stop hat kein Tool, gegen das es matchen könnte
 - Stop gatet das Ende eines TURNS, nicht einen Tool-Call
 - Das Gate hat eine Grenze: nach acht Blockierungen in Folge beendet Claude Code den Turn trotzdem (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` hebt sie an)
-- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl außerhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit dem Code des fehlgeschlagenen Befehls, meist 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
+- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl ausserhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit dem Code des fehlgeschlagenen Befehls, meist 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
 
 <!-- @note: advice-vs-law -->
 > Tun:
@@ -86,7 +86,7 @@ Sagen:
 - [click] Ein Skill ist, was du einem neuen Kollegen sagst; ein Hook ist, was die CI ablehnt
 - Wenn eine Regel in CLAUDE.md immer wieder wiederholt wird und der Agent trotzdem daran vorbeidriftet, wollte diese Regel ein Hook sein
 - Das Subsystem ist `settings.autoMode.hard_deny`, Teil vom Auto-Modus, wo ein Classifier Aktionen prüft statt du selbst — keine PreToolUse-Entscheidung
-- Außerhalb des Auto-Modus bewirkt hard_deny nichts. Was in jedem Modus blockiert, auch in bypassPermissions, ist eine permissions.deny-Regel oder ein PreToolUse-Hook
+- Ausserhalb des Auto-Modus bewirkt hard_deny nichts. Was in jedem Modus blockiert, auch in bypassPermissions, ist eine permissions.deny-Regel oder ein PreToolUse-Hook
 
 <!-- @note: security-guidance-advice-built-on-hooks -->
 > Tun:
@@ -147,24 +147,24 @@ Sagen:
 Sagen:
 - `managed-settings.json`, MDM, oder die claude.ai-Konsole — ein Admin stellt es bereit, nicht du
 - Es steht über jeder anderen Datei. Nichts, was du setzt, überschreibt es
-- `/status` nennt die aktive Managed-Quelle, du weißt also immer, was gilt
+- `/status` nennt die aktive Managed-Quelle, du weisst also immer, was gilt
 
 <!-- @note: hooks -->
 > Tun:
 > - Bestätigen, dass die Leute den kaputten Matcher nachgebaut haben, bevor es weitergeht
 > - Der "warum hat's nicht gefeuert"-Moment funktioniert nur, wenn sie die Stille selbst erlebt haben
-> - Mit `/hooks` live abschließen: ein Read-only-Browser, gruppiert nach Event — eins auswählen, um die gerade geschriebenen Hooks zu sehen
+> - Mit `/hooks` live abschliessen: ein Read-only-Browser, gruppiert nach Event — eins auswählen, um die gerade geschriebenen Hooks zu sehen
 
 
 <!-- @note: ignored-by-git-is-not-hidden -->
 > Tun:
 > - Auf Task 02 zurückverweisen: dass .env in git status fehlte, war nützlich, aber nie eine Security-Grenze
-> - Docs-Link: öffnen, auf `CLAUDE_CODE_GLOB_NO_IGNORE` und `CLAUDE_CODE_GLOB_HIDDEN` zeigen (beide nehmen die Dateien standardmäßig mit), dann zurück zu den Folien
+> - Docs-Link: öffnen, auf `CLAUDE_CODE_GLOB_NO_IGNORE` und `CLAUDE_CODE_GLOB_HIDDEN` zeigen (beide nehmen die Dateien standardmässig mit), dann zurück zu den Folien
 > - Achten auf: unter macOS, Linux und WSL sucht Claude mit find über Bash, nicht mit Glob — die beiden Variablen ändern nur Glob
 
 Sagen:
 - .gitignore beantwortet eine Frage: Soll Git diesen Pfad tracken?
-- [click] Was Claudes Tools sehen, ist eine andere Frage: Glob findet Dateien aus .gitignore und Dotfiles standardmäßig trotzdem
+- [click] Was Claudes Tools sehen, ist eine andere Frage: Glob findet Dateien aus .gitignore und Dotfiles standardmässig trotzdem
 - [click] Unser .env-Hook beobachtet nur das Read-Tool. Eine Permission-Deny-Regel auf Read stoppt auch cat, head und tail; nur die Sandbox (macOS, Linux, WSL2) stoppt grep -r und Skripte
 
 <!-- @note: tool-output-becomes-local-history -->
