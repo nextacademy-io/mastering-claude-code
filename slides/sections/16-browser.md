@@ -149,7 +149,7 @@ docs: https://code.claude.com/docs/en/mcp
 lines:
   - ".mcp.json at the project root: checked in, so the whole team gets the server."
   - "Claude Code asks once before a project server may start."
-  - "permissions.allow names single tools, never the whole server."
+  - "In permissions.allow, name single tools, not the whole server."
 ---
 
 <div class="flex flex-col gap-3 w-full max-w-3xl">
@@ -185,7 +185,7 @@ routeAlias: quick-mcp-server
 deepDive: excursion-mcp-server
 docs: https://modelcontextprotocol.io/docs/develop/build-server
 lines:
-  - "Optional: task 19 in your CLASH clone and clash-conference."
+  - "Optional, after task 16: task 19 in your CLASH clone and clash-conference."
   - "You design the tools: names, descriptions, checks."
 ---
 

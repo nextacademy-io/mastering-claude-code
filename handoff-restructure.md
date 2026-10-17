@@ -180,7 +180,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 9. New core slides from the gaps + sandbox deep dive
 - [x] 10. Next.js excursion + softer task framing
 - [x] 11. One-line gaps, maps and documentation
-- [ ] 12. Full check, PR, merge
+- [x] 12. Full check, PR, merge
 
 ## Steps
 

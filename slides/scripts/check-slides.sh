@@ -10,7 +10,10 @@ PORT=3030
 mkdir -p .check
 export AGENT_BROWSER_SESSION="$(agent-browser session id --scope worktree --prefix slidecheck)"
 
-npx slidev --port "$PORT" >.check/slidev.log 2>&1 &
+# deck.mjs composes slides.en.md (sections + notes); then run Slidev's own CLI file,
+# as deck.mjs does — `npx slidev` asks the registry for a package named "slidev"
+node scripts/deck.mjs build --skip-export >.check/deck.log 2>&1
+node node_modules/@slidev/cli/bin/slidev.mjs slides.en.md --port "$PORT" >.check/slidev.log 2>&1 &
 SLIDEV_PID=$!
 trap 'kill $SLIDEV_PID 2>/dev/null || true; agent-browser close >/dev/null 2>&1 || true' EXIT
 for _ in $(seq 1 60); do curl -sf "http://localhost:$PORT/" >/dev/null && break; sleep 1; done

@@ -95,7 +95,7 @@ Sagen:
 
 Sagen:
 - Direkt nach "Advice vs. law": hier ist ein Plugin, das ganz auf Hooks gebaut ist und trotzdem Ratschlag bleibt
-- [click] Bei jedem Edit: ein Mustervergleich für riskante Aufrufe wie eval( oder dangerouslySetInnerHTML. Kein Modellaufruf, keine Kosten
+- Bei jedem Edit: ein Mustervergleich für riskante Aufrufe wie eval( oder dangerouslySetInnerHTML. Kein Modellaufruf, keine Kosten
 - [click] Am Ende jedes Turns: ein separates Claude prüft den git-Diff dieses Turns im Hintergrund und gibt Claude seine Befunde als neuen Prompt
 - [click] Wenn Claude committet oder pusht: ein tieferes Review, das zuerst Aufrufer und Sanitizer liest. Deine eigenen Commits aus der Shell werden nicht geprüft
 - Keine der Schichten blockiert ein Schreiben oder einen Commit. Befunde kommen als Anweisungen an; der Reviewer kann etwas übersehen
@@ -122,19 +122,19 @@ Sagen:
 
 Sagen:
 - Ein sandboxed Bash-Befehl läuft trotzdem — das Betriebssystem erzwingt die Grenze, kein Prompt
-- [click] Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
-- Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
+- Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
+- [click] Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
 - Windows hat keine native Sandbox — Claude Code in WSL2 laufen lassen, um eine zu bekommen
 
 <!-- @note: choose-the-sandbox-by-what-you-risk -->
 > Tun:
 > - Docs-Link: öffnen, bis "Choose an approach" scrollen, auf die Tabelle zeigen, dann zurück zu den Folien
-> - Deep Dive, optional: Der Chip springt zu "Sandboxing in depth"; der Zurück-Chip auf seiner letzten Folie landet wieder hier
+> - Deep Dive, optional: Der Chip springt zu "Two kinds of boundary"; der Zurück-Chip auf "Enforce it for a team" landet wieder hier
 > - Überspringen und mit "Your org can lock settings down" weitermachen
 
 Sagen:
 - Die Folie davor war die Bash-Sandbox. Sie umschliesst nur Shell-Befehle: Read, Edit, MCP-Server und Hooks laufen mit deinen vollen Rechten
-- [click] Alltag auf dem eigenen Rechner: /sandbox reicht und spart Rückfragen
+- Alltag auf dem eigenen Rechner: /sandbox reicht und spart Rückfragen
 - [click] Unbeaufsichtigt, mit --dangerously-skip-permissions: das ganze Claude Code in einen Container, eine VM oder die Sandbox-Runtime packen. Dann sind auch Datei-Tools, MCP und Hooks drin
 - [click] Ein Repository, dem du nicht traust: eine eigene VM oder eine Cloud-Session
 - Auto Mode ist ein Classifier pro Aktion, keine Grenze — für unbeaufsichtigte Läufe hilft eine Grenze trotzdem

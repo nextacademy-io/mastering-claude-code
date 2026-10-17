@@ -44,7 +44,7 @@ Sagen:
 - paths ist das einzige Feld, das Claude Code aus einer Rule-Datei liest — alles andere im Frontmatter wird ohne Fehlermeldung ignoriert
 - Ein Glob trifft nach Ordner oder nach Endung: app/actions/** ist alles unter app/actions/, **/*.ts jede TypeScript-Datei
 - [click] Klammern werden ausgeklappt: lib/**/*.{ts,tsx} sind zwei Muster. Eine Liste trifft, wenn irgendein Muster trifft
-- Die Falle: Lässt sich das YAML zwischen den ----Markern nicht parsen, ignoriert Claude Code das Frontmatter und lädt die Rule überall. claude --debug zeigt den Parse-Fehler
+- Die Falle: Lässt sich das YAML zwischen den Markern --- nicht parsen, ignoriert Claude Code das Frontmatter und lädt die Rule überall. claude --debug zeigt den Parse-Fehler
 
 <!-- @note: when-a-scoped-rule-really-loads -->
 > Tun:

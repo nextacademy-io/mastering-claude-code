@@ -80,7 +80,7 @@ heading: "When a scoped rule really loads"
 routeAlias: theory-when-a-rule-loads
 lines:
   - "Claude reads, writes or edits a matching file. A cat on one counts too."
-  - "Not at launch, not on every tool use. Once loaded, it stays."
+  - "Not at launch, not on every tool use. Once loaded, it stays until /compact."
 ---
 
 <div class="flex gap-6 w-full max-w-3xl">

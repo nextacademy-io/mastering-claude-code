@@ -91,7 +91,8 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
   spread. Claude Code runs with a fixed setting; you do not tune it.
 - **Model and effort.** Land the distinction: context supplies facts, model supplies capability,
   effort supplies reasoning budget, verification supplies trust. No command on screen yet: the
-  lab that measures effort comes after print mode in Task 01.
+  optional effort lab measures it — a deep dive in the appendix, reached from the chip on "Flags
+  change how a session starts" in Task 01.
 - **Knowledge.** Trained once, on a snapshot. It does not read the internet now. If it needs
   a current fact, something has to put that fact into the prompt.
 - **No memory.** Every turn sends the whole conversation again. That is what "context" means.
@@ -142,8 +143,10 @@ Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/btw`, `/clear`, `
 Watch for: people who never press Enter on the permission prompt; people who type in the
 terminal while Claude is working (Esc stops it).
 
-Debrief after the recap: flags and print mode, then the reasoning lab ("Same task, different
-effort" and its score table), then resuming a session. For the lab, copy
+Debrief after the recap: flags, print mode, then resuming a session. The reasoning lab ("Same
+task, different effort" and its score table) is an optional deep dive: the chip on "Flags change
+how a session starts" leads in, and the back chip on "Measure the extra reasoning" returns there.
+If you run it, copy
 `workshop-artifacts/reasoning-lab/review.ts` into an empty folder outside the workshop repository
 and your CLASH clone, so neither run sees an answer key, a CLAUDE.md or their Claude Code hooks.
 Unset `CLAUDE_CODE_EFFORT_LEVEL` (it overrides `--effort`), then run the same prompt on the same
@@ -452,7 +455,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 ### Task 19 — Build your own MCP
 
 - Excursion in the appendix. Reach it from the chip on "Excursion: build your own MCP server" at
-  the end of the browser block.
+  the end of the browser block — but only after task 16: its second half calls the server
+  through the Agent SDK. After the Agent SDK block, open `/excursion-mcp-server` directly.
 - Task 19 is about design. CLASH's `19-start` hands participants a running server: the plumbing
   and one finished tool, `list_upcoming_clashes`. They design the other three at the three
   marked places in `mcp/server.ts`: `find_venue`, `create_clash` and `cancel_clash`, in six
@@ -525,7 +529,8 @@ after it, your call; the close slides come right after the capstone in the deck.
 5. Finish on: *Context is king. You push it, you own it.*
 
 If anyone asks what the workshop leaves out: Channels push events into a running session, and
-Computer Use lets Claude click native apps; `/artifacts` publishes a page on claude.ai and
+Computer Use lets Claude click native apps; ask Claude for an artifact and it publishes a private
+page on claude.ai (`/artifacts` lists them), and
 `/voice` adds dictation. The note on the last slide carries that line. Do not let it dilute the
 close.
 

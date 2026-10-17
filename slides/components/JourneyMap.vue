@@ -53,5 +53,5 @@ const beltColor: Record<string, string> = {
 <style scoped>
 .journey-part { transition: border-color var(--na-duration-normal) var(--na-ease-out); }
 .journey-part--active { border-color: var(--na-accent-500); box-shadow: var(--na-shadow-accent); }
-.journey-optional { color: var(--na-fg-muted); opacity: 0.6; border-top: 1px dashed var(--na-zinc-600); }
+.journey-optional { color: var(--na-fg-muted); opacity: 0.85; border-top: 1px dashed var(--na-zinc-600); }
 </style>

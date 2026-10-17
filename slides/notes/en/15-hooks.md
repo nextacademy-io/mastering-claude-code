@@ -95,7 +95,7 @@ Say:
 
 Say:
 - Right after "advice vs. law": here is a plugin built entirely on hooks that is still advice
-- [click] Per edit: a pattern match for risky calls like eval( or dangerouslySetInnerHTML. No model call, no cost
+- Per edit: a pattern match for risky calls like eval( or dangerouslySetInnerHTML. No model call, no cost
 - [click] At the end of each turn: a separate Claude reviews the git diff of that turn, in the background, and re-prompts Claude with what it found
 - [click] When Claude commits or pushes: a deeper review that reads callers and sanitizers first. Your own commits from the shell are not reviewed
 - None of the layers blocks a write or a commit. Findings arrive as instructions; the reviewer can miss things
@@ -122,19 +122,19 @@ Say:
 
 Say:
 - A sandboxed Bash command still runs — the operating system enforces the limit, not a prompt
-- [click] Filesystem: write access stays inside the project and a per-user temp folder. Read access is wide, minus what you deny
-- Network: nothing is reachable until you approve a host, once, then it is remembered
+- Filesystem: write access stays inside the project and a per-user temp folder. Read access is wide, minus what you deny
+- [click] Network: nothing is reachable until you approve a host, once, then it is remembered
 - Windows has no native sandbox — run Claude Code inside WSL2 to get one
 
 <!-- @note: choose-the-sandbox-by-what-you-risk -->
 > Do:
 > - Docs link: open it, scroll to "Choose an approach", point at the table, then back to the slides
-> - Deep dive, optional: the chip jumps to "Sandboxing in depth"; the back chip on its last slide lands here again
+> - Deep dive, optional: the chip jumps to "Two kinds of boundary"; the back chip on "Enforce it for a team" lands here again
 > - Skip it and go on with "Your org can lock settings down"
 
 Say:
 - The slide before was the Bash sandbox. It wraps shell commands only: Read, Edit, MCP servers and hooks run with your full access
-- [click] Everyday work on your own machine: /sandbox is enough, and it saves prompts
+- Everyday work on your own machine: /sandbox is enough, and it saves prompts
 - [click] Unattended, with --dangerously-skip-permissions: put all of Claude Code inside a container, a VM or the sandbox runtime. Then file tools, MCP and hooks are inside too
 - [click] A repository you don't trust: a dedicated VM, or a cloud session
 - Auto mode is a classifier per action, not a boundary — a boundary still helps for unattended runs

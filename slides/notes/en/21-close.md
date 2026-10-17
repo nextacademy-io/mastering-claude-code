@@ -46,7 +46,7 @@ Say:
 <!-- @note: context-is-king-you-push-it-you-own-it -->
 > Do:
 > - The close — two lines, no diagram
-> - If anyone asks what the workshop left out: Channels push events into a running session, and Computer use lets Claude click native apps. /artifacts publishes a session's output as a live, private page on claude.ai; /voice adds dictation
+> - If anyone asks what the workshop left out: Channels push events into a running session, and Computer use lets Claude click native apps. Ask Claude for an artifact and it publishes a live, private page on claude.ai, and /artifacts lists them again; /voice adds dictation
 
 Say:
 - One throughline: careless context fills the window with noise and the agent drifts

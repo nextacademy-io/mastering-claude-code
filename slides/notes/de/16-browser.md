@@ -103,7 +103,7 @@ Sagen:
 > Tun:
 > - Startpunkt: 14-start, npm run dev läuft, acht geseedete Logins — Anna tritt bei, eine weitere Person hostet
 > - Zwei Hälften: erst Tests, dann Performance
-> - Übergabe an tasks/14-browser-loop.md — eine Folie übrig, wenn sie zurück sind
+> - Übergabe an tasks/14-browser-loop.md — zwei Folien übrig, wenn sie zurück sind: der Browser-Vergleich, dann der Pointer auf den MCP-Exkurs
 
 <!-- @note: four-browser-tools-one-comparison -->
 > Tun:
@@ -121,6 +121,7 @@ Sagen:
 > - Exkurs, optional: Der Chip springt zu "Build your own MCP"; der Zurück-Chip auf dem Recap von Task 19 landet wieder hier
 > - Docs-Link: der TypeScript-Server aus dem MCP-Tutorial, auf dem Task 19 aufbaut
 > - Überspringen und mit "Letting go of the wheel" weitermachen
+> - Die zweite Hälfte ruft den Server über das Agent SDK auf, das erst Task 16 einführt. Den Chip hier also überspringen; nach dem Agent-SDK-Block /excursion-mcp-server direkt öffnen
 
 Sagen:
 - Bisher haben wir Server benutzt, die andere geschrieben haben

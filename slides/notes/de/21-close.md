@@ -46,7 +46,7 @@ Sagen:
 <!-- @note: context-is-king-you-push-it-you-own-it -->
 > Tun:
 > - Der Schluss — zwei Zeilen, kein Diagramm
-> - Falls jemand fragt, was der Workshop auslässt: Channels schieben Events in eine laufende Session, und Computer Use lässt Claude native Apps bedienen. /artifacts veröffentlicht das Ergebnis einer Session als private Live-Seite auf claude.ai; /voice ergänzt Diktieren
+> - Falls jemand fragt, was der Workshop auslässt: Channels schieben Events in eine laufende Session, und Computer Use lässt Claude native Apps bedienen. Bittet man Claude um ein Artifact, veröffentlicht es eine private Live-Seite auf claude.ai, und /artifacts listet sie wieder auf; /voice ergänzt Diktieren
 
 Sagen:
 - Ein roter Faden: sorglos behandelter Context füllt das Fenster mit Rauschen, der Agent driftet ab

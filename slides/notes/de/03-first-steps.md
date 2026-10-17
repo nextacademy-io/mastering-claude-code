@@ -134,7 +134,7 @@ Sagen:
 Sagen:
 - Das ist es, was ein Script oder ein anderes Programm aufruft — keine Terminal-UI, kein Hin und Her
 - --output-format json gibt dir etwas, das du in ein anderes Tool pipen kannst
-- --output-format stream-json gibt während des Laufs ein JSON-Event pro Zeile aus — für ein Skript, das Fortschritt will statt einer einzigen Antwort am Ende
+- --output-format stream-json, zusammen mit --verbose, gibt während des Laufs ein JSON-Event pro Zeile aus — für ein Skript, das Fortschritt will statt einer einzigen Antwort am Ende
 - Die Regel "nie claude -p in CI" aus dem GitHub-Actions-Modul betrifft genau den einen YAML-Schritt, nicht das hier
 
 <!-- @note: pick-up-where-you-left-off -->

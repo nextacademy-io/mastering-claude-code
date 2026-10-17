@@ -134,7 +134,7 @@ Say:
 Say:
 - This is what a script or another program calls — no terminal UI, no back-and-forth
 - --output-format json gives you something you can pipe into another tool
-- --output-format stream-json prints one JSON event per line while the run goes on — for a script that wants progress, not one final answer
+- --output-format stream-json, together with --verbose, prints one JSON event per line while the run goes on — for a script that wants progress, not one final answer
 - The "never claude -p in CI" rule from the GitHub Actions module is about that one YAML step, not this
 
 <!-- @note: pick-up-where-you-left-off -->
