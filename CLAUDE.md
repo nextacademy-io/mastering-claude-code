@@ -39,7 +39,8 @@ Target codebase: `https://github.com/pawsaw/clash` (Next.js 16 / React 19 / Pris
    `/name` and old command files keep working, but skills are the recommended path for new work;
    a project rule in `.claude/rules/*.md` reads only the `paths` frontmatter field — anything else there is ignored without an
    error — and a rule with no `paths` loads unconditionally, at launch, same priority as `.claude/CLAUDE.md`, while a
-   `paths`-scoped rule loads only when Claude's Read tool matches the glob, not on every tool use; a skill's `context: fork`
+   `paths`-scoped rule loads only when Claude reads, writes or edits a matching file (the Read, Write or Edit tool, or a
+   Bash read such as `cat` on one file), not at launch and not on every tool use; a skill's `context: fork`
    field runs it as a subagent with the skill body as its prompt, and `disable-model-invocation: true` blocks Claude from
    auto-triggering the skill while explicit `/name` invocation still works.
 8. **File work in this repo uses Read, Write, Edit, Grep and Glob — never a shell command that reads,

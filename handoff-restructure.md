@@ -176,7 +176,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 5. Example Mapping excursion + rescued mechanics
 - [x] 6. TDD excursion + rescued mechanics
 - [x] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
-- [ ] 8. Path-scoped rules: expand the core block
+- [x] 8. Path-scoped rules: expand the core block
 - [ ] 9. New core slides from the gaps + sandbox deep dive
 - [ ] 10. Next.js excursion + softer task framing
 - [ ] 11. One-line gaps, maps and documentation
@@ -293,7 +293,9 @@ keeps only "Orchestrate and let go". Apply the navigation mechanism.
    ignored without an error;
 4. when a scoped rule really loads — only when Claude's Read tool matches the glob, not on every
    tool use; a `/context` before-and-after demo.
-Every fact is hard rule 7 in CLAUDE.md — use it verbatim in substance. Update task 10's
+Every fact is hard rule 7 in CLAUDE.md — use it verbatim in substance. **Corrected in step 8**:
+the memory docs now say a scoped rule loads on Read, Write or Edit of a matching file, or a Bash
+read such as `cat` — not only on Read. Hard rule 7, task 10 and the slides now say so. Update task 10's
 `learn:` items, its Do this / Check where the new demo fits, and reword the line "Path-scoped
 rules come in task 10" on "Personal rules follow you" only if it no longer reads right.
 
