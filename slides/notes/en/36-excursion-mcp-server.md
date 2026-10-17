@@ -114,7 +114,7 @@ Say:
 > - Hand off to tasks/19-build-your-own-mcp.md: steps 1 to 6 the server in your CLASH clone, 7 to 10 clash-conference on localhost:3001
 > - Watch for: console.log in the server, refuse() when find_venue finds nothing, a write before its checks, a delete without the owner check, no restart after a new tool
 > - Map demo: CLASH's map on localhost:3000/map, reload after every change. Create → the clash appears; same create again → Duplicate, still one; cancel or unpublish → gone
-> - Afterwards the back chip returns to "Excursion: build your own MCP server"; the next slide is "Letting go of the wheel"
+> - Afterwards the back chip returns to "Excursion: build your own MCP server"; the next slide is "Task 17 — Capstone"
 
 Say:
 - "Now you": a fifth tool list_venues, ask-clash.mts from Task 16 pointed at this server, a refusal Claude can recover from on its own

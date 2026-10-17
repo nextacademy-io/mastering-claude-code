@@ -103,7 +103,7 @@ Sagen:
 > Tun:
 > - Startpunkt: 14-start, npm run dev läuft, acht geseedete Logins — Anna tritt bei, eine weitere Person hostet
 > - Zwei Hälften: erst Tests, dann Performance
-> - Übergabe an tasks/14-browser-loop.md — zwei Folien übrig, wenn sie zurück sind: der Browser-Vergleich, dann der Pointer auf den MCP-Exkurs
+> - Übergabe an tasks/14-browser-loop.md — eine Folie übrig, wenn sie zurück sind: der Browser-Vergleich
 
 <!-- @note: four-browser-tools-one-comparison -->
 > Tun:
@@ -115,15 +115,3 @@ Sagen:
 - Vier Tools, unterschiedliche Aufgaben
 - [click:4] agent-browser (Vercel, Rust-CLI, Accessibility-Tree-Snapshots) — das, was die Gruppe beim Setup installiert und beim Bauen benutzt hat
 - Kompakte Snapshots gegenüber den Tool-Schemas eines MCP-Servers plus vollständigen Accessibility-Trees — Tool Search verzögert das volle Laden der Schemas standardmässig
-
-<!-- @note: excursion-build-your-own-mcp-server -->
-> Tun:
-> - Exkurs, optional: Der Chip springt zu "Build your own MCP"; der Zurück-Chip auf dem Recap von Task 19 landet wieder hier
-> - Docs-Link: der TypeScript-Server aus dem MCP-Tutorial, auf dem Task 19 aufbaut
-> - Überspringen und mit "Letting go of the wheel" weitermachen
-> - Die zweite Hälfte ruft den Server über das Agent SDK auf, das erst Task 16 einführt. Den Chip hier also überspringen; nach dem Agent-SDK-Block /excursion-mcp-server direkt öffnen
-
-Sagen:
-- Bisher haben wir Server benutzt, die andere geschrieben haben
-- Task 19 baut einen für CLASH, in deinem CLASH-Clone, und ruft ihn aus clash-conference auf
-- Das ist MCP-Entwicklung, nicht Claude Code — was Claude Code von dir braucht, hast du schon gesehen: hinzufügen, teilen, einzelne Tools erlauben

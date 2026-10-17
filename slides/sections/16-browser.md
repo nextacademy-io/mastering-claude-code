@@ -178,14 +178,3 @@ lines:
 
 <G17BrowserToolComparison />
 
----
-layout: concept
-heading: "Excursion: build your own MCP server"
-routeAlias: quick-mcp-server
-deepDive: excursion-mcp-server
-docs: https://modelcontextprotocol.io/docs/develop/build-server
-lines:
-  - "Optional, after task 16: task 19 in your CLASH clone and clash-conference."
-  - "You design the tools: names, descriptions, checks."
----
-
