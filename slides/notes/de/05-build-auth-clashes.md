@@ -31,7 +31,7 @@ Sagen:
 > - Schritte 8-9 machen die Teilnehmenden selbst
 > - Nach den Auth- und Shell-Schritten live /context ausführen, die echten Bänder lesen
 > - [click] /compact ausführen, dann noch einmal /context: vergleichen
-> - In /context zählen Tool-Ergebnisse zu Messages; die Tool-Bänder sind Tool-Definitionen und bleiben nach /compact
+> - Nach /compact wird das Gespräch samt Tool-Ausgaben zu einer Zusammenfassung. System-Prompt, CLAUDE.md, Memory und MCP-Tools laden neu; bis zu fünf zuletzt geänderte Dateien werden neu gelesen
 > - Optional: Docs-Link, bis "Manage context proactively" scrollen, für /clear vs. /compact
 
 Sagen:

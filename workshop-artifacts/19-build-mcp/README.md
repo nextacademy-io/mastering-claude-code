@@ -63,13 +63,9 @@ It creates one clash, "MCP Hacknight", cancels it through `cancel_clash`, and re
 claude mcp list
 ```
 
-Expected line:
+You see `clash` listed with its command `npx tsx mcp/server.ts` and the status `✔ Connected`.
 
-```txt
-clash: npx tsx mcp/server.ts - ✔ Connected
-```
-
-Before you approve the server the same line ends with `⏸ Pending approval (run \`claude\` to approve)`.
+Before you approve the server the status is `⏸ Pending approval (run \`claude\` to approve)`.
 
 ## Least privilege
 

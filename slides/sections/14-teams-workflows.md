@@ -210,7 +210,7 @@ routeAlias: theory-workflow-phases
 docs: https://code.claude.com/docs/en/workflows#watch-the-run
 lines:
   - "phase('Review') groups the agents that follow under one title."
-  - "The same titles in meta.phases. /workflows shows agents and tokens per phase."
+  - "The same titles in meta.phases. /workflows: agents per phase, tokens per agent."
   - "parallel() waits for all. pipeline() runs one agent per item in a list."
 ---
 

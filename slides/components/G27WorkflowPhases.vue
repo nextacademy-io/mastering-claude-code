@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // G27 — Workflow phases. Left: the script's meta.phases list (one object per
 // phase, each with a title) and its phase() calls. Right: the /workflows
-// progress view, one row per phase with an agent count and a token pill (the
-// real view also has a time column; the deck never shows clock values). Agent
-// counts mirror G09's six action files; the token figures are placeholders —
-// the live run shows the real ones.
+// progress view, one row per phase with an agent count and its state (the
+// real view also has a time column, and shows tokens per agent, not per
+// phase; the deck never shows clock values). Agent counts mirror G09's six
+// action files.
 type Phase = 'Discover' | 'Review' | 'Verify'
 type Line = { text: string; kind: 'code' | 'call' | 'comment' | 'gap'; indent?: 1 | 2; phase?: Phase }
 const script: Line[] = [
@@ -22,10 +22,10 @@ const script: Line[] = [
   { text: "phase('Verify')", kind: 'call', phase: 'Verify' },
   { text: '// parallel(): all refuters, wait for all', kind: 'comment' },
 ]
-const phases: { title: Phase; agents: string; tokens: string; state: 'done' | 'running' }[] = [
-  { title: 'Discover', agents: '1 agent', tokens: '3k tokens', state: 'done' },
-  { title: 'Review', agents: '6 agents', tokens: '41k tokens', state: 'done' },
-  { title: 'Verify', agents: '6 agents', tokens: '38k tokens', state: 'running' },
+const phases: { title: Phase; agents: string; state: 'done' | 'running' }[] = [
+  { title: 'Discover', agents: '1 agent', state: 'done' },
+  { title: 'Review', agents: '6 agents', state: 'done' },
+  { title: 'Verify', agents: '6 agents', state: 'running' },
 ]
 const L = { x: 10, y: 10, w: 420, h: 380 }
 const R = { x: 560, y: 10, w: 390, h: 380 }
@@ -74,10 +74,8 @@ const codeColor = (kind: Line['kind']) =>
         <circle :cx="R.x + 34" :cy="rowY(i) + 26" r="5" :fill="p.state === 'done' ? 'var(--na-success-500)' : 'var(--na-accent-500)'" />
         <text :x="R.x + 48" :y="rowY(i) + 31" fill="var(--na-fg)" font-weight="700" style="font-size:15px">{{ p.title }}</text>
         <text :x="R.x + 48" :y="rowY(i) + 56" fill="var(--na-fg-muted)" style="font-size:14px">{{ p.agents }} · {{ p.state }}</text>
-        <rect :x="R.x + R.w - 144" :y="rowY(i) + 23" width="116" height="28" rx="14" fill="var(--na-primary-900)" stroke="var(--na-primary-700)" />
-        <text :x="R.x + R.w - 86" :y="rowY(i) + 42" text-anchor="middle" fill="var(--na-primary-100)" font-weight="600" style="font-size:13px">{{ p.tokens }}</text>
       </g>
-      <text :x="R.x + R.w / 2" :y="R.y + R.h - 18" text-anchor="middle" fill="var(--na-fg-muted)" font-family="'JetBrains Mono', monospace" style="font-size:13px">Enter drill in · p pause · x stop · s save</text>
+      <text :x="R.x + R.w / 2" :y="R.y + R.h - 18" text-anchor="middle" fill="var(--na-fg-muted)" font-family="'JetBrains Mono', monospace" style="font-size:13px">Enter tokens/agent · p pause · x stop · s save</text>
     </g>
 
     <!-- stage 3: one phase() call, one row -->

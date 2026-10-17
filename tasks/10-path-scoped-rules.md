@@ -91,7 +91,7 @@ skill, its resolved spec, and the ownership-check fix restored, no project rules
 
 ## Go further
 
-Compare with `workshop-artifacts/10-path-scoped-rules/` in the workshop repository.
+Compare with [`workshop-artifacts/10-path-scoped-rules/`](../workshop-artifacts/10-path-scoped-rules/) in the workshop repository.
 
 ## Links
 

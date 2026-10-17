@@ -45,7 +45,7 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    description: Add a complete feature to CLASH, from Prisma model through an
      authorized Server Action to a rendered page. Use when adding or extending
      a user-facing feature in this codebase.
-   allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *) Bash(npx prisma *) Bash(npx tsc *)
+   allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *), Bash(npx prisma *), Bash(npx tsc *)
    ---
    ```
 4. Write the body as eleven steps, the last one verifies. Keep each step short. This is the
@@ -119,7 +119,7 @@ personal-only). Your own `.claude/skills/clash-feature/` is not — that is what
 
 ## Go further
 
-Compare your skill with `workshop-artifacts/07-clash-feature-skill/SKILL.md` in the workshop repository.
+Compare your skill with [`workshop-artifacts/07-clash-feature-skill/SKILL.md`](../workshop-artifacts/07-clash-feature-skill/SKILL.md) in the workshop repository.
 Then test your description: in a fresh session, ask for a small feature without typing `/clash-feature`, and see whether Claude loads the skill by itself.
 To share the plugin with your team, list it in a `.claude-plugin/marketplace.json` so they install it by name, and test it with `claude plugin eval`.
 

@@ -42,8 +42,8 @@ Say:
 <!-- @note: four-sizes-four-jobs -->
 > Do:
 > - If there is a tokenizer or /model picker handy, show it live
-> - Pro and standard Team seats: every Fable request runs on paid usage credits, not the plan's limits
-> - Max and premium seats: included up to half the plan's weekly usage limit, and it uses that limit up faster
+> - Whether a Fable request bills to usage credits or to the plan's included usage depends on your plan and seat tier. As of October 2026: Pro and standard Team seats pay every Fable request from usage credits; Max and premium seats include Fable up to half the weekly usage limit (support article "Claude Fable models on your plan")
+> - In an interactive session, Claude Code shows a consent prompt before the first Fable request that bills usage credits
 > - Where it costs extra, the /model picker shows "Requires usage credits" on the Fable row
 
 Say:
@@ -64,7 +64,7 @@ Say:
 - [click] Model: capability
 - [click] Effort: reasoning spent on this task, never a fix for missing context or evidence
 - [click] Verification: how you will know it worked
-- Speed is a different knob: /fast runs the same Opus model up to 2.5 times faster at a higher price per token. A lower effort trades quality for speed instead. Research preview, paid from extra usage
+- Speed is a different knob: /fast runs the same Opus model up to 2.5 times faster at a higher price per token. A lower effort trades quality for speed instead. Research preview, paid from usage credits, not from the plan's included usage
 
 <!-- @note: spend-effort-where-it-matters -->
 > Do:

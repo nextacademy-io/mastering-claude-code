@@ -15,7 +15,7 @@ workshop wifi. If something fails, see the table at the end.
 | agent-browser | `agent-browser --version` | `npm install -g agent-browser && agent-browser install`, then see "Add the agent-browser skill" below |
 | GitHub CLI (Part II, IV) | `gh --version` | https://cli.github.com then `gh auth login` |
 
-Claude Code must be **2.1.252 or newer**. Older builds miss `/workflow-authoring` and `/skill-doctor`.
+Claude Code must be **2.1.252 or newer**. Older builds miss `/skill-doctor`, and builds before 2.1.248 also miss `/workflow-authoring`.
 
 ### Install Claude Code
 
@@ -122,7 +122,7 @@ Use **Anna** unless a task says otherwise.
 
 ## 5. Two settings people forget
 
-Both are off by default. Both fail silently if you skip them.
+Agent teams are off by default on every plan. Dynamic workflows are off by default on Pro; on other paid plans the row may already be on, so check it. Both fail silently if you skip them.
 
 ### 5a. Turn dynamic workflows on
 
@@ -150,7 +150,8 @@ Agent teams are experimental. Add this to `~/.claude/settings.json`:
 ```
 
 If the file already has an `env` block, add the key inside it. Restart Claude Code.
-Without this flag, task 12 silently spawns ordinary subagents instead of a team.
+Without this flag, task 12 gets no team: Claude does not spawn or propose teammates. Subagents
+appear in the same panel, so the panel alone does not prove a team formed.
 If you would rather not enable an experimental flag, you can watch that part.
 
 ## 6. Pre-install the MCP servers
@@ -243,15 +244,15 @@ npm install
 
 | Symptom | Fix |
 |---|---|
-| Anything not covered below | Run `/doctor` inside Claude Code (or `claude doctor` in your terminal if Claude Code does not start at all) — it checks your installation and settings, reports what it finds, and asks before it fixes anything |
+| Anything not covered below | Run `/doctor` inside Claude Code — it checks your installation, settings and extensions, reports what it finds, and asks before it fixes anything. If Claude Code does not start at all, run `claude doctor` in your terminal instead: it prints installation and settings checks and changes nothing |
 | `Shift+Tab` does nothing (Windows) | Known Node/Bun quirk. Use `Alt+M` to cycle permission modes instead |
 | `SESSION_SECRET environment variable is not set.` | Step 3: create CLASH's `.env` |
 | `Cannot find module '@/lib/generated/prisma'` | Run `npm install` again (it runs `prisma generate`) |
 | `npx tsc --noEmit` fails right after a checkout | Same: the Prisma client has not been generated yet |
 | Login fails for every user | Run `npm run db:seed` |
 | Map tiles are blank | Expected without network. The rest of CLASH works offline |
-| No workflow option in `/config` | Upgrade Claude Code to 2.1.252 or newer |
-| Agent team behaves like plain subagents | Step 5b: set the flag and restart Claude Code |
+| No **Dynamic workflows** row in `/config` | Claude Code hides the row while a source other than your user settings sets `enableWorkflows`, or sets `disableWorkflows` to `true`. Check your other settings files for those keys |
+| No team forms in task 12, only subagents | Step 5b: set the flag and restart Claude Code |
 | `/skills` does not list `agent-browser` | The link into `~/.claude/skills/` is missing. macOS, Linux or WSL: `ln -s ~/.agents/skills/agent-browser ~/.claude/skills/agent-browser`. Windows, in PowerShell: `New-Item -ItemType Junction -Path $HOME\.claude\skills\agent-browser -Target $HOME\.agents\skills\agent-browser` (a junction, not a symlink — no Developer Mode or admin shell needed) |
 
 ## A note on usage limits

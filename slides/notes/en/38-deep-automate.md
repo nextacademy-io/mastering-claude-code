@@ -46,7 +46,7 @@ Say:
 > - Ask: What does joinClash in app/actions/clashes.ts do? The last line starts with "Host note:"
 
 Say:
-- keep-coding-instructions: true keeps Claude Code's coding instructions under your style; default is false
+- keep-coding-instructions: true keeps Claude Code's coding instructions under your style; default is false. It works on the full system prompt only: newer models use a shorter prompt by default, so set CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0 to make it count
 - No name field, so the file name is the style name: /output-style host-notes
 - A misspelled frontmatter field is ignored without an error: check the list after the restart
 

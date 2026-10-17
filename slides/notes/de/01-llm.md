@@ -42,8 +42,8 @@ Sagen:
 <!-- @note: four-sizes-four-jobs -->
 > Tun:
 > - Falls ein Tokenizer oder /model-Picker zur Hand ist, live zeigen
-> - Pro und Standard-Seats im Team-Plan: jede Fable-Anfrage läuft über kostenpflichtige Usage Credits, nicht über das Plan-Limit
-> - Max und Premium-Seats: enthalten bis zur Hälfte des wöchentlichen Plan-Limits, und es verbraucht das Limit schneller
+> - Ob eine Fable-Anfrage über Usage Credits oder über das im Plan enthaltene Kontingent läuft, hängt von Plan und Seat-Stufe ab. Stand Oktober 2026: Pro und Standard-Seats im Team-Plan zahlen jede Fable-Anfrage aus Usage Credits; Max und Premium-Seats haben Fable bis zur Hälfte des Wochenlimits inklusive (Support-Artikel „Claude Fable models on your plan“)
+> - In einer interaktiven Session zeigt Claude Code vor der ersten Fable-Anfrage, die Usage Credits kostet, eine Zustimmungsabfrage
 > - Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
 
 Sagen:
@@ -64,7 +64,7 @@ Sagen:
 - [click] Modell: Fähigkeit
 - [click] Effort: Reasoning für diese Aufgabe, nie ein Ersatz für fehlenden Context oder fehlende Belege
 - [click] Verifikation: woran du erkennst, dass es funktioniert hat
-- Tempo ist ein anderer Regler: /fast lässt dasselbe Opus-Modell bis zu 2,5 Mal schneller laufen, zu einem höheren Preis pro Token. Weniger Effort tauscht dagegen Qualität gegen Tempo. Research Preview, bezahlt aus zusätzlicher Nutzung
+- Tempo ist ein anderer Regler: /fast lässt dasselbe Opus-Modell bis zu 2,5 Mal schneller laufen, zu einem höheren Preis pro Token. Weniger Effort tauscht dagegen Qualität gegen Tempo. Research Preview, bezahlt aus Usage Credits, nicht aus dem im Plan enthaltenen Kontingent
 
 <!-- @note: spend-effort-where-it-matters -->
 > Tun:

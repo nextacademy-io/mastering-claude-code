@@ -150,7 +150,7 @@ branch: "01-start"
 layout: concept
 heading: "Flags change how a session starts"
 routeAlias: quick-effort-lab
-deepDive: theory-effort-lab
+deepDive: deep-effort-lab
 docs: https://code.claude.com/docs/en/cli-reference
 lines:
   - "--model, --settings — one-off overrides, nothing saved."

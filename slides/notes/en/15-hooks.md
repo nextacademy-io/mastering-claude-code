@@ -123,7 +123,7 @@ Say:
 Say:
 - A sandboxed Bash command still runs — the operating system enforces the limit, not a prompt
 - Filesystem: write access stays inside the project and a per-user temp folder. Read access is wide, minus what you deny
-- [click] Network: nothing is reachable until you approve a host, once, then it is remembered
+- [click] Network: nothing is reachable by default. In manual mode a new host prompts you. In auto mode Claude names the hosts a command needs on the command itself, the classifier reviews that list, and it opens those hosts for that one command only
 - Windows has no native sandbox — run Claude Code inside WSL2 to get one
 
 <!-- @note: choose-the-sandbox-by-what-you-risk -->

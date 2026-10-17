@@ -46,7 +46,7 @@ Sagen:
 > - Fragen: What does joinClash in app/actions/clashes.ts do? Die letzte Zeile beginnt mit "Host note:"
 
 Sagen:
-- keep-coding-instructions: true behält die Coding-Anweisungen von Claude Code unter deinem Style; Standard ist false
+- keep-coding-instructions: true behält die Coding-Anweisungen von Claude Code unter deinem Style; Standard ist false. Es wirkt nur beim vollen System-Prompt: neuere Modelle nutzen standardmässig einen kürzeren, also CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0 setzen, damit es zählt
 - Kein name-Feld, also ist der Dateiname der Style-Name: /output-style host-notes
 - Ein falsch geschriebenes Frontmatter-Feld wird ohne Fehler ignoriert: nach dem Neustart die Liste prüfen
 

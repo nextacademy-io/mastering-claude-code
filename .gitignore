@@ -10,6 +10,10 @@ slides/dist/
 slides/.slidev/
 
 input
+# Fact checks of the workshop transcripts and the docs fact review (local only)
+fact-checks/
+# Effort-lab runs recorded by workshop-artifacts/20-reasoning-lab/measure.mjs
+workshop-artifacts/20-reasoning-lab/runs/
 .claude/.slides-deploy-hash
 .claude/.deploy-slides.log
 .claude/.deploy-slides.lock

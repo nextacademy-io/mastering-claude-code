@@ -22,7 +22,7 @@ nobody telling you which prompt to type. This is what your normal day looks like
 
 ## Do this
 
-1. Pick one brief from `workshop-artifacts/17-capstone/README.md` in the workshop repository.
+1. Pick one brief from [`workshop-artifacts/17-capstone/README.md`](../workshop-artifacts/17-capstone/README.md) in the workshop repository.
    - **A** Clash comments.
    - **B** Venue favourites, done properly.
    - **C** Weekly digest.
@@ -55,7 +55,7 @@ nobody telling you which prompt to type. This is what your normal day looks like
 
 ## Check
 
-Use the checklist at the end of `workshop-artifacts/17-capstone/README.md`. Every box.
+Use the checklist at the end of [`workshop-artifacts/17-capstone/README.md`](../workshop-artifacts/17-capstone/README.md). Every box.
 
 ## Stuck?
 

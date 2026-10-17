@@ -68,7 +68,7 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    ```
    Use the clash server: what is coming up?
    ```
-   You see Claude call `clash - list_upcoming_clashes (MCP)` and list the seeded clashes that
+   You see Claude call `list_upcoming_clashes`, labeled with the `clash` server name, and list the seeded clashes that
    are still ahead, each with date, title, venue and id. Approve the call if Claude Code asks.
    Open `mcp/server.ts` and find what is already there: the path to `dev.db` built from the
    file, `log()` writing to stderr, `reply()` and `refuse()`, the `registerTool` call for
@@ -90,7 +90,7 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    ```
    Use the clash server: which venues match holzmarkt?
    ```
-   You see Claude call `clash - find_venue (MCP)` and answer with Holzmarkt 25, its id and its
+   You see Claude call `find_venue`, labeled with the `clash` server name, and answer with Holzmarkt 25, its id and its
    coordinates, although you typed the name in lower case.
 3. Design the write tool, `create_clash`. Send this prompt.
    ```
@@ -150,8 +150,8 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    ```
    Create a clash "MCP Hacknight" at Holzmarkt 25, hosted by anna.schmidt@example.com. Pick any date and time in the future.
    ```
-   You see Claude call `clash - find_venue (MCP)` first, because the description of `venueId`
-   sent it there, then `clash - create_clash (MCP)`. Approve that one call, not for good. The
+   You see Claude call `clash`'s `find_venue` first, because the description of `venueId`
+   sent it there, then `create_clash`. Approve that one call, not for good. The
    server answers `Created clash <id>: "MCP Hacknight" at <ISO date-time>.` Open CLASH's map
    on `localhost:3000/map`: the new clash sits at Holzmarkt 25. Now ask for it once more.
    ```
@@ -171,13 +171,13 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    ```
    Use the clash server: what is coming up at Holzmarkt 25?
    ```
-   You see `clash - find_venue (MCP)` and `clash - list_upcoming_clashes (MCP)` run with no
+   You see `find_venue` and `list_upcoming_clashes`, both labeled `clash`, run with no
    permission prompt, and "MCP Hacknight" in the answer. Now take the clash off again.
    ```
    Cancel the clash "MCP Hacknight" at Holzmarkt 25, hosted by anna.schmidt@example.com.
    ```
-   You see Claude look the clash up with `clash - list_upcoming_clashes (MCP)`, without a
-   prompt, then call `clash - cancel_clash (MCP)` and wait for your permission: `cancel_clash`
+   You see Claude look the clash up with `clash`'s `list_upcoming_clashes`, without a
+   prompt, then call `cancel_clash` and wait for your permission: `cancel_clash`
    is not on the allow list. Approve that one call. The server answers
    `Cancelled clash <id>: "MCP Hacknight".` Reload CLASH's map on `localhost:3000/map`: the
    clash is gone. Reads are free. Writes ask.
@@ -263,7 +263,7 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
 
 ## Check
 
-- [ ] `claude mcp list` in your CLASH clone prints `clash: npx tsx mcp/server.ts - ✔ Connected`.
+- [ ] `claude mcp list` in your CLASH clone lists `clash` with its command `npx tsx mcp/server.ts` and the status `✔ Connected`.
 - [ ] `mcp/server.ts` in your CLASH clone has exactly four `registerTool` calls and no `console.log`.
 - [ ] `venueId` in `create_clash` is described as "id from find_venue", and Claude called `find_venue` before `create_clash`.
 - [ ] `find_venue` answers `No venue matches …` through `reply()`, not `refuse()`.
@@ -299,7 +299,7 @@ and without `lib/clash-agent.ts`, the file that holds the `query()` call on its 
 Unpublishing is already there on clash-conference's `19-start`.
 `git checkout 19-solution` in clash-conference gives clash-conference with the finished
 route. The starter, the finished server, `.mcp.json`, `settings.allow.json` and the smoke
-test are in `workshop-artifacts/19-build-mcp/` in the workshop repository. Its `README.md`
+test are in [`workshop-artifacts/19-build-mcp/`](../workshop-artifacts/19-build-mcp/) in the workshop repository. Its `README.md`
 says where each file goes.
 
 ## Go further

@@ -28,7 +28,9 @@ turn, and every loop round, to take as long as one build.
    ```
 5. Check the last line of the answer. It starts with `Host note:` and reads like a sentence for a person
    who creates clashes, with no code and no file names. Everything above that line looks like a normal answer:
-   `keep-coding-instructions: true` keeps the default coding behaviour.
+   `keep-coding-instructions: true` keeps the default coding behaviour on the full system prompt. Newer
+   models use a shorter prompt by default, where the field does nothing; set `CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0`
+   before you start Claude Code to make it count.
 6. `/output-style default` switches back. The chosen style lands in `.claude/settings.local.json` of your
    CLASH clone as `outputStyle`.
 
@@ -58,8 +60,8 @@ turn, and every loop round, to take as long as one build.
    The command returns at once. The session runs without a terminal.
 2. Run `claude agents`. One row is named `audit`. `Space` peeks at it, `Enter` attaches, `←` detaches.
 3. Find the report. A background session moves into a worktree under `.claude/worktrees/` before its
-   first edit, so `docs/audit.md` is in `.claude/worktrees/<name>/docs/audit.md`, not in the main checkout
-   of your CLASH clone. On `18-start` every action has the checks it needs, so every line says PASS.
+   first edit, so `docs/audit.md` is inside that worktree, not in the main checkout of your CLASH clone;
+   `git worktree list` shows the path. On `18-start` every action has the checks it needs, so every line says PASS.
 4. `claude logs <id>` prints what the session did. `claude stop <id>` ends it. The id is in the `claude agents` list.
 5. Watch the `Stop` hook. The worktree starts without `node_modules`, so `npm run build` there fails until
    the session runs `npm install`. If the session seems stuck at the end of its turn, attach and look.

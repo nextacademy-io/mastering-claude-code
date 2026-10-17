@@ -105,7 +105,7 @@ Sagen:
 
 Sagen:
 - Was es ist: ein Plugin, ein installierbares Bündel. Dieses bringt 5 Subagents und 11 Skills mit. Noch einmal die Marketplace-Folie aus Task 07: den Katalog hinzufügen, dann ein Plugin per Namen installieren.
-- [click] Der zweite Befehl installiert es. code-security-skills ist das Plugin, agent-security-playbook der Marketplace: plugin@marketplace.
+- [click] Der zweite Befehl öffnet die Details des Plugins in /plugin; nach der Scope-Wahl installiert er es. code-security-skills ist das Plugin, agent-security-playbook der Marketplace: plugin@marketplace.
 - Nur sca-audit und dependency-auditor drehen sich um CVEs. Die Reviewer lesen Code.
 - Vergleichen, keinen Sieger küren: unserer ist eng und falsifizierbar, PASS oder FAIL mit Zeile. Ihrer ist breit. Verschiedene Aufgaben.
 - Ein Plugin kann Hooks und MCP-Server mitbringen und läuft auf deiner Maschine. Lies, was du installierst. Dieses ist von OWASP, aber die Gewohnheit ist der Punkt.

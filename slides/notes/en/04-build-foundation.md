@@ -33,7 +33,7 @@ Say:
 > Do:
 > - Participants do this in steps 3-4
 > - Ask for `git status`, then run `/diff` live after the scaffold: only scaffold changes, before plan mode touches anything
-> - The panel may say some files are "not shown", even new ones from a shell command: `git status`, the complete list, comes first
+> - The panel skips test files and generated files, and folds changes from before this session into one line at the bottom; click a count line to expand it. `git status`, the complete list, comes first
 > - Ask Claude to commit, read the message it wrote
 
 Say:
@@ -98,7 +98,7 @@ Say:
 <!-- @note: upgrade-the-planner-not-the-run -->
 > Do:
 > - Docs link: open it, scroll to "opusplan model setting", then back to the slides
-> - If a session already runs Opus, opusplan changes only the run: execution moves to Sonnet
+> - opusplan: Opus during plan mode, Sonnet for execution. Each plan-mode toggle is a model switch and starts a fresh cache
 
 Say:
 - Spend the expensive model on the decision; routine execution rarely needs it

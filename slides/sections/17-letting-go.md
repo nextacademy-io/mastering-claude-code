@@ -33,7 +33,7 @@ routeAlias: theory-worktrees
 docs: https://code.claude.com/docs/en/worktrees
 lines:
   - "claude --worktree <name>   (short: -w)"
-  - "Copy under .claude/worktrees/<name>/, on branch worktree-<name>"
+  - "Fresh checkout under .claude/worktrees/<name>/, branch worktree-<name> off main"
 ---
 
 <G18WorktreeParallelism />

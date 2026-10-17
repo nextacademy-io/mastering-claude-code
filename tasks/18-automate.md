@@ -69,7 +69,7 @@ for one build. That is the gate, not the loop.
    ```
    Write .claude/output-styles/host-notes.md in this CLASH clone. Frontmatter: a description field saying the style ends every answer with one plain line for a CLASH host, and keep-coding-instructions: true. No name field — the file name is the style name. Body: work as usual, then end every answer with exactly one extra line. That line starts with "Host note:" and says, in plain words, what changed for a CLASH host, a person who creates clashes. No code, no file names and no jargon in that line. When nothing changed for a host, the line is: Host note: nothing changed for hosts. Write the file and change nothing else.
    ```
-   You see one new file, `.claude/output-styles/host-notes.md`, with those two frontmatter fields and the rule in the body. `keep-coding-instructions: true` keeps the normal coding behaviour under your style.
+   You see one new file, `.claude/output-styles/host-notes.md`, with those two frontmatter fields and the rule in the body. `keep-coding-instructions: true` keeps the normal coding behaviour under your style on the full system prompt. Newer models use a shorter prompt by default, and there the field does nothing. To make it count, set `CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0` before you start Claude Code.
 5. Restart Claude Code, then list the styles. Style files are read at launch, not while a session runs.
    ```
    /exit
@@ -145,7 +145,7 @@ for one build. That is the gate, not the loop.
     ```bash
     git worktree list
     ```
-    You see the new worktree listed, with the report inside it at `.claude/worktrees/<name>/docs/audit.md`. On `18-start` every action has the checks it needs, so every line says PASS.
+    You see the new worktree listed. The report is at `docs/audit.md` inside that worktree; take the worktree's path from the list. On `18-start` every action has the checks it needs, so every line says PASS.
     Claude may also commit the report in that worktree, and push a branch when your CLASH clone has a remote. It never pushes to `main`.
     The worktree starts without `node_modules`, so the Stop gate's build may fail there until the session runs `npm install`. If the row looks stuck, attach and read what it is doing.
 17. Stop the session and read what it did. The id is in the `claude agents` list.
@@ -181,7 +181,7 @@ for one build. That is the gate, not the loop.
 ## Now you
 
 - Set a second bounded `/goal` in your CLASH clone: a new proof, one thing that must not change on the way there, and a turn ceiling. Then read `/goal`.
-- Write `.claude/loop.md` in your CLASH clone: your own default prompt for a bare `/loop`. Goal: check the background build and `npx tsc --noEmit`, report in one line, answer `quiet` when nothing changed. Compare with `workshop-artifacts/18-automate/loop.md`.
+- Write `.claude/loop.md` in your CLASH clone: your own default prompt for a bare `/loop`. Goal: check the background build and `npx tsc --noEmit`, report in one line, answer `quiet` when nothing changed. Compare with [`workshop-artifacts/18-automate/loop.md`](../workshop-artifacts/18-automate/loop.md).
 - Write a second style in your CLASH clone that answers in German. Goal: same code, same care, German prose.
 - With a subscription: create your own routine on your fork of CLASH with the trainer's prompt, then give it a GitHub trigger, so a pull request starts it. A routine belongs to one claude.ai account, so you cannot edit the trainer's. The Claude GitHub App must be installed on that fork.
 
@@ -201,7 +201,7 @@ for one build. That is the gate, not the loop.
 ## Stuck?
 
 `git checkout 18-start` in your CLASH clone — identical to `14-start`: the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
-The finished style file, the loop file and the routine prompt are in `workshop-artifacts/18-automate/` in the workshop repository.
+The finished style file, the loop file and the routine prompt are in [`workshop-artifacts/18-automate/`](../workshop-artifacts/18-automate/) in the workshop repository.
 Compare `host-notes.md` there with the file Claude wrote for you.
 
 ## Go further

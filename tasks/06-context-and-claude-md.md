@@ -99,7 +99,7 @@ out, Claude has to guess or search for.
 
 ## Go further
 
-Compare your file with `workshop-artifacts/06-context-and-claude-md/CLAUDE.md` in the workshop repository.
+Compare your file with [`workshop-artifacts/06-context-and-claude-md/CLAUDE.md`](../workshop-artifacts/06-context-and-claude-md/CLAUDE.md) in the workshop repository.
 Yours does not need to match. It needs the same six rules.
 
 ## Links

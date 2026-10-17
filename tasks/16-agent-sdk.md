@@ -78,7 +78,7 @@ Only the host changes.
 ## Stuck?
 
 `git checkout 16-start` — the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
-The finished program is in `workshop-artifacts/16-agent-sdk/` in the workshop repository.
+The finished program is in [`workshop-artifacts/16-agent-sdk/`](../workshop-artifacts/16-agent-sdk/) in the workshop repository.
 
 ## Go further
 

@@ -2,6 +2,8 @@
 
 Every task has a branch named `NN-start`. It holds the state at the **start** of task NN,
 so `git checkout NN-start` lets you rejoin at that task without debugging your own build.
+The one exception is task 20, the effort lab: it runs in an empty folder outside your CLASH
+clone and has no branch.
 
 One branch breaks that naming on purpose: `19-solution` holds the finished MCP server, so the
 second half of task 19 works even for someone whose own server does not. CLASH's `19-start` is

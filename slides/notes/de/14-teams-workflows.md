@@ -1,7 +1,7 @@
 <!-- @note: strategy-two-agent-teams -->
 > Tun:
 > - Vor diesem Segment: sicherstellen, dass `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` gesetzt ist
-> - Ohne das Flag: Demo startet lautlos normale Subagents — kein Team, keine Meinungsverschiedenheit, kein Fehler
+> - Ohne das Flag: kein Team wird aufgesetzt, Claude startet keine Teammates und schlägt keine vor. Subagents erscheinen im selben Panel, das Panel allein belegt also kein Team
 > - Für diesen Teil "watch first" sagen. Docs-Link: bis "When to use agent teams" scrollen, dann zurück
 
 Sagen:
@@ -42,7 +42,7 @@ Sagen:
 <!-- @note: lead-peers-and-a-disagreement-2 -->
 > Tun:
 > - Live: Zeile 3, während das Team aus Task 12 läuft
-> - Achten auf: ohne `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` gibt es normale Subagents, kein Team
+> - Achten auf: ohne `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` wird kein Team aufgesetzt; Subagents im selben Panel belegen kein Team
 
 Sagen:
 - Zeile 1: die Namen selbst wählen, damit spätere Prompts sie nutzen können
@@ -165,13 +165,13 @@ Sagen:
 
 <!-- @note: phases-the-plan-you-can-watch -->
 > Tun:
-> - Docs-Link: bis "Watch the run" scrollen, auf die Agent-Anzahl und Token-Summen pro Phase zeigen
+> - Docs-Link: bis "Watch the run" scrollen, auf die Agent-Anzahl pro Phase und die Tokens pro Agent zeigen
 > - Den Build-Run dieses Workshops in /workflows zeigen, falls gerade einer läuft
 > - Die Zahlen rechts sind Platzhalter — der Live-Run zeigt die echten
 
 Sagen:
 - [click] Links das Skript: `phase('Review')` gruppiert die Agents danach; `meta.phases` wiederholt die Titel
-- [click] Rechts `/workflows`: eine Zeile pro Phase mit Agent-Anzahl und Token-Summe; Enter öffnet die Agents
+- [click] Rechts `/workflows`: eine Zeile pro Phase mit Agent-Anzahl; Enter öffnet die Agents und ihre Tokens
 - [click] Ein phase()-Aufruf, eine Zeile — Review ist eine pipeline() über die Dateien, Verify eine parallel()
 - Die Agent-Anzahl pro Phase kommt aus dem Skript, nicht aus einer Einstellung: ein agent()-Aufruf ist ein Agent, pipeline() startet einen pro Datei. Wer das ändern will, sagt es im Prompt. Dynamic workflow size in /config setzt nur eine Gesamtzahl, als Rat
 - Echtes Beispiel, der Build-Workflow dieses Workshops: sieben Phasen — Facts, Build, Author, Translate, Proof, Fix, Critic
