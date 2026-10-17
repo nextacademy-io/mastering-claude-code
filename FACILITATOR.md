@@ -454,9 +454,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 19 — Build your own MCP
 
-- Excursion in the appendix. Reach it from the chip on "Excursion: build your own MCP server" at
-  the end of the browser block — but only after task 16: its second half calls the server
-  through the Agent SDK. After the Agent SDK block, open `/excursion-mcp-server` directly.
+- Excursion in the appendix. Reach it from the chip on "Excursion: build your own MCP server"
+  right after the task 16 recap: its second half calls the server through the Agent SDK, so it
+  needs task 16 first.
 - Task 19 is about design. CLASH's `19-start` hands participants a running server: the plumbing
   and one finished tool, `list_upcoming_clashes`. They design the other three at the three
   marked places in `mcp/server.ts`: `find_venue`, `create_clash` and `cancel_clash`, in six

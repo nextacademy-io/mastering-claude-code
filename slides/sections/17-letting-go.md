@@ -206,3 +206,14 @@ mode: "you do"
 success: "ask-clash.mts prints an answer with a clash, a place and a time, and never edits a file or runs a command."
 branch: "16-start"
 ---
+
+---
+layout: concept
+heading: "Excursion: build your own MCP server"
+routeAlias: quick-mcp-server
+deepDive: excursion-mcp-server
+docs: https://modelcontextprotocol.io/docs/develop/build-server
+lines:
+  - "Optional: task 19 in your CLASH clone and clash-conference."
+  - "You design the tools: names, descriptions, checks."
+---

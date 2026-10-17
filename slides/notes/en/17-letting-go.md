@@ -132,3 +132,14 @@ Say:
 Say:
 - "Now you" part: removes tools and adds a system prompt
 - Stretch: turns it into an API route
+
+<!-- @note: excursion-build-your-own-mcp-server -->
+> Do:
+> - Excursion, optional: the chip jumps to "Build your own MCP"; the back chip on the task 19 recap lands here again
+> - Docs link: the MCP tutorial's TypeScript server, the one task 19 builds from
+> - Skip it and go on with "Task 17 — Capstone"
+
+Say:
+- In task 14 you used servers other people wrote; in task 16 you ran the agent loop from your own program
+- Task 19 builds a server for CLASH, in your CLASH clone, and calls it from clash-conference through the Agent SDK
+- That is MCP development, not Claude Code — what Claude Code needs from you you have already seen: add it, share it, allow single tools

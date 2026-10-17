@@ -122,7 +122,7 @@ every click revealed; one more → goes to the next main-line slide.
 | `33-excursion-coordination-patterns.md` | excursion | "Which pattern did we just run?" | "Message bus: publish and subscribe" (concept) · `excursion-coordination-patterns` | "Which pattern did we just run?" · `quick-coordination-patterns` |
 | `34-deep-sandbox.md` | deep dive | the new sandbox core slide (step 9) | first slide of the new deep dive · `deep-sandbox` | the new sandbox core slide · `quick-sandbox` |
 | `35-excursion-tdd.md` | excursion | "The loop that matters" | "TDD" (divider) · `excursion-tdd` | "The loop that matters" · `quick-tdd` |
-| `36-excursion-mcp-server.md` | excursion | new pointer slide at the end of `16-browser.md` | "Build your own MCP" (divider) · `excursion-mcp-server` | the new pointer slide · `quick-mcp-server` |
+| `36-excursion-mcp-server.md` | excursion | new pointer slide after the task 16 recap in `17-letting-go.md` (moved there from the end of `16-browser.md` after the PR #30 review: the excursion needs the Agent SDK from task 16) | "Build your own MCP" (divider) · `excursion-mcp-server` | the new pointer slide · `quick-mcp-server` |
 | `37-excursion-spec-kit-bmad.md` | excursion | "Task 17 — Capstone" (`task-intro`, checked in step 1) | "Spec Kit: six steps, one constitution" · `excursion-spec-kit-bmad` | "Task 17 — Capstone" · `task-17` (kept) |
 | `38-deep-automate.md` | deep dive | both new quick-dive slides at the top of `21-close.md` | "Nobody at the keyboard" · `deep-automate` | the second new quick-dive slide (the end of the quick dive) · `quick-automate` |
 

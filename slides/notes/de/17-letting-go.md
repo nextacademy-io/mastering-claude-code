@@ -132,3 +132,14 @@ Sagen:
 Sagen:
 - "Now you"-Teil: entfernt Tools und fügt einen System-Prompt hinzu
 - Erweiterung: macht daraus eine API-Route
+
+<!-- @note: excursion-build-your-own-mcp-server -->
+> Tun:
+> - Exkurs, optional: Der Chip springt zu "Build your own MCP"; der Zurück-Chip auf dem Recap von Task 19 landet wieder hier
+> - Docs-Link: der TypeScript-Server aus dem MCP-Tutorial, auf dem Task 19 aufbaut
+> - Überspringen und mit "Task 17 — Capstone" weitermachen
+
+Sagen:
+- In Task 14 hast du Server benutzt, die andere geschrieben haben; in Task 16 hast du den Agent-Loop aus deinem eigenen Programm gestartet
+- Task 19 baut einen Server für CLASH, in deinem CLASH-Clone, und ruft ihn über das Agent SDK aus clash-conference auf
+- Das ist MCP-Entwicklung, nicht Claude Code — was Claude Code von dir braucht, hast du schon gesehen: hinzufügen, teilen, einzelne Tools erlauben
