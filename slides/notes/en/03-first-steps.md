@@ -114,12 +114,15 @@ Say:
 <!-- @note: flags-change-how-a-session-starts -->
 > Do:
 > - Docs link: open it, scroll to "CLI flags", then back to the slides
+> - Deep dive, optional: the chip jumps to the effort lab "Same task, different effort"; the back chip on "Measure the extra reasoning" lands here again
+> - Skip it and go on with "Print mode: no interaction, just an answer"
 
 Say:
 - Two different kinds of flag: what a session can do, and which session opens
 - [click] --settings stacks above your own files, below managed — good for a one-off experiment
 - [click] -p answers and exits. No conversation left running
-- [click] --resume and --continue get their own slide, after print mode and the effort lab
+- [click] --resume and --continue get their own slide, after print mode
+- --effort is a one-off override too. The effort lab runs the same review at low and high and counts what the extra reasoning found
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Do:
@@ -130,29 +133,6 @@ Say:
 - This is what a script or another program calls — no terminal UI, no back-and-forth
 - --output-format json gives you something you can pipe into another tool
 - The "never claude -p in CI" rule from the GitHub Actions module is about that one YAML step, not this
-
-<!-- @note: same-task-different-effort -->
-> Do:
-> - Run it in a new folder that holds only a copy of workshop-artifacts/reasoning-lab/review.ts, outside the workshop repository and your CLASH clone: no answer key, no CLAUDE.md, no project-level Claude Code hooks
-> - Check that CLAUDE_CODE_EFFORT_LEVEL is not set and no maxEffortLevel cap sits below high: either one can make both runs use the same level
-> - FULL WORKING SOLUTION (trainer only): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
->   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
-> - Docs link: open it, scroll to "Set the effort level", then back to the slides
-
-Say:
-- One variable changes: effort. Score the findings and usage.output_tokens, not tone or length — thinking is billed as output
-- Skip total_cost_usd: the second run reads the prompt prefix the first run cached, so its input looks cheaper
-- The four findings, only after both runs: cancelled returns true; null capacity means unlimited but becomes 0; the full check uses > instead of >=; sort mutates participantIds
-
-<!-- @note: measure-the-extra-reasoning -->
-> Do:
-> - Fill the table from the two live results
-> - If both runs find all four, say that clearly: this task did not earn higher effort. That is a useful result
-
-Say:
-- Reasoning has value only through better decisions or less rework
-- The useful comparison is total engineering effort: reasoning plus implementation plus rework plus verification
-- Repeat this experiment on one real task before changing a team's default effort
 
 <!-- @note: pick-up-where-you-left-off -->
 Say:

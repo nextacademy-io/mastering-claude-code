@@ -317,10 +317,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - "Lead, peers, and a disagreement": a partial fit with the blog's agent teams pattern. Lead and
   long-lived peers match; peers messaging by name and the lead settling a dispute go past it.
   Say "the blog's pattern" or "Claude Code agent teams", never just "agent teams".
-- The five pattern slides follow it, "Generator-verifier" to "Shared state". Message bus and
-  shared state have no built-in Claude Code feature. Say so. "Which pattern did we just run?"
-  waits until after "Read the generated script": both runs are done, refuters are explained.
-- Each of these six flow slides has a ways slide after it, with the same heading: the small
+- Three pattern slides follow it, "Generator-verifier" to "The blog's agent teams". "Which
+  pattern did we just run?" waits until after "Read the generated script": both runs are done,
+  refuters are explained. Its chip leads to the excursion with the blog's other two patterns,
+  message bus and shared state. Neither has a built-in Claude Code feature. Say so.
+- Each of these flow slides has a ways slide after it, with the same heading: the small
   graphic, then a table of ways and prompts that make the flow happen in Claude Code.
 - Reconcile three results, fill the toolkit map from evidence, then restore the two
   `creatorId` checks. `workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md` has the diff.
@@ -389,9 +390,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Three briefs. Each participant picks one and ships it in a worktree with the skill, a
   subagent review, the hook set, a browser check and a PR.
 - This is the integration task. The security rules come in the task 13 debrief, before MCP.
-- Spec Kit and BMAD sit between the task intro and the recap. They are further reading: two
-  ready-made processes that turn a brief into a spec, a plan and code. Not a step of the task;
-  install one only if you demo it.
+- Spec Kit and BMAD are an excursion in the appendix; the chip on the task intro leads there and
+  back. They are further reading: two ready-made processes that turn a brief into a spec, a plan
+  and code. Not a step of the task; install one only if you demo it.
 
 ### Task 18 — Automate
 

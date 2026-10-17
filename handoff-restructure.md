@@ -175,7 +175,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 4. MCP server excursion + the MCP scope-and-trust slide
 - [x] 5. Example Mapping excursion + rescued mechanics
 - [x] 6. TDD excursion + rescued mechanics
-- [ ] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
+- [x] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
 - [ ] 8. Path-scoped rules: expand the core block
 - [ ] 9. New core slides from the gaps + sandbox deep dive
 - [ ] 10. Next.js excursion + softer task framing
@@ -276,7 +276,9 @@ keeps only "Orchestrate and let go". Apply the navigation mechanism.
   uses that one.
 - **Coordination patterns:** move the two pairs "Message bus" and "Shared state" (concept +
   flow-ways each, pairs intact) into `33-excursion-coordination-patterns.md`; one pointer line on
-  "Which pattern did we just run?" (a pure insertion: branch and resume are the same slide).
+  "Which pattern did we just run?" (a pure insertion: branch and resume are the same slide) —
+  **done in step 7 as a note line**: the slide already shows three lines, the `concept` maximum,
+  so the chip is the visible pointer and the line went into its notes.
 - **Spec Kit/BMAD:** move the three slides into `37-excursion-spec-kit-bmad.md`; update
   FACILITATOR.md:392.
 - Apply the navigation mechanism to all three.

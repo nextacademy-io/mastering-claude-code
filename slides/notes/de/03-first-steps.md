@@ -114,12 +114,15 @@ Sagen:
 <!-- @note: flags-change-how-a-session-starts -->
 > Tun:
 > - Docs-Link: öffnen, bis "CLI flags" scrollen, dann zurück zu den Folien
+> - Deep Dive, optional: Der Chip springt zum Effort-Lab "Same task, different effort"; der Zurück-Chip auf "Measure the extra reasoning" landet wieder hier
+> - Überspringen und mit "Print mode: no interaction, just an answer" weitermachen
 
 Sagen:
 - Zwei verschiedene Arten von Flag: was eine Session darf, und welche Session sich öffnet
 - [click] --settings stapelt sich über deinen eigenen Dateien, unter managed — gut für ein einmaliges Experiment
 - [click] -p antwortet und beendet sich. Keine Conversation bleibt laufen
-- [click] --resume und --continue bekommen eine eigene Folie, nach dem Print Mode und dem Effort-Lab
+- [click] --resume und --continue bekommen eine eigene Folie, nach dem Print Mode
+- Auch --effort ist ein einmaliger Override. Das Effort-Lab lässt dasselbe Review auf low und high laufen und zählt, was das zusätzliche Reasoning gefunden hat
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Tun:
@@ -130,29 +133,6 @@ Sagen:
 - Das ist es, was ein Script oder ein anderes Programm aufruft — keine Terminal-UI, kein Hin und Her
 - --output-format json gibt dir etwas, das du in ein anderes Tool pipen kannst
 - Die Regel "nie claude -p in CI" aus dem GitHub-Actions-Modul betrifft genau den einen YAML-Schritt, nicht das hier
-
-<!-- @note: same-task-different-effort -->
-> Tun:
-> - In einem neuen Ordner ausführen, der nur eine Kopie von workshop-artifacts/reasoning-lab/review.ts enthält, außerhalb des Workshop-Repositorys und deines CLASH-Clones: kein Lösungsschlüssel, keine CLAUDE.md, keine Claude-Code-Hooks auf Projektebene
-> - Prüfen, dass CLAUDE_CODE_EFFORT_LEVEL nicht gesetzt ist und keine maxEffortLevel-Obergrenze unter high liegt: beides kann beide Läufe auf dasselbe Level setzen
-> - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): claude -p --model sonnet --effort low --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
->   claude -p --model sonnet --effort high --output-format json "Read @review.ts. Find correctness bugs. Do not edit. For each finding: line, impact, proof."
-> - Docs-Link: öffnen, bis "Set the effort level" scrollen, dann zurück zu den Folien
-
-Sagen:
-- Nur eine Variable ändert sich: Effort. Gezählt werden die Findings und usage.output_tokens, nicht Ton oder Länge — Thinking wird als Output abgerechnet
-- total_cost_usd weglassen: Der zweite Lauf liest den Prompt-Präfix, den der erste gecacht hat, sein Input wirkt also günstiger
-- Die vier Findings, erst nach beiden Läufen: cancelled liefert true; `null` als Kapazität heißt unbegrenzt, wird aber zu 0; die Voll-Prüfung nutzt > statt >=; sort verändert participantIds
-
-<!-- @note: measure-the-extra-reasoning -->
-> Tun:
-> - Die Tabelle mit den Ergebnissen der zwei Live-Läufe füllen
-> - Finden beide Läufe alle vier Fehler, das klar sagen: Diese Aufgabe hat den höheren Effort nicht verdient. Auch das ist ein nützliches Ergebnis
-
-Sagen:
-- Reasoning hat nur Wert, wenn es bessere Entscheidungen oder weniger Nacharbeit bringt
-- Der nützliche Vergleich ist der gesamte Engineering-Aufwand: Reasoning plus Umsetzung plus Nacharbeit plus Verifikation
-- Den Vergleich an einer echten Aufgabe wiederholen, bevor du den Default-Effort eines Teams änderst
 
 <!-- @note: pick-up-where-you-left-off -->
 Sagen:
