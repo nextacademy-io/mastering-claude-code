@@ -26,7 +26,7 @@ turns a talk into a clash on CLASH's map, the next click takes it off again.
 
 In task 14 you used other people's MCP servers. In task 16 you put the agent loop inside
 your own program. This task is the third side: CLASH itself as a tool, and the design that
-makes a tool server good.
+makes a tool server good. It is an optional excursion, and it needs task 16 first.
 
 The plumbing is done for you on CLASH's `19-start`. The server talks over stdio, finds
 `dev.db` from its own file, logs only to stderr, and answers through `reply()` and

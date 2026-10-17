@@ -2,9 +2,10 @@
 > Tun:
 > - Divider: Skill-Zeile hervorgehoben — das ist immer noch ein Skill, nur ein neuer
 > - Den Moment kurz halten
+> - Exkurs im Anhang: Du kommst über den Chip auf "Excursion: Example Mapping" hierher
 
 Sagen:
-- "Die nächsten zwei Tasks drehen sich beide darum, was in Claudes Kontext steht, und wann."
+- "Eine Methode aus der Anforderungsarbeit, verpackt in einen Skill — und ein zweiter Blick darauf, was ein Skill lädt, und wann."
 
 <!-- @note: task-09-example-mapping-and-the-discover-skill -->
 > Tun:
@@ -46,6 +47,7 @@ Sagen:
 <!-- @note: the-discover-skill -->
 > Tun:
 > - Recap: die Spec ist das eigentliche Ergebnis, nicht die Skill-Datei selbst
+> - Danach führt der Zurück-Chip zu "Excursion: Example Mapping"; die nächste Folie ist "Subagents"
 
 Sagen:
 - "Alles, was danach kommt — die Regel, der Grenzfall-Test — fängt bei dieser Datei an"

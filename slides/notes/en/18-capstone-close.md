@@ -1,56 +1,12 @@
 <!-- @note: task-17-capstone -->
 > Do:
 > - Branch: 17-start already has CLAUDE.md, the skills, the ownership fix and the hook set
+> - Excursion, optional: the chip jumps to "Spec Kit: six steps, one constitution"; the back chip on "Spec Kit vs BMAD" lands here again
+> - Skip it and go on with the recap "Capstone"
 
 Say:
 - One brief, picked freely, and shipped end to end with every tool from the workshop
-
-<!-- @note: spec-kit-six-steps-one-constitution -->
-> Do:
-> - FULL WORKING SOLUTION (trainer only, install if demoing):
->   uv tool install specify-cli
->   specify init my-project
-> - Repeat implement -> converge until convergence reports "Converged"
-
-Say:
-- GitHub's own tool, MIT, agent-agnostic — not tied to Claude Code
-- On Claude Code every step installs as a namespaced skill: speckit-constitution, not a bare /constitution
-- [click] /speckit-specify — a plain-language feature description
-- [click] /speckit-plan — a technical plan from the spec
-- [click] /speckit-tasks — the plan broken into a checklist
-- [click] /speckit-implement — build against the task list
-- [click] /speckit-converge — checks the build against the spec and adds missing work as new tasks; run implement again until it reports Converged
-- [click] The constitution runs once — principles every later step reads
-
-<!-- @note: bmad-five-agents-one-party-mode -->
-> Do:
-> - Docs link: BMAD's GitHub README — point at the delivery loop graphic and the install line under "Start Building", then back
-> - FULL WORKING SOLUTION (trainer only, install if demoing):
->   npx skills add bmad-code-org/BMAD-METHOD
-
-Say:
-- The delivery loop: clarify, plan, build and verify, learn and adjust — loops back to plan
-- [click] PM = Product Manager, John: writes the PRD (the product requirements document), sets priorities and scope. Not a project manager
-- [click] Architect — the technical shape of the solution
-- [click] Developer — implementation
-- [click] UX — the interface and the experience
-- [click] Party Mode: every installed agent in one conversation, in character
-- [click] bmad-build: the skill that turns one story into code — it clarifies the intent, plans, implements, then reviews; the link opens "Build a Change" at "Run bmad-build"
-
-<!-- @note: spec-kit-vs-bmad -->
-> Do:
-> - Real prerequisite if someone only has Node
-
-Say:
-- [click:2] Spec Kit — GitHub, MIT, agent-agnostic, `specify init`, low ceremony
-- Specs as version-controlled markdown any agent can consume
-- Python/uv tool, not npm: `uv tool install specify-cli`
-- [click] BMAD v6 ships five named agents (Analyst, PM, Architect, Developer, UX Designer) — not "12+ personas" (that's a v4 figure)
-- Heavyweight: several reviewers per change by default — the token cost adds up
-- Repo: bmad-code-org/BMAD-METHOD
-- Rule of thumb: Spec Kit when you want spec discipline without process overhead; BMAD when the organisation already has those roles
-- BMAD will not conjure a process you do not have
-- [click] Honest note: both shine on greenfield, but work on existing code too. CLASH is both — greenfield in Part II, brownfield ever since — and clash-conference was a greenfield BMAD build
+- Spec Kit and BMAD are two ready-made processes that turn a brief into a spec, a plan and code. Not a step of this task
 
 <!-- @note: capstone -->
 > Do:

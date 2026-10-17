@@ -61,10 +61,6 @@ src: ./sections/10-subagents.md
 ---
 
 ---
-src: ./sections/11-discover.md
----
-
----
 src: ./sections/12-rules.md
 ---
 
@@ -93,13 +89,45 @@ src: ./sections/18-capstone-close.md
 ---
 
 ---
-src: ./sections/19-automate.md
----
-
----
-src: ./sections/20-build-mcp.md
----
-
----
 src: ./sections/21-close.md
+---
+
+---
+src: ./sections/29-appendix.md
+---
+
+---
+src: ./sections/30-deep-effort-lab.md
+---
+
+---
+src: ./sections/31-excursion-nextjs.md
+---
+
+---
+src: ./sections/32-excursion-example-mapping.md
+---
+
+---
+src: ./sections/33-excursion-coordination-patterns.md
+---
+
+---
+src: ./sections/34-deep-sandbox.md
+---
+
+---
+src: ./sections/35-excursion-tdd.md
+---
+
+---
+src: ./sections/36-excursion-mcp-server.md
+---
+
+---
+src: ./sections/37-excursion-spec-kit-bmad.md
+---
+
+---
+src: ./sections/38-deep-automate.md
 ---

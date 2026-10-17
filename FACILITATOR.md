@@ -54,6 +54,20 @@ pre-install the MCP servers, run the deck once (`cd slides && npm run dev`).
 Refer to a task by its `/task-NN` link, never by a slide number — numbers shift as the deck
 grows.
 
+**Appendix: deep dives and excursions.** The main line is Claude Code. Optional blocks sit after
+the close, behind the "Appendix" divider: deep dives go deeper into a Claude Code mechanic (effort
+lab, sandbox, automate with task 18), excursions cover a method or framework (Next.js, Example
+Mapping with task 09, coordination patterns, TDD with task 11, building an MCP server with task
+19, Spec Kit and BMAD). Decide per group, on the spot:
+
+- A main-line slide that offers a block shows a chip top-right, "Deep dive →" or "Excursion →".
+  Its presenter note names the block and the slide to go on with if you skip it.
+- Click the chip to jump in. Walk the block as usual.
+- The block's last slide has "← Back to the main line". It lands on the slide you left, every
+  click revealed, so the next → goes on with the main line. Browser back is not the way back —
+  it goes to wherever the jump started.
+- Skipping is always safe: the next task's reset branch does not need the block.
+
 **Pace:** favor running long over cutting a task short — consistent feedback says too little
 time hurts more than too much. If a task is moving fast, stretch it: ask someone to walk the
 group through their solution, or, if nobody has one yet, turn it into a problem the group
@@ -77,7 +91,8 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
   spread. Claude Code runs with a fixed setting; you do not tune it.
 - **Model and effort.** Land the distinction: context supplies facts, model supplies capability,
   effort supplies reasoning budget, verification supplies trust. No command on screen yet: the
-  lab that measures effort comes after print mode in Task 01.
+  optional effort lab measures it — a deep dive in the appendix, reached from the chip on "Flags
+  change how a session starts" in Task 01.
 - **Knowledge.** Trained once, on a snapshot. It does not read the internet now. If it needs
   a current fact, something has to put that fact into the prompt.
 - **No memory.** Every turn sends the whole conversation again. That is what "context" means.
@@ -128,8 +143,10 @@ Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/btw`, `/clear`, `
 Watch for: people who never press Enter on the permission prompt; people who type in the
 terminal while Claude is working (Esc stops it).
 
-Debrief after the recap: flags and print mode, then the reasoning lab ("Same task, different
-effort" and its score table), then resuming a session. For the lab, copy
+Debrief after the recap: flags, print mode, then resuming a session. The reasoning lab ("Same
+task, different effort" and its score table) is an optional deep dive: the chip on "Flags change
+how a session starts" leads in, and the back chip on "Measure the extra reasoning" returns there.
+If you run it, copy
 `workshop-artifacts/reasoning-lab/review.ts` into an empty folder outside the workshop repository
 and your CLASH clone, so neither run sees an answer key, a CLAUDE.md or their Claude Code hooks.
 Unset `CLAUDE_CODE_EFFORT_LEVEL` (it overrides `--effort`), then run the same prompt on the same
@@ -251,6 +268,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 09 — Example Mapping and the `discover` skill
 
+- Excursion in the appendix. Reach it from the chip on "Excursion: Example Mapping" after the
+  task 07 recap; skip it, and `10-start` still has the `discover` skill and its spec.
 - Manual prompt first, then package it: send the raw Example Mapping prompt live in chat, no
   skill yet, and count how much of it people would have to retype for the next story.
 - The task file shows every file of the skill verbatim: the body, `references/example-mapping.md`
@@ -271,6 +290,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Contrast with task 06's `~/.claude/rules/tone.md`: same directory name, different scope
   (project vs. personal) and different trigger (`paths:` vs. unconditional).
+- The block repeats that contrast on purpose, then sorts CLAUDE.md, rules and skills by when
+  they load: always, on a matching file, on demand.
+- A scoped rule loads when Claude reads, writes or edits a matching file (a `cat` on one counts
+  too), not at launch and not on every tool use. YAML that doesn't parse makes the rule load
+  everywhere.
 - Demo the trigger live: run `/context` before Claude has read anything under `app/actions/`,
   then after — the rule appears only the second time.
 - `paths` is the only field Claude Code reads from a rule file. Say it plainly: everything else
@@ -283,6 +307,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 11 — The TDD inner loop
 
+- Excursion in the appendix. Reach it from the chip on "The loop that matters"; skip it, and
+  `12-start` still has the finished `tdd` skill and `lib/capacity.ts`.
 - Ships pre-configured: vitest, one trivial passing test, a deliberately wrong `lib/capacity.ts`
   stub. Do not let anyone fight test-runner config live — that is not the lesson here.
 - The deliberate mistake, same shape as task 13's hooks mistake: send "the test is failing,
@@ -317,10 +343,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - "Lead, peers, and a disagreement": a partial fit with the blog's agent teams pattern. Lead and
   long-lived peers match; peers messaging by name and the lead settling a dispute go past it.
   Say "the blog's pattern" or "Claude Code agent teams", never just "agent teams".
-- The five pattern slides follow it, "Generator-verifier" to "Shared state". Message bus and
-  shared state have no built-in Claude Code feature. Say so. "Which pattern did we just run?"
-  waits until after "Read the generated script": both runs are done, refuters are explained.
-- Each of these six flow slides has a ways slide after it, with the same heading: the small
+- Three pattern slides follow it, "Generator-verifier" to "The blog's agent teams". "Which
+  pattern did we just run?" waits until after "Read the generated script": both runs are done,
+  refuters are explained. Its chip leads to the excursion with the blog's other two patterns,
+  message bus and shared state. Neither has a built-in Claude Code feature. Say so.
+- Each of these flow slides has a ways slide after it, with the same heading: the small
   graphic, then a table of ways and prompts that make the flow happen in Claude Code.
 - Reconcile three results, fill the toolkit map from evidence, then restore the two
   `creatorId` checks. `workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md` has the diff.
@@ -383,18 +410,23 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   context budget.
 - The script in `workshop-artifacts/16-agent-sdk/` answers one question about the seed data
   with Read, Grep and Glob only. Run it, then read it.
+- If someone wants to ship it as a product: the SDK docs on user input (`canUseTool` for
+  approvals), session storage (`SessionStore`) and hosting (ephemeral, long-running and hybrid
+  sessions) cover the step from one script to a service.
 
 ### Task 17 — Capstone
 
 - Three briefs. Each participant picks one and ships it in a worktree with the skill, a
   subagent review, the hook set, a browser check and a PR.
 - This is the integration task. The security rules come in the task 13 debrief, before MCP.
-- Spec Kit and BMAD sit between the task intro and the recap. They are further reading: two
-  ready-made processes that turn a brief into a spec, a plan and code. Not a step of the task;
-  install one only if you demo it.
+- Spec Kit and BMAD are an excursion in the appendix; the chip on the task intro leads there and
+  back. They are further reading: two ready-made processes that turn a brief into a spec, a plan
+  and code. Not a step of the task; install one only if you demo it.
 
 ### Task 18 — Automate
 
+- Deep dive in the appendix. The close opens with the quick dive ("Automate with a stop rule",
+  "Deep dive: automate"); either chip leads into the block.
 - Output style first: `/output-style concise`, one question, then the same question on the
   default style. The difference is the lesson. Then the custom `host-notes` style: restart Claude
   Code after creating the file, or it is not listed. Say that styles do not reach a fresh
@@ -422,6 +454,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 19 — Build your own MCP
 
+- Excursion in the appendix. Reach it from the chip on "Excursion: build your own MCP server" at
+  the end of the browser block — but only after task 16: its second half calls the server
+  through the Agent SDK. After the Agent SDK block, open `/excursion-mcp-server` directly.
 - Task 19 is about design. CLASH's `19-start` hands participants a running server: the plumbing
   and one finished tool, `list_upcoming_clashes`. They design the other three at the three
   marked places in `mcp/server.ts`: `find_venue`, `create_clash` and `cancel_clash`, in six
@@ -484,7 +519,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ## Final close
 
-After task 19, close the workshop:
+After the capstone, close the workshop. The appendix blocks you chose run before the close or
+after it, your call; the close slides come right after the capstone in the deck.
 
 1. Context decides what the agent knows.
 2. Reasoning decides how hard it thinks.
@@ -493,8 +529,19 @@ After task 19, close the workshop:
 5. Finish on: *Context is king. You push it, you own it.*
 
 If anyone asks what the workshop leaves out: Channels push events into a running session, and
-Computer Use lets Claude click native apps. The note on the last slide carries that line. Do not
-let it dilute the close.
+Computer Use lets Claude click native apps; ask Claude for an artifact and it publishes a private
+page on claude.ai (`/artifacts` lists them), and
+`/voice` adds dictation. The note on the last slide carries that line. Do not let it dilute the
+close.
+
+Two questions team leads ask after the close, answered from the docs:
+
+- **Does Anthropic train on our code?** Commercial plans (Team, Enterprise, API) are not used
+  for training; consumer plans (Free, Pro, Max) only if the user allows it. Retention and opt-out
+  variables are on the "Data usage" page.
+- **Can we see what the team spends?** Set `CLAUDE_CODE_ENABLE_TELEMETRY=1` and the `OTEL_*`
+  exporters to send usage, cost and tool metrics to your own OpenTelemetry collector. The
+  "Monitoring" page has the details.
 
 ---
 
@@ -515,4 +562,4 @@ let it dilute the close.
 | `/tdd` fires on its own mid-conversation | Shouldn't happen — `disable-model-invocation: true` blocks it. If it does, the skill file is wrong; fix it live as a teaching moment. |
 | Routines need a claude.ai subscription and GitHub access | Trainer demo only, mode `watch first`. Confirm your own `/schedule list` works before you start. Participants without a subscription watch; nothing later depends on their own routine. |
 | `clash-conference` is a second repository with a `19-start` branch of its own, published only after clash-conference is finished | Cloning it is part of `docs/SETUP.md`, marked as available once published. Its `main` is the finished clash-conference; clash-conference's `19-start` lacks `app/api/publish/route.ts` and `lib/clash-agent.ts`. Until it is pushed, `git checkout 19-start` fails in clash-conference; re-verify every name in `tasks/19-build-your-own-mcp.md` steps 7 to 10 against the finished clash-conference. `scripts/prepare-branches.sh` does not build it. |
-| The MCP package name may change | Every install is pinned to `@modelcontextprotocol/server@2.1.0` and `@modelcontextprotocol/client@2.1.0`, the versions the answer key was tested with. To move up, check `npm view @modelcontextprotocol/server version` and the tutorial at modelcontextprotocol.io/docs/develop/build-server, run the smoke test on the new version, then bump the pin everywhere together: `docs/SETUP.md`, `workshop-artifacts/19-build-mcp/README.md`, `scripts/prepare-branches.sh` and the notes of `slides/notes/en/20-build-mcp.md` and `slides/notes/de/20-build-mcp.md`. |
+| The MCP package name may change | Every install is pinned to `@modelcontextprotocol/server@2.1.0` and `@modelcontextprotocol/client@2.1.0`, the versions the answer key was tested with. To move up, check `npm view @modelcontextprotocol/server version` and the tutorial at modelcontextprotocol.io/docs/develop/build-server, run the smoke test on the new version, then bump the pin everywhere together: `docs/SETUP.md`, `workshop-artifacts/19-build-mcp/README.md`, `scripts/prepare-branches.sh` and the notes of `slides/notes/en/36-excursion-mcp-server.md` and `slides/notes/de/36-excursion-mcp-server.md`. |

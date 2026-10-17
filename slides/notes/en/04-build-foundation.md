@@ -105,6 +105,7 @@ Say:
 - [click] The fresh reviewer can be a subagent, no second vendor or tool: it attacks assumptions, missing constraints and verification gaps
 - [click] Fix the gaps once: a reviewer asked to find gaps usually reports some
 - [click] Freeze the work package, execute, verify
+- A related, experimental option: /advisor lets Claude ask a stronger model at key moments — before choosing an approach, when stuck, before saying it is done. Each call costs tokens at the advisor's rates
 
 <!-- @note: foundation -->
 > Do:

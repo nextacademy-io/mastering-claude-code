@@ -33,7 +33,7 @@ docs: https://code.claude.com/docs/en/skills
 lines:
   - "Every skill's name and description is scanned every session. Cheap."
   - "The body loads when the description matches — or right away via /skill-name."
-  - "Set disable-model-invocation: true to block that and require explicit /name."
+  - "references/ for the method, templates/ for the format: opened only when needed."
 ---
 
 <G05SkillLoading />
@@ -91,7 +91,7 @@ heading: "A skill is advice"
 routeAlias: theory-skill-advice
 lines:
   - "Nothing stops an agent from skipping a step in a skill."
-  - "Hold that thought. Task 13 comes back to it."
+  - "disable-model-invocation: true — only an explicit /name can start it."
 ---
 
 <G12SkillsVsHooks />
@@ -137,6 +137,21 @@ lines:
 </div>
 
 ---
+layout: concept
+heading: "A language server catches type errors"
+docs: https://code.claude.com/docs/en/plugins/code-intelligence
+lines:
+  - "After each edit, Claude sees the type errors it just introduced."
+  - "Install the language server first, then the plugin."
+---
+
+<div class="flex flex-col gap-3 w-full max-w-3xl font-mono text-sm">
+  <div class="na-card px-4 py-3">npm install -g typescript-language-server typescript</div>
+  <div class="na-card px-4 py-3" v-click>/plugin install typescript-lsp@claude-plugins-official</div>
+  <div class="na-card px-4 py-3" v-click style="border-color: var(--na-accent-500)">Found 2 new diagnostic issues in 1 file (ctrl+o to expand)</div>
+</div>
+
+---
 layout: code-live
 heading: "Install from a marketplace"
 filePath: "inside a running claude session"
@@ -157,4 +172,14 @@ goal: "Write a skill that holds CLASH's end-to-end feature recipe, then use it t
 mode: "you do"
 success: "One feature ships end to end through the skill, and tsc, lint and build pass."
 branch: "07-start"
+---
+
+---
+layout: concept
+heading: "Excursion: Example Mapping"
+routeAlias: quick-example-mapping
+deepDive: excursion-example-mapping
+lines:
+  - "Optional: task 09 turns a story into rules and examples."
+  - "The discover skill interviews you with AskUserQuestion."
 ---

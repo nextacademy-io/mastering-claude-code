@@ -2,6 +2,10 @@
 
 One file per task. Each task says what you will end up with, what to do, and how to check it.
 
+Tasks marked *deep dive* go deeper into a Claude Code mechanic; tasks marked *excursion* cover a
+method or framework outside Claude Code. Both are optional: skip one, and the next task's reset
+branch lets you go on.
+
 | # | Task | Part | Reset branch |
 |---|---|---|---|
 | 01 | [Setup and first conversation](01-setup-first-conversation.md) | I — Foundations | `01-start` |
@@ -12,17 +16,17 @@ One file per task. Each task says what you will end up with, what to do, and how
 | 06 | [Context and CLAUDE.md](06-context-and-claude-md.md) | III — Control the context | `06-start` |
 | 07 | [The clash-feature skill](07-clash-feature-skill.md) | III — Control the context | `07-start` |
 | 08 | [Subagent audit](08-subagent-audit.md) | III — Control the context | `08-start` |
-| 09 | [Example Mapping and the `discover` skill](09-example-mapping.md) | III — Control the context | `09-start` |
+| 09 | [Example Mapping and the `discover` skill](09-example-mapping.md) · *excursion* | III — Control the context | `09-start` |
 | 10 | [Path-scoped rules](10-path-scoped-rules.md) | III — Control the context | `10-start` |
-| 11 | [The TDD inner loop](11-tdd-inner-loop.md) | IV — Orchestrate and let go | `11-start` |
+| 11 | [The TDD inner loop](11-tdd-inner-loop.md) · *excursion* | IV — Orchestrate and let go | `11-start` |
 | 12 | [Team and workflow audit](12-team-and-workflow-audit.md) | IV — Orchestrate and let go | `12-start` |
 | 13 | [Hooks](13-hooks.md) | IV — Orchestrate and let go | `13-start` |
 | 14 | [The browser closes the loop](14-browser-loop.md) | IV — Orchestrate and let go | `14-start` |
 | 15 | [Letting go](15-letting-go.md) | IV — Orchestrate and let go | `15-start` |
 | 16 | [Agent SDK](16-agent-sdk.md) | IV — Orchestrate and let go | `16-start` |
 | 17 | [Capstone](17-capstone.md) | IV — Orchestrate and let go | `17-start` |
-| 18 | [Automate](18-automate.md) | IV — Orchestrate and let go | `18-start` |
-| 19 | [Build your own MCP](19-build-your-own-mcp.md) | IV — Orchestrate and let go | CLASH's `19-start` |
+| 18 | [Automate](18-automate.md) · *deep dive* | IV — Orchestrate and let go | `18-start` |
+| 19 | [Build your own MCP](19-build-your-own-mcp.md) · *excursion* | IV — Orchestrate and let go | CLASH's `19-start` |
 
 ## Stuck?
 

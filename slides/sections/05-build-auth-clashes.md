@@ -80,6 +80,7 @@ lines:
 layout: code-live
 heading: "The safety moment"
 routeAlias: theory-server-action-safety
+deepDive: excursion-nextjs
 filePath: "prompt to Claude Code — after clashes work"
 success: "Claude explains that the layout guards the page and not the action, and the ownership rule lands in CLAUDE.md."
 ---

@@ -94,9 +94,12 @@ lines:
 ---
 layout: concept
 heading: "The loop that matters"
+routeAlias: quick-tdd
+deepDive: excursion-tdd
 lines:
   - "Change → browser → observe → fix"
   - "No human in the loop."
+  - "Told to pass a test, a model edits the easier file — the spec is the goalpost."
 ---
 
 <G16VerificationLoop />
@@ -140,6 +143,22 @@ lines:
 </div>
 
 ---
+layout: concept
+heading: "Share the server, trust tools selectively"
+docs: https://code.claude.com/docs/en/mcp
+lines:
+  - ".mcp.json at the project root: checked in, so the whole team gets the server."
+  - "Claude Code asks once before a project server may start."
+  - "In permissions.allow, name single tools, not the whole server."
+---
+
+<div class="flex flex-col gap-3 w-full max-w-3xl">
+  <div class="na-card px-5 py-3 flex gap-4 items-center"><span class="font-mono text-sm w-44 shrink-0" style="color: var(--na-accent-500)">--scope project</span><span style="color: var(--na-fg-muted)">claude mcp add writes .mcp.json instead of ~/.claude.json</span></div>
+  <div class="na-card px-5 py-3 flex gap-4 items-center" v-click><span class="font-mono text-sm w-44 shrink-0" style="color: var(--na-accent-500)">claude mcp list</span><span style="color: var(--na-fg-muted)">⏸ Pending approval until you say yes</span></div>
+  <div class="na-card px-5 py-3 flex gap-4 items-center" v-click><span class="font-mono text-sm w-44 shrink-0" style="color: var(--na-accent-500)">permissions.allow</span><span class="font-mono text-sm" style="color: var(--na-fg-muted)">mcp__playwright__browser_snapshot</span></div>
+</div>
+
+---
 layout: task
 number: "14"
 heading: "The browser closes the loop"
@@ -159,4 +178,14 @@ lines:
 
 <G17BrowserToolComparison />
 
+---
+layout: concept
+heading: "Excursion: build your own MCP server"
+routeAlias: quick-mcp-server
+deepDive: excursion-mcp-server
+docs: https://modelcontextprotocol.io/docs/develop/build-server
+lines:
+  - "Optional, after task 16: task 19 in your CLASH clone and clash-conference."
+  - "You design the tools: names, descriptions, checks."
+---
 

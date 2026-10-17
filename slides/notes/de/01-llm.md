@@ -9,7 +9,7 @@ Sagen:
 - [click] "Add" ist ein Token, "to" ist eins; "notifications" und "CLASH" sind selten genug, um in je zwei Teile zu zerfallen
 - [click:6] Vier Wörter, sechs Tokens
 - Faustregel: ein Token ist im Englischen etwa drei Viertel eines Wortes — neuere Claude-Modelle zerlegen denselben Text in mehr Tokens
-- Warum wichtig: Alles wird in Tokens gezählt und bezahlt — die Größe dessen, was du schickst, die Größe dessen, was zurückkommt, das Limit dessen, was reinpasst
+- Warum wichtig: Alles wird in Tokens gezählt und bezahlt — die Grösse dessen, was du schickst, die Grösse dessen, was zurückkommt, das Limit dessen, was reinpasst
 
 <!-- @note: one-token-at-a-time -->
 > Tun:
@@ -22,7 +22,7 @@ Sagen:
 - [click] neue Kandidaten für das Token danach, die Wahl wird Teil des Inputs
 - Nirgendwo ist ein Plan aufgeschrieben — die Antwort entsteht Stück für Stück, jedes Stück hängt von allem davor ab
 - Deshalb wird aus einem schlechten ersten Satz leicht ein schlechter Absatz
-- Keine versteckte Pause zum stillen Nachdenken — „Thinking" (in Claude Code standardmäßig an) ist derselbe Ein-Token-nach-dem-anderen-Trick, nur werden zuerst Überlegungs-Tokens geschrieben, dann die Antwort-Tokens
+- Keine versteckte Pause zum stillen Nachdenken — „Thinking" (in Claude Code standardmässig an) ist derselbe Ein-Token-nach-dem-anderen-Trick, nur werden zuerst Überlegungs-Tokens geschrieben, dann die Antwort-Tokens
 
 <!-- @note: it-picks-from-probabilities -->
 Sagen:
@@ -47,7 +47,7 @@ Sagen:
 > - Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
 
 Sagen:
-- Gleiche Architektur, andere Größe — größer ist nicht immer besser, sondern langsamer und teurer
+- Gleiche Architektur, andere Grösse — grösser ist nicht immer besser, sondern langsamer und teurer
 - [click] Sonnet: schnell genug, fähig genug und günstiger als Opus. Standard auf Anthropic-Plänen ist Opus; /model zeigt, welches du nutzt
 - [click] Opus greifen, wenn das Denken der schwere Teil ist, nicht das Tippen
 - [click] Fable ist für Sessions gebaut, die du sonst in Stücke teilen würdest — das Ergebnis übergeben, nicht die Schritte
@@ -60,10 +60,11 @@ Sagen:
 > - Docs-Link: öffnen, bis "Adjust effort level" scrollen, dann zurück zu den Folien
 
 Sagen:
-- Context: was es weiß, die Fakten, die du ins Fenster legst
+- Context: was es weiss, die Fakten, die du ins Fenster legst
 - [click] Modell: Fähigkeit
 - [click] Effort: Reasoning für diese Aufgabe, nie ein Ersatz für fehlenden Context oder fehlende Belege
 - [click] Verifikation: woran du erkennst, dass es funktioniert hat
+- Tempo ist ein anderer Regler: /fast lässt dasselbe Opus-Modell bis zu 2,5 Mal schneller laufen, zu einem höheren Preis pro Token. Weniger Effort tauscht dagegen Qualität gegen Tempo. Research Preview, bezahlt aus zusätzlicher Nutzung
 
 <!-- @note: spend-effort-where-it-matters -->
 > Tun:
@@ -77,10 +78,10 @@ Sagen:
 <!-- @note: where-the-knowledge-comes-from -->
 Sagen:
 - Zwei sehr unterschiedliche Phasen: Training und Nutzung
-- Training passierte einmal, auf einem riesigen Textberg, und endete an einem Stichtag — alles, was das Modell von sich aus "weiß", ist von damals
+- Training passierte einmal, auf einem riesigen Textberg, und endete an einem Stichtag — alles, was das Modell von sich aus "weiss", ist von damals
 - [click] Wenn du es benutzt: nichts wird gelernt, nichts wird von selbst nachgeschlagen
 - Beispiel: es kennt eine alte Version von Next.js aus dem Training
-- Es kennt nicht dein Repo, die Konventionen deines Teams oder aktuelle Nachrichten — außer dieser Text landet im Prompt
+- Es kennt nicht dein Repo, die Konventionen deines Teams oder aktuelle Nachrichten — ausser dieser Text landet im Prompt
 - Das ist der Job des Harness, nächster Abschnitt
 
 <!-- @note: it-has-no-memory -->
@@ -105,7 +106,7 @@ Sagen:
 - Jedes Modell hat eine maximale Anzahl Tokens pro Aufruf: das Context Window — stell dir einen Tank vor
 - [click] Der untere Teil ist fix: System-Prompt und CLAUDE.md, bei jedem Aufruf gleich
 - [click] Gelesene Dateien, Tool-Output und Chat stapeln sich obendrauf, während du arbeitest
-- Ein großes Fenster ist nicht gratis: je mehr drin ist, desto mehr muss das Modell abwägen, Details in der Mitte bekommen weniger Aufmerksamkeit
+- Ein grosses Fenster ist nicht gratis: je mehr drin ist, desto mehr muss das Modell abwägen, Details in der Mitte bekommen weniger Aufmerksamkeit
 - [click:5] Nahe am oberen Rand: die Drift-Zone — der Agent vergisst eine früh gegebene Regel oder liest eine Datei erneut, die er schon gesehen hat. Claude Code komprimiert automatisch, bevor das Fenster voll ist; auch dabei können frühe Anweisungen verloren gehen
 - Später nutzt du /context, um diesen Tank live zu beobachten
 - Was hineinkommt, ist deine Entscheidung, und das zählt mehr als die Formulierung des Prompts
@@ -126,7 +127,7 @@ Sagen:
 - Buchstaben zählen scheitert, weil es nie Buchstaben sieht
 - Rechnen mit langen Zahlen scheitert aus demselben Grund
 - [click] Es kann Code nicht im Kopf ausführen, also ist "terminiert diese Schleife" eine Vermutung
-- [click] Es weiß nicht, was sich in einer Library seit dem Training geändert hat
+- [click] Es weiss nicht, was sich in einer Library seit dem Training geändert hat
 - [click] Es zu bitten, sich selbst gegenzuchecken, erzeugt meist selbstsichere Zustimmung
 - Für jeden dieser Punkte gibt es dieselbe Lösung: ihm ein Tool geben — ein Taschenrechner, ein Test-Runner, die Docs, ein Browser
 - Genau das ist Claude Code: ein Modell mit Tools

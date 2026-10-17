@@ -5,7 +5,7 @@
 
 Sagen:
 - Nicht mehr bauen, jetzt kontrollieren
-- Fünf Tasks: Context, Skills, Subagents, Example Mapping, Path-scoped rules
+- Vier Tasks: Context, Skills, Subagents, Path-scoped rules — dazu Example Mapping als optionaler Exkurs
 - Jede ist eine andere Art zu entscheiden, was ins Fenster kommt
 
 <!-- @note: eight-tools-one-constraint -->
@@ -20,7 +20,7 @@ Sagen:
 - [click] Projektregel: für eine Konvention, die nur in einem Teil der Codebasis gilt
 - [click] Subagent: für laute Arbeit, die deinen Thread verschmutzen würde
 - [click] Agent-Team: wenn Worker miteinander reden müssen
-- [click] Workflow: wenn der Fan-out größer ist, als ein Gespräch steuern kann
+- [click] Workflow: wenn der Fan-out grösser ist, als ein Gespräch steuern kann
 - [click] Hook: wenn eine Regel gelten muss, egal ob der Agent zustimmt oder nicht
 - [click] MCP: wenn der Agent über das Repo hinaus muss
 
@@ -61,7 +61,7 @@ Sagen:
 - Die Übung: eine gute Context-Datei aus dem Nichts schreiben, verankert in echten Regeln
 - Das ist die schwierigere, nützlichere Fähigkeit
 - Die meisten Repos, die du anfasst, sehen so aus: nichts, oder fast nichts
-- Gut zu wissen: seit Claude Code v2.1.277 liest Claude AGENTS.md von selbst — aber standardmäßig nur, wenn ein Repository keine CLAUDE.md hat. CLASH hat eine, also lädt weiterhin der @AGENTS.md-Import die AGENTS.md.
+- Gut zu wissen: seit Claude Code v2.1.277 liest Claude AGENTS.md von selbst — aber standardmässig nur, wenn ein Repository keine CLAUDE.md hat. CLASH hat eine, also lädt weiterhin der @AGENTS.md-Import die AGENTS.md.
 
 <!-- @note: the-shape-underneath-the-rules -->
 > Tun:
@@ -127,6 +127,7 @@ Sagen:
 - [click] .claude/rules/*.md — eine einfache Regel lädt beim Start, wie CLAUDE.md. Task 10 zeigt die Art, die auf eine passende Datei wartet
 - [click] Alles landet in einem Context — nichts wird verworfen, nichts wird ausgewählt
 - [click] Zwei Dateien widersprechen sich? Claude wählt womöglich irgendeine davon. Das ist ein Bug, den du gebaut hast, kein Feature
+- In einer grossen Codebasis oder einem Monorepo ist genau diese Schichtung das Werkzeug: eine CLAUDE.md pro Verzeichnis, claudeMdExcludes, um die Dateien anderer Teams auszulassen, --add-dir für einen zweiten Ordner. Die Doku-Seite "Large codebases" hat den Rest
 
 <!-- @note: personal-rules-follow-you -->
 > Tun:

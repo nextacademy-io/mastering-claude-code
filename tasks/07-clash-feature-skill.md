@@ -48,7 +48,9 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    allowed-tools: Read, Edit, Write, Grep, Glob, Bash(npm run *) Bash(npx prisma *) Bash(npx tsc *)
    ---
    ```
-4. Write the body as eleven steps, the last one verifies. Keep each step short.
+4. Write the body as eleven steps, the last one verifies. Keep each step short. This is the
+   recipe an experienced Next.js developer would write. You do not need every term — ask
+   Claude about any of them.
    Prisma model → migration → constants → Zod schema in `lib/validation.ts` → read helper
    in `lib/data/` → Server Action in `app/actions/` **with its own ownership check** →
    page → shadcn component → `revalidatePath` → notification via `lib/notify.ts`.
@@ -119,11 +121,15 @@ personal-only). Your own `.claude/skills/clash-feature/` is not — that is what
 
 Compare your skill with `workshop-artifacts/07-clash-feature-skill/SKILL.md` in the workshop repository.
 Then test your description: in a fresh session, ask for a small feature without typing `/clash-feature`, and see whether Claude loads the skill by itself.
+To share the plugin with your team, list it in a `.claude-plugin/marketplace.json` so they install it by name, and test it with `claude plugin eval`.
 
 ## Links
 
 - Skills — https://code.claude.com/docs/en/skills
 - Commands — https://code.claude.com/docs/en/commands
 - Create a plugin — https://code.claude.com/docs/en/plugins/create
+- Code intelligence plugins — https://code.claude.com/docs/en/plugins/code-intelligence
+- Create a marketplace — https://code.claude.com/docs/en/plugins/create-marketplace
+- Plugin evals — https://code.claude.com/docs/en/plugin-evals
 - Tools reference — https://code.claude.com/docs/en/tools-reference
 - agent-browser skill — https://www.skills.sh/vercel-labs/agent-browser/agent-browser

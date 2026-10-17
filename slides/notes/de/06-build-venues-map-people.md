@@ -32,7 +32,7 @@ Sagen:
 Sagen:
 - Eine Datei in .claude/commands/ wird zu einem Slash-Command
 - $ARGUMENTS ist das, was du danach eintippst
-- Das ist die kleine Version eines Skills — Teil III macht sie größer
+- Das ist die kleine Version eines Skills — Teil III macht sie grösser
 
 <!-- @note: let-claude-read-the-error -->
 > Tun:
@@ -52,7 +52,7 @@ Sagen:
 > - Optional: auf den Abschnitt "Work with images" in den Docs zeigen — dieselbe Idee, eingefügt statt von agent-browser aufgenommen
 
 Sagen:
-- [click:4] Schließt eine Schleife, die die meisten offenlassen: Claude ändert den Code UND Claude prüft das Ergebnis
+- [click:4] Schliesst eine Schleife, die die meisten offenlassen: Claude ändert den Code UND Claude prüft das Ergebnis
 - Teil IV macht dasselbe mit Playwright MCP und Chrome DevTools MCP
 
 <!-- @note: one-big-ask-or-four-small-ones -->
@@ -98,5 +98,5 @@ Sagen:
 
 Sagen:
 - Auch Checks kosten Zeit: der günstigste Check, der scheitern kann, kommt direkt nach der Änderung
-- [click] npx tsc --noEmit und npm run lint schließen ein Work Package ab
+- [click] npx tsc --noEmit und npm run lint schliessen ein Work Package ab
 - [click] npm run build vor "fertig": der Abschnitt "Quality gates" aus Schritt 11. Teil IV erzwingt ihn mit einem Hook

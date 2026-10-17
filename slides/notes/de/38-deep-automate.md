@@ -1,9 +1,10 @@
 <!-- @note: nobody-at-the-keyboard -->
 > Tun:
 > - Opener für den Block. Noch keine Demo
+> - Deep Dive im Anhang: Du kommst über den Chip auf "Automate with a stop rule" oder "Deep dive: automate" hierher
 
 Sagen:
-- Bisher saßt du an der Tastatur: du hast getippt, Claude hat gearbeitet, du hast zugeschaut
+- Bisher sasst du an der Tastatur: du hast getippt, Claude hat gearbeitet, du hast zugeschaut
 - Fünf Wege, sich zu entfernen, jeder klein und echt
 - Die ersten vier machst du selbst; der fünfte braucht ein claude.ai-Abo und GitHub-Zugriff
 
@@ -25,7 +26,7 @@ Sagen:
 Sagen:
 - Concise lässt Einleitung und Schluss weg; die Arbeit darunter bleibt so gründlich wie zuvor
 - Mitten in der Session umschalten: der neue Style gilt ab deiner nächsten Nachricht
-- Die Wahl landet in .claude/settings.local.json als outputStyle; der Befehl ignoriert Groß- und Kleinschreibung, der Wert nicht
+- Die Wahl landet in .claude/settings.local.json als outputStyle; der Befehl ignoriert Gross- und Kleinschreibung, der Wert nicht
 - Ein Style ist eine Anweisung, keine Garantie; was immer passieren muss, ist ein Hook
 - Ein frischer Subagent läuft mit eigenem System-Prompt, ihn erreicht kein Style
 
@@ -105,6 +106,7 @@ Sagen:
 - [click] claude agents listet Background-Sessions über alle deine Projekte; Subagents sind keine Zeilen
 - Vor dem ersten Edit zieht die Session nach .claude/worktrees/ um, dort landet docs/audit.md
 - Der frische Worktree hat keine node_modules, der Build des Stop-Hooks scheitert bis npm install
+- Die andere Richtung, eine Session von aussen starten: Ein claude-cli://open-Link in einem Runbook oder Alert öffnet eine lokale Session mit fertig eingetragenem, aber nicht abgeschicktem Prompt
 
 <!-- @note: routines-the-cloud-runs-it -->
 > Tun:
@@ -117,6 +119,20 @@ Sagen:
 - [click] Cloud sieht keine lokalen Dateien: jeder Lauf klont CLASH frisch von dessen Default-Branch
 - Eine Routine gehört zu einem claude.ai-Account; was sie auf GitHub tut, erscheint unter deinem Namen
 - Keine Permission-Prompts im Lauf: der Prompt selbst muss sagen, was nicht zu tun ist
+
+<!-- @note: cloud-sessions-what-a-routine-runs-in -->
+> Tun:
+> - Docs-Link: "Access levels", dann die Tabelle unter "What carries over from your setup"
+> - Kein Live-Setup: GitHub ist vor der Spec-Drift-Demo mit claude.ai verbunden
+> - Der Einstieg im Browser steht auf der Seite "Get started with Claude Code in the cloud" (web-quickstart)
+
+Sagen:
+- Eine Cloud-Session ist Claude Code auf einer von Anthropic verwalteten VM, nicht auf deinem Laptop
+- GitHub einmal verbinden: im Browser auf claude.ai/code oder mit /web-setup in der CLI über deinen gh-Login
+- [click] Jede Session läuft in einer Umgebung: Netzwerkstufe, Env-Variablen, Setup-Skript. Standard ist Trusted: Paket-Registries, GitHub, Cloud-SDKs
+- [click] Sie pusht einen Branch; du liest den Diff und öffnest den Pull Request. Den Tab zu schliessen stoppt sie nicht
+- Dein ~/.claude und deine MCP-Server im User-Scope bleiben zu Hause — committe, was die Cloud sehen soll
+- Die Spec-Drift-Routine läuft genau in dieser Umgebung
 
 <!-- @note: the-spec-drift-routine -->
 > Tun:
@@ -134,6 +150,7 @@ Sagen:
 <!-- @note: automate -->
 > Tun:
 > - Übergabe an tasks/18-automate.md; der Routine-Schritt ist die Trainer-Demo
+> - Danach führt der Zurück-Chip zu "Deep dive: automate"; die nächste Folie ist "Three levers, one responsibility"
 > - Answer Key: workshop-artifacts/18-automate/ mit host-notes.md, loop.md, schedule-prompt.md und den Smoke-Tests im README
 
 Sagen:

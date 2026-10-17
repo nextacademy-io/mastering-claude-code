@@ -64,6 +64,7 @@ Say:
 - [click] Model: capability
 - [click] Effort: reasoning spent on this task, never a fix for missing context or evidence
 - [click] Verification: how you will know it worked
+- Speed is a different knob: /fast runs the same Opus model up to 2.5 times faster at a higher price per token. A lower effort trades quality for speed instead. Research preview, paid from extra usage
 
 <!-- @note: spend-effort-where-it-matters -->
 > Do:

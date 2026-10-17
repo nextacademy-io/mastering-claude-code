@@ -35,7 +35,8 @@ that keeps this app safe: every action checks who is allowed to do it.
    Give me two ways to do it in Next.js 16 with Server Actions, with one pro and one con each.
    Do not write code yet.
    ```
-3. Pick the JWT cookie option and give a small brief.
+3. Pick the JWT cookie option and give a small brief. This is what an experienced Next.js
+   developer would ask for. You do not need every term — ask Claude about any of them.
    ```
    Build option with the signed JWT cookie:
    - jose for the token, bcryptjs for passwords, cookie is httpOnly.
@@ -74,6 +75,8 @@ that keeps this app safe: every action checks who is allowed to do it.
    ```
    Claude keeps a summary and drops the rest.
 10. Build clashes with `@` references, so Claude looks at the right files instead of guessing.
+    This is what an experienced Next.js developer would ask for. You do not need every term —
+    ask Claude about any of them.
     ```
     Build the clash feature from @docs/SPEC.md:
     - reads in lib/data/clashes.ts (list with search, filter upcoming/past/all, sort soonest/newest/popular; one detail query)

@@ -69,7 +69,7 @@ Say:
 <!-- @note: how-this-works -->
 > Do:
 > - Don't know an answer live? Say so — ask Claude on screen ("Schauen wir doch mal was
->   Claude dazu sagt.") or take it away ("Gute Frage, hmm, das weiß ich nicht. Kennt jemand
+>   Claude dazu sagt.") or take it away ("Gute Frage, hmm, das weiss ich nicht. Kennt jemand
 >   von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
 
 Say:
@@ -89,6 +89,7 @@ Say:
 - [click] Build: build CLASH with Claude Code, learning the basics as the app needs them
 - [click] Control: take charge of what the model sees
 - [click] Orchestrate: teams, workflows, hooks, the browser, CI, the SDK
+- The dimmed lines at the bottom are optional: deep dives into a Claude Code mechanic, excursions into a method or framework. We pick them as we go
 
 <!-- @note: foundations -->
 > Do:

@@ -1,4 +1,7 @@
 <!-- @note: build-your-own-mcp -->
+> Tun:
+> - Exkurs im Anhang: Du kommst über den Chip auf "Excursion: build your own MCP server" hierher
+
 Sagen:
 - Task 14: Wir haben nur fremde Server benutzt — Playwright, Chrome DevTools, einen Remote-Server
 - Jetzt ist CLASH das System, das ein anderer Agent erreicht. Den Server entwerfen wir selbst
@@ -26,7 +29,7 @@ Sagen:
 - Ein console.log schreibt in diesen Kanal und macht ihn kaputt. Logs gehen an console.error
 - [click] Vier registerTool-Aufrufe: Name, Beschreibung, zod-Schema, Handler. Die Beschreibung sagt Claude, wann
 - [click] Hinter den Tools: Prisma und die dev.db von CLASH, aufgelöst aus import.meta.url, nie aus process.cwd()
-- In Claude Code heißt ein Tool mcp__clash__find_venue: Server-Name, doppelter Unterstrich, Tool-Name
+- In Claude Code heisst ein Tool mcp__clash__find_venue: Server-Name, doppelter Unterstrich, Tool-Name
 
 <!-- @note: five-decisions-behind-a-good-tool-server -->
 > Tun:
@@ -53,7 +56,7 @@ Sagen:
 - registerTool ist der ganze Vertrag: Claude bekommt Name, Beschreibung, Schema; der Handler läuft auf dem Server
 - In den Schreib-Tools stecken die Regeln: create_clash lehnt einen unbekannten Host, eine unbekannte Venue, ein vergangenes Datum, ein Duplikat ab; cancel_clash einen unbekannten Host, einen unbekannten Clash, einen Host, dem der Clash nicht gehört
 - Eine Ablehnung ist reiner Text mit isError: true. Nichts wurde geschrieben, das Modell liest, warum
-- Der Server ist ein einfacher Node-Prozess. Nichts darin weiß von Claude Code
+- Der Server ist ein einfacher Node-Prozess. Nichts darin weiss von Claude Code
 
 <!-- @note: register-it-then-trust-it-selectively -->
 > Tun:
@@ -93,7 +96,7 @@ Sagen:
 - [click] Dieselbe Kette wie vorher: Claude Code, stdio, der Server, Prisma, dev.db
 - [click] Zweiter Client: clash-conference über das Agent SDK. query() bekommt mcpServers, `.mcp.json` im Programm
 - Aus clash-conference gestartet findet der Server dieselbe dev.db von CLASH — dafür ist import.meta.url da
-- Ein kalter npx-Download kann MCP_TIMEOUT reißen. failed in system/init heißt fehlgeschlagener Publish
+- Ein kalter npx-Download kann MCP_TIMEOUT reissen. failed in system/init heisst fehlgeschlagener Publish
 - Der Umschalter: "Unpublish from CLASH" ist auf dem 19-start von clash-conference schon gebaut und ruft dein cancel_clash auf. Die Teilnehmenden schreiben nur die Publish-Route
 
 <!-- @note: route-ts -->
@@ -111,6 +114,7 @@ Sagen:
 > - Übergabe an tasks/19-build-your-own-mcp.md: Schritte 1 bis 6 der Server in deinem CLASH-Clone, 7 bis 10 clash-conference auf localhost:3001
 > - Achten auf: console.log im Server, refuse(), wenn find_venue nichts findet, ein Schreibvorgang vor seinen Prüfungen, ein Löschen ohne Besitzer-Prüfung, kein Neustart nach einem neuen Tool
 > - Karten-Demo: die Karte von CLASH auf localhost:3000/map, nach jeder Änderung neu laden. Create → der Clash erscheint; derselbe Create nochmal → Duplicate, weiter nur einer; Cancel oder Unpublish → weg
+> - Danach führt der Zurück-Chip zu "Excursion: build your own MCP server"; die nächste Folie ist "Letting go of the wheel"
 
 Sagen:
 - "Now you": ein fünftes Tool list_venues, ask-clash.mts aus Task 16 auf diesen Server gerichtet, eine Ablehnung, mit der Claude allein weiterkommt

@@ -10,7 +10,7 @@ Say:
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Do:
-> - 12-start: ownership bug re-seeded for this audit (same removal as task 08), plus task 11's finished tdd skill and passing capacity.ts
+> - 12-start: ownership bug re-seeded for this audit (same removal as task 08), plus task 11's finished tdd skill and passing capacity.ts — whether or not the group took that excursion
 
 Say:
 - Same audit as task 08, two more ways to run it — a team, then a dynamic workflow
@@ -52,7 +52,7 @@ Say:
 <!-- @note: generator-verifier-make-then-check -->
 > Do:
 > - Docs link: the blog post https://claude.com/blog/multi-agent-coordination-patterns, scroll to "Pattern 1: Generator-verifier", point at its diagram, then back — ours redraws it
-> - Five patterns follow, in the blog's order
+> - Three patterns follow, in the blog's order. Message bus and shared state, the blog's other two, wait in the excursion after "Which pattern did we just run?"
 > - Docs: https://code.claude.com/docs/en/goal — point at "How evaluation works"
 
 Say:
@@ -119,53 +119,6 @@ Say:
 - Row 2: a task that depends on others can't be claimed until they are done
 - Row 3: exit code 2 stops a task from being marked complete
 - One task per file: two teammates on one file overwrite each other
-
-<!-- @note: message-bus-publish-and-subscribe -->
-> Do:
-> - Docs link: the blog post, scroll to "Pattern 4: Message bus"
-> - Stress: not a Claude Code feature, even though teammates send messages
-
-Say:
-- [click] One alert source, five agents, and a bus in the middle
-- [click] Every arrow goes through the bus: agents publish events and subscribe to topics
-- [click] No agent talks to another directly — they stay decoupled
-- Catch: hard to trace, and a wrongly routed event fails silently
-- SendMessage goes to one agent by name — no topics, no router
-
-<!-- @note: message-bus-publish-and-subscribe-2 -->
-> Do:
-> - No live demo: these are workarounds, not a feature
-> - Watch for: rows 2–3 need your own sessions, started with `claude --name web` and `claude --name migration` — not teammates
-
-Say:
-- Row 1: no broadcast — to reach two teammates, send two messages
-- Row 2: cross-session messaging: Claude messages another of your sessions by name
-- Built in, no shared file: Claude lists your running sessions with ListAgents and sends with SendMessage. See them yourself with /list-agents. Needs Claude Code v2.1.224, on native Windows v2.1.234
-- @web is a session name, not a path: type @ and the first letters of the name, then pick the session from the list that pops up (v2.1.232 or later). Set the name with --name or /rename
-- Row 3: one notice when that session goes idle — not a lasting subscription
-- No topics, no router: that's why the footnote says "closest ways"
-
-<!-- @note: shared-state-one-store-no-coordinator -->
-> Do:
-> - Docs link: the blog post, scroll to "Pattern 5: Shared state"
-> - Stress: no built-in feature; a shared file works, but a team keeps its lead
-
-Say:
-- [click] A shared store in the middle, four agents around it, no coordinator
-- [click] Every agent reads from and writes to the store
-- [click] A finding one agent writes is there for all the others at once
-- Catch: agents can repeat work, or keep answering each other without end
-- So give it a stop rule: no new findings for a few rounds, or a judge agent
-
-<!-- @note: shared-state-one-store-no-coordinator-2 -->
-> Do:
-> - Optional live: start two sessions in your CLASH clone, send row 1 in each
-> - Watch for: two writers on one file can overwrite each other — keep it append-only
-
-Say:
-- Row 1: no lead — two sessions you start yourself share one file
-- Row 2: the stop rule — the /goal checker reads only the conversation, so Claude must show the file
-- An agent team always keeps its lead, so it is not pure shared state
 
 <!-- @note: strategy-three-dynamic-workflows -->
 > Do:
@@ -238,6 +191,8 @@ Say:
 <!-- @note: which-pattern-did-we-just-run -->
 > Do:
 > - Ask the group first; let them guess before each click
+> - Excursion, optional: the chip jumps to "Message bus: publish and subscribe"; the back chip on the second "Shared state" slide lands here again
+> - Skip it and go on with "Reconcile, decide, merge"
 
 Say:
 - [click] Task 08 auditor: orchestrator-subagent with one helper — main delegates, gets a report back
@@ -245,6 +200,8 @@ Say:
 - [click] Task 12 workflow: the script orchestrates; refuters drop bad findings, with no feedback loop
 - The blog would move peer talk to shared state; Claude Code keeps it in the team's mailbox
 - The blog says it too: real systems often combine patterns
+- Neither run used the blog's last two patterns, message bus and shared state. Neither is built into Claude Code — the excursion shows the closest ways
+- The same shape ships as a product: the claude-security plugin runs a multi-agent scan on dynamic workflows, verifier agents check every finding, and patches are never applied for you
 
 <!-- @note: reconcile-decide-merge -->
 > Do:

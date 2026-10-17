@@ -2,9 +2,10 @@
 > Do:
 > - Divider: skill row highlighted — this is still a skill, a new one
 > - Keep the beat short
+> - Excursion in the appendix: you got here from the chip on "Excursion: Example Mapping"
 
 Say:
-- "The next two tasks are both about shaping Claude's context, and when it loads."
+- "A method from requirements work, packed into a skill — and a second look at what a skill loads, and when."
 
 <!-- @note: task-09-example-mapping-and-the-discover-skill -->
 > Do:
@@ -46,6 +47,7 @@ Say:
 <!-- @note: the-discover-skill -->
 > Do:
 > - Recap: the spec is the real deliverable, not the skill file itself
+> - Afterwards the back chip returns to "Excursion: Example Mapping"; the next slide is "Subagents"
 
 Say:
 - "Everything downstream — the rule, the boundary test — starts from this file"

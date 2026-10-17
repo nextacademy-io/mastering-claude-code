@@ -10,6 +10,10 @@
 //  - a flow-ways slide that breaks its shape (FLOW_WAYS below): 2 to 4 ways, short one-line
 //    cells, the one-line heading of the flow slide right before it, exactly one still <G…>
 //    graphic, a table that fits
+//  - a deep-dive or excursion chip that breaks the navigation mechanism (checkBranches below):
+//    `deepDive:`/`backTo:` targets that do not resolve, a block outside the appendix, a block
+//    that does not close back to the slide that branched into it, a chip on a layout it was not
+//    checked on, or a <Link>/<DeepLink> tag in a slide body
 import { readFile, readdir } from 'node:fs/promises'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join, dirname, relative } from 'node:path'
@@ -35,8 +39,8 @@ const THIRD_PARTY_DOCS = new Set([
   'https://www.skills.sh/vercel-labs/agent-browser/agent-browser', // the agent-browser skill itself — npx skills add's source
   'https://github.com/OWASP/secure-agent-playbook', // the code-security-skills plugin task 08 installs — its marketplace repo
   'https://modelcontextprotocol.io/docs/develop/build-server', // the MCP TypeScript server tutorial task 19 builds from
-  'https://claude.com/blog/multi-agent-coordination-patterns', // not a tool page: the Claude blog post whose five diagrams the five coordination-pattern slides in section 14 redraw
-  'https://github.com/bmad-code-org/bmad-method', // the BMAD method itself — the repo the BMAD slide in the task 17 block of sections/18-capstone-close.md describes and the note's npx skills add installs from
+  'https://claude.com/blog/multi-agent-coordination-patterns', // not a tool page: the Claude blog post whose five diagrams the coordination-pattern slides redraw (three in section 14, two in 33-excursion-coordination-patterns.md)
+  'https://github.com/bmad-code-org/bmad-method', // the BMAD method itself — the repo the BMAD slide in sections/37-excursion-spec-kit-bmad.md describes and the note's npx skills add installs from
 ])
 
 // the layouts in slides/layouts/ — a typo would silently fall back to Slidev's default
@@ -64,6 +68,18 @@ const FLOW_WAYS = {
   footnote: 40,
   height: 384, // canvas height below a one-line heading, inside the layout's padding
 }
+
+// Optional blocks: a deep dive (a Claude Code mechanic) or an excursion (a method outside
+// Claude Code), one appendix file each, `NN-deep-<slug>.md` or `NN-excursion-<slug>.md`, NN 30+,
+// after the appendix divider in slides/slides.md. A main-line slide jumps in with
+// `deepDive: <entry alias>`; the block's last slide returns with `backTo: <resume alias>`, the
+// resume slide being a main-line slide that branches into the same block. slides/slide-top.vue
+// draws both as a chip (slides/components/DeepLink.vue).
+const APPENDIX_DIVIDER = '29-appendix.md'
+const BLOCK_FILE = /^(\d\d)-(deep|excursion)-([a-z0-9-]+)\.md$/
+// the layouts whose top-right corner was checked with the chip on it
+const DEEP_DIVE_LAYOUTS = new Set(['concept', 'code-live', 'task', 'task-intro'])
+const BACK_TO_LAYOUTS = new Set(['concept', 'code-live', 'task', 'flow-ways'])
 
 // one YAML scalar as the frontmatter writes it: "double" (JSON escapes), 'single', or plain
 function yamlScalar(raw) {
@@ -203,6 +219,7 @@ const introSlides = new Map()
 const recapSlides = new Map()
 const taskFiles = new Map()
 const theorySlides = new Map()
+const sectionSlides = new Map() // section file name -> [{ rel, n, layout, routeAlias, deepDive, backTo }]
 const err = (f, msg) => { errors++; console.log(`ERROR ${f}: ${msg}`) }
 const warn = (f, msg) => { warnings++; console.log(`warn  ${f}: ${msg}`) }
 
@@ -267,6 +284,22 @@ for (const file of files) {
       if (theorySlides.has(routeAlias)) err(rel, `slide ${n}: duplicate theory routeAlias ${routeAlias}`)
       theorySlides.set(routeAlias, { heading, rel, slide: n })
     }
+    const fmAlias = (key) => new RegExp(`^${key}:[ \\t]*(.*)$`, 'm').exec(fm)?.[1]
+      ?.replace(/\s+#.*$/, '').trim().replace(/^["']|["']$/g, '')
+    const deepDive = fmAlias('deepDive')
+    const backTo = fmAlias('backTo')
+    for (const [key, value] of [['deepDive', deepDive], ['backTo', backTo]]) {
+      if (value === undefined) continue
+      // DeepLink adds ?clicks= itself; a path or query here would break the target lookup
+      if (!/^[a-z0-9-]+$/.test(value)) err(rel, `slide ${n}: ${key} must be a bare routeAlias (no ?, no /): ${value || '(empty)'}`)
+      const allowed = key === 'deepDive' ? DEEP_DIVE_LAYOUTS : BACK_TO_LAYOUTS
+      if (!allowed.has(layout)) err(rel, `slide ${n}: ${key} on a ${layout ?? 'default'} slide — the chip is only checked on ${[...allowed].join(', ')}`)
+    }
+    if (deepDive !== undefined && backTo !== undefined) err(rel, `slide ${n}: deepDive and backTo on one slide — slide-top.vue shows only one chip`)
+    if (/<(Link|DeepLink)\b/.test(body)) err(rel, `slide ${n}: <Link>/<DeepLink> tag in the body — use the deepDive: or backTo: frontmatter field instead`)
+    const sectionFile = rel.slice('slides/sections/'.length)
+    if (!sectionSlides.has(sectionFile)) sectionSlides.set(sectionFile, [])
+    sectionSlides.get(sectionFile).push({ rel, n, layout, routeAlias, deepDive, backTo })
     // wording limits (see plan: no orphan words, no clipped code)
     // task-intro slides carry two lists (learn:, outcome:) — check every
     // lines:/learn:/outcome: block on the slide, not just the first
@@ -436,6 +469,87 @@ for (const [num, intro] of introSlides) {
   if (intro.rel !== recap.rel) err(recap.rel, `task ${num}: intro is in ${intro.rel}, recap is in ${recap.rel} — both must be in the same section file`)
   else if (intro.slide >= recap.slide) err(recap.rel, `task ${num}: intro (slide ${intro.slide}) must come before the recap (slide ${recap.slide}) in the same file`)
 }
+
+// Deep dives and excursions, checked on the composed deck (slides/slides.md order).
+function checkBranches() {
+  const manifestRel = 'slides/slides.md'
+  const manifest = readFileSync(join(root, manifestRel), 'utf8').replace(/\r\n/g, '\n')
+  const deckFiles = [...manifest.matchAll(/^src:[ \t]*\.\/sections\/(\S+\.md)[ \t]*$/gm)].map((m) => m[1])
+  const dividerIdx = deckFiles.indexOf(APPENDIX_DIVIDER)
+
+  // placement: file numbers follow deck order; blocks only after the divider, nothing else there
+  const blocks = []
+  const mainSlides = []
+  deckFiles.forEach((file, i) => {
+    const num = Number(/^(\d\d)-/.exec(file)?.[1])
+    const prev = Number(/^(\d\d)-/.exec(deckFiles[i - 1] ?? '')?.[1])
+    if (i > 0 && !(num > prev)) err(manifestRel, `${file} comes after ${deckFiles[i - 1]} — section file numbers must follow deck order`)
+    const slides = sectionSlides.get(file) ?? []
+    const block = BLOCK_FILE.exec(file)
+    if (block) {
+      if (dividerIdx < 0 || i < dividerIdx) err(manifestRel, `${file} is a ${block[2] === 'deep' ? 'deep dive' : 'excursion'} — its src: line goes after ${APPENDIX_DIVIDER}`)
+      if (Number(block[1]) < 30) err(manifestRel, `${file}: appendix files are numbered 30 and up`)
+      if (slides.length) blocks.push({ file, kind: block[2], slug: block[3], slides })
+    } else if (dividerIdx >= 0 && i > dividerIdx) {
+      err(manifestRel, `${file} sits in the appendix but is not named NN-deep-<slug>.md or NN-excursion-<slug>.md`)
+    } else if (i !== dividerIdx) {
+      mainSlides.push(...slides)
+    }
+  })
+
+  // every alias in the composed deck, to resolve deepDive:/backTo: exactly once
+  const aliases = new Map()
+  for (const file of deckFiles) {
+    for (const s of sectionSlides.get(file) ?? []) {
+      if (!s.routeAlias) continue
+      if (!aliases.has(s.routeAlias)) aliases.set(s.routeAlias, [])
+      aliases.get(s.routeAlias).push(s)
+    }
+  }
+  const resolve = (s, key) => {
+    const hits = aliases.get(s[key]) ?? []
+    if (hits.length !== 1) err(s.rel, `slide ${s.n}: ${key}: ${s[key]} matches ${hits.length} routeAlias slides in the deck, needs exactly 1`)
+    return hits.length === 1 ? hits[0] : null
+  }
+
+  const entries = new Set()
+  const resumes = new Set()
+  for (const b of blocks) {
+    const entry = b.slides[0]
+    const last = b.slides[b.slides.length - 1]
+    const expected = `${b.kind}-${b.slug}`
+    // an existing theory-* alias may stay on a deep dive's entry: one slide holds one alias,
+    // and DeepLink labels any target outside excursion-* "Deep dive →"
+    const entryOk = entry.routeAlias === expected || (b.kind === 'deep' && entry.routeAlias?.startsWith('theory-'))
+    if (!entryOk) err(entry.rel, `slide ${entry.n}: first slide of ${b.file} must carry routeAlias: ${expected}${b.kind === 'deep' ? ' (or keep its theory-* alias)' : ''}`)
+    if (entry.routeAlias) entries.add(entry.routeAlias)
+    for (const s of b.slides) {
+      if (s.deepDive !== undefined) err(s.rel, `slide ${s.n}: deepDive inside an appendix block — branch only from the main line`)
+      if (s.backTo !== undefined && s !== last) err(s.rel, `slide ${s.n}: backTo only on the last slide of ${b.file}`)
+    }
+    if (last.backTo === undefined) { err(last.rel, `slide ${last.n}: last slide of ${b.file} needs backTo: <resume alias>`); continue }
+    const resume = resolve(last, 'backTo')
+    if (!resume) continue
+    resumes.add(resume)
+    if (!mainSlides.includes(resume)) err(last.rel, `slide ${last.n}: backTo: ${last.backTo} is not a main-line slide`)
+    if (resume.deepDive !== entry.routeAlias) err(resume.rel, `slide ${resume.n}: resume slide of ${b.file} must carry deepDive: ${entry.routeAlias} — the trainer lands where the quick dive ends`)
+    // an existing theory-* or task-NN alias may serve as the resume target; a new one is quick-<slug>
+    const resumeOk = resume.routeAlias === `quick-${b.slug}` || /^(theory|task)-/.test(resume.routeAlias)
+    if (!resumeOk) err(resume.rel, `slide ${resume.n}: resume slide of ${b.file} must carry routeAlias: quick-${b.slug} (or keep its theory-*/task-* alias)`)
+  }
+
+  for (const s of mainSlides) {
+    if (s.backTo !== undefined) err(s.rel, `slide ${s.n}: backTo on a main-line slide — it belongs on the last slide of an appendix block`)
+    if (s.deepDive !== undefined && resolve(s, 'deepDive') && !entries.has(s.deepDive)) err(s.rel, `slide ${s.n}: deepDive: ${s.deepDive} is not the first slide of an appendix block`)
+  }
+  for (const file of deckFiles) {
+    for (const s of sectionSlides.get(file) ?? []) {
+      if (/^(deep|excursion)-/.test(s.routeAlias ?? '') && !entries.has(s.routeAlias)) err(s.rel, `slide ${s.n}: routeAlias ${s.routeAlias} belongs only on the first slide of its appendix block`)
+      if (s.routeAlias?.startsWith('quick-') && !resumes.has(s)) err(s.rel, `slide ${s.n}: routeAlias ${s.routeAlias} belongs only on a resume slide that a block's backTo: names`)
+    }
+  }
+}
+checkBranches()
 
 console.log(`\n${errors} error(s), ${warnings} warning(s) across ${files.length} files`)
 process.exit(errors ? 1 : 0)

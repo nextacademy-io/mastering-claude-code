@@ -74,7 +74,7 @@ Sagen:
 - Verdrahtet unter "Stop", ohne Matcher — Stop hat kein Tool, gegen das es matchen könnte
 - Stop gatet das Ende eines TURNS, nicht einen Tool-Call
 - Das Gate hat eine Grenze: nach acht Blockierungen in Folge beendet Claude Code den Turn trotzdem (`CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` hebt sie an)
-- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl außerhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit dem Code des fehlgeschlagenen Befehls, meist 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
+- `set -euo pipefail`: -e bricht beim ersten fehlgeschlagenen Befehl ausserhalb eines if ab, -u bei einer nicht gesetzten Variable, pipefail lässt eine Pipeline wie a | b scheitern, sobald ein Teil scheitert. Ein Abbruch durch -e endet mit dem Code des fehlgeschlagenen Befehls, meist 1, nicht 2, und blockiert nicht: darum läuft der Build in einem if
 
 <!-- @note: advice-vs-law -->
 > Tun:
@@ -86,7 +86,21 @@ Sagen:
 - [click] Ein Skill ist, was du einem neuen Kollegen sagst; ein Hook ist, was die CI ablehnt
 - Wenn eine Regel in CLAUDE.md immer wieder wiederholt wird und der Agent trotzdem daran vorbeidriftet, wollte diese Regel ein Hook sein
 - Das Subsystem ist `settings.autoMode.hard_deny`, Teil vom Auto-Modus, wo ein Classifier Aktionen prüft statt du selbst — keine PreToolUse-Entscheidung
-- Außerhalb des Auto-Modus bewirkt hard_deny nichts. Was in jedem Modus blockiert, auch in bypassPermissions, ist eine permissions.deny-Regel oder ein PreToolUse-Hook
+- Ausserhalb des Auto-Modus bewirkt hard_deny nichts. Was in jedem Modus blockiert, auch in bypassPermissions, ist eine permissions.deny-Regel oder ein PreToolUse-Hook
+
+<!-- @note: security-guidance-advice-built-on-hooks -->
+> Tun:
+> - Docs-Link: öffnen, bis "How the plugin integrates with Claude Code" scrollen, auf die Hook-Tabelle zeigen, dann zurück zu den Folien
+> - VOLLSTÄNDIGE LÖSUNG (nur für Trainer, bei Demo installieren): /plugin install security-guidance@claude-plugins-official, User-Scope
+
+Sagen:
+- Direkt nach "Advice vs. law": hier ist ein Plugin, das ganz auf Hooks gebaut ist und trotzdem Ratschlag bleibt
+- Bei jedem Edit: ein Mustervergleich für riskante Aufrufe wie eval( oder dangerouslySetInnerHTML. Kein Modellaufruf, keine Kosten
+- [click] Am Ende jedes Turns: ein separates Claude prüft den git-Diff dieses Turns im Hintergrund und gibt Claude seine Befunde als neuen Prompt
+- [click] Wenn Claude committet oder pusht: ein tieferes Review, das zuerst Aufrufer und Sanitizer liest. Deine eigenen Commits aus der Shell werden nicht geprüft
+- Keine der Schichten blockiert ein Schreiben oder einen Commit. Befunde kommen als Anweisungen an; der Reviewer kann etwas übersehen
+- Also ein Sicherheitsnetz, kein Tor. Eine harte Regel braucht weiterhin deinen eigenen Exit 2 oder einen CI-Check
+- Die Reviews kosten Nutzung, der Check pro Edit nicht. Das Plugin braucht Python und ein git-Repository
 
 <!-- @note: settings-override-each-other -->
 > Tun:
@@ -108,9 +122,23 @@ Sagen:
 
 Sagen:
 - Ein sandboxed Bash-Befehl läuft trotzdem — das Betriebssystem erzwingt die Grenze, kein Prompt
-- [click] Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
-- Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
+- Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
+- [click] Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
 - Windows hat keine native Sandbox — Claude Code in WSL2 laufen lassen, um eine zu bekommen
+
+<!-- @note: choose-the-sandbox-by-what-you-risk -->
+> Tun:
+> - Docs-Link: öffnen, bis "Choose an approach" scrollen, auf die Tabelle zeigen, dann zurück zu den Folien
+> - Deep Dive, optional: Der Chip springt zu "Two kinds of boundary"; der Zurück-Chip auf "Enforce it for a team" landet wieder hier
+> - Überspringen und mit "Your org can lock settings down" weitermachen
+
+Sagen:
+- Die Folie davor war die Bash-Sandbox. Sie umschliesst nur Shell-Befehle: Read, Edit, MCP-Server und Hooks laufen mit deinen vollen Rechten
+- Alltag auf dem eigenen Rechner: /sandbox reicht und spart Rückfragen
+- [click] Unbeaufsichtigt, mit --dangerously-skip-permissions: das ganze Claude Code in einen Container, eine VM oder die Sandbox-Runtime packen. Dann sind auch Datei-Tools, MCP und Hooks drin
+- [click] Ein Repository, dem du nicht traust: eine eigene VM oder eine Cloud-Session
+- Auto Mode ist ein Classifier pro Aktion, keine Grenze — für unbeaufsichtigte Läufe hilft eine Grenze trotzdem
+- Keine Sandbox ändert, was ans Modell geht, und jeder offene Netzwerkweg kann weiterhin abfliessen lassen, was Claude lesen kann
 
 <!-- @note: your-org-can-lock-settings-down -->
 > Tun:
@@ -119,24 +147,24 @@ Sagen:
 Sagen:
 - `managed-settings.json`, MDM, oder die claude.ai-Konsole — ein Admin stellt es bereit, nicht du
 - Es steht über jeder anderen Datei. Nichts, was du setzt, überschreibt es
-- `/status` nennt die aktive Managed-Quelle, du weißt also immer, was gilt
+- `/status` nennt die aktive Managed-Quelle, du weisst also immer, was gilt
 
 <!-- @note: hooks -->
 > Tun:
 > - Bestätigen, dass die Leute den kaputten Matcher nachgebaut haben, bevor es weitergeht
 > - Der "warum hat's nicht gefeuert"-Moment funktioniert nur, wenn sie die Stille selbst erlebt haben
-> - Mit `/hooks` live abschließen: ein Read-only-Browser, gruppiert nach Event — eins auswählen, um die gerade geschriebenen Hooks zu sehen
+> - Mit `/hooks` live abschliessen: ein Read-only-Browser, gruppiert nach Event — eins auswählen, um die gerade geschriebenen Hooks zu sehen
 
 
 <!-- @note: ignored-by-git-is-not-hidden -->
 > Tun:
 > - Auf Task 02 zurückverweisen: dass .env in git status fehlte, war nützlich, aber nie eine Security-Grenze
-> - Docs-Link: öffnen, auf `CLAUDE_CODE_GLOB_NO_IGNORE` und `CLAUDE_CODE_GLOB_HIDDEN` zeigen (beide nehmen die Dateien standardmäßig mit), dann zurück zu den Folien
+> - Docs-Link: öffnen, auf `CLAUDE_CODE_GLOB_NO_IGNORE` und `CLAUDE_CODE_GLOB_HIDDEN` zeigen (beide nehmen die Dateien standardmässig mit), dann zurück zu den Folien
 > - Achten auf: unter macOS, Linux und WSL sucht Claude mit find über Bash, nicht mit Glob — die beiden Variablen ändern nur Glob
 
 Sagen:
 - .gitignore beantwortet eine Frage: Soll Git diesen Pfad tracken?
-- [click] Was Claudes Tools sehen, ist eine andere Frage: Glob findet Dateien aus .gitignore und Dotfiles standardmäßig trotzdem
+- [click] Was Claudes Tools sehen, ist eine andere Frage: Glob findet Dateien aus .gitignore und Dotfiles standardmässig trotzdem
 - [click] Unser .env-Hook beobachtet nur das Read-Tool. Eine Permission-Deny-Regel auf Read stoppt auch cat, head und tail; nur die Sandbox (macOS, Linux, WSL2) stoppt grep -r und Skripte
 
 <!-- @note: tool-output-becomes-local-history -->
@@ -149,6 +177,7 @@ Sagen:
 - Tool-Eingaben und -Ergebnisse landen im Klartext in lokalen Session-Transcripts
 - Gibt ein Befehl ein Token aus oder öffnet Read ein Secret, kann der Wert im Transcript stehen, auch wenn die Datei selbst gitignored ist
 - Credential-Reads verbieten und kürzer halten, wie lange Transcripts bleiben: das regelt cleanupPeriodDays
+- Das ist die lokale Seite. Die andere Frage kommt immer: Trainiert Anthropic mit meinem Code? Kommerzielle Pläne (Team, Enterprise, API) werden nicht fürs Training genutzt; Consumer-Pläne (Free, Pro, Max) nur, wenn du es erlaubst. Die Doku-Seite "Data usage" hat Aufbewahrung und Opt-outs
 
 
 <!-- @note: security-three-rules -->

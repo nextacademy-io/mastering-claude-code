@@ -40,6 +40,12 @@ https://code.claude.com/docs/en/quickstart#step-1-install-claude-code
 npm works too and installs the same program: `npm install -g @anthropic-ai/claude-code`, without `sudo`.
 On Node older than 22 it prints an `EBADENGINE` warning. That is harmless.
 
+Multi-line prompts: `Ctrl+J`, or `\` then Enter, adds a new line in every terminal. Shift+Enter
+works in most terminals; in VS Code, Cursor, Zed and Alacritty before 0.16 run `/terminal-setup` once inside
+Claude Code first. Vim keys for the prompt: `/config`, then Editor mode.
+
+Using a screen reader? Start with `claude --ax-screen-reader` for plain, labeled, linear text.
+
 ### Add the agent-browser skill
 
 The CLI is the tool. The skill is what tells Claude the tool exists and how to drive it.

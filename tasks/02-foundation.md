@@ -22,6 +22,10 @@ A good brief beats a good prompt. You learn to say what you want, what must hold
 when it is done. Then you learn plan mode: Claude shows its plan before it touches a file.
 The data model is the right place for that, because it is hard to change later.
 
+CLASH is built with Next.js, Prisma and shadcn/ui. Every developer brings their own languages
+and frameworks. In your own stack, your prompts name your conventions — the Claude Code
+mechanics stay the same.
+
 ## Do this
 
 1. Start on the right branch and open Claude Code, in manual mode.
@@ -36,6 +40,8 @@ The data model is the right place for that, because it is hard to change later.
    shows `manual mode on` — this is a new session, so don't assume you're still in whatever
    mode task 01 left you in.
 2. Give the scaffold brief. Read it once before you send it. Notice the three parts: goal, rules, done.
+   This is what an experienced Next.js developer would ask for. You do not need every term —
+   ask Claude about any of them.
    ```
    Goal: set up the app skeleton for the product in @docs/SPEC.md.
 
@@ -73,7 +79,8 @@ The data model is the right place for that, because it is hard to change later.
    otherwise you get a plain diff viewer instead. Press `Esc` to close it — or, if you got the
    panel, run `/diff` again.
 5. Switch to plan mode. Press `Shift+Tab` until the status bar shows `plan mode on`. Now Claude can read and plan, but does not edit your source.
-6. Ask for the data model plan.
+6. Ask for the data model plan. This is what an experienced Prisma developer would ask for. You
+   do not need every term — ask Claude about any of them.
    ```
    Read @docs/SPEC.md, section "Data". Plan a Prisma 7 schema:
    - SQLite using the better-sqlite3 adapter

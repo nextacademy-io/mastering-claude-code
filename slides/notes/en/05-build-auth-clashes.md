@@ -52,11 +52,14 @@ Say:
 >    - Every Server Action calls requireUser() and checks ownership before it changes an existing row.
 >
 > - Say the sentence the group must keep — Part III and IV spend a long time on exactly this rule
+> - Excursion, optional: the chip jumps to "A Server Action is a public endpoint" — the Next.js detail behind this slide, plus shadcn, Prisma 7 and the avatar payload. The back chip on its last slide lands here again
+> - Skip it and go on with "Point, don't let it guess"
 
 Say:
-- A Server Action is a public endpoint with a generated id
-- The layout guards the page, not the action
+- Every entry point needs its own check. A guarded page does not guard what the page calls
+- Here: the layout guards the page, not the action
 - Zod checks shape, not permission
+- The same rule holds in any stack — an API route, a controller, a job handler
 
 <!-- @note: point-don-t-let-it-guess -->
 > Do:

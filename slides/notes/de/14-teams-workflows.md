@@ -6,11 +6,11 @@
 
 Sagen:
 - Gleiches Problem, gleicher neu präparierter Branch (12-start), andere Strategie
-- Agent-Teams sind experimentell und standardmäßig aus
+- Agent-Teams sind experimentell und standardmässig aus
 
 <!-- @note: task-12-team-and-workflow-audit -->
 > Tun:
-> - 12-start: Ownership-Bug für dieses Audit neu eingebaut (gleiche Entfernung wie Task 08), dazu der fertige tdd-Skill und das bestandene capacity.ts aus Task 11
+> - 12-start: Ownership-Bug für dieses Audit neu eingebaut (gleiche Entfernung wie Task 08), dazu der fertige tdd-Skill und das bestandene capacity.ts aus Task 11 — egal, ob die Gruppe diesen Exkurs gemacht hat
 
 Sagen:
 - Gleiches Audit wie Task 08, zwei weitere Wege — ein Team, dann ein dynamischer Workflow
@@ -52,14 +52,14 @@ Sagen:
 <!-- @note: generator-verifier-make-then-check -->
 > Tun:
 > - Docs-Link: der Blogpost https://claude.com/blog/multi-agent-coordination-patterns, bis "Pattern 1: Generator-verifier" scrollen, auf sein Diagramm zeigen, dann zurück — unseres zeichnet es nach
-> - Fünf Patterns folgen, in der Reihenfolge des Blogs
+> - Drei Patterns folgen, in der Reihenfolge des Blogs. Message bus und Shared state, die anderen zwei aus dem Blog, warten im Exkurs nach "Which pattern did we just run?"
 > - Docs: https://code.claude.com/docs/en/goal — auf "How evaluation works" zeigen
 
 Sagen:
 - [click] Zwei Agents: ein Generator erzeugt das Ergebnis, ein Verifier prüft es
 - [click] Wenn bestanden, weiter zu Accepted; wenn nicht, geht Feedback zurück an den Generator
 - [click] Die Schleife endet, wenn der Verifier akzeptiert oder das Rundenlimit erreicht ist
-- Vage Kriterien heißen: der Verifier winkt alles durch — die Prüfungen aufschreiben
+- Vage Kriterien heissen: der Verifier winkt alles durch — die Prüfungen aufschreiben
 - Claude Code hat das eingebaut: /goal — ein kleines Modell prüft jeden Turn, schickt einen Grund zurück
 - Die fünf Namen stammen aus diesem Blogpost, nicht aus der Claude-Code-Doku. Kein Claude-Code-Feature hängt an ihnen, anders als am Schlüsselwort ultracode — die Ways-Folien geben für jeden Flow Prompts in eigenen Worten
 
@@ -120,53 +120,6 @@ Sagen:
 - Zeile 3: Exit-Code 2 verhindert, dass ein Task als erledigt gilt
 - Ein Task pro Datei: zwei Teammates in einer Datei überschreiben sich
 
-<!-- @note: message-bus-publish-and-subscribe -->
-> Tun:
-> - Docs-Link: der Blogpost, bis "Pattern 4: Message bus" scrollen
-> - Betonen: kein Claude-Code-Feature, obwohl Teammates sich Messages schicken
-
-Sagen:
-- [click] Eine Alert-Quelle, fünf Agents und in der Mitte ein Bus
-- [click] Jeder Pfeil läuft über den Bus: Agents publizieren Events und abonnieren Topics
-- [click] Kein Agent spricht direkt mit einem anderen — sie bleiben entkoppelt
-- Haken: schwer nachzuverfolgen, und ein falsch geroutetes Event scheitert lautlos
-- SendMessage geht per Name an einen Agent — keine Topics, kein Router
-
-<!-- @note: message-bus-publish-and-subscribe-2 -->
-> Tun:
-> - Keine Live-Demo: das sind Umwege, kein Feature
-> - Achten auf: Zeilen 2–3 brauchen eigene Sessions, gestartet mit `claude --name web` und `claude --name migration` — keine Teammates
-
-Sagen:
-- Zeile 1: kein Broadcast — um zwei Teammates zu erreichen, zwei Messages schicken
-- Zeile 2: Cross-Session-Messaging: Claude schreibt einer anderen deiner Sessions per Name
-- Eingebaut, ohne gemeinsame Datei: Claude listet deine laufenden Sessions mit ListAgents und schickt mit SendMessage. Selbst ansehen mit /list-agents. Braucht Claude Code v2.1.224, unter nativem Windows v2.1.234
-- @web ist ein Session-Name, kein Pfad: @ und die ersten Buchstaben des Namens tippen, dann die Session aus der aufklappenden Liste wählen (ab v2.1.232). Den Namen setzt man mit --name oder /rename
-- Zeile 3: eine Nachricht, wenn diese Session idle wird — kein dauerhaftes Abo
-- Keine Topics, kein Router: darum sagt die Fußnote "closest ways"
-
-<!-- @note: shared-state-one-store-no-coordinator -->
-> Tun:
-> - Docs-Link: der Blogpost, bis "Pattern 5: Shared state" scrollen
-> - Betonen: kein eingebautes Feature; eine geteilte Datei geht, aber ein Team behält seinen Lead
-
-Sagen:
-- [click] In der Mitte ein geteilter Store, vier Agents drumherum, kein Coordinator
-- [click] Jeder Agent liest aus dem Store und schreibt hinein
-- [click] Ein Finding, das ein Agent schreibt, ist sofort für alle anderen da
-- Haken: Agents machen Arbeit doppelt oder antworten einander ohne Ende
-- Also eine Stopp-Regel setzen: ein paar Runden ohne neue Findings, oder ein Judge-Agent
-
-<!-- @note: shared-state-one-store-no-coordinator-2 -->
-> Tun:
-> - Optional live: zwei Sessions in deinem CLASH-Clone starten, in jeder Zeile 1 schicken
-> - Achten auf: zwei Schreiber in einer Datei können sich überschreiben — nur anhängen lassen
-
-Sagen:
-- Zeile 1: kein Lead — zwei Sessions, die du selbst startest, teilen eine Datei
-- Zeile 2: die Stopp-Regel — der /goal-Prüfer liest nur das Gespräch, also muss Claude die Datei zeigen
-- Ein Agent-Team behält immer seinen Lead, darum ist es kein reiner Shared State
-
 <!-- @note: strategy-three-dynamic-workflows -->
 > Tun:
 > - Docs-Link: öffnen, bis "When to use a workflow" scrollen, dann zurück zu den Folien
@@ -184,7 +137,7 @@ Sagen:
 Sagen:
 - Eigene Worte starten einen: "use a workflow to …" — nur diese Aufgabe, Effort bleibt gleich
 - Der Prompt aus Task 12 macht genau das — kein ultracode nötig
-- `/effort ultracode`: ein Workflow für jede größere Aufgabe, die ganze Session, Effort bleibt gleich
+- `/effort ultracode`: ein Workflow für jede grössere Aufgabe, die ganze Session, Effort bleibt gleich
 - Auf Pro: Dynamic workflow size auf small, weniger als 5 Agents — ein Rat, keine Grenze
 - Nutzung sparen: erst ein Ordner, Tokens pro Agent in `/workflows`, `x` stoppt den Run
 
@@ -238,6 +191,8 @@ Sagen:
 <!-- @note: which-pattern-did-we-just-run -->
 > Tun:
 > - Zuerst die Gruppe fragen; vor jedem Klick raten lassen
+> - Exkurs, optional: Der Chip springt zu "Message bus: publish and subscribe"; der Zurück-Chip auf der zweiten "Shared state"-Folie landet wieder hier
+> - Überspringen und mit "Reconcile, decide, merge" weitermachen
 
 Sagen:
 - [click] Auditor aus Task 08: Orchestrator-subagent mit einem Helfer — die Main-Session delegiert, bekommt einen Bericht zurück
@@ -245,6 +200,8 @@ Sagen:
 - [click] Workflow aus Task 12: das Skript orchestriert; Refuter verwerfen falsche Findings, ohne Feedback-Schleife
 - Der Blog würde Peer-Gespräche in Shared state verlegen; Claude Code behält sie in der Team-Mailbox
 - Der Blog sagt es selbst: echte Systeme kombinieren oft mehrere Patterns
+- Keiner der beiden Läufe hat die letzten zwei Patterns aus dem Blog genutzt, Message bus und Shared state. Beide sind nicht in Claude Code eingebaut — der Exkurs zeigt die nächstliegenden Wege
+- Dieselbe Form gibt es als Produkt: Das claude-security-Plugin lässt einen Multi-Agent-Scan auf Dynamic Workflows laufen, Verifier-Agents prüfen jeden Befund, und Patches werden nie automatisch angewendet
 
 <!-- @note: reconcile-decide-merge -->
 > Tun:

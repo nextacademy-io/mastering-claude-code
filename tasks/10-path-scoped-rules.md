@@ -5,9 +5,11 @@
 
 ## Theory
 
+- [Rule, CLAUDE.md or skill?](https://mastering-claude-code.vercel.app/theory-rule-claude-md-skill)
 - [Rules scoped to a path](https://mastering-claude-code.vercel.app/theory-path-scoped-rules)
+- [When a scoped rule really loads](https://mastering-claude-code.vercel.app/theory-when-a-rule-loads)
 
-> **Reminder:** A rule in `.claude/rules/` can carry a `paths:` field so it only loads when Claude actually reads a matching file.
+> **Reminder:** A rule in `.claude/rules/` can carry a `paths:` field so it only loads when Claude actually works with a matching file.
 
 ## You will end up with
 
@@ -19,11 +21,11 @@ instead of a one-off audit.
 
 [Task 06](06-context-and-claude-md.md) put a rule in `~/.claude/rules/tone.md` — personal, every project, loaded at launch,
 unconditionally. `.claude/rules/` is the project-level sibling: shared through git, and a rule
-here can carry `paths:` frontmatter so it loads only when Claude reads a file matching the glob.
-`paths` is the only field Claude Code reads from a rule file; anything else in the frontmatter
-is silently ignored. A rule without `paths` loads unconditionally, at the same priority as
-`.claude/CLAUDE.md`. Scoping keeps CLAUDE.md itself small and puts each convention only where it
-applies.
+here can carry `paths:` frontmatter so it loads only when Claude reads, writes or edits a file
+matching the glob. `paths` is the only field Claude Code reads from a rule file; anything else
+in the frontmatter is silently ignored. A project rule without `paths` loads unconditionally, at
+the same priority as `.claude/CLAUDE.md`. Scoping keeps CLAUDE.md itself small and puts each
+convention only where it applies.
 
 ## Do this
 
@@ -53,7 +55,8 @@ applies.
    Read app/actions/venues.ts and summarize what each exported action does.
    ```
    Run `/context` again and confirm `server-actions.md` is now listed — the rule loads when
-   Claude's Read tool matches the glob, not on every tool use.
+   Claude reads, writes or edits a matching file (a `cat` on one counts as a read), not at
+   launch and not on every tool use.
 3. Ask Claude to sketch a small new Server Action — check first that nothing already covers it.
    ```
    Sketch a new Server Action, cancelClash, that lets a clash's creator mark
@@ -79,6 +82,7 @@ example, scoped to `lib/validation.ts` (Zod schemas) or `components/**` (shadcn 
 - [ ] The sketch cites the ownership-check rule unprompted.
 - [ ] You can explain user-level vs. project-level, unconditional vs. path-scoped, in one
       sentence.
+- [ ] You can say when CLAUDE.md, a path-scoped rule and a skill's body each load.
 
 ## Stuck?
 

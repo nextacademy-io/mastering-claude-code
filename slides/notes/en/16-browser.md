@@ -56,11 +56,17 @@ Say:
 - Measure before touching code
 
 <!-- @note: the-loop-that-matters -->
+> Do:
+> - Excursion, optional: the chip jumps to the "TDD" divider; the back chip on the task 11 recap lands here again
+> - Skip it and go on with "A server offers three primitives, not one"
+
 Say:
 - [click] Change the code, verify in a REAL browser
 - [click] Observe what happened: screenshot, payload, console
 - [click] Fix from evidence — loop closes without a human re-checking every step
 - [click:5] This is what "MCP reaches outside the repo" buys you
+- The same loop with tests has one trap: told to make a test pass, a model edits whichever file is easier — sometimes the test. Keep the spec the goalpost
+- Task 11 in the TDD excursion drives the full red-green-stop loop
 
 <!-- @note: a-server-offers-three-primitives-not-one -->
 Say:
@@ -81,11 +87,23 @@ Say:
 - [click] sse still works but is on its way out
 - Claude Code stores the token — you only log in once per server
 
+<!-- @note: share-the-server-trust-tools-selectively -->
+> Do:
+> - Docs link: scroll to "MCP installation scopes", then "Project scope"
+> - No live demo needed; task 19 in the appendix does it end to end with its own server
+
+Say:
+- local and user scope live in ~/.claude.json on your machine; project scope is .mcp.json at the project root, committed with the code
+- [click] A server someone else checked in could run anything: Claude Code asks once before it starts. Until then claude mcp list shows ⏸ Pending approval
+- Said no by mistake? claude mcp reset-project-choices
+- [click] Allow one tool by its full name: mcp__server__tool. mcp__playwright alone would allow every tool of that server
+- Reads can run freely; a tool that writes keeps asking
+
 <!-- @note: the-browser-closes-the-loop-2 -->
 > Do:
 > - Starting point: 14-start, npm run dev running, eight seeded logins — Anna joins, another one hosts
 > - Two halves: tests, then performance
-> - Hand off to tasks/14-browser-loop.md — one slide left when they are back
+> - Hand off to tasks/14-browser-loop.md — two slides left when they are back: the browser comparison, then the MCP excursion pointer
 
 <!-- @note: four-browser-tools-one-comparison -->
 > Do:
@@ -97,3 +115,15 @@ Say:
 - Four tools, different jobs
 - [click:4] agent-browser (Vercel, Rust CLI, accessibility-tree snapshots) — the one participants installed during setup and used while building
 - Compact snapshots vs an MCP server's tool schemas plus full accessibility trees — tool search defers full schema loading by default
+
+<!-- @note: excursion-build-your-own-mcp-server -->
+> Do:
+> - Excursion, optional: the chip jumps to "Build your own MCP"; the back chip on the task 19 recap lands here again
+> - Docs link: the MCP tutorial's TypeScript server, the one task 19 builds from
+> - Skip it and go on with "Letting go of the wheel"
+> - Its second half calls the server through the Agent SDK, which task 16 introduces. Skip the chip here; after the Agent SDK block, open /excursion-mcp-server directly
+
+Say:
+- So far we used servers other people wrote
+- Task 19 builds one for CLASH, in your CLASH clone, and calls it from clash-conference
+- That is MCP development, not Claude Code — what Claude Code needs from you you have already seen: add it, share it, allow single tools

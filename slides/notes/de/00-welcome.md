@@ -36,7 +36,7 @@ Sagen:
 
 Sagen:
 - Software-Architekt und Entwickler in Banking, Behörden, Gesundheitswesen und Robotik
-- Systeme vom ersten Commit bis Enterprise-Maßstab, Teams bis zu 120 Entwicklern
+- Systeme vom ersten Commit bis Enterprise-Massstab, Teams bis zu 120 Entwicklern
 - Jetzt: Engineering-Teams in agentic coding mit Claude Code trainieren, Spec first
 - Mit dem Agenten wie mit einem geführten Junior-Entwickler arbeiten
 
@@ -68,8 +68,8 @@ Sagen:
 
 <!-- @note: how-this-works -->
 > Tun:
-> - Weißt du eine Antwort live nicht? Sag es — Claude auf dem Bildschirm fragen ("Schauen wir
->   doch mal was Claude dazu sagt.") oder mitnehmen ("Gute Frage, hmm, das weiß ich nicht.
+> - Weisst du eine Antwort live nicht? Sag es — Claude auf dem Bildschirm fragen ("Schauen wir
+>   doch mal was Claude dazu sagt.") oder mitnehmen ("Gute Frage, hmm, das weiss ich nicht.
 >   Kennt jemand von Euch möglicherweise die Antwort? Ich nehme sie für mich mit.")
 
 Sagen:
@@ -89,6 +89,7 @@ Sagen:
 - [click] Build: du baust CLASH mit Claude Code, die Grundlagen lernst du, sobald die App sie braucht
 - [click] Control: du übernimmst die Kontrolle darüber, was das Modell sieht
 - [click] Orchestrate: Teams, Workflows, Hooks, der Browser, CI, das SDK
+- Die gedimmten Zeilen unten sind optional: Deep Dives in eine Claude-Code-Mechanik, Exkurse in eine Methode oder ein Framework. Wir wählen sie unterwegs aus
 
 <!-- @note: foundations -->
 > Tun:
