@@ -101,18 +101,18 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
    While it runs, look below your prompt input: a row appears, indented under `main`. That row
    is the subagent. It is a fresh one, built from `security-auditor.md`.
 7. Read `/context` again. It moved a little. The file reads happened in the subagent's window, not yours.
-8. Check the report against the answer key (shared with task 12): `workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md`
+8. Check the report against the answer key (shared with task 12): [`workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md`](../workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md)
    in the workshop repository. Do not fix the bug yet. Task 12 does that.
 9. Hand the same audit to a fork with `/subtask` instead of naming an agent.
    ```
-   /subtask Using only Read, Grep and Glob, audit every exported Server Action in
-   app/actions/ for missing ownership checks on mutations of existing rows. Do not edit any
-   file. Report file, function, PASS or FAIL.
+   /subtask Read-only audit: do not edit any file. Audit every exported Server Action in
+   app/actions/ for missing ownership checks on mutations of existing rows.
+   Report file, function, PASS or FAIL.
    ```
 10. Look below your prompt input while it runs: a row appears under `main`. This one is a fork.
     It inherited your conversation, so it can see the report from step 6, and every tool `main`
     has, `Edit` and `Write` included. The read-only `tools:` line of `security-auditor` does not
-    apply to it. The brief names the tools, but that is only an instruction: the fork can still
+    apply to it. The brief says read-only, but that is only an instruction: the fork can still
     call `Edit` and `Write`, and only a permission prompt can stop it. For a hard limit, use a
     fresh subagent with a `tools:` line. Compare the `/context` numbers against step 6's run.
 11. Someone has already built a wider auditor, and you met plugins in task 07. Add OWASP's
