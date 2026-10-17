@@ -177,7 +177,7 @@ also test each new block's jump and return with the method from "Navigation mech
 - [x] 6. TDD excursion + rescued mechanics
 - [x] 7. Effort lab deep dive, coordination-patterns excursion, Spec Kit/BMAD excursion
 - [x] 8. Path-scoped rules: expand the core block
-- [ ] 9. New core slides from the gaps + sandbox deep dive
+- [x] 9. New core slides from the gaps + sandbox deep dive
 - [ ] 10. Next.js excursion + softer task framing
 - [ ] 11. One-line gaps, maps and documentation
 - [ ] 12. Full check, PR, merge
@@ -304,6 +304,9 @@ rules come in task 10" on "Personal rules follow you" only if it no longer reads
 Source: `research-missing-topics.md`, each entry's placement and docs URL.
 - **LSP code-intelligence plugins** — core, next to "A plugin bundles your setup".
 - **The security-guidance plugin** — core, hooks section near "Event · matcher · exit code".
+  **Done in step 9 right after "Advice vs. law"**: between "Event" and "One hook, slowly" it
+  would split the live build, and after "Advice vs. law" it lands as the counter-example — built
+  only on hooks, yet none of them blocks.
 - **Choosing a sandbox environment** — core quick dive next to "The sandbox limits what a command
   touches"; it is the branch and resume slide of the sandbox deep dive.
 - **Sandbox deep dive** `34-deep-sandbox.md` — sandboxed Bash, sandbox runtime, dev containers,

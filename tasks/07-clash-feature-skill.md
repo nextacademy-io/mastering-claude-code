@@ -125,5 +125,6 @@ Then test your description: in a fresh session, ask for a small feature without 
 - Skills — https://code.claude.com/docs/en/skills
 - Commands — https://code.claude.com/docs/en/commands
 - Create a plugin — https://code.claude.com/docs/en/plugins/create
+- Code intelligence plugins — https://code.claude.com/docs/en/plugins/code-intelligence
 - Tools reference — https://code.claude.com/docs/en/tools-reference
 - agent-browser skill — https://www.skills.sh/vercel-labs/agent-browser/agent-browser

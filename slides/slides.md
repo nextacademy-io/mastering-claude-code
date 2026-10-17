@@ -109,6 +109,10 @@ src: ./sections/33-excursion-coordination-patterns.md
 ---
 
 ---
+src: ./sections/34-deep-sandbox.md
+---
+
+---
 src: ./sections/35-excursion-tdd.md
 ---
 

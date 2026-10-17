@@ -106,6 +106,19 @@ Sagen:
 - [click] .mcp.json — das Plugin kann eigene MCP-Server mitbringen
 - [click] Jeder Skill ist mit dem Plugin-Namen namensraumgetrennt, zwei Plugins kollidieren nie
 
+<!-- @note: a-language-server-catches-type-errors -->
+> Tun:
+> - Docs-Link: öffnen, zur Tabelle der Sprachen scrollen, auf typescript-lsp und sein Binary zeigen, dann zurück zu den Folien
+> - Optional live: beides installieren, Claude in einer Datei unter app/ einen Typfehler einbauen und beheben lassen, auf der Diagnostics-Zeile Ctrl+O drücken
+
+Sagen:
+- Ein Plugin, das sich vom ersten Tag an lohnt. Dein Editor zeigt rote Wellenlinien schon an; das hier gibt Claude dasselbe
+- Das Plugin sagt nur, welcher Befehl den Server startet. Der Server selbst ist ein Binary auf deinem Rechner, also zuerst ihn installieren
+- [click] Dann das Plugin, aus dem offiziellen Marketplace von Anthropic
+- [click] Nach dem nächsten Edit an einer .ts-Datei erscheint eine Diagnostics-Zeile. Claude sieht den Fehler, ohne tsc laufen zu lassen, und behebt ihn im selben Turn
+- Dazu kommt ein LSP-Tool, das nur liest: eine Definition per Symbol finden statt Text zu greppen. Weniger gelesene Dateien, kleinerer Context
+- Nur in Terminal-Sessions — eine Cloud-Session startet keine Language Server
+
 <!-- @note: install-from-a-marketplace -->
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): /plugin marketplace add anthropics/claude-plugins-community

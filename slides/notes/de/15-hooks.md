@@ -88,6 +88,20 @@ Sagen:
 - Das Subsystem ist `settings.autoMode.hard_deny`, Teil vom Auto-Modus, wo ein Classifier Aktionen prüft statt du selbst — keine PreToolUse-Entscheidung
 - Außerhalb des Auto-Modus bewirkt hard_deny nichts. Was in jedem Modus blockiert, auch in bypassPermissions, ist eine permissions.deny-Regel oder ein PreToolUse-Hook
 
+<!-- @note: security-guidance-advice-built-on-hooks -->
+> Tun:
+> - Docs-Link: öffnen, bis "How the plugin integrates with Claude Code" scrollen, auf die Hook-Tabelle zeigen, dann zurück zu den Folien
+> - VOLLSTÄNDIGE LÖSUNG (nur für Trainer, bei Demo installieren): /plugin install security-guidance@claude-plugins-official, User-Scope
+
+Sagen:
+- Direkt nach "Advice vs. law": hier ist ein Plugin, das ganz auf Hooks gebaut ist und trotzdem Ratschlag bleibt
+- [click] Bei jedem Edit: ein Mustervergleich für riskante Aufrufe wie eval( oder dangerouslySetInnerHTML. Kein Modellaufruf, keine Kosten
+- [click] Am Ende jedes Turns: ein separates Claude prüft den git-Diff dieses Turns im Hintergrund und gibt Claude seine Befunde als neuen Prompt
+- [click] Wenn Claude committet oder pusht: ein tieferes Review, das zuerst Aufrufer und Sanitizer liest. Deine eigenen Commits aus der Shell werden nicht geprüft
+- Keine der Schichten blockiert ein Schreiben oder einen Commit. Befunde kommen als Anweisungen an; der Reviewer kann etwas übersehen
+- Also ein Sicherheitsnetz, kein Tor. Eine harte Regel braucht weiterhin deinen eigenen Exit 2 oder einen CI-Check
+- Die Reviews kosten Nutzung, der Check pro Edit nicht. Das Plugin braucht Python und ein git-Repository
+
 <!-- @note: settings-override-each-other -->
 > Tun:
 > - Docs-Link: öffnen, bis "Settings precedence" scrollen, dann zurück zu den Folien
@@ -111,6 +125,20 @@ Sagen:
 - [click] Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
 - Netzwerk: nichts ist erreichbar, bis du einen Host einmal erlaubst — danach wird er gemerkt
 - Windows hat keine native Sandbox — Claude Code in WSL2 laufen lassen, um eine zu bekommen
+
+<!-- @note: choose-the-sandbox-by-what-you-risk -->
+> Tun:
+> - Docs-Link: öffnen, bis "Choose an approach" scrollen, auf die Tabelle zeigen, dann zurück zu den Folien
+> - Deep Dive, optional: Der Chip springt zu "Sandboxing in depth"; der Zurück-Chip auf seiner letzten Folie landet wieder hier
+> - Überspringen und mit "Your org can lock settings down" weitermachen
+
+Sagen:
+- Die Folie davor war die Bash-Sandbox. Sie umschliesst nur Shell-Befehle: Read, Edit, MCP-Server und Hooks laufen mit deinen vollen Rechten
+- [click] Alltag auf dem eigenen Rechner: /sandbox reicht und spart Rückfragen
+- [click] Unbeaufsichtigt, mit --dangerously-skip-permissions: das ganze Claude Code in einen Container, eine VM oder die Sandbox-Runtime packen. Dann sind auch Datei-Tools, MCP und Hooks drin
+- [click] Ein Repository, dem du nicht traust: eine eigene VM oder eine Cloud-Session
+- Auto Mode ist ein Classifier pro Aktion, keine Grenze — für unbeaufsichtigte Läufe hilft eine Grenze trotzdem
+- Keine Sandbox ändert, was ans Modell geht, und jeder offene Netzwerkweg kann weiterhin abfliessen lassen, was Claude lesen kann
 
 <!-- @note: your-org-can-lock-settings-down -->
 > Tun:

@@ -137,6 +137,21 @@ lines:
 </div>
 
 ---
+layout: concept
+heading: "A language server catches type errors"
+docs: https://code.claude.com/docs/en/plugins/code-intelligence
+lines:
+  - "After each edit, Claude sees the type errors it just introduced."
+  - "Install the language server first, then the plugin."
+---
+
+<div class="flex flex-col gap-3 w-full max-w-3xl font-mono text-sm">
+  <div class="na-card px-4 py-3">npm install -g typescript-language-server typescript</div>
+  <div class="na-card px-4 py-3" v-click>/plugin install typescript-lsp@claude-plugins-official</div>
+  <div class="na-card px-4 py-3" v-click style="border-color: var(--na-accent-500)">Found 2 new diagnostic issues in 1 file (ctrl+o to expand)</div>
+</div>
+
+---
 layout: code-live
 heading: "Install from a marketplace"
 filePath: "inside a running claude session"

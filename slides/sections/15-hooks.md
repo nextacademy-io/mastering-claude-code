@@ -136,6 +136,21 @@ routeAlias: theory-advice-vs-law
 
 ---
 layout: concept
+heading: "security-guidance: advice built on hooks"
+docs: https://code.claude.com/docs/en/security-guidance
+lines:
+  - "An official plugin, built only on hooks. It reviews Claude's own changes."
+  - "Findings go back to Claude as instructions. None of its hooks blocks."
+---
+
+<div class="grid grid-cols-3 gap-4 w-full max-w-4xl">
+  <div class="na-card p-4"><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">PostToolUse · Edit|Write</div><div class="text-sm" style="color: var(--na-fg-muted)">pattern match, no model call</div></div>
+  <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">Stop</div><div class="text-sm" style="color: var(--na-fg-muted)">a separate review of the turn's diff</div></div>
+  <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold mb-1" style="color: var(--na-accent-500)">PostToolUse · Bash commit</div><div class="text-sm" style="color: var(--na-fg-muted)">a deeper review that reads callers</div></div>
+</div>
+
+---
+layout: concept
 heading: "Settings override each other"
 docs: https://code.claude.com/docs/en/settings
 lines:
@@ -163,6 +178,23 @@ lines:
     <div class="font-semibold mb-2" style="color: var(--na-accent-500)">Network</div>
     <div class="text-base" style="color: var(--na-fg-muted)">Nothing is allowed by default. A new host asks once, then is remembered.</div>
   </div>
+</div>
+
+---
+layout: concept
+heading: "Choose the sandbox by what you risk"
+routeAlias: quick-sandbox
+deepDive: deep-sandbox
+docs: https://code.claude.com/docs/en/sandbox-environments
+lines:
+  - "The Bash sandbox covers shell commands. File tools, MCP and hooks run outside."
+  - "Unattended runs need a boundary around all of Claude Code."
+---
+
+<div class="grid grid-cols-3 gap-4 w-full max-w-4xl">
+  <div class="na-card p-4"><div class="font-semibold mb-1">Everyday work</div><div class="text-sm" style="color: var(--na-fg-muted)">/sandbox — the Bash sandbox</div></div>
+  <div class="na-card p-4" v-click style="border-color: var(--na-accent-500)"><div class="font-semibold mb-1">Unattended</div><div class="text-sm" style="color: var(--na-fg-muted)">dev container, sandbox runtime, VM</div></div>
+  <div class="na-card p-4" v-click><div class="font-semibold mb-1">Untrusted repository</div><div class="text-sm" style="color: var(--na-fg-muted)">a dedicated VM or a cloud session</div></div>
 </div>
 
 ---

@@ -141,7 +141,10 @@ in the auto mode configuration docs, and why it does nothing outside auto mode.
 - Hooks guide — https://code.claude.com/docs/en/hooks-guide
 - Hooks reference — https://code.claude.com/docs/en/hooks
 - Settings — https://code.claude.com/docs/en/settings
+- Security guidance plugin — https://code.claude.com/docs/en/security-guidance
 - Sandboxing — https://code.claude.com/docs/en/sandboxing
+- Choose a sandbox environment — https://code.claude.com/docs/en/sandbox-environments
+- Development containers — https://code.claude.com/docs/en/devcontainer
 - Managed settings — https://code.claude.com/docs/en/managed-settings
 - Permission modes — https://code.claude.com/docs/en/permission-modes
 - Configure auto mode — https://code.claude.com/docs/en/auto-mode-config
