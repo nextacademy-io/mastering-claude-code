@@ -116,7 +116,7 @@ Say:
 <!-- @note: flags-change-how-a-session-starts -->
 > Do:
 > - Docs link: open it, scroll to "CLI flags", then back to the slides
-> - Deep dive, optional: the chip jumps to the effort lab "Same task, different effort"; the back chip on "Measure the extra reasoning" lands here again
+> - Deep dive, optional: the chip jumps to the effort lab, opening with "Effort: what the extra reasoning buys" and task 20; the back chip on its last slide, the debrief "Ten runs per level end in a tie", lands here again
 > - Skip it and go on with "Print mode: no interaction, just an answer"
 
 Say:
@@ -124,7 +124,7 @@ Say:
 - [click] --settings stacks above your own files, below managed — good for a one-off experiment
 - [click] -p answers and exits. No conversation left running
 - [click] --resume and --continue get their own slide, after print mode
-- --effort is a one-off override too. The effort lab runs the same review at low and high and counts what the extra reasoning found
+- --effort is a one-off override too. /effort inside a session is not: a typed level or Enter saves your default, only s in the slider keeps it to this session. The effort lab runs the same review at low and high and counts what the extra reasoning found
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Do:

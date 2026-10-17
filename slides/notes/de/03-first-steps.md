@@ -116,7 +116,7 @@ Sagen:
 <!-- @note: flags-change-how-a-session-starts -->
 > Tun:
 > - Docs-Link: öffnen, bis "CLI flags" scrollen, dann zurück zu den Folien
-> - Deep Dive, optional: Der Chip springt zum Effort-Lab "Same task, different effort"; der Zurück-Chip auf "Measure the extra reasoning" landet wieder hier
+> - Deep Dive, optional: Der Chip springt zum Effort-Lab, das mit "Effort: what the extra reasoning buys" und Task 20 öffnet; der Zurück-Chip auf dessen letzter Folie, dem Debrief "Ten runs per level end in a tie", landet wieder hier
 > - Überspringen und mit "Print mode: no interaction, just an answer" weitermachen
 
 Sagen:
@@ -124,7 +124,7 @@ Sagen:
 - [click] --settings stapelt sich über deinen eigenen Dateien, unter managed — gut für ein einmaliges Experiment
 - [click] -p antwortet und beendet sich. Keine Conversation bleibt laufen
 - [click] --resume und --continue bekommen eine eigene Folie, nach dem Print Mode
-- Auch --effort ist ein einmaliger Override. Das Effort-Lab lässt dasselbe Review auf low und high laufen und zählt, was das zusätzliche Reasoning gefunden hat
+- Auch --effort ist ein einmaliger Override. /effort in der Session ist keiner: Ein getipptes Level oder Enter speichert deinen Default, nur s im Slider gilt für diese Session. Das Effort-Lab lässt dasselbe Review auf low und high laufen und zählt, was das zusätzliche Reasoning gefunden hat
 
 <!-- @note: print-mode-no-interaction-just-an-answer -->
 > Tun:

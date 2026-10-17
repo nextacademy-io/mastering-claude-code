@@ -9,13 +9,14 @@ Trainer: Adam Furmanczuk · nextacademy.io. Not tied to any event or date.
 - `README.md` — participant entry point. `FACILITATOR.md` — trainer guide.
 - `docs/SPEC.md` — the CLASH product spec participants build from (no code).
 - `docs/SETUP.md` — pre-flight. `docs/BRANCHES.md` — what every `NN-start` branch holds.
-- `tasks/NN-slug.md` — one file per task, 01–19. `tasks/README.md` — index.
+- `tasks/NN-slug.md` — one file per task, 01–20. `tasks/README.md` — index.
 - `slides/` — one Slidev project, one deck. `slides/sections/*.md` are composed into `slides/slides.md`.
   After the close, `29-appendix.md` opens the appendix: optional blocks in two kinds, a **deep dive**
   (`3N-deep-<slug>.md`, deeper into a Claude Code mechanic) and an **excursion**
   (`3N-excursion-<slug>.md`, a method or framework outside Claude Code). Appendix files are numbered
-  30+ in the order the main line branches into them. Tasks 09, 11 and 19 are excursion tasks, 18 a
-  deep-dive task; their slugs and numbers stay fixed.
+  30+ in the order the main line branches into them. Tasks 09, 11 and 19 are excursion tasks, 18
+  and 20 deep-dive tasks; their slugs and numbers stay fixed. Task 20 has no reset branch: it runs
+  in an empty folder outside the CLASH clone, so its `task-intro` and `task` slides carry no `branch`.
 - `scripts/prepare-branches.sh` + `scripts/checkpoints/` — build the catch-up branches on a local CLASH clone. Never pushes.
 - `workshop-artifacts/` — answer keys.
 - `slides/scripts/lint-slides.mjs` — the content linter. "conference"/"Konferenz" are forbidden event words; the one exception is the product name `clash-conference` as a whole token (a lookbehind), so prose says "talk" or "programme".
@@ -149,11 +150,12 @@ Target codebase: `https://github.com/pawsaw/clash` (Next.js 16 / React 19 / Pris
 05-finish-and-ship · 06-context-and-claude-md · 07-clash-feature-skill · 08-subagent-audit ·
 09-example-mapping · 10-path-scoped-rules · 11-tdd-inner-loop · 12-team-and-workflow-audit ·
 13-hooks · 14-browser-loop · 15-letting-go · 16-agent-sdk · 17-capstone · 18-automate ·
-19-build-your-own-mcp
+19-build-your-own-mcp · 20-effort-lab
 
 ## Parts
 
 - Part I — Foundations (White belt): what a model is, the harness, first steps. Task 01.
+  Task 20, the effort lab, is a deep dive reached from Part I.
 - Part II — Build CLASH (Blue belt): tasks 02–05. Participants build CLASH from `docs/SPEC.md`.
 - Part III — Control the context (Brown belt): tasks 06–10, on the reference CLASH (`06-start`).
   Task 09 is an excursion.

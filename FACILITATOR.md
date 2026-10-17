@@ -91,8 +91,8 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
   spread. Claude Code runs with a fixed setting; you do not tune it.
 - **Model and effort.** Land the distinction: context supplies facts, model supplies capability,
   effort supplies reasoning budget, verification supplies trust. No command on screen yet: the
-  optional effort lab measures it — a deep dive in the appendix, reached from the chip on "Flags
-  change how a session starts" in Task 01.
+  optional effort lab measures it — task 20, a deep dive in the appendix, reached from the chip
+  on "Flags change how a session starts" in Task 01.
 - **Knowledge.** Trained once, on a snapshot. It does not read the internet now. If it needs
   a current fact, something has to put that fact into the prompt.
 - **No memory.** Every turn sends the whole conversation again. That is what "context" means.
@@ -143,17 +143,29 @@ Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/btw`, `/clear`, `
 Watch for: people who never press Enter on the permission prompt; people who type in the
 terminal while Claude is working (Esc stops it).
 
-Debrief after the recap: flags, print mode, then resuming a session. The reasoning lab ("Same
-task, different effort" and its score table) is an optional deep dive: the chip on "Flags change
-how a session starts" leads in, and the back chip on "Measure the extra reasoning" returns there.
-If you run it, copy
-`workshop-artifacts/reasoning-lab/review.ts` into an empty folder outside the workshop repository
+Debrief after the recap: flags, print mode, then resuming a session. The reasoning lab is an
+optional deep dive with its own task, task 20: two concept slides on the levels and on which
+setting wins, then "Same task, different effort" and its score table. The chip on "Flags change
+how a session starts" leads in, and the back chip on the debrief "Ten runs per level end in a tie",
+the block's last slide, returns there. Participants
+work in a session: `claude --model sonnet` in an empty folder, `/effort` with the slider on `low`
+confirmed with `s`, the prompt, a score against `workshop-artifacts/20-reasoning-lab/FINDINGS.md`,
+then `/clear`, the slider on `high`, the same prompt, a second score. They count findings only.
+The cost side is your demo: run the two `claude -p … --output-format json` lines on "Same task,
+different effort" and read `usage.output_tokens` aloud, because a session on a subscription shows
+no per-run token count (`/usage` shows the plan window, `/context` the context window). Copy
+`workshop-artifacts/20-reasoning-lab/review.ts` into an empty folder outside the workshop repository
 and your CLASH clone, so neither run sees an answer key, a CLAUDE.md or their Claude Code hooks.
-Unset `CLAUDE_CODE_EFFORT_LEVEL` (it overrides `--effort`), then run the same prompt on the same
-`--model` at `--effort low` and `--effort high`. Score correct findings, false positives and output
-tokens, not `total_cost_usd`: cached input bills at a lower rate, and whether the second run reads
-the cache the first run wrote depends on the model and the provider. A tie
-is a valid result: the small task did not earn the extra reasoning spend.
+Unset `CLAUDE_CODE_EFFORT_LEVEL` first (it overrides `--effort` and `/effort`). Tell participants that
+`s` saves nothing, while `Enter` or a level typed after `/effort` would become their default. A
+slider that stops below `high` means a `maxEffortLevel` or organisation cap; that participant's
+two runs would both use the cap, so pair them with a neighbour for the high run. Score
+correct findings, false positives and output tokens, not `total_cost_usd`: cached input bills at a
+lower rate, and whether the second run reads the cache the first run wrote depends on the model and
+the provider. A tie is a valid result: the small task did not earn the extra reasoning spend. The
+debrief slide "Ten runs per level end in a tie" holds twenty measured runs: all four bugs every
+time at both levels, zero false positives, high about a fifth more output tokens. The table is in
+`workshop-artifacts/20-reasoning-lab/README.md`.
 
 ---
 
@@ -258,7 +270,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   `main` below the prompt. Fork mode is on by default in interactive sessions, but a named
   agent from a definition file stays a fresh subagent. Only `/subtask` (or Claude choosing the
   fork type) starts a fork, and a fork ignores a `tools:` line. `/subtask` exists only while agent
-  view is on; on a machine with `disableAgentView` set, `/fork` starts the fork instead.
+  view is on; on a machine with `disableAgentView` set, `/fork` starts the fork instead. The
+  step 9 brief says "read-only" and names no tools on purpose: a fork gets `main`'s exact tool
+  pool, and on macOS, Linux and WSL that pool has no Grep or Glob tool, Claude searches with
+  `find` and `grep` through Bash there. Only a fresh subagent with `tools: Read, Grep, Glob`
+  and no Bash gets those two tools back.
 - Steps 9 and 10 run the same audit as a fork with `/subtask`. Steps 11 to 17 install OWASP's `code-security-skills` plugin (needs GitHub reachable, and it
   spends more tokens than the auditor). Compare the two reports, do not crown a winner. Say it
   is a plugin bundling subagents and skills, and that a plugin can ship hooks: read what you install.

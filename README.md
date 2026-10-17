@@ -59,7 +59,7 @@ claude --version
 
 | Part | Belt | Tasks |
 |---|---|---|
-| I — Foundations | White | 01 |
+| I — Foundations | White | 01 · 20 |
 | II — Build CLASH | Blue | 02 · 03 · 04 · 05 |
 | III — Control the context | Brown | 06 · 07 · 08 · 09 · 10 |
 | IV — Orchestrate and let go | Black | 11 · 12 · 13 · 14 · 15 · 16 · 17 · 18 · 19 |
@@ -69,8 +69,8 @@ claude --version
 The main line is Claude Code itself. Some blocks are optional and sit in an appendix at the end
 of the deck:
 
-- A **deep dive** goes deeper into a Claude Code mechanic: the effort lab, the sandbox, automate
-  (task 18).
+- A **deep dive** goes deeper into a Claude Code mechanic: the effort lab (task 20), the sandbox,
+  automate (task 18).
 - An **excursion** covers a method or framework outside Claude Code: Next.js, Example Mapping
   (task 09), coordination patterns, TDD (task 11), building an MCP server (task 19), Spec Kit
   and BMAD.
@@ -102,6 +102,7 @@ the next task's reset branch lets you go on.
 | 17 | [Capstone](tasks/17-capstone.md) | IV | `17-start` |
 | 18 | [Automate](tasks/18-automate.md) · *deep dive* | IV | `18-start` |
 | 19 | [Build your own MCP](tasks/19-build-your-own-mcp.md) · *excursion* | IV | CLASH's `19-start` |
+| 20 | [Effort lab](tasks/20-effort-lab.md) · *deep dive* | I | none: an empty folder outside your CLASH clone |
 
 Standalone index: [`tasks/README.md`](tasks/README.md). What each branch contains:
 [`docs/BRANCHES.md`](docs/BRANCHES.md).

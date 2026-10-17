@@ -27,11 +27,13 @@ branch lets you go on.
 | 17 | [Capstone](17-capstone.md) | IV — Orchestrate and let go | `17-start` |
 | 18 | [Automate](18-automate.md) · *deep dive* | IV — Orchestrate and let go | `18-start` |
 | 19 | [Build your own MCP](19-build-your-own-mcp.md) · *excursion* | IV — Orchestrate and let go | CLASH's `19-start` |
+| 20 | [Effort lab](20-effort-lab.md) · *deep dive* | I — Foundations | none: an empty folder outside your CLASH clone |
 
 ## Stuck?
 
 Every task names its reset branch in your CLASH clone. It is the state at the start of that task.
-Task 19 also uses clash-conference's `19-start`.
+Task 19 also uses clash-conference's `19-start`. Task 20 has no branch: it runs in an empty
+folder outside your CLASH clone.
 
 ```bash
 git stash              # optional: keep your own work
