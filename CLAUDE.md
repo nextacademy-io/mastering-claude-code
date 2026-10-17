@@ -11,6 +11,11 @@ Trainer: Adam Furmanczuk · nextacademy.io. Not tied to any event or date.
 - `docs/SETUP.md` — pre-flight. `docs/BRANCHES.md` — what every `NN-start` branch holds.
 - `tasks/NN-slug.md` — one file per task, 01–19. `tasks/README.md` — index.
 - `slides/` — one Slidev project, one deck. `slides/sections/*.md` are composed into `slides/slides.md`.
+  After the close, `29-appendix.md` opens the appendix: optional blocks in two kinds, a **deep dive**
+  (`3N-deep-<slug>.md`, deeper into a Claude Code mechanic) and an **excursion**
+  (`3N-excursion-<slug>.md`, a method or framework outside Claude Code). Appendix files are numbered
+  30+ in the order the main line branches into them. Tasks 09, 11 and 19 are excursion tasks, 18 a
+  deep-dive task; their slugs and numbers stay fixed.
 - `scripts/prepare-branches.sh` + `scripts/checkpoints/` — build the catch-up branches on a local CLASH clone. Never pushes.
 - `workshop-artifacts/` — answer keys.
 - `slides/scripts/lint-slides.mjs` — the content linter. "conference"/"Konferenz" are forbidden event words; the one exception is the product name `clash-conference` as a whole token (a lookbehind), so prose says "talk" or "programme".
@@ -125,6 +130,17 @@ Target codebase: `https://github.com/pawsaw/clash` (Next.js 16 / React 19 / Pris
   from `task-intro`/`task` and coexists with it: `task-intro` is the slide-side overview a
   participant sees watching the deck; `## Theory` is the task-file-side deep link for someone
   who skips the slides.
+- Appendix navigation (`slides/slide-top.vue` draws a `DeepLink` chip from frontmatter, never from
+  a tag in a slide body): a main-line **branch slide** carries `deepDive: <entry alias>`; the block's
+  first slide (**entry**) carries `routeAlias: deep-<slug>` or `excursion-<slug>`; its last slide
+  carries `backTo: <resume alias>`; the **resume slide** — the end of the quick dive, never its
+  start — is itself a branch slide and carries `routeAlias: quick-<slug>`. Exceptions keep an alias
+  a slide already has: a deep dive's entry may keep its `theory-*`, a resume slide its `theory-*` or
+  `task-NN`. `deepDive:` goes on `concept`, `code-live`, `task`, `task-intro`; `backTo:` on
+  `concept`, `code-live`, `task`, `flow-ways`; never both on one slide. Chip text: "Deep dive →",
+  "Excursion →" (target `excursion-*`), "← Back to the main line". The branch slide's note names the
+  block and the slide to go on with when it is skipped. `checkBranches` in
+  `slides/scripts/lint-slides.mjs` enforces all of this.
 - Docs links: a `docs:` frontmatter field normally holds one official English Claude Code docs URL (`https://code.claude.com/docs/en/…`). When the slide's mechanism belongs to a third-party tool Claude Code consumes, not a Claude Code feature itself, `docs:` may instead hold that tool's own official page — each one a deliberate addition to the allowlist in `slides/scripts/lint-slides.mjs`, never an arbitrary URL. One allowlisted page is not a tool page: the Claude blog post whose five diagrams the coordination-pattern slides in section 14 redraw. The `concept`, `code-live` and `section` layouts draw it bottom-right as a chain icon plus the word "docs" (`slides/components/DocLink.vue`) — bottom-right because Slidev's navigation bar pops up bottom-left. Never a `<DocLink>` tag in a slide body, never on a `task` or `task-intro` slide. Use it sparingly, where a mechanism is first explained. The slide's presenter note names what to scroll to or point at, and the same URL is in that task's `## Links`.
 
 ## Task slugs (fixed — README, docs and task numbers on slides depend on them)
@@ -140,7 +156,9 @@ Target codebase: `https://github.com/pawsaw/clash` (Next.js 16 / React 19 / Pris
 - Part I — Foundations (White belt): what a model is, the harness, first steps. Task 01.
 - Part II — Build CLASH (Blue belt): tasks 02–05. Participants build CLASH from `docs/SPEC.md`.
 - Part III — Control the context (Brown belt): tasks 06–10, on the reference CLASH (`06-start`).
-- Part IV — Orchestrate and let go (Black belt): tasks 11–19.
+  Task 09 is an excursion.
+- Part IV — Orchestrate and let go (Black belt): tasks 11–19. Tasks 11 and 19 are excursions,
+  task 18 a deep dive.
 
 ## Build and check
 

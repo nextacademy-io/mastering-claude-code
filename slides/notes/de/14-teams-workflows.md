@@ -201,6 +201,7 @@ Sagen:
 - Der Blog würde Peer-Gespräche in Shared state verlegen; Claude Code behält sie in der Team-Mailbox
 - Der Blog sagt es selbst: echte Systeme kombinieren oft mehrere Patterns
 - Keiner der beiden Läufe hat die letzten zwei Patterns aus dem Blog genutzt, Message bus und Shared state. Beide sind nicht in Claude Code eingebaut — der Exkurs zeigt die nächstliegenden Wege
+- Dieselbe Form gibt es als Produkt: Das claude-security-Plugin lässt einen Multi-Agent-Scan auf Dynamic Workflows laufen, Verifier-Agents prüfen jeden Befund, und Patches werden nie automatisch angewendet
 
 <!-- @note: reconcile-decide-merge -->
 > Tun:

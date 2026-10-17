@@ -139,10 +139,14 @@ branch, commit, optional pull request, review.
 Ask Claude for a list of everything in your build that is missing compared with `docs/SPEC.md`. Pick one and finish it.
 Next time, try `/code-review` — a bundled skill that reviews your branch for bugs, like step 8, without a hand-written prompt.
 It follows your `CLAUDE.md`. Pass it your pull request number if everything is already pushed.
+`/code-review ultra` goes deeper: a fleet of reviewer agents in a cloud sandbox reports only bugs
+it reproduced. It is a research preview and needs a claude.ai sign-in; after a few free runs on
+Pro and Max, each run costs usage credits.
 
 ## Links
 
 - Costs and `/usage` — https://code.claude.com/docs/en/costs
 - Memory — https://code.claude.com/docs/en/memory
+- Ultrareview — https://code.claude.com/docs/en/ultrareview
 - GitHub CLI — https://cli.github.com/
 - react-easy-crop — https://github.com/ValentinH/react-easy-crop

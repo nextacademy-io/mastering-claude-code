@@ -48,6 +48,7 @@ Say:
 - [click] Worktrees: edits stay isolated
 - [click] /batch: many separate pull requests
 - More agents are not automatically faster: every worker has its own context and token spend
+- One row the slide skips: Claude Projects at claude.ai/code — one ongoing conversation that starts a cloud session per task. Public beta on Pro and Max, rolling out gradually
 
 <!-- @note: headless-in-ci -->
 > Do:

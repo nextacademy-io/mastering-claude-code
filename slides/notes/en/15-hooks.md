@@ -177,6 +177,7 @@ Say:
 - Tool inputs and results are written to local session transcripts in plaintext
 - If a command prints a token or Read opens a secret, that value can be in the transcript even when the file itself is gitignored
 - Deny credential reads, and shorten how long transcripts are kept: cleanupPeriodDays sets it
+- That is the local side. The other question always comes: does Anthropic train on my code? Commercial plans (Team, Enterprise, API) are not used for training; consumer plans (Free, Pro, Max) only if you allow it. The docs page "Data usage" has retention and opt-outs
 
 
 <!-- @note: security-three-rules -->

@@ -76,6 +76,7 @@ Sagen:
 - Edits erscheinen als Inline-Diffs; aktuelle Datei und Auswahl gehen als Context mit
 - Jeder kann seine eigene Oberfläche wählen
 - Workshop nutzt das Terminal — überall gleich
+- Noch eine Oberfläche, derselbe Motor: Der Code-Tab der Desktop-App startet Claude Code lokal, in der Cloud oder per SSH, mit Diff-Ansicht und parallelen Sessions
 
 <!-- @note: keys-worth-knowing -->
 > Tun:
@@ -86,6 +87,7 @@ Sagen:
 Sagen:
 - "?" bei leerer Prompt-Zeile zeigt den Rest der Shortcuts
 - Kein Tastenkürzel schreibt direkt in die CLAUDE.md — das alte #-Kürzel dafür gibt es nicht mehr. Claude in Worten bitten, oder die Datei selbst bearbeiten
+- Eine Taste passt dir nicht? /keybindings öffnet ~/.claude/keybindings.json. Änderungen gelten ohne Neustart
 
 <!-- @note: your-first-conversation -->
 > Tun:
@@ -132,6 +134,7 @@ Sagen:
 Sagen:
 - Das ist es, was ein Script oder ein anderes Programm aufruft — keine Terminal-UI, kein Hin und Her
 - --output-format json gibt dir etwas, das du in ein anderes Tool pipen kannst
+- --output-format stream-json gibt während des Laufs ein JSON-Event pro Zeile aus — für ein Skript, das Fortschritt will statt einer einzigen Antwort am Ende
 - Die Regel "nie claude -p in CI" aus dem GitHub-Actions-Modul betrifft genau den einen YAML-Schritt, nicht das hier
 
 <!-- @note: pick-up-where-you-left-off -->

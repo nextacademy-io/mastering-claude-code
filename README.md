@@ -64,6 +64,21 @@ claude --version
 | III — Control the context | Brown | 06 · 07 · 08 · 09 · 10 |
 | IV — Orchestrate and let go | Black | 11 · 12 · 13 · 14 · 15 · 16 · 17 · 18 · 19 |
 
+### Main line, deep dives and excursions
+
+The main line is Claude Code itself. Some blocks are optional and sit in an appendix at the end
+of the deck:
+
+- A **deep dive** goes deeper into a Claude Code mechanic: the effort lab, the sandbox, automate
+  (task 18).
+- An **excursion** covers a method or framework outside Claude Code: Next.js, Example Mapping
+  (task 09), coordination patterns, TDD (task 11), building an MCP server (task 19), Spec Kit
+  and BMAD.
+
+On the slides, a chip in the top-right corner jumps into a block ("Deep dive →" or
+"Excursion →"), and the block's last slide has a chip back to the main line. Skip a block, and
+the next task's reset branch lets you go on.
+
 ## Tasks
 
 | # | Task | Part | Reset branch |
@@ -76,17 +91,17 @@ claude --version
 | 06 | [Context and CLAUDE.md](tasks/06-context-and-claude-md.md) | III | `06-start` |
 | 07 | [The clash-feature skill](tasks/07-clash-feature-skill.md) | III | `07-start` |
 | 08 | [Subagent audit](tasks/08-subagent-audit.md) | III | `08-start` |
-| 09 | [Example Mapping and the `discover` skill](tasks/09-example-mapping.md) | III | `09-start` |
+| 09 | [Example Mapping and the `discover` skill](tasks/09-example-mapping.md) · *excursion* | III | `09-start` |
 | 10 | [Path-scoped rules](tasks/10-path-scoped-rules.md) | III | `10-start` |
-| 11 | [The TDD inner loop](tasks/11-tdd-inner-loop.md) | IV | `11-start` |
+| 11 | [The TDD inner loop](tasks/11-tdd-inner-loop.md) · *excursion* | IV | `11-start` |
 | 12 | [Team and workflow audit](tasks/12-team-and-workflow-audit.md) | IV | `12-start` |
 | 13 | [Hooks](tasks/13-hooks.md) | IV | `13-start` |
 | 14 | [The browser closes the loop](tasks/14-browser-loop.md) | IV | `14-start` |
 | 15 | [Letting go](tasks/15-letting-go.md) | IV | `15-start` |
 | 16 | [Agent SDK](tasks/16-agent-sdk.md) | IV | `16-start` |
 | 17 | [Capstone](tasks/17-capstone.md) | IV | `17-start` |
-| 18 | [Automate](tasks/18-automate.md) | IV | `18-start` |
-| 19 | [Build your own MCP](tasks/19-build-your-own-mcp.md) | IV | CLASH's `19-start` |
+| 18 | [Automate](tasks/18-automate.md) · *deep dive* | IV | `18-start` |
+| 19 | [Build your own MCP](tasks/19-build-your-own-mcp.md) · *excursion* | IV | CLASH's `19-start` |
 
 Standalone index: [`tasks/README.md`](tasks/README.md). What each branch contains:
 [`docs/BRANCHES.md`](docs/BRANCHES.md).

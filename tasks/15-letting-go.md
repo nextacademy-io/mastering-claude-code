@@ -56,7 +56,13 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 
 **Headless in CI**
 
-6. CLASH has no `.github/workflows/` folder. Nothing runs on a pull request yet.
+6. Run the loop headless on your own machine first: print mode from task 01. CLASH has no
+   `.github/workflows/` folder, so nothing runs on a pull request yet.
+   ```bash
+   claude -p "List the exported Server Actions in app/actions/, one per line." --output-format json
+   ```
+   It answers and exits, with no prompt left open. The action in the next step runs this same
+   loop in CI.
 7. Ask for the workflow. Do not put `claude -p` in the YAML. Use the maintained action.
    ```
    Write a GitHub Actions workflow at .github/workflows/security-audit.yml that
@@ -95,6 +101,7 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 
 - [ ] `claude --worktree <name>` created a folder under `.claude/worktrees/` and a branch `worktree-<name>`.
 - [ ] Two sessions worked at the same time without touching each other's files.
+- [ ] `claude -p` answered once on your machine and exited.
 - [ ] `.github/workflows/security-audit.yml` exists and runs on `pull_request`.
 - [ ] It uses `anthropics/claude-code-action@v1`, not `@beta`, and no raw `claude -p` step.
 - [ ] The secret is referenced by name. `id-token: write` is in `permissions`.

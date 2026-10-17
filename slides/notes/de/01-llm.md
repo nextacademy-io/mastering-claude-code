@@ -64,6 +64,7 @@ Sagen:
 - [click] Modell: Fähigkeit
 - [click] Effort: Reasoning für diese Aufgabe, nie ein Ersatz für fehlenden Context oder fehlende Belege
 - [click] Verifikation: woran du erkennst, dass es funktioniert hat
+- Tempo ist ein anderer Regler: /fast lässt dasselbe Opus-Modell bis zu 2,5 Mal schneller laufen, zu einem höheren Preis pro Token. Weniger Effort tauscht dagegen Qualität gegen Tempo. Research Preview, bezahlt aus zusätzlicher Nutzung
 
 <!-- @note: spend-effort-where-it-matters -->
 > Tun:

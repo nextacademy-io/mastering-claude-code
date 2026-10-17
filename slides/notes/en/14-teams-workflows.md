@@ -201,6 +201,7 @@ Say:
 - The blog would move peer talk to shared state; Claude Code keeps it in the team's mailbox
 - The blog says it too: real systems often combine patterns
 - Neither run used the blog's last two patterns, message bus and shared state. Neither is built into Claude Code — the excursion shows the closest ways
+- The same shape ships as a product: the claude-security plugin runs a multi-agent scan on dynamic workflows, verifier agents check every finding, and patches are never applied for you
 
 <!-- @note: reconcile-decide-merge -->
 > Do:

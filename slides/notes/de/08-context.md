@@ -127,6 +127,7 @@ Sagen:
 - [click] .claude/rules/*.md — eine einfache Regel lädt beim Start, wie CLAUDE.md. Task 10 zeigt die Art, die auf eine passende Datei wartet
 - [click] Alles landet in einem Context — nichts wird verworfen, nichts wird ausgewählt
 - [click] Zwei Dateien widersprechen sich? Claude wählt womöglich irgendeine davon. Das ist ein Bug, den du gebaut hast, kein Feature
+- In einer grossen Codebasis oder einem Monorepo ist genau diese Schichtung das Werkzeug: eine CLAUDE.md pro Verzeichnis, claudeMdExcludes, um die Dateien anderer Teams auszulassen, --add-dir für einen zweiten Ordner. Die Doku-Seite "Large codebases" hat den Rest
 
 <!-- @note: personal-rules-follow-you -->
 > Tun:

@@ -105,6 +105,7 @@ Say:
 - [click] hooks/ — one hooks.json instead of settings.json entries
 - [click] .mcp.json — the plugin can ship its own MCP servers
 - [click] Every skill is namespaced by the plugin name, so two plugins never collide
+- A plugin can also ship a mod: JS or TS handlers that run inside Claude Code's own process — panes, commands, intercepted tool calls. Not sandboxed, so read it before you install it
 
 <!-- @note: a-language-server-catches-type-errors -->
 > Do:

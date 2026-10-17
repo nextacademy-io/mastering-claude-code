@@ -105,6 +105,7 @@ Sagen:
 - [click] hooks/ — eine hooks.json statt Einträgen in settings.json
 - [click] .mcp.json — das Plugin kann eigene MCP-Server mitbringen
 - [click] Jeder Skill ist mit dem Plugin-Namen namensraumgetrennt, zwei Plugins kollidieren nie
+- Ein Plugin kann auch einen Mod mitbringen: JS- oder TS-Handler, die in Claude Codes eigenem Prozess laufen — Panes, Befehle, abgefangene Tool-Aufrufe. Nicht in einer Sandbox, also vor dem Installieren lesen
 
 <!-- @note: a-language-server-catches-type-errors -->
 > Tun:

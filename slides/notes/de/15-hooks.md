@@ -177,6 +177,7 @@ Sagen:
 - Tool-Eingaben und -Ergebnisse landen im Klartext in lokalen Session-Transcripts
 - Gibt ein Befehl ein Token aus oder öffnet Read ein Secret, kann der Wert im Transcript stehen, auch wenn die Datei selbst gitignored ist
 - Credential-Reads verbieten und kürzer halten, wie lange Transcripts bleiben: das regelt cleanupPeriodDays
+- Das ist die lokale Seite. Die andere Frage kommt immer: Trainiert Anthropic mit meinem Code? Kommerzielle Pläne (Team, Enterprise, API) werden nicht fürs Training genutzt; Consumer-Pläne (Free, Pro, Max) nur, wenn du es erlaubst. Die Doku-Seite "Data usage" hat Aufbewahrung und Opt-outs
 
 
 <!-- @note: security-three-rules -->

@@ -76,6 +76,7 @@ Say:
 - Edits show as inline diffs; current file and selection passed as context
 - Everyone can pick their own surface
 - Workshop uses the terminal — same everywhere
+- One more surface, same engine: the desktop app's Code tab runs Claude Code locally, in the cloud or over SSH, with a diff view and parallel sessions
 
 <!-- @note: keys-worth-knowing -->
 > Do:
@@ -86,6 +87,7 @@ Say:
 Say:
 - "?" on an empty prompt line shows the rest of the shortcuts
 - No keystroke saves to CLAUDE.md directly — the old # shortcut for that is gone. Ask Claude in words, or edit the file yourself
+- Don't like a key? /keybindings opens ~/.claude/keybindings.json. Changes apply without a restart
 
 <!-- @note: your-first-conversation -->
 > Do:
@@ -132,6 +134,7 @@ Say:
 Say:
 - This is what a script or another program calls — no terminal UI, no back-and-forth
 - --output-format json gives you something you can pipe into another tool
+- --output-format stream-json prints one JSON event per line while the run goes on — for a script that wants progress, not one final answer
 - The "never claude -p in CI" rule from the GitHub Actions module is about that one YAML step, not this
 
 <!-- @note: pick-up-where-you-left-off -->

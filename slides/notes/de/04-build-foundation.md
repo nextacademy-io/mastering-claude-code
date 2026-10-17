@@ -105,6 +105,7 @@ Sagen:
 - [click] Der frische Reviewer kann ein Subagent sein, kein zweiter Anbieter, kein zweites Tool: er greift Annahmen, fehlende Constraints und Lücken in der Verifikation an
 - [click] Die Lücken einmal schließen: ein Reviewer, der Lücken finden soll, meldet meistens welche
 - [click] Das Work Package einfrieren, umsetzen, verifizieren
+- Eine verwandte, experimentelle Option: /advisor lässt Claude an wichtigen Stellen ein stärkeres Modell fragen — vor der Wahl eines Ansatzes, wenn es feststeckt, bevor es "fertig" sagt. Jeder Aufruf kostet Tokens zum Preis des Advisor-Modells
 
 <!-- @note: foundation -->
 > Tun:

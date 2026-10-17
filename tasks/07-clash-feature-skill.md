@@ -121,6 +121,7 @@ personal-only). Your own `.claude/skills/clash-feature/` is not — that is what
 
 Compare your skill with `workshop-artifacts/07-clash-feature-skill/SKILL.md` in the workshop repository.
 Then test your description: in a fresh session, ask for a small feature without typing `/clash-feature`, and see whether Claude loads the skill by itself.
+To share the plugin with your team, list it in a `.claude-plugin/marketplace.json` so they install it by name, and test it with `claude plugin eval`.
 
 ## Links
 
@@ -128,5 +129,7 @@ Then test your description: in a fresh session, ask for a small feature without 
 - Commands — https://code.claude.com/docs/en/commands
 - Create a plugin — https://code.claude.com/docs/en/plugins/create
 - Code intelligence plugins — https://code.claude.com/docs/en/plugins/code-intelligence
+- Create a marketplace — https://code.claude.com/docs/en/plugins/create-marketplace
+- Plugin evals — https://code.claude.com/docs/en/plugin-evals
 - Tools reference — https://code.claude.com/docs/en/tools-reference
 - agent-browser skill — https://www.skills.sh/vercel-labs/agent-browser/agent-browser

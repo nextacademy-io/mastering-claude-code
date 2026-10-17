@@ -127,6 +127,7 @@ Say:
 - [click] .claude/rules/*.md — a plain rule loads at launch, like CLAUDE.md. Task 10 shows the kind that waits for a matching file
 - [click] All of it lands in one context — nothing is dropped, nothing is chosen
 - [click] Two files disagree? Claude may pick either one. That is a bug you created, not a feature
+- In a large codebase or monorepo this layering is the tool: one CLAUDE.md per directory, claudeMdExcludes to skip other teams' files, --add-dir for a second folder. The docs page "Large codebases" has the rest
 
 <!-- @note: personal-rules-follow-you -->
 > Do:

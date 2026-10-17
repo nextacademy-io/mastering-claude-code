@@ -48,6 +48,7 @@ Sagen:
 - [click] Worktrees: Edits bleiben isoliert
 - [click] /batch: viele getrennte Pull Requests
 - Mehr Agents sind nicht automatisch schneller: jeder Worker hat seinen eigenen Context und eigenen Token-Verbrauch
+- Eine Zeile, die die Folie auslässt: Claude Projects auf claude.ai/code — ein laufendes Gespräch, das pro Aufgabe eine Cloud-Session startet. Public Beta für Pro und Max, wird schrittweise freigeschaltet
 
 <!-- @note: headless-in-ci -->
 > Tun:

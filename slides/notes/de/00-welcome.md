@@ -89,6 +89,7 @@ Sagen:
 - [click] Build: du baust CLASH mit Claude Code, die Grundlagen lernst du, sobald die App sie braucht
 - [click] Control: du übernimmst die Kontrolle darüber, was das Modell sieht
 - [click] Orchestrate: Teams, Workflows, Hooks, der Browser, CI, das SDK
+- Die gedimmten Zeilen unten sind optional: Deep Dives in eine Claude-Code-Mechanik, Exkurse in eine Methode oder ein Framework. Wir wählen sie unterwegs aus
 
 <!-- @note: foundations -->
 > Tun:

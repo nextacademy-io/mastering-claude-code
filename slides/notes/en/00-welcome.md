@@ -89,6 +89,7 @@ Say:
 - [click] Build: build CLASH with Claude Code, learning the basics as the app needs them
 - [click] Control: take charge of what the model sees
 - [click] Orchestrate: teams, workflows, hooks, the browser, CI, the SDK
+- The dimmed lines at the bottom are optional: deep dives into a Claude Code mechanic, excursions into a method or framework. We pick them as we go
 
 <!-- @note: foundations -->
 > Do:

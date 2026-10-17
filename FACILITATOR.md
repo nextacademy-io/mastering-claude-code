@@ -54,6 +54,20 @@ pre-install the MCP servers, run the deck once (`cd slides && npm run dev`).
 Refer to a task by its `/task-NN` link, never by a slide number — numbers shift as the deck
 grows.
 
+**Appendix: deep dives and excursions.** The main line is Claude Code. Optional blocks sit after
+the close, behind the "Appendix" divider: deep dives go deeper into a Claude Code mechanic (effort
+lab, sandbox, automate with task 18), excursions cover a method or framework (Next.js, Example
+Mapping with task 09, coordination patterns, TDD with task 11, building an MCP server with task
+19, Spec Kit and BMAD). Decide per group, on the spot:
+
+- A main-line slide that offers a block shows a chip top-right, "Deep dive →" or "Excursion →".
+  Its presenter note names the block and the slide to go on with if you skip it.
+- Click the chip to jump in. Walk the block as usual.
+- The block's last slide has "← Back to the main line". It lands on the slide you left, every
+  click revealed, so the next → goes on with the main line. Browser back is not the way back —
+  it goes to wherever the jump started.
+- Skipping is always safe: the next task's reset branch does not need the block.
+
 **Pace:** favor running long over cutting a task short — consistent feedback says too little
 time hurts more than too much. If a task is moving fast, stretch it: ask someone to walk the
 group through their solution, or, if nobody has one yet, turn it into a problem the group
@@ -251,6 +265,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 09 — Example Mapping and the `discover` skill
 
+- Excursion in the appendix. Reach it from the chip on "Excursion: Example Mapping" after the
+  task 07 recap; skip it, and `10-start` still has the `discover` skill and its spec.
 - Manual prompt first, then package it: send the raw Example Mapping prompt live in chat, no
   skill yet, and count how much of it people would have to retype for the next story.
 - The task file shows every file of the skill verbatim: the body, `references/example-mapping.md`
@@ -271,6 +287,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Contrast with task 06's `~/.claude/rules/tone.md`: same directory name, different scope
   (project vs. personal) and different trigger (`paths:` vs. unconditional).
+- The block repeats that contrast on purpose, then sorts CLAUDE.md, rules and skills by when
+  they load: always, on a matching file, on demand.
+- A scoped rule loads when Claude reads, writes or edits a matching file (a `cat` on one counts
+  too), not at launch and not on every tool use. YAML that doesn't parse makes the rule load
+  everywhere.
 - Demo the trigger live: run `/context` before Claude has read anything under `app/actions/`,
   then after — the rule appears only the second time.
 - `paths` is the only field Claude Code reads from a rule file. Say it plainly: everything else
@@ -283,6 +304,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 11 — The TDD inner loop
 
+- Excursion in the appendix. Reach it from the chip on "The loop that matters"; skip it, and
+  `12-start` still has the finished `tdd` skill and `lib/capacity.ts`.
 - Ships pre-configured: vitest, one trivial passing test, a deliberately wrong `lib/capacity.ts`
   stub. Do not let anyone fight test-runner config live — that is not the lesson here.
 - The deliberate mistake, same shape as task 13's hooks mistake: send "the test is failing,
@@ -384,6 +407,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   context budget.
 - The script in `workshop-artifacts/16-agent-sdk/` answers one question about the seed data
   with Read, Grep and Glob only. Run it, then read it.
+- If someone wants to ship it as a product: the SDK docs on user input (`canUseTool` for
+  approvals), session storage (`SessionStore`) and hosting (ephemeral, long-running and hybrid
+  sessions) cover the step from one script to a service.
 
 ### Task 17 — Capstone
 
@@ -396,6 +422,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 18 — Automate
 
+- Deep dive in the appendix. The close opens with the quick dive ("Automate with a stop rule",
+  "Deep dive: automate"); either chip leads into the block.
 - Output style first: `/output-style concise`, one question, then the same question on the
   default style. The difference is the lesson. Then the custom `host-notes` style: restart Claude
   Code after creating the file, or it is not listed. Say that styles do not reach a fresh
@@ -423,6 +451,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ### Task 19 — Build your own MCP
 
+- Excursion in the appendix. Reach it from the chip on "Excursion: build your own MCP server" at
+  the end of the browser block.
 - Task 19 is about design. CLASH's `19-start` hands participants a running server: the plumbing
   and one finished tool, `list_upcoming_clashes`. They design the other three at the three
   marked places in `mcp/server.ts`: `find_venue`, `create_clash` and `cancel_clash`, in six
@@ -485,7 +515,8 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 ## Final close
 
-After task 19, close the workshop:
+After the capstone, close the workshop. The appendix blocks you chose run before the close or
+after it, your call; the close slides come right after the capstone in the deck.
 
 1. Context decides what the agent knows.
 2. Reasoning decides how hard it thinks.
@@ -494,8 +525,18 @@ After task 19, close the workshop:
 5. Finish on: *Context is king. You push it, you own it.*
 
 If anyone asks what the workshop leaves out: Channels push events into a running session, and
-Computer Use lets Claude click native apps. The note on the last slide carries that line. Do not
-let it dilute the close.
+Computer Use lets Claude click native apps; `/artifacts` publishes a page on claude.ai and
+`/voice` adds dictation. The note on the last slide carries that line. Do not let it dilute the
+close.
+
+Two questions team leads ask after the close, answered from the docs:
+
+- **Does Anthropic train on our code?** Commercial plans (Team, Enterprise, API) are not used
+  for training; consumer plans (Free, Pro, Max) only if the user allows it. Retention and opt-out
+  variables are on the "Data usage" page.
+- **Can we see what the team spends?** Set `CLAUDE_CODE_ENABLE_TELEMETRY=1` and the `OTEL_*`
+  exporters to send usage, cost and tool metrics to your own OpenTelemetry collector. The
+  "Monitoring" page has the details.
 
 ---
 

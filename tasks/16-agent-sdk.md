@@ -83,9 +83,12 @@ The finished program is in `workshop-artifacts/16-agent-sdk/` in the workshop re
 ## Go further
 
 Give the agent one tool of your own through an MCP server: `getUpcomingClashes(area)`
-that queries the database instead of reading the seed file.
+that queries the database instead of reading the seed file. Or make its answer typed: pass
+`outputFormat: { type: "json_schema", schema }` to `query()` and read the validated result
+from `structured_output`.
 
 ## Links
 
 - Agent SDK overview — https://code.claude.com/docs/en/agent-sdk/overview
 - Agent SDK TypeScript reference — https://code.claude.com/docs/en/agent-sdk/typescript
+- Structured outputs — https://code.claude.com/docs/en/agent-sdk/structured-outputs

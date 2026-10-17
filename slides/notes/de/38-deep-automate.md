@@ -106,6 +106,7 @@ Sagen:
 - [click] claude agents listet Background-Sessions über alle deine Projekte; Subagents sind keine Zeilen
 - Vor dem ersten Edit zieht die Session nach .claude/worktrees/ um, dort landet docs/audit.md
 - Der frische Worktree hat keine node_modules, der Build des Stop-Hooks scheitert bis npm install
+- Die andere Richtung, eine Session von aussen starten: Ein claude-cli://open-Link in einem Runbook oder Alert öffnet eine lokale Session mit fertig eingetragenem, aber nicht abgeschicktem Prompt
 
 <!-- @note: routines-the-cloud-runs-it -->
 > Tun:
