@@ -34,7 +34,7 @@ Say:
 Say:
 - [click] Left: the safe-looking path — browser → guarded page → requireUser() → button → action.
 - [click] Right: the bypass — a direct POST to the action's generated id, arriving at the same Server Action, never having loaded the guarded page.
-- [click:4] "Zod validates shape, not permission."
+- [click:2] "Zod validates shape, not permission."
 
 <!-- @note: find-it -->
 > Do:
@@ -77,9 +77,11 @@ Say:
 
 Say:
 - [click] Left: the subagent's own window fills with noisy tool calls — only a thin summary crosses back, which is why the main thread barely moves.
-- [click:3] Right: fork vs fresh.
+- [click:2] Right: fork vs fresh.
 - Fork branches off the parent, inherits the whole conversation and the parent's prompt cache — cheap when shared context is really needed.
 - [click] Fresh subagent starts cold: no history, only the tools its definition allows, no shared cache — first call costs more.
+- [click] Model: a fork always runs on main's model.
+- [click] A fresh subagent takes the model in its model: line, or one Claude passes when it starts it; with neither, main's. So main on Opus can hand the work to a cheaper subagent on Sonnet, for example.
 - Fork mode is on by default in interactive sessions, off under -p and the Agent SDK. On means Claude may start a fork itself: it asks the Agent tool for the fork type. A named agent from a definition file, like security-auditor, stays a fresh subagent.
 - You start a fork yourself with /subtask followed by the task.
 - Neither is better — know which one you invoked and why.

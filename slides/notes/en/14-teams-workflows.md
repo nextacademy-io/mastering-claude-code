@@ -116,9 +116,12 @@ Say:
 
 Say:
 - Row 1: a teammate who finishes claims the next open task by itself
+- "on Sonnet": the prompt picks the teammates' model, fixed once they start. A teammate may start its own subagents, never its own teammates: only the lead runs the team
 - Row 2: a task that depends on others can't be claimed until they are done
 - Row 3: exit code 2 stops a task from being marked complete
 - One task per file: two teammates on one file overwrite each other
+- [click] Contrast with the workflows coming next: this task list lives in files, so you can steer a running team — add a task, message a teammate. A workflow keeps its plan in script variables and takes no input once it runs
+- From practice: a workflow reviewed 15 chapters with three teams. Mid-run I wanted a fourth team — no way in. Stop, re-split, relaunch, and finished agents ran again
 
 <!-- @note: strategy-three-dynamic-workflows -->
 > Do:
@@ -160,7 +163,8 @@ Say:
 - [click] API surface: agent(), parallel(), pipeline(), phase(), log(), the args global
 - `export const meta = { name, description }` must be the FIRST statement and a plain object literal — a variable, call or spread there silently drops the workflow from `/` autocomplete
 - Determinism: Date.now(), Math.random() and a no-arg new Date() all THROW inside a workflow script, and import() fails the run — that's what makes replay safe
-- [click:3] Verifier/refuter: one agent tries to refute another's finding using only the code — that's how "several possible issues" becomes "two real ones"; on this branch the survivors are deleteClash and deleteVenue
+- [click:2] Verifier/refuter: one agent tries to refute another's finding using only the code — that's how "several possible issues" becomes "two real ones"
+- [click] On this branch the survivors are deleteClash and deleteVenue
 - Workflows are the most expensive of the three, the price of bounded roles, clean context per agent, and a deterministic review gate
 
 <!-- @note: phases-the-plan-you-can-watch -->

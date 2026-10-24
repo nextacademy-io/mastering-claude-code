@@ -107,7 +107,7 @@ Say:
 - [click] Bottom part is fixed: system prompt and CLAUDE.md, the same every call
 - [click] Files read, tool output and chat pile on top while you work
 - A big window is not free: the more that's in it, the more the model has to weigh, details in the middle get less attention
-- [click:5] Near the top: the drift zone — the agent forgets a rule given early, or re-reads a file it already saw. Claude Code auto-compacts before the window is full; early instructions can get lost then too
+- [click:3] Near the top: the drift zone — the agent forgets a rule given early, or re-reads a file it already saw. Claude Code auto-compacts before the window is full; early instructions can get lost then too
 - Later: use /context to watch this tank live
 - What goes into it is your decision, and it matters more than the prompt wording
 

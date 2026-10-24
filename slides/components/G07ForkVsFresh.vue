@@ -1,10 +1,11 @@
 <script setup lang="ts">
 // G7 — Subagent fork vs fresh. Fork inherits conversation + prompt cache;
-// fresh starts clean. Compact 700x440 viewBox shared with G6.
+// fresh starts clean. Same 700 width as G6, so both draw at one scale;
+// 60 taller for the model lines below the two boxes.
 </script>
 
 <template>
-  <svg viewBox="0 0 700 440" width="700" height="440" class="w-full h-auto max-h-full" font-family="Inter, sans-serif">
+  <svg viewBox="0 0 700 500" width="700" height="500" class="w-full h-auto max-h-full" font-family="Inter, sans-serif">
     <!-- parent conversation, always visible -->
     <rect x="200" y="20" width="300" height="60" rx="10" fill="var(--na-bg-raised)" stroke="var(--na-zinc-700)" stroke-width="2" />
     <text x="350" y="45" text-anchor="middle" font-weight="700" fill="var(--na-fg)" style="font-size:15px">Parent conversation</text>
@@ -17,7 +18,7 @@
       <text x="40" y="184" font-weight="700" fill="var(--na-fg)" style="font-size:18px">Fork</text>
       <text x="40" y="206" fill="var(--na-fg-muted)" style="font-size:13px">/subtask, or Claude picks the fork type</text>
       <rect x="40" y="222" width="260" height="22" rx="11" fill="var(--na-success-500)" opacity="0.85" />
-      <text x="170" y="237" text-anchor="middle" font-weight="700" fill="var(--na-zinc-950)" style="font-size:13px">inherits history, tools, model</text>
+      <text x="170" y="237" text-anchor="middle" font-weight="700" fill="var(--na-zinc-950)" style="font-size:13px">inherits history and tools</text>
       <rect x="40" y="254" width="260" height="22" rx="11" fill="var(--na-success-500)" opacity="0.6" />
       <text x="170" y="269" text-anchor="middle" font-weight="700" fill="var(--na-zinc-950)" style="font-size:13px">inherits the prompt cache</text>
       <text x="40" y="360" font-weight="800" fill="var(--na-success-500)" style="font-size:28px">$</text>
@@ -42,6 +43,19 @@
       <text x="446" y="368" fill="var(--na-fg-muted)" style="font-size:13px">when isolation matters more</text>
       <text x="400" y="308" fill="var(--na-fg)" style="font-size:13px">the tools: line applies: a read-only</text>
       <text x="400" y="326" fill="var(--na-fg)" style="font-size:13px">agent stays read-only</text>
+    </g>
+
+    <!-- stage 3: the fork's model is main's -->
+    <g v-click>
+      <text x="40" y="440" font-weight="700" fill="var(--na-success-500)" style="font-size:16px">Model: always main's</text>
+      <text x="40" y="462" fill="var(--na-fg-muted)" style="font-size:13px">e.g. main on Opus → fork on Opus</text>
+    </g>
+
+    <!-- stage 4: a fresh subagent's model is its own -->
+    <g v-click>
+      <text x="400" y="440" font-weight="700" fill="var(--na-secondary-600)" style="font-size:16px">Model: its own pick</text>
+      <text x="400" y="462" fill="var(--na-fg-muted)" style="font-size:13px">its model: line, else main's</text>
+      <text x="400" y="482" fill="var(--na-fg-muted)" style="font-size:13px">e.g. main on Opus → subagent on Sonnet</text>
     </g>
 
     <defs>

@@ -116,9 +116,12 @@ Sagen:
 
 Sagen:
 - Zeile 1: wer fertig ist, holt sich selbst den nächsten offenen Task
+- "on Sonnet": Der Prompt wählt das Modell der Teammates, fest ab dem Start. Ein Teammate darf eigene Subagents starten, nie eigene Teammates: Nur der Lead führt das Team
 - Zeile 2: ein Task, der von anderen abhängt, ist erst frei, wenn diese erledigt sind
 - Zeile 3: Exit-Code 2 verhindert, dass ein Task als erledigt gilt
 - Ein Task pro Datei: zwei Teammates in einer Datei überschreiben sich
+- [click] Abgrenzung zu den Workflows, die als Nächstes kommen: Diese Task-Liste liegt in Dateien, ein laufendes Team lässt sich also steuern — Task dazu, Teammate anschreiben. Ein Workflow hält seinen Plan in Script-Variablen und nimmt nach dem Start keine Eingabe mehr an
+- Aus der Praxis: Ein Workflow prüfte 15 Kapitel mit drei Teams. Mitten im Lauf wollte ich ein viertes Team — kein Weg hinein. Stoppen, neu aufteilen, neu starten, und fertige Agents liefen noch einmal
 
 <!-- @note: strategy-three-dynamic-workflows -->
 > Tun:
@@ -160,7 +163,8 @@ Sagen:
 - [click] API-Oberfläche: agent(), parallel(), pipeline(), phase(), log(), die globale args-Variable
 - `export const meta = { name, description }` muss die ERSTE Anweisung sein und ein einfaches Objektliteral — eine Variable, ein Funktionsaufruf oder ein Spread an der Stelle entfernt den Workflow lautlos aus der `/`-Autovervollständigung
 - Determinismus: Date.now(), Math.random() und ein new Date() ohne Argumente WERFEN im Workflow-Skript alle einen Fehler, und import() lässt den Run scheitern — genau das macht Replay sicher
-- [click:3] Verifier/Refuter: ein Agent versucht, das Finding eines anderen allein anhand des Codes zu widerlegen — so wird aus "mehreren möglichen Problemen" "zwei echte"; auf diesem Branch überleben deleteClash und deleteVenue
+- [click:2] Verifier/Refuter: ein Agent versucht, das Finding eines anderen allein anhand des Codes zu widerlegen — so wird aus "mehreren möglichen Problemen" "zwei echte"
+- [click] Auf diesem Branch überleben deleteClash und deleteVenue
 - Workflows sind die teuerste der drei Strategien, der Preis für klar begrenzte Rollen, sauberen Context pro Agent und ein deterministisches Review-Gate
 
 <!-- @note: phases-the-plan-you-can-watch -->

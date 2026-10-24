@@ -150,6 +150,6 @@ Ask Claude to look at the map page with agent-browser on a phone-sized window an
 
 - Commands — https://code.claude.com/docs/en/commands
 - Skills and command files — https://code.claude.com/docs/en/skills
-- Images and screenshots in prompts — https://code.claude.com/docs/en/common-workflows
+- Images and screenshots in prompts — https://code.claude.com/docs/en/common-workflows#work-with-images
 - react-leaflet — https://react-leaflet.js.org/
 - agent-browser — https://github.com/vercel-labs/agent-browser
