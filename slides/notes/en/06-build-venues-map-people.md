@@ -49,7 +49,7 @@ Say:
 > - Participants do this in step 7
 > - [click] Demo: ask Claude to use agent-browser to open the map, log in as Anna, take a screenshot, say whether pins are visible
 > - Show the commands it runs
-> - Optional: point at the docs page's "Work with images" section — the same idea, pasted instead of taken by agent-browser
+> - Optional: the docs link opens at "Work with images" — the same idea, pasted instead of taken by agent-browser
 
 Say:
 - [click:4] Closes a loop most people leave open: Claude changes the code AND Claude checks the result

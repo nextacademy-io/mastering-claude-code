@@ -107,7 +107,7 @@ Sagen:
 - [click] Der untere Teil ist fix: System-Prompt und CLAUDE.md, bei jedem Aufruf gleich
 - [click] Gelesene Dateien, Tool-Output und Chat stapeln sich obendrauf, während du arbeitest
 - Ein grosses Fenster ist nicht gratis: je mehr drin ist, desto mehr muss das Modell abwägen, Details in der Mitte bekommen weniger Aufmerksamkeit
-- [click:5] Nahe am oberen Rand: die Drift-Zone — der Agent vergisst eine früh gegebene Regel oder liest eine Datei erneut, die er schon gesehen hat. Claude Code komprimiert automatisch, bevor das Fenster voll ist; auch dabei können frühe Anweisungen verloren gehen
+- [click:3] Nahe am oberen Rand: die Drift-Zone — der Agent vergisst eine früh gegebene Regel oder liest eine Datei erneut, die er schon gesehen hat. Claude Code komprimiert automatisch, bevor das Fenster voll ist; auch dabei können frühe Anweisungen verloren gehen
 - Später nutzt du /context, um diesen Tank live zu beobachten
 - Was hineinkommt, ist deine Entscheidung, und das zählt mehr als die Formulierung des Prompts
 

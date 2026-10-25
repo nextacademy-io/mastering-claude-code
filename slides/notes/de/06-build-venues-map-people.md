@@ -49,7 +49,7 @@ Sagen:
 > - Schritt 7 machen die Teilnehmenden selbst
 > - [click] Demo: Claude bitten, mit agent-browser die Karte zu öffnen, sich als Anna einzuloggen, einen Screenshot zu machen und zu sagen, ob Pins sichtbar sind
 > - Die Befehle zeigen, die es ausführt
-> - Optional: auf den Abschnitt "Work with images" in den Docs zeigen — dieselbe Idee, eingefügt statt von agent-browser aufgenommen
+> - Optional: der Docs-Link öffnet direkt bei "Work with images" — dieselbe Idee, eingefügt statt von agent-browser aufgenommen
 
 Sagen:
 - [click:4] Schliesst eine Schleife, die die meisten offenlassen: Claude ändert den Code UND Claude prüft das Ergebnis

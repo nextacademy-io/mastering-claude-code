@@ -64,7 +64,7 @@ Sagen:
 - [click] Code ändern, in einem ECHTEN Browser verifizieren
 - [click] Beobachten, was passiert ist: Screenshot, Payload, Konsole
 - [click] Anhand der Evidenz fixen — die Schleife schliesst sich, ohne dass ein Mensch jeden Schritt erneut prüft
-- [click:5] Genau das bringt "MCP reicht über das Repo hinaus"
+- [click:2] Genau das bringt "MCP reicht über das Repo hinaus"
 - Dieselbe Schleife mit Tests hat eine Falle: Aufgefordert, einen Test grün zu machen, ändert ein Modell die Datei, die einfacher zu ändern ist — manchmal den Test. Die Spec bleibt der Massstab
 - Task 11 im Exkurs TDD fährt den ganzen Zyklus aus red, green, stop
 

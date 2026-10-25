@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // G6 — Subagent isolation. Parent thread and child with separate context
-// windows; only a summary crosses back. Compact 700x440 viewBox shared
-// with G7 so the two sit side by side at the same size.
+// windows; only a summary crosses back. Compact 700x440 viewBox, the same
+// 700 width as G7 so the two sit side by side at the same scale.
 const noise = ['read', 'grep', 'read', 'read', 'edit', 'read']
 </script>
 

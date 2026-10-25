@@ -8,19 +8,43 @@
 //   ways: { way: string; prompt: string }[]    2 to 4 rows (checked by lint-slides.mjs)
 //   footnote?: string                          one short muted line under the table,
 //                                              e.g. for a flow with no built-in feature
+//   hint?: { term: string; text: string }[]    1 or 2 lines in a box under the graphic,
+//                                              shown on the slide's one click
+//   mark?: string                              a phrase in the prompts that turns bold and
+//                                              underlined on that same click (needs hint)
 // Slot: the graphic, in its still form, e.g. <G28CoordinationPatterns pattern="…" still />.
 // No docs link: the flow slide before this one carries it.
-withDefaults(defineProps<{ heading?: string; ways?: { way: string; prompt: string }[]; footnote?: string }>(), {
+const props = withDefaults(defineProps<{
+  heading?: string
+  ways?: { way: string; prompt: string }[]
+  footnote?: string
+  hint?: { term: string; text: string }[]
+  mark?: string
+}>(), {
   ways: () => [],
+  hint: () => [],
 })
+
+// the prompt cut into plain and marked pieces, so the mark can switch on with the hint's click
+function pieces(prompt: string) {
+  const mark = props.mark
+  if (!mark) return [{ text: prompt, mark: false }]
+  return prompt.split(mark).flatMap((text, i) =>
+    i ? [{ text: mark, mark: true }, { text, mark: false }] : [{ text, mark: false }])
+}
 </script>
 
 <template>
   <div class="slidev-layout relative w-full h-full flex flex-col px-16 py-12">
     <h1 v-if="heading" class="mb-6 shrink-0">{{ heading }}</h1>
     <div class="na-flow-ways flex-1 min-h-0">
-      <div class="na-flow-graphic min-h-0 flex items-center justify-center">
-        <slot />
+      <div class="na-flow-graphic min-h-0 flex flex-col gap-4">
+        <div class="flex-1 min-h-0 flex items-center justify-center">
+          <slot />
+        </div>
+        <div v-if="hint.length" v-click class="na-hint shrink-0">
+          <p v-for="(h, i) in hint" :key="i"><strong>{{ h.term }}:</strong> {{ h.text }}</p>
+        </div>
       </div>
       <div class="min-w-0 flex flex-col justify-center">
         <table class="na-ways">
@@ -34,7 +58,7 @@ withDefaults(defineProps<{ heading?: string; ways?: { way: string; prompt: strin
           <tbody>
             <tr v-for="(w, i) in ways" :key="i">
               <td class="na-way">{{ w.way }}</td>
-              <td class="na-prompt"><code>{{ w.prompt }}</code></td>
+              <td class="na-prompt"><code><template v-for="(p, j) in pieces(w.prompt)" :key="j"><span v-if="p.mark" class="na-mark">{{ p.text }}</span><template v-else>{{ p.text }}</template></template></code></td>
             </tr>
           </tbody>
         </table>
@@ -106,5 +130,22 @@ withDefaults(defineProps<{ heading?: string; ways?: { way: string; prompt: strin
   font-size: 1rem;
   line-height: 1.4;
   color: var(--na-fg-muted);
+}
+/* the hint box sits under the graphic, where the table column has no room left */
+.na-hint {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--na-accent-500);
+  border-radius: var(--na-radius-lg);
+  background: var(--na-bg-raised);
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--na-fg);
+}
+/* Slidev drops slidev-vclick-hidden from the hint on its click: the mark switches on with it */
+.na-flow-ways:has(.na-hint:not(.slidev-vclick-hidden)) .na-mark {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
 }
 </style>

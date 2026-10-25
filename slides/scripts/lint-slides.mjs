@@ -9,7 +9,7 @@
 //  - a layout that is not in slides/layouts/ (KNOWN_LAYOUTS below)
 //  - a flow-ways slide that breaks its shape (FLOW_WAYS below): 2 to 4 ways, short one-line
 //    cells, the one-line heading of the flow slide right before it, exactly one still <G…>
-//    graphic, a table that fits
+//    graphic, a table that fits, an optional hint of 1 or 2 short lines, a mark found in a prompt
 //  - a deep-dive or excursion chip that breaks the navigation mechanism (checkBranches below):
 //    `deepDive:`/`backTo:` targets that do not resolve, a block outside the appendix, a block
 //    that does not close back to the slide that branched into it, a chip on a layout it was not
@@ -58,6 +58,8 @@ const FLOW_WAYS = {
   wayMax: 40, // characters per way
   promptMax: 170, // characters per prompt
   footnoteMax: 80,
+  hintMax: 2, // lines in the hint box under the graphic
+  hintLineMax: 38, // "term: text" characters; the graphic column holds about 40 at 1rem
   headingMaxWords: 8,
   headingMaxChars: 40, // the budget assumes a one-line heading; 39 characters render on one line
   wayCharsPerLine: 13, // way column, 1.125rem Inter semibold
@@ -92,7 +94,7 @@ function yamlScalar(raw) {
 }
 
 // null when `raw` is one complete single-line YAML scalar, else why it is not. yamlScalar and
-// parseWays read one line only, so a block scalar (> or |) or a quote closed on a later line
+// parseMapList read one line only, so a block scalar (> or |) or a quote closed on a later line
 // would slip past the length and fit checks while Slidev still renders the full text.
 function singleLineProblem(raw) {
   const v = raw.trim()
@@ -103,24 +105,24 @@ function singleLineProblem(raw) {
   return null
 }
 
-// `ways:` as a list of { way, prompt } maps, in either key order, plus the lines it could not
-// read; null when there is no `ways:`
-function parseWays(fm) {
-  const block = /^ways:[ \t]*\n((?:[ \t]+.*(?:\n|$))*)/m.exec(fm)?.[1]
+// a frontmatter list of maps such as `ways:` ({ way, prompt }) or `hint:` ({ term, text }), keys
+// in any order, plus the lines it could not read; null when the key is absent
+function parseMapList(fm, key, fields) {
+  const block = new RegExp(`^${key}:[ \\t]*\\n((?:[ \\t]+.*(?:\\n|$))*)`, 'm').exec(fm)?.[1]
   if (block === undefined) return null
-  const ways = []
+  const items = []
   const problems = []
   for (const line of block.split('\n')) {
     if (!line.trim()) continue
-    const m = /^[ \t]*(-[ \t]+)?(way|prompt):[ \t]*(.*)$/.exec(line)
-    if (!m) { problems.push(`unrecognised line in ways: ${line.trim().slice(0, 60)}`); continue }
+    const m = new RegExp(`^[ \\t]*(-[ \\t]+)?(${fields.join('|')}):[ \\t]*(.*)$`).exec(line)
+    if (!m) { problems.push(`unrecognised line in ${key}: ${line.trim().slice(0, 60)}`); continue }
     const problem = singleLineProblem(m[3])
     if (problem) problems.push(`${m[2]} ${problem}`)
-    if (m[1] || ways.length === 0) ways.push({})
-    ways[ways.length - 1][m[2]] = yamlScalar(m[3])
+    if (m[1] || items.length === 0) items.push({})
+    items[items.length - 1][m[2]] = yamlScalar(m[3])
   }
-  ways.problems = problems
-  return ways
+  items.problems = problems
+  return items
 }
 
 // lines a text takes when a browser word-wraps it at `perLine` characters: each word goes on
@@ -379,7 +381,7 @@ for (const file of files) {
         if (heading.length > FLOW_WAYS.headingMaxChars) err(rel, `slide ${n}: flow-ways heading "${heading}" has ${heading.length} chars (> ${FLOW_WAYS.headingMaxChars}) — it may wrap, and the fit budget assumes one line`)
         if (heading !== prevHeading) err(rel, `slide ${n}: flow-ways heading "${heading}" must repeat the heading of the slide before it ("${prevHeading}")`)
       }
-      const ways = parseWays(fm) ?? []
+      const ways = parseMapList(fm, 'ways', ['way', 'prompt']) ?? []
       for (const problem of ways.problems ?? []) err(rel, `slide ${n}: flow-ways ${problem}`)
       if (ways.length < FLOW_WAYS.minWays || ways.length > FLOW_WAYS.maxWays) err(rel, `slide ${n}: flow-ways needs ${FLOW_WAYS.minWays} to ${FLOW_WAYS.maxWays} ways, found ${ways.length}`)
       ways.forEach((w, j) => {
@@ -393,6 +395,23 @@ for (const file of files) {
       if (footnoteProblem) err(rel, `slide ${n}: flow-ways footnote ${footnoteProblem}`)
       const footnote = footnoteRaw === undefined ? undefined : yamlScalar(footnoteRaw)
       if (footnote !== undefined && footnote.length > FLOW_WAYS.footnoteMax) err(rel, `slide ${n}: flow-ways footnote has ${footnote.length} chars (> ${FLOW_WAYS.footnoteMax})`)
+      // hint and mark: a box under the graphic, not in the table column, so no fit budget
+      const hint = parseMapList(fm, 'hint', ['term', 'text'])
+      if (hint) {
+        for (const problem of hint.problems) err(rel, `slide ${n}: flow-ways hint ${problem}`)
+        if (hint.length < 1 || hint.length > FLOW_WAYS.hintMax) err(rel, `slide ${n}: flow-ways hint needs 1 to ${FLOW_WAYS.hintMax} lines, found ${hint.length}`)
+        hint.forEach((h, j) => {
+          if (!h.term || !h.text) err(rel, `slide ${n}: flow-ways hint line ${j + 1} needs a term and a text`)
+          else if (`${h.term}: ${h.text}`.length > FLOW_WAYS.hintLineMax) err(rel, `slide ${n}: flow-ways hint line ${j + 1} has ${`${h.term}: ${h.text}`.length} chars (> ${FLOW_WAYS.hintLineMax})`)
+        })
+      }
+      const markRaw = /^mark:[ \t]*(.*)$/m.exec(fm)?.[1]
+      if (markRaw !== undefined) {
+        const markProblem = singleLineProblem(markRaw)
+        if (markProblem) err(rel, `slide ${n}: flow-ways mark ${markProblem}`)
+        else if (!ways.some((w) => w.prompt?.includes(yamlScalar(markRaw)))) err(rel, `slide ${n}: flow-ways mark "${yamlScalar(markRaw)}" is in no prompt`)
+        if (!hint) err(rel, `slide ${n}: flow-ways mark without a hint — the mark switches on with the hint's click`)
+      }
       const height = flowWaysHeight(ways, !!footnote)
       if (height > FLOW_WAYS.height) err(rel, `slide ${n}: flow-ways table needs about ${height}px, the slide has ${FLOW_WAYS.height}px — shorten the prompts, drop a row or the footnote`)
       // exactly one graphic, in its small, click-free form: <G… still />, from a component that

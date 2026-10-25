@@ -66,7 +66,7 @@ lines:
 layout: concept
 heading: "Let Claude look at the page"
 routeAlias: theory-browser-feedback
-docs: https://code.claude.com/docs/en/common-workflows
+docs: https://code.claude.com/docs/en/common-workflows#work-with-images
 lines:
   - "agent-browser open http://localhost:3000/map"
   - "snapshot -i — the page as a short list of elements"

@@ -74,7 +74,7 @@ Sagen:
 
 Sagen:
 - [click] Jede Task: kurze Erklärung, Live-Demo, dann arbeitest du die Task-Datei selbst durch
-- [click:2] Jede Task hat einen Branch namens NN-start mit dem Stand, den du für den Start brauchst
+- [click] Jede Task hat einen Branch namens NN-start mit dem Stand, den du für den Start brauchst
 - Zurückzufallen ist kein Problem — den Branch auschecken und wieder einsteigen
 - Früh fragen, oft fragen
 

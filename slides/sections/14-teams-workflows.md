@@ -140,11 +140,17 @@ layout: flow-ways
 heading: "The blog's agent teams: a task queue"
 ways:
   - way: "A shared task list"
-    prompt: "Create an agent team with 3 teammates to audit app/actions/. One task per file."
+    prompt: "Create an agent team with 3 teammates on Sonnet to audit app/actions/. One task per file."
   - way: "A task that waits"
     prompt: "Add a report task that depends on all audit tasks."
   - way: "A hook gates each task"
     prompt: "Add a TaskCompleted hook to .claude/settings.json that exits 2 unless npm run lint passes."
+mark: "agent team"
+hint:
+  - term: "Agent team"
+    text: "steer it while it runs"
+  - term: "Workflow"
+    text: "plan fixed once it starts"
 ---
 
 <G28CoordinationPatterns pattern="agent-teams" still />
