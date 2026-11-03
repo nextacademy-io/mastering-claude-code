@@ -75,8 +75,33 @@ expect("find_venue finds Holzmarkt 25 (case does not matter)", venue?.title === 
 const none = await call("find_venue", { query: "nowhere" });
 expect("find_venue with no match answers with text, not an error", none.text.startsWith("No venue matches") && !none.isError);
 
+// A past clash at Holzmarkt, written straight to the database, so this check never depends on
+// the seed's dates. It carries this run's description, so the cleanup below removes it too.
+const pastTitle = "Smoke test past clash";
+// Looked up directly, not through find_venue: on CLASH's 19-start find_venue does not exist yet,
+// and this check is about list_upcoming_clashes only.
+const venueRow = await prisma.venue.findFirst({ where: { title: "Holzmarkt 25" } });
+const host = await prisma.user.findUnique({ where: { email: "anna.schmidt@example.com" } });
+if (venueRow && host) {
+  const yearAgo = new Date();
+  yearAgo.setFullYear(yearAgo.getFullYear() - 1);
+  await prisma.clash.create({
+    data: {
+      title: pastTitle,
+      description: TEST_DESCRIPTION,
+      dateTime: yearAgo,
+      latitude: venueRow.latitude,
+      longitude: venueRow.longitude,
+      venueId: venueRow.id,
+      creatorId: host.id,
+    },
+  });
+}
 const upcoming = await call("list_upcoming_clashes", { area: "Holzmarkt" });
-expect("list_upcoming_clashes never shows a past clash", !upcoming.text.includes("Open Source Hacknight") && !upcoming.isError);
+expect(
+  "list_upcoming_clashes never shows a past clash",
+  Boolean(venueRow && host) && !upcoming.text.includes(pastTitle) && !upcoming.isError,
+);
 
 const all = await call("list_upcoming_clashes", {});
 expect("list_upcoming_clashes without area lists the seeded upcoming clashes", all.text.includes("React Berlin Clash") && !all.isError);

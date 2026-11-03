@@ -48,12 +48,14 @@ Sagen:
 
 <!-- @note: measure-fix-measure-again -->
 > Tun:
-> - Den echten Bug vor dem Messen lesen: prisma/schema.prisma (User.avatar String?); app/actions/profile.ts (MAX_AVATAR_LENGTH = 1_500_000); lib/auth.ts (getCurrentUser selektiert avatar: true, eingepackt in cache()); app/(app)/layout.tsx (requireUser auf jeder Seite)
-> - [click] Die Prompts stehen in tasks/14-browser-loop.md, Schritte 7 bis 9: mit Chrome DevTools MCP messen, fixen, noch einmal messen
+> - Den Bug nicht nennen. Diese Folie ist das Muster, die Aufgabe ist die Entdeckung
+> - Nur für dich, damit du steuern kannst: Ein geseedeter Bug legt Annas Foto als PNG-Data-URL von mehreren MB in jede Seite. Details und Referenzzahlen in FACILITATOR.md, Task 14
+> - [click] Die Prompts stehen in tasks/14-browser-loop.md, Schritte 6 bis 12: vor und nach dem Upload in die DevTools schauen, Claude die Ursache mit Chrome DevTools MCP finden lassen, den Code lesen, fixen, noch einmal messen
 
 Sagen:
-- Bis zu 1,5 MB reisen bei jedem Seitenaufruf im Payload mit, für ein kleines Icon in der Sidebar
-- Erst messen, dann Code anfassen
+- Erst eine Zahl, dann eine Ursache, dann Code
+- Eine Anfrage, vor und nach einer einzigen Änderung: sauberer lässt sich nicht messen
+- Der Fix ist das, worauf die Messung zeigt, nicht das, was wir vorher vermutet haben
 
 <!-- @note: the-loop-that-matters -->
 > Tun:

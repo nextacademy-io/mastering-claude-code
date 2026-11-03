@@ -51,7 +51,7 @@ npx tsx mcp/smoke.ts
 ```
 
 It starts the server, lists the tools, calls each one, and prints `PASS` or `FAIL` per check. The last line must be `All checks passed.`
-It creates one clash, "MCP Hacknight", cancels it through `cancel_clash`, and removes anything left over at the end. The seed data in `dev.db` of your CLASH clone stays as it was.
+It creates one clash, "MCP Hacknight", and cancels it through `cancel_clash`. To check that `list_upcoming_clashes` hides past clashes, it also writes one past clash straight to the database. At the end it removes anything left over. The seed data in `dev.db` of your CLASH clone stays as it was.
 
 ## Connect it to Claude Code
 

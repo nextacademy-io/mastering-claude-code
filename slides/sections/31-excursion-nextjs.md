@@ -68,6 +68,6 @@ lines:
 ---
 
 <div class="flex items-center gap-4 w-full max-w-3xl justify-center text-sm">
-  <div class="na-card px-4 py-3 font-mono">User.avatar · up to 1.5 MB</div><span>→</span>
+  <div class="na-card px-4 py-3 font-mono">User.avatar · a photo as base64 text</div><span>→</span>
   <div class="na-card px-4 py-3" style="border-color: var(--na-error-500)">every page load</div>
 </div>

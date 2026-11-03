@@ -60,39 +60,61 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
    ```
 5. Run the tests. Fix timing and selector problems first. Only then believe a failure is an app bug.
 
-**Performance**
+**Performance — a second, separate problem**
 
-6. Read the bug before you measure it.
-   - `prisma/schema.prisma`: `User.avatar` is a `String?`, a base64 data URL.
-   - `app/actions/profile.ts`: `MAX_AVATAR_LENGTH = 1_500_000`.
-   - `lib/auth.ts`: `getCurrentUser()` selects `avatar: true` on every call.
-   - `app/(app)/layout.tsx`: calls `requireUser()` on every page.
-   Together: up to 1.5 MB rides along on every page load, for a small icon in the sidebar.
-7. Measure.
+6. Look at the dashboard before anything changes. In your browser, log in at `localhost:3000`
+   as `anna.schmidt@example.com` / `test` and open the dashboard. Open DevTools, tab
+   **Network**, click the filter **Doc** and reload. One request is left: the HTML document.
+   Note its size.
+7. Give Anna a photo. Open `/profile`, click **Upload photo**, pick a large photo from your
+   phone or camera and click **Save photo**. You should see the photo in the sidebar, bottom left.
+8. Look again. Back on the dashboard, same tab, same filter, reload.
+   You should see the HTML document grow from a few dozen KB to several MB, from one photo.
+   That is the smell.
+9. Let Claude find the cause, measured.
    ```
-   Using the Chrome DevTools MCP tools, log in at localhost:3000 and load the
-   dashboard. Capture the network payload size for the initial page load and
-   identify how much of it is the avatar field on the User selected via
-   getCurrentUser in lib/auth.ts.
+   After Anna uploaded a profile photo, the dashboard HTML at localhost:3000
+   grew many times over. Using the Chrome DevTools MCP tools, log in as
+   anna.schmidt@example.com / test, load the dashboard and find out what makes
+   the document so big. Capture the HTML size, transferred and decoded, before
+   you look at any code.
    ```
-8. Fix.
+   You should see the size in MB, and Anna's photo inside the HTML as a base64 data URL,
+   more than once.
+10. Read the cause in the code. Claude's finding should lead you here.
+    - `prisma/schema.prisma`: `User.avatar` is a `String?`, a base64 data URL.
+    - `lib/auth.ts`: `getCurrentUser()` selects `avatar: true` on every call.
+    - `app/(app)/layout.tsx`: calls `requireUser()` on every page and hands the user to the sidebar.
+    - `components/clashes/clash-card.tsx` and `components/venues/venue-card.tsx`: show the
+      creator's avatar too.
+    - `lib/data/notifications.ts`: `getNotifications()` selects the avatar of whoever caused a
+      notification, and the layout loads it on every page.
+    Together: the whole photo rides along as text in the HTML of every page, once for every
+    place it shows, for a 32 px icon.
+11. Fix.
    ```
-   getCurrentUser() in lib/auth.ts selects avatar on every call, and it's called
-   by requireUser() on every authenticated page via app/(app)/layout.tsx, even
-   though most pages render the user's own avatar only as a small sidebar icon.
-   Fix this: stop selecting avatar in the identity/session check, and load it
-   separately only where it's actually displayed.
+   User.avatar is a base64 data URL, and CLASH puts it inline into the HTML of
+   every page: getCurrentUser() in lib/auth.ts selects it for the sidebar on
+   every page via app/(app)/layout.tsx, the clash and venue cards select the
+   creator's avatar, and getNotifications() in lib/data/notifications.ts
+   selects the actor's avatar. Serve avatars from their own URL instead: a route
+   handler that returns the image bytes with an ETag, so the browser can cache
+   them. Pass only that URL to components, and stop selecting avatar in the
+   session check. Keep the profile upload and the initials fallback working.
    ```
-9. Measure again.
-   ```
-   Re-measure the same page load with Chrome DevTools MCP and confirm the
-   payload size dropped.
-   ```
-10. Run the three gates. The hooks from task 13 will help.
+12. Measure again.
+    ```
+    Re-measure the same dashboard load with Chrome DevTools MCP. Report the
+    HTML size before and after, how many data URLs are left, and the size of
+    the avatar request on the first and on the second load.
+    ```
+    You should see the HTML shrink back to a few dozen KB transferred, no data URL left, and
+    the photo arrive once as its own request, then from the browser cache.
+13. Run the three gates. The hooks from task 13 will help.
 
 **A remote server**
 
-11. Every server so far ran locally, as a process on your machine. Connect one that does not.
+14. Every server so far ran locally, as a process on your machine. Connect one that does not.
     ```bash
     claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
     ```
@@ -109,15 +131,19 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
   host no "Request to join" button. Check that.
 - Use agent-browser instead of Playwright MCP for the same walkthrough. Compare the size
   of what lands in your context.
+- The photo now has its own request, but the first load of it still weighs MB, for a 32 px
+  icon. Find out why it is that big, make it small without losing the crop, and measure
+  before and after.
 
 ## Check
 
 - [ ] Playwright MCP drove a real browser before any test was written.
 - [ ] A test covers request, accept and notification. A second one covers reject.
 - [ ] Both pass against the seeded database.
-- [ ] Chrome DevTools MCP captured a "before" number, not a guess.
-- [ ] `avatar` is gone from the every-page path and still shows where it is used.
-- [ ] Chrome DevTools MCP confirms the payload dropped.
+- [ ] You saw the dashboard HTML in DevTools before and after Anna's upload.
+- [ ] Chrome DevTools MCP captured a "before" number and named the cause before any code was read.
+- [ ] The dashboard HTML holds no base64 data URL, and the photo still shows in the sidebar and on Anna's cards.
+- [ ] Chrome DevTools MCP confirms the HTML shrank and the photo loads as its own request.
 - [ ] `npx tsc --noEmit`, `npm run lint`, `npm run build` pass.
 - [ ] You saw the `/mcp` authentication flow for a remote server, even without finishing the login.
 

@@ -42,9 +42,10 @@ Say:
 <!-- @note: why-a-base64-avatar-costs-payload -->
 > Do:
 > - Ties to "Measure, fix, measure again" in task 14
+> - If task 14 is still ahead, skip this slide: it gives away what task 14 finds
 > - Afterwards the back chip returns to "The safety moment"; the next slide is "Point, don't let it guess"
 
 Say:
 - Base64 turns every three bytes into four characters, so the image grows by about a third, and it travels as text
-- CLASH stores the avatar as a base64 string, up to 1.5 MB, and getCurrentUser() selects it on every page for one small icon
-- The fix in task 14: stop selecting the avatar in the session check. In general: select only what a page shows, and serve images as files
+- CLASH stores the avatar as a base64 string, a whole photo of several MB, and getCurrentUser() selects it on every page for one small icon
+- The fix in task 14: serve the avatar from its own URL, so the browser caches it. In general: select only what a page shows, and serve images as files
