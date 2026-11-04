@@ -399,12 +399,39 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - MCP is a protocol boundary. Playwright MCP drives a browser; DevTools MCP speaks the
   DevTools protocol.
 - Drive the join flow by hand first, then ask for the test file. Never generate tests blind.
-- Before step 7, have everyone log in to CLASH as Anna and upload an avatar on `/profile`: the
-  seed leaves every avatar empty, so there is nothing to measure.
-- Avatars: `getCurrentUser()` selects `avatar` on every request. Measure, fix, re-measure.
-- Steer the step 8 fix toward an image with its own URL: CLASH's sidebar is a client component
+- The performance half is a seeded bug, and nothing before task 14 names it. Do not explain it
+  before step 9: participants see the symptom in DevTools (steps 6 and 8), Claude finds the
+  cause with Chrome DevTools MCP, and only then do they read the code (step 10).
+- What is seeded on `06-start`: `components/profile/avatar-cropper.tsx` saves 1024 px with
+  `canvas.toDataURL()`, whose default is PNG, so a photo becomes a data URL of several MB.
+  `next.config.ts` raises `experimental.serverActions.bodySizeLimit` to `10mb` and
+  `app/actions/profile.ts` raises `MAX_AVATAR_LENGTH` to `8_000_000`, so the upload goes
+  through. The commit message only says "sharper avatars", so that `git log` gives nothing away.
+- In the audits of tasks 08 and 12 the raised limit in `app/actions/profile.ts` is out of scope:
+  they look for missing ownership checks. The OWASP reviewer in task 08 may still flag it as a
+  denial-of-service risk. If so, confirm the finding and say it comes back in task 14.
+- Step 7 needs a real photo, not a small chat profile picture. Without an upload there is
+  nothing to measure: the seed leaves every avatar empty.
+- Reference measurement (CLASH's `14-start`, `npm run dev`, Anna's dashboard, a 3840 × 5723 px
+  portrait): without a photo 32 KB transferred, 159 KB decoded. With it 5853 KB transferred,
+  7901 KB decoded, two PNG data URLs of 3871 KB each. A phone photo with less detail comes out
+  smaller, still several MB.
+- In the Network tab the filter **Doc** matters: in `npm run dev` the JavaScript chunks alone
+  weigh up to about 1 MB each, and the document gets lost between them.
+- In step 9 a fresh session often names the PNG export too and suggests JPEG or WebP. Let it
+  stand, but keep the order: step 11 first. The inline data URL is why every page pays, the PNG
+  is why each payment is big. The format is the third "Now you" item.
+- Steer the step 11 fix toward an image with its own URL: CLASH's sidebar is a client component
   that gets the avatar as a prop on every page, so a second query in the layout that still passes
   the data URL leaves the number unchanged.
+- If a fix only touches the session check, the dashboard shrinks by about half: the venue card
+  "Tempelhofer Feld … Added by Anna Schmidt" still carries the data URL. Let it happen. The
+  second measurement finding it is the lesson.
+- After the fix the HTML is back to a few dozen KB, but the photo request itself is still the
+  PNG, about 2.9 MB. That is the third "Now you" item. Its fix is the export format in the
+  cropper (`canvas.toDataURL("image/jpeg", 0.85)`), not lower limits: lower limits only
+  make large uploads fail. The new format only applies to the next upload: Anna has to upload
+  and save her photo again before the second measurement.
 - Four browser tools, one comparison. Do not quote a token-savings percentage for
   agent-browser; it is not an official number.
 

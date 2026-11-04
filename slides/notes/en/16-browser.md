@@ -48,12 +48,14 @@ Say:
 
 <!-- @note: measure-fix-measure-again -->
 > Do:
-> - Read the real bug before measuring: prisma/schema.prisma (User.avatar String?); app/actions/profile.ts (MAX_AVATAR_LENGTH = 1_500_000); lib/auth.ts (getCurrentUser selects avatar: true, wrapped in cache()); app/(app)/layout.tsx (requireUser on every page)
-> - [click] Prompts in tasks/14-browser-loop.md steps 7-9: measure with Chrome DevTools MCP, fix, measure again
+> - Do not name the bug. This slide is the pattern, the task is the discovery
+> - For you only, so you can steer: a seeded bug inlines Anna's photo as a PNG data URL of several MB into every page. Details and reference numbers in FACILITATOR.md, task 14
+> - [click] Prompts in tasks/14-browser-loop.md steps 6-12: look in DevTools before and after the upload, let Claude find the cause with Chrome DevTools MCP, read the code, fix, measure again
 
 Say:
-- Up to 1.5 MB rides in the payload on every page load, for a small icon in the sidebar
-- Measure before touching code
+- First a number, then a cause, then code
+- One request, before and after one change: the cleanest measurement there is
+- The fix is what the measurement points at, not what we guessed beforehand
 
 <!-- @note: the-loop-that-matters -->
 > Do:

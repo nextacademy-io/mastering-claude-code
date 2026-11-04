@@ -74,7 +74,7 @@ npm run build
 
 - Tailwind v4 is configured in `app/globals.css`. There is no `tailwind.config.js` — don't create one.
 - `hooks/` holds **React** hooks. Claude Code hooks live in `.claude/settings.json`. Different things.
-- Avatars are base64 data URLs stored in the `User.avatar` column. Known perf tradeoff, deliberately scoped in.
+- Avatars are base64 data URLs stored in the `User.avatar` column.
 - Seeded dev logins: `anna.schmidt@example.com` … all 8 users have password `test`.
 
 ## Out of scope

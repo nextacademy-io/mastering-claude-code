@@ -20,7 +20,7 @@ learn:
   - "Local MCP is stdio; remote is http"
 outcome:
   - "A Playwright test: join, accept, reject"
-  - "A smaller avatar payload, measured"
+  - "A heavy page found and fixed, measured"
   - "A remote MCP server, login flow seen"
 ---
 
@@ -72,8 +72,8 @@ layout: concept
 heading: "Measure, fix, measure again"
 routeAlias: theory-measure-fix
 lines:
-  - "User.avatar is a base64 string, up to 1.5 MB."
-  - "getCurrentUser() selects it on every page. The layout shows it as a small icon."
+  - "Look at the number first: one request, before and after."
+  - "Then let a tool find the cause, measured. Read the code last."
 ---
 
 <div class="grid grid-cols-3 gap-6 w-full max-w-4xl">
@@ -83,7 +83,7 @@ lines:
   </div>
   <div v-click class="na-card p-6">
     <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">2 · Fix</div>
-    <div class="text-lg">Stop selecting avatar in the session check.</div>
+    <div class="text-lg">Fix what the measurement found, nothing else.</div>
   </div>
   <div v-click class="na-card p-6">
     <div class="text-sm font-semibold mb-2" style="color: var(--na-accent-500)">3 · Measure again</div>
@@ -162,7 +162,7 @@ lines:
 layout: task
 number: "14"
 heading: "The browser closes the loop"
-goal: "Write the join-flow test suite with Playwright MCP, then measure and fix the avatar payload with Chrome DevTools MCP."
+goal: "Write the join-flow test suite with Playwright MCP, then find and fix what makes the dashboard heavy, measured with Chrome DevTools MCP."
 mode: "you do"
 success: "Both tests pass against the seeded database, and the payload drop is measured, not assumed."
 branch: "14-start"

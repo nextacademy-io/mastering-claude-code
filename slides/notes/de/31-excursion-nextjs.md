@@ -42,9 +42,10 @@ Sagen:
 <!-- @note: why-a-base64-avatar-costs-payload -->
 > Tun:
 > - Verbindet sich mit "Measure, fix, measure again" in Task 14
+> - Steht Task 14 noch bevor, diese Folie überspringen: Sie verrät, was Task 14 findet
 > - Danach führt der Zurück-Chip zu "The safety moment"; die nächste Folie ist "Point, don't let it guess"
 
 Sagen:
 - Base64 macht aus je drei Bytes vier Zeichen, das Bild wächst also um etwa ein Drittel, und es reist als Text
-- CLASH speichert den Avatar als Base64-String, bis 1,5 MB, und getCurrentUser() holt ihn auf jeder Seite für ein kleines Icon
-- Der Fix in Task 14: den Avatar im Session-Check nicht mehr mitladen. Allgemein: nur auswählen, was eine Seite zeigt, und Bilder als Dateien ausliefern
+- CLASH speichert den Avatar als Base64-String, ein ganzes Foto mit mehreren MB, und getCurrentUser() holt ihn auf jeder Seite für ein kleines Icon
+- Der Fix in Task 14: den Avatar über eine eigene URL ausliefern, damit der Browser ihn cacht. Allgemein: nur auswählen, was eine Seite zeigt, und Bilder als Dateien ausliefern

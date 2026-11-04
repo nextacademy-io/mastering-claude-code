@@ -11,7 +11,9 @@
 #   03-start  scaffold + Prisma schema + migration + seed        (from main, manifest 03)
 #   04-start  + auth, app shell, clashes                          (manifest 04)
 #   05-start  + venues, map, participation, notifications        (manifest 05)
-#   06-start  reference CLASH + vendored skills copied into .claude/skills/
+#   06-start  reference CLASH + vendored skills copied into .claude/skills/; SEEDED avatar
+#             payload: the cropper saves 1024 px PNGs, upload limits raised to let them
+#             through (task 14 measures and fixes it; the commit message stays neutral)
 #   07-start  + authored CLAUDE.md
 #   08-start  + clash-feature skill, SEEDED missing ownership checks
 #   09-start  == 08-start
@@ -186,7 +188,45 @@ symlink would not survive this script regenerating the branch anyway.
 agent-browser itself is skipped: task 01 already installs it as a
 personal skill, which always shadows a project-level copy of the same
 name, so copying it here would only cost context, never run."
-note 06-start "reference CLASH + 8 of 9 vendored skills copied into .claude/skills/ (agent-browser stays personal-only)"
+
+# SEEDED for task 14, intentional workshop content, not a CLASH bug. The
+# reference cropper saves a 256 px JPEG of a few dozen KB, so task 14 would
+# have nothing to measure. Here it saves 1024 px with canvas.toDataURL(),
+# whose default is PNG: a photo becomes a base64 data URL of several MB,
+# which every page inlines for a 32 px icon. The two upload limits are raised
+# so that upload goes through (Next caps a Server Action body at 1 MB).
+# The commit message stays neutral on purpose: tasks 06-13 must not spot the
+# bug in git log before task 14 measures it. docs/BRANCHES.md and
+# FACILITATOR.md say what it is.
+node <<'JS'
+const fs = require('fs')
+for (const [path, edits] of [
+  ['components/profile/avatar-cropper.tsx', [
+    ['const OUTPUT_SIZE = 256;\n', 'const OUTPUT_SIZE = 1024;\n'],
+    ['  return canvas.toDataURL("image/jpeg", 0.85);\n', '  return canvas.toDataURL();\n'],
+  ]],
+  ['app/actions/profile.ts', [
+    ['const MAX_AVATAR_LENGTH = 1_500_000; // ~1.1 MB decoded\n', 'const MAX_AVATAR_LENGTH = 8_000_000; // ~6 MB decoded\n'],
+  ]],
+  ['next.config.ts', [
+    ['  /* config options here */\n', '  experimental: {\n    serverActions: {\n      bodySizeLimit: "10mb",\n    },\n  },\n'],
+  ]],
+]) {
+  const raw = fs.readFileSync(path, 'utf8')
+  const crlf = raw.includes('\r\n')
+  let src = crlf ? raw.replace(/\r\n/g, '\n') : raw
+  for (const [needle, replacement] of edits) {
+    if (!src.includes(needle)) { console.error(`error: expected ${JSON.stringify(needle.trim())} not found verbatim in ${path}`); process.exit(1) }
+    src = src.replace(needle, replacement)
+  }
+  fs.writeFileSync(path, crlf ? src.replace(/\n/g, '\r\n') : src)
+}
+JS
+commit_all 06-start "workshop: sharper avatars — the cropper exports 1024 px
+
+Large photos now upload: Server Actions accept bodies up to 10 MB and
+updateAvatar accepts data URLs up to 8 million characters."
+note 06-start "reference CLASH + 8 of 9 vendored skills copied into .claude/skills/ (agent-browser stays personal-only); avatar payload (seeded for task 14)"
 gate 06-start
 
 # --- 07-start: + authored CLAUDE.md -----------------------------------------
