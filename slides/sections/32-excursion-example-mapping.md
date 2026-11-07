@@ -12,14 +12,14 @@ routeAlias: excursion-example-mapping
 layout: task-intro
 number: "09"
 routeAlias: task-09
-heading: "Task 09 — Example Mapping and the `discover` skill"
+heading: "Task 09 — Example Mapping as a skill"
 branch: "09-start"
 learn:
   - "Run Example Mapping: rules, examples, counter-examples, questions"
   - "Split a skill: references/ for the method, templates/ for the format"
   - "Run an interview live with AskUserQuestion"
 outcome:
-  - "The discover skill: SKILL.md, references/, templates/"
+  - "The example-mapping skill: SKILL.md, references/, templates/"
   - "A resolved spec: docs/specs/clash-capacity.md"
 ---
 
@@ -44,14 +44,14 @@ lines:
 
 ---
 layout: code-live
-heading: "Anatomy of /discover"
-filePath: ".claude/skills/discover/SKILL.md"
+heading: "Anatomy of /example-mapping"
+filePath: ".claude/skills/example-mapping/SKILL.md"
 success: "It interviews you before it drafts, and shows the spec before it saves it."
 ---
 
 ```yaml
 ---
-name: discover
+name: example-mapping
 description: Example Mapping interview on a story → rules, examples, spec
 argument-hint: "<user story in quotes>"
 allowed-tools: Read, Write, AskUserQuestion
@@ -69,8 +69,8 @@ $ARGUMENTS
 ---
 layout: task
 number: "09"
-heading: "The `discover` skill"
-goal: "Build the discover skill, run it on the capacity story, resolve every question, and save a clean spec."
+heading: "The `example-mapping` skill"
+goal: "Build the example-mapping skill, run it on the capacity story, resolve every question, and save a clean spec."
 mode: "you do"
 success: "docs/specs/clash-capacity.md has every rule, examples, and no open questions left in it."
 branch: "09-start"

@@ -1,4 +1,4 @@
-# Task 09 — Example Mapping and the `discover` skill
+# Task 09 — Example Mapping as a skill
 
 > Part: Control the context · Reset branch: `09-start`
 > Slides: https://mastering-claude-code.vercel.app/task-09
@@ -12,7 +12,7 @@
 
 ## You will end up with
 
-A `.claude/skills/discover/` folder with three parts: `SKILL.md` (the steps),
+A `.claude/skills/example-mapping/` folder with three parts: `SKILL.md` (the steps),
 `references/example-mapping.md` (the method) and `templates/spec-template.md` (the format the
 spec is saved in). And a saved, fully settled spec at `docs/specs/clash-capacity.md` — no open
 questions left in the file.
@@ -43,10 +43,10 @@ when it needs them.
    counter-example. List any open questions. Plain business language, no code.
    ```
    See how much of that scaffolding you'd have to retype for the next story.
-2. Create `.claude/skills/discover/SKILL.md`. This is the whole file.
+2. Create `.claude/skills/example-mapping/SKILL.md`. This is the whole file.
    ```markdown
    ---
-   name: discover
+   name: example-mapping
    description: Run an Example Mapping interview on a user story. Interview first, then draft rules with examples and counter-examples, settle the open questions with the user, and save the finished spec. Use at the start of a new feature, before any code or tests exist for it.
    argument-hint: "<user story in quotes>"
    allowed-tools: Read, Write, AskUserQuestion
@@ -94,10 +94,10 @@ when it needs them.
 
    Plain business language. No screens, endpoints or class names.
    ```
-   `$ARGUMENTS` is what you type after `/discover`. `AskUserQuestion` is how a skill asks you a
+   `$ARGUMENTS` is what you type after `/example-mapping`. `AskUserQuestion` is how a skill asks you a
    multiple-choice question and waits. `allowed-tools` only pre-approves tools, and this one needs
    no permission anyway. The eight steps are the interview. Read them once, they are the point.
-3. Create `.claude/skills/discover/references/example-mapping.md`. The skill says to read it
+3. Create `.claude/skills/example-mapping/references/example-mapping.md`. The skill says to read it
    before step 1, so it only enters context when the skill opens it.
    ```markdown
    # Example Mapping
@@ -180,7 +180,7 @@ when it needs them.
    - Counter-example: The one where a member with 3 open loans renews one of them. A renewal is
      not a new loan, so it is allowed.
    ```
-4. Create `.claude/skills/discover/templates/spec-template.md`. The last step of the skill reads
+4. Create `.claude/skills/example-mapping/templates/spec-template.md`. The last step of the skill reads
    it to write the spec.
    ```markdown
    # <Feature title>
@@ -212,7 +212,7 @@ when it needs them.
    ```
 5. Run it for real.
    ```
-   /discover "As a host, I want to cap how many people can join my clash, so
+   /example-mapping "As a host, I want to cap how many people can join my clash, so
    the venue doesn't get overcrowded."
    ```
    Expect this order: a few questions from it, one at a time; a draft with rules, examples and
@@ -222,14 +222,14 @@ when it needs them.
 
 ## Now you
 
-- Run `/discover` on a second CLASH story of your own — something that doesn't already exist
+- Run `/example-mapping` on a second CLASH story of your own — something that doesn't already exist
   and isn't already spoken for by a later task. Save its spec too.
 - Add a `Checklist` item to `references/example-mapping.md` for something you had to fix by hand
   in the first spec.
 
 ## Check
 
-- [ ] `.claude/skills/discover/` holds `SKILL.md`, `references/example-mapping.md` and
+- [ ] `.claude/skills/example-mapping/` holds `SKILL.md`, `references/example-mapping.md` and
       `templates/spec-template.md`.
 - [ ] `SKILL.md` has `argument-hint` and `allowed-tools`, and points at the other two files
       instead of repeating them.
@@ -243,7 +243,7 @@ when it needs them.
 ## Stuck?
 
 `git checkout 09-start` — the reference CLASH with the seeded bug and the task 06 and 07 files
-(`CLAUDE.md`, the `clash-feature` skill), no `discover` skill yet.
+(`CLAUDE.md`, the `clash-feature` skill), no `example-mapping` skill yet.
 
 ## Go further
 

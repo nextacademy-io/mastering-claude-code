@@ -1,6 +1,6 @@
 <!-- @note: tdd -->
 > Tun:
-> - Divider: Skill-Zeile wieder hervorgehoben — /tdd ist ein Skill, dasselbe Primitive wie /discover
+> - Divider: Skill-Zeile wieder hervorgehoben — /tdd ist ein Skill, dasselbe Primitive wie /example-mapping
 > - Den Moment kurz halten
 > - Exkurs im Anhang: Du kommst über den Chip auf "The loop that matters" hierher
 

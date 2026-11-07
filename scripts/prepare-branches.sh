@@ -17,7 +17,7 @@
 #   07-start  + authored CLAUDE.md
 #   08-start  + clash-feature skill, SEEDED missing ownership checks
 #   09-start  == 08-start
-#   10-start  ownership checks restored; + discover skill and its resolved spec
+#   10-start  ownership checks restored; + example-mapping skill and its resolved spec
 #   11-start  + path-scoped app/actions/** rule; + vitest, one trivial test, the capacity stub
 #   12-start  + finished tdd skill and passing capacity.ts (end of task 11); ownership
 #             checks RE-SEEDED for the audit (same seeding as 08-start)
@@ -284,7 +284,7 @@ git checkout -B 09-start 08-start --quiet
 note 09-start "identical to 08-start"
 SUMMARY+=("09-start|$(git rev-parse --short HEAD)|$(git ls-files | wc -l | tr -d ' ')|== 08-start")
 
-# --- 10-start: ownership checks restored; + discover skill -------------------
+# --- 10-start: ownership checks restored; + example-mapping skill -------------------
 # Task 12 (team-and-workflow-audit) needs the ownership bug live again — it is
 # re-seeded at 12-start below, using the exact same removal this script already
 # runs at 08-start. Restoring it here first keeps task 10's path-scoped rule
@@ -293,13 +293,13 @@ SUMMARY+=("09-start|$(git rev-parse --short HEAD)|$(git ls-files | wc -l | tr -d
 # chain every action still does.
 git checkout -B 10-start 09-start --quiet
 git checkout origin/main --quiet -- app/actions/clashes.ts app/actions/venues.ts
-mkdir -p .claude/skills/discover/references .claude/skills/discover/templates docs/specs
-cp "$ART_DISCOVER_SKILL" .claude/skills/discover/SKILL.md
-cp "$ART_DISCOVER_REFERENCE" .claude/skills/discover/references/example-mapping.md
-cp "$ART_DISCOVER_TEMPLATE" .claude/skills/discover/templates/spec-template.md
+mkdir -p .claude/skills/example-mapping/references .claude/skills/example-mapping/templates docs/specs
+cp "$ART_DISCOVER_SKILL" .claude/skills/example-mapping/SKILL.md
+cp "$ART_DISCOVER_REFERENCE" .claude/skills/example-mapping/references/example-mapping.md
+cp "$ART_DISCOVER_TEMPLATE" .claude/skills/example-mapping/templates/spec-template.md
 cp "$ART_DISCOVER_SPEC" docs/specs/clash-capacity.md
-commit_all 10-start "workshop: restore the creatorId ownership checks; add the discover skill and its resolved spec (end of task 09)"
-note 10-start "ownership checks restored; + discover skill and its resolved spec"
+commit_all 10-start "workshop: restore the creatorId ownership checks; add the example-mapping skill and its resolved spec (end of task 09)"
+note 10-start "ownership checks restored; + example-mapping skill and its resolved spec"
 gate 10-start
 
 # --- 11-start: + path-scoped rule; + vitest, a trivial test, the capacity stub ---

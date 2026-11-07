@@ -1,5 +1,5 @@
 ---
-name: discover
+name: example-mapping
 description: Run an Example Mapping interview on a user story. Interview first, then draft rules with examples and counter-examples, settle the open questions with the user, and save the finished spec. Use at the start of a new feature, before any code or tests exist for it.
 argument-hint: "<user story in quotes>"
 allowed-tools: Read, Write, AskUserQuestion

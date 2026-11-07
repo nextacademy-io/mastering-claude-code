@@ -1,6 +1,6 @@
 <!-- @note: tdd -->
 > Do:
-> - Divider: skill row highlighted again — /tdd is a skill, same primitive as /discover
+> - Divider: skill row highlighted again — /tdd is a skill, same primitive as /example-mapping
 > - Keep the beat short
 > - Excursion in the appendix: you got here from the chip on "The loop that matters"
 

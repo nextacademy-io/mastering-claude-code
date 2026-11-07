@@ -7,9 +7,9 @@
 Sagen:
 - "Eine Methode aus der Anforderungsarbeit, verpackt in einen Skill — und ein zweiter Blick darauf, was ein Skill lädt, und wann."
 
-<!-- @note: task-09-example-mapping-and-the-discover-skill -->
+<!-- @note: task-09-example-mapping-as-a-skill -->
 > Tun:
-> - Branch: 09-start hat den geseedeten Bug aus 08-start noch, der discover-Skill ist auch noch nicht gebaut
+> - Branch: 09-start hat den geseedeten Bug aus 08-start noch, der example-mapping-Skill ist auch noch nicht gebaut
 
 Sagen:
 - Drei Dinge zu lernen, zwei Dinge, mit denen man rauskommt
@@ -33,18 +33,18 @@ Sagen:
 - references/ und templates/ kommen erst in den Kontext, wenn der Skill die Datei tatsächlich öffnet — dieselbe Idee wie der isolierte Kontext eines Subagenten, nur eine Nummer kleiner
 - references/ enthält die Methode, die er beim Arbeiten liest. templates/ enthält das Format, in dem er die Spec schreibt
 
-<!-- @note: anatomy-of-discover -->
+<!-- @note: anatomy-of-example-mapping -->
 > Tun:
 > - Live-Bau: die genauen Dateien stehen in tasks/09-example-mapping.md, Schritte 2-4 — Body, Referenz, Template
 > - Auf $ARGUMENTS zeigen, auf die Referenz, die geöffnet werden soll, dann auf das Template, mit dem gespeichert wird
 > - Die nummerierten Schritte laut durchgehen: die Reihenfolge ist das Design — erst das Interview, die Spec wird vor dem Speichern gezeigt
 
 Sagen:
-- argument-hint sagt, was nach /discover eingegeben wird
+- argument-hint sagt, was nach /example-mapping eingegeben wird
 - AskUserQuestion lässt den Skill fragen, nicht nur antworten. allowed-tools bewilligt Tools nur vorab, und dieses braucht ohnehin keine Freigabe
 - Ein Skill, kein Subagent: er läuft in deinem eigenen Gespräch, das Interview ist also ein Hin und Her mit dir
 
-<!-- @note: the-discover-skill -->
+<!-- @note: the-example-mapping-skill -->
 > Tun:
 > - Recap: die Spec ist das eigentliche Ergebnis, nicht die Skill-Datei selbst
 > - Danach führt der Zurück-Chip zu "Excursion: Example Mapping"; die nächste Folie ist "Subagents"
