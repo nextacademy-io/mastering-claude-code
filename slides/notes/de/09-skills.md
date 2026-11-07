@@ -59,7 +59,7 @@ Sagen:
 - Er besteht auf einem eigenen Ownership-Check, obwohl requireUser() im Layout läuft
 - Warum: eine Server Action ist ein öffentlicher POST-Endpoint mit einer generierten id — der Layout-Guard sieht einen direkten Aufruf nie
 - Warum den Grund in den Skill schreiben: eine nackte Regel wird übersprungen, wenn ein Fall anders aussieht. Eine Regel mit ihrem Grund lässt Claude den neuen Fall richtig entscheiden
-- Ein Skill kann dich auch zuerst befragen: Wenn seine Schritte Claude sagen, AskUserQuestion zu benutzen, stellt Claude Multiple-Choice-Fragen, bevor es baut. Der discover-Skill im Exkurs Example Mapping macht genau das
+- Ein Skill kann dich auch zuerst befragen: Wenn seine Schritte Claude sagen, AskUserQuestion zu benutzen, stellt Claude Multiple-Choice-Fragen, bevor es baut. Der example-mapping-Skill im Exkurs Example Mapping macht genau das
 
 <!-- @note: a-skill-is-advice -->
 > Tun:

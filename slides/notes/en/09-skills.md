@@ -59,7 +59,7 @@ Say:
 - It insists on its own ownership check even though requireUser() runs in the layout
 - Why: a Server Action is a public POST endpoint with a generated id — the layout guard never sees a direct call
 - Why write the reason into the skill: a bare rule gets skipped when a case looks different. A rule with its reason lets Claude decide the new case correctly
-- A skill can also interview you first: when its steps tell Claude to use AskUserQuestion, Claude asks multiple-choice questions before it builds. The discover skill in the Example Mapping excursion does exactly that
+- A skill can also interview you first: when its steps tell Claude to use AskUserQuestion, Claude asks multiple-choice questions before it builds. The example-mapping skill in the Example Mapping excursion does exactly that
 
 <!-- @note: a-skill-is-advice -->
 > Do:

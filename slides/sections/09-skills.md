@@ -181,5 +181,5 @@ routeAlias: quick-example-mapping
 deepDive: excursion-example-mapping
 lines:
   - "Optional: task 09 turns a story into rules and examples."
-  - "The discover skill interviews you with AskUserQuestion."
+  - "The example-mapping skill interviews you with AskUserQuestion."
 ---

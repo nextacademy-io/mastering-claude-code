@@ -16,7 +16,7 @@ branch lets you go on.
 | 06 | [Context and CLAUDE.md](06-context-and-claude-md.md) | III — Control the context | `06-start` |
 | 07 | [The clash-feature skill](07-clash-feature-skill.md) | III — Control the context | `07-start` |
 | 08 | [Subagent audit](08-subagent-audit.md) | III — Control the context | `08-start` |
-| 09 | [Example Mapping and the `discover` skill](09-example-mapping.md) · *excursion* | III — Control the context | `09-start` |
+| 09 | [Example Mapping as a skill](09-example-mapping.md) · *excursion* | III — Control the context | `09-start` |
 | 10 | [Path-scoped rules](10-path-scoped-rules.md) | III — Control the context | `10-start` |
 | 11 | [The TDD inner loop](11-tdd-inner-loop.md) · *excursion* | IV — Orchestrate and let go | `11-start` |
 | 12 | [Team and workflow audit](12-team-and-workflow-audit.md) | IV — Orchestrate and let go | `12-start` |

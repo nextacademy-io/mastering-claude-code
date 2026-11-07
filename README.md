@@ -91,7 +91,7 @@ the next task's reset branch lets you go on.
 | 06 | [Context and CLAUDE.md](tasks/06-context-and-claude-md.md) | III | `06-start` |
 | 07 | [The clash-feature skill](tasks/07-clash-feature-skill.md) | III | `07-start` |
 | 08 | [Subagent audit](tasks/08-subagent-audit.md) | III | `08-start` |
-| 09 | [Example Mapping and the `discover` skill](tasks/09-example-mapping.md) · *excursion* | III | `09-start` |
+| 09 | [Example Mapping as a skill](tasks/09-example-mapping.md) · *excursion* | III | `09-start` |
 | 10 | [Path-scoped rules](tasks/10-path-scoped-rules.md) | III | `10-start` |
 | 11 | [The TDD inner loop](tasks/11-tdd-inner-loop.md) · *excursion* | IV | `11-start` |
 | 12 | [Team and workflow audit](tasks/12-team-and-workflow-audit.md) | IV | `12-start` |

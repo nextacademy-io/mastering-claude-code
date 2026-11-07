@@ -8,7 +8,7 @@ Say:
 
 <!-- @note: task-10-path-scoped-rules -->
 > Do:
-> - Branch: 10-start already has the discover skill from task 09 — whether or not the group took that excursion
+> - Branch: 10-start already has the example-mapping skill from task 09 — whether or not the group took that excursion
 
 Say:
 - Four things to learn, one thing to end up with

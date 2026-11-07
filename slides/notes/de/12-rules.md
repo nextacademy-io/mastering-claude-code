@@ -8,7 +8,7 @@ Sagen:
 
 <!-- @note: task-10-path-scoped-rules -->
 > Tun:
-> - Branch: 10-start hat den discover-Skill aus Task 09 schon — egal, ob die Gruppe diesen Exkurs gemacht hat
+> - Branch: 10-start hat den example-mapping-Skill aus Task 09 schon — egal, ob die Gruppe diesen Exkurs gemacht hat
 
 Sagen:
 - Vier Dinge zu lernen, ein Ding, mit dem man rauskommt

@@ -284,10 +284,10 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   they just watched it) and continue from step 5, the subagent version of the same audit.
 - End on the cliffhanger: two findings, nothing fixed yet.
 
-### Task 09 — Example Mapping and the `discover` skill
+### Task 09 — Example Mapping as a skill
 
 - Excursion in the appendix. Reach it from the chip on "Excursion: Example Mapping" after the
-  task 07 recap; skip it, and `10-start` still has the `discover` skill and its spec.
+  task 07 recap; skip it, and `10-start` still has the `example-mapping` skill and its spec.
 - Manual prompt first, then package it: send the raw Example Mapping prompt live in chat, no
   skill yet, and count how much of it people would have to retype for the next story.
 - The task file shows every file of the skill verbatim: the body, `references/example-mapping.md`

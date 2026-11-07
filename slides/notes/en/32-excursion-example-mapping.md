@@ -7,9 +7,9 @@
 Say:
 - "A method from requirements work, packed into a skill — and a second look at what a skill loads, and when."
 
-<!-- @note: task-09-example-mapping-and-the-discover-skill -->
+<!-- @note: task-09-example-mapping-as-a-skill -->
 > Do:
-> - Branch: 09-start is still on the seeded bug from 08-start — the discover skill isn't built yet either
+> - Branch: 09-start is still on the seeded bug from 08-start — the example-mapping skill isn't built yet either
 
 Say:
 - Three things to learn, two things to end up with
@@ -33,18 +33,18 @@ Say:
 - references/ and templates/ only enter context when the skill actually opens the file — same idea as a subagent's isolated window, one size smaller
 - references/ holds the method it reads while it works. templates/ holds the format it writes the spec in
 
-<!-- @note: anatomy-of-discover -->
+<!-- @note: anatomy-of-example-mapping -->
 > Do:
 > - Live build: exact files in tasks/09-example-mapping.md steps 2-4 — body, reference, template
 > - Point at $ARGUMENTS, the reference it's told to open, then the template it saves with
 > - Walk the numbered steps aloud: the order is the design — interview first, spec shown before saving
 
 Say:
-- argument-hint tells people what to type after /discover
+- argument-hint tells people what to type after /example-mapping
 - AskUserQuestion lets the skill ask, not just answer. allowed-tools only pre-approves tools, and this one needs no permission anyway
 - A skill, not a subagent: it runs in your own conversation, so the interview is a live back-and-forth with you
 
-<!-- @note: the-discover-skill -->
+<!-- @note: the-example-mapping-skill -->
 > Do:
 > - Recap: the spec is the real deliverable, not the skill file itself
 > - Afterwards the back chip returns to "Excursion: Example Mapping"; the next slide is "Subagents"
