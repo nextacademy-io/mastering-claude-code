@@ -42,15 +42,18 @@ CLASH clone you demo from. `SKIP_GATE=1` skips the gates and this smoke run with
 ## A second repository for task 19
 
 `clash-conference` (`https://github.com/agilino/clash-conference.git`) is a second, small app. It
-publishes its talks as clashes into CLASH through the MCP server task 19 builds. Its branches
-form one line: `webinar-start` → `webinar-solution` → `19-start` → `19-solution`.
-`webinar-start` is clash-conference without CLASH publishing, where the webinar task starts.
+publishes its talks as clashes into CLASH through the MCP server task 19 builds. Its history
+runs `webinar-start` → `webinar-solution` → `main`, and clash-conference's `19-solution` is a
+second name for `main`, the finished app. `webinar-start` is clash-conference without CLASH
+publishing, where the webinar task starts: an exercise on clash-conference alone, without CLASH.
 `webinar-solution` adds the two talk rules (a start lies in the future, no two talks share a room
-and a start), their specs, a deny on `tests/**` and a hook that keeps Claude from reseeding
-`dev.db`. clash-conference's `19-start` is its `main` without `app/api/publish/route.ts`, the
-route task 19 writes, and without `lib/clash-agent.ts`, which holds the `query()` call on
-clash-conference's `main`. clash-conference's `19-solution` is `main`, the finished app. The side
-branch `webinar-demo-law` serves only the webinar demo. Clone clash-conference next to your CLASH
+and a start), their specs, a deny on `tests/**` and a hook that blocks the seed and reset
+commands for Claude. The hook lets `npm test` through, and its setup reseeds `dev.db`.
+clash-conference's `19-start` is one commit on top of `main` that removes
+`app/api/publish/route.ts`, the route task 19 writes, and `lib/clash-agent.ts`, which holds the
+`query()` call on clash-conference's `main`. So in git, clash-conference's `19-start` comes after
+its `19-solution`; in the course it comes first. The side branch `webinar-demo-law` serves only
+the webinar demo. Clone clash-conference next to your CLASH
 clone (`docs/SETUP.md`). `scripts/prepare-branches.sh` does not touch clash-conference.
 
 The two repositories mirror each other: each has a `19-start` and a `19-solution`.

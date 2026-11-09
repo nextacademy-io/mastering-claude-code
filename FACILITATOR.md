@@ -552,16 +552,28 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   settings, not from the talk, and the server's own checks bound what a write can do. Tie it back
   to task 12's quarantine rule: as soon as other people write text that a write-capable agent
   reads, the route has to build and check the tool arguments itself instead of trusting the agent.
-- clash-conference's `19-start` builds on the webinar task and keeps its `.claude/settings.json`:
-  Claude cannot edit `tests/**`, and a hook blocks `npm run setup`, `npm run db:seed`,
-  `npm run db:reset`, `prisma db seed`, `prisma migrate reset` and deleting `dev.db` with exit 2.
-  Participants type the step-7 commands themselves. The publish agent never loads these settings
-  (`settingSources: []`).
-- `npm test` in clash-conference reseeds `dev.db` and drops every `clashId`. After a publish,
-  unpublish first, or the clash stays on CLASH's map without its talk.
+- clash-conference's `19-start` carries what the webinar task built. The webinar task is an
+  exercise on clash-conference alone, without CLASH, that ends on `webinar-solution`. That keeps
+  its `.claude/settings.json`: Claude cannot edit `tests/**`, and a hook blocks `npm run setup`,
+  `npm run db:seed`, `npm run db:reset`, `prisma db seed`, `prisma migrate reset` and deleting
+  `dev.db` with exit 2. Participants type the step-7 commands themselves. The publish agent never
+  loads these settings (`settingSources: []`).
+- Someone who did the webinar task has its files in clash-conference, untracked on
+  `webinar-start` and tracked on clash-conference's `19-start`. Step 7 parks them with
+  `git stash -u` without naming the webinar; a plain `git stash` leaves them and the checkout stops.
+- `npm run setup` in step 7 also downloads Chromium, so `npm test` runs when Claude reaches for it
+  in step 8. On clash-conference's `19-start` it is red before the route exists: nine specs in
+  `tests/publish.spec.ts` and `tests/talks.spec.ts` expect the publish route's 400, 404 and 409
+  answers with fixed messages. They turn green only when Claude's route returns exactly those; the
+  step-8 prompt does not name them, and Claude cannot edit the specs. A red publish spec after
+  step 8 is a question about the route, not a broken setup.
+- `npm test` in clash-conference reseeds `dev.db` and drops every `clashId`. The hook lets it through
+  on purpose. Step 9 tells participants to unpublish before any `npm test`; say it again when
+  someone asks Claude to run the tests after a publish.
 - In step 8 Claude reads clash-conference's `CLAUDE.md`, which describes the finished `main`, and
   may put the `query()` call into a new `lib/clash-agent.ts` instead of the route. Both are fine:
-  the six checks of step 8 hold in either place.
+  the six checks of step 8 hold in either place. Stuck? parks both files with `git stash -u` before
+  clash-conference's `19-solution`, which tracks them.
 
 ---
 
@@ -609,5 +621,5 @@ Two questions team leads ask after the close, answered from the docs:
 | Someone hand-edits `prisma/migrations` | The deny hook from Task 13 catches it from `14-start` on. |
 | `/tdd` fires on its own mid-conversation | Shouldn't happen — `disable-model-invocation: true` blocks it. If it does, the skill file is wrong; fix it live as a teaching moment. |
 | Routines need a claude.ai subscription and GitHub access | Trainer demo only, mode `watch first`. Confirm your own `/schedule list` works before you start. Participants without a subscription watch; nothing later depends on their own routine. |
-| `clash-conference` is a second repository with a `19-start` branch of its own, published only after clash-conference is finished | Cloning it is part of `docs/SETUP.md`, marked as available once published. Its `main` is the finished clash-conference; clash-conference's `19-start` lacks `app/api/publish/route.ts` and `lib/clash-agent.ts`. Until it is pushed, `git checkout 19-start` fails in clash-conference; re-verify every name in `tasks/19-build-your-own-mcp.md` steps 7 to 10 against the finished clash-conference. `scripts/prepare-branches.sh` does not build it. |
+| `git checkout` in clash-conference stops: untracked working tree files would be overwritten | Earlier work in clash-conference, from the webinar task or from a first try at step 8, left files that clash-conference's `19-start` or `19-solution` tracks. In clash-conference: `git stash -u`, then the checkout. `git stash pop` brings the files back. |
 | The MCP package name may change | Every install is pinned to `@modelcontextprotocol/server@2.1.0` and `@modelcontextprotocol/client@2.1.0`, the versions the answer key was tested with. To move up, check `npm view @modelcontextprotocol/server version` and the tutorial at modelcontextprotocol.io/docs/develop/build-server, run the smoke test on the new version, then bump the pin everywhere together: `docs/SETUP.md`, `workshop-artifacts/19-build-mcp/README.md`, `scripts/prepare-branches.sh` and the notes of `slides/notes/en/36-excursion-mcp-server.md` and `slides/notes/de/36-excursion-mcp-server.md`. |
