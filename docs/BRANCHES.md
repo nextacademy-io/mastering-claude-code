@@ -42,14 +42,16 @@ CLASH clone you demo from. `SKIP_GATE=1` skips the gates and this smoke run with
 ## A second repository for task 19
 
 `clash-conference` (`https://github.com/agilino/clash-conference.git`) is a second, small app. It
-publishes its talks as clashes into CLASH through the MCP server task 19 builds. It is published
-once clash-conference is finished; until then clash-conference holds no app and no `19-start` of
-its own. Once out, clash-conference has branches of its own: `main` is the finished
-clash-conference, clash-conference's `19-start` is the same without
-`app/api/publish/route.ts`, the route task 19 writes, and without `lib/clash-agent.ts`, which
-holds the `query()` call on clash-conference's `main`, and clash-conference's `19-solution` is
-`main` with the finished route. Clone clash-conference next to your CLASH clone
-(`docs/SETUP.md`). `scripts/prepare-branches.sh` does not touch clash-conference.
+publishes its talks as clashes into CLASH through the MCP server task 19 builds. Its branches
+form one line: `webinar-start` → `webinar-solution` → `19-start` → `19-solution`.
+`webinar-start` is clash-conference without CLASH publishing, where the webinar task starts.
+`webinar-solution` adds the two talk rules (a start lies in the future, no two talks share a room
+and a start), their specs, a deny on `tests/**` and a hook that keeps Claude from reseeding
+`dev.db`. clash-conference's `19-start` is its `main` without `app/api/publish/route.ts`, the
+route task 19 writes, and without `lib/clash-agent.ts`, which holds the `query()` call on
+clash-conference's `main`. clash-conference's `19-solution` is `main`, the finished app. The side
+branch `webinar-demo-law` serves only the webinar demo. Clone clash-conference next to your CLASH
+clone (`docs/SETUP.md`). `scripts/prepare-branches.sh` does not touch clash-conference.
 
 The two repositories mirror each other: each has a `19-start` and a `19-solution`.
 CLASH's `19-solution` is the finished server, clash-conference's `19-solution` the finished

@@ -209,12 +209,8 @@ the smoke test, `mcp/smoke.ts`. Both are pinned to 2.1.0, the version the answer
 and tested with, and CLASH's `19-start` pins the same version. The older
 `@modelcontextprotocol/sdk` is a different package. Do not install it.
 
-**The second app comes later.** `clash-conference` is published once it is finished, and the
-trainer tells you when. Until then the clash-conference repository holds no app: no
-`package.json` and no `19-start` branch of its own, so the commands below stop at
-clash-conference's `git checkout 19-start`. Skip them for now.
-
-When clash-conference is out, clone it **next to** your CLASH clone, in the same parent folder:
+**The second app.** Task 19 also needs `clash-conference`. Clone it **next to** your CLASH clone,
+in the same parent folder. Task 19 sets up its database in step 7.
 
 ```bash
 cd ..                                                 # the folder that holds your CLASH clone
@@ -238,7 +234,7 @@ npm install
 - [ ] `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set, or you plan to watch that part
 - [ ] `claude mcp list` shows `playwright` and `chrome-devtools`
 - [ ] `node_modules/@modelcontextprotocol/server` exists in your CLASH clone
-- [ ] Once clash-conference is published (step 9): it is cloned next to your CLASH clone, on clash-conference's `19-start`, and `npm install` ran there
+- [ ] clash-conference is cloned next to your CLASH clone, on clash-conference's `19-start`, and `npm install` ran there
 
 ## Trouble?
 

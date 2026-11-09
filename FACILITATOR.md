@@ -552,13 +552,16 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   settings, not from the talk, and the server's own checks bound what a write can do. Tie it back
   to task 12's quarantine rule: as soon as other people write text that a write-capable agent
   reads, the route has to build and check the tool arguments itself instead of trusting the agent.
-- clash-conference is published after it is finished. Until then the clash-conference repository
-  holds no `package.json` and no `19-start` of its own, `docs/SETUP.md` marks the clash-conference
-  clone as not yet available, and steps 7 to 10 of `tasks/19-build-your-own-mcp.md` are unverified
-  prose. Before you teach them, check every name against the finished clash-conference:
-  clash-conference's `19-start`, clash-conference's `.env` with `CLASH_DIR=../clash`,
-  clash-conference on port 3001, `app/api/publish/route.ts`, the statuses `published` and
-  `failed`, `clashId`.
+- clash-conference's `19-start` builds on the webinar task and keeps its `.claude/settings.json`:
+  Claude cannot edit `tests/**`, and a hook blocks `npm run setup`, `npm run db:seed`,
+  `npm run db:reset`, `prisma db seed`, `prisma migrate reset` and deleting `dev.db` with exit 2.
+  Participants type the step-7 commands themselves. The publish agent never loads these settings
+  (`settingSources: []`).
+- `npm test` in clash-conference reseeds `dev.db` and drops every `clashId`. After a publish,
+  unpublish first, or the clash stays on CLASH's map without its talk.
+- In step 8 Claude reads clash-conference's `CLAUDE.md`, which describes the finished `main`, and
+  may put the `query()` call into a new `lib/clash-agent.ts` instead of the route. Both are fine:
+  the six checks of step 8 hold in either place.
 
 ---
 

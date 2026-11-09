@@ -187,7 +187,9 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 Clone [clash-conference](https://github.com/agilino/clash-conference) to a new folder.
 
 7. Set up clash-conference next to your CLASH clone, so that the two folders are siblings.
-   If you already cloned clash-conference during setup, skip `git clone`.
+   If you already cloned clash-conference during setup, skip `git clone`. If you worked in it
+   during the webinar task, commit or stash that work first. Type these commands yourself: a hook
+   in clash-conference blocks `npm run db:seed` for Claude, because the seed deletes every talk.
    ```bash
    cd ..                                                 # the folder that holds your CLASH clone
    git clone https://github.com/agilino/clash-conference.git
@@ -230,8 +232,9 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    reading the run. The route decides nothing else itself: store what the agent answers on
    the talk — published with the clash id, or failed with the message — and return that.
    ```
-   You see one new file in clash-conference, `app/api/publish/route.ts`. Read it and find
-   six things: the one `query()` call; `tools: []`, `settingSources: []` and
+   You see `app/api/publish/route.ts` in clash-conference, sometimes with a helper module it
+   imports. Read them and find six things: the one `query()` call, in the route or in the
+   helper; `tools: []`, `settingSources: []` and
    `strictMcpConfig: true`, which leave the agent nothing but the clash server; the two
    `mcp__clash__…` names in `allowedTools`; `permissionMode: "dontAsk"`; the `maxTurns`
    ceiling; and the `system/init` check that ends the publish before any tool runs.
@@ -272,7 +275,7 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
 - [ ] "MCP Hacknight" appeared on CLASH's map once, and the second create was refused with `Duplicate: …`.
 - [ ] `.claude/settings.json` in your CLASH clone has `hooks` and `permissions`, allows the two read tools, and `cancel_clash` still asked before it took "MCP Hacknight" off the map.
 
-Only once clash-conference is published and you did steps 7 to 10:
+Once you did steps 7 to 10 in clash-conference:
 
 - [ ] A talk published from clash-conference shows up on CLASH's map, and unpublishing it takes it off again.
 - [ ] A talk with an unknown venue ends as `failed` in clash-conference, and CLASH is unchanged.
