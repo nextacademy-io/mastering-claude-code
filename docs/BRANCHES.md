@@ -48,7 +48,8 @@ second name for `main`, the finished app. `webinar-start` is clash-conference wi
 publishing, where the webinar task starts: an exercise on clash-conference alone, without CLASH.
 `webinar-solution` adds the two talk rules (a start lies in the future, no two talks share a room
 and a start), their specs, a deny on `tests/**` and a hook that blocks the seed and reset
-commands for Claude. The hook lets `npm test` through, and its setup reseeds `dev.db`.
+commands for Claude. The hook lets `npm test` through, although the global setup of its
+Playwright tests reseeds `dev.db`.
 clash-conference's `19-start` is one commit on top of `main` that removes
 `app/api/publish/route.ts`, the route task 19 writes, and `lib/clash-agent.ts`, which holds the
 `query()` call on clash-conference's `main`. So in git, clash-conference's `19-start` comes after

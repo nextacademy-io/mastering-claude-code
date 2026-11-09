@@ -186,7 +186,8 @@ The full list is in [`BRANCHES.md`](BRANCHES.md).
 
 CLASH has a folder `hooks/`. Those are **React hooks** (one file, `hooks/use-mobile.ts`).
 **Claude Code hooks** are shell commands bound to events, configured in a project's
-`.claude/settings.json`. Here that file is always CLASH's.
+`.claude/settings.json`. Here that file is CLASH's, except in task 19: clash-conference has
+its own `.claude/settings.json`, with a hook that guards clash-conference's database.
 Both appear in this workshop. We always say which one we mean.
 
 ## 9. The MCP server package and clash-conference
@@ -210,7 +211,9 @@ and tested with, and CLASH's `19-start` pins the same version. The older
 `@modelcontextprotocol/sdk` is a different package. Do not install it.
 
 **The second app.** Task 19 also needs `clash-conference`. Clone it **next to** your CLASH clone,
-in the same parent folder. Task 19 sets up its database in step 7.
+in the same parent folder. `npm run setup` downloads clash-conference's test browser now, so
+step 7 of task 19 needs no network for it. Type it yourself: a hook in clash-conference blocks
+it for Claude.
 
 ```bash
 cd ..                                                 # the folder that holds your CLASH clone
@@ -218,7 +221,11 @@ git clone https://github.com/agilino/clash-conference.git
 cd clash-conference
 git checkout 19-start                                 # clash-conference's 19-start
 npm install
+npm run setup                                         # in clash-conference: .env, database, seed, test browser
 ```
+
+If clash-conference is already cloned from earlier work, skip `git clone`. In clash-conference,
+run `git fetch` and `git stash -u` first, then the rest.
 
 ---
 
@@ -234,7 +241,7 @@ npm install
 - [ ] `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set, or you plan to watch that part
 - [ ] `claude mcp list` shows `playwright` and `chrome-devtools`
 - [ ] `node_modules/@modelcontextprotocol/server` exists in your CLASH clone
-- [ ] clash-conference is cloned next to your CLASH clone, on clash-conference's `19-start`, and `npm install` ran there
+- [ ] clash-conference is cloned next to your CLASH clone, on clash-conference's `19-start`, and `npm install` and `npm run setup` ran there
 
 ## Trouble?
 

@@ -187,10 +187,11 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 Clone [clash-conference](https://github.com/agilino/clash-conference) to a new folder.
 
 7. Set up clash-conference next to your CLASH clone, so that the two folders are siblings.
-   If you already cloned clash-conference during setup, skip `git clone`. If you already
-   changed files in clash-conference, park them first with `git stash -u` in clash-conference:
-   the `-u` parks new files too. Type these commands yourself: a hook in clash-conference
-   blocks `npm run setup` for Claude, because its seed deletes every talk.
+   If clash-conference is already cloned, from setup or from earlier work, skip `git clone` and
+   run `git fetch` in clash-conference instead, so it knows the branch `19-start`. If you
+   changed files there, park them first with `git stash -u` in clash-conference: the `-u` parks
+   new files too. Type these commands yourself: a hook in clash-conference blocks
+   `npm run setup` for Claude, because its seed deletes every talk.
    ```bash
    cd ..                                                 # the folder that holds your CLASH clone
    git clone https://github.com/agilino/clash-conference.git
@@ -200,10 +201,11 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    npm run setup                                         # in clash-conference: .env, database, seed, test browser
    ```
    You see `npm run setup` apply the migrations, end the seed with
-   `Seed complete: 1 settings record ("CLASH Community Day"), 3 draft talks.` and download the
-   test browser, all in clash-conference. When clash-conference has no `.env` yet, it copies
-   `.env.example` first. The `.env` in clash-conference holds `CLASH_DIR=../clash`:
-   change it if your CLASH clone has another folder name. Then start clash-conference in a
+   `Seed complete: 1 settings record ("CLASH Community Day"), 3 draft talks.` and install the
+   test browser, unless setup already did, all in clash-conference. When clash-conference has
+   no `.env` yet, it copies `.env.example` first. Open clash-conference's `.env`: it must hold
+   `CLASH_DIR=../clash`. A `.env` from earlier work may lack that line; copy it from
+   `.env.example`. Change the value if your CLASH clone has another folder name. Then start clash-conference in a
    terminal of its own, in clash-conference.
    ```bash
    npm run dev                                           # in clash-conference, in a terminal of its own
@@ -246,8 +248,8 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    `create_clash` did that, called by an agent inside another app. Now click "Unpublish from
    CLASH". You see the talk go back to draft, without a `clashId`. Reload CLASH's map: the
    clash is gone. Your `cancel_clash` did that. From here on, unpublish every talk before
-   `npm test` runs in clash-conference: its setup reseeds clash-conference's `dev.db` and
-   forgets every `clashId`, so a clash left on CLASH's map would have no talk to take it off.
+   `npm test` runs in clash-conference: before the tests start, it reseeds clash-conference's
+   `dev.db` and forgets every `clashId`, so a clash left on CLASH's map would have no talk to take it off.
 10. Now make it fail. In clash-conference on `localhost:3001`, change the CLASH venue name in
     clash-conference's settings to one CLASH does not know, then publish a second talk. You
     see it end as `failed` with the agent's message: your `find_venue` answered
