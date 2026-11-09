@@ -187,20 +187,25 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 Clone [clash-conference](https://github.com/agilino/clash-conference) to a new folder.
 
 7. Set up clash-conference next to your CLASH clone, so that the two folders are siblings.
-   If you already cloned clash-conference during setup, skip `git clone`.
+   If clash-conference is already cloned, from setup or from earlier work, skip `git clone` and
+   run `git fetch` in clash-conference instead, so it knows the branch `19-start`. If you
+   changed files there, park them first with `git stash -u` in clash-conference: the `-u` parks
+   new files too. Type these commands yourself: a hook in clash-conference blocks
+   `npm run setup` for Claude, because its seed deletes every talk.
    ```bash
    cd ..                                                 # the folder that holds your CLASH clone
    git clone https://github.com/agilino/clash-conference.git
    cd clash-conference
    git checkout 19-start                                 # clash-conference's 19-start
-   cp .env.example .env
    npm install
-   npm run db:migrate
-   npm run db:seed
+   npm run setup                                         # in clash-conference: .env, database, seed, test browser
    ```
-   You see the seed finish with one settings record and three draft talks, in the `dev.db`
-   of clash-conference. The new `.env` in clash-conference holds `CLASH_DIR=../clash`:
-   change it if your CLASH clone has another folder name. Then start clash-conference in a
+   You see `npm run setup` apply the migrations, end the seed with
+   `Seed complete: 1 settings record ("CLASH Community Day"), 3 draft talks.` and install the
+   test browser, unless setup already did, all in clash-conference. When clash-conference has
+   no `.env` yet, it copies `.env.example` first. Open clash-conference's `.env`: it must hold
+   `CLASH_DIR=../clash`. A `.env` from earlier work may lack that line; copy it from
+   `.env.example`. Change the value if your CLASH clone has another folder name. Then start clash-conference in a
    terminal of its own, in clash-conference.
    ```bash
    npm run dev                                           # in clash-conference, in a terminal of its own
@@ -230,8 +235,9 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    reading the run. The route decides nothing else itself: store what the agent answers on
    the talk — published with the clash id, or failed with the message — and return that.
    ```
-   You see one new file in clash-conference, `app/api/publish/route.ts`. Read it and find
-   six things: the one `query()` call; `tools: []`, `settingSources: []` and
+   You see `app/api/publish/route.ts` in clash-conference, sometimes with a helper module it
+   imports. Read them and find six things: the one `query()` call, in the route or in the
+   helper; `tools: []`, `settingSources: []` and
    `strictMcpConfig: true`, which leave the agent nothing but the clash server; the two
    `mcp__clash__…` names in `allowedTools`; `permissionMode: "dontAsk"`; the `maxTurns`
    ceiling; and the `system/init` check that ends the publish before any tool runs.
@@ -241,7 +247,9 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    clash at Holzmarkt 25, hosted by the host email. Your `find_venue` and your
    `create_clash` did that, called by an agent inside another app. Now click "Unpublish from
    CLASH". You see the talk go back to draft, without a `clashId`. Reload CLASH's map: the
-   clash is gone. Your `cancel_clash` did that.
+   clash is gone. Your `cancel_clash` did that. From here on, unpublish every talk before
+   `npm test` runs in clash-conference: before the tests start, it reseeds clash-conference's
+   `dev.db` and forgets every `clashId`, so a clash left on CLASH's map would have no talk to take it off.
 10. Now make it fail. In clash-conference on `localhost:3001`, change the CLASH venue name in
     clash-conference's settings to one CLASH does not know, then publish a second talk. You
     see it end as `failed` with the agent's message: your `find_venue` answered
@@ -272,7 +280,7 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
 - [ ] "MCP Hacknight" appeared on CLASH's map once, and the second create was refused with `Duplicate: …`.
 - [ ] `.claude/settings.json` in your CLASH clone has `hooks` and `permissions`, allows the two read tools, and `cancel_clash` still asked before it took "MCP Hacknight" off the map.
 
-Only once clash-conference is published and you did steps 7 to 10:
+Once you did steps 7 to 10 in clash-conference:
 
 - [ ] A talk published from clash-conference shows up on CLASH's map, and unpublishing it takes it off again.
 - [ ] A talk with an unknown venue ends as `failed` in clash-conference, and CLASH is unchanged.
@@ -297,8 +305,16 @@ In clash-conference, `git checkout 19-start`
 gives clash-conference's `19-start`: clash-conference without `app/api/publish/route.ts`
 and without `lib/clash-agent.ts`, the file that holds the `query()` call on its `main`.
 Unpublishing is already there on clash-conference's `19-start`.
-`git checkout 19-solution` in clash-conference gives clash-conference with the finished
-route. The starter, the finished server, `.mcp.json`, `settings.allow.json` and the smoke
+`19-solution` in clash-conference is clash-conference with the finished route. If your route
+does not publish, take that one. The stash parks your own route and any helper Claude wrote,
+because clash-conference's `19-solution` tracks the same files.
+
+```bash
+git stash -u                 # in clash-conference: parks app/api/publish/route.ts and lib/clash-agent.ts
+git checkout 19-solution     # clash-conference's 19-solution: the finished route
+```
+
+The starter, the finished server, `.mcp.json`, `settings.allow.json` and the smoke
 test are in [`workshop-artifacts/19-build-mcp/`](../workshop-artifacts/19-build-mcp/) in the workshop repository. Its `README.md`
 says where each file goes.
 
