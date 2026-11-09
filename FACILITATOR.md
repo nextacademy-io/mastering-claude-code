@@ -553,8 +553,10 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   to task 12's quarantine rule: as soon as other people write text that a write-capable agent
   reads, the route has to build and check the tool arguments itself instead of trusting the agent.
 - clash-conference's `19-start` builds on `webinar-solution` (`docs/BRANCHES.md`) and keeps its
-  `.claude/settings.json`: Claude's edit tools cannot change `tests/**` (a Bash command still
-  could), and a hook blocks `npm run setup`,
+  `.claude/settings.json`: `Edit(tests/**)` stops Claude's edit tools and the file commands Claude
+  Code recognizes in Bash, such as `sed`, `tee` and `>`, but not a script that opens files itself,
+  such as `node -e`; only the sandbox stops that, and native Windows has none. A hook blocks
+  `npm run setup`,
   `npm run db:seed`, `npm run db:reset`, `prisma db seed`, `prisma migrate reset` and deleting
   `dev.db` with exit 2. Participants type the step-7 commands themselves. The publish agent never
   loads these settings (`settingSources: []`).
@@ -567,9 +569,10 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   in step 8. On clash-conference's `19-start` it is red before the route exists: nine specs in
   `tests/publish.spec.ts` and `tests/talks.spec.ts` expect the publish route's 400, 404 and 409
   answers with fixed messages. They turn green only when Claude's route returns exactly those; the
-  step-8 prompt does not name them, and Claude's edit tools cannot change the specs. A Bash
-  command could, so watch for one. A red publish spec after step 8 is a question about the
-  route, not a broken setup.
+  step-8 prompt does not name them, and the deny keeps Claude out of the specs, except through a
+  script, so watch for one. `git status --short tests/` in clash-conference shows whether
+  anything under `tests/` changed, whichever way. A red publish spec after step 8 is a question
+  about the route, not a broken setup.
 - `npm test` in clash-conference reseeds `dev.db` and drops every `clashId`. The hook lets it through
   on purpose. Step 9 tells participants to unpublish before any `npm test`; say it again when
   someone asks Claude to run the tests after a publish.
