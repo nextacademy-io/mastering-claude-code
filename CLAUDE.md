@@ -28,6 +28,8 @@ Target codebase: `https://github.com/pawsaw/clash` (Next.js 16 / React 19 / Pris
 
 1. **No times, no dates, no durations, no days.** Never write `00:15`, "35 min", "hour",
    "Day 1", "morning", "after the break", a year, or an event name. Structure is by part and task only.
+   One exception: `FACILITATOR.md` is read only by the trainer and may name the webinar, where
+   clash-conference's `webinar-*` branches come from.
 2. **Simple language.** Short sentences. Everyday words. Explain a term in one line the first time it appears.
    Prefer less text. One idea per slide.
 3. **Every path, command and file name is real.** Verify against the reference clone of CLASH before writing it.
