@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Creates the catch-up branches 01-start .. 19-start on a LOCAL clone of
-# pawsaw/clash. Never pushes. Run from anywhere:
+# nextacademy-io/clash. Never pushes. Run from anywhere:
 #
 #   ./scripts/prepare-branches.sh /path/to/clash-clone
 #

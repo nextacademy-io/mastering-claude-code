@@ -56,7 +56,7 @@ does not exist yet. That is the safest place to learn how it thinks.
    it. You confirm it in step 10.
 4. Clone CLASH and switch to the empty starting branch.
    ```bash
-   git clone https://github.com/pawsaw/clash
+   git clone https://github.com/nextacademy-io/clash
    cd clash
    git checkout 01-start
    ls

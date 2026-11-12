@@ -4,7 +4,7 @@
 machine. You walk around (or watch the chat), help, and only move on when most are through
 the "Check" list of the task.
 
-**Codebase:** CLASH, `github.com/pawsaw/clash`. Part I starts on CLASH's `01-start` (spec only),
+**Codebase:** CLASH, `github.com/nextacademy-io/clash`. Part I starts on CLASH's `01-start` (spec only),
 Part II on `02-start`. Parts III and IV run on the reference CLASH from `06-start`.
 
 **Spine:** the journey map (four belts) on the four part dividers, and the toolkit map on the
@@ -493,7 +493,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   `claude.ai/code/routines` open in a second window in case the run is slow. Participants
   without a subscription watch; nothing later depends on their own routine.
 - Before the routine demo: commit `docs/SPEC.md` from the workshop repository into your CLASH
-  fork's `main` — `pawsaw/clash` `main` and CLASH's `NN-start` branches from 06 on do not carry it.
+  fork's `main` — `nextacademy-io/clash` `main` and CLASH's `NN-start` branches from 06 on do not carry it.
 - Dry run first: `claude --bg --name audit …` on CLASH's `18-start` (the Stop hook builds inside the
   fresh worktree), `/loop`, `/output-style host-notes`.
 
@@ -533,7 +533,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Least privilege: allow the two read tools in CLASH's `.claude/settings.json`; `create_clash` and
   `cancel_clash` keep prompting in Manual mode. The stop slide's careless side is `mcp__clash__*` plus
   `bypassPermissions`.
-- `clash-conference` is a second repository (`agilino/clash-conference`), cloned next to your
+- `clash-conference` is a second repository (`nextacademy-io/clash-conference`), cloned next to your
   CLASH clone during setup, with a `19-start` branch of its own: clash-conference without
   `app/api/publish/route.ts` and `lib/clash-agent.ts`, and a `19-solution`: clash-conference
   with the finished route. Its publish route frees only `find_venue` and

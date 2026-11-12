@@ -70,7 +70,7 @@ Start Claude Code and check:
 Parts I and II start with an **empty** CLASH repository that holds only the product spec.
 
 ```bash
-git clone https://github.com/pawsaw/clash
+git clone https://github.com/nextacademy-io/clash
 cd clash
 git checkout 01-start
 ```
@@ -217,7 +217,7 @@ it for Claude.
 
 ```bash
 cd ..                                                 # the folder that holds your CLASH clone
-git clone https://github.com/agilino/clash-conference.git
+git clone https://github.com/nextacademy-io/clash-conference.git
 cd clash-conference
 git checkout 19-start                                 # clash-conference's 19-start
 npm install
@@ -235,7 +235,7 @@ run `git fetch` and `git stash -u` first, then the rest.
 - [ ] `claude --version` is 2.1.252 or newer, and you are logged in
 - [ ] `agent-browser --version` prints a version
 - [ ] `/skills` lists `agent-browser`
-- [ ] `git checkout 01-start` works in your clone of `pawsaw/clash`
+- [ ] `git checkout 01-start` works in your clone of `nextacademy-io/clash`
 - [ ] CLASH's `.env` exists with `DATABASE_URL` and `SESSION_SECRET`
 - [ ] `/config` shows Dynamic workflows **on**
 - [ ] `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set, or you plan to watch that part

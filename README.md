@@ -12,7 +12,7 @@
 ## Repository
 
 - This workshop: [github.com/nextacademy-io/mastering-claude-code](https://github.com/nextacademy-io/mastering-claude-code)
-- CLASH, the app you build and extend: [github.com/pawsaw/clash](https://github.com/pawsaw/clash)
+- CLASH, the app you build and extend: [github.com/nextacademy-io/clash](https://github.com/nextacademy-io/clash)
 - Live deck: [mastering-claude-code.vercel.app](https://mastering-claude-code.vercel.app)
 - Trainer: Adam Furmanczuk, nextacademy.io
 
@@ -37,7 +37,7 @@ In the second half you work on the **finished reference CLASH** and learn to con
 orchestrate Claude Code on it.
 
 - Spec: [`docs/SPEC.md`](docs/SPEC.md)
-- Reference CLASH: [github.com/pawsaw/clash](https://github.com/pawsaw/clash)
+- Reference CLASH: [github.com/nextacademy-io/clash](https://github.com/nextacademy-io/clash)
 
 ## Who this is for
 
@@ -49,7 +49,7 @@ able to read TypeScript and use git.
 Do this before the workshop: **[`docs/SETUP.md`](docs/SETUP.md)**.
 
 ```bash
-git clone https://github.com/pawsaw/clash
+git clone https://github.com/nextacademy-io/clash
 cd clash
 git checkout 01-start
 claude --version

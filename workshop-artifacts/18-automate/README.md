@@ -70,4 +70,4 @@ turn, and every loop round, to take as long as one build.
 
 Open `schedule-prompt.md`. It holds the verbatim `/schedule` prompt, the follow-up commands and the
 checks to do before the demo. The prompt needs `docs/SPEC.md` in the fork of CLASH the routine clones,
-and that file is not on `main` of `pawsaw/clash`.
+and that file is not on `main` of `nextacademy-io/clash`.

@@ -184,7 +184,7 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 
 ### The second app: clash-conference
 
-Clone [clash-conference](https://github.com/agilino/clash-conference) to a new folder.
+Clone [clash-conference](https://github.com/nextacademy-io/clash-conference) to a new folder.
 
 7. Set up clash-conference next to your CLASH clone, so that the two folders are siblings.
    If clash-conference is already cloned, from setup or from earlier work, skip `git clone` and
@@ -194,7 +194,7 @@ Clone [clash-conference](https://github.com/agilino/clash-conference) to a new f
    `npm run setup` for Claude, because its seed deletes every talk.
    ```bash
    cd ..                                                 # the folder that holds your CLASH clone
-   git clone https://github.com/agilino/clash-conference.git
+   git clone https://github.com/nextacademy-io/clash-conference.git
    cd clash-conference
    git checkout 19-start                                 # clash-conference's 19-start
    npm install
