@@ -45,7 +45,7 @@ CLASH clone you demo from. `SKIP_GATE=1` skips the gates and this smoke run with
 publishes its talks as clashes into CLASH through the MCP server task 19 builds. Its history
 runs `webinar-start` → `webinar-solution` → `main`, and clash-conference's `19-solution` is a
 second name for `main`, the finished app. `webinar-start` is clash-conference without CLASH
-publishing, the start of a separate exercise on clash-conference alone, without CLASH.
+publishing, the start of a separate exercise on clash-conference alone.
 `webinar-solution` adds the two talk rules (a start lies in the future, no two talks share a room
 and a start), their specs, a deny on `tests/**` and a hook that blocks the seed and reset
 commands for Claude. The hook lets `npm test` through, although the global setup of its
@@ -53,9 +53,9 @@ Playwright tests reseeds `dev.db`.
 clash-conference's `19-start` is one commit on top of `main` that removes
 `app/api/publish/route.ts`, the route task 19 writes, and `lib/clash-agent.ts`, which holds the
 `query()` call on clash-conference's `main`. So in git, clash-conference's `19-start` comes after
-its `19-solution`; in the course it comes first. The side branch `webinar-demo-law` serves only
-a demo outside this course. Clone clash-conference next to your CLASH
-clone (`docs/SETUP.md`). `scripts/prepare-branches.sh` does not touch clash-conference.
+its `19-solution`; in the course it comes first. Task 19 never needs the side branch
+`webinar-demo-law`. Clone clash-conference next to your CLASH clone (`docs/SETUP.md`).
+`scripts/prepare-branches.sh` does not touch clash-conference.
 
 The two repositories mirror each other: each has a `19-start` and a `19-solution`.
 CLASH's `19-solution` is the finished server, clash-conference's `19-solution` the finished

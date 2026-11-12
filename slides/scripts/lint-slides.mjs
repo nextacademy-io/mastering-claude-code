@@ -1,5 +1,6 @@
 // Content lint for the workshop. Fails on:
 //  - any time / date / day / event reference in slides, tasks, README, FACILITATOR
+//    (FACILITATOR alone may name the webinar; `webinar-*` branch names pass everywhere)
 //  - a task slide whose qrSlug has no matching tasks/<slug>.md
 //  - a code-live slide without a "⟵ LIVE" marker
 //  - a concept slide with more than 40 words of body text (warning)
@@ -214,6 +215,10 @@ const forbidden = [
 ]
 // QR is allowed only on the welcome section (the trainer's LinkedIn code)
 const forbiddenOutsideWelcome = [[/\bQR\b/, 'QR code']]
+// the webinar is named only in FACILITATOR.md, which the trainer alone reads; the lookahead lets
+// clash-conference's branch names through (webinar-start, webinar-solution, webinar-demo-law, webinar-*),
+// and no \b after "webinar", so inflected forms are caught too (webinars, Webinare)
+const forbiddenOutsideFacilitator = [[/\bwebinar(?!-(?:start|solution|demo-law|\*))/i, 'event reference (only FACILITATOR.md names the webinar)']]
 
 let errors = 0
 let warnings = 0
@@ -253,7 +258,11 @@ for (const file of files) {
     else taskFiles.set(num, rel)
   }
   text.split('\n').forEach((line, i) => {
-    const rules = rel.endsWith('00-welcome.md') ? forbidden : [...forbidden, ...forbiddenOutsideWelcome]
+    const rules = [
+      ...forbidden,
+      ...(rel.endsWith('00-welcome.md') ? [] : forbiddenOutsideWelcome),
+      ...(rel === 'FACILITATOR.md' ? [] : forbiddenOutsideFacilitator),
+    ]
     for (const [re, label] of rules) {
       if (re.test(line)) err(rel, `line ${i + 1} — ${label}: ${line.trim().slice(0, 90)}`)
     }
