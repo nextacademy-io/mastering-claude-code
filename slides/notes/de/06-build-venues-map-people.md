@@ -1,6 +1,7 @@
 <!-- @note: task-04-venues-map-people -->
 > Tun:
 > - Branch: 04-start hat schon Auth, Shell und Clashes
+> - Für Geschichte 3 vor diesem Block bereit: ein zweiter CLASH-Clone auf 05-start mit laufendem npm run dev (docs/STORYTELLING.md, Vorbereiten)
 
 Sagen:
 - Vier Dinge zu lernen, vier Dinge zu bauen — Venues folgen genau dem Muster, das du schon kennst
@@ -36,9 +37,11 @@ Sagen:
 
 <!-- @note: let-claude-read-the-error -->
 > Tun:
+> - Geschichte 3 beginnt hier: docs/STORYTELLING.md
 > - Schritte 6 und 8 machen die Teilnehmenden selbst
 > - Die Leaflet-Karte geht fast immer einmal kaputt ("window is not defined" beim Server-Rendering) — gut so, nutzen
-> - Die drei Wege vorführen: Claude das Terminal lesen lassen, Fehlertext einfügen, Screenshot mit Ctrl+V einfügen (Alt+V unter Windows und WSL)
+> - Die drei Wege nennen, noch nicht vorführen: Den Fehler gibt es erst in Schritt 6
+> - Screenshots: Ctrl+V (Alt+V unter Windows und WSL)
 
 Sagen:
 - Je genauer die Evidenz, desto kleiner der Fix

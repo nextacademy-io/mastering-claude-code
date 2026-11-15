@@ -15,7 +15,7 @@ const worktrees = [
     <!-- main repo -->
     <g v-click>
       <rect x="320" y="10" width="260" height="62" rx="10" fill="var(--na-primary-700)" stroke="var(--na-primary-400)" stroke-width="1.5" />
-      <text x="450" y="36" text-anchor="middle" fill="var(--na-fg)" font-weight="700" style="font-size:16px">pawsaw/clash</text>
+      <text x="450" y="36" text-anchor="middle" fill="var(--na-fg)" font-weight="700" style="font-size:16px">nextacademy-io/clash</text>
       <text x="450" y="58" text-anchor="middle" fill="var(--na-fg-muted)" style="font-size:13px">one repo, one working tree, until now</text>
     </g>
 

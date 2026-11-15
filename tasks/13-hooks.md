@@ -112,6 +112,9 @@ are logged, not enforced. What Claude sees on a block is stderr.
 
 - Add a `PreToolUse` hook that blocks `git push` to `main`.
 - Add a `PostToolUse` hook that runs `npm run lint` after edits under `components/`. Decide: block, or only warn?
+- On Windows, make your `rm` block also stop PowerShell's `Remove-Item`, because Claude can run
+  shell commands through PowerShell and a `Bash` matcher does not see them. Then create a file
+  you do not need, ask Claude to delete it with PowerShell, and watch the block hold.
 
 ## Check
 

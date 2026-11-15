@@ -32,7 +32,7 @@ const run = query({
   options: {
     cwd: process.cwd(),
     allowedTools: ["Read", "Grep", "Glob"],
-    disallowedTools: ["Bash", "Edit", "Write", "WebFetch", "WebSearch"],
+    disallowedTools: ["Bash", "PowerShell", "Edit", "Write", "WebFetch", "WebSearch"],
     permissionMode: "default",
     maxTurns: 12,
     hooks: { PreToolUse: [logToolCalls] },

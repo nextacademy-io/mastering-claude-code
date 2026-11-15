@@ -15,10 +15,16 @@ Say:
 > - Docs link: it lands on "What runs outside the sandbox"
 
 Say:
-- Read, Edit, Write, WebFetch run inside Claude Code itself. Permission rules gate them, not the sandbox — a denyRead entry does not stop the Read tool
+- Read, Edit, Write, WebFetch run inside Claude Code itself. Permission rules gate them, not the sandbox — a sandbox denyRead entry does not stop the Read tool
 - [click] Hooks, local MCP servers, language servers, your status line: separate processes with your full access
 - [click] Three kinds of shell command also run unsandboxed: commands in excludedCommands, commands you type after !, and a retry Claude asks for
-- Why it matters: "the sandbox is on" is not the same as "this session is contained"
+- [click] Now a gap the sandbox closes: Read deny rule on .env, sandbox off. Claude runs grep -r in Bash, and the contents of .env come back
+- On Linux, sandbox on: the same command gets "Permission denied"
+- Measured on Linux in a dev container, Claude Code 2.1.322. Not run on macOS or with Claude Code in WSL; native Windows has no Bash sandbox (docs)
+- A deny rule is a sign: Claude Code stops its file tools and the file commands it recognizes, like cat .env, when they name the file. grep -r names none
+- The sandbox is the lock: it picks up the paths of the Read deny rule and checks every file a sandboxed command opens
+- Why it matters: Read deny rules and the sandbox close different gaps, so use both
+- Even both together do not limit what a hook or an MCP server reads
 
 <!-- @note: the-escape-hatch-an-unsandboxed-retry -->
 > Do:
@@ -48,11 +54,15 @@ Say:
 > Do:
 > - Docs link: open it, scroll to "Run without permission prompts", then back to the slides
 > - [click] The firewall card
+> - Optional trainer demo in this workshop repository's own container (FACILITATOR.md, Show the dev container). Only if it is signed in and you ran the four checks in it; otherwise describe the Linux measurement
+> - This container has no init-firewall.sh, so no firewall to show
+> - The point is checks 3 and 4: first the deny rule, then the sandbox
 
 Say:
 - A dev container runs Claude Code inside Docker; your editor connects to it. Edits still land in your repository on the host
 - [click] The reference container in anthropics/claude-code adds init-firewall.sh: outbound traffic only to the hosts the script allows
-- That firewall is why the docs allow --dangerously-skip-permissions in it — as a non-root user
+- The docs allow --dangerously-skip-permissions in a dev container: Claude Code runs there as a non-root user, and commands stay in the container
+- Pair the flag with the firewall. The firewall limits what a session without prompts can reach
 - The warning: a malicious project can still exfiltrate anything inside the container, including the credentials in ~/.claude. Trusted repositories only, and no host secrets like ~/.ssh mounted in
 - Why it matters: it is the easiest way to give a whole team the same box
 

@@ -1,4 +1,4 @@
-# Catch-up branches on `pawsaw/clash`
+# Catch-up branches on `nextacademy-io/clash`
 
 Every task has a branch named `NN-start`. It holds the state at the **start** of task NN,
 so `git checkout NN-start` lets you rejoin at that task without debugging your own build.
@@ -41,7 +41,7 @@ CLASH clone you demo from. `SKIP_GATE=1` skips the gates and this smoke run with
 
 ## A second repository for task 19
 
-`clash-conference` (`https://github.com/agilino/clash-conference.git`) is a second, small app. It
+`clash-conference` (`https://github.com/nextacademy-io/clash-conference.git`) is a second, small app. It
 publishes its talks as clashes into CLASH through the MCP server task 19 builds. Its history
 runs `webinar-start` → `webinar-solution` → `main`, and clash-conference's `19-solution` is a
 second name for `main`, the finished app. `webinar-start` is clash-conference without CLASH
@@ -98,7 +98,7 @@ See `workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md` for the diff and
 ## Create and publish
 
 ```bash
-git clone https://github.com/pawsaw/clash /tmp/clash-branches
+git clone https://github.com/nextacademy-io/clash /tmp/clash-branches
 ./scripts/prepare-branches.sh /tmp/clash-branches
 ```
 
@@ -110,5 +110,3 @@ git -C /tmp/clash-branches push origin \
   08-start 09-start 10-start 11-start 12-start 13-start 14-start \
   15-start 16-start 17-start 18-start 19-start 19-solution
 ```
-
-The existing `wk/*` branches on `pawsaw/clash` belong to another workshop and are not touched.

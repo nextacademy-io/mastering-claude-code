@@ -15,10 +15,16 @@ Sagen:
 > - Docs-Link: landet bei "What runs outside the sandbox"
 
 Sagen:
-- Read, Edit, Write, WebFetch laufen in Claude Code selbst. Permission-Regeln steuern sie, nicht die Sandbox — ein denyRead-Eintrag stoppt das Read-Tool nicht
+- Read, Edit, Write, WebFetch laufen in Claude Code selbst. Permission-Regeln steuern sie, nicht die Sandbox — ein denyRead-Eintrag der Sandbox stoppt das Read-Tool nicht
 - [click] Hooks, lokale MCP-Server, Language Server, deine Statuszeile: eigene Prozesse mit deinen vollen Rechten
 - [click] Drei Arten von Shell-Befehlen laufen ebenfalls ohne Sandbox: Befehle in excludedCommands, Befehle, die du nach ! tippst, und ein Retry, um den Claude bittet
-- Warum das zählt: "Die Sandbox ist an" heisst nicht "diese Session ist eingeschlossen"
+- [click] Jetzt eine Lücke, die die Sandbox schliesst: Read-Deny-Regel auf .env, Sandbox aus. Claude führt grep -r in Bash aus, und der Inhalt von .env kommt zurück
+- Auf Linux, Sandbox an: Derselbe Befehl bekommt "Permission denied"
+- Gemessen auf Linux in einem Dev Container, Claude Code 2.1.322. Auf macOS und mit Claude Code in WSL nicht gelaufen; natives Windows hat keine Bash-Sandbox (Doku)
+- Eine Deny-Regel ist ein Schild: Claude Code stoppt seine Datei-Tools und die Datei-Befehle, die es erkennt, wie cat .env, wenn sie die Datei nennen. grep -r nennt keine
+- Die Sandbox ist das Schloss: Sie übernimmt die Pfade der Read-Deny-Regel und prüft jede Datei, die ein Befehl in der Sandbox öffnet
+- Warum das zählt: Read-Deny-Regeln und Sandbox schliessen verschiedene Lücken, also nimm beide
+- Auch beide zusammen begrenzen nicht, was ein Hook oder ein MCP-Server liest
 
 <!-- @note: the-escape-hatch-an-unsandboxed-retry -->
 > Tun:
@@ -48,11 +54,15 @@ Sagen:
 > Tun:
 > - Docs-Link: öffnen, bis "Run without permission prompts" scrollen, dann zurück zu den Folien
 > - [click] Die Firewall-Karte
+> - Optionale Trainer-Demo im eigenen Container dieses Workshop-Repositorys (FACILITATOR.md, Show the dev container). Nur wenn er angemeldet ist und du die vier Checks darin hast laufen lassen; sonst die Linux-Messung erzählen
+> - Dieser Container hat kein init-firewall.sh, also keine Firewall zum Zeigen
+> - Worum es geht, zeigen die Checks 3 und 4: erst die Deny-Regel, dann die Sandbox
 
 Sagen:
 - Ein Dev Container lässt Claude Code in Docker laufen; dein Editor verbindet sich damit. Änderungen landen trotzdem in deinem Repository auf dem Host
 - [click] Der Referenz-Container in anthropics/claude-code bringt init-firewall.sh mit: ausgehender Verkehr nur zu den Hosts, die das Skript erlaubt
-- Diese Firewall ist der Grund, warum die Doku darin --dangerously-skip-permissions erlaubt — als normaler Benutzer, nicht als root
+- Die Doku erlaubt --dangerously-skip-permissions in einem Dev Container: Claude Code läuft dort als normaler Benutzer, nicht als root, und die Befehle bleiben im Container
+- Kombiniere das Flag mit der Firewall. Die Firewall begrenzt, was eine Session ohne Rückfragen erreichen kann
 - Die Warnung: Ein bösartiges Projekt kann trotzdem alles aus dem Container abziehen, auch die Zugangsdaten in ~/.claude. Nur vertrauenswürdige Repositories, und keine Host-Secrets wie ~/.ssh einhängen
 - Warum das zählt: Es ist der einfachste Weg, einem ganzen Team dieselbe Umgebung zu geben
 

@@ -48,12 +48,18 @@
         ]
       },
       {
-        "matcher": "Bash",
+        "matcher": "Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
             "if": "Bash(rm *)",
-            "command": "echo 'Denied: rm is blocked in this workshop sandbox. Ask the trainer if you genuinely need it.' >&2; exit 2",
+            "command": "echo 'Denied: deleting files is blocked in this workshop. Ask the trainer if you genuinely need it.' >&2; exit 2",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "if": "PowerShell(Remove-Item *)",
+            "command": "echo 'Denied: deleting files is blocked in this workshop. Ask the trainer if you genuinely need it.' >&2; exit 2",
             "timeout": 5
           }
         ]

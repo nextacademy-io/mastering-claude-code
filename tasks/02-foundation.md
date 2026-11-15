@@ -100,7 +100,7 @@ mechanics stay the same.
    ```
    Prisma 7.10+ creates `prisma7.config.ts`; earlier Prisma 7 projects may have `prisma.config.ts`.
    The Prisma 7 CLI accepts either. Follow the installed Prisma 7 version instead of forcing one filename.
-8. Accept the plan. Press `Shift+Tab` until the status bar shows `manual mode on`, then:
+8. Accept the plan. If Claude asks how to proceed, press `Esc` first: `Shift+Tab` there approves the plan before your prompt. Then press `Shift+Tab` until the status bar shows `manual mode on`, then:
    ```
    Do it. Then run npm run db:migrate and npm run db:seed and show me the output.
    ```

@@ -17,6 +17,7 @@ Sagen:
 
 <!-- @note: a-brief-has-three-parts -->
 > Tun:
+> - Geschichte 2 beginnt hier: docs/STORYTELLING.md
 > - Schritt 1-2 machen die Teilnehmenden selbst
 > - Im Manual-Modus starten, die Gruppe die ersten zwei, drei Permission-Prompts sehen lassen
 > - Dein CLASH-Clone ist absichtlich nicht leer: auf die Regel im Briefing hinweisen, die Workshop-Dateien vor create-next-app zu schützen
@@ -47,7 +48,8 @@ Sagen:
 > - Docs-Link: öffnen, bis "Analyze before you edit with plan mode" scrollen, dann zurück zu den Folien
 > - Live demonstrieren: Shift+Tab, bis die Statusleiste "plan mode on" zeigt (zweimal ab Manual-Modus, dreimal ab Auto — ab v2.1.283 starten interaktive Sessions im Auto-Modus)
 > - Sobald der Prompt der nächsten Folie geschickt ist, den Plan erscheinen lassen, einen Teil laut vorlesen, die Gruppe fragen ("warum lib/generated/prisma?")
-> - Zurückschalten und "do it" sagen
+> - In der Freigabe-Abfrage zuerst Esc: Shift+Tab gibt dort den Plan frei
+> - Dann Shift+Tab, bis die Statusleiste "manual mode on" zeigt, und "do it" sagen
 
 Sagen:
 - [click] Punkt: das Datenmodell ist später schwer zu ändern — das ist der Moment, hinzuschauen, bevor Claude schreibt

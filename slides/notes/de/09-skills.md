@@ -63,6 +63,7 @@ Sagen:
 
 <!-- @note: a-skill-is-advice -->
 > Tun:
+> - Geschichte 4 beginnt hier: docs/STORYTELLING.md
 > - Nur vorausdeuten
 
 Sagen:

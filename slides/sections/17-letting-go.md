@@ -189,8 +189,8 @@ const run = query({
   options: {
     cwd: process.cwd(),
     allowedTools: ["Read", "Grep", "Glob"],
-    // ⟵ LIVE: forbid Bash, Edit, Write. Add maxTurns. Add a PreToolUse
-    //         hook that logs every tool call to stderr.
+    // ⟵ LIVE: forbid Bash, PowerShell, Edit, Write. Add maxTurns. Add a
+    //         PreToolUse hook that logs every tool call to stderr.
   },
 });
 for await (const m of run)

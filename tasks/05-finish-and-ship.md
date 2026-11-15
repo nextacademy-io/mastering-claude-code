@@ -64,10 +64,10 @@ branch, commit, optional pull request, review.
    ```
    Commit the work in sensible commits.
 
-   If GitHub CLI is installed and logged in, fork pawsaw/clash with gh if I do not
-   already have a fork. Keep origin pointing at pawsaw/clash, add my fork as a writable
-   remote, push the finish branch there, and open a pull request in my fork from finish
-   into 05-start. The description lists what was built and how to test it.
+   If GitHub CLI is installed and logged in, fork nextacademy-io/clash with gh if I do
+   not already have a fork. Keep origin pointing at nextacademy-io/clash, add my fork as
+   a writable remote, push the finish branch there, and open a pull request in my fork
+   from finish into 05-start. The description lists what was built and how to test it.
 
    If gh is not installed or not logged in, or I do not want to push, write the same
    pull request description to PR.md instead. Do not block the task on GitHub.

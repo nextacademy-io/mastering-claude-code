@@ -38,7 +38,7 @@ Only the host changes.
      options: {
        cwd: process.cwd(),
        allowedTools: ["Read", "Grep", "Glob"],
-       disallowedTools: ["Bash", "Edit", "Write", "WebFetch", "WebSearch"],
+       disallowedTools: ["Bash", "PowerShell", "Edit", "Write", "WebFetch", "WebSearch"],
        maxTurns: 12,
      },
    });
@@ -50,6 +50,7 @@ Only the host changes.
      }
    }
    ```
+   `PowerShell` is on the list for Windows: there Claude can run shell commands through PowerShell, and blocking `Bash` alone does not always stop that.
 3. Run it.
    ```bash
    npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"

@@ -1,6 +1,7 @@
 <!-- @note: task-04-venues-map-people -->
 > Do:
 > - Branch: 04-start already has auth, the shell and clashes
+> - For story 3, ready before this block: a second CLASH clone on 05-start with npm run dev running (docs/STORYTELLING.md, Vorbereiten)
 
 Say:
 - Four things to learn, four things to build — venues follow the exact pattern you already know
@@ -36,9 +37,11 @@ Say:
 
 <!-- @note: let-claude-read-the-error -->
 > Do:
+> - Story 3 (German script) starts here: docs/STORYTELLING.md
 > - Participants do this in steps 6 and 8
 > - Leaflet map almost always breaks once ("window is not defined" during server rendering) — good, use it
-> - Demo the three ways: let Claude read the terminal, paste the error text, paste a screenshot with Ctrl+V (Alt+V on Windows and WSL)
+> - Name the three ways, do not demo them yet: the error only comes in step 6
+> - Screenshots: Ctrl+V (Alt+V on Windows and WSL)
 
 Say:
 - The more exact the evidence, the smaller the fix

@@ -27,6 +27,6 @@ A run clones your CLASH fork fresh and pushes its branch with a `claude/` prefix
 
 ## Before the demo
 
-- `docs/SPEC.md` must be committed on the fork's default branch before the routine runs, because the routine clones the default branch. On `pawsaw/clash` it is on the build branches `01-start` to `05-start` only, not on `main` and not on `06-start` or later. Copy it from this workshop repo into your fork of CLASH. Without the file the routine has nothing to compare and does nothing.
-- Use your own fork. A routine that opens pull requests on `pawsaw/clash` opens them for everyone.
+- `docs/SPEC.md` must be committed on the fork's default branch before the routine runs, because the routine clones the default branch. On `nextacademy-io/clash` it is on the build branches `01-start` to `05-start` only, not on `main` and not on `06-start` or later. Copy it from this workshop repo into your fork of CLASH. Without the file the routine has nothing to compare and does nothing.
+- Use your own fork. A routine that opens pull requests on `nextacademy-io/clash` opens them for everyone.
 - Nothing has drifted on the reference code, so the honest outcome of the first run is: no pull request. To show a pull request, change one rule in `docs/SPEC.md` on the fork first, for example "A host can join their own clash."

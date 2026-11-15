@@ -17,6 +17,7 @@ Say:
 
 <!-- @note: a-brief-has-three-parts -->
 > Do:
+> - Story 2 (German script) starts here: docs/STORYTELLING.md
 > - Participants do this in steps 1-2
 > - Start in manual mode, let the group watch the first two or three permission prompts
 > - Your CLASH clone is intentionally non-empty: point out the brief's rule to preserve the workshop files before create-next-app runs
@@ -47,7 +48,8 @@ Say:
 > - Docs link: open it, scroll to "Analyze before you edit with plan mode", then back to the slides
 > - Demo live: Shift+Tab until the status bar shows "plan mode on" (two presses from Manual mode, three from auto — from v2.1.283 interactive sessions start in auto)
 > - Once the next slide's prompt is sent, let the plan appear, read one part out loud, ask the group ("why lib/generated/prisma?")
-> - Switch back and say "do it"
+> - At the approval prompt, Esc first: Shift+Tab there approves the plan
+> - Then Shift+Tab until the status bar shows "manual mode on", and say "do it"
 
 Say:
 - [click] Point: the data model is hard to change later — this is the moment to look before Claude writes
