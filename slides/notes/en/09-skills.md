@@ -63,6 +63,7 @@ Say:
 
 <!-- @note: a-skill-is-advice -->
 > Do:
+> - Story 4 (German script) starts here: docs/STORYTELLING.md
 > - Foreshadow only
 
 Say:

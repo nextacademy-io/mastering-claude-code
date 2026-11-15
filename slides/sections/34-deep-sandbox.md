@@ -29,10 +29,16 @@ lines:
   - "So do excluded commands, your own ! commands and unsandboxed retries."
 ---
 
-<div class="grid grid-cols-3 gap-4 w-full max-w-4xl text-center">
-  <div class="na-card p-4"><div class="font-mono text-sm font-semibold">Read · Edit · WebFetch</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">permission rules</div></div>
-  <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold">hooks · MCP · LSP</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">your full access</div></div>
-  <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold">excludedCommands · ! · retry</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">unsandboxed</div></div>
+<div class="flex flex-col gap-4 w-full max-w-4xl">
+  <div class="grid grid-cols-3 gap-4 text-center">
+    <div class="na-card p-4"><div class="font-mono text-sm font-semibold">Read · Edit · WebFetch</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">permission rules</div></div>
+    <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold">hooks · MCP · LSP</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">your full access</div></div>
+    <div class="na-card p-4" v-click><div class="font-mono text-sm font-semibold">excludedCommands · ! · retry</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">unsandboxed</div></div>
+  </div>
+  <div class="grid grid-cols-2 gap-4 text-center" v-click>
+    <div class="na-card p-4"><div class="font-mono text-sm font-semibold">Read deny, sandbox off</div><div class="text-sm mt-1" style="color: var(--na-fg-muted)">grep -r prints what .env holds</div></div>
+    <div class="na-card p-4" style="border-color: var(--na-accent-500)"><div class="font-mono text-sm font-semibold">Read deny, sandbox on (Linux)</div><div class="text-sm mt-1" style="color: var(--na-accent-500)">Permission denied</div></div>
+  </div>
 </div>
 
 ---

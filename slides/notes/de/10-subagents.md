@@ -49,9 +49,12 @@ Sagen:
 <!-- @note: the-auditor-subagent -->
 > Tun:
 > - Referenz zum Live-Aufbauen — der genaue Body steht in tasks/08-subagent-audit.md Schritt 5
+> - Nach dem Speichern: /exit, dann claude. Auf 08-start ist der Ordner .claude/agents neu, die laufende Session sieht ihn nicht
 
 Sagen:
 - Die tools:-Zeile zählt — nur Read, Grep, Glob.
+- Kein Bash, mit Absicht: eine Shell könnte Dateien ändern.
+- Laut Docs hat main auf macOS, Linux und WSL kein Grep und kein Glob. Dort bekommt dieser Subagent beide, weil Bash fehlt.
 - Dieser Agent liest und berichtet; er fixt nicht.
 - Tools einzuschränken ist selbst eine Kontrolle — und sie gilt nur für einen frischen Subagent. Ein Fork ignoriert eine tools:-Zeile.
 - Kontrast zu einem vagen "find security bugs": eine falsifizierbare Eigenschaft macht den Bericht überprüfbar, nicht eine Wand aus Prosa.

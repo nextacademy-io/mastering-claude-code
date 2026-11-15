@@ -1,4 +1,7 @@
 <!-- @note: letting-go-of-the-wheel -->
+> Do:
+> - Story 6 (German script) starts here: docs/STORYTELLING.md
+
 Say:
 - Three ideas, each done properly
 - Worktrees: the thing people use most afterward
@@ -124,13 +127,18 @@ Say:
 
 Say:
 - allowedTools (auto-approves, does not restrict) + disallowedTools (actually blocks), hooks.PreToolUse, maxTurns
+- Why forbid PowerShell: on Windows Claude can run commands there, and a Bash deny does not always stop it (docs). Details: FACILITATOR.md, Task 16
 
 <!-- @note: the-agent-sdk -->
 > Do:
 > - Finished program: workshop-artifacts/16-agent-sdk/
 
 Say:
-- "Now you" part: removes tools and adds a system prompt
+- "Now you", first item (Grep and Glob out of allowedTools): nothing changes
+- Windows: Read, Grep and Glob need no approval inside your CLASH clone, so allowedTools adds nothing for them
+- Linux, macOS, WSL: the Bash entry in disallowedTools keeps Grep and Glob in the tool set (docs; seen on Linux with the CLI flag)
+- Measured runs and versions: FACILITATOR.md, Task 16
+- Second item: adds a system prompt
 - Stretch: turns it into an API route
 
 <!-- @note: excursion-build-your-own-mcp-server -->

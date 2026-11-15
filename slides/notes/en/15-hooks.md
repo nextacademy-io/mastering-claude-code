@@ -40,6 +40,7 @@ Say:
 > - Then write `.claude/hooks/typecheck-actions.sh` (reference: `workshop-artifacts/13-hooks/`)
 > - Through Claude Code, add a type error to `app/actions/venues.ts` so the hook fires
 > - Watch `tsc` fail, Claude get the failure on stderr and fix its own code — the moment people remember
+> - Story 5 (German script) starts here, after Claude's fix: docs/STORYTELLING.md
 
 Say:
 - Answer: matcher matches the TOOL NAME (Edit, Write, Bash), not a path — a path glob there is parsed as an unanchored regex against the tool name and never matches
@@ -59,9 +60,10 @@ Say:
 > Do:
 > - FULL WORKING SOLUTION (trainer only): `workshop-artifacts/13-hooks/settings.json`
 > - Try editing a file under `prisma/migrations/`, watch the denial on screen
+> - Watch for: on Windows a hook that matches only `Bash` misses `PowerShell(Remove-Item …)`. The answer key matches `Bash|PowerShell` (FACILITATOR.md, Task 13)
 
 Say:
-- Three separate matcher blocks, one per tool: Edit/Write for migrations, Bash for `rm`, Read for `.env`
+- Three separate matcher blocks, one per job: `Edit|Write` for migrations, `Bash|PowerShell` for `rm`, `Read` for `.env`
 - `hookSpecificOutput.permissionDecision` values: allow/deny/ask, plus defer in -p mode — the plain exit-2 form works the same as deny
 
 <!-- @note: gate-the-turn -->
@@ -118,9 +120,14 @@ Say:
 > Do:
 > - Optional: run `/sandbox` live, show the Mode and Config tabs
 > - Mode tab: auto-allow runs sandboxed commands without a prompt; regular permissions still asks for unapproved ones. Both keep the same limits. Allowed hosts are not a mode: they sit in the network allowlist
+> - Watch for: a mode you pick in `/sandbox` is saved to `.claude/settings.local.json` in your CLASH clone, so the sandbox is still on in task 14
+> - There, tests or agent-browser that Claude runs may not reach CLASH on `localhost:3000`. The docs: by default a sandboxed command cannot connect directly to a server running outside the sandbox
+> - No retry outside the sandbox offered? Run the tests yourself in another terminal
 > - Docs link: open it, scroll to "How sandboxing works", then back to the slides
 
 Say:
+- Our `rm` hook checks the command text: its Bash `if` is `Bash(rm *)`. The docs: as a deny rule, that same rule misses `/bin/rm` and `bash -c 'rm …'`
+- For limits that do not depend on the text, the docs point to the sandbox. It does not forbid `rm`: it limits where a command writes and which hosts it reaches
 - A sandboxed Bash command still runs — the operating system enforces the limit, not a prompt
 - Filesystem: write access stays inside the project and a per-user temp folder. Read access is wide, minus what you deny
 - [click] Network: nothing is reachable by default. In manual mode a new host prompts you. In auto mode Claude names the hosts a command needs on the command itself, the classifier reviews that list, and it opens those hosts for that one command only

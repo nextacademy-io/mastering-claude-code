@@ -17,6 +17,9 @@ primitive dividers in Parts III and IV. Under both maps, repeat four engineering
 
 The core close states those questions explicitly.
 
+**Storytelling script (German):** `docs/STORYTELLING.md`, six stories along the four belts. Read
+the story of a block before you teach it; the presenter notes stay the short version.
+
 **Before the first session:** push CLASH's branches (`docs/BRANCHES.md`), confirm your own
 machine passes `docs/SETUP.md` including `/skills` listing `agent-browser`, confirm
 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is set and Dynamic workflows are on in `/config`,
@@ -275,6 +278,9 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   pool, and on macOS, Linux and WSL that pool has no Grep or Glob tool, Claude searches with
   `find` and `grep` through Bash there. Only a fresh subagent with `tools: Read, Grep, Glob`
   and no Bash gets those two tools back.
+- Live on `08-start`: your CLASH clone has no `.claude/agents` folder until step 5, and a running
+  session does not see a folder made after it started. After saving
+  `security-auditor.md`, `/exit`, then `claude`, before you run step 6.
 - Steps 9 and 10 run the same audit as a fork with `/subtask`. Steps 11 to 17 install OWASP's `code-security-skills` plugin (needs GitHub reachable, and it
   spends more tokens than the auditor). Compare the two reports, do not crown a winner. Say it
   is a plugin bundling subagents and skills, and that a plugin can ship hooks: read what you install.
@@ -282,6 +288,13 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   conversation — send it live, watch your own `/context` climb, stop, then hand over at step 1
   (they check out, look at both sides and note their own `/context` themselves; skip step 4,
   they just watched it) and continue from step 5, the subagent version of the same audit.
+- "Now you", the `Bash(find *)` item: `Bash(find *)` in a `tools:` line is not a permission
+  rule. It hands over the whole Bash tool: the subagent creates the file, after a permission
+  prompt if one comes. Seen on Linux (Claude Code 2.1.322) and on Windows (Claude Code 2.1.325,
+  2 of 2 runs, with `touch` pre-approved). Control, on Windows: with `tools: Read, Grep, Glob` it
+  has no shell. Not in the docs for `tools:`; for `disallowedTools` they say a specifier still
+  removes the whole tool. The docs: on Windows without Git Bash there is no Bash tool at all, so
+  there the probe gets only Read, creates no file and proves nothing.
 - End on the cliffhanger: two findings, nothing fixed yet.
 
 ### Task 09 — Example Mapping as a skill
@@ -386,13 +399,31 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Watch the agent receive a blocked edit and fix its own type error. That is the moment.
 - Then the deny set, output replacement (`hookSpecificOutput.updatedToolOutput`, all tools),
   and the Stop gate. `hard_deny` is an auto-mode setting, not a hook decision.
+- Windows: the `rm` block in `workshop-artifacts/13-hooks/settings.json` matches
+  `Bash|PowerShell`, with one handler per tool, because one `if` holds one rule.
+  `scripts/prepare-branches.sh` copies this file into CLASH's `14-start`, and every later branch
+  inherits it: after a change to this file, run the script again and push those branches. A
+  participant whose own hook from step 6 matches only `Bash` meets this in "Now you", third item.
+- Why, seen on Windows, Claude Code 2.1.325, with `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` set so
+  Bash and PowerShell were both in the tool set: asked to remove a file, Opus 5.5 went straight
+  to `PowerShell(Remove-Item …)` in 1 of 5 runs, and a hook that matched only `Bash` let the
+  delete through. Sonnet picked `Bash(rm …)` in 11 of 11 runs. With `Bash|PowerShell`, the
+  handler `PowerShell(Remove-Item *)` blocked `Remove-Item` and the PowerShell alias `rm` too.
+  Re-run against the answer key file itself: 7 of 7 deletes blocked, three of them Opus 5.5 going
+  to PowerShell on its own. The build-log hook was not tried with PowerShell.
+- The docs go further: on Windows without Git Bash there is no Bash tool at all, and "A hook
+  that matches only `Bash` never fires there."
 - Skills are advice. Hooks are law.
 - Security debrief immediately after the task, before browser/MCP: `.gitignore` is not a Claude
   visibility boundary; Glob includes ignored files and dotfiles by default. Tool results are written
   to plaintext local session transcripts, so a secret read can persist there. Use deny rules for
   credential paths: they cover Claude's file tools and the shell readers Claude Code recognises,
-  such as `cat`, but not every process; only the sandbox covers every process. Then land the three
-  rules: untrusted text can instruct a model, quarantine readers from writes, least privilege.
+  such as `cat`, but not `grep -r` or a script that opens files itself. The sandbox (macOS, Linux,
+  WSL2) applies the same deny rules to every sandboxed command and what it starts, so it stops
+  those too, unless a retry outside the sandbox is approved: by you, by the auto-mode classifier,
+  or with no prompt by a matching allow rule or in `bypassPermissions` mode (docs). It does not
+  cover hooks or MCP servers (docs). Then land the three rules: untrusted text can instruct a
+  model, quarantine readers from writes, least privilege.
 
 ### Task 14 — The browser closes the loop
 
@@ -455,6 +486,22 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   context budget.
 - The script in `workshop-artifacts/16-agent-sdk/` answers one question about the seed data
   with Read, Grep and Glob only. Run it, then read it.
+- The program loads the `.claude/settings.json` of its `cwd`, your CLASH clone, hooks included.
+  Seen on Windows through the Agent SDK 0.3.323 (it bundles Claude Code 2.1.323): a Stop hook from
+  that file ran along, and `settingSources: []` in the options turned it off. On CLASH's
+  `16-start` that Stop hook is task 13's build gate, so each run ends with `npm run build`. That
+  is "hooks carry over", live. Make the build green first: on a red build the gate keeps the turn
+  open, and the read-only program cannot fix it.
+- `PowerShell` is in `disallowedTools` so the program stays read-only on every Windows setup.
+  The docs: on Windows without Git Bash there is no Bash tool and PowerShell is the shell; with
+  Git Bash, a `Bash` deny turns PowerShell off too, unless `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`
+  or a scoped `PowerShell` rule keeps it on.
+- "Now you", first item: nothing changes. On Windows `allowedTools` only pre-approves, and Read,
+  Grep and Glob need no approval inside your CLASH clone. On Linux, naming Grep or Glob in
+  `allowedTools` also brings both tools back (docs), but the `Bash` entry in `disallowedTools`
+  does that anyway (docs; seen with `--disallowedTools Bash`, Claude Code 2.1.322; macOS and WSL not
+  run). Seen on Windows through the same SDK, with `settingSources: []` so the build gate stayed
+  off: one Read of `prisma/seed.ts` either way.
 - If someone wants to ship it as a product: the SDK docs on user input (`canUseTool` for
   approvals), session storage (`SessionStore`) and hosting (ephemeral, long-running and hybrid
   sessions) cover the step from one script to a service.
@@ -608,6 +655,98 @@ Two questions team leads ask after the close, answered from the docs:
 - **Can we see what the team spends?** Set `CLAUDE_CODE_ENABLE_TELEMETRY=1` and the `OTEL_*`
   exporters to send usage, cost and tool metrics to your own OpenTelemetry collector. The
   "Monitoring" page has the details.
+
+---
+
+## Tools depend on platform and settings
+
+Scan this before a machine surprises you. "Linux" means a dev container on Docker Desktop
+(WSL2 kernel), Claude Code 2.1.322. "Windows" means Claude Code 2.1.323. Most runs were headless
+`claude -p`. macOS and Claude Code installed in WSL: docs only, not run.
+
+- **See your own tool set.** On the machine you teach on, in your CLASH clone, run
+  `claude -p "ok" --output-format stream-json --verbose --max-turns 1`. Its `init` event lists
+  `tools`.
+- **Default tool set.** Linux: no Grep or Glob. `find`, `grep` and `rg` run as Bash. Windows: Glob,
+  Grep, Read, Bash and PowerShell, measured on a machine with `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`
+  set; the docs: with Git Bash installed, PowerShell is on by default for claude.ai and Console
+  accounts. macOS and WSL: the docs say no Grep or Glob, as on Linux; not run.
+- **Getting Grep and Glob back (Linux).** An allow rule for them in a settings file does nothing.
+  A deny on `Bash` brings both back, and Bash is gone, even with an allow rule such as
+  `Bash(find *)` next to it: an allow rule never overrides a deny. `--allowedTools Grep` brings
+  both back and keeps Bash. `--tools` gives exactly the tools you list.
+- **Subagents (Linux).** `tools: Read, Grep, Glob` gives Grep and Glob. `tools: Read, Grep, Glob, Bash`
+  starts with Read and Bash only. The same list plus a deny on `Bash` ends with Read, Grep and Glob.
+  `Bash(find *)` in a `tools:` field is not a permission rule: it grants all of Bash.
+- **Read deny rules.** The Grep tool skips denied files without a word (platform not recorded). On
+  Linux, `grep -r` reads them while the sandbox is off, and gets "Permission denied" with the
+  sandbox on. Also on Linux, the allow rule `Bash(rg *)` lets `rg --pre` run any program.
+  `Read(/tmp/...)` with one slash is not absolute: it starts at the settings file's source, the
+  project for `.claude/settings.json` and `~/.claude` for `~/.claude/settings.json` (docs). It
+  never reaches `/tmp`; write `Read(//tmp/...)`.
+- **Settings that do not apply.** In a `claude -p` run, a `settings.json` with invalid JSON is
+  skipped without a warning, so none of its deny rules apply (seen, platform not recorded). An
+  interactive session shows a "Settings Error" dialog at the start; after a `-p` run,
+  `claude doctor` lists what was dropped (docs). In a folder Claude Code does not trust, project
+  allow rules are ignored; deny rules and the sandbox still apply. `claude -p` warns on stderr:
+  "this workspace has not been trusted". An interactive session lists those rules in the trust
+  dialog (docs). For a headless test, pass allow rules with `--settings` or `--allowedTools`.
+- **Container with `CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1` (Linux).** This variable hides the sign-in
+  from every command Claude runs. With `claude -p` it also forced a requested permission mode back
+  to default. Without `sandbox.enabled` every Bash call fails with a bwrap error; the text and the
+  fix are in `docs/DEVCONTAINER.md`, "When it gets stuck". The docs: with this variable set, every
+  command runs sandboxed, `excludedCommands` and your own `!` commands included. The dev server of
+  clash-conference and its Playwright tests failed in the sandbox, and an `excludedCommands` entry
+  for `npm test` changed nothing.
+- **Placeholder files (Linux).** Empty read-only files such as `.npmrc`, `package.json` or `.env.*`
+  stayed in the working directory. The docs: the sandbox creates them on Linux and WSL2 and can
+  leave them behind, for example when a session is killed. `claude doctor` lists them. Delete
+  them with `rm` while no Claude Code session runs in that folder; never commit them.
+- **Wording for participants.** Say "on Linux we measured", never "on macOS we measured". Where this list says
+  "docs only", say so out loud.
+
+---
+
+## Show the dev container
+
+A trainer demo for the deep dive on the sandbox, slide "Dev container: one box for the team". It is
+optional. Participants do not need Docker, and no task depends on it. Setup, sign-in and
+troubleshooting are in `docs/DEVCONTAINER.md` of this workshop repository; your CLASH clone is not
+part of the container.
+
+Order of the demo, the four checks from "Check each layer" in `docs/DEVCONTAINER.md`:
+
+1. Ask Claude to run `touch ~/sandbox-probe`. Expected (docs; not yet run in this container): it
+   fails with "Read-only file system", after a permission prompt if one comes. Strict sandbox mode
+   is on in this container (`"allowUnsandboxedCommands": false`), so Claude cannot retry the
+   command outside the sandbox.
+   Then type `/sandbox`. Expected (docs): no panel, only "Sandbox settings are overridden by a
+   higher-priority configuration". The managed settings turn the sandbox on, and `/sandbox` cannot
+   change that.
+2. Ask Claude to run `env` and say whether `CLAUDE_CODE_OAUTH_TOKEN` is in it. Claude asks for
+   permission first. After a yes the token is not in it. Needs a token in `.devcontainer/.env`.
+   If Claude pipes `env` into `grep`, the Claude Code hook `no-shell-file-reads` of this workshop
+   repository (wired in `.claude/settings.json`, logic in `.claude/hooks/no-shell-file-reads.mjs`)
+   denies it: "Denied: use Read, Grep or Glob …". Ask
+   for plain `env` again. This block comes from reading the hook's code; it was not tried in the
+   container.
+3. Ask Claude to read `.devcontainer/.env`. A deny rule refuses it.
+4. Ask Claude to run a `node -e` one-liner that reads `.devcontainer/.env`. Claude asks for
+   permission first. After a yes the command fails with "permission denied". This is the point of
+   the demo: a deny rule alone stops the Read tool, not the script. The sandbox applies the same
+   rule to every command, so it stops the script too.
+
+Status:
+
+- This container: none of the four checks has run. It builds and starts with Claude Code 2.1.323.
+  `bubblewrap` and `socat` are installed, and `managed-settings.json` lands in
+  `/etc/claude-code/managed-settings.json`. Claude Code in it was not signed in.
+- Elsewhere: checks 2, 3 and 4 ran headless in another Linux dev container (Docker Desktop, WSL2
+  kernel), Claude Code 2.1.322, with the same deny rules and `sandbox.enabled` in a project
+  settings file. Never run: strict sandbox mode, check 1, checks 2 to 4 in an interactive session,
+  macOS, Claude Code in WSL.
+- Before you show it: sign in (`docs/DEVCONTAINER.md`, "Sign in"), then run all four checks once,
+  off screen: if a layer does not hold, checks 2 to 4 show your real token.
 
 ---
 

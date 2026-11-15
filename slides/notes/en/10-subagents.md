@@ -49,9 +49,12 @@ Say:
 <!-- @note: the-auditor-subagent -->
 > Do:
 > - Live-build reference — the exact body is in tasks/08-subagent-audit.md step 5
+> - After saving: /exit, then claude. On 08-start the .claude/agents folder is new, so the running session does not see it
 
 Say:
 - The tools: line matters — Read, Grep, Glob only.
+- No Bash, on purpose: a shell could change files.
+- The docs: on macOS, Linux and WSL, main has no Grep or Glob. There, this subagent gets both because Bash is left out.
 - This agent reads and reports; it does not fix.
 - Narrowing tools is itself a control — and it only holds for a fresh subagent. A fork ignores a tools: line.
 - Contrast with a vague "find security bugs": a falsifiable property is what makes the report checkable, not a wall of prose.

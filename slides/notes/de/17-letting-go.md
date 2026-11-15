@@ -1,4 +1,7 @@
 <!-- @note: letting-go-of-the-wheel -->
+> Tun:
+> - Geschichte 6 beginnt hier: docs/STORYTELLING.md
+
 Sagen:
 - Drei Ideen, jede richtig umgesetzt
 - Worktrees: das, was die Leute danach am meisten nutzen
@@ -124,13 +127,18 @@ Sagen:
 
 Sagen:
 - allowedTools (bewilligt automatisch, schränkt nicht ein) + disallowedTools (blockiert tatsächlich), hooks.PreToolUse, maxTurns
+- Warum PowerShell verbieten: Unter Windows kann Claude dort Befehle ausführen, und ein Bash-Deny stoppt das nicht immer (Docs). Details: FACILITATOR.md, Task 16
 
 <!-- @note: the-agent-sdk -->
 > Tun:
 > - Fertiges Programm: workshop-artifacts/16-agent-sdk/
 
 Sagen:
-- "Now you"-Teil: entfernt Tools und fügt einen System-Prompt hinzu
+- "Now you", erster Punkt (Grep und Glob aus allowedTools): Es ändert sich nichts
+- Windows: Read, Grep und Glob brauchen in deinem CLASH-Clone keine Freigabe, allowedTools bringt für sie also nichts
+- Linux, macOS, WSL: Der Bash-Eintrag in disallowedTools hält Grep und Glob im Tool-Set (Docs; unter Linux mit dem CLI-Flag gesehen)
+- Gemessene Läufe und Versionen: FACILITATOR.md, Task 16
+- Zweiter Punkt: fügt einen System-Prompt hinzu
 - Erweiterung: macht daraus eine API-Route
 
 <!-- @note: excursion-build-your-own-mcp-server -->

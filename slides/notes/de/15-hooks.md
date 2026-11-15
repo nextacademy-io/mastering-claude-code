@@ -40,6 +40,7 @@ Sagen:
 > - Dann `.claude/hooks/typecheck-actions.sh` schreiben (Referenz: `workshop-artifacts/13-hooks/`)
 > - Über Claude Code einen Typfehler in `app/actions/venues.ts` einbauen, damit der Hook feuert
 > - Zuschauen, wie `tsc` scheitert, Claude den Fehler über stderr bekommt und seinen eigenen Code repariert — der Moment, den sich alle merken
+> - Geschichte 5 beginnt hier, nach Claudes Fix: docs/STORYTELLING.md
 
 Sagen:
 - Antwort: der Matcher matcht den TOOL-NAMEN (Edit, Write, Bash), nicht einen Pfad — ein Pfad-Glob wird dort als unverankerter Regex gegen den Tool-Namen geparst und matcht nie
@@ -59,9 +60,10 @@ Sagen:
 > Tun:
 > - VOLLSTÄNDIGE LÖSUNG (nur für Trainer): `workshop-artifacts/13-hooks/settings.json`
 > - Versuchen, eine Datei unter `prisma/migrations/` zu bearbeiten, die Ablehnung auf dem Bildschirm beobachten
+> - Achten auf: unter Windows verpasst ein Hook, der nur `Bash` matcht, `PowerShell(Remove-Item …)`. Der Lösungsschlüssel matcht `Bash|PowerShell` (FACILITATOR.md, Task 13)
 
 Sagen:
-- Drei getrennte Matcher-Blöcke, einer pro Tool: Edit/Write für Migrations, Bash für `rm`, Read für `.env`
+- Drei getrennte Matcher-Blöcke, einer pro Aufgabe: `Edit|Write` für Migrations, `Bash|PowerShell` für `rm`, `Read` für `.env`
 - Decision-Werte für `hookSpecificOutput.permissionDecision`: allow/deny/ask, dazu defer im -p-Modus — die einfache Exit-2-Form funktioniert genauso wie deny
 
 <!-- @note: gate-the-turn -->
@@ -118,9 +120,14 @@ Sagen:
 > Tun:
 > - Optional: `/sandbox` live ausführen, die Tabs Mode und Config zeigen
 > - Mode-Tab: auto-allow führt Befehle in der Sandbox ohne Nachfrage aus; regular permissions fragt bei nicht erlaubten weiterhin nach. Beide halten dieselben Grenzen. Erlaubte Hosts sind kein Modus: sie stehen in der Netzwerk-Allowlist
+> - Achten auf: Ein Modus, den du in `/sandbox` wählst, landet in `.claude/settings.local.json` in deinem CLASH-Clone, die Sandbox ist also in Task 14 noch an
+> - Dort erreichen Tests oder agent-browser, die Claude startet, CLASH auf `localhost:3000` womöglich nicht. Die Doku: Standardmässig kann sich ein Befehl in der Sandbox nicht direkt mit einem Server verbinden, der ausserhalb der Sandbox läuft
+> - Kein Retry ausserhalb der Sandbox angeboten? Die Tests selbst in einem anderen Terminal laufen lassen
 > - Docs-Link: öffnen, bis "How sandboxing works" scrollen, dann zurück zu den Folien
 
 Sagen:
+- Unser `rm`-Hook prüft den Befehlstext: sein Bash-`if` ist `Bash(rm *)`. Die Doku: Als Deny-Regel verfehlt dieselbe Regel `/bin/rm` und `bash -c 'rm …'`
+- Für Grenzen, die nicht vom Text abhängen, verweist die Doku auf die Sandbox. Sie verbietet `rm` nicht: sie begrenzt, wohin ein Befehl schreibt und welche Hosts er erreicht
 - Ein sandboxed Bash-Befehl läuft trotzdem — das Betriebssystem erzwingt die Grenze, kein Prompt
 - Dateisystem: Schreibzugriff bleibt im Projekt und in einem Temp-Ordner pro Nutzer. Lesezugriff ist weit, minus was du verbietest
 - [click] Netzwerk: nichts ist standardmässig erreichbar. Im Manual Mode fragt ein neuer Host nach. Im Auto Mode nennt Claude die Hosts, die ein Befehl braucht, am Befehl selbst, der Classifier prüft die Liste, und sie gilt nur für diesen einen Befehl

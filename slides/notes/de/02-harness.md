@@ -1,4 +1,7 @@
 <!-- @note: the-model-alone-is-a-function -->
+> Tun:
+> - Geschichte 1 beginnt hier: docs/STORYTELLING.md
+
 Sagen:
 - Modell = eine reine Funktion: eine Liste von Tokens rein, eine Liste von Tokens raus
 - Keine Dateien, kein Terminal, kein eigenes Gedächtnis

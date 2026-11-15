@@ -7,14 +7,19 @@ Sagen:
 
 <!-- @note: the-prompt-is-a-chat-in-your-terminal -->
 > Tun:
-> - Einen echten Claude-Turn in deinem CLASH-Clone vorführen; auf die Tool-Zeilen zeigen, während sie erscheinen
-> - Die Tool-Wahl variiert von Durchlauf zu Durchlauf, wie bei "It picks from probabilities". Wählt es Bash, ist der Permission-Prompt live das Gate aus dem Harness-Abschnitt
-> - Esc drücken, während es arbeitet — stoppt den Turn, das Gespräch bleibt erhalten
-> - Esc zweimal bei leerem Prompt öffnet stattdessen das Rewind-Menü — nach dem Stoppen eines Turns nicht doppelt drücken
-> - Ctrl+C zweimal an einem leeren Prompt beendet es — während etwas läuft, unterbricht der erste Druck stattdessen, wie Esc
+> - In deinem CLASH-Clone, auf einem sauberen 01-start, senden: What does this project do?
+> - Auf jede Tool-Zeile zeigen, sobald sie erscheint
+> - Andere Zeilen? Normal: Modell und Durchlauf ändern sie
+> - Esc drücken, während Claude arbeitet: Der Turn stoppt
+> - Zweimal Esc, während Claude nicht arbeitet, öffnet Rewind
 
 Sagen:
-- Was auch immer an Tools erscheint — Read, Glob, Grep, Bash — ist die Loop aus dem letzten Abschnitt, live
+- Was an Tools erscheint: Das ist die Loop aus dem letzten Abschnitt, live
+- [click] Erster Read: die README
+- [click] Zweiter Read: die Spec
+- Beide zugleich, ohne Suche davor? Der Pfad steht in der letzten Commit-Message
+- Die letzten Commits liegen von Anfang an im Context
+- [click] Dann antwortet es
 
 <!-- @note: point-at-files-with -->
 > Tun:

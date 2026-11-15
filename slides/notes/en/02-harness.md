@@ -1,4 +1,7 @@
 <!-- @note: the-model-alone-is-a-function -->
+> Do:
+> - Story 1 (German script) starts here: docs/STORYTELLING.md
+
 Say:
 - Model = a pure function: a list of tokens in, a list of tokens out
 - No files, no terminal, no memory of its own

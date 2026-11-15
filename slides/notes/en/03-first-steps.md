@@ -7,14 +7,19 @@ Say:
 
 <!-- @note: the-prompt-is-a-chat-in-your-terminal -->
 > Do:
-> - Show a real Claude turn in your CLASH clone; point at the tool lines as they appear
-> - Tool choice varies run to run, as in "It picks from probabilities". If it picks Bash, the permission prompt is the gate from the harness section, live
-> - Press Esc while it works — stops the turn, keeps the conversation
-> - Esc twice on an idle prompt opens the rewind menu instead — don't double-tap it right after stopping a turn
-> - Ctrl+C twice from an idle prompt exits — mid-turn, the first press interrupts instead, like Esc
+> - In your CLASH clone, on a clean 01-start, send: What does this project do?
+> - Point at each tool line as it appears
+> - Different lines? Normal: model and run change them
+> - Press Esc while Claude works: the turn stops
+> - Esc twice on an idle prompt opens rewind
 
 Say:
-- Whatever tools appear — Read, Glob, Grep, Bash — is the loop from the last section, live
+- Whatever tools appear: that is the loop from the last section, live
+- [click] First read: the README
+- [click] Second read: the spec
+- Both at once, no search first? The path is in the last commit message
+- Recent commits are in the context from the start
+- [click] Then it answers
 
 <!-- @note: point-at-files-with -->
 > Do:

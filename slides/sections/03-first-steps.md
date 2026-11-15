@@ -25,9 +25,9 @@ lines:
 
 <div class="na-card p-5 font-mono text-sm w-full max-w-2xl" style="color: var(--na-fg-muted)">
   <div style="color: var(--na-fg)">› What does this project do?</div>
-  <div class="mt-2">⏺ Read(README.md)</div>
-  <div>⏺ Glob(**/*.ts)</div>
-  <div class="mt-2" style="color: var(--na-fg)">It is a small Next.js app that …</div>
+  <div class="mt-2" v-click>⏺ Read(README.md)</div>
+  <div v-click>⏺ Read(docs/SPEC.md)</div>
+  <div class="mt-2" style="color: var(--na-fg)" v-click>It is the start of CLASH, a small social app for Berlin …</div>
 </div>
 
 ---

@@ -93,14 +93,23 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
    line that decides it. Do not report actions that only create rows or that
    scope their own where clause to the current user. Those are safe by construction.
    ```
-   Note the `tools:` line. This agent reads and reports. It cannot edit.
+   Note the `tools:` line. This agent reads and reports. It cannot edit. Without the line it
+   would inherit every tool a subagent can have, `Edit` and `Write` included. It has no `Bash` on
+   purpose: a shell can change files. On macOS, Linux and WSL, your session has no `Grep` or
+   `Glob` tool by default: Claude searches with `find` and `grep` through `Bash`. A subagent that
+   lists `Grep` and `Glob` and leaves out `Bash` gets both tools there.
+
+   Then restart Claude Code: `/exit`, then `claude`. The `.claude/agents` folder is new, and a
+   running session only sees an `agents` folder that existed when it started. Later agent files
+   and edits in it need no restart.
 6. Run it.
    ```
    Use the security-auditor subagent on app/actions/ and show me its report.
    ```
    While it runs, look below your prompt input: a row appears, indented under `main`. That row
    is the subagent. It is a fresh one, built from `security-auditor.md`.
-7. Read `/context` again. It moved a little. The file reads happened in the subagent's window, not yours.
+7. Read `/context` again and compare it with your step 3 number. It moved a little. The file reads
+   happened in the subagent's window, not yours.
 8. Check the report against the answer key (shared with task 12): [`workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md`](../workshop-artifacts/12-team-and-workflow-audit/AUTH-FIX.md)
    in the workshop repository. Do not fix the bug yet. Task 12 does that.
 9. Hand the same audit to a fork with `/subtask` instead of naming an agent.
@@ -155,6 +164,9 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
   called under `app/`. Goal: a report only, no file edited. Write the brief so that it asks for
   that, then check afterwards that no file changed: the brief is an instruction, not a lock.
 - Write a second subagent, `perf-auditor`, that only looks for Prisma queries without a `select`.
+- Write a test subagent, `.claude/agents/shell-probe.md`, with `tools: Read, Bash(find *)`. Ask it
+  to create an empty file `probe.txt`. If Claude Code asks for permission, allow it once. Goal: see
+  whether `Bash(find *)` limits the subagent to `find`. Then delete `probe.txt` and `shell-probe.md`.
 
 ## Check
 
