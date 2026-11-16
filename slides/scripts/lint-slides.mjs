@@ -196,6 +196,7 @@ const forbidden = [
   // (a whole token: nothing word-like or a hyphen right before "clash-", so foo-clash-conference is still caught)
   [/\bconference\b(?<!(?:^|[^\w-])clash-conference)/i, 'event reference'],
   [/\b20[2-3]\d-\d\d(-\d\d)?\b/, 'date'],
+  [/\b20[2-3]\d\b/, 'year'],
   [/\btime-?box\b/i, 'time-box'],
   [/\b(this morning|this afternoon|after the break|tomorrow morning)\b/i, 'time of day'],
   [/\bthe room\b/i, 'room wording'],

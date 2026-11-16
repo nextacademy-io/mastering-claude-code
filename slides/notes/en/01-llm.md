@@ -42,7 +42,7 @@ Say:
 <!-- @note: four-sizes-four-jobs -->
 > Do:
 > - If there is a tokenizer or /model picker handy, show it live
-> - Whether a Fable request bills to usage credits or to the plan's included usage depends on your plan and seat tier. As of October 2026: Pro and standard Team seats pay every Fable request from usage credits; Max and premium seats include Fable up to half the weekly usage limit (support article "Claude Fable models on your plan")
+> - Whether a Fable request bills to usage credits or to the plan's included usage depends on your plan and seat tier. Check the support article "Claude Fable models on your plan" before you teach. When last checked: Pro and standard Team seats pay every Fable request from usage credits; Max and premium seats include Fable up to half the weekly usage limit
 > - In an interactive session, Claude Code shows a consent prompt before the first Fable request that bills usage credits
 > - Where it costs extra, the /model picker shows "Requires usage credits" on the Fable row
 

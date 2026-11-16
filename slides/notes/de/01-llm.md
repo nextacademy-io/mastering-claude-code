@@ -42,7 +42,7 @@ Sagen:
 <!-- @note: four-sizes-four-jobs -->
 > Tun:
 > - Falls ein Tokenizer oder /model-Picker zur Hand ist, live zeigen
-> - Ob eine Fable-Anfrage über Usage Credits oder über das im Plan enthaltene Kontingent läuft, hängt von Plan und Seat-Stufe ab. Stand Oktober 2026: Pro und Standard-Seats im Team-Plan zahlen jede Fable-Anfrage aus Usage Credits; Max und Premium-Seats haben Fable bis zur Hälfte des Wochenlimits inklusive (Support-Artikel „Claude Fable models on your plan“)
+> - Ob eine Fable-Anfrage über Usage Credits oder über das im Plan enthaltene Kontingent läuft, hängt von Plan und Seat-Stufe ab. Vor dem Kurs den Support-Artikel „Claude Fable models on your plan“ prüfen. Zuletzt geprüft: Pro und Standard-Seats im Team-Plan zahlen jede Fable-Anfrage aus Usage Credits; Max und Premium-Seats haben Fable bis zur Hälfte des Wochenlimits inklusive
 > - In einer interaktiven Session zeigt Claude Code vor der ersten Fable-Anfrage, die Usage Credits kostet, eine Zustimmungsabfrage
 > - Wo es extra kostet, zeigt der /model-Picker in der Fable-Zeile „Requires usage credits“
 
