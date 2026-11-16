@@ -359,7 +359,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 
 - Agent team: needs `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`, or no team is set up and Claude
   does not spawn or propose teammates; subagents in the same panel do not prove a team. Teammates message by name via SendMessage. No `@`-mentions. `claude agents` is
-  the background-sessions view, not a team dashboard. The moment to wait for: two peers
+  the background-sessions view, not a team dashboard. The moment to watch for: two peers
   disagree about the same file and the lead reconciles.
 - Dynamic workflow: describe the job, Claude writes the script, the runtime runs it in the
   background. Read the generated script on screen. It lands under

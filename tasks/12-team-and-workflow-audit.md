@@ -45,8 +45,8 @@ for is to run all three on the same problem and compare.
    ```
 3. Watch the panel below the prompt. Teammates message each other **by name** with the
    `SendMessage` tool. There is no `@`-mention between peers.
-4. Wait for a disagreement. It often shows up around `app/actions/venues.ts`: `deleteVenue`
-   is broken, its neighbour `updateVenue` is fine. Watch the lead settle it.
+4. Watch for a disagreement. It often shows up around `app/actions/venues.ts`: `deleteVenue`
+   is broken, its neighbour `updateVenue` is fine. If one comes, watch the lead settle it.
 5. Note: `claude agents` is not a team dashboard. It shows background sessions. The team panel is inline.
 
 **Dynamic workflow**
