@@ -24,8 +24,8 @@ skills, subagents, agent teams, dynamic workflows, hooks, MCP, bounded `/goal` r
 `/batch`, headless runs in CI, the Agent SDK, output styles, loops, background sessions, routines,
 and your own MCP server.
 
-The trainer explains and shows. Then you do it on your own machine. Every task has a reset
-branch, so nobody gets stuck.
+The trainer explains and shows. Then you do it on your own machine. Every task in your CLASH
+clone has a reset branch, so nobody gets stuck.
 
 ## The app you build
 

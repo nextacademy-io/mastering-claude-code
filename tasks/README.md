@@ -36,7 +36,7 @@ Task 19 also uses clash-conference's `19-start`. Task 20 has no branch: it runs 
 folder outside your CLASH clone.
 
 ```bash
-git stash              # optional: keep your own work
+git stash -u           # optional: keep your own work, including new files
 git checkout 06-start  # e.g. jump to the finished reference CLASH
 ```
 

@@ -74,7 +74,7 @@ Say:
 
 Say:
 - [click] Every task: short explanation, live demo, then work the task file yourself
-- [click] Each task has a branch NN-start with the starting state you need
+- [click] Each task in your CLASH clone has a branch NN-start with the starting state you need
 - Falling behind is fine — check out the branch and rejoin
 - Ask early, ask often
 

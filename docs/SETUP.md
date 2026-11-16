@@ -171,7 +171,7 @@ Task 19 builds its own MCP server inside your CLASH clone. Its package is in ste
 
 ## 7. Know CLASH's catch-up branches
 
-Every task has a branch in your CLASH clone with the state at its **start**. If you fall behind,
+Every task in your CLASH clone has a branch with the state at its **start**. If you fall behind,
 do not debug. Reset and rejoin.
 
 ```bash
