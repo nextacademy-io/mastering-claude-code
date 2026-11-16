@@ -144,7 +144,8 @@ Go slowly here. This is where beginners decide whether the rest of the workshop 
 
 Demo: `claude`, `/help`, ask about `@docs/SPEC.md`, `/init`, `/btw`, `/clear`, `/context`.
 Watch for: people who never press Enter on the permission prompt; people who type in the
-terminal while Claude is working (Esc stops it).
+terminal while Claude is working (Esc stops it); on Windows, PowerShell refusing `npm` with
+"running scripts is disabled on this system" (the fix is in "Trouble?" in `docs/SETUP.md`).
 
 Debrief after the recap: flags, print mode, then resuming a session. The reasoning lab is an
 optional deep dive with its own task, task 20: two concept slides on the levels and on which

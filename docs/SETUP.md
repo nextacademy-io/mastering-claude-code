@@ -12,7 +12,7 @@ workshop wifi. If something fails, see the table at the end.
 | Node.js 20.19+, 22.12+ or 24 (not 21 or 23) | `node --version` | https://nodejs.org |
 | git | `git --version` | https://git-scm.com |
 | Claude Code | `claude --version` | See "Install Claude Code" below, then `claude` and log in |
-| agent-browser | `agent-browser --version` | `npm install -g agent-browser && agent-browser install`, then see "Add the agent-browser skill" below |
+| agent-browser | `agent-browser --version` | `npm install -g agent-browser`, then `agent-browser install`, then see "Add the agent-browser skill" below |
 | GitHub CLI (Part II, IV) | `gh --version` | https://cli.github.com then `gh auth login` |
 
 Claude Code must be **2.1.252 or newer**. Older builds miss `/skill-doctor`, and builds before 2.1.248 also miss `/workflow-authoring`.
@@ -249,6 +249,7 @@ run `git fetch` and `git stash -u` first, then the rest.
 |---|---|
 | Anything not covered below | Run `/doctor` inside Claude Code — it checks your installation, settings and extensions, reports what it finds, and asks before it fixes anything. If Claude Code does not start at all, run `claude doctor` in your terminal instead: it prints installation and settings checks and changes nothing |
 | `Shift+Tab` does nothing (Windows) | Known Node/Bun quirk. Use `Alt+M` to cycle permission modes instead |
+| `npm` or `npx` in PowerShell: "running scripts is disabled on this system" (Windows) | PowerShell's execution policy blocks npm's `.ps1` launcher. Run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` once and answer `Y` if it asks. Without `-Scope CurrentUser` it needs an admin shell |
 | `SESSION_SECRET environment variable is not set.` | Step 3: create CLASH's `.env` |
 | `Cannot find module '@/lib/generated/prisma'` | Run `npm install` again (it runs `prisma generate`) |
 | `npx tsc --noEmit` fails right after a checkout | Same: the Prisma client has not been generated yet |
