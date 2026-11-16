@@ -133,9 +133,10 @@ reference CLASH. clash-conference has one reset branch of its own, `19-start`.
 
 ## Slides
 
-Live deck: **[mastering-claude-code.vercel.app](https://mastering-claude-code.vercel.app)**. It is
-redeployed automatically whenever the slides change (a Claude Code `Stop` hook in the workshop
-repository's `.claude/settings.json` runs `.claude/hooks/deploy-slides.sh`).
+Live deck: **[mastering-claude-code.vercel.app](https://mastering-claude-code.vercel.app)**. A Claude
+Code `Stop` hook in the workshop repository's `.claude/settings.json` runs
+`.claude/hooks/deploy-slides.sh`. It redeploys the deck when the slides changed, but only on a
+machine with the Vercel CLI and a linked `slides/.vercel/project.json`.
 
 ```bash
 cd slides
@@ -165,8 +166,8 @@ SLIDES_BASE_URL=http://localhost:3030 npm run task:check
 SLIDES_BASE_URL=http://localhost:3030 npm run task:new -- 15 My new task
 ```
 
-With a localhost override, the linter accepts both existing deployed links and local links. CI
-still uses the deployed URL by default, so a localhost link cannot be committed unnoticed.
+With a localhost override, the linter accepts both existing deployed links and local links.
+Without it, `npm run task:check` accepts only deployed links, so it catches a localhost link left behind.
 
 The speaker notes come in English and German. They live in `slides/notes/en/` and
 `slides/notes/de/`. The slides are the same in both languages. Only the notes change.
