@@ -85,7 +85,7 @@ Say:
 - [click] Fresh subagent starts cold: no history, only the tools its definition allows, no shared cache — first call costs more.
 - [click] Model: a fork always runs on main's model.
 - [click] A fresh subagent takes the model in its model: line, or one Claude passes when it starts it; with neither, main's. So main on Opus can hand the work to a cheaper subagent on Sonnet, for example.
-- Fork mode is on by default in interactive sessions, off under -p and the Agent SDK. On means Claude may start a fork itself: it asks the Agent tool for the fork type. A named agent from a definition file, like security-auditor, stays a fresh subagent.
+- Fork mode is on by default. On means Claude may start a fork itself: it asks the Agent tool for the fork type. A named agent from a definition file, like security-auditor, stays a fresh subagent.
 - You start a fork yourself with /subtask followed by the task.
 - Neither is better — know which one you invoked and why.
 - `/tasks` lists this session's background work: running subagents and forks. A finished one stays listed, marked done, only briefly — open it while it runs, or right after it returns.

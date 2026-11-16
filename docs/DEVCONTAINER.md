@@ -64,7 +64,8 @@ Docker volume keeps that sign-in, also across rebuilds.
 
 On every start the container copies `.devcontainer/managed-settings.json` to
 `/etc/claude-code/managed-settings.json`. Claude Code reads that file above every other settings
-file, so the layers hold for every session in the container. The managed file comes from this
+file, so the deny rules and the sandbox hold for every session in the container. The managed
+file comes from this
 workshop repository: anyone who can edit it can change the rules for the next start. The docs: a policy your team cannot change by editing repository files comes from server-managed settings or MDM instead. Strict mode in
 that file also makes the sandbox admin-required: a repository's `.claude/settings.json` and
 `.claude/settings.local.json` cannot loosen it
@@ -79,6 +80,10 @@ interactive session was not checked.
 
 The sandbox runs on macOS, Linux and WSL2, not on native Windows. In the container it needs
 `bubblewrap` and `socat`, which the container installs.
+
+The docs: in a Linux session with `CLAUDE_CODE_SUBPROCESS_ENV_SCRUB` set, every command runs
+sandboxed, also the ones you type after `!` and the ones in `excludedCommands`. Do not use this
+container to show that those run outside the sandbox.
 
 ## Check each layer
 

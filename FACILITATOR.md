@@ -270,13 +270,13 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   `deleteClash` and `deleteVenue` as a tell.
 - One `security-auditor` with Read/Grep/Glob and a falsifiable brief. `/context` barely
   moves. Say "agent, subagent, fork" once, slowly, and point at the row that appears under
-  `main` below the prompt. Fork mode is on by default in interactive sessions, but a named
+  `main` below the prompt. Fork mode is on by default, but a named
   agent from a definition file stays a fresh subagent. Only `/subtask` (or Claude choosing the
   fork type) starts a fork, and a fork ignores a `tools:` line. `/subtask` exists only while agent
   view is on; on a machine with `disableAgentView` set, `/fork` starts the fork instead. The
   step 9 brief says "read-only" and names no tools on purpose: a fork gets `main`'s exact tool
-  pool, and on macOS, Linux and WSL that pool has no Grep or Glob tool, Claude searches with
-  `find` and `grep` through Bash there. Only a fresh subagent with `tools: Read, Grep, Glob`
+  pool, and on macOS, Linux and WSL that pool has no Grep or Glob tool (docs; seen on Linux): Claude searches with
+  `find` and `grep` through Bash there. A fresh subagent with `tools: Read, Grep, Glob`
   and no Bash gets those two tools back.
 - Live on `08-start`: your CLASH clone has no `.claude/agents` folder until step 5, and a running
   session does not see a folder made after it started. After saving
@@ -404,13 +404,15 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   `scripts/prepare-branches.sh` copies this file into CLASH's `14-start`, and every later branch
   inherits it: after a change to this file, run the script again and push those branches. A
   participant whose own hook from step 6 matches only `Bash` meets this in "Now you", third item.
-- Why, seen on Windows, Claude Code 2.1.325, with `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` set so
+- Why, seen on Windows, Claude Code 2.1.325, with `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` set (the
+  docs: with Git Bash, PowerShell is on by default for claude.ai and Console accounts), so
   Bash and PowerShell were both in the tool set: asked to remove a file, Opus 5.5 went straight
   to `PowerShell(Remove-Item …)` in 1 of 5 runs, and a hook that matched only `Bash` let the
   delete through. Sonnet picked `Bash(rm …)` in 11 of 11 runs. With `Bash|PowerShell`, the
   handler `PowerShell(Remove-Item *)` blocked `Remove-Item` and the PowerShell alias `rm` too.
   Re-run against the answer key file itself: 7 of 7 deletes blocked, three of them Opus 5.5 going
-  to PowerShell on its own. The build-log hook was not tried with PowerShell.
+  to PowerShell on its own. The build-log hook matches only `Bash`, so expect the full log when
+  Claude runs the build through PowerShell. A PowerShell handler for it was not tried.
 - The docs go further: on Windows without Git Bash there is no Bash tool at all, and "A hook
   that matches only `Bash` never fires there."
 - Skills are advice. Hooks are law.
@@ -487,7 +489,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - The script in `workshop-artifacts/16-agent-sdk/` answers one question about the seed data
   with Read, Grep and Glob only. Run it, then read it.
 - The program loads the `.claude/settings.json` of its `cwd`, your CLASH clone, hooks included.
-  Seen on Windows through the Agent SDK 0.3.323 (it bundles Claude Code 2.1.323): a Stop hook from
+  Seen on Windows through the Agent SDK, with Sonnet (version not recorded): a Stop hook from
   that file ran along, and `settingSources: []` in the options turned it off. On CLASH's
   `16-start` that Stop hook is task 13's build gate, so each run ends with `npm run build`. That
   is "hooks carry over", live. Make the build green first: on a red build the gate keeps the turn
@@ -500,8 +502,7 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
   Grep and Glob need no approval inside your CLASH clone. On Linux, naming Grep or Glob in
   `allowedTools` also brings both tools back (docs), but the `Bash` entry in `disallowedTools`
   does that anyway (docs; seen with `--disallowedTools Bash`, Claude Code 2.1.322; macOS and WSL not
-  run). Seen on Windows through the same SDK, with `settingSources: []` so the build gate stayed
-  off: one Read of `prisma/seed.ts` either way.
+  run). Seen on Windows through the same SDK: one Read of `prisma/seed.ts` either way.
 - If someone wants to ship it as a product: the SDK docs on user input (`canUseTool` for
   approvals), session storage (`SessionStore`) and hosting (ephemeral, long-running and hybrid
   sessions) cover the step from one script to a service.
@@ -677,7 +678,8 @@ Scan this before a machine surprises you. "Linux" means a dev container on Docke
   both back and keeps Bash. `--tools` gives exactly the tools you list.
 - **Subagents (Linux).** `tools: Read, Grep, Glob` gives Grep and Glob. `tools: Read, Grep, Glob, Bash`
   starts with Read and Bash only. The same list plus a deny on `Bash` ends with Read, Grep and Glob.
-  `Bash(find *)` in a `tools:` field is not a permission rule: it grants all of Bash.
+  `Bash(find *)` in a `tools:` field is not a permission rule: it grants all of Bash, on Windows too
+  (Claude Code 2.1.325).
 - **Read deny rules.** The Grep tool skips denied files without a word (platform not recorded). On
   Linux, `grep -r` reads them while the sandbox is off, and gets "Permission denied" with the
   sandbox on. Also on Linux, the allow rule `Bash(rg *)` lets `rg --pre` run any program.

@@ -1,7 +1,7 @@
 <!-- @note: task-04-venues-map-people -->
 > Tun:
 > - Branch: 04-start hat schon Auth, Shell und Clashes
-> - Für Geschichte 3 vor diesem Block bereit: ein zweiter CLASH-Clone auf 05-start mit laufendem npm run dev (docs/STORYTELLING.md, Vorbereiten)
+> - Für die agent-browser-Demo (Geschichte 3) vor diesem Block bereit: ein zweiter CLASH-Clone auf 05-start mit laufendem npm run dev (docs/STORYTELLING.md, Vorbereiten)
 
 Sagen:
 - Vier Dinge zu lernen, vier Dinge zu bauen — Venues folgen genau dem Muster, das du schon kennst
@@ -50,7 +50,7 @@ Sagen:
 <!-- @note: let-claude-look-at-the-page -->
 > Tun:
 > - Schritt 7 machen die Teilnehmenden selbst
-> - [click] Demo: Claude bitten, mit agent-browser die Karte zu öffnen, sich als Anna einzuloggen, einen Screenshot zu machen und zu sagen, ob Pins sichtbar sind
+> - [click] Demo in deinem zweiten CLASH-Clone, auf 05-start: Claude bitten, mit agent-browser die Karte zu öffnen, sich als Anna einzuloggen, einen Screenshot zu machen und zu sagen, ob Pins sichtbar sind
 > - Die Befehle zeigen, die es ausführt
 > - Optional: der Docs-Link öffnet direkt bei "Work with images" — dieselbe Idee, eingefügt statt von agent-browser aufgenommen
 

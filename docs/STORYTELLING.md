@@ -63,7 +63,7 @@ git log --oneline -1
 
 Dort steht `workshop: empty start — README, docs/SPEC.md, .gitignore`. Es musste nicht raten: Der Harness hat ihm den Pfad hingelegt. Kein Suchzug, keine verschwendete Kraft, weil die Ausgangslage stimmte. Ab der nächsten Folie legt ihr diesen Context selbst hin, mit @.
 
-**Zweiter Takt**, nach dem Recap, auf "Flags change how a session starts", bei `--effort`: "Mehr Effort ist mehr Kraft. Ob sie mehr findet, messen wir. Im Effort-Lab, mit Sonnet 5.5 und zehn Läufen pro Level, fand high auf einer kleinen Datei nichts, was low nicht fand, und brauchte etwa ein Fünftel mehr Output-Tokens." Den Rest erzählt der Deep Dive selbst.
+**Zweiter Takt**, nach dem Recap, auf "Flags change how a session starts", bei `--effort`: "Mehr Effort ist mehr Kraft. Findet sie auch mehr?" Nimmst du den Deep Dive, misst die Gruppe es selbst, und deine Messung zeigst du erst auf "Ten runs per level end in a tie". Ohne Deep Dive antwortest du hier: "Im Effort-Lab ist es gemessen, mit Sonnet 5.5 und zehn Läufen pro Level: Auf einer kleinen Datei fand high nichts, was low nicht fand, und brauchte etwa ein Fünftel mehr Output-Tokens."
 
 **Dritter Takt**, "Print mode: no interaction, just an answer". Stell den Befehl in den Chat, damit alle ihn kopieren können, und lass ihn selbst in deinem CLASH-Clone laufen:
 
@@ -94,7 +94,7 @@ Diese Geschichte legt drei Fäden, jeder mit einem Satz an seiner Folie, alle na
 
 ### Wenn es hakt
 
-- **Andere Tool-Zeilen:** Claude liest nur README.md, liest nacheinander oder sucht zuerst. Sag: "Modell und Durchlauf ändern die Zeilen." Liest es nacheinander, steht der Pfad auch in der README. Dann ist die README die Quelle, sag das so. Hat es bei deiner Probe geklappt, zeig `/btw What is the last commit message?`: /btw hat keine Tools, eine richtige Antwort kam also aus dem Fenster.
+- **Andere Tool-Zeilen:** Claude liest nur README.md, liest nacheinander oder sucht zuerst. Sag: "Modell und Durchlauf ändern die Zeilen." Liest es nacheinander, steht der Pfad auch in der README. Dann ist die README die Quelle, sag das so. Probier vorher in einer frischen Session in deinem CLASH-Clone auf `01-start`: `/btw What is the last commit message?`. Nennt es die Message, zeig es hier live: /btw hat keine Tools, eine richtige Antwort kam also aus dem Fenster.
 - **Die init-Zeile ist unlesbar lang:** Such darin nach `"tools"`. Oder zeig die Liste aus FACILITATOR.md, "Tools depend on platform and settings".
 - **Alle haben dasselbe System:** Sag, was die andere Seite zeigt, und dass Linux nur in einem Dev Container gemessen ist.
 - **Das Judo-Bild trägt nicht:** "Gleicher Motor für alle. Gewonnen wird mit Fahrwerk, Reifen und Bremsen."
@@ -131,7 +131,7 @@ Diese Geschichte legt drei Fäden, jeder mit einem Satz an seiner Folie, alle na
 
 Teil II heisst Build, und alle wollen Dateien sehen. Der naheliegende Prompt ist "set up a Next.js app". Claude macht daraus etwas Plausibles, und genau das ist das Problem: Niemand weiss, wann es fertig ist, weder du noch Claude.
 
-"Bau mir eine Millionen-Dollar-App." Done when? "Wenn ein Livestream meiner Einfahrt drei neue Familienautos zeigt."
+"Bau mir eine Millionen-Dollar-App. Done when? Wenn ein Livestream meiner Einfahrt drei neue Familienautos zeigt."
 
 Wer jetzt mit mehr Druck arbeitet, denselben Wunsch nur ausführlicher schreibt oder mehr Effort einstellt, drückt gegen einen Partner, der fest auf beiden Beinen steht. Beim Datenmodell wird es teuer: Auf dem Schema baut alles bis Task 05 auf, Auth, Clashes, Venues und die Karte, und später ändert man es nur mit Mühe.
 
@@ -402,7 +402,7 @@ Claude bittet um Freigabe; nach dem Ja scheitert der Befehl mit `EACCES: permiss
 
 Auf "Security: three rules" (`/theory-security-rules`):
 
-Sag: "Hook und Deny-Regel lesen Namen: welches Tool, welcher Befehl, welcher Pfad. Die Sandbox liest keinen Befehl. Sie nimmt die Pfade eurer Read- und Edit-Deny-Regeln, und das Betriebssystem hält sie zu, für jeden Befehl in der Sandbox und alles, was er startet. Darum schützt die Sandbox `.env` in eurem CLASH-Clone erst, wenn `Read(.env*)` unter `permissions.deny` steht. Ein Hook reicht dafür nicht." Für dich: Die Sandbox gibt es laut Doku auf macOS, Linux und WSL2, standardmässig aus; gemessen haben wir sie auf Linux, in einem Dev Container mit Claude Code 2.1.322. Unter nativem Windows gibt es keine: Dort braucht jede Matte ihren Kampfrichter, und wer das Schloss braucht, startet Claude Code in WSL2 oder in einem Container. Zum Schluss auf die letzte Zeile der Folie zeigen: "Die stillste Form von Gesetz ist die kleinste Tool-Liste. Was fehlt, muss niemand verbieten."
+Sag: "Hook und Deny-Regel lesen Namen: welches Tool, welcher Befehl, welcher Pfad. Die Sandbox liest keinen Befehl. Sie nimmt die Pfade eurer Read- und Edit-Deny-Regeln, und das Betriebssystem hält sie zu, für jeden Befehl in der Sandbox und alles, was er startet. Darum schützt die Sandbox `.env` in eurem CLASH-Clone erst, wenn der Pfad verboten ist, etwa mit `Read(.env*)` unter `permissions.deny`. Ein Hook reicht dafür nicht." Für dich: Die Sandbox gibt es laut Doku auf macOS, Linux und WSL2, standardmässig aus; gemessen haben wir sie auf Linux, in einem Dev Container mit Claude Code 2.1.322. Unter nativem Windows gibt es keine: Dort braucht jede Matte ihren Kampfrichter, und wer das Schloss braucht, startet Claude Code in WSL2 oder in einem Container. Zum Schluss auf die letzte Zeile der Folie zeigen: "Die stillste Form von Gesetz ist die kleinste Tool-Liste. Was fehlt, muss niemand verbieten."
 
 ### Rückbezug
 
@@ -537,7 +537,7 @@ Auf "Context is king. You push it, you own it.", nach der letzten Zeile der Note
 
 **Gemessen**
 
-- Hooks im SDK-Programm: Session dieses Workshop-Repositorys, Windows, Sonnet, Agent SDK. Ein Stop-Hook aus der `.claude/settings.json` des `cwd` lief mit, `settingSources: []` schaltete das ab. FACILITATOR.md, Task 16, nennt für diesen Lauf Agent SDK 0.3.323 (Claude Code 2.1.323). Auf CLASHs `16-start` nicht gemessen.
+- Hooks im SDK-Programm: Session dieses Workshop-Repositorys, Windows, Sonnet, Agent SDK. Ein Stop-Hook aus der `.claude/settings.json` des `cwd` lief mit, `settingSources: []` schaltete das ab. Versionen nicht notiert. Auf CLASHs `16-start` nicht gemessen.
 - Bash oder PowerShell: Windows, Claude Code 2.1.325, `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`, beide Tools im Set. Prompt "Delete the file junk.txt in this folder. Use a shell command, not a file tool.": Sonnet 6 von 6 Mal Bash. Neutraler Prompt "Remove junk.txt from this folder.": Sonnet 5 von 5 Mal Bash, Opus 5.5 in 1 von 5 Läufen PowerShell, junk.txt gelöscht. Sonnet zusammen 11 von 11, wie in FACILITATOR.md, Task 13.
 
 **Judo**

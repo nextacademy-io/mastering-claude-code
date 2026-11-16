@@ -1,7 +1,7 @@
 <!-- @note: task-04-venues-map-people -->
 > Do:
 > - Branch: 04-start already has auth, the shell and clashes
-> - For story 3, ready before this block: a second CLASH clone on 05-start with npm run dev running (docs/STORYTELLING.md, Vorbereiten)
+> - For the agent-browser demo (story 3), ready before this block: a second CLASH clone on 05-start with npm run dev running (docs/STORYTELLING.md, Vorbereiten)
 
 Say:
 - Four things to learn, four things to build — venues follow the exact pattern you already know
@@ -50,7 +50,7 @@ Say:
 <!-- @note: let-claude-look-at-the-page -->
 > Do:
 > - Participants do this in step 7
-> - [click] Demo: ask Claude to use agent-browser to open the map, log in as Anna, take a screenshot, say whether pins are visible
+> - [click] Demo in your second CLASH clone, on 05-start: ask Claude to use agent-browser to open the map, log in as Anna, take a screenshot, say whether pins are visible
 > - Show the commands it runs
 > - Optional: the docs link opens at "Work with images" — the same idea, pasted instead of taken by agent-browser
 
