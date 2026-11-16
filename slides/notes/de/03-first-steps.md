@@ -109,13 +109,13 @@ Sagen:
 
 <!-- @note: setup-and-first-conversation -->
 > Tun:
-> - Alle installieren, klonen nextacademy-io/clash und checken 01-start aus (nur die Spec drin), dann das erste Gespräch und /init
+> - Alle prüfen Claude Code, klonen nextacademy-io/clash und checken 01-start aus (nur die Spec drin), dann das erste Gespräch und /init
 > - Den Chat beobachten und auf Leute achten, die nie Enter beim Permission-Prompt drücken, oder die im Terminal tippen, während Claude arbeitet
 > - Übliche Blocker: Node-Version (CLASH braucht 20.19+, 22.12+ oder 24, nicht 21 oder 23), Login, `claude` direkt nach der nativen Installation nicht gefunden (neues Terminal öffnen). Eine EBADENGINE-Warnung, wenn jemand Claude Code mit npm installiert, ist harmlos — es läuft trotzdem
 > - Niemand geht weiter, bevor Claude Code im eigenen CLASH-Clone läuft und CLAUDE.md existiert
 
 Sagen:
-- Installieren, klonen, erste Fragen zur Spec, dann /init
+- Claude Code prüfen, klonen, erste Fragen zur Spec, dann /init
 - Fertig, wenn: Claude Code in deinem CLASH-Clone läuft, es deine Fragen beantwortet hat und CLAUDE.md existiert
 
 <!-- @note: flags-change-how-a-session-starts -->

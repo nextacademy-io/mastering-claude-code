@@ -109,13 +109,13 @@ Say:
 
 <!-- @note: setup-and-first-conversation -->
 > Do:
-> - Everyone installs, clones nextacademy-io/clash, checks out 01-start (only the spec in it), then the first conversation and /init
+> - Everyone checks Claude Code, clones nextacademy-io/clash, checks out 01-start (only the spec in it), then the first conversation and /init
 > - Watch the chat, and watch for people who never press Enter on the permission prompt, or who type in the terminal while Claude works
 > - Usual blockers: Node version (CLASH needs 20.19+, 22.12+ or 24, not 21 or 23), login, `claude` not found right after the native install (open a new terminal). An EBADENGINE warning when someone installs Claude Code with npm is harmless — it still runs
 > - Nobody moves on until Claude Code runs in their CLASH clone and CLAUDE.md exists
 
 Say:
-- Install, clone, first questions about the spec, then /init
+- Check Claude Code, clone, first questions about the spec, then /init
 - Done when: Claude Code runs in your CLASH clone, it answered your questions, and CLAUDE.md exists
 
 <!-- @note: flags-change-how-a-session-starts -->

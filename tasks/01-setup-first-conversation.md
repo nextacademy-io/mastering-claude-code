@@ -28,8 +28,9 @@ does not exist yet. That is the safest place to learn how it thinks.
    node --version
    git --version
    ```
-2. Install Claude Code and log in. You need version 2.1.252 or newer. Part II also uses the
-   GitHub CLI (`gh`); install it now if you do not have it.
+2. Check Claude Code and log in. You need version 2.1.252 or newer. You installed it with
+   [`docs/SETUP.md`](../docs/SETUP.md); if `claude --version` fails or shows an older version,
+   install it now. Part II also uses the GitHub CLI (`gh`); install it now if you do not have it.
 
    On macOS, Linux or WSL:
    ```bash

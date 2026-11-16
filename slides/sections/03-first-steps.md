@@ -140,7 +140,7 @@ Read @docs/SPEC.md.
 layout: task
 number: "01"
 heading: "Setup and first conversation"
-goal: "Install Claude Code, clone the empty CLASH repo, and have your first conversation about the spec."
+goal: "Check Claude Code, clone the empty CLASH repo, and have your first conversation about the spec."
 mode: "you do"
 success: "Claude Code runs in your CLASH clone, it answered your questions about docs/SPEC.md, and CLAUDE.md exists."
 branch: "01-start"
