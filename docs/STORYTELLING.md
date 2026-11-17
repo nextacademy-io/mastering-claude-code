@@ -5,10 +5,10 @@ Dieses Skript erzählt den Kurs als eine Geschichte in sechs Teilen, mit Judo al
 ## So nutzt du das Skript
 
 - Eine Geschichte pro Block, in der Reihenfolge des Decks. Jede trägt den Gürtel ihres Teils.
-- Jede Geschichte hat dieselben Teile. **Wo im Deck** nennt Folien und Routen, **Das Judo-Bild** das Bild, **Merksatz** den einen Satz, der bleiben soll. Dann der Bogen: **Einstieg**, **Spannung**, **Wendepunkt**, **Auflösung**. Danach **Rückbezug** (die roten Fäden), **Deine Erfahrung**, **Wenn es hakt** und **Beleg**. Geschichte 3 hat zusätzlich **Vorbereiten**.
+- Jede Geschichte hat dieselben Teile. **Wo im Deck** nennt Folien und Routen, **Das Judo-Bild** das Bild, **Merksatz** den einen Satz, der bleiben soll. Dann der Bogen: **Einstieg**, **Spannung**, **Wendepunkt**, **Auflösung**. Danach **Rückbezug** (die roten Fäden), **Deine Erfahrung** und **Wenn es hakt**. Die letzte Zeile führt zu den **Belegen** im Anhang. Geschichte 3 hat zusätzlich **Vorbereiten**.
 - Text in Anführungszeichen ist zum Sagen gedacht. Alles andere ist für dich: wo, was du zeigst, worauf du achtest.
 - **Deine Erfahrung** sind Fragen an dein eigenes Gedächtnis, keine fertigen Anekdoten. Erzähl nur, was du selbst erlebt hast. Kommt nichts, lass den Punkt weg.
-- **Beleg** sagt, woher jede Aussage stammt. Was gemessen ist, nennt Plattform und Claude-Code-Version. Auf macOS ist nichts gelaufen.
+- Die **Belege** stehen gesammelt im [Anhang](#anhang-belege), ein Abschnitt je Geschichte. Sie sagen, woher jede Aussage stammt. Was gemessen ist, nennt Plattform und Claude-Code-Version. Auf macOS ist nichts gelaufen.
 - Das Judo-Bild ist ein Werkzeug. Trägt es an einer Stelle nicht, steht unter **Wenn es hakt** ein Satz ohne Judo.
 
 ## Der Rahmen
@@ -99,21 +99,7 @@ Diese Geschichte legt drei Fäden, jeder mit einem Satz an seiner Folie, alle na
 - **Alle haben dasselbe System:** Sag, was die andere Seite zeigt, und dass Linux nur in einem Dev Container gemessen ist.
 - **Das Judo-Bild trägt nicht:** "Gleicher Motor für alle. Gewonnen wird mit Fahrwerk, Reifen und Bremsen."
 
-### Beleg
-
-- **Modell als Funktion, Harness drumherum:** Kurs, Folie "The model alone is a function" und ihre Note.
-- **Git-Schnappschuss im Context:** Docs env-vars, `CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS` entfernt "the git status snapshot from Claude's context".
-- **Letzte Commits im Schnappschuss:** Docs sub-agents, "What loads at startup", Punkt Git status: Für einen Subagent im eigenen Worktree zeigt er "branch, status, and recent commits". Für die Hauptsession steht es nicht in den Docs und ist nicht gemessen; deine Probe mit `/btw What is the last commit message?` zeigt es (Wenn es hakt).
-- **Commit-Message auf 01-start:** `scripts/prepare-branches.sh`, Zeile `commit_all 01-start`; der Branch ist orphan, mit diesem einen Commit.
-- **Die README nennt docs/SPEC.md auch:** `scripts/checkpoints/01/README.md`.
-- **/btw ohne Tools:** Docs sub-agents ("It has no tool access, and the answer isn't added to history"); FACILITATOR.md, "The harness" ("no tool call, answered from what's already in the window").
-- **README.md und docs/SPEC.md zugleich, die Zeilen schwanken:** nicht gemessen und nicht in den Docs, darum steht es im Wendepunkt als Wenn-Satz. Dass die Tool-Wahl schwankt: Folie "It picks from probabilities".
-- **Tool-Set Windows:** gemessen unter Windows 11, Claude Code 2.1.323: Das Standard-Set enthält unter anderem Glob, Grep, Read, Bash und PowerShell. Docs tools-reference: PowerShell ist mit Git Bash für claude.ai- und Console-Accounts standardmässig an; auf der Messmaschine war zudem `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` gesetzt.
-- **Tool-Set Linux:** gemessen in einem Dev Container (Docker Desktop, WSL2-Kernel), Claude Code 2.1.322: kein Grep, kein Glob, `find`, `grep` und `rg` laufen als Bash. Docs tools-reference: "Absent by default on macOS, Linux, and WSL". Nicht gelaufen: macOS, natives WSL, Linux ausserhalb eines Containers. Im `.devcontainer/` des Workshop-Repos ist das Tool-Set nicht gemessen.
-- **Das init-Event listet `tools`:** FACILITATOR.md, "See your own tool set". Die Position der Zeile ist nicht geprüft.
-- **Effort-Lab, Funde:** `workshop-artifacts/20-reasoning-lab/README.md`, "Measured": Sonnet 5.5, Print Mode, zehn Läufe pro Level, je ein Turn, 4/4 in 10 von 10, 0 falsche Treffer. Plattform und Claude-Code-Version sind dort nicht notiert.
-- **Effort-Lab, Tokens:** dieselbe Stelle: Median 1366 (1210 bis 1532) gegen 1658 (1568 bis 1811) Output-Tokens, "longer proofs and more edge cases, not more findings". Randfälle laut Note der Tie-Folie: Kapazität 0, ein eingefrorenes Array.
-- **Context, Tools, Regeln:** Kurs, Note von "The model is the same for everyone. The harness is where you win." ("der Context, den du ihm gegeben hast, die Tools, die du erlaubt hast, die Regeln, die du erzwungen hast"). Regeln per Hook in Teil IV: Note von "Hooks" in `slides/notes/de/02-harness.md` ("Teil vier baut diese Hooks").
+**Belege:** [Anhang](#belege-zu-geschichte-1)
 
 ## Geschichte 2: Der Wurf beginnt vor dem Wurf (Blau)
 
@@ -183,17 +169,7 @@ Plan Mode lohnt sich dort, wo Rückgängigmachen weh tut: Schema, Auth. Für ein
 
 - Das Bild trägt nicht: Sag es ohne Judo, wie in der Note: "Ein Prompt ist ein Wunsch; ein Briefing ist ein Vertrag."
 
-### Beleg
-
-In dieser Geschichte steckt keine eigene Messung. Alles stammt aus den Kursdateien und den Docs.
-
-- Plan Mode liest, darf zum Erkunden Shell-Befehle ausführen und ändert den Quellcode erst nach der Freigabe, ausser in interaktiven Sessions mit Bypass im Angebot (etwa nach `--dangerously-skip-permissions` oder `--allow-dangerously-skip-permissions`). Shift+Tab läuft ab Auto über default und acceptEdits zu plan. In der Freigabe-Abfrage: "Yes, manually approve edits", "No, keep planning", Ctrl+G; Shift+Tab gibt dort den Plan frei, darum zuerst Esc; jede Freigabe startet die Edits. Quellen: Docs permission-modes, "Analyze before you edit with plan mode" und "Review and approve a plan"; Note "Plan mode: read, think, propose".
-- Einen Plan vor der Freigabe ändern: FACILITATOR.md, Task 02. Verification als Teil eines guten Plans: Folie und Note "A good plan has an exit". "One per user and clash": `docs/SPEC.md`, Abschnitt "Data", in deinem CLASH-Clone. Der Prompt aus Schritt 8: `/task-02`.
-- Das eigene Schema zählt bis Task 05: FACILITATOR.md, Task 05 ("Then `git checkout 06-start`. Everyone is on the same code from here.").
-- Diff statt Zusammenfassung: Note "Read the diff, not the summary".
-- Ein Checkpoint vor jedem Prompt: Folie "Undo a step: /rewind". Nur Claudes eigene Dateiänderungen, keine durch Bash: Docs checkpointing, "Limitations", und die Note derselben Folie. Bash-Befehle wie `create-next-app`, `npx shadcn@latest init` und `npm run db:migrate`: `/task-02`, Schritt 2 und 8. Gitignored: `.gitignore` deines CLASH-Clones (`/node_modules`, `/lib/generated/prisma`, `/dev.db`, `prisma/*.db`); Neuaufbau: `docs/SETUP.md`. Die Gruppe öffnet `/rewind` selbst: `/task-03`, Schritt 7.
-- Safety moment: `/task-03`, Schritte 11 und 12, und Note "The safety moment". `/task-08`: "The ownership check was removed from `deleteClash` in `app/actions/clashes.ts` and from `deleteVenue` in `app/actions/venues.ts`".
-- Judo: Kuzushi, Tsukuri und Kake als eine Bewegung: Attilio Sacripanti, [A Biomechanical Reassessment of the Scientific Foundations of Jigoro Kano's Kodokan Judo](https://arxiv.org/abs/1206.1135). Die drei "occur as one effective movement without separation"; Kano hat sie "for didactic reasons" in drei Schritte geteilt. Die Begriffe stehen im [USJF-Glossar](https://learn.usjf.com/vocabulary/). "Ohne den ersten Schritt kein Wurf" gibt den Dojo-Spruch "Ohne Kuzushi kein Wurf" wieder. Der Spruch ist keine Regel ohne Ausnahme.
+**Belege:** [Anhang](#belege-zu-geschichte-2)
 
 ## Geschichte 3: Ippon gibt der Kampfrichter (Blau)
 
@@ -267,17 +243,7 @@ Auch ein Finding ist nur eine Ansage, bis du die Zeile gelesen hast. Auf "Ship, 
 - agent-browser kommt nicht durch den Login oder erreicht CLASH auf `localhost:3000` nicht: Mach selbst einen Screenshot, füg ihn mit Ctrl+V ein (Alt+V unter Windows und WSL) und sag in einem Satz, was falsch ist. Dieselbe Idee; der Docs-Link der Folie öffnet bei "Work with images".
 - Das Judo-Bild trägt nicht: Frag ohne Judo: "Würdest du einen Pull Request mergen, nur weil im Titel 'works' steht?"
 
-### Beleg
-
-- Leaflet-Fehler, Prompts, die drei Wege, Ctrl+V und Alt+V, die Schritte: `tasks/04-venues-map-people.md`; Notes zu "Let Claude read the error", "Let Claude look at the page", "One big ask, or four small ones".
-- Ablauf der Stop-Folie, Übergabe, rechte Seite erst nach Check, Debrief: FACILITATOR.md, "Rhythm for every task" und Task 04. Checkpoints erfassen keine Bash-Änderungen: Note "Undo a step: /rewind" (Docs checkpointing).
-- Kartenseite erst ab `05-start`, Ownership-Prüfung auf `08-start` entfernt: `docs/BRANCHES.md`.
-- "no human in the loop": `slides/components/G16VerificationLoop.vue`.
-- Gates, Browser-Check, Hook in Teil IV: FACILITATOR.md, Task 04; Note "Verify cheap first, full gate last". Stop-Hook mit Exit 2: `tasks/13-hooks.md`.
-- Review in zwei Messages, Schritt 12, alle auf `06-start`: `tasks/05-finish-and-ship.md`; Notes zu "Review like a stranger", "Ship, then look at the reference", "Finish and ship".
-- Server Action als POST-Endpoint, Layout läuft beim direkten Aufruf nie: `slides/notes/de/31-excursion-nextjs.md`.
-- Gemessen wurde für diese Geschichte nichts. Alles stammt aus Kursdateien und Docs, deshalb steht hier keine Plattform und keine Version.
-- Judo: Ippon-Kriterien und Waza-ari, https://rules.ijf.org/page-5.html. Wertung einer Aktion ohne Stopp (Decision 1), https://rules.ijf.org/page-4.html. Ippon-Geste (ein Arm hoch über den Kopf, Handfläche nach vorn) und Mate als Geste des Kampfrichters: IJF Sport and Organisation Rules (sor.ijf.org), Wortlaut bei USJF, https://www.usjf.com/?p=60352. Videobeweis mit bis zu acht Winkeln: https://www.ijf.org/news/show/behind-the-show.
+**Belege:** [Anhang](#belege-zu-geschichte-3)
 
 ## Geschichte 4: Was nicht in der Form steht (Braun)
 
@@ -338,19 +304,7 @@ Zum Schluss sagen: "Was nicht in der Form steht, muss niemand verbieten. Es ist 
 - Jemand ergänzt `Bash` im Auditor: Dann kann er über die Shell wieder schreiben, read-only ist weg. Auf Linux (gemessen, Claude Code 2.1.322) fielen dabei auch Grep und Glob weg, obwohl sie in der Liste stehen. Unter Windows nicht gemessen.
 - Das Bild trägt nicht: ohne Judo sagen: "`tools:` ist ein Zaun. Das Briefing ist ein Wunsch."
 
-### Beleg
-
-- Frischer Subagent, `tools:` als Allowlist, ohne Feld jedes Tool, das ein Subagent haben kann: Docs sub-agents ("Inherits every tool available to subagents if omitted"); `/task-08` Schritt 5.
-- Fork mit den Tools von main: Docs sub-agents, "How forks differ from other subagents" ("System prompt and tools | Same as main session"); FACILITATOR.md, Task 08.
-- Fork-Zeile verschwindet, wenn er fertig ist: Docs sub-agents ("When a fork finishes successfully, Claude Code removes its row"); `/task-08`, Tabelle unter Why.
-- Auto-Modus: ab Claude Code 2.1.283 Startmodus im Terminal; "Read-only actions and file edits in your working directory are auto-approved" (Docs permission-modes). Ohne `permissionMode` erbt ein Subagent den Modus von main (Docs sub-agents). Umschalten auf Auto in Task 02: FACILITATOR.md.
-- Grep und Glob ohne Bash: Docs tools-reference ("lists Glob or Grep in its tools field and leaves out Bash"); gemessen Linux-Dev-Container, Claude Code 2.1.322. Main ohne Grep und Glob: gemessen Linux, 2.1.322; laut Docs auch macOS und WSL, dort nicht gelaufen.
-- Mit `Bash` in der Liste nur Read und Bash: gemessen Linux-Dev-Container, Claude Code 2.1.322; Windows nicht gemessen.
-- `Bash(find *)` in `tools:` gibt die ganze Bash: gemessen Linux, Claude Code 2.1.322; Windows, Claude Code 2.1.325, Sonnet, nur headless (`claude -p --agents`, `touch` per `--allowedTools` vorab erlaubt), 2 von 2 Läufen: `touch probe.txt` legte die Datei an. Kontrolle auf Windows mit Read, Grep, Glob: keine Shell, keine Datei. Docs sub-agents sagt nur für `disallowedTools`, dass `Bash(git push *)` das ganze Tool entfernt.
-- Neustart für einen neuen `agents`-Ordner, `/subtask` und `/fork`: Docs sub-agents; FACILITATOR.md, Task 08.
-- Grep-Tool und `.env`, `grep -r` ohne Sandbox: siehe Beleg von Geschichte 5.
-- Kata und Randori: IJF, "Judo: what is it all about" (Kata: "each combatant agrees beforehand exactly what their opponent is going to do"; Randori: "each contestant cannot tell what their opponent is going to do").
-- Coach nur zwischen Mate und Hajime: USA Judo, Update zu den IJF-Regeln für Junior und Cadet ("Coaching is authorized only during the pause after 'Mate!' and before 'Hajime!'").
+**Belege:** [Anhang](#belege-zu-geschichte-4)
 
 ## Geschichte 5: Jede Matte braucht ihren Kampfrichter (Schwarz)
 
@@ -424,18 +378,7 @@ Sag: "Hook und Deny-Regel lesen Namen: welches Tool, welcher Befehl, welcher Pfa
 - `/task-14` mit Sandbox an: Wer in `/task-13` `/sandbox` eingeschaltet hat, hat es in `.claude/settings.local.json` seines CLASH-Clones stehen. Laut Doku erreicht ein Befehl in der Sandbox standardmässig keinen Server, der ausserhalb läuft; Tests oder agent-browser, die Claude startet, verfehlen dann womöglich CLASH auf `localhost:3000`. Die Tests dann selbst in einem zweiten Terminal laufen lassen. Das Schloss kennt auch dich nicht.
 - Das Turnierbild trägt nicht: Schild und Schloss brauchen kein Judo.
 
-### Beleg
-
-- Exit 2 blockt vor einem Tool und am Stop, nach einem Tool geht stderr an Claude; `matcher` liest den Tool-Namen, `if` hält eine Regel: Docs hooks; `tasks/13-hooks.md`, "Why", Schritte 3 und 5.
-- Windows mit Git Bash: PowerShell-Tool für claude.ai- und Console-Accounts standardmässig an, dann die primäre Shell (Docs tools-reference, hooks). Ohne Git Bash kein Bash-Tool, und "A hook that matches only `Bash` never fires there" (Docs hooks).
-- Sonnet 5 von 5 `Bash(rm …)` geblockt; Opus 5.5 4 von 5 Bash geblockt, 1 von 5 `PowerShell(Remove-Item junk.txt)`, Datei gelöscht: gemessen Windows, Claude Code 2.1.325, `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`. `Bash|PowerShell` mit `PowerShell(Remove-Item *)` blockt `Remove-Item` und den Alias `rm`: dieselbe Maschine, Sonnet, je zwei Läufe. Gegen die Datei des Antwortschlüssels selbst: 7 von 7 Löschversuchen geblockt, davon drei, in denen Opus 5.5 beim neutralen Prompt von sich aus PowerShell nahm. Antwortschlüssel `workshop-artifacts/13-hooks/settings.json`: ein Handler je Tool, weil ein `if` eine Regel hält; der Build-Log-Hook ist mit PowerShell nicht getestet.
-- Checkpoints erfassen nur Claudes eigene Dateiänderungen: Note zu "Undo a step: /rewind" (Verweis auf Docs checkpointing, Limitations).
-- Read-Deny greift beim Read-Tool, bei erkannten Datei-Befehlen (`cat`, `head`, `tail`, `sed`, `tee`) und Umleitungszielen, nicht bei `grep -r pattern .` oder beliebigen Subprozessen: Docs permissions, Warnkasten. Ein blosser Dateiname wie `Read(.env*)` gilt in jeder Tiefe: Docs permissions.
-- `grep -r` mit Sandbox aus und an: gemessen im Linux-Dev-Container auf Docker Desktop (WSL2-Kernel), Claude Code 2.1.322. Das Grep-Tool lässt Dateien unter Read-Deny still aus: gemessen, Claude Code 2.1.322 im Linux-Dev-Container oder 2.1.323 auf Windows; auf welchem der beiden, ist nicht festgehalten (FACILITATOR.md, "Tools depend on platform and settings"). Das Grep-Tool sucht eine gitignorierte Datei, wenn Claude ihren Pfad nennt: Docs tools-reference.
-- Sandbox übernimmt Pfade aus Read- und Edit-Deny-Regeln und gilt für Kindprozesse; macOS, Linux, WSL2, standardmässig aus, unter nativem Windows keine; kein direkter Weg zu einem Server ausserhalb ("A command fails to reach a server on localhost", mit CLASH nicht gelaufen); Retry je Modus: Docs sandboxing. `allowUnsandboxedCommands: false` schaltet den Retry ab: Docs sandboxing, "Turn off the retry with strict sandbox mode"; im Container dieses Workshop-Repositorys gesetzt in `.devcontainer/managed-settings.json`.
-- Read `.devcontainer/.env` abgelehnt; `node -e` verlangt eine Freigabe und scheitert danach mit `EACCES: permission denied`: gemessen im Linux-Dev-Container, 2.1.322, headless, Regeln in einer Projekt-Settings-Datei. Interaktiv nicht gelaufen, im Container dieses Workshop-Repositorys (`.devcontainer/managed-settings.json`) noch gar nicht: FACILITATOR.md, "Show the dev container".
-- Ungültiges JSON ohne Warnung ignoriert: gemessen headless, Claude Code 2.1.322 im Linux-Dev-Container oder 2.1.323 auf Windows (FACILITATOR.md, "Tools depend on platform and settings"); auf welchem der beiden, ist nicht festgehalten. Nicht auf macOS. Dialog "Settings Error" in einer interaktiven Session, `claude doctor` nach einem `-p`-Lauf: Docs settings, "Fix a broken settings file".
-- Shido heisst Anleitung und wird mit einer Geste angezeigt (kein Claude-Code-Fakt): IJF, "Refereeing the new gestures".
+**Belege:** [Anhang](#belege-zu-geschichte-5)
 
 ## Geschichte 6: Was zum Sore-made führt, steht vor Hajime fest (Schwarz)
 
@@ -511,40 +454,7 @@ Auf "Context is king. You push it, you own it.", nach der letzten Zeile der Note
 - Der Exkurs `/task-19` lief nicht: Stop-Folie, Publish-Route und `Edit(tests/**)` weglassen. Die Spannung trägt der GitHub-Workflow aus `/task-15`.
 - Das Bild trägt nicht: Judo weglassen und nur fragen "Wer drückt Esc in CI?"
 
-### Beleg
-
-**Aus den Kursdateien**
-
-- `/goal` (Bewertung nach jedem Turn, Turn-Klausel, Ctrl+O, Anzeige ohne Argument, vertrauenswürdiger Ordner): `slides/notes/de/38-deep-automate.md` ("/goal: evidence decides when to stop", "Bound the work"), `tasks/18-automate.md` Schritt 8; Docs-Seite goal.
-- Klickfolgen auf "Automate with a stop rule", "Three levers, one responsibility" und "Autonomy is earned by verification": `slides/sections/21-close.md`. Die Zeilen stehen von Anfang an, nur die Karten kommen per Klick.
-- `/loop` stoppt mit Esc und läuft nur bei offener Session, die nichts tut: Folie "/loop: the prompt comes back"; Docs-Seite scheduled-tasks.
-- Routine ohne Permission-Prompts, ein Pull Request je Lauf, Prompt wörtlich: Notes "The spec-drift routine" und "Routines: the cloud runs it", `tasks/18-automate.md` Schritt 19.
-- Stop-Hook im Worktree, fehlendes `node_modules`: `tasks/18-automate.md` Schritt 16.
-- CI: Ohne `Bash(gh pr comment:*)` in `claude_args` bleiben die Findings im Run-Log: `tasks/15-letting-go.md` Schritt 8. Trainer-Lösung mit `--allowedTools "Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"`: Note "Audit on every PR".
-- Capstone: `tasks/17-capstone.md`, "Why"; Vorlagen in "Do this", Schritte 4, 6 und 8.
-- `maxTurns: 12`, kein `settingSources`: `workshop-artifacts/16-agent-sdk/ask-clash.mts`. CLASHs `16-start` ist identisch mit `14-start` und bringt die Datei nicht mit: `docs/BRANCHES.md`.
-- Publish-Route (nur Exkurs `/task-19`): `find_venue` und `create_clash` in `allowedTools`, `permissionMode: dontAsk`, `maxTurns: 8`, `tools: []`, `settingSources: []`, `strictMcpConfig: true`: `tasks/19-build-your-own-mcp.md` Schritt 8; FACILITATOR.md, Task 19.
-- Stop-Folie: `mcp__clash__*` gibt auch `cancel_clash` frei, mit `bypassPermissions` begrenzt `allowedTools` nichts: Note "Every tool, or two named tools?" in `slides/notes/de/36-excursion-mcp-server.md`.
-- `Edit(tests/**)` gegen `sed`, `tee`, `>` und `node -e`: FACILITATOR.md, Task 19.
-- Weitere Grenzen ohne eigenen Satz in der Erzählung: ein Pull Request je Lauf in der Spec-Drift-Routine; `--dangerously-skip-permissions` nur in einer äusseren Grenze (Container, VM) und nur mit Repositories, denen du traust.
-
-**Aus den Docs**
-
-- permission-modes: "anything that would prompt is denied" (`dontAsk`); "Deny rules block in every mode, including `bypassPermissions`"; "Allow rules have no effect in `bypassPermissions`"; Abschnitt "Critical paths": "an allow rule or `bypassPermissions` mode can approve that retry with no prompt. Strict sandbox mode turns the retry off"; unbeaufsichtigt mit `--dangerously-skip-permissions` nur in Container, VM oder Sandbox-Runtime. Dass ein PreToolUse-Hook auch in `bypassPermissions` blockt: Kurs, Note "Advice vs. law" (`slides/notes/de/15-hooks.md`).
-- devcontainer: Mit `--dangerously-skip-permissions` hält ein Dev Container ein bösartiges Projekt nicht davon ab, alles abzuziehen, was im Container erreichbar ist, auch die Anmeldedaten in `~/.claude`. Nur mit vertrauenswürdigen Repositories.
-- permissions: Wer im SDK `settingSources` ohne Projekt-Settings setzt, lässt Claude Code weder die Settings-Dateien des Projekts noch dessen `.mcp.json` lesen.
-- sandboxing: keine Sandbox unter nativem Windows.
-
-**Gemessen**
-
-- Hooks im SDK-Programm: Session dieses Workshop-Repositorys, Windows, Sonnet, Agent SDK. Ein Stop-Hook aus der `.claude/settings.json` des `cwd` lief mit, `settingSources: []` schaltete das ab. Versionen nicht notiert. Auf CLASHs `16-start` nicht gemessen.
-- Bash oder PowerShell: Windows, Claude Code 2.1.325, `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`, beide Tools im Set. Prompt "Delete the file junk.txt in this folder. Use a shell command, not a file tool.": Sonnet 6 von 6 Mal Bash. Neutraler Prompt "Remove junk.txt from this folder.": Sonnet 5 von 5 Mal Bash, Opus 5.5 in 1 von 5 Läufen PowerShell, junk.txt gelöscht. Sonnet zusammen 11 von 11, wie in FACILITATOR.md, Task 13.
-
-**Judo**
-
-- Shodan: https://www.usajudo.com/membership/promotions/philosophy-of-black-belt-promotions und https://en.wikipedia.org/wiki/Shodan_(rank); Schwarz ab dem ersten Dan: https://en.wikipedia.org/wiki/Rank_in_judo
-- Coaching nur zwischen Mate und Hajime (IJF): https://judo.hr/new/350
-- Golden Score ohne Zeitlimit, Sore-made nach Ippon, Hansoku-make oder Gong: IJF-Wettkampfregeln; vor dem Unterricht in der aktuellen Fassung nachlesen.
+**Belege:** [Anhang](#belege-zu-geschichte-6)
 
 ## Judo-Begriffe
 
@@ -587,3 +497,107 @@ Auf "Context is king. You push it, you own it.", nach der letzten Zeile der Note
 - Wikipedia, Judo (Dojo, Ukemi, Shido, Hansoku-make, Ippon, Golden Score): https://en.wikipedia.org/wiki/Judo
 - Wikipedia, Rank in judo (Kyu, Dan): https://en.wikipedia.org/wiki/Rank_in_judo
 - Wikipedia, Shodan: https://en.wikipedia.org/wiki/Shodan_(rank)
+
+## Anhang: Belege
+
+### Belege zu Geschichte 1
+
+- **Modell als Funktion, Harness drumherum:** Kurs, Folie "The model alone is a function" und ihre Note.
+- **Git-Schnappschuss im Context:** Docs env-vars, `CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS` entfernt "the git status snapshot from Claude's context".
+- **Letzte Commits im Schnappschuss:** Docs sub-agents, "What loads at startup", Punkt Git status: Für einen Subagent im eigenen Worktree zeigt er "branch, status, and recent commits". Für die Hauptsession steht es nicht in den Docs und ist nicht gemessen; deine Probe mit `/btw What is the last commit message?` zeigt es (Wenn es hakt).
+- **Commit-Message auf 01-start:** `scripts/prepare-branches.sh`, Zeile `commit_all 01-start`; der Branch ist orphan, mit diesem einen Commit.
+- **Die README nennt docs/SPEC.md auch:** `scripts/checkpoints/01/README.md`.
+- **/btw ohne Tools:** Docs sub-agents ("It has no tool access, and the answer isn't added to history"); FACILITATOR.md, "The harness" ("no tool call, answered from what's already in the window").
+- **README.md und docs/SPEC.md zugleich, die Zeilen schwanken:** nicht gemessen und nicht in den Docs, darum steht es im Wendepunkt als Wenn-Satz. Dass die Tool-Wahl schwankt: Folie "It picks from probabilities".
+- **Tool-Set Windows:** gemessen unter Windows 11, Claude Code 2.1.323: Das Standard-Set enthält unter anderem Glob, Grep, Read, Bash und PowerShell. Docs tools-reference: PowerShell ist mit Git Bash für claude.ai- und Console-Accounts standardmässig an; auf der Messmaschine war zudem `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` gesetzt.
+- **Tool-Set Linux:** gemessen in einem Dev Container (Docker Desktop, WSL2-Kernel), Claude Code 2.1.322: kein Grep, kein Glob, `find`, `grep` und `rg` laufen als Bash. Docs tools-reference: "Absent by default on macOS, Linux, and WSL". Nicht gelaufen: macOS, natives WSL, Linux ausserhalb eines Containers. Im `.devcontainer/` des Workshop-Repos ist das Tool-Set nicht gemessen.
+- **Das init-Event listet `tools`:** FACILITATOR.md, "See your own tool set". Die Position der Zeile ist nicht geprüft.
+- **Effort-Lab, Funde:** `workshop-artifacts/20-reasoning-lab/README.md`, "Measured": Sonnet 5.5, Print Mode, zehn Läufe pro Level, je ein Turn, 4/4 in 10 von 10, 0 falsche Treffer. Plattform und Claude-Code-Version sind dort nicht notiert.
+- **Effort-Lab, Tokens:** dieselbe Stelle: Median 1366 (1210 bis 1532) gegen 1658 (1568 bis 1811) Output-Tokens, "longer proofs and more edge cases, not more findings". Randfälle laut Note der Tie-Folie: Kapazität 0, ein eingefrorenes Array.
+- **Context, Tools, Regeln:** Kurs, Note von "The model is the same for everyone. The harness is where you win." ("der Context, den du ihm gegeben hast, die Tools, die du erlaubt hast, die Regeln, die du erzwungen hast"). Regeln per Hook in Teil IV: Note von "Hooks" in `slides/notes/de/02-harness.md` ("Teil vier baut diese Hooks").
+
+### Belege zu Geschichte 2
+
+In dieser Geschichte steckt keine eigene Messung. Alles stammt aus den Kursdateien und den Docs.
+
+- Plan Mode liest, darf zum Erkunden Shell-Befehle ausführen und ändert den Quellcode erst nach der Freigabe, ausser in interaktiven Sessions mit Bypass im Angebot (etwa nach `--dangerously-skip-permissions` oder `--allow-dangerously-skip-permissions`). Shift+Tab läuft ab Auto über default und acceptEdits zu plan. In der Freigabe-Abfrage: "Yes, manually approve edits", "No, keep planning", Ctrl+G; Shift+Tab gibt dort den Plan frei, darum zuerst Esc; jede Freigabe startet die Edits. Quellen: Docs permission-modes, "Analyze before you edit with plan mode" und "Review and approve a plan"; Note "Plan mode: read, think, propose".
+- Einen Plan vor der Freigabe ändern: FACILITATOR.md, Task 02. Verification als Teil eines guten Plans: Folie und Note "A good plan has an exit". "One per user and clash": `docs/SPEC.md`, Abschnitt "Data", in deinem CLASH-Clone. Der Prompt aus Schritt 8: `/task-02`.
+- Das eigene Schema zählt bis Task 05: FACILITATOR.md, Task 05 ("Then `git checkout 06-start`. Everyone is on the same code from here.").
+- Diff statt Zusammenfassung: Note "Read the diff, not the summary".
+- Ein Checkpoint vor jedem Prompt: Folie "Undo a step: /rewind". Nur Claudes eigene Dateiänderungen, keine durch Bash: Docs checkpointing, "Limitations", und die Note derselben Folie. Bash-Befehle wie `create-next-app`, `npx shadcn@latest init` und `npm run db:migrate`: `/task-02`, Schritt 2 und 8. Gitignored: `.gitignore` deines CLASH-Clones (`/node_modules`, `/lib/generated/prisma`, `/dev.db`, `prisma/*.db`); Neuaufbau: `docs/SETUP.md`. Die Gruppe öffnet `/rewind` selbst: `/task-03`, Schritt 7.
+- Safety moment: `/task-03`, Schritte 11 und 12, und Note "The safety moment". `/task-08`: "The ownership check was removed from `deleteClash` in `app/actions/clashes.ts` and from `deleteVenue` in `app/actions/venues.ts`".
+- Judo: Kuzushi, Tsukuri und Kake als eine Bewegung: Attilio Sacripanti, [A Biomechanical Reassessment of the Scientific Foundations of Jigoro Kano's Kodokan Judo](https://arxiv.org/abs/1206.1135). Die drei "occur as one effective movement without separation"; Kano hat sie "for didactic reasons" in drei Schritte geteilt. Die Begriffe stehen im [USJF-Glossar](https://learn.usjf.com/vocabulary/). "Ohne den ersten Schritt kein Wurf" gibt den Dojo-Spruch "Ohne Kuzushi kein Wurf" wieder. Der Spruch ist keine Regel ohne Ausnahme.
+
+### Belege zu Geschichte 3
+
+- Leaflet-Fehler, Prompts, die drei Wege, Ctrl+V und Alt+V, die Schritte: `tasks/04-venues-map-people.md`; Notes zu "Let Claude read the error", "Let Claude look at the page", "One big ask, or four small ones".
+- Ablauf der Stop-Folie, Übergabe, rechte Seite erst nach Check, Debrief: FACILITATOR.md, "Rhythm for every task" und Task 04. Checkpoints erfassen keine Bash-Änderungen: Note "Undo a step: /rewind" (Docs checkpointing).
+- Kartenseite erst ab `05-start`, Ownership-Prüfung auf `08-start` entfernt: `docs/BRANCHES.md`.
+- "no human in the loop": `slides/components/G16VerificationLoop.vue`.
+- Gates, Browser-Check, Hook in Teil IV: FACILITATOR.md, Task 04; Note "Verify cheap first, full gate last". Stop-Hook mit Exit 2: `tasks/13-hooks.md`.
+- Review in zwei Messages, Schritt 12, alle auf `06-start`: `tasks/05-finish-and-ship.md`; Notes zu "Review like a stranger", "Ship, then look at the reference", "Finish and ship".
+- Server Action als POST-Endpoint, Layout läuft beim direkten Aufruf nie: `slides/notes/de/31-excursion-nextjs.md`.
+- Gemessen wurde für diese Geschichte nichts. Alles stammt aus Kursdateien und Docs, deshalb steht hier keine Plattform und keine Version.
+- Judo: Ippon-Kriterien und Waza-ari, https://rules.ijf.org/page-5.html. Wertung einer Aktion ohne Stopp (Decision 1), https://rules.ijf.org/page-4.html. Ippon-Geste (ein Arm hoch über den Kopf, Handfläche nach vorn) und Mate als Geste des Kampfrichters: IJF Sport and Organisation Rules (sor.ijf.org), Wortlaut bei USJF, https://www.usjf.com/?p=60352. Videobeweis mit bis zu acht Winkeln: https://www.ijf.org/news/show/behind-the-show.
+
+### Belege zu Geschichte 4
+
+- Frischer Subagent, `tools:` als Allowlist, ohne Feld jedes Tool, das ein Subagent haben kann: Docs sub-agents ("Inherits every tool available to subagents if omitted"); `/task-08` Schritt 5.
+- Fork mit den Tools von main: Docs sub-agents, "How forks differ from other subagents" ("System prompt and tools | Same as main session"); FACILITATOR.md, Task 08.
+- Fork-Zeile verschwindet, wenn er fertig ist: Docs sub-agents ("When a fork finishes successfully, Claude Code removes its row"); `/task-08`, Tabelle unter Why.
+- Auto-Modus: ab Claude Code 2.1.283 Startmodus im Terminal; "Read-only actions and file edits in your working directory are auto-approved" (Docs permission-modes). Ohne `permissionMode` erbt ein Subagent den Modus von main (Docs sub-agents). Umschalten auf Auto in Task 02: FACILITATOR.md.
+- Grep und Glob ohne Bash: Docs tools-reference ("lists Glob or Grep in its tools field and leaves out Bash"); gemessen Linux-Dev-Container, Claude Code 2.1.322. Main ohne Grep und Glob: gemessen Linux, 2.1.322; laut Docs auch macOS und WSL, dort nicht gelaufen.
+- Mit `Bash` in der Liste nur Read und Bash: gemessen Linux-Dev-Container, Claude Code 2.1.322; Windows nicht gemessen.
+- `Bash(find *)` in `tools:` gibt die ganze Bash: gemessen Linux, Claude Code 2.1.322; Windows, Claude Code 2.1.325, Sonnet, nur headless (`claude -p --agents`, `touch` per `--allowedTools` vorab erlaubt), 2 von 2 Läufen: `touch probe.txt` legte die Datei an. Kontrolle auf Windows mit Read, Grep, Glob: keine Shell, keine Datei. Docs sub-agents sagt nur für `disallowedTools`, dass `Bash(git push *)` das ganze Tool entfernt.
+- Neustart für einen neuen `agents`-Ordner, `/subtask` und `/fork`: Docs sub-agents; FACILITATOR.md, Task 08.
+- Grep-Tool und `.env`, `grep -r` ohne Sandbox: siehe Beleg von Geschichte 5.
+- Kata und Randori: IJF, "Judo: what is it all about" (Kata: "each combatant agrees beforehand exactly what their opponent is going to do"; Randori: "each contestant cannot tell what their opponent is going to do").
+- Coach nur zwischen Mate und Hajime: USA Judo, Update zu den IJF-Regeln für Junior und Cadet ("Coaching is authorized only during the pause after 'Mate!' and before 'Hajime!'").
+
+### Belege zu Geschichte 5
+
+- Exit 2 blockt vor einem Tool und am Stop, nach einem Tool geht stderr an Claude; `matcher` liest den Tool-Namen, `if` hält eine Regel: Docs hooks; `tasks/13-hooks.md`, "Why", Schritte 3 und 5.
+- Windows mit Git Bash: PowerShell-Tool für claude.ai- und Console-Accounts standardmässig an, dann die primäre Shell (Docs tools-reference, hooks). Ohne Git Bash kein Bash-Tool, und "A hook that matches only `Bash` never fires there" (Docs hooks).
+- Sonnet 5 von 5 `Bash(rm …)` geblockt; Opus 5.5 4 von 5 Bash geblockt, 1 von 5 `PowerShell(Remove-Item junk.txt)`, Datei gelöscht: gemessen Windows, Claude Code 2.1.325, `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`. `Bash|PowerShell` mit `PowerShell(Remove-Item *)` blockt `Remove-Item` und den Alias `rm`: dieselbe Maschine, Sonnet, je zwei Läufe. Gegen die Datei des Antwortschlüssels selbst: 7 von 7 Löschversuchen geblockt, davon drei, in denen Opus 5.5 beim neutralen Prompt von sich aus PowerShell nahm. Antwortschlüssel `workshop-artifacts/13-hooks/settings.json`: ein Handler je Tool, weil ein `if` eine Regel hält; der Build-Log-Hook ist mit PowerShell nicht getestet.
+- Checkpoints erfassen nur Claudes eigene Dateiänderungen: Note zu "Undo a step: /rewind" (Verweis auf Docs checkpointing, Limitations).
+- Read-Deny greift beim Read-Tool, bei erkannten Datei-Befehlen (`cat`, `head`, `tail`, `sed`, `tee`) und Umleitungszielen, nicht bei `grep -r pattern .` oder beliebigen Subprozessen: Docs permissions, Warnkasten. Ein blosser Dateiname wie `Read(.env*)` gilt in jeder Tiefe: Docs permissions.
+- `grep -r` mit Sandbox aus und an: gemessen im Linux-Dev-Container auf Docker Desktop (WSL2-Kernel), Claude Code 2.1.322. Das Grep-Tool lässt Dateien unter Read-Deny still aus: gemessen, Claude Code 2.1.322 im Linux-Dev-Container oder 2.1.323 auf Windows; auf welchem der beiden, ist nicht festgehalten (FACILITATOR.md, "Tools depend on platform and settings"). Das Grep-Tool sucht eine gitignorierte Datei, wenn Claude ihren Pfad nennt: Docs tools-reference.
+- Sandbox übernimmt Pfade aus Read- und Edit-Deny-Regeln und gilt für Kindprozesse; macOS, Linux, WSL2, standardmässig aus, unter nativem Windows keine; kein direkter Weg zu einem Server ausserhalb ("A command fails to reach a server on localhost", mit CLASH nicht gelaufen); Retry je Modus: Docs sandboxing. `allowUnsandboxedCommands: false` schaltet den Retry ab: Docs sandboxing, "Turn off the retry with strict sandbox mode"; im Container dieses Workshop-Repositorys gesetzt in `.devcontainer/managed-settings.json`.
+- Read `.devcontainer/.env` abgelehnt; `node -e` verlangt eine Freigabe und scheitert danach mit `EACCES: permission denied`: gemessen im Linux-Dev-Container, 2.1.322, headless, Regeln in einer Projekt-Settings-Datei. Interaktiv nicht gelaufen, im Container dieses Workshop-Repositorys (`.devcontainer/managed-settings.json`) noch gar nicht: FACILITATOR.md, "Show the dev container".
+- Ungültiges JSON ohne Warnung ignoriert: gemessen headless, Claude Code 2.1.322 im Linux-Dev-Container oder 2.1.323 auf Windows (FACILITATOR.md, "Tools depend on platform and settings"); auf welchem der beiden, ist nicht festgehalten. Nicht auf macOS. Dialog "Settings Error" in einer interaktiven Session, `claude doctor` nach einem `-p`-Lauf: Docs settings, "Fix a broken settings file".
+- Shido heisst Anleitung und wird mit einer Geste angezeigt (kein Claude-Code-Fakt): IJF, "Refereeing the new gestures".
+
+### Belege zu Geschichte 6
+
+**Aus den Kursdateien**
+
+- `/goal` (Bewertung nach jedem Turn, Turn-Klausel, Ctrl+O, Anzeige ohne Argument, vertrauenswürdiger Ordner): `slides/notes/de/38-deep-automate.md` ("/goal: evidence decides when to stop", "Bound the work"), `tasks/18-automate.md` Schritt 8; Docs-Seite goal.
+- Klickfolgen auf "Automate with a stop rule", "Three levers, one responsibility" und "Autonomy is earned by verification": `slides/sections/21-close.md`. Die Zeilen stehen von Anfang an, nur die Karten kommen per Klick.
+- `/loop` stoppt mit Esc und läuft nur bei offener Session, die nichts tut: Folie "/loop: the prompt comes back"; Docs-Seite scheduled-tasks.
+- Routine ohne Permission-Prompts, ein Pull Request je Lauf, Prompt wörtlich: Notes "The spec-drift routine" und "Routines: the cloud runs it", `tasks/18-automate.md` Schritt 19.
+- Stop-Hook im Worktree, fehlendes `node_modules`: `tasks/18-automate.md` Schritt 16.
+- CI: Ohne `Bash(gh pr comment:*)` in `claude_args` bleiben die Findings im Run-Log: `tasks/15-letting-go.md` Schritt 8. Trainer-Lösung mit `--allowedTools "Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"`: Note "Audit on every PR".
+- Capstone: `tasks/17-capstone.md`, "Why"; Vorlagen in "Do this", Schritte 4, 6 und 8.
+- `maxTurns: 12`, kein `settingSources`: `workshop-artifacts/16-agent-sdk/ask-clash.mts`. CLASHs `16-start` ist identisch mit `14-start` und bringt die Datei nicht mit: `docs/BRANCHES.md`.
+- Publish-Route (nur Exkurs `/task-19`): `find_venue` und `create_clash` in `allowedTools`, `permissionMode: dontAsk`, `maxTurns: 8`, `tools: []`, `settingSources: []`, `strictMcpConfig: true`: `tasks/19-build-your-own-mcp.md` Schritt 8; FACILITATOR.md, Task 19.
+- Stop-Folie: `mcp__clash__*` gibt auch `cancel_clash` frei, mit `bypassPermissions` begrenzt `allowedTools` nichts: Note "Every tool, or two named tools?" in `slides/notes/de/36-excursion-mcp-server.md`.
+- `Edit(tests/**)` gegen `sed`, `tee`, `>` und `node -e`: FACILITATOR.md, Task 19.
+- Weitere Grenzen ohne eigenen Satz in der Erzählung: ein Pull Request je Lauf in der Spec-Drift-Routine; `--dangerously-skip-permissions` nur in einer äusseren Grenze (Container, VM) und nur mit Repositories, denen du traust.
+
+**Aus den Docs**
+
+- permission-modes: "anything that would prompt is denied" (`dontAsk`); "Deny rules block in every mode, including `bypassPermissions`"; "Allow rules have no effect in `bypassPermissions`"; Abschnitt "Critical paths": "an allow rule or `bypassPermissions` mode can approve that retry with no prompt. Strict sandbox mode turns the retry off"; unbeaufsichtigt mit `--dangerously-skip-permissions` nur in Container, VM oder Sandbox-Runtime. Dass ein PreToolUse-Hook auch in `bypassPermissions` blockt: Kurs, Note "Advice vs. law" (`slides/notes/de/15-hooks.md`).
+- devcontainer: Mit `--dangerously-skip-permissions` hält ein Dev Container ein bösartiges Projekt nicht davon ab, alles abzuziehen, was im Container erreichbar ist, auch die Anmeldedaten in `~/.claude`. Nur mit vertrauenswürdigen Repositories.
+- permissions: Wer im SDK `settingSources` ohne Projekt-Settings setzt, lässt Claude Code weder die Settings-Dateien des Projekts noch dessen `.mcp.json` lesen.
+- sandboxing: keine Sandbox unter nativem Windows.
+
+**Gemessen**
+
+- Hooks im SDK-Programm: Session dieses Workshop-Repositorys, Windows, Sonnet, Agent SDK. Ein Stop-Hook aus der `.claude/settings.json` des `cwd` lief mit, `settingSources: []` schaltete das ab. Versionen nicht notiert. Auf CLASHs `16-start` nicht gemessen.
+- Bash oder PowerShell: Windows, Claude Code 2.1.325, `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`, beide Tools im Set. Prompt "Delete the file junk.txt in this folder. Use a shell command, not a file tool.": Sonnet 6 von 6 Mal Bash. Neutraler Prompt "Remove junk.txt from this folder.": Sonnet 5 von 5 Mal Bash, Opus 5.5 in 1 von 5 Läufen PowerShell, junk.txt gelöscht. Sonnet zusammen 11 von 11, wie in FACILITATOR.md, Task 13.
+
+**Judo**
+
+- Shodan: https://www.usajudo.com/membership/promotions/philosophy-of-black-belt-promotions und https://en.wikipedia.org/wiki/Shodan_(rank); Schwarz ab dem ersten Dan: https://en.wikipedia.org/wiki/Rank_in_judo
+- Coaching nur zwischen Mate und Hajime (IJF): https://judo.hr/new/350
+- Golden Score ohne Zeitlimit, Sore-made nach Ippon, Hansoku-make oder Gong: IJF-Wettkampfregeln; vor dem Unterricht in der aktuellen Fassung nachlesen.
