@@ -386,6 +386,7 @@ cp "$ART_HOOKS_TYPECHECK" .claude/hooks/typecheck-actions.sh
 cp "$ART_HOOKS_BUILD_GATE" .claude/hooks/build-gate.sh
 cp "$ART_HOOKS_BUILD_SUMMARY" .claude/hooks/build-summary.sh
 chmod +x .claude/hooks/typecheck-actions.sh .claude/hooks/build-gate.sh .claude/hooks/build-summary.sh
+printf '*.sh text eol=lf\n' >> .gitattributes
 cp "$ART_HOOKS_SETTINGS" .claude/settings.json
 commit_all 14-start "workshop: install the hook set — typecheck, deny rules, Stop gate (end of task 13)"
 note 14-start "+ hook set"
