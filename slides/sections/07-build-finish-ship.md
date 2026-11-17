@@ -91,7 +91,7 @@ number: "05"
 heading: "Finish and ship"
 goal: "Batch the last four slices, run work in the background, review your pull request with Claude, and switch to the reference."
 mode: "you do"
-success: "Profile, search, dashboard and theme work, a PR or PR.md exists, and you are on 06-start with the app running."
+success: "Profile, search, dashboard and theme work, a PR exists or your finish branch holds PR.md, and CLASH runs on 06-start."
 branch: "05-start"
 ---
 

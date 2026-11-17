@@ -120,7 +120,6 @@ branch, commit, optional pull request, review.
 ## Now you
 
 - Ask Claude to use agent-browser to walk through register, create a clash, join it as another user, and report every step.
-- Add one thing from your review notes that Claude did not find.
 
 ## Check
 
@@ -128,7 +127,7 @@ branch, commit, optional pull request, review.
 - [ ] ⌘K (`Ctrl+K` on Windows and Linux) opens search and the results page groups the hits
 - [ ] The dashboard shows four counts
 - [ ] Light and dark theme switch
-- [ ] A pull request exists, or `PR.md` holds its description
+- [ ] A pull request exists, or `PR.md` on your `finish` branch holds its description
 - [ ] You are on `06-start` and `npm run dev` works there
 - [ ] `claude --continue` reopened the same conversation after closing the terminal
 
