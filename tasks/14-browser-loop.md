@@ -56,7 +56,7 @@ Two MCP servers, two jobs. Playwright MCP for correctness. Chrome DevTools MCP f
    ```
    Now write that flow as a Playwright test file: request to join, host accepts,
    joining user is notified. Add a second test for the host rejecting instead.
-   Use the seeded accounts and passwords from docs/SETUP.md.
+   Use the seeded accounts and passwords in prisma/seed.ts.
    ```
 5. Run the tests. Fix timing and selector problems first. Only then believe a failure is an app bug.
 

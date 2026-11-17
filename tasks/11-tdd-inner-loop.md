@@ -29,9 +29,11 @@ This branch already has vitest installed, one trivial passing test, and a delibe
 
 ## Do this
 
-1. Confirm the harness already works.
+1. Switch to CLASH's `11-start`, then confirm the harness works. Park your own work first; `11-start` adds vitest to `package.json`, so install again.
    ```bash
-   npm install      # CLASH's 11-start adds vitest to package.json
+   git stash -u
+   git checkout 11-start
+   npm install
    npm run test
    ```
    One green test. Nothing to configure.
@@ -118,7 +120,10 @@ This branch already has vitest installed, one trivial passing test, and a delibe
    Confirm it stops after one cycle instead of cascading through every remaining rule.
 10. Run the gates.
     ```bash
-    npx tsc --noEmit && npm run lint && npm run test && npm run build
+    npx tsc --noEmit
+    npm run lint
+    npm run test
+    npm run build
     ```
 
 ## Now you

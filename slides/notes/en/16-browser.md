@@ -40,7 +40,7 @@ Say:
 > - FULL WORKING SOLUTION (trainer only, verbatim from tasks/14-browser-loop.md):
 > "Now write that flow as a Playwright test file: request to join, host accepts, joining user is
 > notified. Add a second test for the host rejecting instead. Use the seeded accounts and passwords
-> from docs/SETUP.md."
+> in prisma/seed.ts."
 > - Drive it by hand and narrate first: "Using the Playwright MCP tools, log in at localhost:3000 as anna.schmidt@example.com / test, open a clash she doesn't host, and request to join it…" Confirm the flow works, THEN ask for the test file
 
 Say:

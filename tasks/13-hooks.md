@@ -54,7 +54,8 @@ are logged, not enforced. What Claude sees on a block is stderr.
        "timeout": 60 } ] }
    ] } }
    ```
-4. Write `.claude/hooks/typecheck-actions.sh`. Make it executable.
+4. Write `.claude/hooks/typecheck-actions.sh`. Make it executable: `chmod +x .claude/hooks/typecheck-actions.sh`.
+   On Windows, skip `chmod` (PowerShell has none) and save the file with LF line endings (the line break macOS and Linux use), not CRLF (the Windows one), or bash cannot run it.
    ```bash
    #!/usr/bin/env bash
    set -euo pipefail
@@ -90,7 +91,7 @@ are logged, not enforced. What Claude sees on a block is stderr.
    Add a Stop hook that runs npm run build and blocks (exit 2) if it fails,
    putting the last 40 lines of the failure on stderr.
    ```
-9. Try each one: edit a migration file, run `rm`, read `.env`, run a build, break the build and try to end the turn.
+9. Ask Claude to try each one: edit a migration file, run `rm`, read `.env`, run a build, break the build and try to end the turn.
 10. See what is actually configured, grouped by event.
     ```
     /hooks

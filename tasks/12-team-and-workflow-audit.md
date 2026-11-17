@@ -25,6 +25,14 @@ for is to run all three on the same problem and compare.
 
 ## Do this
 
+Start on the seeded branch in your CLASH clone: `12-start` puts the ownership bug back for this audit. Park your own work first.
+
+```bash
+git stash -u
+git checkout 12-start
+npm install
+```
+
 **Agent team (watch first, then do)**
 
 1. Agent teams are experimental and off by default. Check that `~/.claude/settings.json` has
