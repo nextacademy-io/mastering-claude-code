@@ -76,12 +76,15 @@ commands in `.claude/commands/*.md` still work. Skills are the richer format for
    ```
 7. Run the gates.
    ```bash
-   npx tsc --noEmit && npm run lint && npm run build
+   npx tsc --noEmit
+   npm run lint
+   npm run build
    ```
 8. Run `/context`. Compare with the number from task 06. Note how many files Claude read this time.
 9. Package the skill as a plugin, so it can be shared outside your CLASH clone.
    ```bash
-   mkdir -p clash-feature-plugin/.claude-plugin clash-feature-plugin/skills
+   mkdir -p clash-feature-plugin/.claude-plugin
+   mkdir -p clash-feature-plugin/skills
    cp -r .claude/skills/clash-feature clash-feature-plugin/skills/clash-feature
    ```
    Write `clash-feature-plugin/.claude-plugin/plugin.json`:

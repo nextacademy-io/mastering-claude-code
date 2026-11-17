@@ -31,7 +31,9 @@ out, Claude has to guess or search for.
 1. Switch to the reference CLASH and start fresh.
    ```bash
    git checkout 06-start
-   npm install && npm run db:migrate && npm run db:seed
+   npm install
+   npm run db:migrate
+   npm run db:seed
    claude
    ```
 2. Look at the budget before you touch anything.
@@ -66,7 +68,7 @@ out, Claude has to guess or search for.
    on render via getNotifications and getUnreadCount in lib/data/notifications.ts.
    Don't write any code yet. Propose an approach and the files it touches.
    ```
-8. Read the plan together. Ask one question about it. Then save it.
+8. Read the plan together. Whenever Claude asks how to proceed, press `Esc`. Ask one question about the plan. Then press `Shift+Tab` until the status bar shows `manual mode on`, and save it.
    ```
    Save this plan as docs/plans/realtime-notifications.md. Do not implement it.
    ```
@@ -75,7 +77,7 @@ out, Claude has to guess or search for.
     mkdir -p ~/.claude/rules
     ```
     Write one line to `~/.claude/rules/tone.md`: `Explain every fix in one sentence before making it.`
-    Run `/context` and look under **Memory files**. Your project `CLAUDE.md` and this new
+    Restart Claude Code first, `/exit` then `claude`: a rule loads at launch. Then run `/context` and look under **Memory files**. Your project `CLAUDE.md` and this new
     rule both loaded. Neither replaced the other — a CLAUDE.md file only adds to what Claude
     reads, it never overrides another one. If two files ever disagree, Claude may just pick one.
 

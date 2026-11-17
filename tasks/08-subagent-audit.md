@@ -57,8 +57,9 @@ check ownership itself. Zod checks the shape of the input, not who may send it.
 
 ## Do this
 
-1. Start on the seeded branch.
+1. Start on the seeded branch. It brings its own `CLAUDE.md` and `clash-feature` skill, so first park yours from tasks 06 and 07.
    ```bash
+   git stash -u
    git checkout 08-start
    claude
    ```
