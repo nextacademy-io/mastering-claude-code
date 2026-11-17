@@ -103,10 +103,11 @@ Standalone index: [`tasks/README.md`](tasks/README.md). What each branch contain
 ## Reset branches
 
 `NN-start` in your CLASH clone is the state at the **start** of task NN. If you fall behind, do
-not debug. Reset and continue:
+not debug. Reset and continue. `git stash -u` keeps your own work, including new files, if you
+want it:
 
 ```bash
-git stash -u          # keep your own work, including new files, if you want it
+git stash -u
 git checkout 04-start
 ```
 
@@ -131,11 +132,14 @@ Code `Stop` hook in the workshop repository's `.claude/settings.json` runs
 `.claude/hooks/deploy-slides.sh`. It redeploys the deck when the slides changed, but only on a
 machine with the Vercel CLI and a linked `slides/.vercel/project.json`.
 
+To run the deck yourself: `npm run dev` opens it, and `npm run build` also exports
+`dist/mastering-claude-code.pdf`.
+
 ```bash
 cd slides
 npm install
-npm run dev        # opens the deck
-npm run build      # also exports dist/mastering-claude-code.pdf
+npm run dev
+npm run build
 ```
 
 ## For trainers
@@ -143,11 +147,12 @@ npm run build      # also exports dist/mastering-claude-code.pdf
 [`FACILITATOR.md`](FACILITATOR.md) holds the talking points, demo scripts and pitfalls per part.
 Answer keys live in [`workshop-artifacts/`](workshop-artifacts/).
 
-Create a new task from the shared template, or check that task structure and theory links still match:
+Create a new task from the shared template, or check that task structure and theory links still match.
+Without a number, `npm run task:new` picks the next task number:
 
 ```bash
 npm run task:new -- 15 My new task
-npm run task:new -- My new task    # picks the next task number
+npm run task:new -- My new task
 npm run task:check
 ```
 
@@ -166,13 +171,19 @@ The speaker notes come in English and German. They live in `slides/notes/en/` an
 `slides/notes/de/`. The slides are the same in both languages. Only the notes change.
 Pick the language when you start the deck:
 
+- `npm run dev` shows the English notes, the default.
+- `npm run dev -- --lang=de` shows the German notes.
+- `npm run build -- --lang=de` builds with German notes and also exports `dist/mastering-claude-code.de.pdf`.
+- `npm run export -- --lang=de` exports only the German PDF.
+- `npm run check:notes` checks that both languages still match: note keys, `[click]` markers, commands.
+
 ```bash
 cd slides
-npm run dev                  # English notes (default)
-npm run dev -- --lang=de     # German notes
-npm run build -- --lang=de   # German build, also exports dist/mastering-claude-code.de.pdf
-npm run export -- --lang=de  # German PDF only
-npm run check:notes          # both languages still match: note keys, [click] markers, commands
+npm run dev
+npm run dev -- --lang=de
+npm run build -- --lang=de
+npm run export -- --lang=de
+npm run check:notes
 ```
 
 ## Resources

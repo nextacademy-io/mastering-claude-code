@@ -54,12 +54,12 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 
 **Your CLASH clone: design the server**
 
-1. Check out CLASH's `19-start`, put the seed data back and register the server. Park your work from earlier tasks first: task 16 changed `package.json`, and git does not switch over that.
+1. Check out CLASH's `19-start`, put the seed data back and register the server. Park your work from earlier tasks first: task 16 changed `package.json`, and git does not switch over that. CLASH's `19-start` holds `mcp/server.ts` with one tool. The smoke test in step 4 counts on the seed data.
    ```bash
    git stash -u
-   git checkout 19-start                        # CLASH's 19-start: mcp/server.ts with one tool
+   git checkout 19-start
    npm install
-   npm run db:seed                              # the smoke test in step 4 counts on the seed data
+   npm run db:seed
    claude mcp add --scope project --transport stdio clash -- npx tsx mcp/server.ts
    ```
    You see the seed end with `Seed complete`, and a new `.mcp.json` at the root of your
@@ -134,7 +134,7 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
    `Step 4 of task 19` was: three checks, each ending in `refuse()`, and only after them the
    one `prisma.clash.delete`. Now run the smoke test in a terminal, in your CLASH clone.
    ```bash
-   npx tsx mcp/smoke.ts                         # in your CLASH clone
+   npx tsx mcp/smoke.ts
    ```
    You see 19 lines that start with `PASS`, then `All checks passed.` The smoke test starts
    your server on its own, calls every tool and every refusal, cancels its test clash and
@@ -143,7 +143,7 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 5. Write through Claude Code. First start CLASH in a second terminal, in your CLASH clone,
    and leave it running.
    ```bash
-   npm run dev                                  # in your CLASH clone, in a second terminal
+   npm run dev
    ```
    You see CLASH start on `localhost:3000`. Exit Claude Code and start
    `claude --permission-mode manual` again in your CLASH clone, so the server starts with all
@@ -192,14 +192,18 @@ Clone [clash-conference](https://github.com/nextacademy-io/clash-conference) to 
    run `git fetch` in clash-conference instead, so it knows the branch `19-start`. If you
    changed files there, park them first with `git stash -u` in clash-conference: the `-u` parks
    new files too. Type these commands yourself: a hook in clash-conference blocks
-   `npm run setup` for Claude, because its seed deletes every talk.
+   `npm run setup` for Claude, because its seed deletes every talk. Start in your CLASH clone:
+   `cd ..` takes you to the folder that holds it.
    ```bash
-   cd ..                                                 # the folder that holds your CLASH clone
+   cd ..
    git clone https://github.com/nextacademy-io/clash-conference.git
+   ```
+   Then, in clash-conference, check out clash-conference's `19-start` and set it up.
+   ```bash
    cd clash-conference
-   git checkout 19-start                                 # clash-conference's 19-start
+   git checkout 19-start
    npm install
-   npm run setup                                         # in clash-conference: .env, database, seed, test browser
+   npm run setup
    ```
    You see `npm run setup` apply the migrations, end the seed with
    `Seed complete: 1 settings record ("CLASH Community Day"), 3 draft talks.` and install the
@@ -209,7 +213,7 @@ Clone [clash-conference](https://github.com/nextacademy-io/clash-conference) to 
    `.env.example`. Change the value if your CLASH clone has another folder name. Then start clash-conference in a
    terminal of its own, in clash-conference.
    ```bash
-   npm run dev                                           # in clash-conference, in a terminal of its own
+   npm run dev
    ```
    You see clash-conference on `localhost:3001`, next to CLASH on `localhost:3000`: three
    draft talks, each with a "Publish to CLASH" button. clash-conference's settings hold the
@@ -292,13 +296,14 @@ In your CLASH clone, `git checkout 19-start` gives CLASH's `19-start`: `14-start
 starter server, `mcp/server.ts` with one working tool and three marked places, the smoke test
 `mcp/smoke.ts`, and the two MCP packages. `19-solution` in your CLASH clone is the finished
 server, `.mcp.json` and the two allowed read tools. If your server does not pass the smoke
-test, take the finished one before the clash-conference steps. The stash parks your own
-files, because the same files are tracked on CLASH's `19-solution`; `git stash pop` on
-CLASH's `19-start` brings them back later.
+test, take the finished one before the clash-conference steps. Run these in your CLASH clone.
+The stash parks your own `mcp/server.ts`, `.mcp.json` and `.claude/settings.json`, because
+CLASH's `19-solution` tracks the same files; `git stash pop` on CLASH's `19-start` brings
+them back later.
 
 ```bash
-git stash -u                 # in your CLASH clone: parks mcp/server.ts, .mcp.json and .claude/settings.json
-git checkout 19-solution     # CLASH's 19-solution: the finished server
+git stash -u
+git checkout 19-solution
 npm install
 ```
 
@@ -307,12 +312,13 @@ gives clash-conference's `19-start`: clash-conference without `app/api/publish/r
 and without `lib/clash-agent.ts`, the file that holds the `query()` call on its `main`.
 Unpublishing is already there on clash-conference's `19-start`.
 `19-solution` in clash-conference is clash-conference with the finished route. If your route
-does not publish, take that one. The stash parks your own route and any helper Claude wrote,
-because clash-conference's `19-solution` tracks the same files.
+does not publish, take that one. Run these in clash-conference. The stash parks your own
+`app/api/publish/route.ts` and any helper Claude wrote, such as `lib/clash-agent.ts`, because
+clash-conference's `19-solution` tracks the same files.
 
 ```bash
-git stash -u                 # in clash-conference: parks app/api/publish/route.ts and lib/clash-agent.ts
-git checkout 19-solution     # clash-conference's 19-solution: the finished route
+git stash -u
+git checkout 19-solution
 ```
 
 The starter, the finished server, `.mcp.json`, `settings.allow.json` and the smoke

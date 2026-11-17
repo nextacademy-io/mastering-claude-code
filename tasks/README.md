@@ -35,9 +35,12 @@ Every task names its reset branch in your CLASH clone. It is the state at the st
 Task 19 also uses clash-conference's `19-start`. Task 20 has no branch: it runs in an empty
 folder outside your CLASH clone.
 
+This example jumps to the finished reference CLASH in your CLASH clone. `git stash -u` is
+optional: it keeps your own work, including new files.
+
 ```bash
-git stash -u           # optional: keep your own work, including new files
-git checkout 06-start  # e.g. jump to the finished reference CLASH
+git stash -u
+git checkout 06-start
 ```
 
 ## Answer keys

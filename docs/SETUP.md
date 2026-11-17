@@ -76,14 +76,15 @@ cd clash
 git checkout 01-start
 ```
 
-Parts III and IV work on the **reference** CLASH. You switch to it at the end of Part II, not now:
+Parts III and IV work on the **reference** CLASH. You switch to it at the end of Part II, not now.
+The last command starts CLASH. Confirm it loads on http://localhost:3000:
 
 ```bash
 git checkout 06-start
 npm install
 npm run db:migrate
 npm run db:seed
-npm run dev          # confirm CLASH loads on http://localhost:3000
+npm run dev
 ```
 
 > `npm install` runs `prisma generate`, which writes the Prisma client to `lib/generated/prisma`.
@@ -181,10 +182,10 @@ Task 19 builds its own MCP server inside your CLASH clone. Its package is in ste
 ## 7. Know CLASH's catch-up branches
 
 Every task in your CLASH clone has a branch with the state at its **start**. If you fall behind,
-do not debug. Reset and rejoin.
+do not debug. Reset and rejoin. For example, to rejoin at task 04:
 
 ```bash
-git checkout 04-start      # example: rejoin at task 04
+git checkout 04-start
 ```
 
 Your own work stays with you: commit, or `git stash -u` before you switch (plain `git stash`
@@ -220,17 +221,23 @@ and tested with, and CLASH's `19-start` pins the same version. The older
 `@modelcontextprotocol/sdk` is a different package. Do not install it.
 
 **The second app.** Task 19 also needs `clash-conference`. Clone it **next to** your CLASH clone,
-in the same parent folder. `npm run setup` downloads clash-conference's test browser now, so
-step 7 of task 19 needs no network for it. Type it yourself: a hook in clash-conference blocks
-it for Claude.
+in the same parent folder. Start in your CLASH clone: `cd ..` takes you to the folder that holds it.
 
 ```bash
-cd ..                                                 # the folder that holds your CLASH clone
+cd ..
 git clone https://github.com/nextacademy-io/clash-conference.git
+```
+
+Then, in clash-conference, check out clash-conference's `19-start` and set it up. `npm run setup`
+creates clash-conference's `.env` when it is missing, its database and seed data, and downloads
+its test browser now, so step 7 of task 19 needs no network for it. Type it yourself: a hook in
+clash-conference blocks it for Claude.
+
+```bash
 cd clash-conference
-git checkout 19-start                                 # clash-conference's 19-start
+git checkout 19-start
 npm install
-npm run setup                                         # in clash-conference: .env, database, seed, test browser
+npm run setup
 ```
 
 If clash-conference is already cloned from earlier work, skip `git clone`. In clash-conference,

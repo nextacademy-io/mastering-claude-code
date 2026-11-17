@@ -28,11 +28,11 @@ Inside Claude Code the tools are named `mcp__clash__list_upcoming_clashes`, `mcp
 
 ## Install
 
-CLASH's `19-start` already has `@modelcontextprotocol/server` 2.1.0 and `@modelcontextprotocol/client` 2.1.0 in its `package.json`. To put the finished server on it by hand:
+CLASH's `19-start` already has `@modelcontextprotocol/server` 2.1.0 and `@modelcontextprotocol/client` 2.1.0 in its `package.json`. To put the finished server on it by hand, start in the folder that holds your CLASH clone. `cd clash` goes into your CLASH clone, `git checkout 19-start` gives you CLASH's `19-start`, and the two `cp` lines copy the finished files from the workshop repository:
 
 ```bash
-cd clash                                     # your CLASH clone
-git checkout 19-start                        # CLASH's 19-start
+cd clash
+git checkout 19-start
 npm install
 cp <workshop repository>/workshop-artifacts/19-build-mcp/server.ts mcp/server.ts
 cp <workshop repository>/workshop-artifacts/19-build-mcp/.mcp.json .mcp.json
