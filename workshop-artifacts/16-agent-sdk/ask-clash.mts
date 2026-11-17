@@ -2,13 +2,13 @@
 //
 // Run from your CLASH clone:
 //   npm install @anthropic-ai/claude-agent-sdk tsx
-//   npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"
+//   npx tsx ask-clash.mts "find me something outdoors in Berlin"
 //
 // The agent may only read files (Read, Grep, Glob). It cannot edit or run commands.
 // A PreToolUse hook logs every tool call, so you can watch the harness work.
 import { query, type HookCallbackMatcher } from "@anthropic-ai/claude-agent-sdk";
 
-const question = process.argv.slice(2).join(" ") || "find me something outdoors in Kreuzberg this evening";
+const question = process.argv.slice(2).join(" ") || "find me something outdoors in Berlin";
 
 const logToolCalls: HookCallbackMatcher = {
   hooks: [

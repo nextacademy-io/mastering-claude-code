@@ -3,11 +3,13 @@
 `ask-clash.mts` is a small program that hosts the Claude Code agent loop.
 It answers a question about CLASH by reading `prisma/seed.ts`. It can read, search and list files. Nothing else.
 
+`clash` below is your CLASH clone.
+
 ```bash
-cd clash                                     # your CLASH clone
+cd clash
 npm install @anthropic-ai/claude-agent-sdk tsx
 cp <this folder>/ask-clash.mts .
-npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"
+npx tsx ask-clash.mts "find me something outdoors in Berlin"
 ```
 
 What to look at:

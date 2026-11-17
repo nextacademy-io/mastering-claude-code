@@ -115,13 +115,13 @@ Say:
 Say:
 - [click:2] Just ran the agent headless in a pipeline
 - [click] Agent SDK: same idea one level further in — the agent lives inside your application
-- Imagine CLASH answering "find me something outdoors in Kreuzberg this evening" over its own map
+- Imagine CLASH answering "find me something outdoors in Berlin" over its own map
 - [click] Build the smallest version: a script that answers that question from the seed data, with read-only tools and a hook
 
 <!-- @note: ask-clash-mts -->
 > Do:
 > - FULL WORKING SOLUTION (trainer only): workshop-artifacts/16-agent-sdk/ask-clash.mts
-> - Run with `npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"` after `npm install @anthropic-ai/claude-agent-sdk tsx`
+> - Run with `npx tsx ask-clash.mts "find me something outdoors in Berlin"` after `npm install @anthropic-ai/claude-agent-sdk tsx`
 > - Point at the three controls, optionally also in the "Options" table
 > - Then the result message: the answer, num_turns, total_cost_usd — say the cost out loud
 

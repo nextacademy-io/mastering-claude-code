@@ -12,7 +12,7 @@
 ## You will end up with
 
 A small program, `ask-clash.mts`, that hosts the Claude Code agent loop inside your own
-code. It answers "find me something outdoors in Kreuzberg this evening" by reading CLASH's
+code. It answers "find me something outdoors in Berlin" by reading CLASH's
 seed data. It may read files. It may not change anything.
 
 ## Why
@@ -53,7 +53,7 @@ Only the host changes.
    `PowerShell` is on the list for Windows: there Claude can run shell commands through PowerShell, and blocking `Bash` alone does not always stop that.
 3. Run it.
    ```bash
-   npx tsx ask-clash.mts "find me something outdoors in Kreuzberg this evening"
+   npx tsx ask-clash.mts "find me something outdoors in Berlin"
    ```
 4. Add a hook. Log every tool call to stderr so you can watch the loop.
    ```
