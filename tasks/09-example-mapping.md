@@ -242,8 +242,10 @@ when it needs them.
 
 ## Stuck?
 
-`git checkout 09-start` — the reference CLASH with the seeded bug and the task 06 and 07 files
-(`CLAUDE.md`, the `clash-feature` skill), no `example-mapping` skill yet.
+In your CLASH clone, `git stash -u`, then `git checkout 09-start` — the reference CLASH with the
+seeded bug and the files from tasks 06 to 08 (`CLAUDE.md`, the `clash-feature` skill, the
+`security-auditor` subagent), no `example-mapping` skill yet. The stash parks your own
+`security-auditor.md` from task 08: git does not overwrite it with the branch's copy.
 
 ## Go further
 

@@ -86,8 +86,10 @@ example, scoped to `lib/validation.ts` (Zod schemas) or `components/**` (shadcn 
 
 ## Stuck?
 
-`git checkout 10-start` — the reference CLASH with the task 06, 07 and 09 files, including the `example-mapping`
-skill, its resolved spec, and the ownership-check fix restored, no project rules yet.
+In your CLASH clone, `git stash -u`, then `git checkout 10-start` — the reference CLASH with the
+task 06 to 09 files, including the `security-auditor` subagent, the `example-mapping` skill, its
+resolved spec, and the ownership-check fix restored, no project rules yet. The stash parks your
+own `security-auditor.md` from task 08: git does not overwrite it with the branch's copy.
 
 ## Go further
 

@@ -282,6 +282,11 @@ Parts III and IV run on the finished reference CLASH, as guided tasks.
 - Live on `08-start`: your CLASH clone has no `.claude/agents` folder until step 5, and a running
   session does not see a folder made after it started. After saving
   `security-auditor.md`, `/exit`, then `claude`, before you run step 6.
+- From `09-start` on, every CLASH branch carries the step 5 file as
+  `.claude/agents/security-auditor.md`, so task 17 and your task 12 demo find the subagent after
+  a reset. A participant's own copy is untracked: `git checkout 09-start` or `10-start` stops
+  with "untracked working tree files would be overwritten". `git stash -u` first, as the Stuck
+  lines of tasks 09 and 10 say.
 - Steps 9 and 10 run the same audit as a fork with `/subtask`. Steps 11 to 17 install OWASP's `code-security-skills` plugin (needs GitHub reachable, and it
   spends more tokens than the auditor). Compare the two reports, do not crown a winner. Say it
   is a plugin bundling subagents and skills, and that a plugin can ship hooks: read what you install.

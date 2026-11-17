@@ -16,13 +16,14 @@
 #             through (task 14 measures and fixes it; the commit message stays neutral)
 #   07-start  + authored CLAUDE.md
 #   08-start  + clash-feature skill, SEEDED missing ownership checks
-#   09-start  == 08-start
+#   09-start  + security-auditor subagent in .claude/agents/ (end of task 08)
 #   10-start  ownership checks restored; + example-mapping skill and its resolved spec
 #   11-start  + path-scoped app/actions/** rule; + vitest, one trivial test, the capacity stub
 #   12-start  + finished tdd skill and passing capacity.ts (end of task 11); ownership
 #             checks RE-SEEDED for the audit (same seeding as 08-start)
 #   13-start  ownership checks restored again
-#   14-start  + hook set
+#   14-start  + hook set; lint and tsc skip .claude/, where the worktrees of tasks 15, 17
+#             and 18 live (exact string replacement in eslint.config.mjs and tsconfig.json)
 #   15..18    == 14-start   (each of these tasks only adds new files, or works in your own
 #             worktree, so the start state is unchanged — nothing this script has to seed)
 #   19-start  14-start + the MCP starter: mcp/server.ts with one working tool
@@ -49,6 +50,7 @@ SKIP_GATE="${SKIP_GATE:-0}"
 find_one() { local hit; hit="$(find "$ARTIFACTS" -path "$1" -type f | head -n 1 || true)"; [[ -n "$hit" ]] || { echo "error: no artifact matches $1" >&2; exit 1; }; echo "$hit"; }
 ART_CLAUDE_MD="$(find_one '*context*/CLAUDE.md')"
 ART_SKILL_MD="$(find_one '*skill*/SKILL.md')"
+ART_SECURITY_AUDITOR="$(find_one '*subagent-audit*/security-auditor.md')"
 ART_HOOKS_SETTINGS="$(find_one '*hook*/settings.json')"
 ART_HOOKS_TYPECHECK="$(find_one '*hook*/typecheck-actions.sh')"
 ART_HOOKS_BUILD_GATE="$(find_one '*hook*/build-gate.sh')"
@@ -278,11 +280,15 @@ note 08-start "+ clash-feature skill; deleteClash/deleteVenue missing ownership 
 gate 08-start
 
 
-# --- 09-start: nothing new ----------------------------------------------------
-# Task 08 is a read-only audit; it commits no artifact of its own.
+# --- 09-start: + security-auditor subagent -----------------------------------
+# Task 08's audit fixes nothing, but step 5 writes a subagent. Every branch from here on
+# carries it, so tasks 12 and 17 find it after a reset. The seeded bug stays until 10-start.
 git checkout -B 09-start 08-start --quiet
-note 09-start "identical to 08-start"
-SUMMARY+=("09-start|$(git rev-parse --short HEAD)|$(git ls-files | wc -l | tr -d ' ')|== 08-start")
+mkdir -p .claude/agents
+cp "$ART_SECURITY_AUDITOR" .claude/agents/security-auditor.md
+commit_all 09-start "workshop: add the security-auditor subagent (end of task 08)"
+note 09-start "+ security-auditor subagent in .claude/agents/"
+gate 09-start
 
 # --- 10-start: ownership checks restored; + example-mapping skill -------------------
 # Task 12 (team-and-workflow-audit) needs the ownership bug live again — it is
@@ -379,7 +385,7 @@ commit_all 13-start "workshop: restore the creatorId ownership checks (end of ta
 note 13-start "ownership checks restored"
 gate 13-start
 
-# --- 14-start: + hook set -----------------------------------------------------
+# --- 14-start: + hook set; lint and tsc skip .claude/ ----------------------------
 git checkout -B 14-start 13-start --quiet
 mkdir -p .claude/hooks
 cp "$ART_HOOKS_TYPECHECK" .claude/hooks/typecheck-actions.sh
@@ -389,7 +395,35 @@ chmod +x .claude/hooks/typecheck-actions.sh .claude/hooks/build-gate.sh .claude/
 printf '*.sh text eol=lf\n' >> .gitattributes
 cp "$ART_HOOKS_SETTINGS" .claude/settings.json
 commit_all 14-start "workshop: install the hook set — typecheck, deny rules, Stop gate (end of task 13)"
-note 14-start "+ hook set"
+
+# Tasks 15, 17 and 18 create worktrees under .claude/worktrees/ inside the CLASH clone: full
+# copies of CLASH, often with their own .next/ build. ESLint lints folders that start with a
+# dot, so npm run lint in the main checkout would lint those copies too. TypeScript's ** skips
+# such folders already; the exclude says it explicitly. Same exact-string replacement as the
+# avatar files on 06-start: it aborts if the text has changed.
+node <<'JS'
+const fs = require('fs')
+for (const [path, edits] of [
+  ['eslint.config.mjs', [
+    ['    "next-env.d.ts",\n  ]),\n', '    "next-env.d.ts",\n    // Claude Code worktrees, full copies of CLASH:\n    ".claude/**",\n  ]),\n'],
+  ]],
+  ['tsconfig.json', [
+    ['  "exclude": ["node_modules"]\n', '  "exclude": ["node_modules", ".claude"]\n'],
+  ]],
+]) {
+  const raw = fs.readFileSync(path, 'utf8')
+  const crlf = raw.includes('\r\n')
+  let src = crlf ? raw.replace(/\r\n/g, '\n') : raw
+  for (const [needle, replacement] of edits) {
+    if (!src.includes(needle)) { console.error(`error: expected ${JSON.stringify(needle.trim())} not found verbatim in ${path}`); process.exit(1) }
+    src = src.replace(needle, replacement)
+  }
+  if (path.endsWith('.json')) JSON.parse(src)
+  fs.writeFileSync(path, crlf ? src.replace(/\n/g, '\r\n') : src)
+}
+JS
+commit_all 14-start "workshop: lint and type-check skip .claude/, where worktrees live"
+note 14-start "+ hook set; lint and tsc skip .claude/"
 gate 14-start
 
 for b in 15-start 16-start 17-start 18-start; do
