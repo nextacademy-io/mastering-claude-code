@@ -61,7 +61,7 @@ Say:
 > - Open the PR live (or write PR.md if gh isn't set up)
 > - Fetch 06-start and diff, ask Claude for three differences in lib/data and app/actions, no judgement
 > - Task 05 retrospective questions — give the group a moment to answer to a neighbour
-> - Then: git checkout 06-start, npm install, npm run db:reset, npm run db:seed
+> - Then: git add -A, git commit -m "Review fixes", git checkout 06-start, npm install, npm run db:reset, npm run db:seed
 
 Say:
 - Your build stays on your branch; the next parts need one shared codebase, so everyone moves to the reference

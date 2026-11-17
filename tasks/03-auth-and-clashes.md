@@ -24,9 +24,13 @@ that keeps this app safe: every action checks who is allowed to do it.
 
 ## Do this
 
-1. Start fresh.
+1. Start fresh. `03-start` brings its own packages and database: park your work, install, and rebuild the database.
    ```bash
+   git stash -u
    git checkout 03-start
+   npm install
+   npm run db:reset
+   npm run db:seed
    claude
    ```
 2. Ask for options before code. This is a habit worth keeping.

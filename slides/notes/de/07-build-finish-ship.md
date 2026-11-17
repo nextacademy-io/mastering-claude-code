@@ -61,7 +61,7 @@ Sagen:
 > - Live den PR öffnen (oder PR.md schreiben, falls gh nicht eingerichtet ist)
 > - 06-start fetchen und diffen, Claude nach drei Unterschieden in lib/data und app/actions fragen, ohne Bewertung
 > - Retro-Fragen aus Task 05 — der Gruppe einen Moment geben, sie jemandem nebenan zu beantworten
-> - Dann: git checkout 06-start, npm install, npm run db:reset, npm run db:seed
+> - Dann: git add -A, git commit -m "Review fixes", git checkout 06-start, npm install, npm run db:reset, npm run db:seed
 
 Sagen:
 - Dein Build bleibt auf deinem Branch; die nächsten Teile brauchen eine gemeinsame Codebase, also wechseln alle zur Referenz

@@ -24,8 +24,9 @@ page itself. And you add quality gates so Claude checks its own work.
 
 ## Do this
 
-1. Start.
+1. Start. First park anything you did not commit.
    ```bash
+   git stash -u
    git checkout 04-start
    claude
    ```

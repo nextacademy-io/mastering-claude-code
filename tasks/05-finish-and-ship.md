@@ -24,8 +24,9 @@ branch, commit, optional pull request, review.
 
 ## Do this
 
-1. Start on a branch.
+1. Start on a branch. First park anything you did not commit.
    ```bash
+   git stash -u
    git checkout 05-start
    git checkout -b finish
    claude
@@ -97,8 +98,10 @@ branch, commit, optional pull request, review.
     - Which prompt worked best in this part, and why?
     - When did the context get too full, and how did you notice?
     - Which rule in `CLAUDE.md` saved you time?
-12. Switch to the reference. From here on, every task runs on the reference CLASH.
+12. Commit the review fixes, then switch to the reference. From here on, every task runs on the reference CLASH.
     ```bash
+    git add -A
+    git commit -m "Review fixes"
     git checkout 06-start
     npm install
     npm run db:reset
@@ -122,7 +125,7 @@ branch, commit, optional pull request, review.
 ## Check
 
 - [ ] Profile with avatar crop works and the avatar shows in the sidebar
-- [ ] ⌘K opens search and the results page groups the hits
+- [ ] ⌘K (`Ctrl+K` on Windows and Linux) opens search and the results page groups the hits
 - [ ] The dashboard shows four counts
 - [ ] Light and dark theme switch
 - [ ] A pull request exists, or `PR.md` holds its description

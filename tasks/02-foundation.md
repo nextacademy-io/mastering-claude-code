@@ -30,7 +30,7 @@ mechanics stay the same.
 
 1. Start on the right branch and open Claude Code, in manual mode.
    ```bash
-   git stash -u        # keeps the CLAUDE.md task 01's /init wrote (plain git stash skips new files)
+   git stash -u
    git checkout 02-start
    claude
    ```
@@ -104,7 +104,7 @@ mechanics stay the same.
    ```
    Do it. Then run npm run db:migrate and npm run db:seed and show me the output.
    ```
-9. Check the database.
+9. Check the database. Run this in a second terminal in your CLASH clone: Claude Code holds the first one.
    ```bash
    npx prisma studio
    ```
@@ -133,7 +133,7 @@ mechanics stay the same.
 - [ ] `prisma/schema.prisma` has five models
 - [ ] `npm run db:seed` created 8 users with password `test`
 - [ ] `CLAUDE.md` has a "Rules" section
-- [ ] `git log` shows your commit and `.env` is not in it
+- [ ] `git log --stat` shows your commit and `.env` is not in it
 
 ## Stuck?
 
