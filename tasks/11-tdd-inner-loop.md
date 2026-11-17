@@ -111,6 +111,7 @@ This branch already has vitest installed, one trivial passing test, and a delibe
    ```
    /tdd must waitlist a join once capacity is reached
    ```
+   If `/tdd` stops in RED because the test already passes, the skill is working as designed.
 9. Run `/tdd` again for the boundary: one join *below* capacity still accepts, it doesn't
    waitlist early. A separate invocation.
    ```
