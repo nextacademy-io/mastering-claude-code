@@ -26,11 +26,19 @@ nobody telling you which prompt to type. This is what your normal day looks like
    - **A** Clash comments.
    - **B** Venue favourites, done properly.
    - **C** Weekly digest.
-2. Start in a worktree.
+2. Start in a worktree. A new worktree starts from `main` (task 15), and `main` has no `clash-feature` skill and no hook set. So first add `"worktree": { "baseRef": "head" }` to `.claude/settings.json` in your CLASH clone, next to `hooks`.
    ```bash
    claude --worktree capstone
    ```
-3. Plan first. Switch to plan mode and paste the brief. Read the plan. Change one thing.
+   The worktree has no `.env`, `node_modules` or `dev.db`. Before step 3, set them up in a second terminal, at the root of your CLASH clone.
+   ```bash
+   cp .env .claude/worktrees/capstone/
+   cd .claude/worktrees/capstone
+   npm install
+   npm run db:migrate
+   npm run db:seed
+   ```
+3. Plan first. Run `/context` and note the number. Switch to plan mode and paste the brief. Read the plan. Change one thing.
 4. Build with the skill.
    ```
    /clash-feature <paste the brief here>

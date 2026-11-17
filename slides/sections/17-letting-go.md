@@ -76,7 +76,7 @@ heading: "Headless in CI"
 routeAlias: theory-headless-ci
 docs: https://code.claude.com/docs/en/headless
 lines:
-  - "CLASH has no .github/workflows/. Nothing runs on a pull request."
+  - "CLASH's own workflow calls a raw claude -p."
   - "anthropics/claude-code-action@v1. Not @beta. Not a raw claude -p."
 ---
 

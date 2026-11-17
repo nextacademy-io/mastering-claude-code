@@ -36,11 +36,11 @@ clashes at their venues. A "copy as text" button produces a plain-text version.
 
 ## Checklist (all briefs)
 
-- [ ] Work happens in a worktree: `claude --worktree capstone-<letter>`
+- [ ] Work happens in a worktree: `claude --worktree capstone`
 - [ ] The feature is built with `/clash-feature`
 - [ ] Every new Server Action has its own ownership or user-scoping check
 - [ ] A `security-auditor` subagent reviewed `app/actions/` and reported PASS for the new actions
-- [ ] The typecheck hook and the Stop hook fired at least once and you fixed what they caught
+- [ ] The Stop hook fired at least once, the typecheck hook too if you changed `app/actions/`, and you fixed what they caught
 - [ ] The flow was clicked through in a real browser by an agent (Playwright MCP or agent-browser)
 - [ ] `npx tsc --noEmit`, `npm run lint`, `npm run build` all pass
 - [ ] A pull request exists with a description Claude wrote and you edited

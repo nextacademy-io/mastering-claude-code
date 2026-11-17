@@ -59,8 +59,9 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 
 **Headless in CI**
 
-6. Run the loop headless on your own machine first: print mode from task 01. CLASH has no
-   `.github/workflows/` folder, so nothing runs on a pull request yet.
+6. Run the loop headless on your own machine first: print mode from task 01. CLASH already has
+   one workflow, `.github/workflows/claude-security-review.yml`: a raw `claude -p` step that needs
+   an `ANTHROPIC_API_KEY` secret. Step 7 uses the maintained action instead.
    ```bash
    claude -p "List the exported Server Actions in app/actions/, one per line." --output-format json
    ```
@@ -79,21 +80,29 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 8. Read the file. The `prompt` input is the same brief as task 08. `claude_args` carries model
    and turn limits, and the allowed tools. Without `Bash(gh pr comment:*)` there, the findings
    stay in the run log. The secret is named, never pasted. v1 dropped the `mode` input. `@beta` is the old version.
-9. Create the token for the secret: `claude setup-token`. Add it to your CLASH repository on
+9. Steps 9 to 11 need your own fork of CLASH on GitHub: you cannot add a secret to `nextacademy-io/clash` or push there. Task 05 made the fork if you pushed. If not, run `gh repo fork --remote --remote-name fork` in your CLASH clone. GitHub keeps Actions off in a fork: open its **Actions** tab and enable them, or step 11 starts no run.
+   Create the token for the secret: `claude setup-token`. Add it to your fork of CLASH on
    GitHub as `CLAUDE_CODE_OAUTH_TOKEN`. You do not need it to check that the YAML is valid.
 10. Install the GitHub App properly, instead of only holding a token.
     ```
     /install-github-app
     ```
-    It installs the GitHub App and can set up the secret and workflows for you. When it asks
+    It installs the GitHub App and can set up the secret and workflows for you. If it offers
+    `nextacademy-io/clash` as the repository, enter your fork of CLASH instead. When it asks
     whether to continue with GitHub Actions setup, choose **Skip for now** — you already added
     the secret and wrote `security-audit.yml` by hand.
 11. Push the workflow for real and open a pull request against it.
     ```
     Commit the workflow file on a new branch, push it, and open a pull request with gh.
     ```
-    Watch the Actions tab. When the run finishes, the audit's findings land as a comment
-    on the pull request — nobody typed a prompt to make that happen.
+    The pull request must be in your fork of CLASH, not in `nextacademy-io/clash`: check its URL.
+    If a second run, `Claude Security Review`, fails, that is CLASH's own
+    `claude-security-review.yml`: your fork has no `ANTHROPIC_API_KEY`.
+    Watch the Actions tab of your fork. When the run finishes, the audit's findings land as a comment
+    on the pull request — nobody typed a prompt to make that happen. If your run ends green with
+    no comment and a workflow validation warning in its log, the action skipped a workflow that is
+    not on `main` of your fork yet. Merge the pull request there, then open a second one with one
+    small change in `app/actions/`.
 
 ## Now you
 
@@ -108,7 +117,7 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 - [ ] `.github/workflows/security-audit.yml` exists and runs on `pull_request`.
 - [ ] It uses `anthropics/claude-code-action@v1`, not `@beta`, and no raw `claude -p` step.
 - [ ] The secret is referenced by name. `id-token: write` is in `permissions`.
-- [ ] The GitHub App is installed on your CLASH repository on GitHub.
+- [ ] The GitHub App is installed on your fork of CLASH on GitHub.
 - [ ] A real run finished on the pull request, and its findings are a comment on it.
 
 ## Stuck?

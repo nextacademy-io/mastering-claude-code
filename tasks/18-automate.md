@@ -69,7 +69,7 @@ for one build. That is the gate, not the loop.
    ```
    Write .claude/output-styles/host-notes.md in this CLASH clone. Frontmatter: a description field saying the style ends every answer with one plain line for a CLASH host, and keep-coding-instructions: true. No name field — the file name is the style name. Body: work as usual, then end every answer with exactly one extra line. That line starts with "Host note:" and says, in plain words, what changed for a CLASH host, a person who creates clashes. No code, no file names and no jargon in that line. When nothing changed for a host, the line is: Host note: nothing changed for hosts. Write the file and change nothing else.
    ```
-   You see one new file, `.claude/output-styles/host-notes.md`, with those two frontmatter fields and the rule in the body. `keep-coding-instructions: true` keeps the normal coding behaviour under your style on the full system prompt. Newer models use a shorter prompt by default, and there the field does nothing. To make it count, set `CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0` before you start Claude Code.
+   You see one new file, `.claude/output-styles/host-notes.md`, with those two frontmatter fields and the rule in the body. `keep-coding-instructions: true` keeps the normal coding behaviour under your style on the full system prompt. Newer models use a shorter prompt by default, and there the field does nothing. To make it count, set `CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0` before you start Claude Code, in the same terminal: `export CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0` on macOS, Linux or WSL, `$env:CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT = "0"` in PowerShell.
 5. Restart Claude Code, then list the styles. Style files are read at launch, not while a session runs.
    ```
    /exit

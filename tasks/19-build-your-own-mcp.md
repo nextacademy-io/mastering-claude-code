@@ -54,8 +54,9 @@ before it starts one. Until you say yes, `claude mcp list` shows it as
 
 **Your CLASH clone: design the server**
 
-1. Check out CLASH's `19-start`, put the seed data back and register the server.
+1. Check out CLASH's `19-start`, put the seed data back and register the server. Park your work from earlier tasks first: task 16 changed `package.json`, and git does not switch over that.
    ```bash
+   git stash -u
    git checkout 19-start                        # CLASH's 19-start: mcp/server.ts with one tool
    npm install
    npm run db:seed                              # the smoke test in step 4 counts on the seed data
@@ -259,8 +260,8 @@ Clone [clash-conference](https://github.com/nextacademy-io/clash-conference) to 
 
 - Design a fifth tool, `list_venues`, with no input. Give it a description that tells Claude
   when to use it instead of `find_venue`. Restart Claude Code in your CLASH clone and check
-  that `/mcp` shows five tools.
-- Point `ask-clash.mts` from task 16, in your CLASH clone, at the server: `mcpServers` and
+  that `/mcp` shows five tools. `mcp/smoke.ts` expects four: change its `four tools registered` check to five.
+- Copy [`workshop-artifacts/16-agent-sdk/ask-clash.mts`](../workshop-artifacts/16-agent-sdk/ask-clash.mts) from the workshop repository into your CLASH clone (step 1 parked yours) and run `npm install --no-save @anthropic-ai/claude-agent-sdk` there. Then point it at the server: `mcpServers` and
   `allowedTools` in its options. The question is now answered from `dev.db` in your CLASH
   clone, not from CLASH's `prisma/seed.ts`.
 - Pick one refusal text of the server and make it good enough that Claude can recover on its
