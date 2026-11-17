@@ -28,12 +28,13 @@ result: that task did not earn the extra reasoning.
 
 ## Do this
 
-1. Make an empty folder outside your CLASH clone and outside the workshop repository.
+1. Make an empty folder in your home folder, outside your CLASH clone and outside the workshop repository. If Claude Code is still open, type `/exit` first.
    ```bash
+   cd ~
    mkdir effort-lab
    cd effort-lab
    ```
-   Copy [`workshop-artifacts/20-reasoning-lab/review.ts`](../workshop-artifacts/20-reasoning-lab/review.ts) from the workshop repository into it. The
+   Copy [`workshop-artifacts/20-reasoning-lab/review.ts`](../workshop-artifacts/20-reasoning-lab/review.ts) from the workshop repository into it. No clone of the workshop repository? Open the link on GitHub, click **Download raw file** and move `review.ts` into the folder. The
    folder now holds one file and nothing else: no project `CLAUDE.md`, no `.claude/`, no answer
    key. That is the point. From this folder, Claude Code sees only the file; your own user
    settings still load, as in every session.
@@ -116,7 +117,8 @@ result: that task did not earn the extra reasoning.
 
 ## Now you
 
-- The same measurement on one real function in your CLASH clone, in a session started from the
+- Once your CLASH clone holds code: the same measurement on one real function
+  in your CLASH clone, in a session started from the
   clone's root. Goal: a second table. This time `CLAUDE.md`, the project's rules and its Claude
   Code hooks load too. Note what else changed between the two runs besides the level.
 

@@ -55,14 +55,14 @@ does not exist yet. That is the safest place to learn how it thinks.
    ```
    The first two install the tool. The third adds the skill that tells Claude how to drive
    it. You confirm it in step 10.
-4. Clone CLASH and switch to the empty starting branch.
+4. Clone CLASH and switch to the empty starting branch. If you cloned CLASH with `docs/SETUP.md`, skip `git clone` and run the rest from the folder that holds your CLASH clone.
    ```bash
    git clone https://github.com/nextacademy-io/clash
    cd clash
    git checkout 01-start
    ls
    ```
-   You should see only `README.md`, `docs/`, and `.gitignore`. Nothing else. That is correct.
+   You should see `README.md` and `docs/`. `.gitignore` is there too, but `ls` hides it on macOS and Linux. What `docs/SETUP.md` added, such as `.env` and `node_modules/`, stays as well: git ignores it. Leave it. That is correct.
 5. Start Claude Code inside your CLASH clone.
    ```bash
    claude
@@ -89,7 +89,7 @@ does not exist yet. That is the safest place to learn how it thinks.
    Open it in your editor. The exact output can vary with the Claude Code version. Look for
    useful project guidance and a pointer back to `docs/SPEC.md`; do not expect it to match a
    checkpoint word for word.
-10. Start with a fresh conversation and look at what stays loaded.
+10. Start with a fresh conversation and look at what stays loaded. Type the four commands one at a time.
     ```
     /clear
     /context

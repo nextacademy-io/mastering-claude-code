@@ -14,6 +14,7 @@ workshop wifi. If something fails, see the table at the end.
 | Claude Code | `claude --version` | See "Install Claude Code" below, then `claude` and log in |
 | agent-browser | `agent-browser --version` | `npm install -g agent-browser`, then `agent-browser install`, then see "Add the agent-browser skill" below |
 | GitHub CLI (Part II, IV) | `gh --version` | https://cli.github.com then `gh auth login` |
+| Google Chrome (task 14) | Chrome starts | https://www.google.com/chrome |
 
 Claude Code must be **2.1.252 or newer**. Older builds miss `/skill-doctor`, and builds before 2.1.248 also miss `/workflow-authoring`.
 
@@ -75,7 +76,7 @@ cd clash
 git checkout 01-start
 ```
 
-Parts III and IV work on the **reference** CLASH. You switch to it at the end of Part II:
+Parts III and IV work on the **reference** CLASH. You switch to it at the end of Part II, not now:
 
 ```bash
 git checkout 06-start
@@ -93,11 +94,19 @@ npm run dev          # confirm CLASH loads on http://localhost:3000
 CLASH's `.env` is gitignored, so it never arrives with your CLASH clone. CLASH throws on start
 without it.
 
+macOS, Linux or WSL:
+
 ```bash
 cat > .env <<'EOT'
 DATABASE_URL="file:./dev.db"
 SESSION_SECRET="workshop-secret"
 EOT
+```
+
+Windows, in PowerShell:
+
+```powershell
+Set-Content .env 'DATABASE_URL="file:./dev.db"', 'SESSION_SECRET="workshop-secret"'
 ```
 
 You need this on CLASH's `01-start` as soon as you add Prisma (task 02), and on every later

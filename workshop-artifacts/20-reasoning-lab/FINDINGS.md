@@ -1,10 +1,10 @@
 # Reasoning lab — the four bugs in `review.ts`
 
-Open the box only after both runs. Score each run against these four. Anything else a run
+Open the box after a run, not before. Score each run against these four. Anything else a run
 reports is a false positive, unless it is one of these four worded differently.
 
 <details>
-<summary>The four bugs (open after both runs)</summary>
+<summary>The four bugs (open after a run, not before)</summary>
 
 | # | Line | Bug | Contract it breaks |
 |---|---|---|---|

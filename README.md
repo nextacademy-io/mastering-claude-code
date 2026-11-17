@@ -46,14 +46,7 @@ able to read TypeScript and use git.
 
 ## Setup
 
-Do this before the workshop: **[`docs/SETUP.md`](docs/SETUP.md)**.
-
-```bash
-git clone https://github.com/nextacademy-io/clash
-cd clash
-git checkout 01-start
-claude --version
-```
+Do this before the workshop: **[`docs/SETUP.md`](docs/SETUP.md)**. It installs Claude Code, clones CLASH and clash-conference, and ends with a checklist.
 
 ## The road
 

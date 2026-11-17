@@ -11,7 +11,7 @@ Say:
 <!-- @note: task-20-effort-lab -->
 > Do:
 > - No reset branch: the lab runs in an empty folder outside your CLASH clone, holding only a copy of workshop-artifacts/20-reasoning-lab/review.ts
-> - Say the four bugs are in workshop-artifacts/20-reasoning-lab/FINDINGS.md, to be opened after both runs, not before
+> - Say the four bugs are in workshop-artifacts/20-reasoning-lab/FINDINGS.md, to be opened after the first run, not before
 
 Say:
 - Same file, same prompt, same model. One thing changes: /effort on low, then /clear and /effort on high, each confirmed with s

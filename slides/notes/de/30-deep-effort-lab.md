@@ -11,7 +11,7 @@ Sagen:
 <!-- @note: task-20-effort-lab -->
 > Tun:
 > - Kein Reset-Branch: Das Labor läuft in einem leeren Ordner ausserhalb deines CLASH-Clones, der nur eine Kopie von workshop-artifacts/20-reasoning-lab/review.ts enthält
-> - Sagen, dass die vier Fehler in workshop-artifacts/20-reasoning-lab/FINDINGS.md stehen, erst nach beiden Läufen öffnen, nicht vorher
+> - Sagen, dass die vier Fehler in workshop-artifacts/20-reasoning-lab/FINDINGS.md stehen, erst nach dem ersten Lauf öffnen, nicht vorher
 
 Sagen:
 - Gleiche Datei, gleicher Prompt, gleiches Modell. Eines ändert sich: /effort auf low, dann /clear und /effort auf high, jeweils mit s bestätigt
