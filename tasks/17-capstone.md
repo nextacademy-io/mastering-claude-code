@@ -51,9 +51,9 @@ nobody telling you which prompt to type. This is what your normal day looks like
 7. Click through the feature in a real browser with an agent. Fix what it finds.
 8. Open a pull request.
    ```
-   Create a branch, commit the work in small commits, and open a pull request
-   with gh. Write a description a reviewer can read quickly: what changed,
-   how it was tested, what is not done.
+   Create a branch, commit the work in small commits, push it to my fork, and
+   open a pull request in my fork with gh. Write a description a reviewer can
+   read quickly: what changed, how it was tested, what is not done.
    ```
 9. Run `/context`. Say where the budget went.
 
@@ -67,7 +67,7 @@ Use the checklist at the end of [`workshop-artifacts/17-capstone/README.md`](../
 
 ## Stuck?
 
-`git checkout 17-start` — the reference CLASH with `CLAUDE.md`, the skills, the ownership fix and the hook set.
+`git checkout 17-start` — the reference CLASH with `CLAUDE.md`, the skills, the `security-auditor` subagent, the ownership fix and the hook set.
 
 ## Go further
 

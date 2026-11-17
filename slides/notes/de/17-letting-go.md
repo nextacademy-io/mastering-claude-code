@@ -59,7 +59,7 @@ Sagen:
 
 Sagen:
 - Headless = kein Mensch schaut zu: derselbe Agent, der gerade mit dir gepairt hat, läuft unbeaufsichtigt, ausgelöst durch ein Event
-- [click] Den leeren Actions-Tab mit dem Security-Audit aus Task 08 füllen, das bei jedem PR läuft
+- [click] CLASH hat schon einen Workflow, `claude-security-review.yml`, mit einem rohen `claude -p`-Schritt — das Security-Audit aus Task 08 kommt daneben und läuft bei jedem PR
 - Das Herzstück wird zu dauerhafter Infrastruktur
 - Nicht `claude -p` ins YAML packen — anthropics/claude-code-action@v1 mit `prompt` und `claude_args` verwenden
 - v1 hat den `mode`-Input gestrichen (wird jetzt automatisch erkannt) — @beta hat ihn noch.

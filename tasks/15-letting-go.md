@@ -80,7 +80,7 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
 8. Read the file. The `prompt` input is the same brief as task 08. `claude_args` carries model
    and turn limits, and the allowed tools. Without `Bash(gh pr comment:*)` there, the findings
    stay in the run log. The secret is named, never pasted. v1 dropped the `mode` input. `@beta` is the old version.
-9. Steps 9 to 11 need your own fork of CLASH on GitHub: you cannot add a secret to `nextacademy-io/clash` or push there. Task 05 made the fork if you pushed. If not, run `gh repo fork --remote --remote-name fork` in your CLASH clone. GitHub keeps Actions off in a fork: open its **Actions** tab and enable them, or step 11 starts no run.
+9. Steps 9 to 11 need your own fork of CLASH on GitHub: you cannot add a secret to `nextacademy-io/clash` or push there. Task 05 made the fork if you pushed. If not, run `gh repo fork --remote --remote-name fork` in your CLASH clone. Either way, run `gh repo set-default` in your CLASH clone and pick your fork of CLASH, so gh opens pull requests there, not in `nextacademy-io/clash`. GitHub keeps Actions off in a fork: open its **Actions** tab and enable them, or step 11 starts no run.
    Create the token for the secret: `claude setup-token`. Add it to your fork of CLASH on
    GitHub as `CLAUDE_CODE_OAUTH_TOKEN`. You do not need it to check that the YAML is valid.
 10. Install the GitHub App properly, instead of only holding a token.
@@ -93,7 +93,7 @@ keystroke. Every control from this workshop carries over: a scoped prompt, limit
     the secret and wrote `security-audit.yml` by hand.
 11. Push the workflow for real and open a pull request against it.
     ```
-    Commit the workflow file on a new branch, push it, and open a pull request with gh.
+    Commit the workflow file on a new branch, push it to my fork, and open a pull request in my fork with gh.
     ```
     The pull request must be in your fork of CLASH, not in `nextacademy-io/clash`: check its URL.
     If a second run, `Claude Security Review`, fails, that is CLASH's own

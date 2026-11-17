@@ -12,7 +12,7 @@ learn:
   - "Claude drafts the pull request; you edit it"
 outcome:
   - "One of three briefs, shipped end to end"
-  - "A pull request on the reference CLASH"
+  - "A pull request in your fork of CLASH"
   - "Every gate green: types, lint, build"
   - "A /context reading, explained start to finish"
 ---
