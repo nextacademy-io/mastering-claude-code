@@ -28,8 +28,10 @@ page itself. And you add quality gates so Claude checks its own work.
    ```bash
    git stash -u
    git checkout 04-start
+   git checkout -b build-04
    claude
    ```
+   Your work goes on `build-04`, so `04-start` stays the clean start that **Stuck?** takes you back to.
 2. Watch. Your trainer sends this once, live, on their own machine. Do not send it yourself —
    you build the same four things properly, in small steps, starting with the next step.
    ```

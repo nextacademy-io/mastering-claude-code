@@ -28,11 +28,13 @@ that keeps this app safe: every action checks who is allowed to do it.
    ```bash
    git stash -u
    git checkout 03-start
+   git checkout -b build-03
    npm install
    npm run db:reset
    npm run db:seed
    claude
    ```
+   Your work goes on `build-03`, so `03-start` stays the clean start that **Stuck?** takes you back to.
 2. Ask for options before code. This is a habit worth keeping.
    ```
    I want email and password login with a session cookie. No third-party auth.

@@ -32,10 +32,12 @@ mechanics stay the same.
    ```bash
    git stash -u
    git checkout 02-start
+   git checkout -b build-02
    claude
    ```
    `02-start` brings its own `CLAUDE.md`, so this replaces the one you just made. To look at
    yours again later: `git stash show -p --include-untracked`.
+   Your work goes on `build-02`, so `02-start` stays the clean start that **Stuck?** takes you back to.
    Manual mode shows most commands before they run. Press `Shift+Tab` until the status bar
    shows `manual mode on` — this is a new session, so don't assume you're still in whatever
    mode task 01 left you in.
